@@ -539,16 +539,18 @@ if ($number > 0){
 				}
 			})
 			.then( res => {
-				// console.log(elm);
 
-				if(res.data == 1){
-					toastr.success('Post Shared');
-				}
+				let json = res.data;
 
 				
+				let unique_id_me = json.unique_id_me;
+				let newPost = json.newPost;
+		
+				tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
 
-				
-				
+				toastr.success('Post Shared');
+
+								
 			})
 			.catch( err => {
 				console.log(err);
