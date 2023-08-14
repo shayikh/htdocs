@@ -1,0 +1,166 @@
+<?php
+include './header.php';
+
+$unique_id_fr = $_GET['unique_id_fr'];
+
+if($unique_id_fr == $unique_id_me){
+	echo "<script>window.location = 'about_me.php?type=about_me'</script>";
+}
+
+$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
+$runAbout = mysqli_query($connection,$SQLabout);
+$dataAbout = mysqli_fetch_assoc($runAbout);
+
+
+$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+$run1 = mysqli_query($connection,$SQL1);
+$data1 = mysqli_fetch_assoc($run1);
+
+?>
+
+
+
+<!-- message notification -->
+<?php
+$SQLnotify="SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
+$runnotify=mysqli_query($con_notification,$SQLnotify);
+
+$number = mysqli_num_rows($runnotify);
+
+if ($number > 0){
+  ?>
+<a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm red">You
+    Have
+    <?php echo $number ?> New Messages</a>
+
+<?php } ?>
+
+<!-- main page -->
+
+
+
+<div class="container" style="margin-top:133px">
+    <div class="row">
+
+        <div class="col-md-12">
+            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>">
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <a class="text-decoration-none" href="./pro_pic.php?type=no&unique_id_fr=<?php echo $data1['unique_id']?>">
+                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>">
+            </a>
+        </div>
+
+        <div id="here"></div>
+
+        <div class="col-md-12 text-center" style="margin-top: -134px; margin-left: -135px">
+            <p class="text-white" style="font-size: 39px"><?php echo $data1['name'] ?></p>
+        </div>
+
+    </div>
+
+
+
+    <?php if($unique_id_fr != $unique_id_me){ ?>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <a href="./people_timeline.php?type=no&unique_id_fr=<?php echo $data1['unique_id']?>" class="btn btn-success float-end ms-2">Timeline</a>
+
+            <a href="./message.php?type=no&unique_id_fr=<?php echo $data1['unique_id']?>" class="btn btn-success float-end">Chat by Messenger</a>
+        </div>
+
+    </div>
+
+    <?php } ?>
+
+
+    <div class="row">
+        <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
+            <tr>
+                <td>
+                    <h5 class="text-red">Email</h5>
+                </td>
+                <td>
+                    <h5><?php echo $data1['email'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 class="text-red">Date of Birth</h5>
+                </td>
+                <td>
+                    <h5><?php echo $data1['date_birth'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 class="text-red">Gender</h5>
+                </td>
+                <td>
+                    <h5><?php echo $data1['gender'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 class="text-red">Phone Numbers</h5>
+                </td>
+                <td>
+                    <h5><?php echo $dataAbout['phone_no'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 class="text-red">Religion</h5>
+                </td>
+                <td>
+                    <h5><?php echo $dataAbout['religion'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 class="text-red">Country</h5>
+                </td>
+                <td>
+                    <h5><?php echo $dataAbout['country'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 class="text-red">City</h5>
+                </td>
+                <td>
+                    <h5><?php echo $dataAbout['city'] ?></h5>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 300px">
+                    <h5 class="text-red">Bio</h5>
+                </td>
+                <td>
+                    <h5 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width: 300px">
+                    <h5 class="text-red">Durbeen Visited</h5>
+                </td>
+                <td>
+                    <h5><?php echo $data1['visit'] ?></h5>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+</div>
+
+
+
+
+<?php
+include './footer.php'
+?>
