@@ -152,6 +152,17 @@ if ($number > 0){
                     <h5><?php echo $data1['visit'] ?></h5>
                 </td>
             </tr>
+            <tr>
+                <td style="width: 300px">
+                    <h5 class="text-red">Account Link</h5>
+                </td>
+                <td>
+                    <h5 class="one">
+                        http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>
+                    </h5>
+                    <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
+                </td>
+            </tr>
         </table>
 
 

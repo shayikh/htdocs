@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2022 at 08:01 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Aug 14, 2023 at 08:06 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,16 +43,6 @@ CREATE TABLE `about` (
   `question_three` text NOT NULL,
   `answer_three` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `about`
---
-
-INSERT INTO `about` (`id`, `unique_id`, `bio`, `cov_pic`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
-(1, 1, '', 'cov_pic.jpg', '', '', '', '', '', '', '', '', '', ''),
-(2, 2, NULL, 'cov_pic.jpg', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(3, 3, NULL, 'cov_pic.jpg', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(4, 4, '', 'cov_pic.jpg', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -109,14 +99,6 @@ CREATE TABLE `post` (
   `post` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id`, `unique_id`, `image`, `time`, `post`) VALUES
-(3, 1, '6257197d49925_2022-Apr-00-42-05_32.jpg', 'Asia/Dhaka time: 14-Apr-2022-Thu-00:42:05', 'ok ok ok nice Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.'),
-(4, 1, '62571aecc854f_2022-Apr-00-48-12_2.jpg', 'Asia/Dhaka time: 14-Apr-2022-Thu-00:48:12', 'Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.');
-
 -- --------------------------------------------------------
 
 --
@@ -134,16 +116,6 @@ CREATE TABLE `registration` (
   `active` int(255) NOT NULL,
   `visit` int(255) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `registration`
---
-
-INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `date_birth`, `gender`, `pro_pic`, `active`, `visit`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '11111111', '2022-03-30', 'Male', '62514efeb855d_2022-Apr-11-16-46_shayikh.png', 1, 5),
-(2, 'Munna', 'munna@gmail.com', '11111111', '2022-04-20', 'Male', '62514f1f96446_2022-Apr-11-17-19_munna.png', 0, 2),
-(3, 'Tarek', 'tarek@gmail.com', '11111111', '2022-04-07', 'Male', '6252eb5f4ebe7_2022-Apr-16-36-15_tarek.png', 0, 1),
-(4, 'mishu', 'mishu@gmail.com', '11111111', '2022-04-21', 'Male', '6252eb7596099_2022-Apr-16-36-37_mishu.jpg', 0, 2);
 
 --
 -- Indexes for dumped tables
@@ -194,7 +166,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -206,25 +178,25 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `dislike_post`
 --
 ALTER TABLE `dislike_post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `like_post`
 --
 ALTER TABLE `like_post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

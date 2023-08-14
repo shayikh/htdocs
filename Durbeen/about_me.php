@@ -147,7 +147,7 @@ if ($number > 0){
                 </td>
                 <td>
                     <h5 class="one">
-                        http://durbeen.ezyro.com/people_timeline.php?type=no&unique_id_fr=<?php echo $dataMe['unique_id'] ?>
+                        http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $dataMe['unique_id'] ?>
                     </h5>
                     <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                 </td>

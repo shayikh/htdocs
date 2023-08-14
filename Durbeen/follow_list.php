@@ -76,7 +76,7 @@ if ($number > 0){
 					</a>
 				</td>
 				<td class="text-center">
-          <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $fr_id ?>, this)" class="btn btn-danger mt-5">Unfollow</button>
+          			<button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $fr_id ?>, this)" class="btn btn-danger mt-5">Unfollow</button>
 				</td>
 			</tr>
 

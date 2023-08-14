@@ -541,7 +541,6 @@ if ($number > 0){
 			.then( res => {
 
 				let json = res.data;
-
 				
 				let unique_id_me = json.unique_id_me;
 				let newPost = json.newPost;
