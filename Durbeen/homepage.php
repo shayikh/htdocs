@@ -36,38 +36,6 @@ if ($number > 0){
 		<div class="col-md-2"></div>
 		
 		<div class="col-md-8">
-                                             <!-- Status Bar -->
-			<div class="row justify-content-center">
-				<div class="statusp">
-					<div class="col-md-12 mt-2 mb-2">
-						<div class="card" style="width: 100%;border: none;">
-							<p class="text-white" style="background-color: #18191A;border-radius: 3px 3px 0 0">
-								<img class="p-2" style="border-radius: 50%" width="90px" height="90px"
-									src="./pro_pic/<?php echo $dataMe['pro_pic']?>" alt="">
-								<b><?php echo $dataMe['name']?></b>
-							</p>
-							<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px;">
-								<form action="" method="post" id="formID" enctype="multipart/form-data">
-									<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-
-									<textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID"
-										rows="5" class="form-control mb-2"></textarea>
-										
-									<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
-
-									<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
-									<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit">
-								</form>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-                                                        <!-- Status Bar end -->
-                                                          <!-- POSTS -->
-
 			<div class="row justify-content-center" id="tbodyID">
 
 
@@ -80,7 +48,30 @@ if ($number > 0){
 
 
 
+	<!-- Post Modal -->
+	<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
+					<button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form action="" method="post" id="formID" enctype="multipart/form-data">
+						<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+						
+						<textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID" rows="5"
+							class="form-control mb-2" type="text"></textarea>
 
+						<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
+
+						<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
+						<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Comment Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
@@ -126,7 +117,8 @@ if ($number > 0){
 	let image = document.querySelector("#imageID");
 	let post = document.querySelector("#postID");
 	let button = document.querySelector("#buttonID");
-
+	let postCloseBtn = document.querySelector("#postCloseBtn");
+	
 	let commentTboody = document.querySelector("#commentTboody");
 
 
@@ -355,6 +347,8 @@ if ($number > 0){
 		
 				tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
 
+				postCloseBtn.click();
+
 				image.value = "";
 				post.value = "";
 
@@ -519,7 +513,9 @@ if ($number > 0){
 </script>
 
 
-
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
+	<i class="fas fa-plus"></i>
+</button>
 
 
 </div>

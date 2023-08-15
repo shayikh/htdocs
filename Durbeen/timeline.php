@@ -61,134 +61,8 @@ if ($number > 0){
 		<div class="col-md-2"></div>
 
 		<div class="col-md-8">
-																					<!-- Status Bar -->
-			<div class="row justify-content-center">
-				<div class="statusp">
-					<div class="col-md-12 mt-2 mb-2">
-						<div class="card" style="width: 100%;border: none;">
-							<p class="text-white" style="background-color: #18191A;border-radius: 3px 3px 0 0">
-								<img class="p-2" style="border-radius: 50%" width="90px" height="90px"
-									src="./pro_pic/<?php echo $dataMe['pro_pic']?>" alt="">
-								<b><?php echo $dataMe['name']?></b>
-							</p>
-							<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px;">
-								<form action="" method="post" id="formID" enctype="multipart/form-data">
-									<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-									
-									<textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID"
-										rows="5" class="form-control mb-2"></textarea>
-
-									<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
-
-									<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
-									<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit">
-								</form>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
 			<div class="row justify-content-center" id="tbodyID">
-				<?php
-					//pagination
-					$posts_per_page = 20;
-
-					$sql = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me'";
-
-					$result = mysqli_query($connection, $sql);
-
-					$total_posts = mysqli_num_rows($result);
-
-					$total_pages = ceil($total_posts / $posts_per_page);
-
-
-					if(isset($_GET['page'])){
-							$current_page = $_GET['page'];
-					}else{
-							$current_page = 1;
-					}
-
-					$start_limit = ($current_page - 1) * $posts_per_page;
-
-					$selectSQL = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me' ORDER BY `id` DESC LIMIT ".$start_limit.",".$posts_per_page;
-
-					$runSelect = mysqli_query($connection, $selectSQL);
-
-
-
-
-
-					while ($data3 = mysqli_fetch_assoc($runSelect)){
-						$Postid = $data3['id'];
 						
-						$comn_count = "SELECT * FROM `comment` WHERE `post_id`='$Postid'";
-						$runComn_count = mysqli_query($connection,$comn_count);
-						$no_comment = mysqli_num_rows($runComn_count);
-
-						$SQLlike = "SELECT * FROM `like_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
-						$runlike = mysqli_query($connection, $SQLlike);
-						$countlike = mysqli_num_rows($runlike);
-
-						$SQLdislike = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
-						$rundislike = mysqli_query($connection, $SQLdislike);
-						$countdislike = mysqli_num_rows($rundislike);
-
-						$SQLlikeall = "SELECT * FROM `like_post` WHERE `post_id`='$Postid'";
-						$runlikeall = mysqli_query($connection, $SQLlikeall);
-						$countlikeall = mysqli_num_rows($runlikeall);
-
-						$SQLdislikeall = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid'";
-						$rundislikeall = mysqli_query($connection, $SQLdislikeall);
-						$countdislikeall = mysqli_num_rows($rundislikeall);
-
-
-
-						?>
-
-						<div class="statusp">
-
-							<div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
-								<div class="card" style="width: 100%;border: none;">
-									<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
-										<img style="border-radius: 50%" width="70px" height="70px"
-											src="./pro_pic/<?php echo $dataMe['pro_pic']?>" alt="">
-										<b><?php echo $dataMe['name']?></b>
-									</p>
-									<img width="100%" src="./post_image/<?php echo $data3['image']?>" alt="">
-									<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-										<h6 class="card-title text-white"><?php echo $data3['time']?></h6>
-										<p class="card-text text-white"><?php echo $data3['post']?></p>
-									</div>
-								</div>
-
-
-								<p class="float-start mt-2 me-3" style="color: <?php $countlike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="likefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Like</p>
-								<p class="float-start mt-2 me-5" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Dislike</p>
-								<p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i><?php echo $countlikeall ?></p>
-								<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
-								<p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
-								
-								<button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"
-										class="btn btn-sm red float-end mb-2"><i class="fas fa-trash-alt"></i></button>
-
-								<button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="fas fa-edit"></i>
-								</button>
-								<!-- comment button -->
-								<button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
-									<i class="fas fa-share"></i>
-								</button>
-
-								<button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-								<button onclick="commentfn(this, <?php echo $unique_id_me ?>, <?php echo $Postid ?>, <?php echo $data3['unique_id'] ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-								<input type="text" class="ms-5 mt-2">
-							</div>
-						</div>
-
-					<?php } ?>
-
 
 			</div>
 		</div>
@@ -197,7 +71,30 @@ if ($number > 0){
 
 
 
+		<!-- Post Modal -->
+		<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
+						<button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form action="" method="post" id="formID" enctype="multipart/form-data">
+							<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+							
+							<textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID" rows="5"
+								class="form-control mb-2" type="text"></textarea>
 
+							<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
+
+							<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
+							<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	<!-- Comment Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
 		<div class="modal-dialog modal-xl">
@@ -232,10 +129,10 @@ if ($number > 0){
 
 	<!-- Edit Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+					<h5 class="text-dark" class="modal-title" id="exampleModalLabel">Edit Post</h5>
 					<button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -280,8 +177,55 @@ if ($number > 0){
 	let image = document.querySelector("#imageID");
 	let post = document.querySelector("#postID");
 	let button = document.querySelector("#buttonID");
+	let postCloseBtn = document.querySelector("#postCloseBtn");
 
 	let commentTboody = document.querySelector("#commentTboody");
+
+
+
+
+
+	
+	var page_no = 1;
+        
+	showdata();
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+			showdata();
+		}
+	})
+
+
+	function showdata() {
+
+		let postData = {};
+
+		postData.page_no = page_no;
+		postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+		axios.post("./api/loadmoreTimeline.php",
+		postData,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+				// console.log(res.data);
+				tbody.innerHTML = tbody.innerHTML + res.data;
+				page_no++;
+				
+				
+			})
+			.catch( err => {
+				console.log(err);
+			})
+	}
+
+
+
+
 
 
 
@@ -545,6 +489,8 @@ if ($number > 0){
 		
 				tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
 
+				postCloseBtn.click();
+
 				image.value = "";
 				post.value = "";
 
@@ -755,51 +701,11 @@ const makeTr = (post, unique_id_me) => {
 
 </script>
 
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
+	<i class="fas fa-plus"></i>
+</button>
 
 
-
-
-
-
-
-	<section class="pagination" style="background-color: #18191A;">
-		<div style="width: 100%; margin: 20px auto" class="text-center">
-			<?php 
-				if($current_page==1){
-						$dddd=$current_page;
-				}else if($current_page>1){
-						$dddd=$current_page-1;
-				}
-				
-				if($current_page==$total_pages){
-						$llll=$current_page;
-				}else if($current_page<$total_pages){
-						$llll=$current_page+1;
-				}
-			?>
-
-			<a href='./timeline.php?type=timeline&page=<?php echo $dddd ?>' class="pag-link">&#60;&#60;</a>
-
-			<?php for($i = 1; $i <= $total_pages; $i++){ ?>
-
-			<a href='./timeline.php?type=timeline&page=<?php echo $i ?>'class='pag-link <?php
-
-
-			if ($_GET['page'] == $i){
-					printf("active");
-			}else if ($_GET['page'] == "" && $i == 1){
-					printf("active");
-			}else{
-					printf("");
-			}
-
-			?>'><?php echo $i ?></a>
-
-			<?php } ?>
-
-			<a href='./timeline.php?type=timeline&page=<?php echo $llll ?>' class="pag-link">&#62;&#62;</a>
-		</div>
-	</section>
 
 </div>
 
