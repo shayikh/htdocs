@@ -180,16 +180,29 @@ if ($number > 0){
 
 
 	function showdata() {
-		
-		$.post("./api/loadmoreAllPOst.php", {
-			page: page_no,
-			unique_id_me: <?php echo $unique_id_me ?>
-		}, (response) => {
-			$("#tbodyID").append(response);
-			page_no++;
-		});
 
-		
+		let postData = {};
+
+		postData.page_no = page_no;
+		postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+		axios.post("./api/loadmoreAllPOst.php",
+		postData,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+				// console.log(res.data);
+				tbody.innerHTML = tbody.innerHTML + res.data;
+				page_no++;
+				
+				
+			})
+			.catch( err => {
+				console.log(err);
+			})
 	}
 
 
@@ -533,49 +546,6 @@ if ($number > 0){
 
 
 
-
-
-
-
-
-	<section class="pagination" style="background-color: #18191A;">
-		<div style="width: 100%; margin: 20px auto" class="text-center">
-			<?php 
-					if($current_page==1){
-							$dddd=$current_page;
-					}else if($current_page>1){
-							$dddd=$current_page-1;
-					}
-					
-					if($current_page==$total_pages){
-							$llll=$current_page;
-					}else if($current_page<$total_pages){
-							$llll=$current_page+1;
-					}
-					?>
-
-			<a href='./all_post.php?type&page=<?php echo $dddd ?>' class="pag-link">&#60;&#60;</a>
-
-			<?php for($i = 1; $i <= $total_pages; $i++){ ?>
-
-			<a href='./all_post.php?type&page=<?php echo $i ?>'class='pag-link <?php
-
-
-			if ($_GET['page'] == $i){
-					printf("active");
-			}else if ($_GET['page'] == "" && $i == 1){
-					printf("active");
-			}else{
-					printf("");
-			}
-
-			?>'><?php echo $i ?></a>
-
-			<?php } ?>
-
-			<a href='./all_post.php?type&page=<?php echo $llll ?>' class="pag-link">&#62;&#62;</a>
-		</div>
-	</section>
 
 
 

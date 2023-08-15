@@ -3,10 +3,14 @@ include '../connection.php';
 
 header('Content-Type: application/x-www-form-urlencoded');
 
-$page = $_POST['page'];
-$unique_id_me = $_POST['unique_id_me'];
-$limit = 6;
-$row = ($page - 1)*$limit;
+$jsonData = file_get_contents('php://input');
+$data = json_decode($jsonData, true);
+$page_no = $data['page_no'];
+$unique_id_me = $data['unique_id_me'];
+
+
+$limit = 5;
+$row = ($page_no - 1)*$limit;
 
 $query = "SELECT * FROM `post` limit $row,$limit";
 $run = mysqli_query($connection,$query);
