@@ -33,7 +33,7 @@ if ($_SESSION['unique_id_me']){
 
 <div style="height: 100px"></div>
 
-<img width="150px" id="pro_pic" src="" style="margin-left: 900px; border-radius: 50%" alt="">
+<img width="150px" id="pro_pic" src="" style="display: block;margin-left: auto;margin-right: auto; border-radius: 50%" alt="">
 
 <div class="container">
   <div class="row">

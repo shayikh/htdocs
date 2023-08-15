@@ -139,7 +139,7 @@ if (isset($_POST['signup'])){
 					<form class="margin-padding" method="post" action="" enctype="multipart/form-data">
 						<h2 class="text-dark">Sign Up</h2>
 						<p class="text-white">.</p>
-						<p class="pos-absol text-dark">Created Account Before! <b><a class="text-decoration-none" href="./index.php">
+						<p class="pos-absol text-dark">Created Account Before! <b><a class="text-decoration-none" href="./">
 							<span style="color: #ff4b4b">Log In</span></a></b></p>
 
 						<hr>
