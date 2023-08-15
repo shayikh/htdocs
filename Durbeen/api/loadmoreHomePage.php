@@ -12,41 +12,58 @@ $unique_id_me = $data['unique_id_me'];
 $limit = 5;
 $row = ($page_no - 1)*$limit;
 
-$query = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
-$run = mysqli_query($connection,$query);
 
 
 
 
-while ($data1 = mysqli_fetch_assoc($run)){
-$unique_id = $data1['unique_id'];
-
-$SQL2="SELECT * FROM `registration` WHERE `unique_id`='$unique_id'";
-$run2=mysqli_query($connection,$SQL2);
-$data2=mysqli_fetch_assoc($run2);
 
 
-$Postid = $data1['id'];
-$comn_count = "SELECT * FROM `comment` WHERE `post_id`='$Postid'";
-$runComn_count = mysqli_query($connection,$comn_count);
-$no_comment = mysqli_num_rows($runComn_count);
+
+$selectSQL = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
+
+$runSelect = mysqli_query($connection, $selectSQL);
 
 
-$SQLlike = "SELECT * FROM `like_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
-$runlike = mysqli_query($connection, $SQLlike);
-$countlike = mysqli_num_rows($runlike);
 
-$SQLdislike = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
-$rundislike = mysqli_query($connection, $SQLdislike);
-$countdislike = mysqli_num_rows($rundislike);
+while ($data1 = mysqli_fetch_assoc($runSelect)){
 
-$SQLlikeall = "SELECT * FROM `like_post` WHERE `post_id`='$Postid'";
-$runlikeall = mysqli_query($connection, $SQLlikeall);
-$countlikeall = mysqli_num_rows($runlikeall);
+$unique_id_fr = $data1['unique_id'];
 
-$SQLdislikeall = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid'";
-$rundislikeall = mysqli_query($connection, $SQLdislikeall);
-$countdislikeall = mysqli_num_rows($rundislikeall);
+
+$SQLF="SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
+$runF=mysqli_query($durbeen_chats,$SQLF);
+$countF = mysqli_num_rows($runF);
+
+
+if($countF == 1){
+    $SQL2 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+    $run2 = mysqli_query($connection,$SQL2);
+    $data2 = mysqli_fetch_assoc($run2);
+
+
+    $Postid = $data1['id'];
+    $comn_count = "SELECT * FROM `comment` WHERE `post_id`='$Postid'";
+    $runComn_count = mysqli_query($connection,$comn_count);
+    $no_comment = mysqli_num_rows($runComn_count);
+
+    $SQLlike = "SELECT * FROM `like_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
+    $runlike = mysqli_query($connection, $SQLlike);
+    $countlike = mysqli_num_rows($runlike);
+
+    $SQLdislike = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
+    $rundislike = mysqli_query($connection, $SQLdislike);
+    $countdislike = mysqli_num_rows($rundislike);
+
+    $SQLlikeall = "SELECT * FROM `like_post` WHERE `post_id`='$Postid'";
+    $runlikeall = mysqli_query($connection, $SQLlikeall);
+    $countlikeall = mysqli_num_rows($runlikeall);
+
+    $SQLdislikeall = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid'";
+    $rundislikeall = mysqli_query($connection, $SQLdislikeall);
+    $countdislikeall = mysqli_num_rows($rundislikeall);
+
+
+
 ?>
 
 <div class="statusp">
@@ -83,17 +100,9 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
     </div>
 </div>
 
-<?php } ?>
 
 
-
-
-
-
-
-
-
-
+<?php } } ?>
 
 
 
