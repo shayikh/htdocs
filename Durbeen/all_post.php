@@ -102,101 +102,7 @@ if ($number > 0){
                                                           <!-- POSTS -->
 
 			<div class="row justify-content-center" id="tbodyID">
-				<?php
-					//pagination
-					$posts_per_page = 20;
 
-					$sql = "SELECT * FROM `post`";
-
-					$result = mysqli_query($connection, $sql);
-
-					$total_posts = mysqli_num_rows($result);
-
-					$total_pages = ceil($total_posts / $posts_per_page);
-
-
-					if(isset($_GET['page'])){
-							$current_page = $_GET['page'];
-					}else{
-							$current_page = 1;
-					}
-
-					$start_limit = ($current_page - 1) * $posts_per_page;
-
-					$selectSQL = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT ".$start_limit.",".$posts_per_page;
-
-					$runSelect = mysqli_query($connection, $selectSQL);
-
-
-
-					while ($data1 = mysqli_fetch_assoc($runSelect)){
-
-					$unique_id = $data1['unique_id'];
-
-					$SQL2="SELECT * FROM `registration` WHERE `unique_id`='$unique_id'";
-					$run2=mysqli_query($connection,$SQL2);
-					$data2=mysqli_fetch_assoc($run2);
-
-
-					$Postid = $data1['id'];
-					$comn_count = "SELECT * FROM `comment` WHERE `post_id`='$Postid'";
-					$runComn_count = mysqli_query($connection,$comn_count);
-					$no_comment = mysqli_num_rows($runComn_count);
-
-
-					$SQLlike = "SELECT * FROM `like_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
-					$runlike = mysqli_query($connection, $SQLlike);
-					$countlike = mysqli_num_rows($runlike);
-
-					$SQLdislike = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid' AND `unique_id`='$unique_id_me'";
-					$rundislike = mysqli_query($connection, $SQLdislike);
-					$countdislike = mysqli_num_rows($rundislike);
-
-					$SQLlikeall = "SELECT * FROM `like_post` WHERE `post_id`='$Postid'";
-					$runlikeall = mysqli_query($connection, $SQLlikeall);
-					$countlikeall = mysqli_num_rows($runlikeall);
-
-					$SQLdislikeall = "SELECT * FROM `dislike_post` WHERE `post_id`='$Postid'";
-					$rundislikeall = mysqli_query($connection, $SQLdislikeall);
-					$countdislikeall = mysqli_num_rows($rundislikeall);
-					
-				?>
-
-					<div class="statusp">
-						<div class="col-md-12 mt-2 mb-2">
-							<div class="card" style="width: 100%;border: none">
-
-								<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-									<a href="people_timeline.php?type=no&unique_id_fr=<?php echo $data2['unique_id']?>">
-										<img style="border-radius: 50%" width="70px" height="70px"
-											src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
-										<b><?php echo $data2['name']?></b>
-									</a>
-								</p>
-								<img width="100%" src="./post_image/<?php echo $data1['image']?>" alt="">
-								<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-									<h6 class="card-title text-white"><?php echo $data1['time']?></h6>
-									<p class="card-text text-white"><?php echo $data1['post']?></p>
-								</div>
-								
-							</div>
-
-							<p class="float-start mt-2 me-3" style="color: <?php $countlike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="likefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Like</p>
-							<p class="float-start mt-2 me-5" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Dislike</p>
-							<p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i><?php echo $countlikeall ?></p>
-							<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
-							<p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
-							
-							<a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
-								<i class="fas fa-share"></i>
-							</a>
-							<button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-							<button onclick="commentfn(this, <?php echo $unique_id_me ?>, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-							<input type="text" class="ms-5 mt-2">
-						</div>
-					</div>
-
-				<?php } ?>
 
 			</div>
 		</div>
@@ -258,6 +164,33 @@ if ($number > 0){
 	let button = document.querySelector("#buttonID");
 
 	let commentTboody = document.querySelector("#commentTboody");
+
+
+
+
+	var page_no = 1;
+        
+	showdata();
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+			showdata();
+		}
+	})
+
+
+	function showdata() {
+		
+		$.post("./api/loadmoreAllPOst.php", {
+			page: page_no,
+			unique_id_me: <?php echo $unique_id_me ?>
+		}, (response) => {
+			$("#tbodyID").append(response);
+			page_no++;
+		});
+
+		
+	}
 
 
 
