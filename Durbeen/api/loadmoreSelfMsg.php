@@ -1,0 +1,41 @@
+<?php
+include '../connection.php';
+
+header('Content-Type: application/x-www-form-urlencoded');
+
+$jsonData = file_get_contents('php://input');
+$data = json_decode($jsonData, true);
+$page_no = $data['page_no'];
+$unique_id_me = $data['unique_id_me'];
+
+
+$limit = 5;
+$row = ($page_no - 1)*$limit;
+
+$selectSQL = "SELECT * FROM `$unique_id_me to $unique_id_me` ORDER BY `id` DESC LIMIT $row,$limit";
+
+$runSelect = mysqli_query($connection_message, $selectSQL);
+
+
+
+while ($data3=mysqli_fetch_assoc($runSelect)){ ?>
+<table class="table table-bordered mt-4">
+    <tbody>
+        <tr>
+                                            
+            <div class="float-end" style="width: 590px;border: none;">
+                <img title="<?php echo $data3['time'] ?>" width="590px" src="./chat_image/<?php echo $data3['image'] ?>" alt="">
+                
+                <?php if($data3['message']!=""){ ?>
+                <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
+                <?php } ?>
+                
+                <button onclick="unsendMessage(<?php echo $data3['id']?>,<?php echo $unique_id_me ?>, this)"
+                            class="btn btn-sm btn-primary float-end mb-2" title="Delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+            
+        </tr>
+    </tbody>
+</table>
+
+<?php } ?>

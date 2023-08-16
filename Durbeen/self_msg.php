@@ -83,57 +83,7 @@ if ($number > 0){
 					</tr>
 				</tbody>
 			</table>
-
-
-			<?php
-
-				//pagination
-				$posts_per_page = 10;
-
-				$sql = "SELECT * FROM `$unique_id_me to $unique_id_me`";
-
-				$result = mysqli_query($connection_message, $sql);
-
-				$total_posts = mysqli_num_rows($result);
-
-				$total_pages = ceil($total_posts / $posts_per_page);
-
-
-				if(isset($_GET['page'])){
-						$current_page = $_GET['page'];
-				}else{
-						$current_page = 1;
-				}
-
-				$start_limit = ($current_page - 1) * $posts_per_page;
-
-				$selectSQL = "SELECT * FROM `$unique_id_me to $unique_id_me` ORDER BY `id` DESC LIMIT ".$start_limit.",".$posts_per_page;
-
-				$runSelect = mysqli_query($connection_message, $selectSQL);
-
-
-
-				while ($data3=mysqli_fetch_assoc($runSelect)){ ?>
-				<table class="table table-bordered mt-4">
-					<tbody>
-						<tr>
-															
-							<div class="float-end" style="width: 590px;border: none;">
-								<img title="<?php echo $data3['time'] ?>" width="590px" src="./chat_image/<?php echo $data3['image'] ?>" alt="">
-								
-								<?php if($data3['message']!=""){ ?>
-								<h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
-								<?php } ?>
-								
-								<button onclick="unsendMessage(<?php echo $data3['id']?>,<?php echo $unique_id_me ?>, this)"
-											class="btn btn-sm btn-primary float-end mb-2" title="Delete"><i class="fas fa-trash-alt"></i></button>
-							</div>
-							
-						</tr>
-					</tbody>
-				</table>
-				
-			<?php } ?>
+			<span id="appendID"></span>
 		</div>
 	</div>
 
@@ -170,12 +120,60 @@ if ($number > 0){
 
 <script>
 	let tbody = document.querySelector("#tbodyID");
-
+	let appendData = document.querySelector("#appendID");
+	
 	let form = document.querySelector("#formID");
 	let image = document.querySelector("#imageID");
 	let message = document.querySelector("#messageID");
 	let button = document.querySelector("#buttonID");
 	let messageCloseBtn = document.querySelector("#messageCloseBtn");
+
+
+
+	var page_no = 1;
+        
+	showdata();
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+			showdata();
+		}
+	})
+
+
+	function showdata() {
+
+		let selfMsgData = {};
+
+		selfMsgData.page_no = page_no;
+		selfMsgData.unique_id_me = <?php echo $unique_id_me ?>;
+
+		axios.post("./api/loadmoreSelfMsg.php",
+		selfMsgData,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+				// console.log(res.data);
+				appendData.innerHTML = appendData.innerHTML + res.data;
+				page_no++;
+				
+				
+			})
+			.catch( err => {
+				console.log(err);
+			})
+	}
+
+
+
+
+
+
+
+
 
 
 	form.addEventListener('submit', (e) => {
@@ -221,15 +219,15 @@ if ($number > 0){
 
 const makeTr = (message, unique_id_me) => {
 	let tr = `<tr>
-							<div class="float-end" style="width: 590px;border: none;">
-								<img title="${message.time}" width="590px" src="./chat_image/${message.image}" alt="">
-								
-								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
-								
-								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, this)"
-										class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
-							</div>
-						</tr>`
+					<div class="float-end" style="width: 590px;border: none;">
+						<img title="${message.time}" width="590px" src="./chat_image/${message.image}" alt="">
+						
+						<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+						
+						<button onclick="unsendMessage(${message.id}, ${unique_id_me}, this)"
+								class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+					</div>
+				</tr>`
 	return tr;
 }
 
@@ -275,7 +273,7 @@ const unsendMessage = (id_lll, unique_id_me, elm_ppp) => {
 
 
 
-<div style="height: 250px"></div>
+<div style="height: 20px"></div>
 
 
 

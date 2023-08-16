@@ -263,73 +263,7 @@ if ($number > 0){
 			</table>
 
 
-			<?php
-
-				//pagination
-				$posts_per_page = 10;
-
-				$sql = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
-
-				$result = mysqli_query($connection_message, $sql);
-
-				$total_posts = mysqli_num_rows($result);
-
-				$total_pages = ceil($total_posts / $posts_per_page);
-
-
-				if(isset($_GET['page'])){
-						$current_page = $_GET['page'];
-				}else{
-						$current_page = 1;
-				}
-
-				$start_limit = ($current_page - 1) * $posts_per_page;
-
-				$selectSQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT ".$start_limit.",".$posts_per_page;
-
-				$runSelect = mysqli_query($connection_message, $selectSQL);
-
-
-
-				while ($data3 = mysqli_fetch_assoc($runSelect)){ ?>
-				<table class="table table-bordered mt-4">
-					<tbody id="tbodyID">
-						<tr>
-							<?php if($data3['sender'] == 'fr'){ ?>
-
-								<div class="float-start" style="width: 590px;border: none;">
-									<img title="<?php echo $data3['time'] ?>" class="float-start" style="border-radius: 50%" width="40px" height="40px" src="./pro_pic/<?php echo $pro_pic_fr ?>" alt="">
-									<img title="<?php echo $data3['time'] ?>" width="590px" src="./chat_image/<?php echo $data3['image'] ?>" alt="">
-									
-									<?php if($data3['message']!=""){ ?>
-									<h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px;background-color: #265d94" class="response float-start py-2 px-3"><?php echo $data3['message'] ?></h5>
-									<?php } ?>
-									
-									<button onclick="deleteMessage(<?php echo $data3['id']?>,<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>, this)"
-											class="btn btn-sm btn-primary float-end mb-2" title="Delete For Me"><i class="fas fa-trash-alt"></i></button>
-								</div>
-
-							<?php }else{ ?>
-								
-								<div class="float-end" style="width: 590px;border: none;">
-									<img title="<?php echo $data3['time'] ?>" width="590px" src="./chat_image/<?php echo $data3['image'] ?>" alt="">
-									
-									<?php if($data3['message']!=""){ ?>
-									<h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
-									<?php } ?>
-									
-									<button onclick="unsendMessage(<?php echo $data3['id']?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
-											class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
-									
-									<button class="btn btn-sm <?php $data3['seen'] == 'Seen' ? printf("btn-success") : printf("btn-secondary") ?> float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
-								</div>
-
-							<?php } ?>
-
-						</tr>
-					</tbody>
-				</table>
-			<?php } ?>
+			<span id="appendID"></span>
 		</div>
 	</div>
 
@@ -370,12 +304,62 @@ if ($number > 0){
 
 <script>
 	let tbody = document.querySelector("#tbodyID");
+	let appendData = document.querySelector("#appendID");
 
 	let form = document.querySelector("#formID");
 	let image = document.querySelector("#imageID");
 	let message = document.querySelector("#messageID");
 	let button = document.querySelector("#buttonID");
 	let messageCloseBtn = document.querySelector("#messageCloseBtn");
+
+
+
+
+	
+	var page_no = 1;
+        
+	showdata();
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+			showdata();
+		}
+	})
+
+
+	function showdata() {
+
+		let msgData = {};
+
+		msgData.page_no = page_no;
+		msgData.unique_id_me = <?php echo $unique_id_me ?>;
+		msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
+
+		axios.post("./api/loadmoreMsg.php",
+		msgData,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+				// console.log(res.data);
+				appendData.innerHTML = appendData.innerHTML + res.data;
+				page_no++;
+				
+				
+			})
+			.catch( err => {
+				console.log(err);
+			})
+	}
+
+
+
+
+
+
+
 
 
 
@@ -520,7 +504,7 @@ const deleteMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
 
 
 
-<div style="height: 250px"></div>
+<div style="height: 20px"></div>
 
 
 <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">

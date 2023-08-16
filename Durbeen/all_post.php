@@ -270,16 +270,16 @@ if ($number > 0){
 
 	const makeCommentTr = (comment) => {
 		let tr = `<tr>
-										<td>
-											<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
-										</td>
-										<td class="text-center text-dark">${comment.name_comn}</td>
-										<td class="text-center text-dark">${comment.time}</td>
-										<td class="text-center text-dark">${comment.comment}</td>
-										<td class="text-center text-dark">
-												<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, this)"></i>
-										</td>
-								</tr>`
+						<td>
+							<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
+						</td>
+						<td class="text-center text-dark">${comment.name_comn}</td>
+						<td class="text-center text-dark">${comment.time}</td>
+						<td class="text-center text-dark">${comment.comment}</td>
+						<td class="text-center text-dark">
+								<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, this)"></i>
+						</td>
+				</tr>`
 		return tr;
 	}
 
