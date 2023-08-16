@@ -77,7 +77,7 @@ if ($number > 0){
 	<div class="row">
 		<div class="col-md-12">
 
-			<table class="table table-bordered mt-4">
+			<table class="table mt-4">
 				<tbody id="tbodyID">
 					<tr>
 					</tr>

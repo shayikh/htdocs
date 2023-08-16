@@ -229,17 +229,23 @@ p {
   margin-bottom: 0rem;
 }
 
-p,
+/* p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-a,
 th,
 td,
 label {
+  color: #ffffff;
+} */
+
+a {
+  color: #ffffff;
+}
+a:hover {
   color: #ffffff;
 }
 
