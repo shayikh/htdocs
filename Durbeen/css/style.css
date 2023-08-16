@@ -562,11 +562,7 @@ input::placeholder {
 }
 
 /* message page */
-.messageClass {
-  border: 2px solid #157347;
-  border-radius: 6px;
-  background-color: #fff;
-}
+
 @media(min-width: 0px) and (max-width: 600px) {
   .response {
     max-width: 200px;

@@ -138,33 +138,31 @@ if ($number > 0){
 	</div>
 
 
+</div>
 
 
-
-	<div style="position: fixed;bottom: 25px;right: 10%;left: 10%;z-index:10;">
-		<form id="formID" method="post" action="" enctype="multipart/form-data">
-
-			<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-
-			<div class="row">
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<input style="background-color: #F3F3F3;" id="imageID" name="image_khan_bahadur" class="form-control" type="file">
-				</div>
-				<div class="col-lg-8 col-md-8 col-sm-8">
-					<div class="form-group">
-						<input id="messageID" name="message" class="form-control messageClass" type="text">
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<div class="form-group">
-						<input id="buttonID" name="send" value="SEND" class="btn btn-danger form-control" type="submit">
-					</div>
-				</div>
+<!-- Message Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-		</form>
-	</div>
+			<div class="modal-body">
+				<form action="" method="post" id="formID" enctype="multipart/form-data">
 
-	<div style="height: 250px"></div>
+					<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+					
+					<textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5"
+						class="form-control mb-2" type="text"></textarea>
+
+					<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
+
+					<input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm btn-success" type="submit" aria-label="Close">
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -177,7 +175,7 @@ if ($number > 0){
 	let image = document.querySelector("#imageID");
 	let message = document.querySelector("#messageID");
 	let button = document.querySelector("#buttonID");
-
+	let messageCloseBtn = document.querySelector("#messageCloseBtn");
 
 
 	form.addEventListener('submit', (e) => {
@@ -205,6 +203,8 @@ if ($number > 0){
 
 		
 				tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+
+				messageCloseBtn.click();
 
 				image.value = "";
 				message.value = "";
@@ -275,48 +275,14 @@ const unsendMessage = (id_lll, unique_id_me, elm_ppp) => {
 
 
 
-<!-- pagination buttons -->
-<section class="pagination" style="background-color: #18191A;">
-		<div style="width: 350px; margin: 20px auto" class="text-center">
-			<?php 
-				if($current_page==1){
-						$dddd=$current_page;
-				}else if($current_page>1){
-						$dddd=$current_page-1;
-				}
-				
-				if($current_page==$total_pages){
-						$llll=$current_page;
-				}else if($current_page<$total_pages){
-						$llll=$current_page+1;
-				}
-				?>
-
-			<a href='./message.php?type=no&page=<?php echo $dddd ?>&unique_id_fr=<?php echo $unique_id_fr?>' class="pag-link">&#60;&#60;</a>
-
-			<?php for($i = 1; $i <= $total_pages; $i++){ ?>
-
-			<a href='./message.php?type=no&page=<?php echo $i ?>&unique_id_fr=<?php echo $unique_id_fr?>'class='pag-link <?php
+<div style="height: 250px"></div>
 
 
-			if ($_GET['page'] == $i){
-					printf("active");
-			}else if ($_GET['page'] == "" && $i == 1){
-					printf("active");
-			}else{
-					printf("");
-			}
-
-			?>'><?php echo $i ?></a>
-
-			<?php } ?>
-
-			<a href='./message.php?type=no&page=<?php echo $llll ?>&unique_id_fr=<?php echo $unique_id_fr?>' class="pag-link">&#62;&#62;</a>
-		</div>
-	</section>
 
 
-	<div style="height: 250px"></div>
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
+	<i class="fas fa-plus"></i>
+</button>
 
 
 
