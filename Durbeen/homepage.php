@@ -65,7 +65,6 @@ if ($number > 0){
 
 						<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
 
-						<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
 						<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
 					</form>
 				</div>
@@ -243,16 +242,16 @@ if ($number > 0){
 
 	const makeCommentTr = (comment) => {
 		let tr = `<tr>
-									<td>
-										<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
-									</td>
-									<td class="text-center text-dark">${comment.name_comn}</td>
-									<td class="text-center text-dark">${comment.time}</td>
-									<td class="text-center text-dark">${comment.comment}</td>
-									<td class="text-center text-dark">
-										<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-									</td>
-							</tr>`
+						<td>
+							<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
+						</td>
+						<td class="text-center text-dark">${comment.name_comn}</td>
+						<td class="text-center text-dark">${comment.time}</td>
+						<td class="text-center text-dark">${comment.comment}</td>
+						<td class="text-center text-dark">
+							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+						</td>
+				</tr>`
 		return tr;
 	}
 
@@ -368,37 +367,37 @@ if ($number > 0){
 
 	const makeTr = (post, unique_id_me) => {
 		let tr = `<div class="statusp">
-								<div class="col-md-12 mt-2 mb-2">
-									<div class="card" style="width: 100%;border: none">
+						<div class="col-md-12 mt-2 mb-2">
+							<div class="card" style="width: 100%;border: none">
 
-										<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-											<a href="people_timeline.php?type=no&amp;unique_id_fr=1">
-												<img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-												<b><?php echo $dataMe['name'] ?></b>
-											</a>
-										</p>
-										<img width="100%" src="./post_image/${post.image}" alt="">
-										<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-											<h6 class="card-title text-white">${post.time}</h6>
-											<p class="card-text text-white">${post.post}</p>
-										</div>
-										
-									</div>
-
-									<p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-									<p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-									<p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-									<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-									<p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
-									
-									<a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
-									<i class="fas fa-share"></i>
+								<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+									<a href="people_timeline.php?type=no&amp;unique_id_fr=1">
+										<img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+										<b><?php echo $dataMe['name'] ?></b>
 									</a>
-									<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-									<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-									<input type="text" class="ms-5 mt-2">
+								</p>
+								<img width="100%" src="./post_image/${post.image}" alt="">
+								<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
+									<h6 class="card-title text-white">${post.time}</h6>
+									<p class="card-text text-white">${post.post}</p>
 								</div>
-							</div>`
+								
+							</div>
+
+							<p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
+							<p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
+							<p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
+							<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
+							<p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
+							
+							<a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+							<i class="fas fa-share"></i>
+							</a>
+							<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+							<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+							<input type="text" class="ms-5 mt-2">
+						</div>
+					</div>`
 		return tr;
 	}
 

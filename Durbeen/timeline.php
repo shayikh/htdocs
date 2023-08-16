@@ -88,7 +88,7 @@ if ($number > 0){
 
 						<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
 
-						<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
+						<!-- <p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p> -->
 						<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
 					</form>
 				</div>
@@ -145,7 +145,6 @@ if ($number > 0){
 
 						<input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file">
 
-						<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
 						<input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
 					</form>
 				</div>
