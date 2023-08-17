@@ -79,55 +79,62 @@ if (!$_SESSION['visit']){
 
 
       <div class="container">
-        <a href="./homepage.php?type=no" aria-current="page">
-          <img title="News Feed" style="margin-left:-65px" width="240px" height="70px" src="./img/brand_logo.png"
-            alt="Logo">
-        </a>
+        <div class="row">
+          <div class="col-lg-12">
+            <a href="./homepage.php?type=no">
+              <img title="News Feed" width="90px" height="70px" src="./img/brand_logo.png" alt="Logo">
+            </a>
 
 
-        <a class="text-decoration-none float-end mt-2" href="./timeline.php?type=timeline">
-          <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
+            <a class="text-decoration-none float-end mt-2" href="./timeline.php?type=timeline">
+              <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
 
-            <img class="float-end" style="border-radius: 50%" width="50px" height="50px"
-              src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-            <h5 class="float-start" style="margin-top: 11px;margin-left: 15px;padding-right: 10px">
-              <?php echo $dataMe['name'] ?>
-            </h5>
+                <img class="float-end" style="border-radius: 50%" width="50px" height="50px"
+                  src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                <h5 class="float-start" style="margin-top: 11px;margin-left: 15px;padding-right: 10px">
+                  <?php echo $dataMe['name'] ?>
+                </h5>
 
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
+        
       </div>
     </div>
 
 
     <nav style="z-index: 40" class="navbar navbar-expand-lg navbar-light bg-durbeen-special">
       <div class="container">
-        <a class="navbar-brand bg-white" href="#"></a>
-        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <li class="nav-item">
-              <a class="btn btn-sm nav <?php $_GET['type'] == 'about_me' ? printf("active_2") : "" ?>"
-                href="./about_me.php?type=about_me" aria-current="page">About Me</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-sm nav <?php $_GET['type'] == 'facelist' ? printf("active_2") : "" ?>"
-                href="./facelist.php?type=facelist" aria-current="page">People Facelist</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-sm nav <?php $_GET['type'] == 'all_msg' ? printf("active_2") : "" ?>"
-                href="./all_msg.php?type=all_msg" aria-current="page">All Message</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-sm nav <?php $_GET['type'] == 'self_msg' ? printf("active_2") : "" ?>"
-                href="./self_msg.php?type=self_msg" aria-current="page">Self Message</a>
-            </li>
-          </ul>
+                <li class="nav-item">
+                  <a class="btn btn-sm nav <?php $_GET['type'] == 'about_me' ? printf("active_2") : "" ?>"
+                    href="./about_me.php?type=about_me" aria-current="page">About Me</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-sm nav <?php $_GET['type'] == 'facelist' ? printf("active_2") : "" ?>"
+                    href="./facelist.php?type=facelist" aria-current="page">People Facelist</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-sm nav <?php $_GET['type'] == 'all_msg' ? printf("active_2") : "" ?>"
+                    href="./all_msg.php?type=all_msg" aria-current="page">All Message</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-sm nav <?php $_GET['type'] == 'self_msg' ? printf("active_2") : "" ?>"
+                    href="./self_msg.php?type=self_msg" aria-current="page">Self Message</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -159,7 +166,7 @@ if (!$_SESSION['visit']){
 
       <li style="margin-bottom: 5px">
         <a class="text-decoration-none" href="message.php?type=no&unique_id_fr=<?php echo $data21['unique_id']?>">
-          <div class="hover">
+          <div class="hover_chatbar">
 
             <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px"
               src="./pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">

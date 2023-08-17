@@ -532,7 +532,7 @@ const makeTr = (post, unique_id_me) => {
 						<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
 						<p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
 						
-						<button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm red float-end mb-2">
+						<button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm btn-danger float-end mb-2">
 							<i class="fas fa-trash-alt"></i>
 						</button>
 						<button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">

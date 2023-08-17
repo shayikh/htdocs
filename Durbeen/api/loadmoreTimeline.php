@@ -71,7 +71,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
         
         <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"
-                class="btn btn-sm red float-end mb-2"><i class="fas fa-trash-alt"></i></button>
+                class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
 
         <button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fas fa-edit"></i>

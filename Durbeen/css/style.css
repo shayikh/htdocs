@@ -27,7 +27,7 @@
   color: #fff;
 } */
 
-
+/* right menu bar */
 #menu {
   list-style-type: none;
   position: absolute;
@@ -111,8 +111,10 @@ a{
 a:hover{
   color: #61c5ff;
 }
+/* right menu bar end */
 
 
+/* navbar */
 .nav {
   background-color: #2c2c2c;
   color: #ffffff;
@@ -127,12 +129,14 @@ a:hover{
   border: 1px solid #ffffff;
   font-weight: 600;
 }
-
 .active_2 {
   background-color: #ffffff;
   color: #000000;
   border: 1px solid #ffffff;
 }
+/* navbar */
+
+
 
 .bg-durbeen-special {
   background-color: #d94141;
@@ -218,6 +222,7 @@ ul {
 }
 
 
+/* chatbar */
 .main-menu {
   background-color: #1f1e1e;
   border-bottom-right-radius: 10px;
@@ -279,17 +284,21 @@ section.home {
   border-radius: 10px;
 }
 
-.hover {
+.hover_chatbar {
   width: 235px;
   height: 50px;
   border-radius: 25px;
 }
 
-.hover:hover {
+.hover_chatbar:hover {
   background-color: #d94141;
 
 }
+/* chatbar end */
 
+
+
+/* timeline button */
 .t-hover {
   margin-right: 15px;
   margin-top: 3px;
@@ -311,6 +320,7 @@ section.home {
   border-radius: 25px;
   background-color: #d94141;
 }
+/* timeline button */
 
 .statusp {
   margin-top: 7px;
