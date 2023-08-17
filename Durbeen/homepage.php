@@ -4,9 +4,8 @@ include './header.php';
 
 
 //alert
-if ($_SESSION['alert']=='login'){
-	echo "<script>toastr.success('You Are Logged In')</script>";
-	$_SESSION['alert']="nothing";
+if (isset($_GET['login'])){
+  echo "<script>toastr.success('You Are Logged In')</script>";
 }
 ?>
 

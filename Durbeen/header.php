@@ -44,7 +44,7 @@ if (!$_SESSION['visit']){
   <title>দূরবীন</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
-  <link rel="shortcut icon" href="./img/telescope_2.png">
+  <link rel="shortcut icon" href="./img/telescope.png">
   <link href="./css/alertify.min.css">
   <link href="./css/all.min.css">
   <link href="./css/fontawesome.min.css">
@@ -155,14 +155,14 @@ if (!$_SESSION['visit']){
 
       while ($data11=mysqli_fetch_assoc($run11)){
 
-        $unique_id_fr_chats = $data11['unique_id_fr'];
+      $unique_id_fr_chats = $data11['unique_id_fr'];
 
-        $SQL21="SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
-        $run21=mysqli_query($connection,$SQL21);
-        $data21=mysqli_fetch_assoc($run21);
-        
-        
-        ?>
+      $SQL21="SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
+      $run21=mysqli_query($connection,$SQL21);
+      $data21=mysqli_fetch_assoc($run21);
+      
+      
+      ?>
 
       <li style="margin-bottom: 5px">
         <a class="text-decoration-none" href="message.php?type=no&unique_id_fr=<?php echo $data21['unique_id']?>">
@@ -183,13 +183,7 @@ if (!$_SESSION['visit']){
 
       <?php } ?>
 
-
     </ul>
-
-
-
-
-
   </div>
   <!-- Chatbar end -->
 

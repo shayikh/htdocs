@@ -34,10 +34,8 @@ if (isset($_POST['login'])){
 
 		$SQL3 = "UPDATE `registration` SET `active`='1' WHERE `unique_id`='$unique_id_me'";
 		mysqli_query($connection,$SQL3);
-
-		$_SESSION['alert']='login';
 		
-		header('location:./homepage.php?type=no');
+		header('location:./homepage.php?type=no&login');
 	}else{
 		$SQL3 = "SELECT * FROM `registration` WHERE `email`='$EmailMe'";
 		$run3 = mysqli_query($connection,$SQL3);
@@ -62,7 +60,7 @@ if (isset($_POST['login'])){
 	<title>দূরবীন</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	<link rel="shortcut icon" href="./img/telescope_2.png" />
+	<link rel="shortcut icon" href="./img/telescope.png" />
 	<link href="./css/alertify.min.css" />
 	<link href="./css/all.min.css" />
 	<link href="./css/fontawesome.min.css" />

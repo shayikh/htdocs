@@ -6,7 +6,13 @@ $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
 $runAbout = mysqli_query($connection,$SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
-
+//alert
+if (isset($_GET['register'])){
+    echo "<script>toastr.success('Registration Completed')</script>";
+}
+if (isset($_GET['abupdate'])){
+    echo "<script>toastr.success('About Info Updated')</script>";
+}
 ?>
 
 

@@ -97,7 +97,7 @@ if (isset($_POST['signup'])){
 
 
 		
-		echo "<script>window.location = './about_me.php?type=about_me'</script>";
+		echo "<script>window.location = './about_me.php?type=about_me&register'</script>";
 	}
 
 }
@@ -116,7 +116,7 @@ if (isset($_POST['signup'])){
 	<title>দূরবীন</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	<link rel="shortcut icon" href="./img/telescope_2.png" />
+	<link rel="shortcut icon" href="./img/telescope.png" />
 	<link href="./css/alertify.min.css" />
 	<link href="./css/all.min.css" />
 	<link href="./css/fontawesome.min.css" />

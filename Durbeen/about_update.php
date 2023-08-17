@@ -89,16 +89,11 @@ if (isset($_POST['updateBtn'])){
 
 	
 
-	echo "<script>window.location = 'about_me.php?type=about_me'</script>";
+	echo "<script>window.location = 'about_me.php?type=about_me&abupdate'</script>";
 }
 
 
 
-
-if (isset($_POST['blackTheme'])){
-	$SQL4 = "UPDATE `registration` SET `bgcolor`='#18191A' WHERE `unique_id`='$unique_id_me'";
-	mysqli_query($connection,$SQL4);
-}
 
 ?>
 
