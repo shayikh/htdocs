@@ -90,7 +90,7 @@ if($countF == 1){
             <i class="fas fa-share"></i>
         </a>
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-        <button onclick="commentfn(this, <?php echo $unique_id_me ?>, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+        <button onclick="commentfn(this, <?php echo $data1['unique_id'] ?>, <?php echo $Postid ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
         <input type="text" class="ms-5 mt-2">
     </div>
 </div>

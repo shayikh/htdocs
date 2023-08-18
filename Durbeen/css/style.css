@@ -1,3 +1,36 @@
+/* pagination */
+.pagination {
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: 10px;
+  font-size: 25px;
+}
+.pag-link {
+  display: inline;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 0;
+}
+
+.pag-link:hover {
+  text-decoration: none;
+  background-color: #3498db;
+  color: #fff;
+  padding: 5px 10px;
+}
+
+.pag-link.active {
+  background-color: #3498db;
+  color: #fff;
+  padding: 5px 10px;
+}
+/* pagination */
+
+
+
+
+
+
 .bg-durbeen {
   background-color: #18191A;
 }

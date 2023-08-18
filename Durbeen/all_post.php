@@ -188,7 +188,9 @@ if ($number > 0){
 			.then( res => {
 				// console.log(res.data);
 				tbody.innerHTML = tbody.innerHTML + res.data;
+				
 				page_no++;
+				
 				
 				
 			})
@@ -422,7 +424,7 @@ if ($number > 0){
 									<i class="fas fa-share"></i>
 									</a>
 									<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-									<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+									<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${post.unique_id})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
 									<input type="text" class="ms-5 mt-2">
 								</div>
 							</div>`

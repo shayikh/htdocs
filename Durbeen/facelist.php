@@ -40,9 +40,9 @@ if ($number > 0){
 
 
 				if(isset($_GET['page'])){
-						$current_page = $_GET['page'];
+					$current_page = $_GET['page'];
 				}else{
-						$current_page = 1;
+					$current_page = 1;
 				}
 
 				$start_limit = ($current_page - 1) * $posts_per_page;
@@ -65,7 +65,7 @@ if ($number > 0){
 			<tr>
 				<td class="text-center">
 					<a href="./people_timeline.php?type=no&unique_id_fr=<?php echo $unique_id_fr ?>">
-						<img width="120px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+						<img height="130px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
 					</a>
 				</td>
 				<td class="text-center">
@@ -107,31 +107,31 @@ if ($number > 0){
 			followVar.unique_id_fr = unique_id_fr;
 
 			axios.post("./api/follow.php",
-					followVar, {
-						headers: {
-							"Content-Type": "application/json"
-						}
-					})
-				.then(res => {
-					// console.log(res.data);
-
-					if (res.data == 0) {
-						toastr.error('Unfollowed');
-						elm.innerText = "Follow";
-						elm.classList.add('btn-success');
-						elm.classList.remove('btn-danger');
-					} else {
-						toastr.success('Following');
-						elm.innerText = "Unfollow";
-						elm.classList.add('btn-danger');
-						elm.classList.remove('btn-success');
+				followVar, {
+					headers: {
+						"Content-Type": "application/json"
 					}
+				})
+			.then(res => {
+				// console.log(res.data);
+
+				if (res.data == 0) {
+					toastr.error('Unfollowed');
+					elm.innerText = "Follow";
+					elm.classList.add('btn-success');
+					elm.classList.remove('btn-danger');
+				} else {
+					toastr.success('Following');
+					elm.innerText = "Unfollow";
+					elm.classList.add('btn-danger');
+					elm.classList.remove('btn-success');
+				}
 
 
-				})
-				.catch(err => {
-					console.log(err);
-				})
+			})
+			.catch(err => {
+				console.log(err);
+			})
 		}
 	</script>
 
@@ -144,19 +144,19 @@ if ($number > 0){
 		<div style="width: 100%; margin: 20px auto" class="text-center">
 			<?php 
 
-                if($current_page==1){
-                    $dddd=$current_page;
-                }else if($current_page>1){
-                    $dddd=$current_page-1;
-                }
-                
-                if($current_page==$total_pages){
-                    $llll=$current_page;
-                }else if($current_page<$total_pages){
-                    $llll=$current_page+1;
-                }
+				if($current_page==1){
+						$dddd=$current_page;
+				}else if($current_page>1){
+						$dddd=$current_page-1;
+				}
+				
+				if($current_page==$total_pages){
+						$llll=$current_page;
+				}else if($current_page<$total_pages){
+						$llll=$current_page+1;
+				}
 
-            ?>
+			?>
 
 			<a href='./facelist.php?type&page=<?php echo $dddd ?>' class="pag-link">&#60;&#60;</a>
 
