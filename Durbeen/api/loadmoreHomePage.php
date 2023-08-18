@@ -12,20 +12,15 @@ $unique_id_me = $data['unique_id_me'];
 $limit = 5;
 $row = ($page_no - 1)*$limit;
 
+$SQL = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
+$run = mysqli_query($connection, $SQL);
 
 
 
 
 
 
-
-$selectSQL = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
-
-$runSelect = mysqli_query($connection, $selectSQL);
-
-
-
-while ($data1 = mysqli_fetch_assoc($runSelect)){
+while ($data1 = mysqli_fetch_assoc($run)){
 
 $unique_id_fr = $data1['unique_id'];
 

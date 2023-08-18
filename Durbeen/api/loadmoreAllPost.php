@@ -12,8 +12,10 @@ $unique_id_me = $data['unique_id_me'];
 $limit = 5;
 $row = ($page_no - 1)*$limit;
 
-$query = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
-$run = mysqli_query($connection,$query);
+$SQL = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
+$run = mysqli_query($connection,$SQL);
+
+
 
 
 

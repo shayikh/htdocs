@@ -13,11 +13,11 @@ $unique_id_me = $data['unique_id_me'];
 
 
 $SQL1 = "SELECT * FROM `$unique_id_me to $unique_id_me` WHERE `id`='$Deleteid'";
-$runAll = mysqli_query($connection_message, $SQL1);
-$dataAll = mysqli_fetch_assoc($runAll);
+$run1 = mysqli_query($connection_message, $SQL1);
+$data1 = mysqli_fetch_assoc($run1);
 
 
-$imgNameinDB = $dataAll['image'];
+$imgNameinDB = $data1['image'];
 
 if($imgNameinDB!=''){
   unlink('../chat_image/'.$imgNameinDB);

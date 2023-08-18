@@ -15,5 +15,5 @@ session_unset();
 session_destroy();
 
 
-echo "<script>window.location = './index.php?p'</script>";
+echo "<script>window.location = './index.php?out'</script>";
 ?>

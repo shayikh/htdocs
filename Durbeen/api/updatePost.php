@@ -41,15 +41,15 @@ if($user_id == $unique_id_me){
   
   
   
-  $SQL4 = "UPDATE `post` SET `image`='$imageNewName',`time`='$time',`post`='$post' WHERE `id`='$post_id' AND `unique_id`='$unique_id_me'";
-  mysqli_query($connection,$SQL4);
+  $SQL2 = "UPDATE `post` SET `image`='$imageNewName',`time`='$time',`post`='$post' WHERE `id`='$post_id' AND `unique_id`='$unique_id_me'";
+  mysqli_query($connection,$SQL2);
   
   
   
   
-  $SQL = "SELECT * FROM `post` WHERE `id`='$post_id' AND `unique_id`='$unique_id_me'";
-  $run = mysqli_query($connection, $SQL);
-  $latestData = mysqli_fetch_assoc($run);
+  $SQL3 = "SELECT * FROM `post` WHERE `id`='$post_id' AND `unique_id`='$unique_id_me'";
+  $run3 = mysqli_query($connection, $SQL3);
+  $latestData = mysqli_fetch_assoc($run3);
   
   echo json_encode(["unique_id_me"=>$unique_id_me, "updatedPost" => $latestData]);
   

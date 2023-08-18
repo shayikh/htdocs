@@ -14,8 +14,8 @@ $unique_id_fr = $data['unique_id_fr'];
 
 
     
-$SQL6 = "DELETE FROM `$unique_id_me to $unique_id_fr` WHERE `id`='$Deleteid'";
-mysqli_query($connection_message, $SQL6);
+$SQL1 = "DELETE FROM `$unique_id_me to $unique_id_fr` WHERE `id`='$Deleteid'";
+mysqli_query($connection_message, $SQL1);
 
 
 echo '1';

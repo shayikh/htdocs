@@ -8,9 +8,9 @@ $email = $_POST['email'];
 
 $SQL = "SELECT * FROM `registration` WHERE `email`='$email'";
 $run = mysqli_query($connection, $SQL);
-$Data = mysqli_fetch_assoc($run);
+$data = mysqli_fetch_assoc($run);
 
-echo json_encode(array("singleUser" => $Data));
+echo json_encode(array("singleUser" => $data));
 
 
 

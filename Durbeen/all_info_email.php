@@ -27,7 +27,7 @@ if ($_SESSION['unique_id_me'] != 1){
 
 
 
-  <h1 class="display-4 my-4">Our Products</h1>
+  <h1 class="display-4 my-4">Find User</h1>
   <form id="form" action="" method="post" enctype="multipart/form-data">
     <div class="row">
 

@@ -29,27 +29,27 @@ $unique_id_fr = $_POST['unique_id_fr'];
 
 
 
-$SQL2 = "INSERT INTO `$unique_id_me to $unique_id_fr`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('me','$message','$imageNewName','$time','Unseen')";
-mysqli_query($connection_message, $SQL2);
+$SQL1 = "INSERT INTO `$unique_id_me to $unique_id_fr`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('me','$message','$imageNewName','$time','Unseen')";
+mysqli_query($connection_message, $SQL1);
 
-$SQL5 = "INSERT INTO `$unique_id_fr to $unique_id_me`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('fr','$message','$imageNewName','$time','Unseen')";
-mysqli_query($connection_message, $SQL5);
+$SQL2 = "INSERT INTO `$unique_id_fr to $unique_id_me`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('fr','$message','$imageNewName','$time','Unseen')";
+mysqli_query($connection_message, $SQL2);
 
 
 
 //notification sql
 
-$SQL8 = "INSERT INTO `$unique_id_fr notify`(`sender`, `sender_id`, `seen`) VALUES ('$my_name','$unique_id_me','0')";
-mysqli_query($con_notification, $SQL8);
+$SQL3 = "INSERT INTO `$unique_id_fr notify`(`sender`, `sender_id`, `seen`) VALUES ('$my_name','$unique_id_me','0')";
+mysqli_query($con_notification, $SQL3);
 
 
 
 
 
 
-$SQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT 1";
-$run = mysqli_query($connection_message, $SQL);
-$latestData = mysqli_fetch_assoc($run);
+$SQL4 = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT 1";
+$run4 = mysqli_query($connection_message, $SQL4);
+$latestData = mysqli_fetch_assoc($run4);
 
 echo json_encode(["unique_id_me"=>$unique_id_me, "unique_id_fr"=>$unique_id_fr, "newMessage" => $latestData]);
 

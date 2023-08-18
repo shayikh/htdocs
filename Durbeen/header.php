@@ -2,7 +2,7 @@
 session_start();
 
 if (!$_SESSION['unique_id_me']){
-  header('location:./index.php?a');
+  header('location:./index.php?mustlog');
 }
 
 

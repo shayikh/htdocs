@@ -46,9 +46,9 @@ mysqli_query($connection,$SQL2);
 
 
 
-$SQL = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT 1";
-$run = mysqli_query($connection, $SQL);
-$latestData = mysqli_fetch_assoc($run);
+$SQL3 = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT 1";
+$run3 = mysqli_query($connection, $SQL3);
+$latestData = mysqli_fetch_assoc($run3);
 
 echo json_encode(["unique_id_me"=>$unique_id_me, "newPost" => $latestData]);
 

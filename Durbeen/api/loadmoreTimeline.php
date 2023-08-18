@@ -8,20 +8,25 @@ $data = json_decode($jsonData, true);
 $page_no = $data['page_no'];
 $unique_id_me = $data['unique_id_me'];
 
-
 $limit = 5;
 $row = ($page_no - 1)*$limit;
 
-$query = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me' ORDER BY `id` DESC limit $row,$limit";
-$runSelect = mysqli_query($connection,$query);
+$SQL = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me' ORDER BY `id` DESC limit $row,$limit";
+$run = mysqli_query($connection,$SQL);
 
-while ($data3 = mysqli_fetch_assoc($runSelect)){
+
+
+
+
+
+
+while ($data1 = mysqli_fetch_assoc($run)){
 
 $SQLMe="SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
 $runMe=mysqli_query($connection,$SQLMe);
 $dataMe=mysqli_fetch_assoc($runMe);
 
-$Postid = $data3['id'];
+$Postid = $data1['id'];
 
 $comn_count = "SELECT * FROM `comment` WHERE `post_id`='$Postid'";
 $runComn_count = mysqli_query($connection,$comn_count);
@@ -56,10 +61,10 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                     src="./pro_pic/<?php echo $dataMe['pro_pic']?>" alt="">
                 <b><?php echo $dataMe['name']?></b>
             </p>
-            <img width="100%" src="./post_image/<?php echo $data3['image']?>" alt="">
+            <img width="100%" src="./post_image/<?php echo $data1['image']?>" alt="">
             <div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-                <h6 class="card-title text-white"><?php echo $data3['time']?></h6>
-                <p class="card-text text-white"><?php echo $data3['post']?></p>
+                <h6 class="card-title text-white"><?php echo $data1['time']?></h6>
+                <p class="card-text text-white"><?php echo $data1['post']?></p>
             </div>
         </div>
 
@@ -82,7 +87,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         </button>
 
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-        <button onclick="commentfn(this, <?php echo $unique_id_me ?>, <?php echo $Postid ?>, <?php echo $data3['unique_id'] ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+        <button onclick="commentfn(this, <?php echo $unique_id_me ?>, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
         <input type="text" class="ms-5 mt-2">
     </div>
 </div>

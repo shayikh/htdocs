@@ -77,10 +77,10 @@ if (isset($_POST['login'])){
 
 
 	<?php
-    if (isset($_GET['a'])){
+    if (isset($_GET['mustlog'])){
         echo "<script>toastr.error('You Must LogIn First')</script>";
     }
-    if (isset($_GET['p'])){
+    if (isset($_GET['out'])){
         echo "<script>toastr.error('You Are Logged Out')</script>";
     }
 	?>

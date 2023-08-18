@@ -30,17 +30,17 @@ if($user_id == $unique_id_me){
   
   
   
-  $SQL6 = "DELETE FROM `post` WHERE `id`='$Deleteid'";
-  mysqli_query($connection, $SQL6);
+  $SQL2 = "DELETE FROM `post` WHERE `id`='$Deleteid'";
+  mysqli_query($connection, $SQL2);
   
-  $SQL40 = "DELETE FROM `comment` WHERE `post_id`='$Deleteid'";
-  mysqli_query($connection, $SQL40);
+  $SQL3 = "DELETE FROM `comment` WHERE `post_id`='$Deleteid'";
+  mysqli_query($connection, $SQL3);
   
-  $SQL41 = "DELETE FROM `like_post` WHERE `post_id`='$Deleteid'";
-  mysqli_query($connection, $SQL41);
+  $SQL4 = "DELETE FROM `like_post` WHERE `post_id`='$Deleteid'";
+  mysqli_query($connection, $SQL4);
   
-  $SQL42 = "DELETE FROM `dislike_post` WHERE `post_id`='$Deleteid'";
-  mysqli_query($connection, $SQL42);
+  $SQL5 = "DELETE FROM `dislike_post` WHERE `post_id`='$Deleteid'";
+  mysqli_query($connection, $SQL5);
   
   
   echo '1';

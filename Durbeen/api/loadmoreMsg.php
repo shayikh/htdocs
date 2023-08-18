@@ -14,14 +14,16 @@ $limit = 5;
 $row = ($page_no - 1)*$limit;
 
 
-
-$selectSQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT $row,$limit";
-
-$runSelect = mysqli_query($connection_message, $selectSQL);
+$SQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT $row,$limit";
+$run = mysqli_query($connection_message, $SQL);
 
 
 
-while ($data3 = mysqli_fetch_assoc($runSelect)){ ?>
+
+
+
+
+while ($data3 = mysqli_fetch_assoc($run)){ ?>
 
 <table class="table table-bordered mt-4">
     <tbody id="tbodyID">

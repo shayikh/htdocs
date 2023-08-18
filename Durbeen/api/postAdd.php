@@ -22,16 +22,16 @@ $unique_id_me = $_POST['unique_id_me'];
 
 
 
-$SQL4 = "INSERT INTO `post`(`unique_id`, `image`, `time`, `post`) VALUES ('$unique_id_me','$imageNewName','$time','$post')";
-mysqli_query($connection,$SQL4);
+$SQL1 = "INSERT INTO `post`(`unique_id`, `image`, `time`, `post`) VALUES ('$unique_id_me','$imageNewName','$time','$post')";
+mysqli_query($connection,$SQL1);
 
 
 
 
 
-$SQL = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT 1";
-$run = mysqli_query($connection, $SQL);
-$latestData = mysqli_fetch_assoc($run);
+$SQL2 = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT 1";
+$run2 = mysqli_query($connection, $SQL2);
+$latestData = mysqli_fetch_assoc($run2);
 
 echo json_encode(["unique_id_me"=>$unique_id_me, "newPost" => $latestData]);
 

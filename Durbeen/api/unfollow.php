@@ -14,8 +14,8 @@ $unique_id_fr = $data['unique_id_fr'];
 
 
 
-$SQL16 = "DELETE FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-mysqli_query($durbeen_chats,$SQL16);
+$SQL1 = "DELETE FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
+mysqli_query($durbeen_chats,$SQL1);
 
 echo "0";
 

@@ -22,12 +22,12 @@ $countF = mysqli_num_rows($runF);
 
 
 if($countF == 0){
-  $SQL16 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_fr')";
-  mysqli_query($durbeen_chats,$SQL16);
+  $SQL1 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_fr')";
+  mysqli_query($durbeen_chats,$SQL1);
   echo "1";
 }else{
-  $SQL16 = "DELETE FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-	mysqli_query($durbeen_chats,$SQL16);
+  $SQL2 = "DELETE FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
+	mysqli_query($durbeen_chats,$SQL2);
   echo "0";
 }
 
