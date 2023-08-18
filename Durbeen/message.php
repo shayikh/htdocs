@@ -26,17 +26,17 @@ if($countTest == 0){
 
 		//delete from notify db
 
-		$SQL96 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
-		$run96 = mysqli_query($con_notification,$SQL96);
-		$count = mysqli_num_rows($run96);
+		$SQL1 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
+		$run1 = mysqli_query($con_notification,$SQL1);
+		$count1 = mysqli_num_rows($run1);
 
-		if($count>50){
-			$delete = $count-50;
+		if($count1>50){
+			$delete = $count1-50;
 
 			//50 is the minumum number of messages
 
-			$SQL91 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr' ORDER BY `id` ASC LIMIT $delete";
-			mysqli_query($con_notification,$SQL91);
+			$SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr' ORDER BY `id` ASC LIMIT $delete";
+			mysqli_query($con_notification,$SQL2);
 		}
 
 
@@ -76,24 +76,24 @@ if($countTest == 0){
 
 
 		//chat friend start
-		$SQL15 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-		$run15 = mysqli_query($durbeen_chats,$SQL15);
-		$count = mysqli_num_rows($run15);
+		$SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
+		$run3 = mysqli_query($durbeen_chats,$SQL3);
+		$count3 = mysqli_num_rows($run3);
 
-		if($count == 0){
+		if($count3 == 0){
 			$SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$unique_id_fr')";
 			mysqli_query($durbeen_chats,$SQL16);
 		}
 
 
 
-		$SQL15 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-		$run15 = mysqli_query($durbeen_chats,$SQL15);
-		$count = mysqli_num_rows($run15);
+		$SQL4 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
+		$run4 = mysqli_query($durbeen_chats,$SQL4);
+		$count4 = mysqli_num_rows($run4);
 
-		if($count == 0){
-			$SQL16 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
-			mysqli_query($durbeen_chats,$SQL16);
+		if($count4 == 0){
+			$SQL5 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
+			mysqli_query($durbeen_chats,$SQL5);
 		}
 
 
@@ -105,20 +105,20 @@ if($countTest == 0){
 
 
 		// seen all message
-		$SQL97 = "UPDATE `$unique_id_me to $unique_id_fr` SET `seen`='Seen' WHERE `sender`='fr'";
-		mysqli_query($connection_message,$SQL97);
-		$SQL98 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='me'";
-		mysqli_query($connection_message,$SQL98);
+		$SQL6 = "UPDATE `$unique_id_me to $unique_id_fr` SET `seen`='Seen' WHERE `sender`='fr'";
+		mysqli_query($connection_message,$SQL6);
+		$SQL7 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='me'";
+		mysqli_query($connection_message,$SQL7);
 
 
 
-		$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-		$run1 = mysqli_query($connection,$SQL1);
-		$data1 = mysqli_fetch_assoc($run1);
+		$SQL8 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+		$run8 = mysqli_query($connection,$SQL8);
+		$data8 = mysqli_fetch_assoc($run8);
 
-		$pro_pic_fr = $data1['pro_pic'];
-		$friendName = $data1['name'];
-		$EmailFriend = $data1['email'];
+		$pro_pic_fr = $data8['pro_pic'];
+		$friendName = $data8['name'];
+		$EmailFriend = $data8['email'];
 
 
 
@@ -132,53 +132,53 @@ if($countTest == 0){
 
 		if (isset($_POST['delete_con'])){
 
-			$SQL6 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
-			$run = mysqli_query($connection_message, $SQL6);
+			$SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+			$run9 = mysqli_query($connection_message, $SQL9);
 
-			// if($run==true){
-				while ($data = mysqli_fetch_assoc($run)){ 
-					$imgNameinDB = $data['image'];
+			// if($run9==true){
+				while ($data9 = mysqli_fetch_assoc($run9)){ 
+					$imgNameinDB = $data9['image'];
 					if($imgNameinDB!=''){
 							unlink('./chat_image/'.$imgNameinDB);
 					}
 				}
 			// }
 			
-			$SQL6 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
-			mysqli_query($connection_message, $SQL6);
+			$SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
+			mysqli_query($connection_message, $SQL10);
 
 
 
-			$SQL6 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
-			$run = mysqli_query($connection_message, $SQL6);
+			$SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
+			$run11 = mysqli_query($connection_message, $SQL11);
 
-			// if($run==true){
-				while ($data = mysqli_fetch_assoc($run)){ 
-					$imgNameinDB = $data['image'];
+			// if($run9==true){
+				while ($data11 = mysqli_fetch_assoc($run11)){ 
+					$imgNameinDB = $data11['image'];
 					if($imgNameinDB!=''){
 							unlink('./chat_image/'.$imgNameinDB);
 					}
 				}
 			// }
 			
-			$SQL6 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
-			mysqli_query($connection_message, $SQL6);
+			$SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
+			mysqli_query($connection_message, $SQL12);
 
 
 
 
 
-			$SQL6 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-			mysqli_query($durbeen_chats, $SQL6);
+			$SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
+			mysqli_query($durbeen_chats, $SQL13);
 
-			$SQL7 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-			mysqli_query($durbeen_chats, $SQL7);
+			$SQL14 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
+			mysqli_query($durbeen_chats, $SQL14);
 
-			$SQL6 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
-			mysqli_query($con_notification, $SQL6);
+			$SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
+			mysqli_query($con_notification, $SQL15);
 
-			$SQL7 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
-			mysqli_query($con_notification, $SQL7);
+			$SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
+			mysqli_query($con_notification, $SQL16);
 
 
 
@@ -243,7 +243,7 @@ if ($number > 0){
 
 	<input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con"class="btn btn-secondary" type="submit" value="Delete Conversation With <?php echo $friendName ?>">
 
-	</form>
+</form>
 
 
 
@@ -255,7 +255,7 @@ if ($number > 0){
 		<div class="col-md-12">
 
 		
-			<table class="table table-bordered mt-4">
+			<table class="table mt-4">
 				<tbody id="tbodyID">
 					<tr>
 					</tr>
@@ -343,7 +343,7 @@ if ($number > 0){
 				}
 			})
 			.then( res => {
-				// console.log(res.data);
+				console.log(res.data);
 				appendData.innerHTML = appendData.innerHTML + res.data;
 				page_no++;
 				

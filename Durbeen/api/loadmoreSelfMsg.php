@@ -21,7 +21,7 @@ $run = mysqli_query($connection_message, $SQL);
 
 
 while ($data3=mysqli_fetch_assoc($run)){ ?>
-<table class="table table-bordered mt-4">
+<table class="table mt-4">
   <tbody>
     <tr>
                                         
