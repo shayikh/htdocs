@@ -1,46 +1,7 @@
 <?php
 include './header.php';
 
-if (isset($_POST['saveBtn'])){
-	date_default_timezone_set("Asia/Dhaka");
-	$time = "The time in " . date_default_timezone_get() . " is " . date("d-M-Y-D-H:i:s");
-	
-	$post = $_POST['post'];
 
-
-	if($_FILES['image_khan_bahadur']['name']){
-		$imageOldName = $_FILES['image_khan_bahadur']['name'];
-		$imageNewName = uniqid().'_'.date("Y-M-H-i-s").'_'.$imageOldName;
-		$image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
-		move_uploaded_file($image_tmp,'./post_image/'.$imageNewName);
-	}else{
-		$imageNewName = '';
-	}
-
-	
-
-
-	$SQL4 = "INSERT INTO `post`(`unique_id`, `image`, `time`, `post`) VALUES ('$unique_id_me','$imageNewName','$time','$post')";
-	mysqli_query($connection,$SQL4);
-
-	$_SESSION['alert']='post';
-
-  // echo "<script>window.location = 'homepage.php?type=homepage'</script>";
-
-
-}
-
-
-
-//alert
-if ($_SESSION['alert']=='login'){
-	echo "<script>toastr.success('You Are Logged In')</script>";
-	$_SESSION['alert']="nothing";
-}
-if ($_SESSION['alert']=='post'){
-	echo "<script>toastr.success('Post Successfullly Uploaded')</script>";
-	$_SESSION['alert']="nothing";
-}
 ?>
 
 
@@ -187,9 +148,13 @@ if ($number > 0){
 			})
 			.then( res => {
 				// console.log(res.data);
-				tbody.innerHTML = tbody.innerHTML + res.data;
-				
-				page_no++;
+				if(res.data == 0){
+					toastr.error('You are at the End');
+					alert('You are at the End');
+				}else{
+					tbody.innerHTML = tbody.innerHTML + res.data;
+					page_no++;
+				}
 				
 				
 				

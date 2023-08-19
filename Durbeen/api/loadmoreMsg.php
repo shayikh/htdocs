@@ -14,6 +14,23 @@ $runfr = mysqli_query($connection,$SQLfr);
 $datafr = mysqli_fetch_assoc($runfr);
 $pro_pic_fr = $datafr['pro_pic'];
 
+
+
+$SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+$run3 = mysqli_query($connection_message, $SQL3);
+$total_posts = mysqli_num_rows($run3);
+$total_pages = ceil($total_posts / 5) + 1;
+
+if($page_no > $total_pages){
+    echo '0';
+}
+
+
+
+
+
+
+
 $limit = 5;
 $row = ($page_no - 1)*$limit;
 

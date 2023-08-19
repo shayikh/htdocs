@@ -343,9 +343,15 @@ if ($number > 0){
 				}
 			})
 			.then( res => {
-				console.log(res.data);
-				appendData.innerHTML = appendData.innerHTML + res.data;
-				page_no++;
+				// console.log(res.data);
+				
+				if(res.data == 0){
+					toastr.error('You are at the End');
+					alert('You are at the End');
+				}else{
+					appendData.innerHTML = appendData.innerHTML + res.data;
+					page_no++;
+				}
 				
 				
 			})
