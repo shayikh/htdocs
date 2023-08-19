@@ -381,7 +381,7 @@ if ($number > 0){
 							<div class="card" style="width: 100%;border: none">
 
 								<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-									<a href="people_timeline.php?type=no&amp;unique_id_fr=1">
+									<a href="people_timeline.php?type=no&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
 										<img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
 										<b><?php echo $dataMe['name'] ?></b>
 									</a>
