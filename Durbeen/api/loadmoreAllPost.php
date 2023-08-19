@@ -28,7 +28,7 @@ if($page_no > $total_pages){
 $limit = 5;
 $row = ($page_no - 1)*$limit;
 
-$SQL = "SELECT * FROM `post` ORDER BY `id` DESC limit $row,$limit";
+$SQL = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection,$SQL);
 
 
@@ -72,7 +72,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <div class="card" style="width: 100%;border: none">
 
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                <a href="people_timeline.php?type=no&unique_id_fr=<?php echo $data2['unique_id']?>">
+                <a href="people_timeline.php?type=no&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                     <img style="border-radius: 50%" width="70px" height="70px"
                         src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
                     <b><?php echo $data2['name']?></b>
