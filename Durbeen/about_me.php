@@ -152,7 +152,7 @@ if ($number > 0){
                     <h5 class="text-red">Account Link</h5>
                 </td>
                 <td>
-                    <h5 class="one">
+                    <h5 class="one d-none">
                         http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $dataMe['unique_id'] ?>
                     </h5>
                     <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
@@ -179,6 +179,7 @@ if ($number > 0){
 
         <script>
             let oneV = document.querySelector(".one").innerText;
+            let mybtn = document.querySelector("#mybtn");
 
             mybtn.addEventListener('click', function () {
                 const elem = document.createElement('input');
@@ -206,6 +207,25 @@ if ($number > 0){
 
     </div>
 </div>
+
+
+
+
+
+<script>
+    let oneV = document.querySelector(".one").innerText;
+    let mybtn = document.querySelector("#mybtn");
+
+    mybtn.addEventListener('click', function () {
+        const elem = document.createElement('input');
+        elem.setAttribute("value", oneV);
+        document.body.appendChild(elem);
+        elem.select();
+        document.execCommand('copy');
+        document.body.removeChild(elem);
+        toastr.success("Link Copied to Clipboard");
+    })
+</script>
 
 
 

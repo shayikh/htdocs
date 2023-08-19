@@ -46,24 +46,23 @@ while ($data1=mysqli_fetch_assoc($run)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type=no&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <img height="130px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+                <img height="135px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">
             <a class="text-decoration-none" href="./people_timeline.php?type=no&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <h3 class="mt-4"><?php echo $data1['name'] ?></h3>
+                <h3 style="margin-top: 35px"><?php echo $data1['name'] ?></h3>
                 <h6 class="text-success">Durbeen Visited : <?php echo $data1['visit'] ?></h6>
             </a>
         </td>
         <td class="text-center">
-            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
-                    class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> mt-5" id="followBtn">
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?>" id="followBtn" style="margin-top: 50px">
                 <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
             </button>
         </td>
         <td class="text-center">
             <a href="message.php?type=no&unique_id_fr=<?php echo $unique_id_fr?>">
-                <img width="70px" src="./css/892177.svg" alt="" class="mt-4">
+                <img width="70px" src="./css/892177.svg" alt="" style="margin-top: 35px">
             </a>
         </td>
     </tr>
