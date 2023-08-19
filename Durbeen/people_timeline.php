@@ -63,8 +63,6 @@ if ($number > 0){
             </a>
         </div>
 
-        <div id="here"></div>
-
         <div class="col-md-12 text-center" style="margin-top: -134px">
             <p class="text-white" style="font-size: 39px"><?php echo $data1['name'] ?></p>
         </div>
@@ -88,167 +86,29 @@ if ($number > 0){
         </div>
     </div>
 
-
-
-
-    <div class="row">
-        <div class="col-md-12">
-
-        </div>
-    </div>
     <?php } ?>
 
 
 
 
 
-    <script>
-        
-        
-        const followfn = (unique_id_me, unique_id_fr, elm) => {
-
-            let followVar = {};
-
-            followVar.unique_id_me = unique_id_me;
-            followVar.unique_id_fr = unique_id_fr;
-
-            axios.post("./api/follow.php",
-                    followVar, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == 0) {
-                        toastr.error('Unfollowed');
-                        elm.innerText = "Follow";
-                        elm.classList.add('btn-success');
-                        elm.classList.remove('btn-danger');
-                    } else {
-                        toastr.success('Following');
-                        elm.innerText = "Unfollow";
-                        elm.classList.add('btn-danger');
-                        elm.classList.remove('btn-success');
-                    }
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-    </script>
 
 
 
 
 
-    <div class="row mb-5">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <!-- Status Bar -->
-            <div class="row justify-content-center">
-                <?php
 
-				//pagination
-				$posts_per_page = 20;
+	<div class="row mb-5">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="row justify-content-center" id="tbodyID">
+						
 
-				$sql = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_fr'";
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
 
-				$result = mysqli_query($connection, $sql);
-
-				$total_posts = mysqli_num_rows($result);
-
-				$total_pages = ceil($total_posts / $posts_per_page);
-
-
-				if(isset($_GET['page'])){
-						$current_page = $_GET['page'];
-				}else{
-						$current_page = 1;
-				}
-
-				$start_limit = ($current_page - 1) * $posts_per_page;
-
-				$selectSQL = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_fr' ORDER BY `id` DESC LIMIT ".$start_limit.",".$posts_per_page;
-
-				$runSelect = mysqli_query($connection, $selectSQL);
-
-
-
-
-
-				while ($data3=mysqli_fetch_assoc($runSelect)){ ?>
-                <div class="statusp">
-
-                    <div class="col-md-12 mt-4 mb-2 "
-                        style="background-color: #18191A;padding: 10px;border-radius: 3px">
-                        <div class="card" style="width: 100%;border: none;">
-                            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
-                                <img style="border-radius: 50%" width="70px" height="70px"
-                                    src="./pro_pic/<?php echo $data1['pro_pic']?>" alt="">
-                                <b><?php echo $data1['name']?></b>
-                            </p>
-                            <img width="100%" src="./post_image/<?php echo $data3['image']?>" alt="">
-                            <div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-                                <h6 class="card-title text-white"><?php echo $data3['time']?></h6>
-                                <p class="card-text text-white"><?php echo $data3['post']?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <?php } ?>
-
-
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-
-    <section class="pagination" style="background-color: #18191A;">
-        <div style="width: 100%; margin: 20px auto" class="text-center">
-            <?php 
-					if($current_page==1){
-							$dddd=$current_page;
-					}else if($current_page>1){
-							$dddd=$current_page-1;
-					}
-					
-					if($current_page==$total_pages){
-							$llll=$current_page;
-					}else if($current_page<$total_pages){
-							$llll=$current_page+1;
-					}
-					?>
-
-            <a href='./people_timeline.php?type=no&page=<?php echo $dddd ?>&unique_id_fr=<?php echo $unique_id_fr ?>'
-                class="pag-link">&#60;&#60;</a>
-
-            <?php for($i = 1; $i <= $total_pages; $i++){ ?>
-
-            <a href='./people_timeline.php?type=no&page=<?php echo $i ?>&unique_id_fr=<?php echo $unique_id_fr ?>'
-                class='pag-link <?php
-
-
-			if ($_GET['page'] == $i){
-					printf("active");
-			}else if ($_GET['page'] == "" && $i == 1){
-					printf("active");
-			}else{
-					printf("");
-			}
-
-			?>'><?php echo $i ?></a>
-
-            <?php } ?>
-
-            <a href='./people_timeline.php?type=no&page=<?php echo $llll ?>&unique_id_fr=<?php echo $unique_id_fr ?>'
-                class="pag-link">&#62;&#62;</a>
-        </div>
-    </section>
 
 
 
@@ -259,6 +119,386 @@ if ($number > 0){
         text-decoration: none;
     }
 </style>
+
+<!-- Comment Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col">Name</th>
+                            <th class="text-center text-dark" scope="col">Time</th>
+                            <th class="text-center text-dark" scope="col">Comment</th>
+                            <th class="text-center text-dark" scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="commentTboody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        
+	let tbody = document.querySelector("#tbodyID");
+    let postCloseBtn = document.querySelector("#postCloseBtn");
+    let commentTboody = document.querySelector("#commentTboody");
+
+
+
+
+
+
+    var page_no = 1;
+        
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            showdata();
+        }
+    })
+
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+        postData.unique_id_fr = <?php echo $unique_id_fr ?>;
+
+        axios.post("./api/loadmorePeopleTimeline.php",
+        postData,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then( res => {
+                // console.log(res.data);
+                if(res.data == 0){
+                    toastr.error('You are at the End');
+                    alert('You are at the End');
+                }else{
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+                
+                
+            })
+            .catch( err => {
+                console.log(err);
+            })
+    }
+        
+    const followfn = (unique_id_me, unique_id_fr, elm) => {
+
+        let followVar = {};
+
+        followVar.unique_id_me = unique_id_me;
+        followVar.unique_id_fr = unique_id_fr;
+
+        axios.post("./api/follow.php",
+                followVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    toastr.error('Unfollowed');
+                    elm.innerText = "Follow";
+                    elm.classList.add('btn-success');
+                    elm.classList.remove('btn-danger');
+                } else {
+                    toastr.success('Following');
+                    elm.innerText = "Unfollow";
+                    elm.classList.add('btn-danger');
+                    elm.classList.remove('btn-success');
+                }
+
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+
+    
+	const deleteComment = (comment_id, unique_id_me, elm) => {
+
+    let delComment = {};
+
+    delComment.comment_id = comment_id;
+    delComment.unique_id_me = unique_id_me;
+
+    axios.post("./api/deleteComment.php",
+    delComment,
+        {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then( res => {
+            // console.log(res.data);
+
+            if(res.data == 1){
+                elm.parentElement.parentElement.remove();
+                toastr.info('Comment Deleted');
+            }else{
+                toastr.warning('This is not Your Comment');
+            }
+            
+        })
+        .catch( err => {
+            console.log(err);
+        })
+
+    }
+
+
+
+    const clearModal = () => {
+    commentTboody.innerHTML = "";
+    }
+
+
+    const showCommentfn = (postid) => {
+
+    let showComment = {};
+
+    showComment.postid = postid;
+
+    axios.post("./api/showComments.php",
+        showComment,
+        {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then( res => {
+
+            // console.log(res.data);
+
+            let all = res.data;
+
+            all.forEach(comment => {
+                commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
+            })
+
+            
+        })
+        .catch( err => {
+            console.log(err);
+        })
+
+    }
+
+
+    const makeCommentTr = (comment) => {
+    let tr = `<tr>
+                <td>
+                    <img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
+                </td>
+                <td class="text-center text-dark">${comment.name_comn}</td>
+                <td class="text-center text-dark">${comment.time}</td>
+                <td class="text-center text-dark">${comment.comment}</td>
+                <td class="text-center text-dark">
+                    <i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                </td>
+        </tr>`
+    return tr;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const commentfn = (elm, unique_id_me, postid, post_user_id) => {
+
+        let comment = elm.nextElementSibling.value;
+
+        if(comment == ""){
+            toastr.error("Comment is Empty");
+        }else{
+
+
+        let commentp = {};
+
+        commentp.comment = comment;
+        commentp.unique_id_me = unique_id_me;
+        commentp.postid = postid;
+        commentp.post_user_id = post_user_id;
+
+        axios.post("./api/comment.php",
+            commentp,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then( res => {
+                // console.log(elm);
+
+                if(res.data == 1){
+                    elm.nextElementSibling.value = '';
+                    toastr.success("Comment Done");
+                }
+
+                
+
+                
+                
+            })
+            .catch( err => {
+                console.log(err);
+            })
+
+    }
+
+
+    }
+
+
+
+
+
+    const likefn = (post_id, unique_id_me, elm) => {
+		let likep = {};
+
+		likep.post_id = post_id;
+		likep.unique_id_me = unique_id_me;
+
+		axios.post("./api/like_post.php",
+			likep,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+				// console.log(elm);
+
+				if(res.data == 1){
+					elm.style.color = '#0D6EFD';
+					elm.nextElementSibling.style.color = '#fff';
+				}else{
+					elm.style.color = '#fff';
+				}
+
+				
+
+				
+				
+			})
+			.catch( err => {
+				console.log(err);
+			})
+	}
+
+
+
+
+	const dislikefn = (post_id, unique_id_me, elm) => {
+		let dislikep = {};
+
+		dislikep.post_id = post_id;
+		dislikep.unique_id_me = unique_id_me;
+
+		axios.post("./api/dislike_post.php",
+		dislikep,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+				// console.log(elm);
+
+				if(res.data == 1){
+					elm.style.color = '#0D6EFD';
+					elm.previousElementSibling.style.color = '#fff';
+				}else{
+					elm.style.color = '#fff';
+				}
+
+				
+
+				
+				
+			})
+			.catch( err => {
+				console.log(err);
+			})
+	}
+
+
+
+    
+	const sharefn = (post_id, unique_id_me) => {
+		let dislikep = {};
+
+		dislikep.post_id = post_id;
+		dislikep.unique_id_me = unique_id_me;
+
+		axios.post("./api/share.php",
+		dislikep,
+			{
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			.then( res => {
+        
+				let json = res.data;
+				
+				let unique_id_me = json.unique_id_me;
+				let newPost = json.newPost;
+		
+				tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+
+				toastr.success('Post Shared to Your Timeline');
+
+									
+			})
+			.catch( err => {
+				console.log(err);
+			})
+	}
+</script>
+
+
+
+
+
 
 <?php
 include './footer.php'

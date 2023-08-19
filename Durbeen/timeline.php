@@ -59,7 +59,6 @@ if ($number > 0){
 
 	<div class="row mb-5">
 		<div class="col-md-2"></div>
-
 		<div class="col-md-8">
 			<div class="row justify-content-center" id="tbodyID">
 						
@@ -161,7 +160,7 @@ if ($number > 0){
 
 
 
-	<script>
+<script>
 
 	let tbody = document.querySelector("#tbodyID");
 
