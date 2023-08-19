@@ -20,7 +20,7 @@ if (isset($_POST['signup'])){
 	$run1=mysqli_query($connection,$SQL1);
 	$count = mysqli_num_rows($run1);
 	if ($count > 0){
-		echo "<script>window.location = './registration.php?message=This Email Was Used By Another Account'</script>";
+		echo "<script>window.location = './registration.php?message=This Email is Already in Use'</script>";
 	}else{
 		$name = $_POST['name'];
 		$password = trim($_POST['password']);

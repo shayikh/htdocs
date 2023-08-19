@@ -361,7 +361,7 @@ if ($number > 0){
 				image.value = "";
 				post.value = "";
 
-				toastr.success('Post Uploaded');
+				toastr.success('Post Created');
 			},
 			error: function (err) {
 				console.log(err);

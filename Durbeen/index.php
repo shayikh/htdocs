@@ -122,13 +122,12 @@ if (isset($_POST['login'])){
 
 						<div class="a mt-3"></div>
 
-						<center>
-							<div style="margin-top:35px">
-								<a style="width: 200px;height: 48px" class="anchor button-3 form-control"
-									href="./registration.php"><b>Create New Account</b></a>
-								<a href="./givemail.php" class="text-decoration-none text-primary">Forgot Password?</a>
-							</div>
-						</center>
+
+                        <div style="margin-top:35px;text-align: center">
+                            <a style="width: 200px;height: 48px" class="anchor button-3 form-control" href="./registration.php"><b>Create New Account</b></a>
+                            <a href="./givemail.php" class="text-decoration-none text-primary">Forgot Password?</a>
+                        </div>
+
 
 					</form>
 				</div>

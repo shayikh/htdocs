@@ -42,9 +42,9 @@ $run = mysqli_query($connection,$SQL);
 
 while ($data1 = mysqli_fetch_assoc($run)){
 
-$SQLMe="SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
-$runMe=mysqli_query($connection,$SQLMe);
-$dataMe=mysqli_fetch_assoc($runMe);
+$SQLfr="SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+$runfr=mysqli_query($connection,$SQLfr);
+$datafr=mysqli_fetch_assoc($runfr);
 
 $Postid = $data1['id'];
 
@@ -78,8 +78,8 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <div class="card" style="width: 100%;border: none;">
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
                 <img style="border-radius: 50%" width="70px" height="70px"
-                    src="./pro_pic/<?php echo $dataMe['pro_pic']?>" alt="">
-                <b><?php echo $dataMe['name']?></b>
+                    src="./pro_pic/<?php echo $datafr['pro_pic']?>" alt="">
+                <b><?php echo $datafr['name']?></b>
             </p>
             <img width="100%" src="./post_image/<?php echo $data1['image']?>" alt="">
             <div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
