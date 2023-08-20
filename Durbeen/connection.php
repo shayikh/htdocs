@@ -9,12 +9,7 @@ $con_notification = mysqli_connect("localhost","root","","durbeen_notification")
 $durbeen_chats = mysqli_connect("localhost","root","","durbeen_chats");
 
 
-// if ($connection_message == true){
-// 	echo "<script>alert('yes')</script>";
-// }
-// else {
-// 	echo "<script>alert('no')</script>";
-// }
+
 
 
 

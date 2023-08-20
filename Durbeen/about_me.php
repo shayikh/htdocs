@@ -177,21 +177,6 @@ if ($number > 0){
         </table>
 
 
-        <script>
-            let oneV = document.querySelector(".one").innerText;
-            let mybtn = document.querySelector("#mybtn");
-
-            mybtn.addEventListener('click', function () {
-                const elem = document.createElement('input');
-                elem.setAttribute("value", oneV);
-                document.body.appendChild(elem);
-                elem.select();
-                document.execCommand('copy');
-                document.body.removeChild(elem);
-                toastr.success("Link Copied to Clipboard");
-            })
-        </script>
-
 
 
         <div class="col-md-12 mt-5 pt-5">
