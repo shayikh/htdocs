@@ -212,11 +212,11 @@ if ($number > 0){
 	}
 
 
-	const showCommentfn = (postid) => {
+	const showCommentfn = (post_id) => {
 
 		let showComment = {};
 
-		showComment.postid = postid;
+		showComment.post_id = post_id;
 
 		axios.post("./api/showComments.php",
 			showComment,
@@ -247,13 +247,13 @@ if ($number > 0){
 	const makeCommentTr = (comment) => {
 		let tr = `<tr>
 						<td>
-							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.unique_id_comn}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
+							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 						
 						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.unique_id_comn}" target="_blank">${comment.name_comn}</a>
+							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
 						</td>
 						
 						<td class="text-center text-dark">${comment.time}</td>
@@ -278,7 +278,7 @@ if ($number > 0){
 
 
 
-	const commentfn = (elm, unique_id_me, postid, post_user_id) => {
+	const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
 
 		let comment = elm.nextElementSibling.value;
 
@@ -290,9 +290,10 @@ if ($number > 0){
 			let commentp = {};
 
 			commentp.comment = comment;
-			commentp.unique_id_me = unique_id_me;
-			commentp.postid = postid;
-			commentp.post_user_id = post_user_id;
+            commentp.post_id = post_id;
+            commentp.post_giver_id = post_giver_id;
+			commentp.comn_giver_id = comn_giver_id;
+
 
 			axios.post("./api/comment.php",
 				commentp,
@@ -309,10 +310,10 @@ if ($number > 0){
 						toastr.success("Comment Done");
 					}
 
-					
 
-					
-					
+
+
+
 				})
 				.catch( err => {
 					console.log(err);
@@ -404,7 +405,7 @@ if ($number > 0){
 							<i class="fas fa-share"></i>
 							</a>
 							<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-							<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${post.unique_id})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+							<button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
 							<input type="text" class="ms-5 mt-2">
 						</div>
 					</div>`

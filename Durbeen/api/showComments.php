@@ -10,10 +10,10 @@ $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
 
 
-$postid = $data['postid'];
+$post_id = $data['post_id'];
 
 
-$SQL1 = "SELECT * FROM `comment` WHERE `post_id`='$postid' ORDER BY `id` DESC";
+$SQL1 = "SELECT * FROM `comment` WHERE `post_id`='$post_id' ORDER BY `id` DESC";
 $run1 = mysqli_query($connection, $SQL1);
 
 $comments = [];

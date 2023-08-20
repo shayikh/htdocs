@@ -203,52 +203,109 @@ if ($number > 0){
 	}
 
 
-	const showCommentfn = (postid) => {
+    const showCommentfn = (post_id) => {
 
-		let showComment = {};
+        let showComment = {};
 
-		showComment.postid = postid;
+        showComment.post_id = post_id;
 
-		axios.post("./api/showComments.php",
-			showComment,
-			{
-				headers: {
-					"Content-Type": "application/json"
-				}
-			})
-			.then( res => {
+        axios.post("./api/showComments.php",
+            showComment,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then( res => {
 
-				// console.log(res.data);
+                // console.log(res.data);
 
-				let all = res.data;
+                let all = res.data;
 
-				all.forEach(comment => {
-					commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-				})
-
-				
-			})
-			.catch( err => {
-				console.log(err);
-			})
-
-	}
+                all.forEach(comment => {
+                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
+                })
 
 
-	const makeCommentTr = (comment) => {
-		let tr = `<tr>
+            })
+            .catch( err => {
+                console.log(err);
+            })
+
+    }
+
+
+    const makeCommentTr = (comment) => {
+        let tr = `<tr>
 						<td>
-							<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
+							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+							</a>
 						</td>
-						<td class="text-center text-dark">${comment.name_comn}</td>
+
+						<td class="text-center text-dark">
+							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+						</td>
+
 						<td class="text-center text-dark">${comment.time}</td>
 						<td class="text-center text-dark">${comment.comment}</td>
 						<td class="text-center text-dark">
-								<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, this)"></i>
+							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
 						</td>
 				</tr>`
-		return tr;
-	}
+        return tr;
+    }
+
+
+
+
+
+
+    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
+
+        let comment = elm.nextElementSibling.value;
+
+        if(comment == ""){
+            toastr.error("Comment is Empty");
+        }else{
+
+
+            let commentp = {};
+
+            commentp.comment = comment;
+            commentp.post_id = post_id;
+            commentp.post_giver_id = post_giver_id;
+            commentp.comn_giver_id = comn_giver_id;
+
+
+            axios.post("./api/comment.php",
+                commentp,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then( res => {
+                    // console.log(elm);
+
+                    if(res.data == 1){
+                        elm.nextElementSibling.value = '';
+                        toastr.success("Comment Done");
+                    }
+
+
+
+
+
+                })
+                .catch( err => {
+                    console.log(err);
+                })
+
+        }
+
+
+    }
 
 
 
@@ -256,57 +313,6 @@ if ($number > 0){
 
 
 
-
-
-
-
-
-
-
-	const commentfn = (elm, unique_id_me, postid, post_user_id) => {
-
-		let comment = elm.nextElementSibling.value;
-
-		if(comment == ""){
-			toastr.error("Comment is Empty");
-		}else{
-
-
-			let commentp = {};
-
-			commentp.comment = comment;
-			commentp.unique_id_me = unique_id_me;
-			commentp.postid = postid;
-			commentp.post_user_id = post_user_id;
-
-			axios.post("./api/comment.php",
-				commentp,
-				{
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-				.then( res => {
-					// console.log(elm);
-
-					if(res.data == 1){
-						elm.nextElementSibling.value = '';
-						toastr.success("Comment Done");
-					}
-
-					
-
-					
-					
-				})
-				.catch( err => {
-					console.log(err);
-				})
-
-		}
-
-
-	}
 
 
 
@@ -362,37 +368,37 @@ if ($number > 0){
 
 	const makeTr = (post, unique_id_me) => {
 		let tr = `<div class="statusp">
-								<div class="col-md-12 mt-2 mb-2">
-									<div class="card" style="width: 100%;border: none">
+                    <div class="col-md-12 mt-2 mb-2">
+                        <div class="card" style="width: 100%;border: none">
 
-										<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-											<a href="people_timeline.php?type=no&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-												<img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-												<b><?php echo $dataMe['name'] ?></b>
-											</a>
-										</p>
-										<img width="100%" src="./post_image/${post.image}" alt="">
-										<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-											<h6 class="card-title text-white">${post.time}</h6>
-											<p class="card-text text-white">${post.post}</p>
-										</div>
-										
-									</div>
+                            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+                                <a href="people_timeline.php?type=no&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <b><?php echo $dataMe['name'] ?></b>
+                                </a>
+                            </p>
+                            <img width="100%" src="./post_image/${post.image}" alt="">
+                            <div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
+                                <h6 class="card-title text-white">${post.time}</h6>
+                                <p class="card-text text-white">${post.post}</p>
+                            </div>
 
-									<p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-									<p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-									<p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-									<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-									<p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
-									
-									<a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
-									<i class="fas fa-share"></i>
-									</a>
-									<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-									<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${post.unique_id})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-									<input type="text" class="ms-5 mt-2">
-								</div>
-							</div>`
+                        </div>
+
+                        <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
+                        <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
+                        <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
+                        <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
+                        <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
+
+                        <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+                        <i class="fas fa-share"></i>
+                        </a>
+                        <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+                        <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+                        <input type="text" class="ms-5 mt-2">
+                    </div>
+                </div>`
 		return tr;
 	}
 

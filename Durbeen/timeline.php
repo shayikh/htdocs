@@ -353,111 +353,122 @@ if ($number > 0){
 		commentTboody.innerHTML = "";
 	}
 
-	
-	const showCommentfn = (postid) => {
 
-		let showComment = {};
+    const showCommentfn = (post_id) => {
 
-		showComment.postid = postid;
+        let showComment = {};
 
-		axios.post("./api/showComments.php",
-			showComment,
-			{
-				headers: {
-					"Content-Type": "application/json"
-				}
-			})
-			.then( res => {
+        showComment.post_id = post_id;
 
-				// console.log(res.data);
+        axios.post("./api/showComments.php",
+            showComment,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then( res => {
 
-				let all = res.data;
+                // console.log(res.data);
 
-				all.forEach(comment => {
-					commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-				})
+                let all = res.data;
 
-				
-			})
-			.catch( err => {
-				console.log(err);
-			})
-
-	}
+                all.forEach(comment => {
+                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
+                })
 
 
-	const makeCommentTr = (comment) => {
-    let tr = `<tr>
-					<td>
-						<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
-					</td>
-					<td class="text-center text-dark">${comment.name_comn}</td>
-					<td class="text-center text-dark">${comment.time}</td>
-					<td class="text-center text-dark">${comment.comment}</td>
-					<td class="text-center text-dark">
-						<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-					</td>
-              </tr>`
-    return tr;
-	}
+            })
+            .catch( err => {
+                console.log(err);
+            })
+
+    }
 
 
+    const makeCommentTr = (comment) => {
+        let tr = `<tr>
+						<td>
+							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+							</a>
+						</td>
 
+						<td class="text-center text-dark">
+							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+						</td>
 
-
-
-
-		
-	
+						<td class="text-center text-dark">${comment.time}</td>
+						<td class="text-center text-dark">${comment.comment}</td>
+						<td class="text-center text-dark">
+							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+						</td>
+				</tr>`
+        return tr;
+    }
 
 
 
 
 
-	const commentfn = (elm, unique_id_me, postid, post_user_id) => {
-
-		let comment = elm.nextElementSibling.value;
-
-		if(comment == ""){
-			toastr.error("Comment is Empty");
-		}else{
 
 
-			let commentp = {};
 
-			commentp.comment = comment;
-			commentp.unique_id_me = unique_id_me;
-			commentp.postid = postid;
-			commentp.post_user_id = post_user_id;
 
-			axios.post("./api/comment.php",
-				commentp,
-				{
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-				.then( res => {
-					// console.log(elm);
+    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
 
-					if(res.data == 1){
-						elm.nextElementSibling.value = '';
-						toastr.success("Comment Done");
-					}
+        let comment = elm.nextElementSibling.value;
 
-					
+        if(comment == ""){
+            toastr.error("Comment is Empty");
+        }else{
 
-					
-					
-				})
-				.catch( err => {
-					console.log(err);
-				})
 
-		}
+            let commentp = {};
 
-		
-	}
+            commentp.comment = comment;
+            commentp.post_id = post_id;
+            commentp.post_giver_id = post_giver_id;
+            commentp.comn_giver_id = comn_giver_id;
+
+
+            axios.post("./api/comment.php",
+                commentp,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then( res => {
+                    // console.log(elm);
+
+                    if(res.data == 1){
+                        elm.nextElementSibling.value = '';
+                        toastr.success("Comment Done");
+                    }
+
+
+
+
+
+                })
+                .catch( err => {
+                    console.log(err);
+                })
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -546,7 +557,7 @@ const makeTr = (post, unique_id_me) => {
 							<i class="fas fa-share"></i>
 						</a>
 						<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-						<button onclick="commentfn(this, ${unique_id_me}, ${post.id}, ${post.unique_id})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+						<button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
 						<input type="text" class="ms-5 mt-2">
 						
 					</div>

@@ -282,101 +282,30 @@ if ($number > 0){
     }
 
 
-    const showCommentfn = (postid) => {
+    const showCommentfn = (post_id) => {
 
-    let showComment = {};
+        let showComment = {};
 
-    showComment.postid = postid;
+        showComment.post_id = post_id;
 
-    axios.post("./api/showComments.php",
-        showComment,
-        {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then( res => {
-
-            // console.log(res.data);
-
-            let all = res.data;
-
-            all.forEach(comment => {
-                commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-            })
-
-            
-        })
-        .catch( err => {
-            console.log(err);
-        })
-
-    }
-
-
-    const makeCommentTr = (comment) => {
-    let tr = `<tr>
-                <td>
-                    <img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic_comn}">
-                </td>
-                <td class="text-center text-dark">${comment.name_comn}</td>
-                <td class="text-center text-dark">${comment.time}</td>
-                <td class="text-center text-dark">${comment.comment}</td>
-                <td class="text-center text-dark">
-                    <i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-                </td>
-        </tr>`
-    return tr;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const commentfn = (elm, unique_id_me, postid, post_user_id) => {
-
-        let comment = elm.nextElementSibling.value;
-
-        if(comment == ""){
-            toastr.error("Comment is Empty");
-        }else{
-
-
-        let commentp = {};
-
-        commentp.comment = comment;
-        commentp.unique_id_me = unique_id_me;
-        commentp.postid = postid;
-        commentp.post_user_id = post_user_id;
-
-        axios.post("./api/comment.php",
-            commentp,
+        axios.post("./api/showComments.php",
+            showComment,
             {
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
             .then( res => {
-                // console.log(elm);
 
-                if(res.data == 1){
-                    elm.nextElementSibling.value = '';
-                    toastr.success("Comment Done");
-                }
+                // console.log(res.data);
 
-                
+                let all = res.data;
 
-                
-                
+                all.forEach(comment => {
+                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
+                })
+
+
             })
             .catch( err => {
                 console.log(err);
@@ -385,7 +314,85 @@ if ($number > 0){
     }
 
 
+    const makeCommentTr = (comment) => {
+        let tr = `<tr>
+						<td>
+							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+							</a>
+						</td>
+
+						<td class="text-center text-dark">
+							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+						</td>
+
+						<td class="text-center text-dark">${comment.time}</td>
+						<td class="text-center text-dark">${comment.comment}</td>
+						<td class="text-center text-dark">
+							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+						</td>
+				</tr>`
+        return tr;
     }
+
+
+
+
+
+
+
+
+    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
+
+        let comment = elm.nextElementSibling.value;
+
+        if(comment == ""){
+            toastr.error("Comment is Empty");
+        }else{
+
+
+            let commentp = {};
+
+            commentp.comment = comment;
+            commentp.post_id = post_id;
+            commentp.post_giver_id = post_giver_id;
+            commentp.comn_giver_id = comn_giver_id;
+
+
+            axios.post("./api/comment.php",
+                commentp,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then( res => {
+                    // console.log(elm);
+
+                    if(res.data == 1){
+                        elm.nextElementSibling.value = '';
+                        toastr.success("Comment Done");
+                    }
+
+
+
+
+
+                })
+                .catch( err => {
+                    console.log(err);
+                })
+
+        }
+
+
+    }
+
+
+
+
+
+
 
 
 
