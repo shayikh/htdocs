@@ -46,8 +46,6 @@ if ($number > 0){
 			</a>
 		</div>
 
-		<div id="here"></div>
-
 		<div class="col-md-12 text-center" style="margin-top: -134px">
 			<p class="text-white" style="font-size: 39px"><?php echo $dataMe['name'] ?></p>
 		</div>
@@ -62,7 +60,6 @@ if ($number > 0){
 		<div class="col-md-8">
 			<div class="row justify-content-center" id="tbodyID">
 						
-
 			</div>
 		</div>
 		<div class="col-md-2"></div>
@@ -153,7 +150,7 @@ if ($number > 0){
 
 
 
-
+</div>
 
 
 
@@ -722,7 +719,7 @@ const makeTr = (post, unique_id_me) => {
 
 
 
-</div>
+
 
 
 

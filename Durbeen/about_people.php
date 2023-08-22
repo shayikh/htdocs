@@ -52,8 +52,6 @@ if ($number > 0){
             </a>
         </div>
 
-        <div id="here"></div>
-
         <div class="col-md-12 text-center" style="margin-top: -134px; margin-left: -135px">
             <p class="text-white" style="font-size: 39px"><?php echo $data1['name'] ?></p>
         </div>
@@ -78,93 +76,92 @@ if ($number > 0){
 
 
     <div class="row">
-        <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
-            <tr>
-                <td>
-                    <h5 class="text-red">Email</h5>
-                </td>
-                <td>
-                    <h5><?php echo $data1['email'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5 class="text-red">Date of Birth</h5>
-                </td>
-                <td>
-                    <h5><?php echo $data1['date_birth'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5 class="text-red">Gender</h5>
-                </td>
-                <td>
-                    <h5><?php echo $data1['gender'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5 class="text-red">Phone Numbers</h5>
-                </td>
-                <td>
-                    <h5><?php echo $dataAbout['phone_no'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5 class="text-red">Religion</h5>
-                </td>
-                <td>
-                    <h5><?php echo $dataAbout['religion'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5 class="text-red">Country</h5>
-                </td>
-                <td>
-                    <h5><?php echo $dataAbout['country'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5 class="text-red">City</h5>
-                </td>
-                <td>
-                    <h5><?php echo $dataAbout['city'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 300px">
-                    <h5 class="text-red">Bio</h5>
-                </td>
-                <td>
-                    <h5 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
-                </td>
-            </tr>
+        <div class="col-md-12">
+            <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
+                <tr>
+                    <td>
+                        <h5 class="text-red">Email</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['email'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="text-red">Date of Birth</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['date_birth'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="text-red">Gender</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['gender'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="text-red">Phone Numbers</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $dataAbout['phone_no'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="text-red">Religion</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $dataAbout['religion'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="text-red">Country</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $dataAbout['country'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="text-red">City</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $dataAbout['city'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-red">Bio</h5>
+                    </td>
+                    <td>
+                        <h5 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
+                    </td>
+                </tr>
 
-            <tr>
-                <td style="width: 300px">
-                    <h5 class="text-red">Durbeen Visited</h5>
-                </td>
-                <td>
-                    <h5><?php echo $data1['visit'] ?></h5>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 300px">
-                    <h5 class="text-red">Account Link</h5>
-                </td>
-                <td>
-                    <h5 class="one d-none">
-                        http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>
-                    </h5>
-                    <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
-                </td>
-            </tr>
-        </table>
-
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-red">Durbeen Visited</h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['visit'] ?></h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-red">Account Link</h5>
+                    </td>
+                    <td>
+                        <h5 class="one d-none">http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?></h5>
+                        <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
     </div>
 </div>
