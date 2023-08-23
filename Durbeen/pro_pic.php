@@ -34,111 +34,146 @@ if ($number > 0){
 
 
 
-    <div class="container" style="margin-top:180px">
-        <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
-            <tbody id="tbodyID">
+<div class="container" style="margin-top:180px">
+    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+        <tbody id="tbodyID">
 
-            </tbody>
-        </table>
-
-
+        </tbody>
+    </table>
 
 
-        <script>
-
-            let tbody = document.querySelector("#tbodyID");
+</div>
 
 
+<script>
+
+    let tbody = document.querySelector("#tbodyID");
 
 
-            var page_no = 1;
 
+
+    var page_no = 1;
+
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
             showdata();
+        }
+    })
 
-            $(window).scroll(function() {
-                if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-                    showdata();
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("./api/loadmoreProPics.php",
+            postData,
+            {
+                headers: {
+                    "Content-Type": "application/json"
                 }
             })
-
-
-            function showdata() {
-
-                let postData = {};
-
-                postData.page_no = page_no;
-                postData.unique_id_me = <?php echo $unique_id_me ?>;
-
-                axios.post("./api/loadmoreProPics.php",
-                    postData,
-                    {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                    .then( res => {
-                        // console.log(res.data);
-                        if(res.data == 0){
-                            toastr.error('You are at the End');
-                            alert('You are at the End');
-                        }else{
-                            tbody.innerHTML = tbody.innerHTML + res.data;
-                            page_no++;
-                        }
+            .then( res => {
+                // console.log(res.data);
+                if(res.data == 0){
+                    toastr.error('You are at the End');
+                }else{
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
 
 
 
-                    })
-                    .catch( err => {
-                        console.log(err);
-                    })
-            }
+            })
+            .catch( err => {
+                console.log(err);
+            })
+    }
 
 
-            const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
+    const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
+        let confirm = window.confirm("Are You Sure?");
 
-                let unfollowVar = {};
+        if (confirm) {
 
-                unfollowVar.unique_id_me = unique_id_me;
-                unfollowVar.unique_id_fr = unique_id_fr;
+            let delProPic = {};
 
-                axios.post("./api/unfollow.php",
-                    unfollowVar,
-                    {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                    .then( res => {
-                        // console.log(res.data);
+            delProPic.pro_pic_id = pro_pic_id;
+            delProPic.unique_id_me = unique_id_me;
 
-                        if(res.data == 0){
-                            elm.parentElement.parentElement.remove();
-                        }
+            axios.post("./api/deleteProPic.php",
+                delProPic,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then( res => {
+                    // console.log(res.data);
 
+                    elm.parentElement.parentElement.remove();
+                    toastr.error('Profile Picture Deleted');
 
+                })
+                .catch( err => {
+                    console.log(err);
+                })
 
-
-
-                    })
-                    .catch( err => {
-                        console.log(err);
-                    })
-            }
-        </script>
-
-
-
-
-
-    </div>
-
-
-    <style>
-        a{
-            text-decoration: none;
+        } else {
+            return;
         }
-    </style>
+
+    }
+
+
+    const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
+
+        let unfollowVar = {};
+
+        unfollowVar.unique_id_me = unique_id_me;
+        unfollowVar.unique_id_fr = unique_id_fr;
+
+        axios.post("./api/unfollow.php",
+            unfollowVar,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then( res => {
+                // console.log(res.data);
+
+                if(res.data == 0){
+                    elm.parentElement.parentElement.remove();
+                }
+
+
+
+
+
+            })
+            .catch( err => {
+                console.log(err);
+            })
+    }
+</script>
+
+
+
+
+
+
+
+
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
 
 
 

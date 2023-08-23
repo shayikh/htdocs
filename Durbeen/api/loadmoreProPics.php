@@ -41,10 +41,10 @@ while ($data2 = mysqli_fetch_assoc($run2)){
             <img height="500px" src="./pro_pic/<?php echo $data2['pro_pic'] ?>" alt="">
         </td>
         <td class="text-center">
-            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Make Profile Picture</button>
+            <button onclick="makeProPic(<?php echo $unique_id_me ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
         </td>
         <td class="text-center">
-            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+            <button onclick="deleteProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
         </td>
     </tr>
 

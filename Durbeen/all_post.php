@@ -150,7 +150,6 @@ if ($number > 0){
 				// console.log(res.data);
 				if(res.data == 0){
 					toastr.error('You are at the End');
-					alert('You are at the End');
 				}else{
 					tbody.innerHTML = tbody.innerHTML + res.data;
 					page_no++;

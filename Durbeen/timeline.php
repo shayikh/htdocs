@@ -210,7 +210,6 @@ if ($number > 0){
 				// console.log(res.data);
 				if(res.data == 0){
 					toastr.error('You are at the End');
-					alert('You are at the End');
 				}else{
 					tbody.innerHTML = tbody.innerHTML + res.data;
 					page_no++;
@@ -642,38 +641,38 @@ const makeTr = (post, unique_id_me) => {
 	const deletePost = (post_id, unique_id_me, elm) => {
 		let confirm = window.confirm("Are You Sure?");
 
-    if (confirm) {
+        if (confirm) {
 
-			let delPost = {};
+                let delPost = {};
 
-			delPost.post_id = post_id;
-			delPost.unique_id_me = unique_id_me;
+                delPost.post_id = post_id;
+                delPost.unique_id_me = unique_id_me;
 
-			axios.post("./api/deletePost.php",
-			delPost,
-				{
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-				.then( res => {
-					// console.log(res.data);
+                axios.post("./api/deletePost.php",
+                delPost,
+                    {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then( res => {
+                        // console.log(res.data);
 
-					if(res.data == 1){
-						elm.parentElement.parentElement.remove();
-						toastr.error('Post Deleted');
-					}else{
-						toastr.error('This is not Your Post');
-					}
-					
-				})
-				.catch( err => {
-					console.log(err);
-				})
+                        if(res.data == 1){
+                            elm.parentElement.parentElement.remove();
+                            toastr.error('Post Deleted');
+                        }else{
+                            toastr.error('This is not Your Post');
+                        }
 
-		} else {
-        return;
-    }
+                    })
+                    .catch( err => {
+                        console.log(err);
+                    })
+
+            } else {
+            return;
+        }
 		
 	}
 
