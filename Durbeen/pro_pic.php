@@ -1,16 +1,13 @@
 <?php
 include './header.php';
 
-$unique_id_fr = $_GET['unique_id_fr'];
-
-
-$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-$run1 = mysqli_query($connection,$SQL1);
-$data1 = mysqli_fetch_assoc($run1);
-
-$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
-$runAbout = mysqli_query($connection,$SQLabout);
-$dataAbout = mysqli_fetch_assoc($runAbout);
+//$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
+//$run1 = mysqli_query($connection,$SQL1);
+//$data1 = mysqli_fetch_assoc($run1);
+//
+//$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
+//$runAbout = mysqli_query($connection,$SQLabout);
+//$dataAbout = mysqli_fetch_assoc($runAbout);
 
 
 
@@ -49,7 +46,6 @@ if ($number > 0){
 
         <script>
 
-
             let tbody = document.querySelector("#tbodyID");
 
 
@@ -73,7 +69,7 @@ if ($number > 0){
                 postData.page_no = page_no;
                 postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-                axios.post("./api/loadmoreFollowList.php",
+                axios.post("./api/loadmoreProPics.php",
                     postData,
                     {
                         headers: {

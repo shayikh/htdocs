@@ -7,14 +7,16 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 if (isset($_POST['updateBtn'])){
 	if($_FILES['image_khan_bahadur']['name']){
-		if ($dataMe['pro_pic'] != "red_comet.png"){
-			unlink('./pro_pic/'.$dataMe['pro_pic']);
-		}
 
 		$imageOldName = $_FILES['image_khan_bahadur']['name'];
 		$imageNewName = uniqid().'_'.date("Y-M-H-i-s").'_'.$imageOldName;
 		$image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
 		move_uploaded_file($image_tmp,'./pro_pic/'.$imageNewName);
+
+        $pro_pic =
+        $SQL1 = "INSERT INTO `$unique_id_me pro_pic`(`pro_pic`) VALUES ('$pro_pic')";
+        mysqli_query($durbeen_chats,$SQL1);
+
 
 	}else{
 		$imageNewName = $dataMe['pro_pic'];
@@ -295,8 +297,8 @@ if ($number > 0){
 			.then( res => {
 				console.log(res.data);
 				if(res.data == "0"){
-					toastr.error("This email is used by others. You can not use this email");
-					alert("This email is used by others. You can not use this email");
+					toastr.error("This email is used by someone. You can not use this email");
+					alert("This email is used by someone. You can not use this email");
 				}
 			})
 			.catch( err => {
