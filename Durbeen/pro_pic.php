@@ -130,15 +130,15 @@ if ($number > 0){
     }
 
 
-    const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
+    const makeProPic = (unique_id_me, unique_id_fr, elm) => {
 
-        let unfollowVar = {};
+        let delProPic = {};
 
-        unfollowVar.unique_id_me = unique_id_me;
-        unfollowVar.unique_id_fr = unique_id_fr;
+        delProPic.pro_pic_id = pro_pic_id;
+        delProPic.unique_id_me = unique_id_me;
 
-        axios.post("./api/unfollow.php",
-            unfollowVar,
+        axios.post("./api/deleteProPic.php",
+            delProPic,
             {
                 headers: {
                     "Content-Type": "application/json"
@@ -147,18 +147,14 @@ if ($number > 0){
             .then( res => {
                 // console.log(res.data);
 
-                if(res.data == 0){
-                    elm.parentElement.parentElement.remove();
-                }
-
-
-
-
+                elm.parentElement.parentElement.remove();
+                toastr.success('Profile Picture Changed');
 
             })
             .catch( err => {
                 console.log(err);
             })
+
     }
 </script>
 
