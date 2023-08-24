@@ -13,7 +13,6 @@ if (isset($_POST['updateBtn'])){
 		$image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
 		move_uploaded_file($image_tmp,'./pro_pic/'.$imageNewName);
 
-        $pro_pic =
         $SQL1 = "INSERT INTO `$unique_id_me pro_pic`(`pro_pic`) VALUES ('$pro_pic')";
         mysqli_query($durbeen_chats,$SQL1);
 

@@ -130,14 +130,14 @@ if ($number > 0){
     }
 
 
-    const makeProPic = (unique_id_me, unique_id_fr, elm) => {
+    const makeProPic = (pro_pic_id, unique_id_me, elm) => {
 
         let delProPic = {};
 
         delProPic.pro_pic_id = pro_pic_id;
         delProPic.unique_id_me = unique_id_me;
 
-        axios.post("./api/deleteProPic.php",
+        axios.post("./api/makeProPic.php",
             delProPic,
             {
                 headers: {
@@ -145,9 +145,12 @@ if ($number > 0){
                 }
             })
             .then( res => {
-                // console.log(res.data);
+                console.log(elm);
 
                 elm.parentElement.parentElement.remove();
+
+                tbody.innerHTML = res.data + tbody.innerHTML;
+
                 toastr.success('Profile Picture Changed');
 
             })
