@@ -43,7 +43,7 @@ if ($number > 0){
         </div>
 
         <div class="col-md-12 mt-4">
-            <a class="text-decoration-none" href="./pro_pic.php?type=no">
+            <a class="text-decoration-none" href="">
                 <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>">
             </a>
         </div>
@@ -161,6 +161,14 @@ if ($number > 0){
                     </td>
                     <td>
                         <a href="./follow_list.php?type" class="btn btn-success">Following List</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-red">Old Profile Pictures</h5>
+                    </td>
+                    <td>
+                        <a href="./pro_pic.php?type=no" class="btn btn-success">Old Profile Pictures</a>
                     </td>
                 </tr>
                 <tr>
