@@ -42,21 +42,9 @@ mysqli_query($durbeen_chats, $SQL4);
 
 $SQL3 = "SELECT * FROM `$unique_id_me pro_pic` ORDER BY `id` DESC LIMIT 1";
 $run3 = mysqli_query($durbeen_chats, $SQL3);
-$data3 = mysqli_fetch_assoc($run3)
+$latestData = mysqli_fetch_assoc($run3);
 
-?>
-
-    <tr>
-        <td class="text-center">
-            <img height="500px" src="./pro_pic/<?php echo $data3['pro_pic'] ?>" alt="">
-        </td>
-        <td class="text-center">
-            <button onclick="makeProPic(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
-        </td>
-        <td class="text-center">
-            <button onclick="deleteProPic(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
-        </td>
-    </tr>
+echo json_encode(["new_pro_pic"=>$new_pro_pic, "newProPic" => $latestData]);
 
 
 

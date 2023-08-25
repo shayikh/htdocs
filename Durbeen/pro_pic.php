@@ -48,6 +48,7 @@ if ($number > 0){
 <script>
 
     let tbody = document.querySelector("#tbodyID");
+    let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
 
 
 
@@ -145,11 +146,13 @@ if ($number > 0){
                 }
             })
             .then( res => {
-                // console.log(elm);
+                // console.log(res.data);
+
+                timeline_pro_pic.src = "./pro_pic/"+ res.data.new_pro_pic;
 
                 elm.parentElement.parentElement.remove();
 
-                tbody.innerHTML = res.data + tbody.innerHTML;
+                tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
 
                 toastr.success('Profile Picture Changed');
 
@@ -159,6 +162,23 @@ if ($number > 0){
             })
 
     }
+
+
+    const makeProPicTr = (newProPic) => {
+        let tr = `<tr>
+                    <td class="text-center">
+                        <img height="500px" src="./pro_pic/${newProPic.pro_pic}" alt="" id="pro_pic_${newProPic.id}">
+                    </td>
+                    <td class="text-center">
+                        <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
+                    </td>
+                    <td class="text-center">
+                        <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+                    </td>
+                </tr>`
+        return tr;
+    }
+
 </script>
 
 
