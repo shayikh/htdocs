@@ -145,7 +145,7 @@ if ($number > 0){
                 }
             })
             .then( res => {
-                console.log(elm);
+                // console.log(elm);
 
                 elm.parentElement.parentElement.remove();
 

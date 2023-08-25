@@ -90,7 +90,7 @@ if (!$_SESSION['visit']){
               <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
 
                 <img class="float-end" style="border-radius: 50%" width="50px" height="50px"
-                  src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                  src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="" id="timeline_pro_pic">
                 <h5 class="float-start" style="margin-top: 11px;margin-left: 15px;padding-right: 10px">
                   <?php echo $dataMe['name'] ?>
                 </h5>
