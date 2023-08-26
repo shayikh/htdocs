@@ -1,6 +1,10 @@
 
+.timeline_link {
+  transition: 0.5s;
+}
 .timeline_link:hover {
   color: #61c5ff;
+  transition: 0.5s;
 }
 
 

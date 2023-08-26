@@ -377,7 +377,7 @@ if ($number > 0){
 
 	const makeTr = (post, unique_id_me) => {
 		let tr = `<div class="statusp">
-						<div class="col-md-12 mt-2 mb-2">
+						<div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
 							<div class="card" style="width: 100%;border: none">
 
 								<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
