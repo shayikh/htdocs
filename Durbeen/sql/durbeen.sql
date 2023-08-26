@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2023 at 08:06 PM
+-- Generation Time: Aug 26, 2023 at 07:05 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -52,11 +52,11 @@ CREATE TABLE `about` (
 
 CREATE TABLE `comment` (
   `id` int(255) NOT NULL,
-  `unique_id` int(255) NOT NULL,
   `post_id` int(255) NOT NULL,
-  `unique_id_comn` int(255) NOT NULL,
-  `name_comn` varchar(1000) NOT NULL,
-  `pro_pic_comn` varchar(1000) NOT NULL,
+  `post_giver_id` int(255) NOT NULL,
+  `comn_giver_id` int(255) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `pro_pic` varchar(1000) NOT NULL,
   `time` varchar(1000) NOT NULL,
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
