@@ -58,7 +58,7 @@ if ($number > 0){
             postData.page_no = page_no;
             postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("./api/loadmoreFollowList.php",
+            axios.post("./api/facelist/loadmoreFollowList.php",
                 postData,
                 {
                     headers: {
@@ -90,7 +90,7 @@ if ($number > 0){
 			unfollowVar.unique_id_me = unique_id_me;
 			unfollowVar.unique_id_fr = unique_id_fr;
 
-			axios.post("./api/unfollow.php",
+			axios.post("./api/facelist/unfollow.php",
 				unfollowVar,
 				{
 					headers: {

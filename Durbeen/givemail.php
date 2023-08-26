@@ -113,7 +113,7 @@ if ($_SESSION['unique_id_me']){
     var formdataone = new FormData(formone);
 
     $.ajax({
-      url: "./api/forgotPass.php",
+      url: "./api/forgot_pass/forgotPass.php",
       type: "POST",
       data: formdataone,
       contentType: false,
@@ -195,7 +195,7 @@ if ($_SESSION['unique_id_me']){
       var formdatatwo = new FormData(formtwo);
 
       $.ajax({
-        url: "./api/findPass.php",
+        url: "./api/forgot_pass/findPass.php",
         type: "POST",
         data: formdatatwo,
         contentType: false,

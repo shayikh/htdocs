@@ -286,7 +286,7 @@ if ($number > 0){
     product.email = email.value;
     product.unique_id_me = unique_id_me.value;
 
-		axios.post("./api/unique_email.php",
+		axios.post("./api/about_update/unique_email.php",
 			product,
 			{
 				headers: {

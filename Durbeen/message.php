@@ -335,7 +335,7 @@ if ($number > 0){
 		msgData.unique_id_me = <?php echo $unique_id_me ?>;
 		msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-		axios.post("./api/loadmoreMsg.php",
+		axios.post("./api/message/loadmoreMsg.php",
 		msgData,
 			{
 				headers: {
@@ -375,7 +375,7 @@ if ($number > 0){
 		var formdata = new FormData(form);
 
 		$.ajax({
-			url: "./api/messageAdd.php",
+			url: "./api/message/messageAdd.php",
 			type: "POST",
 			data: formdata,
 			contentType: false,
@@ -438,7 +438,7 @@ const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
 	message.unique_id_me = unique_id_me;
 	message.unique_id_fr = unique_id_fr;
 
-	axios.post("./api/unsend.php",
+	axios.post("./api/message/unsend.php",
 		message,
 		{
 			headers: {
@@ -480,7 +480,7 @@ const deleteMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
 	message.unique_id_me = unique_id_me;
 	message.unique_id_fr = unique_id_fr;
 
-	axios.post("./api/deleteMsg.php",
+	axios.post("./api/message/deleteMsg.php",
 		message,
 		{
 			headers: {

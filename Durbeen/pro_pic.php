@@ -1,20 +1,6 @@
 <?php
 include './header.php';
 
-//$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
-//$run1 = mysqli_query($connection,$SQL1);
-//$data1 = mysqli_fetch_assoc($run1);
-//
-//$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
-//$runAbout = mysqli_query($connection,$SQLabout);
-//$dataAbout = mysqli_fetch_assoc($runAbout);
-
-
-
-
-
-
-
 //message notification
 
 $SQLnotify="SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
@@ -71,7 +57,7 @@ if ($number > 0){
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("./api/loadmoreProPics.php",
+        axios.post("./api/pro_pic/loadmoreProPics.php",
             postData,
             {
                 headers: {
@@ -106,7 +92,7 @@ if ($number > 0){
             delProPic.pro_pic_id = pro_pic_id;
             delProPic.unique_id_me = unique_id_me;
 
-            axios.post("./api/deleteProPic.php",
+            axios.post("./api/pro_pic/deleteProPic.php",
                 delProPic,
                 {
                     headers: {
@@ -138,7 +124,7 @@ if ($number > 0){
         delProPic.pro_pic_id = pro_pic_id;
         delProPic.unique_id_me = unique_id_me;
 
-        axios.post("./api/makeProPic.php",
+        axios.post("./api/pro_pic/makeProPic.php",
             delProPic,
             {
                 headers: {

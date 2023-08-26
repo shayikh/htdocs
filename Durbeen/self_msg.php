@@ -148,7 +148,7 @@ if ($number > 0){
 		selfMsgData.page_no = page_no;
 		selfMsgData.unique_id_me = <?php echo $unique_id_me ?>;
 
-		axios.post("./api/loadmoreSelfMsg.php",
+		axios.post("./api/self_msg/loadmoreSelfMsg.php",
 		selfMsgData,
 			{
 				headers: {
@@ -188,7 +188,7 @@ if ($number > 0){
 		var formdata = new FormData(form);
 
 		$.ajax({
-			url: "./api/self_msg_add.php",
+			url: "./api/self_msg/self_msg_add.php",
 			type: "POST",
 			data: formdata,
 			contentType: false,
@@ -245,7 +245,7 @@ const unsendMessage = (id_lll, unique_id_me, elm_ppp) => {
 	message.id = id_lll;
 	message.unique_id_me = unique_id_me;
 
-	axios.post("./api/delete_self_msg.php",
+	axios.post("./api/self_msg/delete_self_msg.php",
 		message,
 		{
 			headers: {

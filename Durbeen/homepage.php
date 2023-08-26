@@ -142,7 +142,7 @@ if ($number > 0){
 		postData.page_no = page_no;
 		postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-		axios.post("./api/loadmoreHomePage.php",
+		axios.post("./api/post/loadmoreHomePage.php",
 		postData,
 			{
 				headers: {
@@ -180,7 +180,7 @@ if ($number > 0){
 		delComment.comment_id = comment_id;
 		delComment.unique_id_me = unique_id_me;
 
-		axios.post("./api/deleteComment.php",
+		axios.post("./api/comment/deleteComment.php",
 		delComment,
 			{
 				headers: {
@@ -217,7 +217,7 @@ if ($number > 0){
 
 		showComment.post_id = post_id;
 
-		axios.post("./api/showComments.php",
+		axios.post("./api/comment/showComments.php",
 			showComment,
 			{
 				headers: {
@@ -294,7 +294,7 @@ if ($number > 0){
 			commentp.comn_giver_id = comn_giver_id;
 
 
-			axios.post("./api/comment.php",
+			axios.post("./api/comment/comment.php",
 				commentp,
 				{
 					headers: {
@@ -334,7 +334,7 @@ if ($number > 0){
 		var formdata = new FormData(form);
 
 		$.ajax({
-			url: "./api/postAdd.php",
+			url: "./api/post/postAdd.php",
 			type: "POST",
 			data: formdata,
 			contentType: false,
@@ -425,7 +425,7 @@ if ($number > 0){
 		likep.post_id = post_id;
 		likep.unique_id_me = unique_id_me;
 
-		axios.post("./api/like_post.php",
+		axios.post("./api/post/like_post.php",
 			likep,
 			{
 				headers: {
@@ -461,7 +461,7 @@ if ($number > 0){
 		dislikep.post_id = post_id;
 		dislikep.unique_id_me = unique_id_me;
 
-		axios.post("./api/dislike_post.php",
+		axios.post("./api/post/dislike_post.php",
 		dislikep,
 			{
 				headers: {
@@ -495,7 +495,7 @@ if ($number > 0){
 		dislikep.post_id = post_id;
 		dislikep.unique_id_me = unique_id_me;
 
-		axios.post("./api/share.php",
+		axios.post("./api/post/share.php",
 		dislikep,
 			{
 				headers: {
