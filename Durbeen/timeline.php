@@ -722,11 +722,7 @@ const makeTr = (post, unique_id_me) => {
 
 
 
-<style>
-a{
-	text-decoration: none;
-}
-</style>
+
 
 <?php
 include './footer.php'

@@ -122,11 +122,7 @@ if ($number > 0){
 </div>
 
 
-<style>
-a{
-	text-decoration: none;
-}
-</style>
+
 
 
 

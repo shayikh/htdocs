@@ -3,13 +3,9 @@ include './header.php';
 
 
 
-
 if ($_SESSION['unique_id_me'] != 1){
   echo "<script>window.location = './homepage.php?type=no'</script>";
 }
-
-
-
 
 
 ?>
@@ -51,7 +47,7 @@ if ($_SESSION['unique_id_me'] != 1){
   <div class="row">
     <div class="col-lg-12">
       <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
-        <tr>
+        <tr class="text-center">
           <th>
             <h5>unique_id</h5>
           </th>
@@ -71,23 +67,25 @@ if ($_SESSION['unique_id_me'] != 1){
 
 
 
-        <tr>
+        <tr class="text-center">
           <td>
-            <h5 id="unique_id"></h5>
+            <h5 id="unique_id" style="margin-top: 52px"></h5>
           </td>
+
           <td>
-            <img width="120px" id="pro_pic" src="" alt="">
+            <img height="135px" id="pro_pic" src="" alt="">
           </td>
+
           <td>
-            <h5 id="name"></h5>
+            <h5 id="name" style="margin-top: 52px"></h5>
           </td>
-          </td>
+
           <td>
-            <h5 id="emailfind"></h5>
+            <h5 id="emailfind" style="margin-top: 52px"></h5>
           </td>
-          </td>
+
           <td>
-            <h5 id="password"></h5>
+            <h5 id="password" style="margin-top: 52px"></h5>
           </td>
         </tr>
 

@@ -174,13 +174,6 @@ if ($number > 0){
 
 
 
-<style>
-    a{
-        text-decoration: none;
-    }
-</style>
-
-
 
 <?php
 include './footer.php'

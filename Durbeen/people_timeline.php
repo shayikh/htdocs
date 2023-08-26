@@ -54,7 +54,7 @@ if ($number > 0){
     <div class="row">
 
         <div class="col-md-12">
-            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>">
+            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="">
         </div>
 
         <div class="col-md-12 mt-4">

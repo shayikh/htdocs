@@ -47,7 +47,7 @@ if ($number > 0){
         </div>
 
         <div class="col-md-12 mt-4">
-            <a class="text-decoration-none" href="./pro_pic.php?type=no&unique_id_fr=<?php echo $data1['unique_id']?>">
+            <a class="text-decoration-none" href="">
                 <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>">
             </a>
         </div>
