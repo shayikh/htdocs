@@ -20,18 +20,15 @@ $data1 = mysqli_fetch_assoc($run1);
 $post = $data1['post'];
 $image = $data1['image'];
 
+if ($image != ""){
+    $imageNewName = uniqid().'_'.date("Y-M-H-i-s").".jpg";
+    $oldPath = "../../post_image/".$image;
+    $newPath = "../../post_image/".$imageNewName;
 
-
-
-$imageNewName = uniqid().'_'.date("Y-M-H-i-s").".jpg";
-$oldPath = "../../post_image/".$image;
-$newPath = "../../post_image/".$imageNewName;
-
-$copied = copy($oldPath , $newPath);
-
-
-
-
+    $copied = copy($oldPath , $newPath);
+}else{
+    $imageNewName = "";
+}
 
 
 

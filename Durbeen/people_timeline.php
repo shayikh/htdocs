@@ -470,13 +470,13 @@ if ($number > 0){
 
     
 	const sharefn = (post_id, unique_id_me) => {
-		let dislikep = {};
+		let sharep = {};
 
-		dislikep.post_id = post_id;
-		dislikep.unique_id_me = unique_id_me;
+        sharep.post_id = post_id;
+        sharep.unique_id_me = unique_id_me;
 
 		axios.post("./api/post/share.php",
-		dislikep,
+            sharep,
 			{
 				headers: {
 					"Content-Type": "application/json"
