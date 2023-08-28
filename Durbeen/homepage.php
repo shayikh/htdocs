@@ -377,37 +377,37 @@ if ($number > 0){
 
 	const makeTr = (post, unique_id_me) => {
 		let tr = `<div class="statusp">
-						<div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
-							<div class="card" style="width: 100%;border: none">
+                    <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
+                        <div class="card" style="width: 100%;border: none">
 
-								<p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-									<a href="people_timeline.php?type=no&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-										<img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-										<b><?php echo $dataMe['name'] ?></b>
-									</a>
-								</p>
-								<img width="100%" src="./post_image/${post.image}" alt="">
-								<div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
-									<h6 class="card-title text-white">${post.time}</h6>
-									<p class="card-text text-white">${post.post}</p>
-								</div>
-								
-							</div>
+                            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+                                <a href="people_timeline.php?type=no&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <b><?php echo $dataMe['name'] ?></b>
+                                </a>
+                            </p>
+                            <img width="100%" src="./post_image/${post.image}" alt="">
+                            <div class="card-body" style="background-color: #2C2C2C;border-radius: 0 0 3px 3px">
+                                <h6 class="card-title text-white">${post.time}</h6>
+                                <p class="card-text text-white">${post.post}</p>
+                            </div>
 
-							<p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-							<p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-							<p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-							<p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-							<p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
-							
-							<a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
-							<i class="fas fa-share"></i>
-							</a>
-							<button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
-							<button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-							<input type="text" class="ms-5 mt-2">
-						</div>
-					</div>`
+                        </div>
+
+                        <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
+                        <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
+                        <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
+                        <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
+                        <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
+
+                        <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+                        <i class="fas fa-share"></i>
+                        </a>
+                        <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+                        <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+                        <input type="text" class="ms-5 mt-2">
+                    </div>
+                </div>`
 		return tr;
 	}
 

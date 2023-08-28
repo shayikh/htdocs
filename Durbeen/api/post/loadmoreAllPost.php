@@ -68,9 +68,8 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 ?>
 
 <div class="statusp">
-    <div class="col-md-12 mt-2 mb-2">
+    <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
         <div class="card" style="width: 100%;border: none">
-
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                 <a href="people_timeline.php?type=no&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                     <img style="border-radius: 50%" width="70px" height="70px"
@@ -83,7 +82,6 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                 <h6 class="card-title text-white"><?php echo $data1['time']?></h6>
                 <p class="card-text text-white"><?php echo $data1['post']?></p>
             </div>
-            
         </div>
 
         <p class="float-start mt-2 me-3" style="color: <?php $countlike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="likefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Like</p>
@@ -100,6 +98,8 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <input type="text" class="ms-5 mt-2">
     </div>
 </div>
+
+
 
 <?php } ?>
 
