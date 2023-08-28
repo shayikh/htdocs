@@ -137,7 +137,7 @@ if (isset($_POST['login'])){
 		<div class="row">
 			<div class="col-md-12">
 				<div style="margin-top: 300px;text-align: center;">
-					<h2 style="color: black">This Website is Created by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a></h2>
+					<h2 style="color: black">This Website is Designed by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a> and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a></h2>
 				</div>
 			</div>
 		</div>

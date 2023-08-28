@@ -20,8 +20,10 @@ $data1 = mysqli_fetch_assoc($run1);
 $post = $data1['post'];
 $image = $data1['image'];
 
+
 if ($image != ""){
-    $imageNewName = uniqid().'_'.date("Y-M-H-i-s").".jpg";
+    $extension = pathinfo($image, PATHINFO_EXTENSION);
+    $imageNewName = uniqid().'_'.date("Y-M-H-i-s").$extension;
     $oldPath = "../../post_image/".$image;
     $newPath = "../../post_image/".$imageNewName;
 
