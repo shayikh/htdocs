@@ -23,7 +23,7 @@ $image = $data1['image'];
 
 if ($image != ""){
     $extension = pathinfo($image, PATHINFO_EXTENSION);
-    $imageNewName = uniqid().'_'.date("Y-M-H-i-s").$extension;
+    $imageNewName = uniqid().'_'.date("Y-M-H-i-s").'.'.$extension;
     $oldPath = "../../post_image/".$image;
     $newPath = "../../post_image/".$imageNewName;
 
