@@ -22,17 +22,17 @@ if (isset($_POST['login'])){
 
 	$SQL1 = "SELECT * FROM `registration` WHERE `email`='$EmailMe' AND `password`='$password'";
 	$run1 = mysqli_query($connection,$SQL1);
+    $dataMe = mysqli_fetch_assoc($run1);
 	$count = mysqli_num_rows($run1);
 
 
 	if ($count > 0){
-		$SQL2 = "SELECT * FROM `registration` WHERE `email`='$EmailMe' AND `password`='$password'";
-		$run2 = mysqli_query($connection,$SQL2);
-		$data2 = mysqli_fetch_assoc($run2);
-		$unique_id_me = $data2['unique_id'];
+		$unique_id_me = $dataMe['unique_id'];
 		$_SESSION['unique_id_me'] = $unique_id_me;
 
-		$SQL3 = "UPDATE `registration` SET `active`='1' WHERE `unique_id`='$unique_id_me'";
+
+        $visit = $dataMe['visit'] + 1;
+		$SQL3 = "UPDATE `registration` SET `active`='1',`visit`='$visit' WHERE `unique_id`='$unique_id_me'";
 		mysqli_query($connection,$SQL3);
 		
 		header('location:./homepage.php?type=no&login');

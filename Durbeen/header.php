@@ -19,18 +19,6 @@ $EmailMe = $dataMe['email'];
 $pro_pic = $dataMe['pro_pic'];
 
 
-// visiting
-if (!$_SESSION['visit']){
-  $_SESSION['visit'] = 'visit';
-
-  $visit = $dataMe['visit'] + 1;
-
-  $SQLvisit = "UPDATE `registration` SET `visit`='$visit' WHERE `unique_id`='$unique_id_me'";
-  mysqli_query($connection,$SQLvisit);
-}
-
-
-
 
 
 
