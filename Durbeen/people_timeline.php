@@ -101,11 +101,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 </div>
 
-<style>
-    a {
-        text-decoration: none;
-    }
-</style>
+
 
 <!-- Comment Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>

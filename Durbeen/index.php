@@ -95,10 +95,12 @@ if (isset($_GET['out'])) {
                 <div class="division">
                     <form class="margin-padding" method="post" action="" id="formID">
                         <div class="form-group margin-padding-1">
-                            <input required name="email" id="" type="email" class="form-control form-control-lg" placeholder="Email address">
+                            <input required name="email" id="" type="email" class="form-control form-control-lg"
+                                   placeholder="Email address">
                         </div>
                         <div class="form-group margin-padding-2 pwdbody">
-                            <input required name="password" id="" type="password" class="pwd form-control form-control-lg" placeholder="Password">
+                            <input required name="password" id="" type="password"
+                                   class="pwd form-control form-control-lg" placeholder="Password">
                             <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
                         </div>
 
@@ -109,7 +111,8 @@ if (isset($_GET['out'])) {
                             <b>
                                 <p class="text-danger text-center d-inline"><?php echo $msg; ?></p>
                             </b>
-                            <p class="forgotten-account-link text-center d-inline"><a href=""><span class="text-white">.</span></a></p>
+                            <p class="forgotten-account-link text-center d-inline"><a href=""><span
+                                            class="text-white">.</span></a></p>
 
                         </div>
 
@@ -131,8 +134,16 @@ if (isset($_GET['out'])) {
         <div class="row">
             <div class="col-md-12">
                 <div style="margin-top: 250px;text-align: center;">
-                    <h4 style="color: black">Press <img width="50px" src="./img/ctrl.png" alt=""><img width="40px" src="./img/minus.png" alt=""><img width="40px" src="./img/minus.png" alt=""> to get best design if you use 125% display</h4>
-                    <h4 style="color: black">This Website is Designed by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a> and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a></h4>
+                    <h4 style="color: black">Press <img width="50px" src="./img/ctrl.png" alt=""><img width="40px"
+                                                                                                      src="./img/minus.png"
+                                                                                                      alt=""><img
+                                width="40px" src="./img/minus.png" alt=""> to get best design if you use 125% display
+                    </h4>
+                    <h4 style="color: black">This Website is Designed by <a style="color: blue"
+                                                                            href="https://www.facebook.com/tasan.zaman"
+                                                                            target="_blank">Ahsan Zaman</a> and Backend
+                        Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md
+                            Mehrab Alam Shayikh</a></h4>
                 </div>
             </div>
         </div>
@@ -153,7 +164,7 @@ if (isset($_GET['out'])) {
                         "Content-Type": "application/json"
                     }
                 })
-                .then( res => {
+                .then(res => {
 
                     let json = res.data;
 
@@ -166,7 +177,7 @@ if (isset($_GET['out'])) {
 
 
                 })
-                .catch( err => {
+                .catch(err => {
                     console.log(err);
                 })
         }
