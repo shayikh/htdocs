@@ -46,7 +46,7 @@ include './header.php';
 							<textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID" rows="5"
 								class="form-control mb-2" type="text"></textarea>
 
-							<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
+							<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
 							<p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p>
 							<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">

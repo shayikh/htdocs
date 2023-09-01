@@ -140,13 +140,13 @@ if (isset($_POST['updateBtn'])){
 			<div class="col-md-4">
 				<div class="form-group">
 					<label class="mt-4">Profile Picture( a<span style='font-size:13px;'>&#10006;</span>a size )</label>
-					<input style="background-color: #808080;color: #fff" name="image_khan_bahadur" class="form-control" type="file">
+					<input style="background-color: #808080;color: #fff" name="image_khan_bahadur" class="form-control" type="file" accept="image/png, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
 					<label class="mt-4">Cover Photo( 1280px <span style='font-size:13px;'>&#10006;</span> 574px )</label>
-					<input style="background-color: #808080;color: #fff" name="image_khan_cover" class="form-control" type="file">
+					<input style="background-color: #808080;color: #fff" name="image_khan_cover" class="form-control" type="file" accept="image/png, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 				</div>
 			</div>
 			<div class="col-md-4">

@@ -289,7 +289,7 @@ if ($number > 0){
 					<textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5"
 						class="form-control mb-2" type="text"></textarea>
 
-					<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file">
+					<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
 					<input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm btn-success" type="submit" aria-label="Close">
 				</form>
