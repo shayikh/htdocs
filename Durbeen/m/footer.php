@@ -2,9 +2,9 @@
 
 
 
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/all.min.js"></script>
-<script src="./js/alertify.min.js"></script>
+<script src=".././js/bootstrap.bundle.min.js"></script>
+<script src=".././js/all.min.js"></script>
+<script src=".././js/alertify.min.js"></script>
 
 <script>
     let pwd = document.querySelector('.pwd');
@@ -35,12 +35,14 @@
         // let width = window.innerWidth;
         let width = window.screen.width;
 
-        if (width < 500){
-            window.location = "./m/";
+        if (width >= 500){
+            window.location = "../";
         }
     }
 
+
 </script>
+
 
 </body>
 
