@@ -16,7 +16,7 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) {
     ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm red">You
+    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
         Have
         <?php echo $number ?> New Messages</a>
 
@@ -42,7 +42,7 @@ if ($number > 0) {
 
         <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
              src="./pro_pic/<?php echo $pro_pic_fr ?>" alt="">
-        <a href="message.php?type=no&unique_id_fr=<?php echo $unique_id_fr ?>" class="text-decoration-none"><p
+        <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="text-decoration-none"><p
                     style="font-size: 18px;padding: 1px 15px;<?php $data1['seen'] == 0 ? printf("background-color: #377655;padding: 10px 15px;") : "" ?>">
                 <span class="text-white"><?php $data1['seen'] == 1 ? printf("(Seen) ") : printf("(Unseen) ") ?></span><span
                         class="text-white"><?php echo $friend_name ?></span><span

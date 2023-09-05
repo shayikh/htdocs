@@ -8,7 +8,7 @@ $runtest = mysqli_query($connection, $SQLtest);
 $countTest = mysqli_num_rows($runtest);
 
 if ($countTest == 0) {
-    echo "<script>window.location = 'homepage.php?type=no'</script>";
+    echo "<script>window.location = 'homepage.php?type'</script>";
 } else {
 
 
@@ -146,7 +146,7 @@ if ($countTest == 0) {
             mysqli_query($con_notification, $SQL16);
 
 
-            echo "<script>window.location = 'homepage.php?type=no'</script>";
+            echo "<script>window.location = 'homepage.php?type'</script>";
         }
     }
 
@@ -166,7 +166,7 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) {
     ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm red">You
+    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
         Have
         <?php echo $number ?> New Messages From Others</a>
 
@@ -175,11 +175,11 @@ if ($number > 0) {
 
     <!-- main page -->
     <a target="_self" style="position: fixed;left:13%;top:142px;z-index:20;font-weight: 600;"
-       href="message.php?type=no&unique_id_fr=<?php echo $unique_id_fr ?>"
+       href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
        class="btn btn-lg btn-success"><?php echo $friendName ?></a>
 
 
-    <form method="post" action="message.php?type=no&unique_id_fr=<?php echo $unique_id_fr ?>"
+    <form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
           style="position: fixed;right:10%;top:142px;z-index:20;font-weight: 600;">
 
         <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con"

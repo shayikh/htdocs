@@ -66,7 +66,7 @@ $pro_pic = $dataMe['pro_pic'];
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="./homepage.php?type=no">
+                    <a href="./homepage.php?type">
                         <img title="News Feed" width="90px" height="70px" src="./img/brand_logo.png" alt="Logo">
                     </a>
 
@@ -149,7 +149,7 @@ $pro_pic = $dataMe['pro_pic'];
 
             <li style="margin-bottom: 5px">
                 <a class="text-decoration-none"
-                   href="message.php?type=no&unique_id_fr=<?php echo $data21['unique_id'] ?>">
+                   href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
                     <div class="hover_chatbar">
 
                         <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px"

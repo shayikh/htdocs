@@ -36,7 +36,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             <div class="col-md-12 mt-4">
                 <a class="text-decoration-none"
-                   href="./pro_pic.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>">
+                   href="./pro_pic.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>">
                     <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px"
                          src="./pro_pic/<?php echo $data1['pro_pic'] ?>">
                 </a>
@@ -58,10 +58,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
                     </button>
 
-                    <a href="./about_people.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                    <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
                        class="btn btn-success float-end ms-2">Profile</a>
 
-                    <a href="./message.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                    <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
                        class="btn btn-success float-end">Chat by Messenger</a>
 
                 </div>
@@ -86,7 +86,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     <!-- Comment Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -278,13 +278,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         const makeCommentTr = (comment) => {
             let tr = `<tr>
 						<td>
-							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
 								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
 						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
 						</td>
 
 						<td class="text-center text-dark">${comment.time}</td>

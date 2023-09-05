@@ -49,10 +49,10 @@ $data1 = mysqli_fetch_assoc($run1);
             <div class="row">
 
                 <div class="col-md-12">
-                    <a href="./people_timeline.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                    <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
                        class="btn btn-success float-end ms-2">Timeline</a>
 
-                    <a href="./message.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                    <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
                        class="btn btn-success float-end">Chat by Messenger</a>
                 </div>
 
@@ -143,7 +143,7 @@ $data1 = mysqli_fetch_assoc($run1);
                         </td>
                         <td>
                             <h5 class="one d-none">
-                                http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $data1['unique_id'] ?></h5>
+                                http://durbeen.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h5>
                             <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                         </td>
                     </tr>

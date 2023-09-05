@@ -3,7 +3,7 @@ include './header.php';
 
 
 if ($_SESSION['unique_id_me'] != 1) {
-    echo "<script>window.location = './homepage.php?type=no'</script>";
+    echo "<script>window.location = './homepage.php?type'</script>";
 } else {
     $SQL1 = "SELECT * FROM `registration`";
     $run1 = mysqli_query($connection, $SQL1);

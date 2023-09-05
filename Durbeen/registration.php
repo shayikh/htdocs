@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['unique_id_me']) {
-    header('location:./homepage.php?type=no');
+    header('location:./homepage.php?type');
 }
 
 include './connection.php';

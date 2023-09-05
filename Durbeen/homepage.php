@@ -18,7 +18,7 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) {
     ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm red">You
+    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
         Have
         <?php echo $number ?> New Messages</a>
 
@@ -71,7 +71,7 @@ if ($number > 0) {
         </div>
 
         <!-- Comment Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
              aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -233,13 +233,13 @@ if ($number > 0) {
             const makeCommentTr = (comment) => {
                 let tr = `<tr>
 						<td>
-							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
 								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 						
 						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
 						</td>
 						
 						<td class="text-center text-dark">${comment.time}</td>
@@ -345,7 +345,7 @@ if ($number > 0) {
                         <div class="card" style="width: 100%;border: none">
 
                             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                <a href="people_timeline.php?type=no&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
+                                <a href="people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
                                     <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </a>
@@ -367,7 +367,7 @@ if ($number > 0) {
                         <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                         <i class="fas fa-share"></i>
                         </a>
-                        <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+                        <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                         <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                         <input type="text" class="ms-5 mt-2">
                     </div>

@@ -41,7 +41,7 @@ if (isset($_GET['abupdate'])) {
 
         <div class="row">
             <div class="col-md-12">
-                <a href="./about_update.php?type=no" class="btn btn-success float-end">Edit Profile</a>
+                <a href="./about_update.php?type" class="btn btn-success float-end">Edit Profile</a>
             </div>
         </div>
 
@@ -135,7 +135,7 @@ if (isset($_GET['abupdate'])) {
                         </td>
                         <td>
                             <h5 class="one d-none">
-                                http://durbeen.unaux.com/people_timeline.php?type=no&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h5>
+                                http://durbeen.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h5>
                             <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                         </td>
                     </tr>
@@ -152,7 +152,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Old Profile Pictures</h5>
                         </td>
                         <td>
-                            <a href="./pro_pic.php?type=no" class="btn btn-success">Old Profile Pictures</a>
+                            <a href="./pro_pic.php?type" class="btn btn-success">Old Profile Pictures</a>
                         </td>
                     </tr>
                     <tr>
@@ -173,7 +173,7 @@ if (isset($_GET['abupdate'])) {
             <div class="col-md-3"></div>
 
             <div class="col-md-6 mt-4">
-                <a href="./del_acco.php?type=no" class="btn btn-dark form-control">&#9762; ACCOUNT DELETION &#9785;</a>
+                <a href="./del_acco.php?type" class="btn btn-dark form-control">&#9762; ACCOUNT DELETION &#9785;</a>
             </div>
 
             <div class="col-md-3"></div>

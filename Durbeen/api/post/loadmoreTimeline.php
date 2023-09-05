@@ -97,7 +97,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"
                 class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
 
-        <button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
             <i class="fas fa-edit"></i>
         </button>
         <!-- comment button -->
@@ -105,7 +105,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             <i class="fas fa-share"></i>
         </button>
 
-        <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+        <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
         <input type="text" class="ms-5 mt-2">
     </div>

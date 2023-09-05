@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['unique_id_me']) {
-    header('location:./homepage.php?type=no');
+    header('location:./homepage.php?type');
 }
 
 include './connection.php';
@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
         $SQL3 = "UPDATE `registration` SET `active`='1',`visit`='$visit' WHERE `unique_id`='$unique_id_me'";
         mysqli_query($connection, $SQL3);
 
-        header('location:./homepage.php?type=no&login');
+        header('location:./homepage.php?type&login');
     } else {
         $SQL3 = "SELECT * FROM `registration` WHERE `email`='$EmailMe'";
         $run3 = mysqli_query($connection, $SQL3);
@@ -122,7 +122,7 @@ if (isset($_GET['out'])) {
                         <div style="margin-top:35px;text-align: center">
                             <a style="width: 200px;height: 48px" class="anchor button-3 form-control"
                                href="./registration.php"><b>Create New Account</b></a>
-                            <a href="./givemail.php" class="text-decoration-none text-primary">Forgot Password?</a>
+                            <a href="./forgotPass.php" class="text-decoration-none text-primary">Forgot Password?</a>
                         </div>
 
 

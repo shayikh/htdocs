@@ -83,7 +83,7 @@ if($countF == 1){
     <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
         <div class="card" style="width: 100%;border: none">
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                <a href="./people_timeline.php?type=no&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
+                <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                     <img style="border-radius: 50%" width="70px" height="70px"
                         src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
                     <b><?php echo $data2['name']?></b>
@@ -105,7 +105,7 @@ if($countF == 1){
         <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
             <i class="fas fa-share"></i>
         </a>
-        <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+        <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
         <input type="text" class="ms-5 mt-2">
     </div>

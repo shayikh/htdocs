@@ -129,7 +129,7 @@ if (isset($_POST['delete'])) {
                 regain those data, even <span style="font-weight: 500;font-family: mahfuj;"
                                               class="text-red">দূরবীন</span> can not able to repair this. be careful
                 before you continue.</h4>
-            <!-- <form method="post" action="./del_acco.php?type=no"><input onclick="return confirm('Are You Sure You Want to Delete Your Account?')" name="delete" class="btn red mt-5 form-control" type="submit" value="&#9762; DELETE ACCOUNT PERMANENTLY &#9785;"></form> -->
+            <!-- <form method="post" action="./del_acco.php?type"><input onclick="return confirm('Are You Sure You Want to Delete Your Account?')" name="delete" class="btn red mt-5 form-control" type="submit" value="&#9762; DELETE ACCOUNT PERMANENTLY &#9785;"></form> -->
         </div>
     </div>
 

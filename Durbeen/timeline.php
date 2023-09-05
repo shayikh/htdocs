@@ -74,7 +74,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             </div>
         </div>
         <!-- Comment Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
              aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -110,7 +110,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
         <!-- Edit Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="postEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -355,13 +355,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         const makeCommentTr = (comment) => {
             let tr = `<tr>
 						<td>
-							<a href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
 								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
 						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type=no&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
 						</td>
 
 						<td class="text-center text-dark">${comment.time}</td>
@@ -466,10 +466,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     <div class="card" style="width: 100%;border: none">
 
                         <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                            <a href="people_timeline.php?type=no&amp;unique_id_fr=1">
-                                <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-                                <b><?php echo $dataMe['name'] ?></b>
-                            </a>
+                            <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                            <b><?php echo $dataMe['name'] ?></b>
                         </p>
                         <img width="100%" src="./post_image/${post.image}" alt="">
                         <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
@@ -488,13 +486,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     <button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm btn-danger float-end mb-2">
                         <i class="fas fa-trash-alt"></i>
                     </button>
-                    <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
                         <i class="fas fa-edit"></i>
                     </button>
                     <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                         <i class="fas fa-share"></i>
                     </a>
-                    <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+                    <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                     <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                     <input type="text" class="ms-5 mt-2">
 
@@ -509,10 +507,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <div class="card" style="width: 100%;border: none">
 
                                 <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                    <a href="people_timeline.php?type=no&amp;unique_id_fr=1">
-                                        <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-                                        <b><?php echo $dataMe['name'] ?></b>
-                                    </a>
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <b><?php echo $dataMe['name'] ?></b>
                                 </p>
                                 <img width="100%" src="./post_image/${post.image}" alt="">
                                 <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
@@ -531,13 +527,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm btn-danger float-end mb-2">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
-                            <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
                                 <i class="fas fa-edit"></i>
                             </button>
                             <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                                 <i class="fas fa-share"></i>
                             </a>
-                            <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comments"></i></button>
+                            <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                             <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                             <input type="text" class="ms-5 mt-2">
 
