@@ -13,44 +13,9 @@ mysqli_query($connection_message, $SQLcreateMe);
 //table creation end
 
 
-if (isset($_POST['send'])) {
-    $message = $_POST['message'];
-    date_default_timezone_set("Asia/Dhaka");
-    $time = date_default_timezone_get() . ' time: ' . date("d-M-Y-D-H:i:s");
-
-    if ($_FILES['image_khan_bahadur']['name']) {
-        $imageOldName = $_FILES['image_khan_bahadur']['name'];
-        $imageNewName = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
-        $image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
-        move_uploaded_file($image_tmp, './chat_image/' . $imageNewName);
-    } else {
-        $imageNewName = '';
-    }
-
-    $SQL2 = "INSERT INTO `$unique_id_me to $unique_id_me`(`message`, `image`, `time`) VALUES ('$message','$imageNewName','$time')";
-    mysqli_query($connection_message, $SQL2);
-
-    // echo "<script>window.location = 'message.php?unique_id_fr='.$unique_id_fr.'&#last'</script>";
-}
-
-
 ?>
 
 
-    <!-- message notification -->
-<?php
-$SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
-$runnotify = mysqli_query($con_notification, $SQLnotify);
-
-$number = mysqli_num_rows($runnotify);
-
-if ($number > 0) {
-    ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
-        Have
-        <?php echo $number ?> New Messages</a>
-
-<?php } ?>
 
 
     <!-- main page -->

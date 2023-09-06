@@ -32,7 +32,7 @@ if ($countTest == 0) {
 
             //50 is the minumum number of messages
 
-            $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr' ORDER BY `id` ASC LIMIT $delete";
+            $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `seen`='1' ORDER BY `id` ASC LIMIT $delete";
             mysqli_query($con_notification, $SQL2);
         }
 
@@ -94,9 +94,7 @@ if ($countTest == 0) {
         $run8 = mysqli_query($connection, $SQL8);
         $data8 = mysqli_fetch_assoc($run8);
 
-        $pro_pic_fr = $data8['pro_pic'];
         $friendName = $data8['name'];
-        $EmailFriend = $data8['email'];
 
 
         if (isset($_POST['delete_con'])) {
@@ -104,14 +102,14 @@ if ($countTest == 0) {
             $SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
             $run9 = mysqli_query($connection_message, $SQL9);
 
-            // if($run9==true){
-            while ($data9 = mysqli_fetch_assoc($run9)) {
-                $imgNameinDB = $data9['image'];
-                if ($imgNameinDB != '') {
-                    unlink('./chat_image/' . $imgNameinDB);
+            if ($run9 == true) {
+                while ($data9 = mysqli_fetch_assoc($run9)) {
+                    $imgNameinDB = $data9['image'];
+                    if ($imgNameinDB != '') {
+                        unlink('./chat_image/' . $imgNameinDB);
+                    }
                 }
             }
-            // }
 
             $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
             mysqli_query($connection_message, $SQL10);
@@ -155,22 +153,6 @@ if ($countTest == 0) {
 
 
 ?>
-
-
-    <!-- message notification -->
-<?php
-$SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0' AND `sender_id`!='$unique_id_fr'";
-$runnotify = mysqli_query($con_notification, $SQLnotify);
-
-$number = mysqli_num_rows($runnotify);
-
-if ($number > 0) {
-    ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
-        Have
-        <?php echo $number ?> New Messages From Others</a>
-
-<?php } ?>
 
 
     <!-- main page -->
