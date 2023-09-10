@@ -101,8 +101,9 @@ if (isset($_POST['delete'])) {
     $SQL4 = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
     $run4 = mysqli_query($connection, $SQL4);
 
-    $imgNameinDB = $data['cov_pic'];
-    unlink('./pro_pic/cov_pic/'.$imgNameinDB);
+    if ($imgNameinDB != "cov_pic.jpg") {
+        unlink('./pro_pic/cov_pic/'.$imgNameinDB);
+    }
 
     $SQL9 = "DELETE FROM `about` WHERE `unique_id`='$unique_id_me'";
     mysqli_query($connection, $SQL9);
