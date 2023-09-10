@@ -80,6 +80,9 @@ if (isset($_GET['mustlog'])) {
 if (isset($_GET['out'])) {
     echo "<script>toastr.error('You Are Logged Out')</script>";
 }
+if (isset($_GET['del'])) {
+    echo "<script>toastr.error('Account Successfullly Deleted')</script>";
+}
 ?>
 
 

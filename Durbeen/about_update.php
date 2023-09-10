@@ -23,7 +23,7 @@ if (isset($_POST['updateBtn'])) {
 
 
     if ($_FILES['image_khan_cover']['name']) {
-        if ($dataAbout['cov_pic'] != "cov_pic.jpg") {
+        if ($dataMe['cov_pic'] != "cov_pic.jpg") {
             unlink('./pro_pic/cov_pic/' . $dataAbout['cov_pic']);
         }
 
@@ -33,7 +33,7 @@ if (isset($_POST['updateBtn'])) {
         move_uploaded_file($image_tmp, './pro_pic/cov_pic/' . $imageNewName_cov);
 
     } else {
-        $imageNewName_cov = $dataAbout['cov_pic'];
+        $imageNewName_cov = $dataMe['cov_pic'];
     }
 
 
@@ -43,7 +43,7 @@ if (isset($_POST['updateBtn'])) {
     $password = trim($_POST['password']);
     $date_birth = $_POST['date_birth'];
 
-    $SQL2 = "UPDATE `registration` SET `name`='$name',`email`='$email',`password`='$password',`date_birth`='$date_birth',`pro_pic`='$imageNewName' WHERE `unique_id`='$unique_id_me'";
+    $SQL2 = "UPDATE `registration` SET `name`='$name',`email`='$email',`password`='$password',`date_birth`='$date_birth',`pro_pic`='$imageNewName',`cov_pic`='$imageNewName_cov' WHERE `unique_id`='$unique_id_me'";
     mysqli_query($connection, $SQL2);
 
 
@@ -82,7 +82,7 @@ if (isset($_POST['updateBtn'])) {
     $answer_three = mysqli_real_escape_string($connection, $answer_three);
 
 
-    $SQL3 = "UPDATE `about` SET `bio`='$bio',`cov_pic`='$imageNewName_cov',`phone_no`='$phone_no',`religion`='$religion',`country`='$country',`city`='$city',`question_one`='$question_one',`answer_one`='$answer_one',`question_two`='$question_two',`answer_two`='$answer_two',`question_three`='$question_three',`answer_three`='$answer_three' WHERE `unique_id`='$unique_id_me'";
+    $SQL3 = "UPDATE `about` SET `bio`='$bio',`phone_no`='$phone_no',`religion`='$religion',`country`='$country',`city`='$city',`question_one`='$question_one',`answer_one`='$answer_one',`question_two`='$question_two',`answer_two`='$answer_two',`question_three`='$question_three',`answer_three`='$answer_three' WHERE `unique_id`='$unique_id_me'";
     mysqli_query($connection, $SQL3);
 
 
@@ -109,7 +109,7 @@ if (isset($_POST['updateBtn'])) {
                 </div>
                 <div class="col-md-6">
                     <div class="form-group text-center">
-                        <img width="100%" src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>" alt="">
+                        <img width="100%" src="./pro_pic/cov_pic/<?php echo $dataMe['cov_pic'] ?>" alt="">
                     </div>
                 </div>
                 <div class="col-md-12 mt-5 pt-5">

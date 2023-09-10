@@ -27,7 +27,7 @@ $data1 = mysqli_fetch_assoc($run1);
 
             <div class="col-md-12">
                 <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px"
-                     src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>">
+                     src="./pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
             </div>
 
             <div class="col-md-12 mt-4">
@@ -44,21 +44,21 @@ $data1 = mysqli_fetch_assoc($run1);
         </div>
 
 
-        <?php if ($unique_id_fr != $unique_id_me) { ?>
 
-            <div class="row">
 
-                <div class="col-md-12">
-                    <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                       class="btn btn-success float-end ms-2">Timeline</a>
+        <div class="row">
 
-                    <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                       class="btn btn-success float-end">Chat by Messenger</a>
-                </div>
+            <div class="col-md-12">
+                <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                   class="btn btn-success float-end ms-2">Timeline</a>
 
+                <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                   class="btn btn-success float-end">Chat by Messenger</a>
             </div>
 
-        <?php } ?>
+        </div>
+
+
 
 
         <div class="row">
@@ -77,7 +77,7 @@ $data1 = mysqli_fetch_assoc($run1);
                             <h5 class="text-red">Date of Birth</h5>
                         </td>
                         <td>
-                            <h5><?php echo $data1['date_birth'] ?></h5>
+                            <h5><?php echo $dataAbout['date_birth'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -85,7 +85,7 @@ $data1 = mysqli_fetch_assoc($run1);
                             <h5 class="text-red">Gender</h5>
                         </td>
                         <td>
-                            <h5><?php echo $data1['gender'] ?></h5>
+                            <h5><?php echo $dataAbout['gender'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -134,7 +134,7 @@ $data1 = mysqli_fetch_assoc($run1);
                             <h5 class="text-red">Durbeen Visited</h5>
                         </td>
                         <td>
-                            <h5><?php echo $data1['visit'] ?></h5>
+                            <h5><?php echo $dataMe['visit'] ?></h5>
                         </td>
                     </tr>
                     <tr>

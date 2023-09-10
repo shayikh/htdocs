@@ -22,13 +22,13 @@ if (isset($_GET['abupdate'])) {
 
             <div class="col-md-12">
                 <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px"
-                     src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>">
+                     src="./pro_pic/cov_pic/<?php echo $cov_pic ?>">
             </div>
 
             <div class="col-md-12 mt-4">
                 <a class="text-decoration-none" href="">
                     <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px"
-                         src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                         src="./pro_pic/<?php echo $pro_pic ?>">
                 </a>
             </div>
 
@@ -62,7 +62,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Date of Birth</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataMe['date_birth'] ?></h5>
+                            <h5><?php echo $dataAbout['date_birth'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -70,7 +70,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Gender</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataMe['gender'] ?></h5>
+                            <h5><?php echo $dataAbout['gender'] ?></h5>
                         </td>
                     </tr>
                     <tr>

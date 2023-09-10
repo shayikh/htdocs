@@ -38,7 +38,7 @@ if (isset($_POST['signup'])) {
         }
 
 
-        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `date_birth`, `gender`, `pro_pic`, `active`, `visit`) VALUES ('$name','$email','$password','$date_birth','$gender','$imageNewName','1','1')";
+        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`, `active`) VALUES ('$name','$email','$password','$imageNewName','1')";
         mysqli_query($connection, $SQL2);
 
 
@@ -50,7 +50,7 @@ if (isset($_POST['signup'])) {
 
         $_SESSION['unique_id_me'] = $unique_id_me;
 
-        $SQL4 = "INSERT INTO `about`(`unique_id`, `cov_pic`) VALUES ('$unique_id_me','cov_pic.jpg')";
+        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`, `visit`) VALUES ('$unique_id_me','$date_birth','$gender,')";
         mysqli_query($connection, $SQL4);
 
 

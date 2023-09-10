@@ -139,7 +139,7 @@ if (isset($_POST['delete'])) {
 
     session_unset();
     session_destroy();
-    echo "<script>window.location = 'index.php'</script>";
+    echo "<script>window.location = './?del'</script>";
 }
 
 ?>
