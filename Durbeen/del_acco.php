@@ -108,7 +108,7 @@ if (isset($_POST['delete'])) {
     mysqli_query($connection, $SQL9);
 
 
-    
+
 
     //pro_pic table delete
     $SQL4 = "SELECT * FROM `$unique_id_me pro_pic`";
