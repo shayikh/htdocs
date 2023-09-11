@@ -29,7 +29,7 @@ $pro_pic = $commenter['pro_pic'];
 
 
 date_default_timezone_set("Asia/Dhaka");
-$time = date_default_timezone_get().' time: '.date("d-M-Y-D-H:i:s");
+$time = date_default_timezone_get().' time: '.date("d-M-Y-D-h:i:s a");
 
 
 $SQL2 = "INSERT INTO `comment`(`post_id`, `post_giver_id`, `comn_giver_id`, `name`, `pro_pic`, `time`, `comment`) VALUES ('$post_id','$post_giver_id','$comn_giver_id','$name','$pro_pic','$time','$comment')";

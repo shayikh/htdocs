@@ -24,7 +24,7 @@ if($user_id == $unique_id_me){
 
 
   date_default_timezone_set("Asia/Dhaka");
-  $time = date_default_timezone_get().' time: '.date("d-M-Y-D-H:i:s");
+  $time = date_default_timezone_get().' time: '.date("d-M-Y-D-h:i:s a");
   
   if($_FILES['editImage']['name']){
     unlink('../../post_image/'.$imgNameinDB);

@@ -1,6 +1,7 @@
 <?php
 include './header.php';
 
+$cov_pic = $dataMe['cov_pic'];
 
 $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
 $runAbout = mysqli_query($connection, $SQLabout);
