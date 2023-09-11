@@ -40,6 +40,31 @@
         }
     }
 
+    const logout = (unique_id_me) => {
+        let id_data = {};
+
+        id_data.unique_id_me = unique_id_me;
+
+        axios.post("./api/logout.php",
+            id_data,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+
+                // console.log(res.data);
+                window.location = './?out'
+
+
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
 </script>
 
 </body>

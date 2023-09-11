@@ -155,14 +155,6 @@ if (isset($_GET['abupdate'])) {
                             <a href="./pro_pic.php?type" class="btn btn-success">Old Profile Pictures</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td style="width: 300px">
-                            <h5 class="text-red">All Post</h5>
-                        </td>
-                        <td>
-                            <a href="./all_post.php?type" class="btn btn-success">All Post</a>
-                        </td>
-                    </tr>
                 </table>
             </div>
 
