@@ -26,7 +26,7 @@ if (isset($_POST['updateBtn'])) {
 
     if ($_FILES['image_khan_cover']['name']) {
         if ($dataMe['cov_pic'] != "cov_pic.jpg") {
-            unlink('./pro_pic/cov_pic/' . $dataAbout['cov_pic']);
+            unlink('./pro_pic/cov_pic/' . $dataMe['cov_pic']);
         }
 
         $imageOldName = $_FILES['image_khan_cover']['name'];

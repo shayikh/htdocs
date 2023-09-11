@@ -34,7 +34,7 @@ if (isset($_GET['abupdate'])) {
             </div>
 
             <div class="col-md-12 text-center" style="margin-top: -134px; margin-left: -135px">
-                <p class="text-white" style="font-size: 39px"><?php echo $dataMe['name'] ?></p>
+                <p class="text-white" style="font-size: 39px" id="name"><?php echo $dataMe['name'] ?></p>
             </div>
 
         </div>
@@ -42,7 +42,7 @@ if (isset($_GET['abupdate'])) {
 
         <div class="row">
             <div class="col-md-12">
-                <a href="./about_update.php?type" class="btn btn-success float-end">Edit Profile</a>
+                <a class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
             </div>
         </div>
 
@@ -55,7 +55,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Email</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataMe['email'] ?></h5>
+                            <h5 id="email"><?php echo $dataMe['email'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +63,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Date of Birth</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['date_birth'] ?></h5>
+                            <h5 id="birth_date"><?php echo $dataAbout['date_birth'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -71,7 +71,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Gender</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['gender'] ?></h5>
+                            <h5 id="gender"><?php echo $dataAbout['gender'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +79,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Phone Numbers</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['phone_no'] ?></h5>
+                            <h5 id="phone"><?php echo $dataAbout['phone_no'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -87,7 +87,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Religion</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['religion'] ?></h5>
+                            <h5 id="religion"><?php echo $dataAbout['religion'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -95,7 +95,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Country</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['country'] ?></h5>
+                            <h5 id="country"><?php echo $dataAbout['country'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -103,7 +103,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">City</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['city'] ?></h5>
+                            <h5 id="city"><?php echo $dataAbout['city'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -111,7 +111,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Bio</h5>
                         </td>
                         <td>
-                            <h5 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
+                            <h5 id="bio" style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -119,7 +119,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Durbeen Visited</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataMe['visit'] ?></h5>
+                            <h5 id="visit"><?php echo $dataMe['visit'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -127,7 +127,7 @@ if (isset($_GET['abupdate'])) {
                             <h5 class="text-red">Account ID</h5>
                         </td>
                         <td>
-                            <h5><?php echo $dataMe['unique_id'] ?></h5>
+                            <h5 id="unique_id_me"><?php echo $dataMe['unique_id'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -175,9 +175,253 @@ if (isset($_GET['abupdate'])) {
     </div>
 
 
+
+
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-dark" class="modal-title" id="postModalLabel">Update Profile</h5>
+                    <button id="updateCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="updateFormID" enctype="multipart/form-data">
+                        <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+                        <input type="hidden" name="pro_pic" value="<?php echo $pro_pic ?>">
+                        <input type="hidden" name="cov_pic" value="<?php echo $cov_pic ?>">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Full Name</label>
+                                    <input name="name" id="nameModal" value="<?php echo $dataMe['name'] ?>" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Profile Picture</label>
+                                    <input name="image_khan_bahadur"
+                                           class="form-control" type="file"
+                                           accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Cover Photo</label>
+                                    <input name="image_khan_cover"
+                                           class="form-control" type="file"
+                                           accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Email</label>
+                                    <input name="email" oninput="uniqueEmail()"
+                                           id="email" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group pwdbody">
+                                    <label class="mt-2">Password</label>
+                                    <input name="password" id="passwordModal" value="<?php echo $dataMe['password'] ?>" class="pwd form-control"
+                                           type="password">
+                                    <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Religion</label>
+                                    <input name="religion" id="religionModal" value="<?php echo $dataAbout['religion'] ?>" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Country</label>
+                                    <input name="country" id="countryModal" value="<?php echo $dataAbout['country'] ?>" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">City</label>
+                                    <input name="city" id="cityModal" value="<?php echo $dataAbout['city'] ?>" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Date of Birth</label>
+                                    <input style="color: #fff" name="date_birth" id="date_birthModal"
+                                           value="<?php echo $dataAbout['date_birth'] ?>" class="form-control" type="date">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mt-2">Phone No</label>
+                                    <input name="phone_no" id="phoneModal" value="<?php echo $dataAbout['phone_no'] ?>" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Bio</label><br>
+                                    <textarea name="bio" id="bioModal" rows="3"
+                                              class="form-control"><?php echo $dataAbout['bio'] ?></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Question One</label><br>
+                                    <input name="question_one" class="form-control" type="text"
+                                           value="<?php echo $dataAbout['question_one'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Answer One</label><br>
+                                    <input name="answer_one" class="form-control" type="text"
+                                           value="<?php echo $dataAbout['answer_one'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Question Two</label><br>
+                                    <input name="question_two" class="form-control" type="text"
+                                           value="<?php echo $dataAbout['question_two'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Answer Two</label><br>
+                                    <input name="answer_two" class="form-control" type="text"
+                                           value="<?php echo $dataAbout['answer_two'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Question Three</label><br>
+                                    <input name="question_three" class="form-control" type="text"
+                                           value="<?php echo $dataAbout['question_three'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mt-2">Answer Three</label><br>
+                                    <input name="answer_three" class="form-control" type="text"
+                                           value="<?php echo $dataAbout['answer_three'] ?>">
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-group mt-2">
+                                    <input name="updateBtn" value="UPDATE" class="btn btn-success float-end" type="submit" aria-label="Close">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <script>
         let oneV = document.querySelector(".one").innerText;
         let mybtn = document.querySelector("#mybtn");
+
+        let updateForm = document.querySelector("#updateFormID");
+        let updateCloseBtn = document.querySelector("#updateCloseBtn");
+        let unique_id_me = document.querySelector('#unique_id_me');
+
+        let name = document.querySelector("#name");
+        let email = document.querySelector("#email");
+        let birth_date = document.querySelector("#birth_date");
+        let gender = document.querySelector("#gender");
+        let phone = document.querySelector("#phone");
+        let religion = document.querySelector("#religion");
+        let country = document.querySelector("#country");
+        let city = document.querySelector("#city");
+        let bio = document.querySelector("#bio");
+        let visit = document.querySelector("#visit");
+
+        let nameModal = document.querySelector("#nameModal");
+        let emailModal = document.querySelector("#emailModal");
+        let passwordModal = document.querySelector("#passwordModal");
+        let religionModal = document.querySelector("#religionModal");
+        let countryModal = document.querySelector("#countryModal");
+        let cityModal = document.querySelector("#cityModal");
+        let date_birthModal = document.querySelector("#date_birthModal");
+        let phoneModal = document.querySelector("#phoneModal");
+        let bioModal = document.querySelector("#bioModal");
+
+
+        updateForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+
+            var updateFormData = new FormData(updateForm);
+
+            $.ajax({
+                url: "./api/about_update/profileUpdate.php",
+                type: "POST",
+                data: updateFormData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function () {
+                    // alert('ok')
+                },
+                success: function (data) {
+
+                    toastr.success('About Updated');
+                    updateCloseBtn.click();
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+        })
+
+        function uniqueEmail() {
+
+            // let product = {};
+
+            // product.email = email.value;
+            // product.unique_id_me = unique_id_me.value;
+            alert("ok");
+            console.log(email.value);
+            console.log(unique_id_me.innerText);
+
+
+            // axios.post("./api/about_update/unique_email.php",
+            //     product,
+            //     {
+            //         headers: {
+            //             "Content-Type": "application/json"
+            //         }
+            //     })
+            //     .then(res => {
+            //         console.log(res.data);
+            //         if (res.data == "0") {
+            //             toastr.error("This email is used by someone. You can not use this email");
+            //             alert("This email is used by someone. You can not use this email");
+            //         }
+            //     })
+            //     .catch(err => {
+            //         console.log(err);
+            //     })
+        }
 
         mybtn.addEventListener('click', function () {
             const elem = document.createElement('input');
@@ -188,8 +432,24 @@ if (isset($_GET['abupdate'])) {
             document.body.removeChild(elem);
             toastr.success("Link Copied to Clipboard");
         })
+
+
+
     </script>
 
+
+
+    <style>
+        .pwdbody {
+            position: relative;
+        }
+
+        .icon {
+            position: absolute;
+            top: 45px;
+            right: 30px;
+        }
+    </style>
 
 <?php
 include './footer.php'

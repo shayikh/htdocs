@@ -3,8 +3,6 @@ include '../../connection.php';
 
 header('Content-Type: application/x-www-form-urlencoded');
 
-
-
 $data = file_get_contents('php://input');
 $decoded_data = json_decode($data, true);
 
