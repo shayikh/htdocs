@@ -11,7 +11,6 @@ $unique_id_me = $decoded_data['unique_id_me'];
 
 $SQL1 = "SELECT * FROM `registration` WHERE `email`='$email' AND `unique_id`!='$unique_id_me'";
 $run1 = mysqli_query($connection,$SQL1);
-$data1 = mysqli_fetch_assoc($run1);
 $count = mysqli_num_rows($run1);
 
 if($count > 0){

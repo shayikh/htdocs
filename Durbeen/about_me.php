@@ -219,8 +219,7 @@ if (isset($_GET['abupdate'])) {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="mt-2">Email</label>
-                                    <input name="email" oninput="uniqueEmail()"
-                                           id="email" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
+                                    <input name="email" oninput="uniqueEmail()" id="emailMeId" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -228,7 +227,7 @@ if (isset($_GET['abupdate'])) {
                                     <label class="mt-2">Password</label>
                                     <input name="password" id="passwordModal" value="<?php echo $dataMe['password'] ?>" class="pwd form-control"
                                            type="password">
-                                    <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
+                                    <i onclick="showPwd()" class="icon far fa-eye"></i>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -254,7 +253,7 @@ if (isset($_GET['abupdate'])) {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="mt-2">Date of Birth</label>
-                                    <input style="color: #fff" name="date_birth" id="date_birthModal"
+                                    <input name="date_birth" id="date_birthModal"
                                            value="<?php echo $dataAbout['date_birth'] ?>" class="form-control" type="date">
                                 </div>
                             </div>
@@ -344,7 +343,7 @@ if (isset($_GET['abupdate'])) {
         let unique_id_me = document.querySelector('#unique_id_me');
 
         let name = document.querySelector("#name");
-        let email = document.querySelector("#email");
+        let emailMeId = document.querySelector("#emailMeId");
         let birth_date = document.querySelector("#birth_date");
         let gender = document.querySelector("#gender");
         let phone = document.querySelector("#phone");
@@ -363,6 +362,11 @@ if (isset($_GET['abupdate'])) {
         let date_birthModal = document.querySelector("#date_birthModal");
         let phoneModal = document.querySelector("#phoneModal");
         let bioModal = document.querySelector("#bioModal");
+
+        let myMail = emailMeId.value;
+
+
+
 
 
         updateForm.addEventListener('submit', (e) => {
@@ -394,33 +398,28 @@ if (isset($_GET['abupdate'])) {
         })
 
         function uniqueEmail() {
+            let product = {};
 
-            // let product = {};
+            product.email = emailMeId.value;
+            product.unique_id_me = unique_id_me.innerText;
 
-            // product.email = email.value;
-            // product.unique_id_me = unique_id_me.value;
-            alert("ok");
-            console.log(email.value);
-            console.log(unique_id_me.innerText);
-
-
-            // axios.post("./api/about_update/unique_email.php",
-            //     product,
-            //     {
-            //         headers: {
-            //             "Content-Type": "application/json"
-            //         }
-            //     })
-            //     .then(res => {
-            //         console.log(res.data);
-            //         if (res.data == "0") {
-            //             toastr.error("This email is used by someone. You can not use this email");
-            //             alert("This email is used by someone. You can not use this email");
-            //         }
-            //     })
-            //     .catch(err => {
-            //         console.log(err);
-            //     })
+            axios.post("./api/about_update/unique_email.php",
+                product,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => {
+                    if (res.data == "0") {
+                        toastr.error("This email is used by someone. You can not use this email");
+                        alert("This email is used by someone. You can not use this email");
+                        emailMeId.value = myMail;
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
 
         mybtn.addEventListener('click', function () {
