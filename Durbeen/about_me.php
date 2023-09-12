@@ -11,9 +11,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 if (isset($_GET['register'])) {
     echo "<script>toastr.success('Registration Completed')</script>";
 }
-if (isset($_GET['abupdate'])) {
-    echo "<script>toastr.success('About Info Updated')</script>";
-}
 ?>
 
 

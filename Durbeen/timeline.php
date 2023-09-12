@@ -252,35 +252,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
         const editfn = (post_id, elm) => {
+            editPost.value = elm.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText;
+            edit_post_id.value = post_id;
 
-            let editPostArray = {};
-
-            editPostArray.post_id = post_id;
-
-            axios.post("./api/post/singlePost.php",
-                editPostArray,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-
-
-                    let oldPostData = res.data.post;
-
-                    editPost.value = oldPostData.post;
-                    edit_post_id.value = oldPostData.id;
-
-                    targetTr = elm.parentElement.parentElement;
-
-                    // console.log(oldPostData.post);
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
+            targetTr = elm.parentElement.parentElement;
         }
 
 
