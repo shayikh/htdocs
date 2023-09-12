@@ -153,6 +153,14 @@ if (isset($_GET['register'])) {
                             <a href="./pro_pic.php?type" class="btn btn-success">Old Profile Pictures</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="width: 300px">
+                            <h5 class="text-red">My All Comments</h5>
+                        </td>
+                        <td>
+                            <a href="./my_comments.php?type" class="btn btn-success">My Comments</a>
+                        </td>
+                    </tr>
                 </table>
             </div>
 
@@ -224,7 +232,7 @@ if (isset($_GET['register'])) {
                                     <label class="mt-2">Password</label>
                                     <input name="password" id="passwordModal" value="<?php echo $dataMe['password'] ?>" class="pwd form-control"
                                            type="password">
-                                    <i onclick="showPwd()" class="icon far fa-eye"></i>
+                                    <i onclick="showPwd()" class="icon far fa-eye" style="cursor: pointer"></i>
                                 </div>
                             </div>
                             <div class="col-md-4">

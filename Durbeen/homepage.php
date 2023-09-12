@@ -245,7 +245,7 @@ if ($number > 0) {
 						<td class="text-center text-dark">${comment.time}</td>
 						<td class="text-center text-dark">${comment.comment}</td>
 						<td class="text-center text-dark">
-							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+							<i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
 						</td>
 				</tr>`
                 return tr;
