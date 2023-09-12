@@ -161,6 +161,14 @@ if (isset($_GET['register'])) {
                             <a href="./my_comments.php?type" class="btn btn-success">My Comments</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="width: 300px">
+                            <h5 class="text-red">Other's Comments</h5>
+                        </td>
+                        <td>
+                            <a href="./other_comments.php?type" class="btn btn-success">Other's Comments</a>
+                        </td>
+                    </tr>
                 </table>
             </div>
 
