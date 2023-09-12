@@ -92,4 +92,8 @@ $SQL4 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
 $run4 = mysqli_query($connection, $SQL4);
 $myData = mysqli_fetch_assoc($run4);
 
-echo json_encode(["myData" => $myData]);
+$SQL5 = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
+$run5 = mysqli_query($connection, $SQL5);
+$about = mysqli_fetch_assoc($run5);
+
+echo json_encode(["about"=>$about, "myData" => $myData]);

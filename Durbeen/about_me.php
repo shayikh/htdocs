@@ -52,7 +52,7 @@ if (isset($_GET['register'])) {
                             <h5 class="text-red">Email</h5>
                         </td>
                         <td>
-                            <h5 id="email"><?php echo $dataMe['email'] ?></h5>
+                            <h5 id="emailID"><?php echo $dataMe['email'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +68,7 @@ if (isset($_GET['register'])) {
                             <h5 class="text-red">Gender</h5>
                         </td>
                         <td>
-                            <h5 id="gender"><?php echo $dataAbout['gender'] ?></h5>
+                            <h5><?php echo $dataAbout['gender'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -116,7 +116,7 @@ if (isset($_GET['register'])) {
                             <h5 class="text-red">Durbeen Visited</h5>
                         </td>
                         <td>
-                            <h5 id="visit"><?php echo $dataMe['visit'] ?></h5>
+                            <h5><?php echo $dataMe['visit'] ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -216,7 +216,7 @@ if (isset($_GET['register'])) {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="mt-2">Email</label>
-                                    <input name="email" oninput="uniqueEmail()" id="emailMeId" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
+                                    <input name="email" oninput="uniqueEmail()" id="emailModal" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -340,17 +340,16 @@ if (isset($_GET['register'])) {
         let unique_id_me = document.querySelector('#unique_id_me');
 
         let name = document.querySelector("#name");
+        let emailID = document.querySelector("#emailID");
         let pro_pic = document.querySelector("#pro_pic");
         let cov_pic = document.querySelector("#cov_pic");
         let emailMeId = document.querySelector("#emailMeId");
         let birth_date = document.querySelector("#birth_date");
-        let gender = document.querySelector("#gender");
         let phone = document.querySelector("#phone");
         let religion = document.querySelector("#religion");
         let country = document.querySelector("#country");
         let city = document.querySelector("#city");
         let bio = document.querySelector("#bio");
-        let visit = document.querySelector("#visit");
 
         let nameModal = document.querySelector("#nameModal");
         let emailModal = document.querySelector("#emailModal");
@@ -362,7 +361,7 @@ if (isset($_GET['register'])) {
         let phoneModal = document.querySelector("#phoneModal");
         let bioModal = document.querySelector("#bioModal");
 
-        let myMail = emailMeId.value;
+        let myMail = emailID.value;
 
 
 
@@ -388,14 +387,24 @@ if (isset($_GET['register'])) {
                     let json = JSON.parse(data);
                     let profile_picture = json.myData.pro_pic;
                     let cover_photo = json.myData.cov_pic;
-                    console.log(profile_picture);
-                    console.log(cover_photo);
 
                     pro_pic.src = "./pro_pic/" + profile_picture;
                     cov_pic.src = "./pro_pic/cov_pic/" + cover_photo;
 
+                    name.innerText = json.myData.name;
+                    emailID.innerText = json.myData.email;
+                    birth_date.innerText = json.about.date_birth;
+                    phone.innerText = json.about.phone_no;
+                    religion.innerText = json.about.religion;
+                    country.innerText = json.about.country;
+                    city.innerText = json.about.city;
+                    bio.innerText = json.about.bio;
+
                     toastr.success('About Updated');
                     updateCloseBtn.click();
+
+
+                    myMail = emailID.value;
                 },
                 error: function (err) {
                     console.log(err);
