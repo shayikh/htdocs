@@ -33,7 +33,7 @@ if ($_FILES['image_khan_cover']['name']) {
     move_uploaded_file($image_tmp, '../../pro_pic/cov_pic/' . $imageNewName_cov);
 
 } else {
-    $imageNewName_cov = $dataMe['cov_pic'];
+    $imageNewName_cov = $cov_pic;
 }
 
 
@@ -88,4 +88,8 @@ mysqli_query($connection, $SQL3);
 
 
 
+$SQL4 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
+$run4 = mysqli_query($connection, $SQL4);
+$myData = mysqli_fetch_assoc($run4);
 
+echo json_encode(["myData" => $myData]);

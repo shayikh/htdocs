@@ -20,13 +20,13 @@ if (isset($_GET['register'])) {
 
             <div class="col-md-12">
                 <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px"
-                     src="./pro_pic/cov_pic/<?php echo $cov_pic ?>">
+                     src="./pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
             </div>
 
             <div class="col-md-12 mt-4">
                 <a class="text-decoration-none" href="">
                     <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px"
-                         src="./pro_pic/<?php echo $pro_pic ?>">
+                         src="./pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
                 </a>
             </div>
 
@@ -340,6 +340,8 @@ if (isset($_GET['register'])) {
         let unique_id_me = document.querySelector('#unique_id_me');
 
         let name = document.querySelector("#name");
+        let pro_pic = document.querySelector("#pro_pic");
+        let cov_pic = document.querySelector("#cov_pic");
         let emailMeId = document.querySelector("#emailMeId");
         let birth_date = document.querySelector("#birth_date");
         let gender = document.querySelector("#gender");
@@ -383,6 +385,14 @@ if (isset($_GET['register'])) {
                     // alert('ok')
                 },
                 success: function (data) {
+                    let json = JSON.parse(data);
+                    let profile_picture = json.myData.pro_pic;
+                    let cover_photo = json.myData.cov_pic;
+                    console.log(profile_picture);
+                    console.log(cover_photo);
+
+                    pro_pic.src = "./pro_pic/" + profile_picture;
+                    cov_pic.src = "./pro_pic/cov_pic/" + cover_photo;
 
                     toastr.success('About Updated');
                     updateCloseBtn.click();
