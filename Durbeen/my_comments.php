@@ -69,7 +69,7 @@ include './header.php';
 
             const makeCommentTr = (comment) => {
                 let tr = `<tr>
-                            <td class="text-center bg-secondary" style="min-width: 150px">${comment.time}</td>
+                            <td class="text-center bg-secondary" style="min-width: 180px">${comment.time}</td>
                             <td class="text-center bg-success">${comment.comment}</td>
                             <td class="text-center" style="min-width: 150px">
                                 <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
@@ -102,7 +102,7 @@ include './header.php';
                             elm.parentElement.parentElement.remove();
                             toastr.info('Comment Deleted');
                         } else {
-                            toastr.warning('This is not Your Comment');
+                            toastr.warning('This is not Your Post');
                         }
 
                     })

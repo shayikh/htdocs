@@ -163,7 +163,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         elm.parentElement.parentElement.remove();
                         toastr.info('Comment Deleted');
                     } else {
-                        toastr.warning('This is not Your Comment');
+                        toastr.warning('This is not Your Post');
                     }
 
                 })
@@ -215,7 +215,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             let tr = `<tr>
 						<td>
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 

@@ -280,7 +280,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         elm.parentElement.parentElement.remove();
                         toastr.info('Comment Deleted');
                     } else {
-                        toastr.warning('This is not Your Comment');
+                        toastr.warning('This is not Your Post');
                     }
 
                 })
@@ -332,7 +332,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             let tr = `<tr>
 						<td>
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 

@@ -13,15 +13,16 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL1 = "SELECT * FROM `comment` WHERE `id`='$Deleteid' AND `comn_giver_id`='$unique_id_me'";
+$SQL1 = "SELECT * FROM `comment` WHERE `id`='$Deleteid'";
 $run1 = mysqli_query($connection, $SQL1);
 $targetComment = mysqli_fetch_assoc($run1);
 $comn_giver_id = $targetComment['comn_giver_id'];
+$post_giver_id = $targetComment['post_giver_id'];
 
 
-if($comn_giver_id == $unique_id_me){
+if($comn_giver_id == $unique_id_me || $post_giver_id == $unique_id_me){
 
-  $SQL2 = "DELETE FROM `comment` WHERE `id`='$Deleteid' AND `comn_giver_id`='$unique_id_me'";
+  $SQL2 = "DELETE FROM `comment` WHERE `id`='$Deleteid'";
   mysqli_query($connection, $SQL2);
   echo "1";
 
