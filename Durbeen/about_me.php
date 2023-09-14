@@ -455,6 +455,7 @@ if (isset($_GET['register'])) {
         let date_birthModal = document.querySelector("#date_birthModal");
         let phoneModal = document.querySelector("#phoneModal");
         let bioModal = document.querySelector("#bioModal");
+        let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
 
         let myMail = emailID.value;
 
@@ -487,6 +488,7 @@ if (isset($_GET['register'])) {
                     let cover_photo = json.myData.cov_pic;
 
                     pro_pic.src = "./pro_pic/" + profile_picture;
+                    timeline_pro_pic.src = "./pro_pic/" + profile_picture;
                     cov_pic.src = "./pro_pic/cov_pic/" + cover_photo;
 
                     name.innerText = json.myData.name;
