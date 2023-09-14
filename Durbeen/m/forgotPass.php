@@ -16,16 +16,16 @@ if ($_SESSION['unique_id_me']) {
         <meta charset="UTF-8">
         <title>দূরবীন</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="shortcut icon" href="./img/telescope_2.png"/>
-        <link href="./css/alertify.min.css"/>
-        <link href="./css/all.min.css"/>
-        <link href="./css/fontawesome.min.css"/>
-        <link rel="stylesheet" href="./css/toastr.min.css">
-        <script src="./js/jquery-3.5.1.toastr.min.js"></script>
-        <script src="./js/toastr.min.js"></script>
-        <script src="./js/axios.min.js"></script>
-        <link rel="stylesheet" href="./css/custom.css"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="shortcut icon" href="../img/telescope_2.png"/>
+        <link href="../css/alertify.min.css"/>
+        <link href="../css/all.min.css"/>
+        <link href="../css/fontawesome.min.css"/>
+        <link rel="stylesheet" href="../css/toastr.min.css">
+        <script src="../js/jquery-3.5.1.toastr.min.js"></script>
+        <script src="../js/toastr.min.js"></script>
+        <script src="../js/axios.min.js"></script>
+        <link rel="stylesheet" href="../css/custom.css"/>
 
     </head>
 
@@ -33,7 +33,7 @@ if ($_SESSION['unique_id_me']) {
 
     <div style="height: 100px"></div>
 
-    <img width="150px" id="pro_pic" src=""
+    <img width="120px" height="120px" id="pro_pic" src=""
          style="display: block;margin-left: auto;margin-right: auto; border-radius: 50%" alt="">
 
     <div class="container">
@@ -112,7 +112,7 @@ if ($_SESSION['unique_id_me']) {
             var formdataone = new FormData(formone);
 
             $.ajax({
-                url: "./api/forgot_pass/forgotPass.php",
+                url: "../api/forgot_pass/forgotPass.php",
                 type: "POST",
                 data: formdataone,
                 contentType: false,
@@ -135,7 +135,7 @@ if ($_SESSION['unique_id_me']) {
                         $("#question").hide();
                         $("#passdiv ").hide();
                     } else {
-                        pro_pic.src = './pro_pic/' + json.pro_pic;
+                        pro_pic.src = '../pro_pic/' + json.pro_pic;
                         $("#pro_pic ").show();
 
                         if (questions.answer_one == "") {
@@ -189,7 +189,7 @@ if ($_SESSION['unique_id_me']) {
                 var formdatatwo = new FormData(formtwo);
 
                 $.ajax({
-                    url: "./api/forgot_pass/findPass.php",
+                    url: "../api/forgot_pass/findPass.php",
                     type: "POST",
                     data: formdatatwo,
                     contentType: false,

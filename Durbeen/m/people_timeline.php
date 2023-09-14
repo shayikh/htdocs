@@ -31,7 +31,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             <div class="col-md-12">
                 <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px"
-                     src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>">
+                     src="./pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
             </div>
 
             <div class="col-md-12 mt-4">
@@ -48,26 +48,26 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         </div>
 
-        <?php if ($unique_id_fr != $unique_id_me) { ?>
 
-            <div class="row">
-                <div class="col-md-12">
 
-                    <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
-                            class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
-                        <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
-                    </button>
+        <div class="row">
+            <div class="col-md-12">
 
-                    <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                       class="btn btn-success float-end ms-2">Profile</a>
+                <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
+                        class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
+                    <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
+                </button>
 
-                    <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                       class="btn btn-success float-end">Chat by Messenger</a>
+                <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                   class="btn btn-success float-end ms-2">Profile</a>
 
-                </div>
+                <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
+                   class="btn btn-success float-end">Chat by Messenger</a>
+
             </div>
+        </div>
 
-        <?php } ?>
+
 
 
         <div class="row mb-5">
@@ -227,7 +227,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         elm.parentElement.parentElement.remove();
                         toastr.info('Comment Deleted');
                     } else {
-                        toastr.warning('This is not Your Comment');
+                        toastr.warning('This is not Your Post');
                     }
 
                 })
@@ -277,9 +277,9 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         const makeCommentTr = (comment) => {
             let tr = `<tr>
-						<td>
+						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
@@ -290,7 +290,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 						<td class="text-center text-dark">${comment.time}</td>
 						<td class="text-center text-dark">${comment.comment}</td>
 						<td class="text-center text-dark">
-							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+							<i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
 						</td>
 				</tr>`
             return tr;

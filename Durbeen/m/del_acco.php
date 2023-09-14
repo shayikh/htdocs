@@ -7,20 +7,24 @@ if (isset($_POST['delete'])) {
     //post delete
     $SQL1 = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me'";
     $run1 = mysqli_query($connection, $SQL1);
+
     while ($data1 = mysqli_fetch_assoc($run1)) {
         $imgNameinDB = $data1['image'];
-        unlink('./post_image/' . $imgNameinDB);
 
-        $SQL2 = "DELETE FROM `post` WHERE `image`='$imgNameinDB'";
-        mysqli_query($connection, $SQL2);
+        if ($imgNameinDB != "") {
+            unlink('../post_image/'.$imgNameinDB);
+        }
     }
+    $SQL2 = "DELETE FROM `post` WHERE `unique_id`='$unique_id_me'";
+    mysqli_query($connection, $SQL2);
 
-    //self post comment delete 
-    $SQL1 = "DELETE FROM `comment` WHERE `unique_id`='$unique_id_me'";
+
+    //self post's comment delete
+    $SQL1 = "DELETE FROM `comment` WHERE `post_giver_id`='$unique_id_me'";
     $run1 = mysqli_query($connection, $SQL1);
 
-    //other's post comment delete 
-    $SQL1 = "DELETE FROM `comment` WHERE `unique_id_comn`='$unique_id_me'";
+    //other's post's comment delete
+    $SQL1 = "DELETE FROM `comment` WHERE `comn_giver_id`='$unique_id_me'";
     $run1 = mysqli_query($connection, $SQL1);
 
 
@@ -28,19 +32,13 @@ if (isset($_POST['delete'])) {
     $SQL4 = "DROP TABLE `$unique_id_me notify`";
     mysqli_query($con_notification, $SQL4);
 
-    //chat friend table delete
-    $SQL4 = "DROP TABLE `$unique_id_me chats`";
-    mysqli_query($durbeen_chats, $SQL4);
 
-
-    //chat tables delete
-    $SQL5 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me'";
-    $run5 = mysqli_query($connection, $SQL5);
+    //message tables delete
+    $SQL5 = "SELECT * FROM `$unique_id_me chats`";
+    $run5 = mysqli_query($durbeen_chats, $SQL5);
 
     while ($data5 = mysqli_fetch_assoc($run5)) {
-
-        $unique_id_fr = $data5['unique_id'];
-
+        $unique_id_fr = $data5['unique_id_fr'];
 
         $SQL6 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
         $run = mysqli_query($connection_message, $SQL6);
@@ -49,7 +47,7 @@ if (isset($_POST['delete'])) {
             while ($data = mysqli_fetch_assoc($run)) {
                 $imgNameinDB = $data['image'];
                 if ($imgNameinDB != '') {
-                    unlink('./chat_image/' . $imgNameinDB);
+                    unlink('../chat_image/'.$imgNameinDB);
                 }
             }
         }
@@ -65,7 +63,7 @@ if (isset($_POST['delete'])) {
             while ($data = mysqli_fetch_assoc($run)) {
                 $imgNameinDB = $data['image'];
                 if ($imgNameinDB != '') {
-                    unlink('./chat_image/' . $imgNameinDB);
+                    unlink('../chat_image/'.$imgNameinDB);
                 }
             }
         }
@@ -75,16 +73,20 @@ if (isset($_POST['delete'])) {
 
     }
 
+    //chat friend table delete
+    $SQL4 = "DROP TABLE `$unique_id_me chats`";
+    mysqli_query($durbeen_chats, $SQL4);
 
-    //drop self msg table
+
+    //drop self_msg table
     $SQL6 = "SELECT * FROM `$unique_id_me to $unique_id_me`";
-    $run = mysqli_query($connection_message, $SQL6);
+    $run6 = mysqli_query($connection_message, $SQL6);
 
-    if ($run == true) {
-        while ($data = mysqli_fetch_assoc($run)) {
+    if ($run6 == true) {
+        while ($data = mysqli_fetch_assoc($run6)) {
             $imgNameinDB = $data['image'];
             if ($imgNameinDB != '') {
-                unlink('./chat_image/' . $imgNameinDB);
+                unlink('../chat_image/'.$imgNameinDB);
             }
         }
     }
@@ -93,14 +95,42 @@ if (isset($_POST['delete'])) {
     mysqli_query($connection_message, $SQL8);
 
 
+
+
     //about delete
+    $SQL4 = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
+    $run4 = mysqli_query($connection, $SQL4);
+
+    if ($imgNameinDB != "cov_pic.jpg") {
+        unlink('../pro_pic/cov_pic/'.$imgNameinDB);
+    }
+
     $SQL9 = "DELETE FROM `about` WHERE `unique_id`='$unique_id_me'";
     mysqli_query($connection, $SQL9);
+
+
+
+
+    //pro_pic table delete
+    $SQL4 = "SELECT * FROM `$unique_id_me pro_pic`";
+    $run4 = mysqli_query($durbeen_chats, $SQL4);
+
+    if ($run4 == true) {
+        while ($data = mysqli_fetch_assoc($run4)) {
+            $imgNameinDB = $data['pro_pic'];
+            unlink('../pro_pic/'.$imgNameinDB);
+        }
+    }
+
+    $SQL4 = "DROP TABLE `$unique_id_me pro_pic`";
+    mysqli_query($durbeen_chats, $SQL4);
+
+
 
     //account delete
     if ($dataMe['pro_pic'] != "red_comet.png") {
         $pro_pic_me = $dataMe['pro_pic'];
-        unlink('./pro_pic/' . $pro_pic_me);
+        unlink('../pro_pic/'.$pro_pic_me);
     }
 
     $SQL10 = "DELETE FROM `registration` WHERE `unique_id`='$unique_id_me'";
@@ -109,7 +139,7 @@ if (isset($_POST['delete'])) {
 
     session_unset();
     session_destroy();
-    echo "<script>window.location = 'index.php'</script>";
+    echo "<script>window.location = './?del'</script>";
 }
 
 ?>
@@ -121,36 +151,36 @@ if (isset($_POST['delete'])) {
 <div class="container" style="margin-top: 170px">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-red text-center">ACCOUNT DELETION</h1>
+            <h4 class="text-red text-center">ACCOUNT DELETION</h4>
         </div>
         <div class="col-md-12 mt-2">
-            <h4 class="text-capitalize" style="line-height: 1.5;">deleting account once will permanently delete all data
+            <h6 class="text-capitalize" style="line-height: 1.5;">deleting account once will permanently delete all data
                 from database and you will never able to
                 regain those data, even <span style="font-weight: 500;font-family: mahfuj;"
                                               class="text-red">দূরবীন</span> can not able to repair this. be careful
-                before you continue.</h4>
-            <!-- <form method="post" action="./del_acco.php?type"><input onclick="return confirm('Are You Sure You Want to Delete Your Account?')" name="delete" class="btn red mt-5 form-control" type="submit" value="&#9762; DELETE ACCOUNT PERMANENTLY &#9785;"></form> -->
+                before you continue.</h6>
+             <form method="post" action="./del_acco.php?type"><input onclick="return confirm('Are You Sure You Want to Delete Your Account?')" name="delete" class="btn btn-sm red mt-5 form-control" type="submit" value="&#9762; DELETE ACCOUNT PERMANENTLY &#9785;"></form>
         </div>
     </div>
 
 
     <?php if ($unique_id_me == 1) { ?>
-        <div class="row" style="margin-bottom: 100px">
-            <table class="table table-bordered mt-5 pt-5" style="border-color: #5d5d5d">
+        <div class="row">
+            <table class="table table-bordered mt-5" style="border-color: #5d5d5d">
                 <tr>
-                    <td style="width: 300px">
-                        <h5 class="text-red">All Info</h5>
+                    <td>
+                        <h6 class="text-red">All Info</h6>
                     </td>
                     <td>
-                        <a href="./all_info.php?type" class="btn btn-success">All Info</a>
+                        <a href="./all_info.php?type" class="btn btn-sm btn-success">All Info</a>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 300px">
-                        <h5 class="text-red">All Info by Email</h5>
+                    <td>
+                        <h6 class="text-red">All Info by Email</h6>
                     </td>
                     <td>
-                        <a href="./all_info_email.php?type" class="btn btn-success">All Info by Email</a>
+                        <a href="./all_info_email.php?type" class="btn btn-sm btn-success">All Info by Email</a>
                     </td>
                 </tr>
             </table>

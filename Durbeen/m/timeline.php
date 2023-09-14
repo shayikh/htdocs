@@ -1,6 +1,7 @@
 <?php
 include './header.php';
 
+$cov_pic = $dataMe['cov_pic'];
 
 $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
 $runAbout = mysqli_query($connection, $SQLabout);
@@ -11,24 +12,24 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     <!-- main page -->
-    <div class="container" style="margin-top: 133px">
+    <div class="container" style="margin-top: 220px">
 
         <div class="row">
 
             <div class="col-md-12">
-                <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px"
-                     src="./pro_pic/cov_pic/<?php echo $dataAbout['cov_pic'] ?>">
+                <img title="Cover Photo Size 1280px * 574px" width="340px"
+                     src="../pro_pic/cov_pic/<?php echo $dataMe['cov_pic'] ?>">
             </div>
 
             <div class="col-md-12 mt-4">
                 <a class="text-decoration-none" href="">
-                    <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px"
-                         src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                    <img style="border-radius: 50%;border: 3px solid #fff" width="120px" height="120px"
+                         src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
                 </a>
             </div>
 
-            <div class="col-md-12 text-center" style="margin-top: -134px">
-                <p class="text-white" style="font-size: 39px"><?php echo $dataMe['name'] ?></p>
+            <div class="col-md-12 text-center" style="margin-top: -150px;">
+                <p class="text-white" style="font-size: 25px" id="name"><?php echo $dataMe['name'] ?></p>
             </div>
 
         </div>
@@ -182,7 +183,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             postData.page_no = page_no;
             postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("./api/post/loadmoreTimeline.php",
+            axios.post("../api/mobile/loadmoreTimeline.php",
                 postData,
                 {
                     headers: {
@@ -213,7 +214,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             var editformdata = new FormData(editForm);
 
             $.ajax({
-                url: "./api/post/updatePost.php",
+                url: "../api/post/updatePost.php",
                 type: "POST",
                 data: editformdata,
                 contentType: false,
@@ -251,35 +252,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
         const editfn = (post_id, elm) => {
+            editPost.value = elm.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText;
+            edit_post_id.value = post_id;
 
-            let editPostArray = {};
-
-            editPostArray.post_id = post_id;
-
-            axios.post("./api/post/singlePost.php",
-                editPostArray,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-
-
-                    let oldPostData = res.data.post;
-
-                    editPost.value = oldPostData.post;
-                    edit_post_id.value = oldPostData.id;
-
-                    targetTr = elm.parentElement.parentElement;
-
-                    // console.log(oldPostData.post);
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
+            targetTr = elm.parentElement.parentElement;
         }
 
 
@@ -290,7 +266,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             delComment.comment_id = comment_id;
             delComment.unique_id_me = unique_id_me;
 
-            axios.post("./api/comment/deleteComment.php",
+            axios.post("../api/comment/deleteComment.php",
                 delComment,
                 {
                     headers: {
@@ -304,7 +280,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         elm.parentElement.parentElement.remove();
                         toastr.info('Comment Deleted');
                     } else {
-                        toastr.warning('This is not Your Comment');
+                        toastr.warning('This is not Your Post');
                     }
 
                 })
@@ -326,7 +302,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             showComment.post_id = post_id;
 
-            axios.post("./api/comment/showComments.php",
+            axios.post("../api/comment/showComments.php",
                 showComment,
                 {
                     headers: {
@@ -354,9 +330,9 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         const makeCommentTr = (comment) => {
             let tr = `<tr>
-						<td>
+						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
@@ -367,7 +343,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 						<td class="text-center text-dark">${comment.time}</td>
 						<td class="text-center text-dark">${comment.comment}</td>
 						<td class="text-center text-dark">
-							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+							<i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
 						</td>
 				</tr>`
             return tr;
@@ -391,7 +367,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 commentp.comn_giver_id = comn_giver_id;
 
 
-                axios.post("./api/comment/comment.php",
+                axios.post("../api/comment/comment.php",
                     commentp,
                     {
                         headers: {
@@ -425,7 +401,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/post/postAdd.php",
+                url: "../api/post/postAdd.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -466,10 +442,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     <div class="card" style="width: 100%;border: none">
 
                         <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                            <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                            <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
                             <b><?php echo $dataMe['name'] ?></b>
                         </p>
-                        <img width="100%" src="./post_image/${post.image}" alt="">
+                        <img width="100%" src="../post_image/${post.image}" alt="">
                         <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                             <h6 class="card-title text-white">${post.time}</h6>
                             <p class="card-text text-white">${post.post}</p>
@@ -507,10 +483,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <div class="card" style="width: 100%;border: none">
 
                                 <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </p>
-                                <img width="100%" src="./post_image/${post.image}" alt="">
+                                <img width="100%" src="../post_image/${post.image}" alt="">
                                 <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                     <h6 class="card-title text-white">${post.time}</h6>
                                     <p class="card-text text-white">${post.post}</p>
@@ -549,7 +525,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             likep.post_id = post_id;
             likep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/like_post.php",
+            axios.post("../api/post/like_post.php",
                 likep,
                 {
                     headers: {
@@ -580,7 +556,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             dislikep.post_id = post_id;
             dislikep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/dislike_post.php",
+            axios.post("../api/post/dislike_post.php",
                 dislikep,
                 {
                     headers: {
@@ -614,7 +590,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 delPost.post_id = post_id;
                 delPost.unique_id_me = unique_id_me;
 
-                axios.post("./api/post/deletePost.php",
+                axios.post("../api/post/deletePost.php",
                     delPost,
                     {
                         headers: {
@@ -649,7 +625,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             sharep.post_id = post_id;
             sharep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/share.php",
+            axios.post("../api/post/share.php",
                 sharep,
                 {
                     headers: {

@@ -7,7 +7,7 @@ include './header.php';
     <!-- main page -->
 
 
-    <div class="container" style="margin-top:180px">
+    <div class="container" style="margin-top: 210px">
         <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
             <tbody id="tbodyID">
 
@@ -38,7 +38,7 @@ include './header.php';
                 postData.page_no = page_no;
                 postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-                axios.post("./api/facelist/loadmoreFacelist.php",
+                axios.post("../api/mobile/loadmoreFacelist.php",
                     postData,
                     {
                         headers: {
@@ -68,7 +68,7 @@ include './header.php';
                 followVar.unique_id_me = unique_id_me;
                 followVar.unique_id_fr = unique_id_fr;
 
-                axios.post("./api/facelist/follow.php",
+                axios.post("../api/facelist/follow.php",
                     followVar, {
                         headers: {
                             "Content-Type": "application/json"

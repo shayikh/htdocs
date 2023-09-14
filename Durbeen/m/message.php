@@ -118,14 +118,14 @@ if ($countTest == 0) {
             $SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
             $run11 = mysqli_query($connection_message, $SQL11);
 
-            // if($run9==true){
-            while ($data11 = mysqli_fetch_assoc($run11)) {
-                $imgNameinDB = $data11['image'];
-                if ($imgNameinDB != '') {
-                    unlink('./chat_image/' . $imgNameinDB);
+            if ($run9 == true) {
+                while ($data11 = mysqli_fetch_assoc($run11)) {
+                    $imgNameinDB = $data11['image'];
+                    if ($imgNameinDB != '') {
+                        unlink('./chat_image/' . $imgNameinDB);
+                    }
                 }
             }
-            // }
 
             $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
             mysqli_query($connection_message, $SQL12);
@@ -156,21 +156,21 @@ if ($countTest == 0) {
 
 
     <!-- main page -->
-    <a target="_self" style="position: fixed;left:13%;top:142px;z-index:20;font-weight: 600;"
+    <a target="_self" style="position: fixed;left: 5%;top: 147px;z-index:20;font-weight: 600;"
        href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
-       class="btn btn-lg btn-success"><?php echo $friendName ?></a>
+       class="btn btn-sm btn-success"><?php echo $friendName ?></a>
 
 
     <form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
-          style="position: fixed;right:10%;top:142px;z-index:20;font-weight: 600;">
+          style="position: fixed;left: 5%;top: 178px;z-index:20;font-weight: 600;">
 
         <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con"
-               class="btn btn-secondary" type="submit" value="Delete Conversation With <?php echo $friendName ?>">
+               class="btn btn-sm btn-secondary" type="submit" value="Delete Conversation With <?php echo $friendName ?>">
 
     </form>
 
 
-    <div class="container" style="margin-top:270px">
+    <div class="container" style="margin-top: 200px">
 
         <div class="row">
             <div class="col-md-12">
@@ -253,7 +253,7 @@ if ($countTest == 0) {
             msgData.unique_id_me = <?php echo $unique_id_me ?>;
             msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-            axios.post("./api/message/loadmoreMsg.php",
+            axios.post("../api/mobile/loadmoreMsg.php",
                 msgData,
                 {
                     headers: {
@@ -285,7 +285,7 @@ if ($countTest == 0) {
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/message/messageAdd.php",
+                url: "../api/message/messageAdd.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -323,7 +323,7 @@ if ($countTest == 0) {
         const makeTr = (message, unique_id_me, unique_id_fr) => {
             let tr = `<tr>
 							<div class="float-end" style="width: 590px;border: none;">
-								<img title="${message.time}" width="590px" src="./chat_image/${message.image}">
+								<img title="${message.time}" width="590px" src="../chat_image/${message.image}">
 								
 								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
@@ -345,7 +345,7 @@ if ($countTest == 0) {
             message.unique_id_me = unique_id_me;
             message.unique_id_fr = unique_id_fr;
 
-            axios.post("./api/message/unsend.php",
+            axios.post("../api/message/unsend.php",
                 message,
                 {
                     headers: {
@@ -379,7 +379,7 @@ if ($countTest == 0) {
             message.unique_id_me = unique_id_me;
             message.unique_id_fr = unique_id_fr;
 
-            axios.post("./api/message/deleteMsg.php",
+            axios.post("../api/message/deleteMsg.php",
                 message,
                 {
                     headers: {
@@ -410,7 +410,7 @@ if ($countTest == 0) {
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-success float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

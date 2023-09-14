@@ -44,42 +44,42 @@ if ($_SESSION['unique_id_me'] != 1) {
                 <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
                     <tr class="text-center">
                         <th>
-                            <h5>unique_id</h5>
+                            <h6>unique_id</h6>
                         </th>
                         <th>
-                            <h5>Image</h5>
+                            <h6>Image</h6>
                         </th>
                         <th>
-                            <h5>Name</h5>
+                            <h6>Name</h6>
                         </th>
                         <th>
-                            <h5>Email</h5>
+                            <h6>Email</h6>
                         </th>
                         <th>
-                            <h5>Password</h5>
+                            <h6>Password</h6>
                         </th>
                     </tr>
 
 
                     <tr class="text-center">
                         <td>
-                            <h5 id="unique_id" style="margin-top: 52px"></h5>
+                            <h6 id="unique_id" style="margin-top: 40px"></h6>
                         </td>
 
                         <td>
-                            <img height="135px" id="pro_pic" src="" alt="">
+                            <img height="90px" id="pro_pic" src="" alt="">
                         </td>
 
                         <td>
-                            <h5 id="name" style="margin-top: 52px"></h5>
+                            <h6 id="name" style="margin-top: 10px"></h6>
                         </td>
 
                         <td>
-                            <h5 id="emailfind" style="margin-top: 52px"></h5>
+                            <h6 id="emailfind" style="margin-top: 40px"></h6>
                         </td>
 
                         <td>
-                            <h5 id="password" style="margin-top: 52px"></h5>
+                            <h6 id="password" style="margin-top: 40px"></h6>
                         </td>
                     </tr>
 
@@ -110,7 +110,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                 var formdata = new FormData(form);
 
                 $.ajax({
-                    url: "./api/getSingle.php",
+                    url: "../api/getSingle.php",
                     type: "POST",
                     data: formdata,
                     contentType: false,
@@ -127,7 +127,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                         // console.log(singleUser);
 
                         unique_id.innerText = singleUser.unique_id;
-                        pro_pic.src = './pro_pic/' + singleUser.pro_pic;
+                        pro_pic.src = '../pro_pic/' + singleUser.pro_pic;
                         Username.innerText = singleUser.name;
                         Useremail.innerText = singleUser.email;
                         Password.innerText = singleUser.password;

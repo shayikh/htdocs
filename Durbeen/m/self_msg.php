@@ -19,12 +19,12 @@ mysqli_query($connection_message, $SQLcreateMe);
 
 
     <!-- main page -->
-    <a target="_self" style="position: fixed;left:13%;top:142px;z-index:20;font-weight: 600;"
+    <a target="_self" style="position: fixed;left: 5%;top: 147px;z-index:20;font-weight: 600;"
        href="self_msg.php?type=self_msg"
-       class="btn btn-lg btn-success">Self Message</a>
+       class="btn btn-sm btn-success">Self Message</a>
 
 
-    <div class="container" style="margin-top:270px">
+    <div class="container" style="margin-top:200px">
 
         <div class="row">
             <div class="col-md-12">
@@ -101,7 +101,7 @@ mysqli_query($connection_message, $SQLcreateMe);
             selfMsgData.page_no = page_no;
             selfMsgData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("./api/self_msg/loadmoreSelfMsg.php",
+            axios.post("../api/mobile/loadmoreSelfMsg.php",
                 selfMsgData,
                 {
                     headers: {
@@ -133,7 +133,7 @@ mysqli_query($connection_message, $SQLcreateMe);
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/self_msg/self_msg_add.php",
+                url: "../api/self_msg/self_msg_add.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -167,8 +167,8 @@ mysqli_query($connection_message, $SQLcreateMe);
 
         const makeTr = (message, unique_id_me) => {
             let tr = `<tr>
-					<div class="float-end" style="width: 590px;border: none;">
-						<img title="${message.time}" width="590px" src="./chat_image/${message.image}" alt="">
+					<div class="float-end" style="border: none;">
+						<img title="${message.time}" width="300px" src="../chat_image/${message.image}" alt="">
 						
 						<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 						
@@ -187,7 +187,7 @@ mysqli_query($connection_message, $SQLcreateMe);
             message.id = id_lll;
             message.unique_id_me = unique_id_me;
 
-            axios.post("./api/self_msg/delete_self_msg.php",
+            axios.post("../api/self_msg/delete_self_msg.php",
                 message,
                 {
                     headers: {
@@ -218,7 +218,7 @@ mysqli_query($connection_message, $SQLcreateMe);
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-success float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

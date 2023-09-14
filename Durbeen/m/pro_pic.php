@@ -8,7 +8,7 @@ include './header.php';
     <!-- main page -->
 
 
-    <div class="container" style="margin-top:180px">
+    <div class="container" style="margin-top: 220px">
         <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
             <tbody id="tbodyID">
 
@@ -43,7 +43,7 @@ include './header.php';
             postData.page_no = page_no;
             postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("./api/pro_pic/loadmoreProPics.php",
+            axios.post("../api/mobile/loadmoreProPics.php",
                 postData,
                 {
                     headers: {
@@ -77,7 +77,7 @@ include './header.php';
                 delProPic.pro_pic_id = pro_pic_id;
                 delProPic.unique_id_me = unique_id_me;
 
-                axios.post("./api/pro_pic/deleteProPic.php",
+                axios.post("../api/pro_pic/deleteProPic.php",
                     delProPic,
                     {
                         headers: {
@@ -109,7 +109,7 @@ include './header.php';
             delProPic.pro_pic_id = pro_pic_id;
             delProPic.unique_id_me = unique_id_me;
 
-            axios.post("./api/pro_pic/makeProPic.php",
+            axios.post("../api/pro_pic/makeProPic.php",
                 delProPic,
                 {
                     headers: {
@@ -119,7 +119,7 @@ include './header.php';
                 .then(res => {
                     // console.log(res.data);
 
-                    timeline_pro_pic.src = "./pro_pic/" + res.data.new_pro_pic;
+                    timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
 
                     elm.parentElement.parentElement.remove();
 
@@ -137,16 +137,16 @@ include './header.php';
 
         const makeProPicTr = (newProPic) => {
             let tr = `<tr>
-                    <td class="text-center">
-                        <img height="500px" src="./pro_pic/${newProPic.pro_pic}" alt="" id="pro_pic_${newProPic.id}">
-                    </td>
-                    <td class="text-center">
-                        <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
-                    </td>
-                    <td class="text-center">
-                        <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
-                    </td>
-                </tr>`
+                        <td class="text-center">
+                            <img width="130px" src="../pro_pic/${newProPic.pro_pic}" alt="" id="pro_pic_${newProPic.id}">
+                        </td>
+                        <td class="text-center">
+                            <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
+                        </td>
+                        <td class="text-center">
+                            <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+                        </td>
+                    </tr>`
             return tr;
         }
 

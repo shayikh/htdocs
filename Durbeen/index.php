@@ -146,38 +146,6 @@ if (isset($_GET['del'])) {
     </div>
 
 
-    <script>
-        const sharefn = (post_id, unique_id_me) => {
-            let sharep = {};
-
-            sharep.post_id = post_id;
-            sharep.unique_id_me = unique_id_me;
-
-            axios.post("./api/post/share.php",
-                sharep,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-
-                    let json = res.data;
-
-                    let unique_id_me = json.unique_id_me;
-                    let newPost = json.newPost;
-
-                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
-                    toastr.success('Post Shared');
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-    </script>
 
 <?php
 include './footer.php'

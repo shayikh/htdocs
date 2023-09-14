@@ -66,6 +66,7 @@ if (isset($_POST['login'])) {
         <script src="../js/toastr.min.js"></script>
         <script src="../js/axios.min.js"></script>
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/mobile.css">
 
     </head>
 
@@ -83,16 +84,16 @@ if (isset($_GET['out'])) {
 ?>
 
 
-    <div class="container-fluid" style="margin-top:100px">
+    <div class="container-fluid" style="margin-top: 10px">
         <div class="row">
-            <div class="col-md-6">
-                <h1 class="durbeen">দূরবীন</h1>
-                <p class="bondhu_text text-dark">বন্ধু আড্ডা এডভেঞ্চার সব এখানেই . . .</p>
+            <div class="col-md-6 col-sm-12">
+                <h1 class="durbeen_mb">দূরবীন</h1>
+                <p class="bondhu_text_mb text-dark">বন্ধু আড্ডা এডভেঞ্চার সব এখানেই . . .</p>
             </div>
 
 
-            <div class="col-md-6">
-                <div class="division">
+            <div class="col-md-6 col-sm-12">
+                <div class="division_mb">
                     <form class="margin-padding" method="post" action="" id="formID">
                         <div class="form-group margin-padding-1">
                             <input required name="email" id="" type="email" class="form-control form-control-lg"
@@ -105,7 +106,7 @@ if (isset($_GET['out'])) {
                         </div>
 
 
-                        <input name="login" value="Log In" class="form-control button-red" type="submit">
+                        <input name="login" value="Log In" class="form-control button-red_mobile" type="submit">
 
                         <div class="text-center">
                             <b>
@@ -133,48 +134,15 @@ if (isset($_GET['out'])) {
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div style="margin-top: 250px;text-align: center;">
-                    <h4 style="color: black">Press <img width="50px" src="../img/ctrl.png" alt=""><img width="40px" src="../img/minus.png" alt=""><img width="40px" src="../img/minus.png" alt=""> to get best design if you use 125% display
-                    </h4>
-                    <h4 style="color: black">This Website is Designed by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a> and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a></h4>
+                <div style="margin-top: 100px;text-align: center;">
+                    <h6 style="color: black">This Website is Designed by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a> and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a></h6>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <script>
-        const sharefn = (post_id, unique_id_me) => {
-            let sharep = {};
 
-            sharep.post_id = post_id;
-            sharep.unique_id_me = unique_id_me;
-
-            axios.post("./api/post/share.php",
-                sharep,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-
-                    let json = res.data;
-
-                    let unique_id_me = json.unique_id_me;
-                    let newPost = json.newPost;
-
-                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
-                    toastr.success('Post Shared');
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-    </script>
 
 <?php
 include './footer.php'

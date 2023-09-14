@@ -18,6 +18,7 @@ $EmailMe = $dataMe['email'];
 $pro_pic = $dataMe['pro_pic'];
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +38,7 @@ $pro_pic = $dataMe['pro_pic'];
     <script src="../js/toastr.min.js"></script>
     <script src="../js/axios.min.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mobile.css">
 
 </head>
 
@@ -52,12 +54,12 @@ $pro_pic = $dataMe['pro_pic'];
                     Option
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="./about_me.php?type=about_me">About Me</a></li>
-                    <li><a class="dropdown-item" href="./facelist.php?type=facelist">People Facelist</a></li>
-                    <li><a class="dropdown-item" href="./all_msg.php?type=all_msg">All Message</a></li>
-                    <li><a class="dropdown-item" href="./self_msg.php?type=self_msg">Self Message</a></li>
-                    <li><a class="dropdown-item" href="./logout.php"><h6>Log Out <i class="fas fa-sign-out-alt"></i>
-                            </h6></a></li>
+                    <li><a class="dropdown-item" href="./about_me.php">About Me</a></li>
+                    <li><a class="dropdown-item" href="./facelist.php">People Facelist</a></li>
+                    <li><a class="dropdown-item" href="./chat_list.php">Chat List</a></li>
+                    <li><a class="dropdown-item" href="./all_msg.php">All Message</a></li>
+                    <li><a class="dropdown-item" href="./self_msg.php">Self Message</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer" onclick="logout(<?php echo $unique_id_me ?>)"><h6>Log Out <i class="fas fa-sign-out-alt"></i></h6></a></li>
                 </ul>
             </li>
         </ul>
@@ -93,33 +95,9 @@ $pro_pic = $dataMe['pro_pic'];
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                            <li class="nav-item">
-                                <a class="btn btn-sm nav <?php $_GET['type'] == 'about_me' ? printf("active_2") : "" ?>"
-                                   href="./about_me.php?type=about_me" aria-current="page">About Me</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-sm nav <?php $_GET['type'] == 'facelist' ? printf("active_2") : "" ?>"
-                                   href="./facelist.php?type=facelist" aria-current="page">People Facelist</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-sm nav <?php $_GET['type'] == 'all_msg' ? printf("active_2") : "" ?>"
-                                   href="./all_msg.php?type=all_msg" aria-current="page">All Message</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-sm nav <?php $_GET['type'] == 'self_msg' ? printf("active_2") : "" ?>"
-                                   href="./self_msg.php?type=self_msg" aria-current="page">Self Message</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -129,47 +107,5 @@ $pro_pic = $dataMe['pro_pic'];
 </div>
 
 
-<!-- Chatbar start -->
-<div class="main-menu" style="margin-top:133px;padding-top: 8px;z-index: 25">
-    <ul style="list-style-type: none">
-        <?php
-        $SQL11 = "SELECT * FROM `$unique_id_me chats`";
-        $run11 = mysqli_query($durbeen_chats, $SQL11);
-
-        while ($data11 = mysqli_fetch_assoc($run11)) {
-
-            $unique_id_fr_chats = $data11['unique_id_fr'];
-
-            $SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
-            $run21 = mysqli_query($connection, $SQL21);
-            $data21 = mysqli_fetch_assoc($run21);
-
-
-            ?>
-
-            <li style="margin-bottom: 5px">
-                <a class="text-decoration-none"
-                   href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
-                    <div class="hover_chatbar">
-
-                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px"
-                             src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
-                        <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>"
-                             style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px"
-                             width="12px"
-                             alt="">
-                        <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
-                            <?php echo $data21['name'] ?>
-                        </h5>
-
-                    </div>
-                </a>
-            </li>
-
-        <?php } ?>
-
-    </ul>
-</div>
-<!-- Chatbar end -->
 
 

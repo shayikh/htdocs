@@ -399,7 +399,6 @@ section.home {
 }
 
 .durbeen:hover {
-
   color: #2d55ff;
 }
 
@@ -539,10 +538,14 @@ input::placeholder {
 
 
 /* register */
-.pos-absol {
+.pos-absol_mb {
   position: absolute;
   right: 15px;
   top: 15px;
+  font-size: 14px;
+}
+.p_rel{
+  position: relative;
 }
 
 /* message page */

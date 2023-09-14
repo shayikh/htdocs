@@ -27,7 +27,7 @@ if ($number > 0) {
 
     <!-- NEWS FEED -->
 
-    <div class="container" style="margin-top:130px">
+    <div class="container" style="margin-top: 190px">
 
         <div class="row mb-5">
             <div class="col-md-2"></div>
@@ -137,7 +137,7 @@ if ($number > 0) {
                 postData.page_no = page_no;
                 postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-                axios.post("./api/post/loadmoreHomePage.php",
+                axios.post("../api/mobile/loadmoreHomePage.php",
                     postData,
                     {
                         headers: {
@@ -168,7 +168,7 @@ if ($number > 0) {
                 delComment.comment_id = comment_id;
                 delComment.unique_id_me = unique_id_me;
 
-                axios.post("./api/comment/deleteComment.php",
+                axios.post("../api/comment/deleteComment.php",
                     delComment,
                     {
                         headers: {
@@ -182,7 +182,7 @@ if ($number > 0) {
                             elm.parentElement.parentElement.remove();
                             toastr.info('Comment Deleted');
                         } else {
-                            toastr.warning('This is not Your Comment');
+                            toastr.warning('This is not Your Post');
                         }
 
                     })
@@ -204,7 +204,7 @@ if ($number > 0) {
 
                 showComment.post_id = post_id;
 
-                axios.post("./api/comment/showComments.php",
+                axios.post("../api/comment/showComments.php",
                     showComment,
                     {
                         headers: {
@@ -232,22 +232,22 @@ if ($number > 0) {
 
             const makeCommentTr = (comment) => {
                 let tr = `<tr>
-						<td>
-							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" src="./pro_pic/${comment.pro_pic}">
-							</a>
-						</td>
-						
-						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
-						</td>
-						
-						<td class="text-center text-dark">${comment.time}</td>
-						<td class="text-center text-dark">${comment.comment}</td>
-						<td class="text-center text-dark">
-							<i class="fas fa-trash me-4" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-						</td>
-				</tr>`
+                            <td class="text-center">
+                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+                                    <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
+                                </a>
+                            </td>
+
+                            <td class="text-center text-dark">
+                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+                            </td>
+
+                            <td class="text-center text-dark">${comment.time}</td>
+                            <td class="text-center text-dark">${comment.comment}</td>
+                            <td class="text-center text-dark">
+                                <i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                            </td>
+                        </tr>`
                 return tr;
             }
 
@@ -269,7 +269,7 @@ if ($number > 0) {
                     commentp.comn_giver_id = comn_giver_id;
 
 
-                    axios.post("./api/comment/comment.php",
+                    axios.post("../api/comment/comment.php",
                         commentp,
                         {
                             headers: {
@@ -303,7 +303,7 @@ if ($number > 0) {
                 var formdata = new FormData(form);
 
                 $.ajax({
-                    url: "./api/post/postAdd.php",
+                    url: "../api/post/postAdd.php",
                     type: "POST",
                     data: formdata,
                     contentType: false,
@@ -341,37 +341,37 @@ if ($number > 0) {
 
             const makeTr = (post, unique_id_me) => {
                 let tr = `<div class="statusp">
-                    <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
-                        <div class="card" style="width: 100%;border: none">
+                            <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
+                                <div class="card" style="width: 100%;border: none">
 
-                            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                <a href="people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-                                    <b><?php echo $dataMe['name'] ?></b>
+                                    <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+                                        <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
+                                            <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                            <b><?php echo $dataMe['name'] ?></b>
+                                        </a>
+                                    </p>
+                                    <img width="100%" src="../post_image/${post.image}" alt="">
+                                    <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
+                                        <h6 class="card-title text-white">${post.time}</h6>
+                                        <p class="card-text text-white">${post.post}</p>
+                                    </div>
+
+                                </div>
+
+                                <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
+                                <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
+                                <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
+                                <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
+                                <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
+
+                                <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+                                <i class="fas fa-share"></i>
                                 </a>
-                            </p>
-                            <img width="100%" src="./post_image/${post.image}" alt="">
-                            <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
-                                <h6 class="card-title text-white">${post.time}</h6>
-                                <p class="card-text text-white">${post.post}</p>
+                                <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
+                                <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+                                <input type="text" class="ms-5 mt-2">
                             </div>
-
-                        </div>
-
-                        <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-                        <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-                        <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-                        <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-                        <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
-
-                        <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
-                        <i class="fas fa-share"></i>
-                        </a>
-                        <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
-                        <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                        <input type="text" class="ms-5 mt-2">
-                    </div>
-                </div>`
+                        </div>`
                 return tr;
             }
 
@@ -382,7 +382,7 @@ if ($number > 0) {
                 likep.post_id = post_id;
                 likep.unique_id_me = unique_id_me;
 
-                axios.post("./api/post/like_post.php",
+                axios.post("../api/post/like_post.php",
                     likep,
                     {
                         headers: {
@@ -413,7 +413,7 @@ if ($number > 0) {
                 dislikep.post_id = post_id;
                 dislikep.unique_id_me = unique_id_me;
 
-                axios.post("./api/post/dislike_post.php",
+                axios.post("../api/post/dislike_post.php",
                     dislikep,
                     {
                         headers: {
@@ -444,7 +444,7 @@ if ($number > 0) {
                 sharep.post_id = post_id;
                 sharep.unique_id_me = unique_id_me;
 
-                axios.post("./api/post/share.php",
+                axios.post("../api/post/share.php",
                     sharep,
                     {
                         headers: {

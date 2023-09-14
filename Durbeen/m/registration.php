@@ -32,7 +32,7 @@ if (isset($_POST['signup'])) {
             $imageOldName = $_FILES['pro_pic']['name'];
             $imageNewName = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
             $image_tmp = $_FILES['pro_pic']['tmp_name'];
-            move_uploaded_file($image_tmp, './pro_pic/' . $imageNewName);
+            move_uploaded_file($image_tmp, '../pro_pic/' . $imageNewName);
         } else {
             $imageNewName = "red_comet.png";
         }
@@ -127,21 +127,22 @@ if (isset($_POST['signup'])) {
         <script src="../js/toastr.min.js"></script>
         <script src="../js/axios.min.js"></script>
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/mobile.css">
 
     </head>
 
 <body>
-<div class="container-fluid" style="margin-top: 100px">
+<div class="container-fluid" style="margin-top: 60px">
     <div class="row">
         <div class="col-md-4">
 
         </div>
-        <div class="col-md-8">
-            <div class="division">
+        <div class="col-md-8 mb-5 pb-5">
+            <div class="division_mb p_rel">
                 <form class="margin-padding" method="post" action="" enctype="multipart/form-data">
-                    <h2 class="text-dark">Sign Up</h2>
+                    <h4 class="text-dark">Sign Up</h4>
                     <p class="text-white">.</p>
-                    <p class="pos-absol text-dark">Created Account Before! <b><a class="text-decoration-none" href="./">
+                    <p class="pos-absol_mb text-dark">Created Account Before! <b><a class="text-decoration-none" href="./">
                                 <span style="color: #ff4b4b">Log In</span></a></b></p>
 
                     <hr>
@@ -207,7 +208,7 @@ if (isset($_POST['signup'])) {
         font-size: 21px;
         font-weight: 500;
         text-align: center;
-        margin-left: 110px;
+        margin-left: 60px;
         margin-top: 0px;
         margin-bottom: 10px;
         border: 1px solid #00c44b;
