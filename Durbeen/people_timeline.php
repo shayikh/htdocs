@@ -277,7 +277,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         const makeCommentTr = (comment) => {
             let tr = `<tr>
-						<td>
+						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
 								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
 							</a>

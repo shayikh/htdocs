@@ -158,7 +158,7 @@ if (isset($_GET['register'])) {
                             <h5 class="text-red">My All Comments</h5>
                         </td>
                         <td>
-                            <a href="./my_comments.php?type" class="btn btn-success">My Comments</a>
+                            <a href="./my_comments.php?type" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</a>
                         </td>
                     </tr>
                     <tr>
@@ -166,7 +166,7 @@ if (isset($_GET['register'])) {
                             <h5 class="text-red">Other's Comments</h5>
                         </td>
                         <td>
-                            <a href="./other_comments.php?type" class="btn btn-success">Other's Comments</a>
+                            <a href="./other_comments.php?type" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</a>
                         </td>
                     </tr>
                 </table>
@@ -345,6 +345,85 @@ if (isset($_GET['register'])) {
 
 
 
+    <!-- My Comment Modal -->
+    <div class="modal fade" id="myCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="clearModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col" style="min-width: 150px">Time</th>
+                            <th class="text-center text-dark" scope="col">Comment</th>
+                            <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myCommentTboody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onmouseover="showMyComment()">
+                        More Comments
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Other Comment Modal -->
+    <div class="modal fade" id="otherCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="clearModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col">Name</th>
+                            <th class="text-center text-dark" scope="col">Time</th>
+                            <th class="text-center text-dark" scope="col">Comment</th>
+                            <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="otherCommentTboody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onmouseover="showOtherComment()">
+                        More Comments
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <script>
@@ -379,6 +458,9 @@ if (isset($_GET['register'])) {
 
         let myMail = emailID.value;
 
+
+        let myCommentTboody = document.querySelector("#myCommentTboody");
+        let otherCommentTboody = document.querySelector("#otherCommentTboody");
 
 
 
@@ -464,6 +546,192 @@ if (isset($_GET['register'])) {
             toastr.success("Link Copied to Clipboard");
         })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var page_no_my_comment = 1;
+
+
+        function showMyComment() {
+
+            let postData = {};
+
+            postData.page_no = page_no_my_comment;
+            postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+            axios.post("./api/comment/loadmoreMyComments.php",
+                postData,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => {
+                    // console.log(res.data);
+                    if (res.data == 0) {
+                        toastr.error('You are at the End');
+                    } else {
+                        let all = res.data;
+
+                        all.forEach(comment => {
+                            myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
+                        })
+                        page_no_my_comment++;
+                    }
+
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+        const makeMyCommentTr = (comment) => {
+            let tr = `<tr>
+                            <td class="text-center text-dark" style="min-width: 180px">${comment.time}</td>
+                            <td class="text-center text-dark">${comment.comment}</td>
+                            <td class="text-center" style="min-width: 150px">
+                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
+                            </td>
+                            <td class="text-center text-dark">
+                                <i class="fas fa-trash ms-4 mt-3 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                            </td>
+                        </tr>`
+            return tr;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var page_no_other_comment = 1;
+
+
+        function showOtherComment() {
+
+            let postData = {};
+
+            postData.page_no = page_no_other_comment;
+            postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+            axios.post("./api/comment/loadmoreOtherComments.php",
+                postData,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => {
+                    // console.log(res.data);
+                    if (res.data == 0) {
+                        toastr.error('You are at the End');
+                    } else {
+                        let all = res.data;
+
+                        all.forEach(comment => {
+                            otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
+                        })
+                        page_no_other_comment++;
+                    }
+
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+
+        const makeOtherCommentTr = (comment) => {
+            let tr = `<tr>
+                            <td class="text-center">
+                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+                                    <img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+                                </a>
+                            </td>
+
+                            <td class="text-center" style="min-width: 150px">
+                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+                            </td>
+                            <td class="text-center text-dark" style="min-width: 180px">${comment.time}</td>
+                            <td class="text-center text-dark" style="min-width: 200px">${comment.comment}</td>
+                            <td class="text-center text-dark" style="min-width: 150px">
+                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
+                            </td>
+                            <td class="text-center text-dark">
+                                <i class="fas fa-trash ms-4 mt-3 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                            </td>
+                        </tr>`
+            return tr;
+        }
+
+
+
+
+
+
+
+
+
+
+        const deleteComment = (comment_id, unique_id_me, elm) => {
+
+            let delComment = {};
+
+            delComment.comment_id = comment_id;
+            delComment.unique_id_me = unique_id_me;
+
+            axios.post("./api/comment/deleteComment.php",
+                delComment,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => {
+                    // console.log(res.data);
+
+                    if (res.data == 1) {
+                        elm.parentElement.parentElement.remove();
+                        toastr.info('Comment Deleted');
+                    } else {
+                        toastr.warning('This is not Your Post');
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+        }
 
 
     </script>
