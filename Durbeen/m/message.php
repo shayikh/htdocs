@@ -156,13 +156,13 @@ if ($countTest == 0) {
 
 
     <!-- main page -->
-    <a target="_self" style="position: fixed;left: 5%;top: 110px;z-index:20;font-weight: 600;"
+    <a target="_self" style="position: fixed;left: 5%;top: 99px;z-index:20;font-weight: 600;"
        href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
        class="btn btn-sm btn-success"><?php echo $friendName ?></a>
 
 
     <form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
-          style="position: fixed;left: 5%;top: 141px;z-index:20;font-weight: 600;">
+          style="position: fixed;left: 5%;top: 130px;z-index:20;font-weight: 600;">
 
         <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con"
                class="btn btn-sm btn-secondary" type="submit" value="Delete Conversation With <?php echo $friendName ?>">
@@ -239,7 +239,7 @@ if ($countTest == 0) {
         showdata();
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
                 showdata();
             }
         })

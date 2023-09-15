@@ -19,7 +19,7 @@ mysqli_query($connection_message, $SQLcreateMe);
 
 
     <!-- main page -->
-    <a target="_self" style="position: fixed;left: 5%;top: 110px;z-index:20;font-weight: 600;"
+    <a target="_self" style="position: fixed;left: 5%;top: 99px;z-index:20;font-weight: 600;"
        href="self_msg.php?type=self_msg"
        class="btn btn-sm btn-success">Self Message</a>
 
@@ -88,7 +88,7 @@ mysqli_query($connection_message, $SQLcreateMe);
         showdata();
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
                 showdata();
             }
         })
