@@ -95,7 +95,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 <!-- Comment Modal -->
 <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
@@ -208,22 +208,22 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
         const makeCommentTr = (comment) => {
             let tr = `<tr>
-						<td class="text-center">
-							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
-							</a>
-						</td>
+                            <td class="text-center">
+                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
+                                    <img class="text-center rounded-circle mt-3" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
+                                </a>
+                            </td>
 
-						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">${comment.name}</a>
-						</td>
+                            <td class="text-center" style="min-width: 100px">
+                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">${comment.name}</a>
+                            </td>
 
-						<td class="text-center text-dark">${comment.time}</td>
-						<td class="text-center text-dark">${comment.comment}</td>
-						<td class="text-center text-dark">
-							<i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-						</td>
-				</tr>`
+                            <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
+                            <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
+                            <td class="text-center text-dark">
+                                <i class="fas fa-trash m8-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                            </td>
+                        </tr>`
             return tr;
         }
 
