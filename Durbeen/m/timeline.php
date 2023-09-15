@@ -250,7 +250,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
         const editfn = (post_id, elm) => {
-            editPost.value = elm.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText;
+            editPost.value = elm.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText;
             edit_post_id.value = post_id;
 
             targetTr = elm.parentElement.parentElement;
@@ -436,11 +436,11 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
         const makeTrUpdate = (post, unique_id_me) => {
-            let tr = `<div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
+            let tr = `<div class="col-md-12" style="background-color: #18191A;border-radius: 3px">
                     <div class="card" style="width: 100%;border: none">
 
                         <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                            <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                            <img style="border-radius: 50%" width="45px" height="45px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
                             <b><?php echo $dataMe['name'] ?></b>
                         </p>
                         <img width="100%" src="../post_image/${post.image}" alt="">
@@ -451,11 +451,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                     </div>
 
-                    <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-                    <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-                    <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-                    <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-                    <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
+                    <p class="float-start me-2" style="color: ; font-size: 16px; margin-top: 2px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-up me-1"></i>(0)</p>
+                    <p class="float-start me-3" style="color: ; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-down me-1"></i>(0)</p>
 
                     <button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm btn-danger float-end mb-2">
                         <i class="fas fa-trash-alt"></i>
@@ -468,7 +465,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     </a>
                     <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                     <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                    <input type="text" class="ms-5 mt-2">
+                    <input type="text" class="mt-1 d-inline float-start" style="margin-top: -15px>
+                    <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px">0 Comments</p>
 
                 </div>`
             return tr;
@@ -477,42 +475,35 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         const makeTr = (post, unique_id_me) => {
             let tr = `<div class="statusp">
-                        <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
-                            <div class="card" style="width: 100%;border: none">
+                            <div class="col-md-12" style="background-color: #18191A;border-radius: 3px">
+                                <div class="card" style="width: 100%;border: none">
 
-                                <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
-                                    <b><?php echo $dataMe['name'] ?></b>
-                                </p>
-                                <img width="100%" src="../post_image/${post.image}" alt="">
-                                <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
-                                    <h6 class="card-title text-white">${post.time}</h6>
-                                    <p class="card-text text-white">${post.post}</p>
+                                    <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+                                        <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
+                                            <img style="border-radius: 50%" width="45px" height="45px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                            <b><?php echo $dataMe['name'] ?></b>
+                                        </a>
+                                    </p>
+                                    <img width="100%" src="../post_image/${post.image}" alt="">
+                                    <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
+                                        <h6 class="card-title text-white">${post.time}</h6>
+                                        <p class="card-text text-white">${post.post}</p>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                                <p class="float-start me-2" style="color: ; font-size: 16px; margin-top: 2px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-up me-1"></i>(0)</p>
+                                <p class="float-start me-3" style="color: ; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-down me-1"></i>(0)</p>
 
-                            <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-                            <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-                            <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-                            <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-                            <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
-
-                            <button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm btn-danger float-end mb-2">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                            <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+                                <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                                 <i class="fas fa-share"></i>
-                            </a>
-                            <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
-                            <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                            <input type="text" class="ms-5 mt-2">
-
-                        </div>
-                    </div>`
+                                </a>
+                                <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
+                                <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+                                <input type="text" class="mt-1 d-inline float-start" style="margin-top: -15px>
+                                <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px">0 Comments</p>
+                            </div>
+                        </div>`
             return tr;
         }
 

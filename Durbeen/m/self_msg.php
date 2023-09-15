@@ -167,15 +167,15 @@ mysqli_query($connection_message, $SQLcreateMe);
 
         const makeTr = (message, unique_id_me) => {
             let tr = `<tr>
-					<div class="float-end" style="border: none;">
-						<img title="${message.time}" width="300px" src="../chat_image/${message.image}" alt="">
-						
-						<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
-						
-						<button onclick="unsendMessage(${message.id}, ${unique_id_me}, this)"
-								class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
-					</div>
-				</tr>`
+                        <div class="float-end" style="border: none;">
+                            <img class="float-end" title="${message.time}" width="300px" src="../chat_image/${message.image}" alt="">
+
+                            <h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+                            <br>
+                            <button onclick="unsendMessage(${message.id}, ${unique_id_me}, this)"
+                                    class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </tr>`
             return tr;
         }
 
@@ -218,7 +218,7 @@ mysqli_query($connection_message, $SQLcreateMe);
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-success float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-primary float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

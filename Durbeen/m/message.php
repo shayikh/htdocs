@@ -322,15 +322,15 @@ if ($countTest == 0) {
 
         const makeTr = (message, unique_id_me, unique_id_fr) => {
             let tr = `<tr>
-							<div class="float-end" style="width: 590px;border: none;">
-								<img title="${message.time}" width="590px" src="../chat_image/${message.image}">
+							<div class="float-end" style="border: none;">
+								<img class="float-end" title="${message.time}" width="290px" src="../chat_image/${message.image}">
 								
 								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
-								
+								<br>
 								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
 										class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
 								
-								<button class="btn btn-sm btn-secondary float-end"><i class='fas fa-eye-slash'></i></button>
+								<button class="btn btn-sm btn-danger float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>
 						</tr>`
             return tr;
@@ -410,7 +410,7 @@ if ($countTest == 0) {
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-success float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-primary float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

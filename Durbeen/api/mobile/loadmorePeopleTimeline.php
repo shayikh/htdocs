@@ -73,10 +73,10 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 ?>
 
 <div class="statusp">
-    <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
+    <div class="col-md-12" style="background-color: #18191A;border-radius: 3px">
         <div class="card" style="width: 100%;border: none;">
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
-                <img style="border-radius: 50%" width="70px" height="70px"
+                <img style="border-radius: 50%" width="45px" height="45px"
                     src="../pro_pic/<?php echo $datafr['pro_pic']?>" alt="">
                 <b><?php echo $datafr['name']?></b>
             </p>
@@ -88,12 +88,11 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         </div>
 
 
-        <p class="float-start mt-2 me-3" style="color: <?php $countlike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="likefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Like</p>
-        <p class="float-start mt-2 me-5" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 18px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)">Dislike</p>
-        <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i><?php echo $countlikeall ?></p>
-        <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
-        <p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
-                        
+
+        <p class="float-start me-2" style="color: <?php $countlike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 16px; margin-top: 2px; cursor: pointer" onclick="likefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"><i class="fas fa-thumbs-up me-1"></i>(<?php echo $countlikeall ?>)</p>
+        <p class="float-start me-3" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"><i class="fas fa-thumbs-down me-1"></i>(<?php echo $countdislikeall ?>)</p>
+
+
         <!-- comment button -->
         <button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
             <i class="fas fa-share"></i>
@@ -101,7 +100,8 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-        <input type="text" class="ms-5 mt-2">
+        <input type="text" class="mt-1 d-inline float-start">
+        <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px"><?php echo $no_comment ?> Comments</p>
     </div>
 </div>
 
