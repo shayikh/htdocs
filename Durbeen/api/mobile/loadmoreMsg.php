@@ -52,26 +52,29 @@ while ($data3 = mysqli_fetch_assoc($run)){ ?>
       <?php if($data3['sender'] == 'fr'){ ?>
 
         <div class="float-start" style="border: none;">
-          <img title="<?php echo $data3['time'] ?>" class="float-start" style="border-radius: 50%" width="40px" height="40px" src="../pro_pic/<?php echo $pro_pic_fr ?>" alt="">
-          <img title="<?php echo $data3['time'] ?>" width="300px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+          <img class="float-start" style="border-radius: 50%" width="40px" height="40px" src="../pro_pic/<?php echo $pro_pic_fr ?>" alt="">
+            <br><br>
+          <img title="<?php echo $data3['time'] ?>" width="290px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
           
           <?php if($data3['message']!=""){ ?>
-          <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px;background-color: #265d94" class="response float-start py-2 px-3"><?php echo $data3['message'] ?></h5>
+            <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px;background-color: #265d94" class="response float-start py-2 px-3"><?php echo $data3['message'] ?></h5>
           <?php } ?>
-          
+            <br>
           <button onclick="deleteMessage(<?php echo $data3['id']?>,<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>, this)"
-                  class="btn btn-sm btn-primary float-end mb-2" title="Delete For Me"><i class="fas fa-trash-alt"></i></button>
+                  class="btn btn-sm btn-primary float-start mb-2" title="Delete For Me"><i class="fas fa-trash-alt"></i></button>
         </div>
 
       <?php }else{ ?>
             
         <div class="float-end" style="border: none;">
-          <img title="<?php echo $data3['time'] ?>" width="300px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+          <img class="float-end" width="290px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
           
           <?php if($data3['message']!=""){ ?>
-          <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
+            <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
           <?php } ?>
-          
+
+            <br>
+
           <button onclick="unsendMessage(<?php echo $data3['id']?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
                   class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
           

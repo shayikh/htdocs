@@ -15,22 +15,20 @@ if (isset($_GET['register'])) {
 
 
     <!-- main page -->
-    <div class="container" style="margin-top: 220px">
+    <div class="container" style="margin-top: 110px;margin-bottom: 100px"">
         <div class="row">
 
             <div class="col-md-12">
-                <img title="Cover Photo Size 1280px * 574px" width="340px"
-                     src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
+                <img width="340px" src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
             </div>
 
-            <div class="col-md-12 mt-4">
+            <div class="col-md-12 text-center mt-4">
                 <a class="text-decoration-none" href="">
-                    <img style="border-radius: 50%;border: 3px solid #fff" width="120px" height="120px"
-                         src="../pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
+                    <img style="border-radius: 50%;border: 3px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
                 </a>
             </div>
 
-            <div class="col-md-12 text-center" style="margin-top: -150px;">
+            <div class="col-md-12 text-center" style="margin-top: -170px;">
                 <p class="text-white" style="font-size: 25px" id="name"><?php echo $dataMe['name'] ?></p>
             </div>
 
@@ -39,14 +37,14 @@ if (isset($_GET['register'])) {
 
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
+                <a class="btn btn-sm btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
             </div>
         </div>
 
 
-        <div class="row" style="margin-bottom: 100px">
+        <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered mt-5 pt-5" style="border-color: #5d5d5d">
+                <table class="table table-bordered mt-3" style="border-color: #5d5d5d">
                     <tr>
                         <td>
                             <h6 class="text-red">Email</h6>

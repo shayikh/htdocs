@@ -56,6 +56,15 @@
     border-color: #ff4b4b;
     transition: 1s;
 }
+.t-hover_mb {
+    max-width: 330px;
+    height: 40px;
+    border-radius: 25px;
+    transition: 0.7s;
+}
+.t-active_mb {
+    background-color: #d94141;
+}
 
 
 
@@ -70,8 +79,81 @@
 
 
 
+/* right menu bar */
+#menuBar {
+    list-style-type: none;
+    position: absolute;
+    right: 0px;
+    top: 66px
+}
 
+#menuBar li {
+    float: right;
+    border-right: 2px solid #605b5b;
+    border-left: 2px solid #2b2a2a;
+    position: relative;
+    width: 170px;
+}
 
+#menuBar li:last-child {
+    border-right: none;
+}
+
+#menuBar li:first-child {
+    border-left: none;
+}
+
+#menuBar li a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #4e4e4e;
+    padding: 10px 0;
+    transition: 0.6s;
+    display: block;
+    text-align: center;
+}
+
+#menuBar li a:hover {
+    background-color: #5952ff;
+    border-right: none;
+    border-left: none;
+}
+
+#menuBar li ul {
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    right: 0px;
+    z-index: 10;
+    transition: 0.5s;
+}
+
+#menuBar li:hover ul {
+    left: 0;
+    z-index: 10;
+}
+
+#menuBar li ul li {
+    float: none;
+    border-right: none;
+    border-left: none;
+    border-top: 2px solid #605b5b;
+    border-bottom: 2px solid #2b2a2a;
+    width: 170px;
+    text-align: center;
+}
+
+#menuBar li ul li:last-child {
+    border-bottom: none;
+}
+
+#menuBar li ul li:first-child {
+    border-top: none;
+}
+
+#menuBar li ul li {
+    position: relative;
+}
 
 
 

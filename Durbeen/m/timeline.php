@@ -12,23 +12,21 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     <!-- main page -->
-    <div class="container" style="margin-top: 220px">
+    <div class="container" style="margin-top: 110px">
 
         <div class="row">
 
             <div class="col-md-12">
-                <img title="Cover Photo Size 1280px * 574px" width="340px"
-                     src="../pro_pic/cov_pic/<?php echo $dataMe['cov_pic'] ?>">
+                <img width="335px" src="../pro_pic/cov_pic/<?php echo $dataMe['cov_pic'] ?>">
             </div>
 
-            <div class="col-md-12 mt-4">
+            <div class="col-md-12 text-center mt-4">
                 <a class="text-decoration-none" href="">
-                    <img style="border-radius: 50%;border: 3px solid #fff" width="120px" height="120px"
-                         src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                    <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
                 </a>
             </div>
 
-            <div class="col-md-12 text-center" style="margin-top: -150px;">
+            <div class="col-md-12 text-center" style="margin-top: -170px;">
                 <p class="text-white" style="font-size: 25px" id="name"><?php echo $dataMe['name'] ?></p>
             </div>
 

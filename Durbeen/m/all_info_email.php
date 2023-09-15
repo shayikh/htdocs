@@ -13,12 +13,11 @@ if ($_SESSION['unique_id_me'] != 1) {
     <!-- main page -->
 
 
-    <div class="container" style="margin-top:133px; margin-bottom: 90px">
+    <div class="container" style="margin-top: 120px; margin-bottom: 90px">
         <div class="row">
             <div class="col-lg-12">
 
-                <div style="height: 30px"></div>
-                <h1 class="display-4 my-4">Find User</h1>
+                <h1 class="display-4">Find User</h1>
                 <form id="form" action="" method="post" enctype="multipart/form-data">
                     <div class="row">
 
@@ -41,7 +40,7 @@ if ($_SESSION['unique_id_me'] != 1) {
 
         <div class="row">
             <div class="col-lg-12">
-                <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
+                <table class="table table-bordered" style="border-color: #5d5d5d">
                     <tr class="text-center">
                         <th>
                             <h6>unique_id</h6>

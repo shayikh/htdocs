@@ -148,7 +148,7 @@ if (isset($_POST['delete'])) {
 <!-- main page -->
 
 
-<div class="container" style="margin-top: 170px">
+<div class="container" style="margin-top: 120px">
     <div class="row">
         <div class="col-md-12">
             <h4 class="text-red text-center">ACCOUNT DELETION</h4>

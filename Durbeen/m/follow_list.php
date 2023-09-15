@@ -7,7 +7,7 @@ include './header.php';
     <!-- main page -->
 
 
-    <div class="container" style="margin-top:210px">
+    <div class="container" style="margin-top: 120px">
         <table class="table table-bordered mt-4" style="margin-bottom: 210px;border-color: #5d5d5d">
             <tbody id="tbodyID">
 

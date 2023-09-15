@@ -27,7 +27,7 @@ if ($number > 0) {
 
     <!-- NEWS FEED -->
 
-    <div class="container" style="margin-top: 190px">
+    <div class="container" style="margin-top: 100px">
 
         <div class="row mb-5">
             <div class="col-md-2"></div>

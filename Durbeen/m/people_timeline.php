@@ -25,25 +25,23 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     <!-- main page -->
-    <div class="container" style="margin-top:133px">
+    <div class="container" style="margin-top: 110px">
 
         <div class="row">
 
             <div class="col-md-12">
-                <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px"
-                     src="./pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
+                <img width="340px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
             </div>
 
-            <div class="col-md-12 mt-4">
+            <div class="col-md-12 text-center mt-4">
                 <a class="text-decoration-none"
                    href="./pro_pic.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>">
-                    <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px"
-                         src="./pro_pic/<?php echo $data1['pro_pic'] ?>">
+                    <img style="border-radius: 50%;border: 3px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
                 </a>
             </div>
 
-            <div class="col-md-12 text-center" style="margin-top: -134px">
-                <p class="text-white" style="font-size: 39px"><?php echo $data1['name'] ?></p>
+            <div class="col-md-12 text-center" style="margin-top: -170px">
+                <p class="text-white" style="font-size: 25px"><?php echo $data1['name'] ?></p>
             </div>
 
         </div>
@@ -54,15 +52,15 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             <div class="col-md-12">
 
                 <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
-                        class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
+                        class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
                     <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
                 </button>
 
                 <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                   class="btn btn-success float-end ms-2">Profile</a>
+                   class="btn btn-sm btn-success float-end ms-2">Profile</a>
 
                 <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                   class="btn btn-success float-end">Chat by Messenger</a>
+                   class="btn btn-sm btn-success float-end">Send Messenge</a>
 
             </div>
         </div>
@@ -147,7 +145,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             postData.unique_id_me = <?php echo $unique_id_me ?>;
             postData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-            axios.post("./api/post/loadmorePeopleTimeline.php",
+            axios.post("../api/mobile/loadmorePeopleTimeline.php",
                 postData,
                 {
                     headers: {
@@ -177,7 +175,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             followVar.unique_id_me = unique_id_me;
             followVar.unique_id_fr = unique_id_fr;
 
-            axios.post("./api/facelist/follow.php",
+            axios.post("../api/facelist/follow.php",
                 followVar, {
                     headers: {
                         "Content-Type": "application/json"
@@ -213,7 +211,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             delComment.comment_id = comment_id;
             delComment.unique_id_me = unique_id_me;
 
-            axios.post("./api/comment/deleteComment.php",
+            axios.post("../api/comment/deleteComment.php",
                 delComment,
                 {
                     headers: {
@@ -249,7 +247,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             showComment.post_id = post_id;
 
-            axios.post("./api/comment/showComments.php",
+            axios.post("../api/comment/showComments.php",
                 showComment,
                 {
                     headers: {
@@ -279,7 +277,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             let tr = `<tr>
 						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
@@ -314,7 +312,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 commentp.comn_giver_id = comn_giver_id;
 
 
-                axios.post("./api/comment/comment.php",
+                axios.post("../api/comment/comment.php",
                     commentp,
                     {
                         headers: {
@@ -347,7 +345,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             likep.post_id = post_id;
             likep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/like_post.php",
+            axios.post("../api/post/like_post.php",
                 likep,
                 {
                     headers: {
@@ -378,7 +376,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             dislikep.post_id = post_id;
             dislikep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/dislike_post.php",
+            axios.post("../api/post/dislike_post.php",
                 dislikep,
                 {
                     headers: {
@@ -409,7 +407,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             sharep.post_id = post_id;
             sharep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/share.php",
+            axios.post("../api/post/share.php",
                 sharep,
                 {
                     headers: {

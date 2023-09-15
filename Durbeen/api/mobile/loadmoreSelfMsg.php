@@ -46,12 +46,12 @@ while ($data3=mysqli_fetch_assoc($run)){ ?>
     <tr>
                                         
       <div class="float-end" style="border: none;">
-        <img title="<?php echo $data3['time'] ?>" width="300px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+        <img class="float-end" title="<?php echo $data3['time'] ?>" width="300px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
         
         <?php if($data3['message']!=""){ ?>
         <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
         <?php } ?>
-        
+          <br>
         <button onclick="unsendMessage(<?php echo $data3['id']?>,<?php echo $unique_id_me ?>, this)"
           class="btn btn-sm btn-primary float-end mb-2" title="Delete"><i class="fas fa-trash-alt"></i></button>
       </div>

@@ -16,13 +16,10 @@ if ($_SESSION['unique_id_me'] != 1) {
     <!-- main page -->
 
 
-    <div class="container" style="margin-top:133px; margin-bottom: 90px">
-
-        <div style="height: 50px"></div>
-
+    <div class="container" style="margin-top:120px; margin-bottom: 90px">
 
         <div class="row">
-            <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
+            <table class="table table-bordered" style="border-color: #5d5d5d">
                 <tr>
                     <th>
                         <h6>unique_id</h6>

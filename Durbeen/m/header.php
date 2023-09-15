@@ -45,9 +45,9 @@ $pro_pic = $dataMe['pro_pic'];
 
 <body style="background-color: #18191A;">
 <div class="header-position">
-    <div class="bg-durbeen py-2">
+    <div class="bg-durbeen my-2">
 
-        <ul id="menu" style="z-index: 50">
+        <ul id="menuBar" style="z-index: 50">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                    aria-expanded="false">
@@ -56,7 +56,7 @@ $pro_pic = $dataMe['pro_pic'];
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="./about_me.php">About Me</a></li>
                     <li><a class="dropdown-item" href="./facelist.php">People Facelist</a></li>
-                    <li><a class="dropdown-item" href="./chat_list.php">Chat List</a></li>
+                    <li><a class="dropdown-item" href="./friend_list.php">Friend List</a></li>
                     <li><a class="dropdown-item" href="./all_msg.php">All Message</a></li>
                     <li><a class="dropdown-item" href="./self_msg.php">Self Message</a></li>
                     <li><a class="dropdown-item" style="cursor: pointer" onclick="logout(<?php echo $unique_id_me ?>)"><h6>Log Out <i class="fas fa-sign-out-alt"></i></h6></a></li>
@@ -69,18 +69,18 @@ $pro_pic = $dataMe['pro_pic'];
             <div class="row">
                 <div class="col-lg-12">
                     <a href="./homepage.php?type">
-                        <img title="News Feed" width="90px" height="70px" src="../img/brand_logo.png" alt="Logo">
+                        <img style="margin-top: -5px" title="News Feed" width="70px" height="55px" src="../img/brand_logo.png" alt="Logo">
                     </a>
 
 
-                    <a class="text-decoration-none float-end mt-2" href="./timeline.php?type=timeline">
-                        <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
+                    <a class="text-decoration-none float-end" style="margin-top: 4.5px" href="./timeline.php?type=timeline">
+                        <div class="t-hover_mb <?php $_GET['type'] == 'timeline' ? printf('t-active_mb') : "" ?>">
 
-                            <img class="float-end" style="border-radius: 50%" width="50px" height="50px"
+                            <img class="float-end" style="border-radius: 50%" width="40px" height="40px"
                                  src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="" id="timeline_pro_pic">
-                            <h5 class="float-start" style="margin-top: 11px;margin-left: 15px;padding-right: 10px">
+                            <p class="float-start" style="margin-top: 8px;margin-left: 15px;padding-right: 5px;font-size: 15px;font-weight: 500">
                                 <?php echo $dataMe['name'] ?>
-                            </h5>
+                            </p>
 
                         </div>
                     </a>
@@ -91,17 +91,7 @@ $pro_pic = $dataMe['pro_pic'];
     </div>
 
 
-    <nav style="z-index: 40" class="navbar navbar-expand-lg navbar-light bg-durbeen-special">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <button class="navbar-toggler" type="button">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div style="height: 44px" class="bg-durbeen-special"></div>
 
 
 </div>
