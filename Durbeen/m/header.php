@@ -45,7 +45,7 @@ $pro_pic = $dataMe['pro_pic'];
 
 <body style="background-color: #18191A;">
 <div class="header-position">
-    <div class="bg-durbeen my-2">
+    <div class="bg-durbeen">
 
         <ul id="menuBar" style="z-index: 50">
             <li class="nav-item dropdown">
@@ -69,11 +69,11 @@ $pro_pic = $dataMe['pro_pic'];
             <div class="row">
                 <div class="col-lg-12">
                     <a href="./homepage.php?type">
-                        <img style="margin-top: -5px" title="News Feed" width="70px" height="55px" src="../img/brand_logo.png" alt="Logo">
+                        <img style="margin-top: px" title="News Feed" width="70px" height="55px" src="../img/brand_logo.png" alt="Logo">
                     </a>
 
 
-                    <a class="text-decoration-none float-end" style="margin-top: 4.5px" href="./timeline.php?type=timeline">
+                    <a class="text-decoration-none float-end" style="margin-top: 7px" href="./timeline.php?type=timeline">
                         <div class="t-hover_mb <?php $_GET['type'] == 'timeline' ? printf('t-active_mb') : "" ?>">
 
                             <img class="float-end" style="border-radius: 50%" width="40px" height="40px"

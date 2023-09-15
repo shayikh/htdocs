@@ -12,7 +12,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     <!-- main page -->
-    <div class="container" style="margin-top: 110px">
+    <div class="container" style="margin-top: 99px">
 
         <div class="row">
 
@@ -329,13 +329,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         const makeCommentTr = (comment) => {
             let tr = `<tr>
 						<td class="text-center">
-							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
 								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
 						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">${comment.name}</a>
 						</td>
 
 						<td class="text-center text-dark">${comment.time}</td>

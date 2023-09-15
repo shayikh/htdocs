@@ -50,7 +50,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 <!-- main page -->
 
 
-<div class="container" style="margin-top:130px">
+<div class="container" style="margin-top: 99px">
     <div class="row mb-5">
         <div class="col-md-2"></div>
 
@@ -62,11 +62,11 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                                 <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                                     <img style="border-radius: 50%" width="45px" height="45px"
-                                         src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
+                                         src="../pro_pic/<?php echo $data2['pro_pic']?>" alt="">
                                     <b><?php echo $data2['name']?></b>
                                 </a>
                             </p>
-                            <img width="100%" src="./post_image/<?php echo $data1['image']?>" alt="">
+                            <img width="100%" src="../post_image/<?php echo $data1['image']?>" alt="">
                             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                 <h6 class="card-title text-white"><?php echo $data1['time']?></h6>
                                 <p class="card-text text-white"><?php echo $data1['post']?></p>
@@ -144,7 +144,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             delComment.comment_id = comment_id;
             delComment.unique_id_me = unique_id_me;
 
-            axios.post("./api/comment/deleteComment.php",
+            axios.post("../api/comment/deleteComment.php",
                 delComment,
                 {
                     headers: {
@@ -180,7 +180,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
             showComment.post_id = post_id;
 
-            axios.post("./api/comment/showComments.php",
+            axios.post("../api/comment/showComments.php",
                 showComment,
                 {
                     headers: {
@@ -209,13 +209,13 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         const makeCommentTr = (comment) => {
             let tr = `<tr>
 						<td class="text-center">
-							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
 						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">${comment.name}</a>
 						</td>
 
 						<td class="text-center text-dark">${comment.time}</td>
@@ -245,7 +245,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                 commentp.comn_giver_id = comn_giver_id;
 
 
-                axios.post("./api/comment/comment.php",
+                axios.post("../api/comment/comment.php",
                     commentp,
                     {
                         headers: {
@@ -280,7 +280,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             likep.post_id = post_id;
             likep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/like_post.php",
+            axios.post("../api/post/like_post.php",
                 likep,
                 {
                     headers: {
@@ -311,7 +311,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             dislikep.post_id = post_id;
             dislikep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/dislike_post.php",
+            axios.post("../api/post/dislike_post.php",
                 dislikep,
                 {
                     headers: {

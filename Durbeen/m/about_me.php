@@ -15,7 +15,7 @@ if (isset($_GET['register'])) {
 
 
     <!-- main page -->
-    <div class="container" style="margin-top: 110px;margin-bottom: 100px"">
+    <div class="container" style="margin-top: 99px;margin-bottom: 100px"">
         <div class="row">
 
             <div class="col-md-12">
@@ -24,7 +24,7 @@ if (isset($_GET['register'])) {
 
             <div class="col-md-12 text-center mt-4">
                 <a class="text-decoration-none" href="">
-                    <img style="border-radius: 50%;border: 3px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
+                    <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
                 </a>
             </div>
 
@@ -330,7 +330,7 @@ if (isset($_GET['register'])) {
 
                             <div class="col-md-12">
                                 <div class="form-group mt-2">
-                                    <input name="updateBtn" value="UPDATE" class="btn btn-success float-end" type="submit" aria-label="Close">
+                                    <input name="updateBtn" value="UPDATE" class="btn btn-sm btn-success float-end" type="submit" aria-label="Close">
                                 </div>
                             </div>
 
@@ -369,10 +369,10 @@ if (isset($_GET['register'])) {
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onmouseover="showMyComment()">
+                    <button type="button" class="btn btn-sm btn-success" onmouseover="showMyComment()">
                         More Comments
                     </button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
                 </div>
@@ -409,10 +409,10 @@ if (isset($_GET['register'])) {
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onmouseover="showOtherComment()">
+                    <button type="button" class="btn btn-sm btn-success" onmouseover="showOtherComment()">
                         More Comments
                     </button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
                 </div>
@@ -604,30 +604,17 @@ if (isset($_GET['register'])) {
 
         const makeMyCommentTr = (comment) => {
             let tr = `<tr>
-                            <td class="text-center text-dark" style="min-width: 180px">${comment.time}</td>
-                            <td class="text-center text-dark">${comment.comment}</td>
-                            <td class="text-center" style="min-width: 150px">
-                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
+                            <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
+                            <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
+                            <td class="text-center" style="min-width: 100px">
+                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-3">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
-                                <i class="fas fa-trash ms-4 mt-3 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                                <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
                             </td>
                         </tr>`
             return tr;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -673,32 +660,25 @@ if (isset($_GET['register'])) {
         const makeOtherCommentTr = (comment) => {
             let tr = `<tr>
                             <td class="text-center">
-                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                    <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
+                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
+                                    <img class="text-center rounded-circle mt-3" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
 
-                            <td class="text-center" style="min-width: 150px">
+                            <td class="text-center" style="min-width: 100px">
                                 <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
                             </td>
-                            <td class="text-center text-dark" style="min-width: 180px">${comment.time}</td>
-                            <td class="text-center text-dark" style="min-width: 200px">${comment.comment}</td>
-                            <td class="text-center text-dark" style="min-width: 150px">
-                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
+                            <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
+                            <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
+                            <td class="text-center text-dark" style="min-width: 100px">
+                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-4">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
-                                <i class="fas fa-trash ms-4 mt-3 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                                <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
                             </td>
                         </tr>`
             return tr;
         }
-
-
-
-
-
-
-
 
 
 
