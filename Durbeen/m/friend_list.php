@@ -30,14 +30,13 @@ if ($number > 0) {
 
 <!-- main page -->
 
-
 <div class="container" style="margin-top: 120px">
 
     <!-- Chatbar start -->
 
     <ul style="list-style-type: none">
         <?php
-        $SQL11 = "SELECT * FROM `$unique_id_me chats`";
+        $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
         $run11 = mysqli_query($durbeen_chats, $SQL11);
 
         while ($data11 = mysqli_fetch_assoc($run11)) {

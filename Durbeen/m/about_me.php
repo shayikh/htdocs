@@ -19,7 +19,7 @@ if (isset($_GET['register'])) {
         <div class="row">
 
             <div class="col-md-12">
-                <img width="340px" src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
+                <img width="335px" src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
             </div>
 
             <div class="col-md-12 text-center mt-4">

@@ -30,7 +30,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         <div class="row">
 
             <div class="col-md-12">
-                <img width="340px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
+                <img width="335px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
             </div>
 
             <div class="col-md-12 text-center mt-4">

@@ -20,7 +20,7 @@ if (isset($_POST['signup'])) {
     $run1 = mysqli_query($connection, $SQL1);
     $count = mysqli_num_rows($run1);
     if ($count > 0) {
-        echo "<script>window.location = './registration.php?message=This Email is Already in Use'</script>";
+        echo "<script>window.location = './registration.php?message=Another Person Already Used This Email'</script>";
     } else {
         $name = $_POST['name'];
         $password = trim($_POST['password']);
@@ -38,7 +38,7 @@ if (isset($_POST['signup'])) {
         }
 
 
-        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`, `active`) VALUES ('$name','$email','$password','$imageNewName','1')";
+        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`) VALUES ('$name','$email','$password','$imageNewName')";
         mysqli_query($connection, $SQL2);
 
 
@@ -50,7 +50,7 @@ if (isset($_POST['signup'])) {
 
         $_SESSION['unique_id_me'] = $unique_id_me;
 
-        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`, `visit`) VALUES ('$unique_id_me','$date_birth','$gender,')";
+        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`) VALUES ('$unique_id_me','$date_birth','$gender')";
         mysqli_query($connection, $SQL4);
 
 
@@ -96,6 +96,7 @@ if (isset($_POST['signup'])) {
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me pro_pic` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`pro_pic` text,
+            `watch` tinyint(1) DEFAULT '1',
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($durbeen_chats, $SQLcreateMe);
@@ -163,11 +164,11 @@ if (isset($_POST['signup'])) {
                             <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
                         </div>
                         <div class="col-md-6">
-                            <label class="mt-1 font-small">Date of birth</label>
+                            <label class="mt-1 font-small text-dark">Date of birth</label>
                             <input required name="date_birth" class="form-control" type="date">
                         </div>
                         <div class="col-md-6">
-                            <label class="font-small">Gender</label>
+                            <label class="font-small text-dark">Gender</label>
                             <select required name="gender" class="form-control select">
                                 <option value="">Select Gender</option>
                                 <option value="Female">&#9792; Female</option>
@@ -176,9 +177,9 @@ if (isset($_POST['signup'])) {
                             </select>
                         </div>
                         <div class="col-md-12">
-                            <label class="mt-1 font-small">Profile Picture (Not Mandatory) ( A<span
+                            <label class="mt-1 font-small text-dark">Profile Picture ( A<span
                                         style='font-size:18px;'>&#215;</span>A Size )</label>
-                            <input name="pro_pic" class="form-control" type="file"
+                            <input required name="pro_pic" class="form-control" type="file"
                                    accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                         </div>
                         <label class="mt-2 ml-3 ms-2 font-small-2">.</label>
@@ -236,43 +237,43 @@ if (isset($_POST['signup'])) {
     }
 
     input[type=text] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
     }
 
     input[type=date] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     input[type=file] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     input[type=email] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     input[type=password] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     .select {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
     }
 
     * {
@@ -299,8 +300,7 @@ if (isset($_POST['signup'])) {
         position: relative;
         width: 460px;
         height: 500px;
-        /* background-color: #ffffff; */
-        background: #fffeed;
+        background-color: #f7ffff;
         margin-left: 50px;
         margin-top: 100px;
         border-radius: 8px;

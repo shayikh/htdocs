@@ -38,7 +38,7 @@ if (isset($_POST['signup'])) {
         }
 
 
-        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`, `active`) VALUES ('$name','$email','$password','$imageNewName','1')";
+        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`) VALUES ('$name','$email','$password','$imageNewName')";
         mysqli_query($connection, $SQL2);
 
 
@@ -50,7 +50,7 @@ if (isset($_POST['signup'])) {
 
         $_SESSION['unique_id_me'] = $unique_id_me;
 
-        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`, `visit`) VALUES ('$unique_id_me','$date_birth','$gender,')";
+        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`) VALUES ('$unique_id_me','$date_birth','$gender')";
         mysqli_query($connection, $SQL4);
 
 
@@ -96,6 +96,7 @@ if (isset($_POST['signup'])) {
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me pro_pic` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`pro_pic` text,
+			`watch` tinyint(1) DEFAULT '1',
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($durbeen_chats, $SQLcreateMe);
@@ -132,7 +133,7 @@ if (isset($_POST['signup'])) {
     </head>
 
 <body>
-<div class="container-fluid" style="margin-top: 50px">
+<div class="container-fluid" style="margin-top: 45px">
     <div class="row">
         <div class="col-md-4">
 
@@ -177,9 +178,9 @@ if (isset($_POST['signup'])) {
                             </select>
                         </div>
                         <div class="col-md-12">
-                            <label class="mt-1 font-small text-dark">Profile Picture (Not Mandatory) ( A<span
+                            <label class="mt-1 font-small text-dark">Profile Picture ( A<span
                                         style='font-size:18px;'>&#215;</span>A Size )</label>
-                            <input name="pro_pic" class="form-control" type="file"
+                            <input required name="pro_pic" class="form-control" type="file"
                                    accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                         </div>
                         <label class="mt-2 ml-3 ms-2 font-small-2">.</label>
@@ -294,18 +295,6 @@ if (isset($_POST['signup'])) {
         font-size: 28px;
         font-weight: 400;
         line-height: 1.2;
-    }
-
-    .division {
-        position: relative;
-        width: 460px;
-        height: 500px;
-        /* background-color: #ffffff; */
-        background: #fffeed;
-        margin-left: 50px;
-        margin-top: 100px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     body {

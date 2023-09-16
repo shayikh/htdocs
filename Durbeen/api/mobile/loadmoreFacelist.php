@@ -46,7 +46,7 @@ while ($data1=mysqli_fetch_assoc($run)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <img style="margin-top: 2px" height="120px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+                <img style="margin-top: 2px"width="110px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">

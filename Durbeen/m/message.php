@@ -325,7 +325,7 @@ if ($countTest == 0) {
 							<div class="float-end" style="border: none;">
 								<img class="float-end" title="${message.time}" width="290px" src="../chat_image/${message.image}">
 								
-								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+								<h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
 								<br>
 								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
 										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>

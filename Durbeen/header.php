@@ -133,7 +133,7 @@ $pro_pic = $dataMe['pro_pic'];
 <div class="main-menu" style="margin-top:133px;padding-top: 8px;z-index: 25">
     <ul style="list-style-type: none">
         <?php
-        $SQL11 = "SELECT * FROM `$unique_id_me chats`";
+        $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
         $run11 = mysqli_query($durbeen_chats, $SQL11);
 
         while ($data11 = mysqli_fetch_assoc($run11)) {
@@ -143,7 +143,6 @@ $pro_pic = $dataMe['pro_pic'];
             $SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
             $run21 = mysqli_query($connection, $SQL21);
             $data21 = mysqli_fetch_assoc($run21);
-
 
             ?>
 

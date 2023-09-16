@@ -170,7 +170,7 @@ mysqli_query($connection_message, $SQLcreateMe);
                         <div class="float-end" style="border: none;">
                             <img class="float-end" title="${message.time}" width="300px" src="../chat_image/${message.image}" alt="">
 
-                            <h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+                            <h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>
                             <button onclick="unsendMessage(${message.id}, ${unique_id_me}, this)"
                                     class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
