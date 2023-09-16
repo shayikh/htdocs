@@ -51,7 +51,7 @@ $data1 = mysqli_fetch_assoc($run1);
                    class="btn btn-sm btn-success float-end ms-2">Timeline</a>
 
                 <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>"
-                   class="btn btn-sm btn-success float-end">Chat by Messenger</a>
+                   class="btn btn-sm btn-success float-end">Send Messenge</a>
             </div>
 
         </div>
@@ -64,84 +64,84 @@ $data1 = mysqli_fetch_assoc($run1);
                 <table class="table table-bordered mt-2" style="border-color: #5d5d5d">
                     <tr>
                         <td>
-                            <h5 class="text-red">Email</h5>
+                            <h6 class="text-red">Email</h6>
                         </td>
                         <td>
-                            <h5><?php echo $data1['email'] ?></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="text-red">Date of Birth</h5>
-                        </td>
-                        <td>
-                            <h5><?php echo $dataAbout['date_birth'] ?></h5>
+                            <h6><?php echo $data1['email'] ?></h6>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="text-red">Gender</h5>
+                            <h6 class="text-red">Date of Birth</h6>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['gender'] ?></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="text-red">Phone Numbers</h5>
-                        </td>
-                        <td>
-                            <h5><?php echo $dataAbout['phone_no'] ?></h5>
+                            <h6><?php echo $dataAbout['date_birth'] ?></h6>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="text-red">Religion</h5>
+                            <h6 class="text-red">Gender</h6>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['religion'] ?></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="text-red">Country</h5>
-                        </td>
-                        <td>
-                            <h5><?php echo $dataAbout['country'] ?></h5>
+                            <h6><?php echo $dataAbout['gender'] ?></h6>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="text-red">City</h5>
+                            <h6 class="text-red">Phone Numbers</h6>
                         </td>
                         <td>
-                            <h5><?php echo $dataAbout['city'] ?></h5>
+                            <h6><?php echo $dataAbout['phone_no'] ?></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6 class="text-red">Religion</h6>
+                        </td>
+                        <td>
+                            <h6><?php echo $dataAbout['religion'] ?></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6 class="text-red">Country</h6>
+                        </td>
+                        <td>
+                            <h6><?php echo $dataAbout['country'] ?></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6 class="text-red">City</h6>
+                        </td>
+                        <td>
+                            <h6><?php echo $dataAbout['city'] ?></h6>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 300px">
-                            <h5 class="text-red">Bio</h5>
+                            <h6 class="text-red">Bio</h6>
                         </td>
                         <td>
-                            <h5 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
+                            <h6 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h6>
                         </td>
                     </tr>
 
                     <tr>
                         <td style="width: 300px">
-                            <h5 class="text-red">Durbeen Visited</h5>
+                            <h6 class="text-red">Durbeen Visited</h6>
                         </td>
                         <td>
-                            <h5><?php echo $dataMe['visit'] ?></h5>
+                            <h6><?php echo $data1['visit'] ?></h6>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 300px">
-                            <h5 class="text-red">Account Link</h5>
+                            <h6 class="text-red">Account Link</h6>
                         </td>
                         <td>
-                            <h5 class="one d-none">
-                                http://durbeen.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h5>
+                            <h6 class="one d-none">
+                                http://durbeen.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h6>
                             <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                         </td>
                     </tr>

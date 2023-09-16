@@ -60,19 +60,16 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
             <?php } else { ?>
 
                 <div class="float-end" style="border: none;">
-                    <img class="float-end" width="290px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+                    <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
 
                     <?php if ($data3['message'] != "") { ?>
                         <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px"
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
                     <?php } ?>
-
                     <br>
-
                     <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
                             class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i>
                     </button>
-
                     <button class="btn btn-sm <?php $data3['seen'] == 'Seen' ? printf("btn-success") : printf("btn-secondary") ?> float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 

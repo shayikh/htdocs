@@ -45,13 +45,13 @@ while ($data2 = mysqli_fetch_assoc($run2)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data3['unique_id']?>">
-                <img style="margin-top: 5px" width="100px" title="Click to See <?php echo $data3['name'] ?>'s Timeline" src="../pro_pic/<?php echo $data3['pro_pic'] ?>" alt="">
+                <img style="margin-top: 2px" width="100px" title="Click to See <?php echo $data3['name'] ?>'s Timeline" src="../pro_pic/<?php echo $data3['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">
             <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $data3['unique_id']?>">
-                <h3 style="margin-top: px"><?php echo $data3['name'] ?></h3>
-                <h6 class="text-success">Durbeen Visited : <?php echo $data3['visit'] ?></h6>
+                <h6 style="margin-top: px"><?php echo $data3['name'] ?></h6>
+                <p class="text-success" style="font-size: 12px;font-weight: bold">Durbeen Visited : <?php echo $data3['visit'] ?></p>
             </a>
         </td>
         <td class="text-center">

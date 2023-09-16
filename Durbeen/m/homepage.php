@@ -469,7 +469,7 @@ if ($number > 0) {
         </script>
 
 
-        <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3"
+        <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3"
                 data-bs-toggle="modal" data-bs-target="#postModal">
             <i class="fas fa-plus"></i>
         </button>

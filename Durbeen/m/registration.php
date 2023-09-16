@@ -20,7 +20,7 @@ if (isset($_POST['signup'])) {
     $run1 = mysqli_query($connection, $SQL1);
     $count = mysqli_num_rows($run1);
     if ($count > 0) {
-        echo "<script>window.location = './registration.php?message=This Email is Already in Use'</script>";
+        echo "<script>window.location = './registration.php?message=Another Person Already Used This Email'</script>";
     } else {
         $name = $_POST['name'];
         $password = trim($_POST['password']);
@@ -132,13 +132,13 @@ if (isset($_POST['signup'])) {
     </head>
 
 <body>
-<div class="container-fluid" style="margin-top: 60px">
+<div class="container-fluid" style="margin-top: 50px">
     <div class="row">
         <div class="col-md-4">
 
         </div>
         <div class="col-md-8 mb-5 pb-5">
-            <div class="division_mb p_rel">
+            <div class="division_mb_register p_rel">
                 <form class="margin-padding" method="post" action="" enctype="multipart/form-data">
                     <h4 class="text-dark">Sign Up</h4>
                     <p class="text-white">.</p>
@@ -155,7 +155,7 @@ if (isset($_POST['signup'])) {
                         </div>
 
                         <b>
-                            <p class="text-danger ml-3 mt-1"><?php echo $msg; ?></p>
+                            <h6 class="text-danger ml-3 mt-1"><?php echo $msg; ?></h6>
                         </b>
 
                         <div class="col-md-12 mt- pwdbody">
@@ -164,11 +164,11 @@ if (isset($_POST['signup'])) {
                             <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
                         </div>
                         <div class="col-md-6">
-                            <label class="mt-1 font-small">Date of birth</label>
+                            <label class="mt-1 font-small text-dark">Date of birth</label>
                             <input required name="date_birth" class="form-control" type="date">
                         </div>
                         <div class="col-md-6">
-                            <label class="font-small">Gender</label>
+                            <label class="font-small text-dark">Gender</label>
                             <select required name="gender" class="form-control select">
                                 <option value="">Select Gender</option>
                                 <option value="Female">&#9792; Female</option>
@@ -177,7 +177,7 @@ if (isset($_POST['signup'])) {
                             </select>
                         </div>
                         <div class="col-md-12">
-                            <label class="mt-1 font-small">Profile Picture (Not Mandatory) ( A<span
+                            <label class="mt-1 font-small text-dark">Profile Picture (Not Mandatory) ( A<span
                                         style='font-size:18px;'>&#215;</span>A Size )</label>
                             <input name="pro_pic" class="form-control" type="file"
                                    accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
@@ -237,43 +237,43 @@ if (isset($_POST['signup'])) {
     }
 
     input[type=text] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
     }
 
     input[type=date] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     input[type=file] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     input[type=email] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     input[type=password] {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
 
     }
 
     .select {
-        border: 1px solid #ff4b4b;
+        border: 1px solid deepskyblue;
         border-radius: 6px;
-        background-color: #f3f3f3;
+        background-color: #fff;
     }
 
     * {
@@ -317,6 +317,13 @@ if (isset($_POST['signup'])) {
 
     .margin-padding {
         padding: 15px;
+    }
+    .division_mb_register {
+        background-color: #f7ffff;
+        margin-left: 0px;
+        margin-top: 55px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 </style>
 

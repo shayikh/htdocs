@@ -194,7 +194,7 @@ if ($countTest == 0) {
 
     <!-- Message Modal -->
     <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
@@ -328,9 +328,8 @@ if ($countTest == 0) {
 								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								<br>
 								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
-										class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
-								
-								<button class="btn btn-sm btn-danger float-end"><i class='fas fa-eye-slash'></i></button>
+										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
+								<button class="btn btn-sm btn-secondary float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>
 						</tr>`
             return tr;
@@ -410,7 +409,7 @@ if ($countTest == 0) {
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-primary float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

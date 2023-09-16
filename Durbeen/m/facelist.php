@@ -48,7 +48,7 @@ include './header.php';
                     .then(res => {
                         // console.log(res.data);
                         if (res.data == 0) {
-                            toastr.error('You are at the End');
+                            toastr.error('You Are at The End');
                         } else {
                             tbody.innerHTML = tbody.innerHTML + res.data;
                             page_no++;

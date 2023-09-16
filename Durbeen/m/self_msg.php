@@ -45,7 +45,7 @@ mysqli_query($connection_message, $SQLcreateMe);
 
     <!-- Message Modal -->
     <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
@@ -218,7 +218,7 @@ mysqli_query($connection_message, $SQLcreateMe);
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-sm btn-primary float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

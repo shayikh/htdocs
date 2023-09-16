@@ -135,7 +135,7 @@ if (isset($_GET['out'])) {
         <div class="row">
             <div class="col-md-12">
                 <div style="margin-top: 100px;text-align: center;">
-                    <h6 style="color: black">This Website is Designed by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a> and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a></h6>
+                    <h6 style="color: black">This Website is Designed and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a> and Design Concept Given by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a></h6>
                 </div>
             </div>
         </div>
