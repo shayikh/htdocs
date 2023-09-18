@@ -165,7 +165,7 @@ if ($countTest == 0) {
           style="position: fixed;left: 5%;top: 130px;z-index:20;font-weight: 600;">
 
         <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con"
-               class="btn btn-sm btn-secondary" type="submit" value="Delete Conversation With <?php echo $friendName ?>">
+               class="btn btn-sm btn-secondary" type="submit" value="Delete This Conversation">
 
     </form>
 
@@ -234,13 +234,16 @@ if ($countTest == 0) {
         let messageCloseBtn = document.querySelector("#messageCloseBtn");
 
 
+        var stop_page = "";
         var page_no = 1;
 
         showdata();
 
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                showdata();
+                if (stop_page != "stop"){
+                    showdata();
+                }
             }
         })
 
@@ -261,15 +264,14 @@ if ($countTest == 0) {
                     }
                 })
                 .then(res => {
-                    // console.log(res.data);
 
                     if (res.data == 0) {
-                        toastr.error('You are at the End');
+                        stop_page = "stop";
+                        toastr.error("You Are at The End");
                     } else {
                         appendData.innerHTML = appendData.innerHTML + res.data;
                         page_no++;
                     }
-
 
                 })
                 .catch(err => {

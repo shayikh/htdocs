@@ -10,12 +10,12 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL3 = "SELECT * FROM `post`";
+$SQL3 = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me'";
 $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 5) + 1;
 
-if($page_no > $total_pages){
+if($page_no == $total_pages + 1){
     echo '0';
 }
 
@@ -106,8 +106,8 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-        <input type="text" class="d-inline float-start" style="margin-top: -15px">
-        <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px"><?php echo $no_comment ?> Comments</p>
+        <input type="text" class="float-start" style="margin-top: -15px">
+        <p class="float-end" style="font-size: 16px;margin-top: -15px"><?php echo $no_comment ?> Comments</p>
     </div>
 </div>
 

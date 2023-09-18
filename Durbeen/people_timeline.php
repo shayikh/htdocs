@@ -128,13 +128,16 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         let commentTboody = document.querySelector("#commentTboody");
 
 
+        var stop_page = "";
         var page_no = 1;
 
         showdata();
 
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-                showdata();
+                if (stop_page != "stop"){
+                    showdata();
+                }
             }
         })
 
@@ -155,9 +158,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     }
                 })
                 .then(res => {
-                    // console.log(res.data);
+
                     if (res.data == 0) {
-                        toastr.error('You are at the End');
+                        stop_page = "stop";
+                        toastr.error("You Are at The End");
                     } else {
                         tbody.innerHTML = tbody.innerHTML + res.data;
                         page_no++;

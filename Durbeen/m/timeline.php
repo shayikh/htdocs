@@ -163,13 +163,16 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         let commentTboody = document.querySelector("#commentTboody");
 
 
+        var stop_page = "";
         var page_no = 1;
 
         showdata();
 
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                showdata();
+                if (stop_page != "stop"){
+                    showdata();
+                }
             }
         })
 
@@ -189,14 +192,14 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     }
                 })
                 .then(res => {
-                    // console.log(res.data);
+
                     if (res.data == 0) {
-                        toastr.error('You are at the End');
+                        stop_page = "stop";
+                        toastr.error("You Are at The End");
                     } else {
                         tbody.innerHTML = tbody.innerHTML + res.data;
                         page_no++;
                     }
-
 
                 })
                 .catch(err => {
@@ -465,8 +468,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     </a>
                     <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                     <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                    <input type="text" class="mt-1 d-inline float-start" style="margin-top: -15px>
-                    <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px">0 Comments</p>
+                    <input type="text" class="float-start" style="margin-top: -15px>
+                    <p class="float-end" style="font-size: 16px;margin-top: -15px">0 Comments</p>
 
                 </div>`
             return tr;
@@ -495,13 +498,19 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                                 <p class="float-start me-2" style="color: ; font-size: 16px; margin-top: 2px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-up me-1"></i>(0)</p>
                                 <p class="float-start me-3" style="color: ; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-down me-1"></i>(0)</p>
 
+                                <button onclick="deletePost(${post.id}, ${unique_id_me}, this)" class="btn btn-sm btn-danger float-end mb-2">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                                <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                                 <i class="fas fa-share"></i>
                                 </a>
                                 <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                                 <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                                <input type="text" class="mt-1 d-inline float-start" style="margin-top: -15px>
-                                <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px">0 Comments</p>
+                                <input type="text" class="float-start" style="margin-top: -15px>
+                                <p class="float-end" style="font-size: 16px;margin-top: -15px;color: #fff">0 Comments</p>
                             </div>
                         </div>`
             return tr;

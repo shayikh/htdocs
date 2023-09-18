@@ -209,13 +209,13 @@ if (isset($_GET['register'])) {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Full Name</label>
+                                    <label class="mt-2 text-dark">Full Name</label>
                                     <input name="name" id="nameModal" value="<?php echo $dataMe['name'] ?>" class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Profile Picture</label>
+                                    <label class="mt-2 text-dark">Profile Picture</label>
                                     <input name="image_khan_bahadur"
                                            class="form-control" type="file"
                                            accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
@@ -223,7 +223,7 @@ if (isset($_GET['register'])) {
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Cover Photo</label>
+                                    <label class="mt-2 text-dark">Cover Photo</label>
                                     <input name="image_khan_cover"
                                            class="form-control" type="file"
                                            accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
@@ -231,13 +231,13 @@ if (isset($_GET['register'])) {
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Email</label>
+                                    <label class="mt-2 text-dark">Email</label>
                                     <input name="email" oninput="uniqueEmail()" id="emailModal" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group pwdbody">
-                                    <label class="mt-2">Password</label>
+                                    <label class="mt-2 text-dark">Password</label>
                                     <input name="password" id="passwordModal" value="<?php echo $dataMe['password'] ?>" class="pwd form-control"
                                            type="password">
                                     <i onclick="showPwd()" class="icon far fa-eye" style="cursor: pointer"></i>
@@ -245,41 +245,41 @@ if (isset($_GET['register'])) {
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Religion</label>
+                                    <label class="mt-2 text-dark">Religion</label>
                                     <input name="religion" id="religionModal" value="<?php echo $dataAbout['religion'] ?>" class="form-control"
                                            type="text">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Country</label>
+                                    <label class="mt-2 text-dark">Country</label>
                                     <input name="country" id="countryModal" value="<?php echo $dataAbout['country'] ?>" class="form-control"
                                            type="text">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">City</label>
+                                    <label class="mt-2 text-dark">City</label>
                                     <input name="city" id="cityModal" value="<?php echo $dataAbout['city'] ?>" class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Date of Birth</label>
+                                    <label class="mt-2 text-dark">Date of Birth</label>
                                     <input name="date_birth" id="date_birthModal"
                                            value="<?php echo $dataAbout['date_birth'] ?>" class="form-control" type="date">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mt-2">Phone No</label>
+                                    <label class="mt-2 text-dark">Phone No</label>
                                     <input name="phone_no" id="phoneModal" value="<?php echo $dataAbout['phone_no'] ?>" class="form-control"
                                            type="text">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Bio</label><br>
+                                    <label class="mt-2 text-dark">Bio</label><br>
                                     <textarea name="bio" id="bioModal" rows="3"
                                               class="form-control"><?php echo $dataAbout['bio'] ?></textarea>
                                 </div>
@@ -288,42 +288,42 @@ if (isset($_GET['register'])) {
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Question One</label><br>
+                                    <label class="mt-2 text-dark">Question One</label><br>
                                     <input name="question_one" class="form-control" type="text"
                                            value="<?php echo $dataAbout['question_one'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Answer One</label><br>
+                                    <label class="mt-2 text-dark">Answer One</label><br>
                                     <input name="answer_one" class="form-control" type="text"
                                            value="<?php echo $dataAbout['answer_one'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Question Two</label><br>
+                                    <label class="mt-2 text-dark">Question Two</label><br>
                                     <input name="question_two" class="form-control" type="text"
                                            value="<?php echo $dataAbout['question_two'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Answer Two</label><br>
+                                    <label class="mt-2 text-dark">Answer Two</label><br>
                                     <input name="answer_two" class="form-control" type="text"
                                            value="<?php echo $dataAbout['answer_two'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Question Three</label><br>
+                                    <label class="mt-2 text-dark">Question Three</label><br>
                                     <input name="question_three" class="form-control" type="text"
                                            value="<?php echo $dataAbout['question_three'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="mt-2">Answer Three</label><br>
+                                    <label class="mt-2 text-dark">Answer Three</label><br>
                                     <input name="answer_three" class="form-control" type="text"
                                            value="<?php echo $dataAbout['answer_three'] ?>">
                                 </div>

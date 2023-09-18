@@ -56,7 +56,7 @@ mysqli_query($connection_message, $SQLcreateMe);
 
                         <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
 
-                        <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5"
+                        <textarea autofocus style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5"
                                   class="form-control mb-2" type="text"></textarea>
 
                         <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control"
@@ -83,13 +83,16 @@ mysqli_query($connection_message, $SQLcreateMe);
         let messageCloseBtn = document.querySelector("#messageCloseBtn");
 
 
+        var stop_page = "";
         var page_no = 1;
 
         showdata();
 
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-                showdata();
+                if (stop_page != "stop"){
+                    showdata();
+                }
             }
         })
 
@@ -109,10 +112,10 @@ mysqli_query($connection_message, $SQLcreateMe);
                     }
                 })
                 .then(res => {
-                    // console.log(res.data);
 
                     if (res.data == 0) {
-                        toastr.error('You are at the End');
+                        stop_page = "stop";
+                        toastr.error("You Are at The End");
                     } else {
                         appendData.innerHTML = appendData.innerHTML + res.data;
                         page_no++;
