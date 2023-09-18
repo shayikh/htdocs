@@ -194,16 +194,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     }
                 })
                 .then(res => {
-
-                    if (res.data == 0) {
-                        stop_page = "stop";
-                        toastr.error("You Are at The End");
-                    } else {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
-                    }
-
-
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
                 })
                 .catch(err => {
                     console.log(err);

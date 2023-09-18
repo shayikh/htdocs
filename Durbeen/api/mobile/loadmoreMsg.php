@@ -15,16 +15,6 @@ $datafr = mysqli_fetch_assoc($runfr);
 $pro_pic_fr = $datafr['pro_pic'];
 
 
-$SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
-$run3 = mysqli_query($connection_message, $SQL3);
-$total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 5) + 1;
-
-if ($page_no > $total_pages) {
-    echo '0';
-}
-
-
 $limit = 5;
 $row = ($page_no - 1) * $limit;
 
@@ -36,7 +26,7 @@ $run = mysqli_query($connection_message, $SQL);
 while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
     <table class="table mt-4">
-        <tbody id="tbodyID">
+        <tbody>
         <tr>
             <?php if ($data3['sender'] == 'fr') { ?>
 
@@ -60,7 +50,8 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
             <?php } else { ?>
 
                 <div class="float-end" style="border: none;">
-                    <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+                    <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px"
+                         src="../chat_image/<?php echo $data3['image'] ?>" alt="">
 
                     <?php if ($data3['message'] != "") { ?>
                         <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px"

@@ -25,16 +25,13 @@ include './header.php';
         let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
 
 
-        var stop_page = "";
         var page_no = 1;
 
         showdata();
 
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-                if (stop_page != "stop"){
-                    showdata();
-                }
+                showdata();
             }
         })
 
@@ -54,16 +51,8 @@ include './header.php';
                     }
                 })
                 .then(res => {
-
-                    if (res.data == 0) {
-                        stop_page = "stop";
-                        toastr.error("You Are at The End");
-                    } else {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
-                    }
-
-
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
                 })
                 .catch(err => {
                     console.log(err);

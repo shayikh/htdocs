@@ -234,16 +234,13 @@ if ($countTest == 0) {
         let messageCloseBtn = document.querySelector("#messageCloseBtn");
 
 
-        var stop_page = "";
         var page_no = 1;
 
         showdata();
 
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                if (stop_page != "stop"){
-                    showdata();
-                }
+                showdata();
             }
         })
 
@@ -264,15 +261,8 @@ if ($countTest == 0) {
                     }
                 })
                 .then(res => {
-
-                    if (res.data == 0) {
-                        stop_page = "stop";
-                        toastr.error("You Are at The End");
-                    } else {
-                        appendData.innerHTML = appendData.innerHTML + res.data;
-                        page_no++;
-                    }
-
+                    appendData.innerHTML = appendData.innerHTML + res.data;
+                    page_no++;
                 })
                 .catch(err => {
                     console.log(err);

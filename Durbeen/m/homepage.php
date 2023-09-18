@@ -119,16 +119,13 @@ if ($number > 0) {
             let commentTboody = document.querySelector("#commentTboody");
 
 
-            var stop_page = "";
             var page_no = 1;
 
             showdata();
 
             $(window).scroll(function () {
                 if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                    if (stop_page != "stop"){
-                        showdata();
-                    }
+                    showdata();
                 }
             })
 
@@ -148,15 +145,8 @@ if ($number > 0) {
                         }
                     })
                     .then(res => {
-
-                        if (res.data == 0) {
-                            stop_page = "stop";
-                            toastr.error("You Are at The End");
-                        } else {
-                            tbody.innerHTML = tbody.innerHTML + res.data;
-                            page_no++;
-                        }
-
+                        tbody.innerHTML = tbody.innerHTML + res.data;
+                        page_no++;
                     })
                     .catch(err => {
                         console.log(err);
