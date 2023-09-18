@@ -109,8 +109,10 @@ mysqli_query($connection_message, $SQLcreateMe);
                     }
                 })
                 .then(res => {
-                    appendData.innerHTML = appendData.innerHTML + res.data;
-                    page_no++;
+                    if (res.data != ""){
+                        appendData.innerHTML = appendData.innerHTML + res.data;
+                        page_no++;
+                    }
                 })
                 .catch(err => {
                     console.log(err);

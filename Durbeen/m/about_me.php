@@ -583,12 +583,14 @@ if (isset($_GET['register'])) {
                     }
                 })
                 .then(res => {
-                    let all = res.data;
+                    if (res.data != "") {
+                        let all = res.data;
 
-                    all.forEach(comment => {
-                        myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
-                    })
-                    page_no_my_comment++;
+                        all.forEach(comment => {
+                            myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
+                        })
+                        page_no_my_comment++;
+                    }
                 })
                 .catch(err => {
                     console.log(err);
@@ -630,12 +632,14 @@ if (isset($_GET['register'])) {
                     }
                 })
                 .then(res => {
-                    let all = res.data;
+                    if (res.data != "") {
+                        let all = res.data;
 
-                    all.forEach(comment => {
-                        otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
-                    })
-                    page_no_other_comment++;
+                        all.forEach(comment => {
+                            otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
+                        })
+                        page_no_other_comment++;
+                    }
                 })
                 .catch(err => {
                     console.log(err);

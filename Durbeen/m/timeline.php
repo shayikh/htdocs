@@ -189,8 +189,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     }
                 })
                 .then(res => {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
+                    if (res.data != ""){
+                        tbody.innerHTML = tbody.innerHTML + res.data;
+                        page_no++;
+                    }
                 })
                 .catch(err => {
                     console.log(err);

@@ -46,8 +46,10 @@ include './header.php';
                         }
                     })
                     .then(res => {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
+                        if (res.data != ""){
+                            tbody.innerHTML = tbody.innerHTML + res.data;
+                            page_no++;
+                        }
                     })
                     .catch(err => {
                         console.log(err);
