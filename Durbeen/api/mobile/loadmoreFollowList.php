@@ -12,6 +12,21 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
+$SQL1 = "SELECT * FROM `post`";
+$run1 = mysqli_query($connection, $SQL1);
+$total_posts = mysqli_num_rows($run1);
+$total_pages = ceil($total_posts / 10) + 1;
+
+if($page_no > $total_pages){
+    echo '0';
+}
+
+
+
+
+
+
+
 
 $limit = 10;
 $row = ($page_no - 1)*$limit;

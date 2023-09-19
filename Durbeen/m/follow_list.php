@@ -47,7 +47,9 @@ include './header.php';
                         }
                     })
                     .then(res => {
-                        if (res.data != ""){
+                        if (res.data == 0) {
+                            toastr.error('You Are at The End');
+                        } else {
                             tbody.innerHTML = tbody.innerHTML + res.data;
                             page_no++;
                         }

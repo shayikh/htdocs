@@ -10,6 +10,18 @@ $page_no = $data['page_no'];
 $unique_id_me = $data['unique_id_me'];
 
 
+$SQL3 = "SELECT * FROM `comment` WHERE `post_giver_id`='$unique_id_me' AND `comn_giver_id`!='$unique_id_me'";
+$run3 = mysqli_query($connection, $SQL3);
+$total_posts = mysqli_num_rows($run3);
+$total_pages = ceil($total_posts / 10) + 1;
+
+if($page_no > $total_pages){
+    echo '0';
+}
+
+
+
+
 
 
 
@@ -30,7 +42,6 @@ echo json_encode($comments);
 
 
 ?>
-
 
 
 

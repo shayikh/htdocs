@@ -11,6 +11,18 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
+$SQL3 = "SELECT * FROM `post`";
+$run3 = mysqli_query($connection, $SQL3);
+$total_posts = mysqli_num_rows($run3);
+$total_pages = ceil($total_posts / 5) + 1;
+
+if($page_no > $total_pages){
+    echo '0';
+}
+
+
+
+
 
 
 $limit = 5;
@@ -18,10 +30,6 @@ $row = ($page_no - 1)*$limit;
 
 $SQL = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me' ORDER BY `id` DESC limit $row,$limit";
 $run = mysqli_query($connection,$SQL);
-
-
-
-
 
 
 

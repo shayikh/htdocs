@@ -155,8 +155,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     }
                 })
                 .then(res => {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
+                    if (res.data == 0) {
+                        toastr.error('You Are at The End');
+                    } else {
+                        tbody.innerHTML = tbody.innerHTML + res.data;
+                        page_no++;
+                    }
                 })
                 .catch(err => {
                     console.log(err);

@@ -9,6 +9,15 @@ $page_no = $data['page_no'];
 $unique_id_me = $data['unique_id_me'];
 
 
+$SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_me`";
+$run3 = mysqli_query($connection_message, $SQL3);
+$total_posts = mysqli_num_rows($run3);
+$total_pages = ceil($total_posts / 5) + 1;
+
+if ($page_no > $total_pages) {
+    echo '0';
+}
+
 
 
 
