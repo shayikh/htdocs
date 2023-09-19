@@ -222,13 +222,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                     let json = JSON.parse(data);
 
-                    // console.log(json);
-
-
                     let unique_id_me = json.unique_id_me;
                     let updatedPost = json.updatedPost;
 
-                    targetTr.innerHTML = makeTrUpdate(updatedPost, unique_id_me);
+                    targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.src = "../post_image/" + updatedPost.image;
+                    targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerText = updatedPost.time;
+                    targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText = updatedPost.post;
 
                     editImage.value = "";
                     editPost.value = "";

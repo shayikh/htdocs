@@ -147,6 +147,8 @@ if ($number > 0) {
                     .then(res => {
                         if (res.data == 0) {
                             toastr.error('You Are at The End');
+                            page_no++;
+                            showdata();
                         } else {
                             tbody.innerHTML = tbody.innerHTML + res.data;
                             page_no++;
