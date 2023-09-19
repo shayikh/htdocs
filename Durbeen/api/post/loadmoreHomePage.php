@@ -16,7 +16,7 @@ $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 5) + 1;
 
-if($page_no > $total_pages){
+if($page_no >= $total_pages){
     echo '0';
 }
 
@@ -97,7 +97,7 @@ if($countF == 1){
         <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i><?php echo $countlikeall ?></p>
         <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
         <p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
-        
+
         <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
             <i class="fas fa-share"></i>
         </a>

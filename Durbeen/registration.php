@@ -38,7 +38,7 @@ if (isset($_POST['signup'])) {
         }
 
 
-        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`) VALUES ('$name','$email','$password','$imageNewName')";
+        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`, `cov_pic`) VALUES ('$name','$email','$password','$imageNewName','cov_pic.jpg')";
         mysqli_query($connection, $SQL2);
 
 
