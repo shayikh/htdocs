@@ -12,12 +12,12 @@ $unique_id_fr = $data['unique_id_fr'];
 
 
 
-$SQL3 = "SELECT * FROM `post`";
+$SQL3 = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_fr'";
 $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 5) + 1;
 
-if($page_no > $total_pages){
+if($page_no >= $total_pages){
     echo '0';
 }
 

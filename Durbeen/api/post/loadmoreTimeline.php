@@ -11,12 +11,12 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL3 = "SELECT * FROM `post`";
+$SQL3 = "SELECT * FROM `post` WHERE `unique_id`='$unique_id_me'";
 $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 5) + 1;
 
-if($page_no > $total_pages){
+if($page_no >= $total_pages){
     echo '0';
 }
 
@@ -86,7 +86,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i><?php echo $countlikeall ?></p>
         <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
         <p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
-        
+
         <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"
                 class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
 
