@@ -100,8 +100,8 @@ if($countF == 1){
         </a>
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-        <input type="text" class="mt-1 d-inline float-start">
-        <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px"><?php echo $no_comment ?> Comments</p>
+        <input type="text" class="mt-1 float-start">
+        <p class="float-end" style="font-size: 16px;margin-top: -15px"><?php echo $no_comment ?> Comments</p>
     </div>
 </div>
 

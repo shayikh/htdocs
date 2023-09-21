@@ -78,7 +78,7 @@ $pro_pic = $dataMe['pro_pic'];
 
                             <img class="float-end" style="border-radius: 50%" width="40px" height="40px"
                                  src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="" id="timeline_pro_pic">
-                            <p class="float-start" style="margin-top: 8px;margin-left: 15px;padding-right: 5px;font-size: 15px;font-weight: 500">
+                            <p class="float-start" style="margin-top: 8px;margin-left: 15px;padding-right: 5px;font-size: 15px;font-weight: 500" id="timeline_name">
                                 <?php echo $dataMe['name'] ?>
                             </p>
 

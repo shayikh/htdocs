@@ -12,7 +12,7 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) {
     ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
+    <a style="position: fixed;left: 1%;top: 61px;z-index: 15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
         Have
         <?php echo $number ?> New Messages</a>
 

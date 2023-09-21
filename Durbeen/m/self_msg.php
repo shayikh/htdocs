@@ -1,18 +1,6 @@
 <?php
 include './header.php';
 
-//create table if not exist
-$SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
-  `id` int(255) unsigned NOT NULL auto_increment,
-  `message` text,
-  `image` varchar(1000),
-  `time` varchar(1000),
-  PRIMARY KEY  (`id`)
-)";
-mysqli_query($connection_message, $SQLcreateMe);
-//table creation end
-
-
 ?>
 
 
@@ -63,7 +51,7 @@ mysqli_query($connection_message, $SQLcreateMe);
                                id="imageID" type="file"
                                accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                        <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm btn-success"
+                        <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red"
                                type="submit" aria-label="Close">
                     </form>
                 </div>

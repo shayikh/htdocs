@@ -23,7 +23,7 @@ if ($_FILES['image_khan_bahadur']['name']) {
 
 
 if ($_FILES['image_khan_cover']['name']) {
-    if ($cov_pic != "jot.jpg") {
+    if ($cov_pic != "cov_pic.jpg") {
         unlink('../../pro_pic/cov_pic/' . $cov_pic);
     }
 

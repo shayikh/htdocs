@@ -18,7 +18,7 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) {
     ?>
-    <a style="position: fixed;right:35%;top:26px;z-index:15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
+    <a style="position: fixed;left: 1%;top: 61px;z-index: 15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
         Have
         <?php echo $number ?> New Messages</a>
 
@@ -365,8 +365,8 @@ if ($number > 0) {
                                 </a>
                                 <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                                 <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                                <input type="text" class="mt-1 d-inline float-start">
-                                <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px">0 Comments</p>
+                                <input type="text" class="mt-1 float-start">
+                                <p class="float-end" style="font-size: 16px;margin-top: -15px">0 Comments</p>
                             </div>
                         </div>`
                 return tr;

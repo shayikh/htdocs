@@ -63,7 +63,7 @@ mysqli_query($connection_message, $SQLcreateMe);
                                id="imageID" type="file"
                                accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                        <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm btn-success"
+                        <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red"
                                type="submit" aria-label="Close">
                     </form>
                 </div>
@@ -214,7 +214,7 @@ mysqli_query($connection_message, $SQLcreateMe);
     <div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-success float-end mb-3"
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3"
             data-bs-toggle="modal" data-bs-target="#messageModal">
         <i class="fas fa-plus"></i>
     </button>

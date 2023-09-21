@@ -369,7 +369,7 @@ if (isset($_GET['register'])) {
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-success" onmouseover="showMyComment()">
+                    <button type="button" class="btn btn-sm btn-success" onclick="showMyComment()">
                         More Comments
                     </button>
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
@@ -409,7 +409,7 @@ if (isset($_GET['register'])) {
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-success" onmouseover="showOtherComment()">
+                    <button type="button" class="btn btn-sm btn-success" onclick="showOtherComment()">
                         More Comments
                     </button>
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
@@ -432,6 +432,7 @@ if (isset($_GET['register'])) {
         let updateCloseBtn = document.querySelector("#updateCloseBtn");
         let unique_id_me = document.querySelector('#unique_id_me');
 
+        let timeline_name = document.querySelector("#timeline_name");
         let name = document.querySelector("#name");
         let emailID = document.querySelector("#emailID");
         let pro_pic = document.querySelector("#pro_pic");
@@ -489,6 +490,7 @@ if (isset($_GET['register'])) {
                     timeline_pro_pic.src = "../pro_pic/" + profile_picture;
                     cov_pic.src = "../pro_pic/cov_pic/" + cover_photo;
 
+                    timeline_name.innerText = json.myData.name;
                     name.innerText = json.myData.name;
                     emailID.innerText = json.myData.email;
                     birth_date.innerText = json.about.date_birth;
