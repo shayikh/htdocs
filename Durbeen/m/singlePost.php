@@ -78,6 +78,9 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         <p class="float-start me-3" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"><i class="fas fa-thumbs-down me-1"></i>(<?php echo $countdislikeall ?>)</p>
 
 
+                        <button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="shareMefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
+                            <i class="fas fa-share"></i>
+                        </button>
                         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                         <input type="text" class="mt-1 d-inline float-start">
@@ -328,6 +331,29 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         elm.style.color = '#fff';
                     }
 
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+        const shareMefn = (post_id, unique_id_me) => {
+            let sharep = {};
+
+            sharep.post_id = post_id;
+            sharep.unique_id_me = unique_id_me;
+
+            axios.post("../api/post/share.php",
+                sharep,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => {
+
+                    toastr.success('Post Shared to Your Timeline');
 
                 })
                 .catch(err => {

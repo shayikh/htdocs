@@ -400,7 +400,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         }
 
 
-        const sharefn = (post_id, unique_id_me) => {
+        const shareMefn = (post_id, unique_id_me) => {
             let sharep = {};
 
             sharep.post_id = post_id;
