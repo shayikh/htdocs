@@ -27,7 +27,7 @@ $run1 = mysqli_query($con_notification, $SQL1);
 
         ?>
 
-        <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
+        <img class="float-start" style="border-radius: 50%; margin-top: -5px" width="40px" height="40px"
              src="./pro_pic/<?php echo $pro_pic_fr ?>" alt="">
         <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="text-decoration-none"><p
                     style="font-size: 18px;padding: 1px 15px;<?php $data1['seen'] == 0 ? printf("background-color: #377655;padding: 10px 15px;") : "" ?>">

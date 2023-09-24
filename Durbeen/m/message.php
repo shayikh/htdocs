@@ -155,169 +155,159 @@ if ($countTest == 0) {
 ?>
 
 
-    <!-- main page -->
-    <a target="_self" style="position: fixed;left: 5%;top: 99px;z-index:20;font-weight: 600;"
-       href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
-       class="btn btn-sm btn-success"><?php echo $friendName ?></a>
+<!-- main page -->
+<a target="_self" style="position: fixed;left: 5%;top: 99px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success"><?php echo $friendName ?></a>
 
 
-    <form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>"
-          style="position: fixed;left: 5%;top: 130px;z-index:20;font-weight: 600;">
+<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;left: 5%;top: 130px;z-index:20;font-weight: 600;">
 
-        <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con"
-               class="btn btn-sm btn-secondary" type="submit" value="Delete This Conversation">
+    <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-sm btn-secondary" type="submit" value="Delete This Conversation">
 
-    </form>
+</form>
 
 
-    <div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top: 150px">
 
-        <div class="row">
-            <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
 
 
-                <table class="table mt-4">
-                    <tbody id="tbodyID">
+            <table class="table mt-4">
+                <tbody id="tbodyID">
                     <tr>
                     </tr>
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
 
 
-                <span id="appendID"></span>
-            </div>
-        </div>
-
-
-    </div>
-
-
-    <!-- Message Modal -->
-    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post" id="formID" enctype="multipart/form-data">
-
-                        <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                        <input type="hidden" name="unique_id_fr" value="<?php echo $unique_id_fr ?>">
-                        <input type="hidden" name="my_name" id="my_name" value="<?php echo $dataMe['name'] ?>">
-
-                        <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5"
-                                  class="form-control mb-2" type="text"></textarea>
-
-                        <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control"
-                               id="imageID" type="file"
-                               accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
-
-                        <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red"
-                               type="submit" aria-label="Close">
-                    </form>
-                </div>
-            </div>
+            <span id="appendID"></span>
         </div>
     </div>
 
 
-    <script>
-        let tbody = document.querySelector("#tbodyID");
-        let appendData = document.querySelector("#appendID");
-
-        let form = document.querySelector("#formID");
-        let image = document.querySelector("#imageID");
-        let message = document.querySelector("#messageID");
-        let button = document.querySelector("#buttonID");
-        let messageCloseBtn = document.querySelector("#messageCloseBtn");
+</div>
 
 
-        var page_no = 1;
+<!-- Message Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="formID" enctype="multipart/form-data">
 
-        showdata();
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+                    <input type="hidden" name="unique_id_fr" value="<?php echo $unique_id_fr ?>">
+                    <input type="hidden" name="my_name" id="my_name" value="<?php echo $dataMe['name'] ?>">
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                showdata();
-            }
-        })
+                    <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5" class="form-control mb-2" type="text"></textarea>
+
+                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+
+                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-        function showdata() {
+<script>
+    let tbody = document.querySelector("#tbodyID");
+    let appendData = document.querySelector("#appendID");
 
-            let msgData = {};
+    let form = document.querySelector("#formID");
+    let image = document.querySelector("#imageID");
+    let message = document.querySelector("#messageID");
+    let button = document.querySelector("#buttonID");
+    let messageCloseBtn = document.querySelector("#messageCloseBtn");
 
-            msgData.page_no = page_no;
-            msgData.unique_id_me = <?php echo $unique_id_me ?>;
-            msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-            axios.post("../api/mobile/loadmoreMsg.php",
-                msgData,
-                {
+    var page_no = 1;
+
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
+            showdata();
+        }
+    })
+
+
+    function showdata() {
+
+        let msgData = {};
+
+        msgData.page_no = page_no;
+        msgData.unique_id_me = <?php echo $unique_id_me ?>;
+        msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
+
+        axios.post("../api/mobile/loadmoreMsg.php",
+                msgData, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-                .then(res => {
-                    if (res.data == 0) {
-                        toastr.error('You are at the End');
-                    } else {
-                        appendData.innerHTML = appendData.innerHTML + res.data;
-                        page_no++;
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-
-            var formdata = new FormData(form);
-
-            $.ajax({
-                url: "../api/message/messageAdd.php",
-                type: "POST",
-                data: formdata,
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function () {
-                    // alert('ok')
-                },
-                success: function (data) {
-
-                    let json = JSON.parse(data);
-
-                    let unique_id_me = json.unique_id_me;
-                    let unique_id_fr = json.unique_id_fr;
-                    let newMessage = json.newMessage;
-
-                    // console.log(json);
-                    // console.log(unique_id_fr);
-
-                    tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
-
-                    messageCloseBtn.click();
-
-                    image.value = "";
-                    message.value = "";
-                },
-                error: function (err) {
-                    console.log(err);
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.error('You are at the End');
+                } else {
+                    appendData.innerHTML = appendData.innerHTML + res.data;
+                    page_no++;
                 }
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
-        })
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
 
-        const makeTr = (message, unique_id_me, unique_id_fr) => {
-            let tr = `<tr>
+        var formdata = new FormData(form);
+
+        $.ajax({
+            url: "../api/message/messageAdd.php",
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                let json = JSON.parse(data);
+
+                let unique_id_me = json.unique_id_me;
+                let unique_id_fr = json.unique_id_fr;
+                let newMessage = json.newMessage;
+
+                // console.log(json);
+                // console.log(unique_id_fr);
+
+                tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+
+                messageCloseBtn.click();
+
+                image.value = "";
+                message.value = "";
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    const makeTr = (message, unique_id_me, unique_id_fr) => {
+        let tr = `<tr>
 							<div class="float-end" style="border: none;">
 								<img class="float-end" title="${message.time}" width="290px" src="../chat_image/${message.image}">
 								
@@ -328,12 +318,14 @@ if ($countTest == 0) {
 								<button class="btn btn-sm btn-secondary float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>
 						</tr>`
-            return tr;
-        }
+        return tr;
+    }
 
 
-        const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
+    const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
+        let confirm = window.confirm("Do You Want to Unsend?");
 
+        if (confirm) {
             let message = {};
 
             message.id = id_lll;
@@ -341,12 +333,11 @@ if ($countTest == 0) {
             message.unique_id_fr = unique_id_fr;
 
             axios.post("../api/message/unsend.php",
-                message,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
+                    message, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
                 .then(res => {
                     // console.log(res.data);
 
@@ -362,12 +353,20 @@ if ($countTest == 0) {
                     console.log(err);
                 })
 
-
+        } else {
+            return;
         }
 
 
-        const deleteMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
 
+
+    }
+
+
+    const deleteMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
+        let confirm = window.confirm("Do You Want to Delete?");
+
+        if (confirm) {
             let message = {};
 
             message.id = id_lll;
@@ -375,12 +374,11 @@ if ($countTest == 0) {
             message.unique_id_fr = unique_id_fr;
 
             axios.post("../api/message/deleteMsg.php",
-                message,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
+                    message, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
                 .then(res => {
                     // console.log(res.data);
 
@@ -396,19 +394,23 @@ if ($countTest == 0) {
                     console.log(err);
                 })
 
+        } else {
+            return;
         }
 
 
-    </script>
+
+    }
+
+</script>
 
 
-    <div style="height: 20px"></div>
+<div style="height: 20px"></div>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3"
-            data-bs-toggle="modal" data-bs-target="#messageModal">
-        <i class="fas fa-plus"></i>
-    </button>
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
+    <i class="fas fa-plus"></i>
+</button>
 
 
 <?php

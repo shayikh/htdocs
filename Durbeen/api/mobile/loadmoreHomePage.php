@@ -82,7 +82,7 @@ if($countF == 1){
                 <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                     <img style="border-radius: 50%" width="45px" height="45px"
                         src="../pro_pic/<?php echo $data2['pro_pic']?>" alt="">
-                    <?php echo $data2['name']?>
+                    <b><?php echo $data2['name']?></b>
                 </a>
             </p>
             <img width="100%" src="../post_image/<?php echo $data1['image']?>" alt="">
