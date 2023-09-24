@@ -169,39 +169,31 @@ mysqli_query($connection_message, $SQLcreateMe);
 
 
     const deleteSelfMsg = (id_lll, unique_id_me, elm_ppp) => {
-        let confirm = window.confirm("Do You Want to Delete?");
+        let message = {};
 
-        if (confirm) {
-            let message = {};
+        message.id = id_lll;
+        message.unique_id_me = unique_id_me;
 
-            message.id = id_lll;
-            message.unique_id_me = unique_id_me;
-
-            axios.post("./api/self_msg/delete_self_msg.php",
-                    message, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        toastr.error('Message Deleted')
+        axios.post("./api/self_msg/delete_self_msg.php",
+                message, {
+                    headers: {
+                        "Content-Type": "application/json"
                     }
-                    // console.log(elm_ppp.parentElement);
-
-                    elm_ppp.parentElement.remove();
-
                 })
-                .catch(err => {
-                    console.log(err);
-                })
+            .then(res => {
+                // console.log(res.data);
 
-        } else {
-            return;
-        }
+                if (res.data == '1') {
+                    toastr.error('Message Deleted')
+                }
+                // console.log(elm_ppp.parentElement);
 
+                elm_ppp.parentElement.remove();
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
 
     }
