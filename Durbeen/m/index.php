@@ -117,7 +117,7 @@ if (isset($_GET['out'])) {
 
                         </div>
 
-                        <div class="a mt-3"></div>
+                        <div class="a_mb mt-3"></div>
 
 
                         <div style="margin-top:35px;text-align: center">

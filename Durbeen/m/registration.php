@@ -298,7 +298,7 @@ if (isset($_POST['signup'])) {
     }
 
     body {
-        background: url(../img/background.jpg);
+        background: url(../img/background_mb.jpg);
         background-repeat: no-repeat;
         background-size: 100% 1225px;
         background-position: center;

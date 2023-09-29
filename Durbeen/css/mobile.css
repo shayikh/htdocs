@@ -168,7 +168,14 @@
 
 
 
-
+.a_mb {
+  width: 307px;
+  height: 1px;
+  background: #c4c4c4;
+  margin-top: 4px;
+  margin-bottom: 28px;
+  float: left;
+}
 
 
 

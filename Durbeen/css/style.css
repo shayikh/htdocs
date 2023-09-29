@@ -365,7 +365,7 @@ section.home {
 }
 
 @font-face {
-  src: url("../Bangla_Font/MahfujAK/Unicode/Li Mahfuj AK Unicode.ttf");
+  src: url("../css/mahfuj.ttf");
   font-family: mahfuj;
 }
 
