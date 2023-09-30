@@ -19,12 +19,12 @@ if ($countTest == 0) {
     } else {
         //seen from notify db
         $SQL99 = "UPDATE `$unique_id_me notify` SET `seen`='1' WHERE `sender_id`='$unique_id_fr'";
-        mysqli_query($con_notification, $SQL99);
+        mysqli_query($durbeen_chats, $SQL99);
 
         //delete from notify db
 
         $SQL1 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
-        $run1 = mysqli_query($con_notification, $SQL1);
+        $run1 = mysqli_query($durbeen_chats, $SQL1);
         $count1 = mysqli_num_rows($run1);
 
         if ($count1 > 50) {
@@ -33,7 +33,7 @@ if ($countTest == 0) {
             //50 is the minumum number of messages
 
             $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `seen`='1' ORDER BY `id` ASC LIMIT $delete";
-            mysqli_query($con_notification, $SQL2);
+            mysqli_query($durbeen_chats, $SQL2);
         }
 
 
@@ -138,10 +138,10 @@ if ($countTest == 0) {
             mysqli_query($durbeen_chats, $SQL14);
 
             $SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
-            mysqli_query($con_notification, $SQL15);
+            mysqli_query($durbeen_chats, $SQL15);
 
             $SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
-            mysqli_query($con_notification, $SQL16);
+            mysqli_query($durbeen_chats, $SQL16);
 
 
             echo "<script>window.location = 'homepage.php?type'</script>";

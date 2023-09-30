@@ -56,7 +56,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-2">Profile</a>
 
-            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end">Chat by Messenger</a>
+            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end">Send Message</a>
 
         </div>
     </div>

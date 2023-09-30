@@ -22,7 +22,7 @@ $message = $_POST['message'];
 $message = mysqli_real_escape_string($connection_message, $message);
 
 $my_name = $_POST['my_name'];
-$my_name = mysqli_real_escape_string($con_notification, $my_name);
+$my_name = mysqli_real_escape_string($durbeen_chats, $my_name);
 
 $unique_id_me = $_POST['unique_id_me'];
 $unique_id_fr = $_POST['unique_id_fr'];
@@ -40,7 +40,7 @@ mysqli_query($connection_message, $SQL2);
 //notification sql
 
 $SQL3 = "INSERT INTO `$unique_id_fr notify`(`sender`, `sender_id`, `seen`) VALUES ('$my_name','$unique_id_me','0')";
-mysqli_query($con_notification, $SQL3);
+mysqli_query($durbeen_chats, $SQL3);
 
 
 

@@ -2,7 +2,7 @@
 include './header.php';
 
 $SQL1 = "SELECT * FROM `$unique_id_me notify` ORDER BY `id` DESC";
-$run1 = mysqli_query($con_notification, $SQL1);
+$run1 = mysqli_query($durbeen_chats, $SQL1);
 
 ?>
 

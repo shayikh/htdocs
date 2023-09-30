@@ -9,7 +9,7 @@ include './header.php';
 <!-- message notification -->
 <?php
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
-$runnotify = mysqli_query($con_notification, $SQLnotify);
+$runnotify = mysqli_query($durbeen_chats, $SQLnotify);
 
 $number = mysqli_num_rows($runnotify);
 

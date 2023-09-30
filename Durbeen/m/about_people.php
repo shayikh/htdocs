@@ -49,7 +49,7 @@ $data1 = mysqli_fetch_assoc($run1);
         <div class="col-md-12">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end ms-2">Timeline</a>
 
-            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end">Send Messenge</a>
+            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end">Send Message</a>
         </div>
 
     </div>
