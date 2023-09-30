@@ -61,8 +61,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         <div class="card" style="width: 100%;border: none">
                             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                                 <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
-                                    <img style="border-radius: 50%" width="70px" height="70px"
-                                         src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
                                     <b><?php echo $data2['name']?></b>
                                 </a>
                             </p>
@@ -97,25 +96,23 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
 
 <!-- Comment Modal -->
-<div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+<div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        onclick="clearModal()"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
-                    <tr>
-                        <th class="text-center text-dark" scope="col">Picture</th>
-                        <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
-                        <th class="text-center text-dark" scope="col" style="min-width: 150px">Time</th>
-                        <th class="text-center text-dark" scope="col">Comment</th>
-                        <th class="text-center text-dark" scope="col">Action</th>
-                    </tr>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 150px">Time</th>
+                            <th class="text-center text-dark" scope="col">Comment</th>
+                            <th class="text-center text-dark" scope="col">Action</th>
+                        </tr>
                     </thead>
                     <tbody id="commentTboody">
 
@@ -136,82 +133,78 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
 
 <script>
+    let commentTboody = document.querySelector("#commentTboody");
 
 
-        let commentTboody = document.querySelector("#commentTboody");
+    const deleteComment = (comment_id, unique_id_me, elm) => {
 
+        let delComment = {};
 
-        const deleteComment = (comment_id, unique_id_me, elm) => {
+        delComment.comment_id = comment_id;
+        delComment.unique_id_me = unique_id_me;
 
-            let delComment = {};
-
-            delComment.comment_id = comment_id;
-            delComment.unique_id_me = unique_id_me;
-
-            axios.post("./api/comment/deleteComment.php",
-                delComment,
-                {
+        axios.post("./api/comment/deleteComment.php",
+                delComment, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-                .then(res => {
-                    // console.log(res.data);
+            .then(res => {
+                // console.log(res.data);
 
-                    if (res.data == 1) {
-                        elm.parentElement.parentElement.remove();
-                        toastr.info('Comment Deleted');
-                    } else {
-                        toastr.warning('This is not Your Post');
-                    }
+                if (res.data == 1) {
+                    elm.parentElement.parentElement.remove();
+                    toastr.info('Comment Deleted');
+                } else {
+                    toastr.warning('This is not Your Post');
+                }
 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
-        }
-
-
-        const clearModal = () => {
-            commentTboody.innerHTML = "";
-        }
+    }
 
 
-        const showCommentfn = (post_id) => {
+    const clearModal = () => {
+        commentTboody.innerHTML = "";
+    }
 
-            let showComment = {};
 
-            showComment.post_id = post_id;
+    const showCommentfn = (post_id) => {
 
-            axios.post("./api/comment/showComments.php",
-                showComment,
-                {
+        let showComment = {};
+
+        showComment.post_id = post_id;
+
+        axios.post("./api/comment/showComments.php",
+                showComment, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-                .then(res => {
+            .then(res => {
 
-                    // console.log(res.data);
+                // console.log(res.data);
 
-                    let all = res.data;
+                let all = res.data;
 
-                    all.forEach(comment => {
-                        commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-                    })
-
-
-                })
-                .catch(err => {
-                    console.log(err);
+                all.forEach(comment => {
+                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
                 })
 
-        }
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
 
 
-        const makeCommentTr = (comment) => {
-            let tr = `<tr>
+    const makeCommentTr = (comment) => {
+        let tr = `<tr>
 						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
 								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
@@ -228,77 +221,39 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 							<i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
 						</td>
 				</tr>`
-            return tr;
-        }
+        return tr;
+    }
 
 
-        const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
+    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
 
-            let comment = elm.nextElementSibling.value;
+        let comment = elm.nextElementSibling.value;
 
-            if (comment == "") {
-                toastr.error("Comment is Empty");
-            } else {
-
-
-                let commentp = {};
-
-                commentp.comment = comment;
-                commentp.post_id = post_id;
-                commentp.post_giver_id = post_giver_id;
-                commentp.comn_giver_id = comn_giver_id;
+        if (comment == "") {
+            toastr.error("Comment is Empty");
+        } else {
 
 
-                axios.post("./api/comment/comment.php",
-                    commentp,
-                    {
+            let commentp = {};
+
+            commentp.comment = comment;
+            commentp.post_id = post_id;
+            commentp.post_giver_id = post_giver_id;
+            commentp.comn_giver_id = comn_giver_id;
+
+
+            axios.post("./api/comment/comment.php",
+                    commentp, {
                         headers: {
                             "Content-Type": "application/json"
                         }
                     })
-                    .then(res => {
-                        // console.log(elm);
-
-                        if (res.data == 1) {
-                            elm.nextElementSibling.value = '';
-                            toastr.success("Comment Done");
-                        }
-
-
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-
-            }
-
-
-        }
-
-
-
-
-        const likefn = (post_id, unique_id_me, elm) => {
-            let likep = {};
-
-            likep.post_id = post_id;
-            likep.unique_id_me = unique_id_me;
-
-            axios.post("./api/post/like_post.php",
-                likep,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
                 .then(res => {
                     // console.log(elm);
 
                     if (res.data == 1) {
-                        elm.style.color = '#0D6EFD';
-                        elm.nextElementSibling.style.color = '#fff';
-                    } else {
-                        elm.style.color = '#fff';
+                        elm.nextElementSibling.value = '';
+                        toastr.success("Comment Done");
                     }
 
 
@@ -306,64 +261,97 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                 .catch(err => {
                     console.log(err);
                 })
+
         }
 
 
-        const dislikefn = (post_id, unique_id_me, elm) => {
-            let dislikep = {};
+    }
 
-            dislikep.post_id = post_id;
-            dislikep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/dislike_post.php",
-                dislikep,
-                {
+
+
+    const likefn = (post_id, unique_id_me, elm) => {
+        let likep = {};
+
+        likep.post_id = post_id;
+        likep.unique_id_me = unique_id_me;
+
+        axios.post("./api/post/like_post.php",
+                likep, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-                .then(res => {
-                    // console.log(elm);
+            .then(res => {
+                // console.log(elm);
 
-                    if (res.data == 1) {
-                        elm.style.color = '#0D6EFD';
-                        elm.previousElementSibling.style.color = '#fff';
-                    } else {
-                        elm.style.color = '#fff';
-                    }
+                if (res.data == 1) {
+                    elm.style.color = '#0D6EFD';
+                    elm.nextElementSibling.style.color = '#fff';
+                } else {
+                    elm.style.color = '#fff';
+                }
 
 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
-        const shareMefn = (post_id, unique_id_me) => {
-            let sharep = {};
 
-            sharep.post_id = post_id;
-            sharep.unique_id_me = unique_id_me;
+    const dislikefn = (post_id, unique_id_me, elm) => {
+        let dislikep = {};
 
-            axios.post("./api/post/share.php",
-                sharep,
-                {
+        dislikep.post_id = post_id;
+        dislikep.unique_id_me = unique_id_me;
+
+        axios.post("./api/post/dislike_post.php",
+                dislikep, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-                .then(res => {
+            .then(res => {
+                // console.log(elm);
 
-                    toastr.success('Post Shared to Your Timeline');
+                if (res.data == 1) {
+                    elm.style.color = '#0D6EFD';
+                    elm.previousElementSibling.style.color = '#fff';
+                } else {
+                    elm.style.color = '#fff';
+                }
 
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const shareMefn = (post_id, unique_id_me) => {
+        let sharep = {};
+
+        sharep.post_id = post_id;
+        sharep.unique_id_me = unique_id_me;
+
+        axios.post("./api/post/share.php",
+                sharep, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
                 })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
+            .then(res => {
 
+                toastr.success('Post Shared to Your Timeline');
 
-    </script>
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+</script>
 
 
 

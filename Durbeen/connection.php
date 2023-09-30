@@ -25,9 +25,3 @@ $durbeen_chats = mysqli_connect("localhost","root","","durbeen_chats");
 
 
 ?>
-
-
-
-
-
-

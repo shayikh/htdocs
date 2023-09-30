@@ -156,35 +156,34 @@ if (isset($_POST['delete'])) {
         <div class="col-md-12 mt-2">
             <h4 class="text-capitalize" style="line-height: 1.5;">deleting account once will permanently delete all data
                 from database and you will never able to
-                regain those data, even <span style="font-weight: 500;font-family: mahfuj;"
-                                              class="text-red">দূরবীন</span> can not able to repair this. be careful
+                regain those data, even <span style="font-weight: 500;font-family: mahfuj;" class="text-red">দূরবীন</span> can not able to repair this. be careful
                 before you continue.</h4>
-             <form method="post" action="./del_acco.php?type"><input onclick="return confirm('Are You Sure You Want to Delete Your Account?')" name="delete" class="btn red mt-5 form-control" type="submit" value="&#9762; DELETE ACCOUNT PERMANENTLY &#9785;"></form>
+            <form method="post" action="./del_acco.php?type"><input onclick="return confirm('Are You Sure You Want to Delete Your Account?')" name="delete" class="btn red mt-5 form-control" type="submit" value="&#9762; DELETE ACCOUNT PERMANENTLY &#9785;"></form>
         </div>
     </div>
 
 
     <?php if ($unique_id_me == 1) { ?>
-        <div class="row" style="margin-bottom: 100px">
-            <table class="table table-bordered mt-5 pt-5" style="border-color: #5d5d5d">
-                <tr>
-                    <td style="width: 300px">
-                        <h5 class="text-red">All Info</h5>
-                    </td>
-                    <td>
-                        <a href="./all_info.php?type" class="btn btn-success">All Info</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 300px">
-                        <h5 class="text-red">All Info by Email</h5>
-                    </td>
-                    <td>
-                        <a href="./all_info_email.php?type" class="btn btn-success">All Info by Email</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="row" style="margin-bottom: 100px">
+        <table class="table table-bordered mt-5 pt-5" style="border-color: #5d5d5d">
+            <tr>
+                <td style="width: 300px">
+                    <h5 class="text-red">All Info</h5>
+                </td>
+                <td>
+                    <a href="./all_info.php?type" class="btn btn-success">All Info</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 300px">
+                    <h5 class="text-red">All Info by Email</h5>
+                </td>
+                <td>
+                    <a href="./all_info_email.php?type" class="btn btn-success">All Info by Email</a>
+                </td>
+            </tr>
+        </table>
+    </div>
     <?php } ?>
 
 
@@ -194,15 +193,3 @@ if (isset($_POST['delete'])) {
 <?php
 include './footer.php'
 ?>
-
-
-
-
-
-
-
-
-
-
-
-

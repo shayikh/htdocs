@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
         $SQL3 = "UPDATE `registration` SET `active`='1',`visit`='$visit' WHERE `unique_id`='$unique_id_me'";
         mysqli_query($connection, $SQL3);
 
-        header('location:./homepage.php?type&login');
+        header('location:./homepage.php?type');
     } else {
         $SQL3 = "SELECT * FROM `registration` WHERE `email`='$EmailMe'";
         $run3 = mysqli_query($connection, $SQL3);
@@ -49,31 +49,31 @@ if (isset($_POST['login'])) {
 
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>দূরবীন</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="shortcut icon" href="./img/telescope.png"/>
-        <link href="./css/alertify.min.css"/>
-        <link href="./css/all.min.css"/>
-        <link href="./css/fontawesome.min.css"/>
-        <link rel="stylesheet" href="./css/toastr.min.css">
-        <script src="./js/jquery-3.5.1.toastr.min.js"></script>
-        <script src="./js/toastr.min.js"></script>
-        <script src="./js/axios.min.js"></script>
-        <link rel="stylesheet" href="./css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>দূরবীন</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./img/telescope.png" />
+    <link href="./css/alertify.min.css" />
+    <link href="./css/all.min.css" />
+    <link href="./css/fontawesome.min.css" />
+    <link rel="stylesheet" href="./css/toastr.min.css">
+    <script src="./js/jquery-3.5.1.toastr.min.js"></script>
+    <script src="./js/toastr.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
 
-    </head>
+</head>
 
 <body>
 
 
 
-<?php
+    <?php
 if (isset($_GET['mustlog'])) {
     echo "<script>toastr.error('You Must LogIn First')</script>";
 }
@@ -98,12 +98,10 @@ if (isset($_GET['del'])) {
                 <div class="division">
                     <form class="margin-padding" method="post" action="" id="formID">
                         <div class="form-group margin-padding-1">
-                            <input required name="email" id="" type="email" class="form-control form-control-lg"
-                                   placeholder="Email address">
+                            <input required name="email" id="" type="email" class="form-control form-control-lg" placeholder="Email address">
                         </div>
                         <div class="form-group margin-padding-2 pwdbody">
-                            <input required name="password" id="" type="password"
-                                   class="pwd form-control form-control-lg" placeholder="Password">
+                            <input required name="password" id="" type="password" class="pwd form-control form-control-lg" placeholder="Password">
                             <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
                         </div>
 
@@ -114,8 +112,7 @@ if (isset($_GET['del'])) {
                             <b>
                                 <p class="text-danger text-center d-inline"><?php echo $msg; ?></p>
                             </b>
-                            <p class="forgotten-account-link text-center d-inline"><a href=""><span
-                                            class="text-white">.</span></a></p>
+                            <p class="forgotten-account-link text-center d-inline"><a href=""><span class="text-white">.</span></a></p>
 
                         </div>
 
@@ -123,8 +120,7 @@ if (isset($_GET['del'])) {
 
 
                         <div style="margin-top:35px;text-align: center">
-                            <a style="width: 200px;height: 48px" class="anchor button-3 form-control"
-                               href="./registration.php"><b>Create New Account</b></a>
+                            <a style="width: 200px;height: 48px" class="anchor button-3 form-control" href="./registration.php"><b>Create New Account</b></a>
                             <a href="./forgotPass.php" class="text-decoration-none text-primary">Forgot Password?</a>
                         </div>
 
@@ -147,6 +143,6 @@ if (isset($_GET['del'])) {
 
 
 
-<?php
+    <?php
 include './footer.php'
 ?>

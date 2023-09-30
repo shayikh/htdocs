@@ -12,12 +12,11 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) {
     ?>
-    <a style="position: fixed;left: 1%;top: 61px;z-index: 15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
-        Have
-        <?php echo $number ?> New Messages</a>
+<a style="position: fixed;left: 1%;top: 61px;z-index: 15" href="./all_msg.php?type=all_msg" class="btn btn-sm btn-danger">You
+    Have
+    <?php echo $number ?> New Messages</a>
 
 <?php } ?>
-
 
 
 
@@ -50,24 +49,19 @@ if ($number > 0) {
 
             ?>
 
-            <li style="margin-bottom: 5px">
-                <a class="text-decoration-none"
-                   href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
-                    <div class="hover_chatbar_mobile">
+        <li style="margin-bottom: 5px">
+            <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
+                <div class="hover_chatbar_mobile">
 
-                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px"
-                             src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
-                        <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>"
-                             style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px"
-                             width="12px"
-                             alt="">
-                        <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
-                            <?php echo $data21['name'] ?>
-                        </h5>
+                    <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
+                    <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px" alt="">
+                    <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
+                        <?php echo $data21['name'] ?>
+                    </h5>
 
-                    </div>
-                </a>
-            </li>
+                </div>
+            </a>
+        </li>
 
         <?php } ?>
 
@@ -85,12 +79,6 @@ if ($number > 0) {
     </script>
 
 </div>
-
-
-
-
-
-
 
 
 

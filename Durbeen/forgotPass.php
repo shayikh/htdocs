@@ -9,32 +9,31 @@ if ($_SESSION['unique_id_me']) {
 ?>
 
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>দূরবীন</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="shortcut icon" href="./img/telescope_2.png"/>
-        <link href="./css/alertify.min.css"/>
-        <link href="./css/all.min.css"/>
-        <link href="./css/fontawesome.min.css"/>
-        <link rel="stylesheet" href="./css/toastr.min.css">
-        <script src="./js/jquery-3.5.1.toastr.min.js"></script>
-        <script src="./js/toastr.min.js"></script>
-        <script src="./js/axios.min.js"></script>
-        <link rel="stylesheet" href="./css/custom.css"/>
+<head>
+    <meta charset="UTF-8">
+    <title>দূরবীন</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./img/telescope_2.png" />
+    <link href="./css/alertify.min.css" />
+    <link href="./css/all.min.css" />
+    <link href="./css/fontawesome.min.css" />
+    <link rel="stylesheet" href="./css/toastr.min.css">
+    <script src="./js/jquery-3.5.1.toastr.min.js"></script>
+    <script src="./js/toastr.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <link rel="stylesheet" href="./css/custom.css" />
 
-    </head>
+</head>
 
-    <body>
+<body>
 
     <div style="height: 100px"></div>
 
-    <img width="150px" id="pro_pic" src=""
-         style="display: block;margin-left: auto;margin-right: auto; border-radius: 50%" alt="">
+    <img width="150px" id="pro_pic" src="" style="display: block;margin-left: auto;margin-right: auto; border-radius: 50%" alt="">
 
     <div class="container">
         <div class="row">
@@ -91,7 +90,6 @@ if ($_SESSION['unique_id_me']) {
 
 
     <script>
-
         $("#question").hide();
         $("#pro_pic").hide();
         $("#passdiv ").hide();
@@ -118,10 +116,10 @@ if ($_SESSION['unique_id_me']) {
                 contentType: false,
                 cache: false,
                 processData: false,
-                beforeSend: function () {
+                beforeSend: function() {
                     // alert('ok')
                 },
-                success: function (data) {
+                success: function(data) {
 
 
                     let json = JSON.parse(data);
@@ -161,7 +159,7 @@ if ($_SESSION['unique_id_me']) {
 
 
                 },
-                error: function (err) {
+                error: function(err) {
                     console.log(err);
                 }
             });
@@ -195,10 +193,10 @@ if ($_SESSION['unique_id_me']) {
                     contentType: false,
                     cache: false,
                     processData: false,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         // alert('ok')
                     },
-                    success: function (data) {
+                    success: function(data) {
 
 
                         let json = JSON.parse(data);
@@ -218,15 +216,16 @@ if ($_SESSION['unique_id_me']) {
 
 
                     },
-                    error: function (err) {
+                    error: function(err) {
                         console.log(err);
                     }
                 });
             }
         })
+
     </script>
 
 
-<?php
+    <?php
 include './footer.php'
 ?>

@@ -111,213 +111,212 @@ if (isset($_POST['signup'])) {
 ?>
 
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>দূরবীন</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="shortcut icon" href="../img/telescope.png"/>
-        <link href="../css/alertify.min.css"/>
-        <link href="../css/all.min.css"/>
-        <link href="../css/fontawesome.min.css"/>
-        <link rel="stylesheet" href="../css/toastr.min.css">
-        <script src="../js/jquery-3.5.1.toastr.min.js"></script>
-        <script src="../js/toastr.min.js"></script>
-        <script src="../js/axios.min.js"></script>
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/mobile.css">
+<head>
+    <meta charset="UTF-8">
+    <title>দূরবীন</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../img/telescope.png" />
+    <link href="../css/alertify.min.css" />
+    <link href="../css/all.min.css" />
+    <link href="../css/fontawesome.min.css" />
+    <link rel="stylesheet" href="../css/toastr.min.css">
+    <script src="../js/jquery-3.5.1.toastr.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mobile.css">
 
-    </head>
+</head>
 
 <body>
-<div class="container-fluid" style="margin-top: 45px">
-    <div class="row">
-        <div class="col-md-4">
+    <div class="container-fluid" style="margin-top: 45px">
+        <div class="row">
+            <div class="col-md-4">
 
-        </div>
-        <div class="col-md-8 mb-5 pb-5">
-            <div class="division_mb_register p_rel">
-                <form class="margin-padding" method="post" action="" enctype="multipart/form-data">
-                    <h4 class="text-dark">Sign Up</h4>
-                    <p class="text-white">.</p>
-                    <p class="pos-absol_mb text-dark">Created Account Before! <b><a class="text-decoration-none" href="./">
-                                <span style="color: #ff4b4b">Log In</span></a></b></p>
+            </div>
+            <div class="col-md-8 mb-5 pb-5">
+                <div class="division_mb_register p_rel">
+                    <form class="margin-padding" method="post" action="" enctype="multipart/form-data">
+                        <h4 class="text-dark">Sign Up</h4>
+                        <p class="text-white">.</p>
+                        <p class="pos-absol_mb text-dark">Created Account Before! <b><a class="text-decoration-none" href="./">
+                                    <span style="color: #ff4b4b">Log In</span></a></b></p>
 
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input required name=name type="text" class="form-control" placeholder="Full Name">
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <input required name="email" type="email" class="form-control" placeholder="Email address">
-                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input required name=name type="text" class="form-control" placeholder="Full Name">
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <input required name="email" type="email" class="form-control" placeholder="Email address">
+                            </div>
 
-                        <b>
-                            <h6 class="text-danger ml-3 mt-1"><?php echo $msg; ?></h6>
-                        </b>
+                            <b>
+                                <h6 class="text-danger ml-3 mt-1"><?php echo $msg; ?></h6>
+                            </b>
 
-                        <div class="col-md-12 mt- pwdbody">
-                            <input required name="password" id="" type="password" class="pwd form-control"
-                                   placeholder="New password">
-                            <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
+                            <div class="col-md-12 mt- pwdbody">
+                                <input required name="password" id="" type="password" class="pwd form-control" placeholder="New password">
+                                <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mt-1 font-small text-dark">Date of birth</label>
+                                <input required name="date_birth" class="form-control" type="date">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="font-small text-dark">Gender</label>
+                                <select required name="gender" class="form-control select">
+                                    <option value="">Select Gender</option>
+                                    <option value="Female">&#9792; Female</option>
+                                    <option value="Male">&#9794; Male</option>
+                                    <option value="Mixed">&#9892; Mixed</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="mt-1 font-small text-dark">Profile Picture ( A<span style='font-size:18px;'>&#215;</span>A Size )</label>
+                                <input required name="pro_pic" class="form-control" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                            </div>
+                            <label class="mt-2 ml-3 ms-2 font-small-2">.</label>
+                            <input name="signup" type="submit" class="btn-custom mt-3" value="Sign Up">
                         </div>
-                        <div class="col-md-6">
-                            <label class="mt-1 font-small text-dark">Date of birth</label>
-                            <input required name="date_birth" class="form-control" type="date">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="font-small text-dark">Gender</label>
-                            <select required name="gender" class="form-control select">
-                                <option value="">Select Gender</option>
-                                <option value="Female">&#9792; Female</option>
-                                <option value="Male">&#9794; Male</option>
-                                <option value="Mixed">&#9892; Mixed</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="mt-1 font-small text-dark">Profile Picture ( A<span
-                                        style='font-size:18px;'>&#215;</span>A Size )</label>
-                            <input required name="pro_pic" class="form-control" type="file"
-                                   accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
-                        </div>
-                        <label class="mt-2 ml-3 ms-2 font-small-2">.</label>
-                        <input name="signup" type="submit" class="btn-custom mt-3" value="Sign Up">
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<style>
-    .pwdbody {
-        position: relative;
-    }
+    <style>
+        .pwdbody {
+            position: relative;
+        }
 
-    .icon {
-        position: absolute;
-        top: 13px;
-        right: 45px;
-    }
+        .icon {
+            position: absolute;
+            top: 13px;
+            right: 45px;
+        }
 
-    .btn-custom {
-        width: 200px;
-        height: 45px;
-        font-size: 21px;
-        font-weight: 500;
-        text-align: center;
-        margin-left: 60px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        border: 1px solid #00c44b;
-        border-radius: 5px;
-        color: white;
-        background-color: #00c44b;
-        transition: 1s;
-    }
+        .btn-custom {
+            width: 200px;
+            height: 45px;
+            font-size: 21px;
+            font-weight: 500;
+            text-align: center;
+            margin-left: 60px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            border: 1px solid #00c44b;
+            border-radius: 5px;
+            color: white;
+            background-color: #00c44b;
+            transition: 1s;
+        }
 
-    .btn-custom:hover {
-        background-color: #00983a;
-    }
+        .btn-custom:hover {
+            background-color: #00983a;
+        }
 
-    .font-small-2 {
-        font-size: 12px;
-    }
+        .font-small-2 {
+            font-size: 12px;
+        }
 
-    .font-small {
-        font-size: 13px;
-    }
+        .font-small {
+            font-size: 13px;
+        }
 
-    input::placeholder {
-        border: #ff4b4b;
-        color: black;
-        font-size: 15px;
-    }
+        input::placeholder {
+            border: #ff4b4b;
+            color: black;
+            font-size: 15px;
+        }
 
-    input[type=text] {
-        border: 1px solid deepskyblue;
-        border-radius: 6px;
-        background-color: #fff;
-    }
+        input[type=text] {
+            border: 1px solid deepskyblue;
+            border-radius: 6px;
+            background-color: #fff;
+        }
 
-    input[type=date] {
-        border: 1px solid deepskyblue;
-        border-radius: 6px;
-        background-color: #fff;
+        input[type=date] {
+            border: 1px solid deepskyblue;
+            border-radius: 6px;
+            background-color: #fff;
 
-    }
+        }
 
-    input[type=file] {
-        border: 1px solid deepskyblue;
-        border-radius: 6px;
-        background-color: #fff;
+        input[type=file] {
+            border: 1px solid deepskyblue;
+            border-radius: 6px;
+            background-color: #fff;
 
-    }
+        }
 
-    input[type=email] {
-        border: 1px solid deepskyblue;
-        border-radius: 6px;
-        background-color: #fff;
+        input[type=email] {
+            border: 1px solid deepskyblue;
+            border-radius: 6px;
+            background-color: #fff;
 
-    }
+        }
 
-    input[type=password] {
-        border: 1px solid deepskyblue;
-        border-radius: 6px;
-        background-color: #fff;
+        input[type=password] {
+            border: 1px solid deepskyblue;
+            border-radius: 6px;
+            background-color: #fff;
 
-    }
+        }
 
-    .select {
-        border: 1px solid deepskyblue;
-        border-radius: 6px;
-        background-color: #fff;
-    }
+        .select {
+            border: 1px solid deepskyblue;
+            border-radius: 6px;
+            background-color: #fff;
+        }
 
-    * {
-        margin: 0;
-        padding: 0;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-    .logo {
-        width: 300px;
-        margin-left: 225px;
-        margin-top: 175px;
-        margin-bottom: 0px;
-    }
+        .logo {
+            width: 300px;
+            margin-left: 225px;
+            margin-top: 175px;
+            margin-bottom: 0px;
+        }
 
-    .heading {
-        margin-left: 255px;
-        margin-top: 0px;
-        font-size: 28px;
-        font-weight: 400;
-        line-height: 1.2;
-    }
+        .heading {
+            margin-left: 255px;
+            margin-top: 0px;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
 
-    body {
-        background: url(../img/background_mb.jpg);
-        background-repeat: no-repeat;
-        background-size: 100% 1225px;
-        background-position: center;
-    }
+        body {
+            background: url(../img/background_mb.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 1225px;
+            background-position: center;
+        }
 
-    .margin-padding {
-        padding: 15px;
-    }
-    .division_mb_register {
-        background-color: #f7ffff;
-        margin-left: 0px;
-        margin-top: 55px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-</style>
+        .margin-padding {
+            padding: 15px;
+        }
+
+        .division_mb_register {
+            background-color: #f7ffff;
+            margin-left: 0px;
+            margin-top: 55px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+    </style>
 
 
 
-<?php
+    <?php
 include './footer.php'
 ?>

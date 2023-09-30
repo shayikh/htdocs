@@ -5,135 +5,131 @@ include './header.php';
 ?>
 
 
-    <!-- main page -->
+<!-- main page -->
 
 
-    <div class="container" style="margin-top: 120px">
-        <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
-            <tbody id="tbodyID">
+<div class="container" style="margin-top: 120px">
+    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+        <tbody id="tbodyID">
 
-            </tbody>
-        </table>
-
-
-    </div>
+        </tbody>
+    </table>
 
 
-    <script>
-
-        let tbody = document.querySelector("#tbodyID");
-        let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
+</div>
 
 
-        var page_no = 1;
-
-        showdata();
-
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                showdata();
-            }
-        })
+<script>
+    let tbody = document.querySelector("#tbodyID");
+    let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
 
 
-        function showdata() {
+    var page_no = 1;
 
-            let postData = {};
+    showdata();
 
-            postData.page_no = page_no;
-            postData.unique_id_me = <?php echo $unique_id_me ?>;
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
+            showdata();
+        }
+    })
 
-            axios.post("../api/mobile/loadmoreProPics.php",
-                postData,
-                {
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/mobile/loadmoreProPics.php",
+                postData, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-                .then(res => {
-                    if (res.data == 0) {
-                        toastr.error('You Are at The End');
-                    } else {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.error('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
 
-        const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
-            let confirm = window.confirm("Are You Sure?");
+    const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
+        let confirm = window.confirm("Are You Sure?");
 
-            if (confirm) {
-
-                let delProPic = {};
-
-                delProPic.pro_pic_id = pro_pic_id;
-                delProPic.unique_id_me = unique_id_me;
-
-                axios.post("../api/pro_pic/deleteProPic.php",
-                    delProPic,
-                    {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                    .then(res => {
-                        // console.log(res.data);
-
-                        elm.parentElement.parentElement.remove();
-                        toastr.error('Profile Picture Deleted');
-
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-
-            } else {
-                return;
-            }
-
-        }
-
-
-        const makeProPic = (pro_pic_id, unique_id_me, elm) => {
+        if (confirm) {
 
             let delProPic = {};
 
             delProPic.pro_pic_id = pro_pic_id;
             delProPic.unique_id_me = unique_id_me;
 
-            axios.post("../api/pro_pic/makeProPic.php",
-                delProPic,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
+            axios.post("../api/pro_pic/deleteProPic.php",
+                    delProPic, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
                 .then(res => {
                     // console.log(res.data);
 
-                    timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
-
                     elm.parentElement.parentElement.remove();
-
-                    tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
-
-                    toastr.success('Profile Picture Changed');
+                    toastr.error('Profile Picture Deleted');
 
                 })
                 .catch(err => {
                     console.log(err);
                 })
 
+        } else {
+            return;
         }
 
+    }
 
-        const makeProPicTr = (newProPic) => {
-            let tr = `<tr>
+
+    const makeProPic = (pro_pic_id, unique_id_me, elm) => {
+
+        let delProPic = {};
+
+        delProPic.pro_pic_id = pro_pic_id;
+        delProPic.unique_id_me = unique_id_me;
+
+        axios.post("../api/pro_pic/makeProPic.php",
+                delProPic, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
+
+                elm.parentElement.parentElement.remove();
+
+                tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
+
+                toastr.success('Profile Picture Changed');
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
+
+
+    const makeProPicTr = (newProPic) => {
+        let tr = `<tr>
                         <td class="text-center">
                             <img width="130px" src="../pro_pic/${newProPic.pro_pic}" alt="" id="pro_pic_${newProPic.id}">
                         </td>
@@ -144,10 +140,10 @@ include './header.php';
                             <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
                         </td>
                     </tr>`
-            return tr;
-        }
+        return tr;
+    }
 
-    </script>
+</script>
 
 
 <?php

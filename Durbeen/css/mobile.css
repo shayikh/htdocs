@@ -1,6 +1,7 @@
-.text-durbeen{
+.text-durbeen {
     color: #47c0e8;
 }
+
 .hover_chatbar_mobile {
     width: 330px;
     height: 50px;
@@ -23,9 +24,11 @@
     margin-bottom: 30px;
     transition: 1s;
 }
+
 .durbeen_mb:hover {
     color: #2d55ff;
 }
+
 .bondhu_text_mb {
     font-family: mahfuj;
     margin-left: 20px;
@@ -34,6 +37,7 @@
     font-weight: 400;
     line-height: 1.2;
 }
+
 .division_mb {
     background-color: #fff7f7;
     margin-left: 0px;
@@ -41,6 +45,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .division_mb_register {
     background-color: #f7ffff;
     margin-left: 0px;
@@ -48,6 +53,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .button-red_mobile {
     width: 306px;
     height: 50px;
@@ -63,12 +69,14 @@
     border-color: #ff4b4b;
     transition: 1s;
 }
+
 .t-hover_mb {
     max-width: 330px;
     height: 40px;
     border-radius: 25px;
     transition: 0.7s;
 }
+
 .t-active_mb {
     background-color: #d94141;
 }
@@ -169,47 +177,10 @@
 
 
 .a_mb {
-  width: 307px;
-  height: 1px;
-  background: #c4c4c4;
-  margin-top: 4px;
-  margin-bottom: 28px;
-  float: left;
+    width: 307px;
+    height: 1px;
+    background: #c4c4c4;
+    margin-top: 4px;
+    margin-bottom: 28px;
+    float: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

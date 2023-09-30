@@ -2,10 +2,7 @@
 include './header.php';
 
 
-//alert
-if (isset($_GET['login'])) {
-    echo "<script>toastr.success('You Are Logged In')</script>";
-}
+
 ?>
 
 
