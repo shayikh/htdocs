@@ -6,7 +6,7 @@ include './header.php';
 
 //message notification
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
-$runnotify = mysqli_query($con_notification, $SQLnotify);
+$runnotify = mysqli_query($durbeen_chats, $SQLnotify);
 
 $number = mysqli_num_rows($runnotify);
 
@@ -55,7 +55,7 @@ if ($number > 0) {
 
                     <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
                     <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px" alt="">
-                    <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
+                    <h5 class="text-" style="margin-top: -37px;margin-left: 68px">
                         <?php echo $data21['name'] ?>
                     </h5>
 

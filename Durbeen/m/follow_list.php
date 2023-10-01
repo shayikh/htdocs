@@ -58,30 +58,39 @@ include './header.php';
 
 
         const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
+            let confirm = window.confirm("Do You Want to Unfollow?");
 
-            let unfollowVar = {};
+            if (confirm) {
 
-            unfollowVar.unique_id_me = unique_id_me;
-            unfollowVar.unique_id_fr = unique_id_fr;
+                let unfollowVar = {};
 
-            axios.post("../api/facelist/unfollow.php",
-                    unfollowVar, {
-                        headers: {
-                            "Content-Type": "application/json"
+                unfollowVar.unique_id_me = unique_id_me;
+                unfollowVar.unique_id_fr = unique_id_fr;
+
+                axios.post("../api/facelist/unfollow.php",
+                        unfollowVar, {
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        })
+                    .then(res => {
+                        // console.log(res.data);
+
+                        if (res.data == 0) {
+                            elm.parentElement.parentElement.remove();
                         }
+
+
                     })
-                .then(res => {
-                    // console.log(res.data);
+                    .catch(err => {
+                        console.log(err);
+                    })
 
-                    if (res.data == 0) {
-                        elm.parentElement.parentElement.remove();
-                    }
+            } else {
+                return;
+            }
 
 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
         }
 
     </script>

@@ -4,7 +4,7 @@ $connection = mysqli_connect("localhost","root","","durbeen");
 
 $connection_message = mysqli_connect("localhost","root","","durbeen_message");
 
-$durbeen_chats = mysqli_connect("localhost","root","","durbeen_chats");
+$durbeen_chats = mysqli_connect("localhost","root","","durbeen_info");
 
 
 

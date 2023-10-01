@@ -294,6 +294,7 @@ if ($countTest == 0) {
                 tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
 
                 messageCloseBtn.click();
+                toastr.success('Message Sent');
 
                 image.value = "";
                 message.value = "";

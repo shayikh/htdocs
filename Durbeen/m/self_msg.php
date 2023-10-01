@@ -129,6 +129,7 @@ include './header.php';
                 tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
 
                 messageCloseBtn.click();
+                toastr.success('Message Done');
 
                 image.value = "";
                 message.value = "";

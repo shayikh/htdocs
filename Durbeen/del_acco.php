@@ -30,7 +30,7 @@ if (isset($_POST['delete'])) {
 
     //notification table delete
     $SQL4 = "DROP TABLE `$unique_id_me notify`";
-    mysqli_query($con_notification, $SQL4);
+    mysqli_query($durbeen_chats, $SQL4);
 
 
     //message tables delete

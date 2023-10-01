@@ -62,7 +62,7 @@ if (isset($_POST['signup'])) {
 			`seen` int(255),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($con_notification, $SQL5);
+        mysqli_query($durbeen_chats, $SQL5);
 
 
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me chats` (
