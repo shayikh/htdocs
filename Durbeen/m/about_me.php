@@ -200,8 +200,8 @@ if (isset($_GET['register'])) {
             <div class="modal-body">
                 <form action="" method="post" id="updateFormID" enctype="multipart/form-data">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                    <input type="hidden" name="pro_pic" value="<?php echo $pro_pic ?>">
-                    <input type="hidden" name="cov_pic" value="<?php echo $cov_pic ?>">
+                    <input type="hidden" id="hidden_pro_pic" name="pro_pic" value="<?php echo $pro_pic ?>">
+                    <input type="hidden" id="hidden_cov_pic" name="cov_pic" value="<?php echo $cov_pic ?>">
 
                     <div class="row">
                         <div class="col-md-4">
@@ -424,6 +424,8 @@ if (isset($_GET['register'])) {
     let city = document.querySelector("#city");
     let bio = document.querySelector("#bio");
 
+    let hidden_pro_pic = document.querySelector("#hidden_pro_pic");
+    let hidden_cov_pic = document.querySelector("#hidden_cov_pic");
     let nameModal = document.querySelector("#nameModal");
     let emailModal = document.querySelector("#emailModal");
     let passwordModal = document.querySelector("#passwordModal");
@@ -468,6 +470,9 @@ if (isset($_GET['register'])) {
                 pro_pic.src = "../pro_pic/" + profile_picture;
                 timeline_pro_pic.src = "../pro_pic/" + profile_picture;
                 cov_pic.src = "../pro_pic/cov_pic/" + cover_photo;
+                
+                hidden_pro_pic.value = profile_picture;
+                hidden_cov_pic.value = cover_photo;
 
                 timeline_name.innerText = json.myData.name;
                 name.innerText = json.myData.name;
