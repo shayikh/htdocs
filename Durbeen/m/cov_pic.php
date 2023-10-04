@@ -69,10 +69,10 @@ include './header.php';
 
             let delCovPic = {};
 
-            delCovPic.delCovPic_id = delCovPic_id;
+            delCovPic.cov_pic_id = cov_pic_id;
             delCovPic.unique_id_me = unique_id_me;
 
-            axios.post("../api/delCovPic/deleteCovPic.php",
+            axios.post("../api/cov_pic/deleteCovPic.php",
                     delCovPic, {
                         headers: {
                             "Content-Type": "application/json"
