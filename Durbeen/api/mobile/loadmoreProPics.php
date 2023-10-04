@@ -41,7 +41,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
 
     <tr>
         <td class="text-center">
-            <img width="130px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>" alt="" id="pro_pic_<?php echo $data2['id'] ?>">
+            <img width="130px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>" alt="">
         </td>
         <td class="text-center">
             <button onclick="makeProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 50px">Make Profile Picture</button>

@@ -23,15 +23,15 @@ if ($_FILES['image_khan_bahadur']['name']) {
 
 
 if ($_FILES['image_khan_cover']['name']) {
-    if ($cov_pic != "cov_pic.jpg") {
-        unlink('../../pro_pic/cov_pic/' . $cov_pic);
-    }
 
     $imageOldName = $_FILES['image_khan_cover']['name'];
     $imageNewName_cov = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
     $image_tmp = $_FILES['image_khan_cover']['tmp_name'];
     move_uploaded_file($image_tmp, '../../pro_pic/cov_pic/' . $imageNewName_cov);
 
+    $SQL1 = "INSERT INTO `$unique_id_me cov_pic`(`cov_pic`) VALUES ('$cov_pic')";
+    mysqli_query($durbeen_chats, $SQL1);
+    
 } else {
     $imageNewName_cov = $cov_pic;
 }

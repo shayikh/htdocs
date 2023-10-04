@@ -153,6 +153,14 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
+                        <h5 class="text-red">Old Cover Photos</h5>
+                    </td>
+                    <td>
+                        <a href="./cov_pic.php?type" class="btn btn-sm btn-success">Old Cover Photos</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
                         <h6 class="text-red">My All Comments</h6>
                     </td>
                     <td>
@@ -470,7 +478,7 @@ if (isset($_GET['register'])) {
                 pro_pic.src = "../pro_pic/" + profile_picture;
                 timeline_pro_pic.src = "../pro_pic/" + profile_picture;
                 cov_pic.src = "../pro_pic/cov_pic/" + cover_photo;
-                
+
                 hidden_pro_pic.value = profile_picture;
                 hidden_cov_pic.value = cover_photo;
 

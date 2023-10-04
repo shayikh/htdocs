@@ -153,6 +153,14 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
+                        <h5 class="text-red">Old Cover Photos</h5>
+                    </td>
+                    <td>
+                        <a href="./cov_pic.php?type" class="btn btn-success">Old Cover Photos</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
                         <h5 class="text-red">My All Comments</h5>
                     </td>
                     <td>
