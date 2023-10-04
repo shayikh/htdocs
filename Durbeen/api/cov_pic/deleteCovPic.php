@@ -13,10 +13,17 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-
-
 $SQL1 = "UPDATE `$unique_id_me cov_pic` SET `watch`='0' WHERE `id`='$Deleteid'";
 mysqli_query($durbeen_chats, $SQL1);
 
+
+$SQL2 = "SELECT * FROM `$unique_id_me cov_pic` WHERE `id`='$Deleteid'";
+$run2 = mysqli_query($durbeen_chats,$SQL2);
+$data2 = mysqli_fetch_assoc($run2);
+$cov_pic = $data2['cov_pic'];
+
+if ($cov_pic != "cov_pic.jpg") {
+    unlink('../../pro_pic/cov_pic/'.$cov_pic);
+}
 
 
