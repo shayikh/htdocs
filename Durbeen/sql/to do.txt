@@ -1,0 +1,131 @@
+Page loading gif images
+
+Register page design
+
+col-md-6 ke lg sm diye responsive kora
+
+Scroll up js button dewa
+
+Message alert onno vabe button diye noy
+
+Js diye active status check
+
+Login register post chat js diye validation
+
+Like(20) dislike(10)
+
+Chatting e design error
+
+inline css ke external kora
+
+Show pro pic modal diye kora
+
+Server e koto fast data process kora jay
+
+Image resolution komano
+
+Ks er sokol function custom.js file e rakha
+
+data type
+
+Dom theke data niye about update modal e append kora
+
+Del acco api
+
+Extra ajax ke save kora
+
+Email check er jonno ekbar db theke data niye dom e rekhe bar bar check kora
+
+Register button e click korle email er data ta asbe
+
+Comments show korar moto api theke registration table er sob email er data aabe
+
+Edit profile btn w click korle email er data asbe
+
+About edit btn e dom append fn er modhdhe registered emails er fn o add kore dewa.
+
+About me te question id gulo delete
+
+Login register e icos er cursor pointer
+
+Img name space
+
+Image e click korle./chat_image/php block
+
+Find account e incorrect email toastr
+
+Facelist e message link e img folder e ana
+
+Type delete
+
+Image new name e date e space
+
+Message box fixed position upore niche image text
+
+Other pro pics, cov pics
+
+Activity check by others session check
+
+Message forward
+
+mobile message o self message e time dewa
+
+Loadmore e mobile e 60 px na kore less kora
+
+Homepage e echo 0 na diye end dewa ba 1 dewa
+
+Message box ba post box e ekbar post er por image faka kore dey kivabe?
+
+Update profile e propic covpic o faka
+
+Mobile all comments e target blank
+
+Account creation date
+
+Comments scroll
+
+about people e unfollow btn
+
+Comment add delete korle 1 barbe kombe
+
+windows.css/js android.css/js
+
+register o about update e email alert
+
+others comments in my post in about people
+
+Cov pic e delete er so oy pic delete hobe dosi cov_pic.jpg na hoy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
