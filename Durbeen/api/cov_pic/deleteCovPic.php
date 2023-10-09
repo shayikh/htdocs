@@ -13,7 +13,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL1 = "UPDATE `$unique_id_me cov_pic` SET `watch`='0' WHERE `id`='$Deleteid'";
+$SQL1 = "DELETE FROM `$unique_id_me cov_pic` WHERE `id`='$Deleteid'";
 mysqli_query($durbeen_chats, $SQL1);
 
 
