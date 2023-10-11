@@ -314,8 +314,7 @@ if (isset($_POST['signup'])) {
         body {
             background: url(./img/background.jpg);
             background-repeat: no-repeat;
-            background-size: 100% 1225px;
-            background-position: center;
+            background-size: 100% 1100px;
         }
 
         .margin-padding {
