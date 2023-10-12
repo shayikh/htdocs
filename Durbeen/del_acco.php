@@ -19,14 +19,26 @@ if (isset($_POST['delete'])) {
     mysqli_query($connection, $SQL2);
 
 
+    
+    
     //self post's comment delete
     $SQL1 = "DELETE FROM `comment` WHERE `post_giver_id`='$unique_id_me'";
-    $run1 = mysqli_query($connection, $SQL1);
+    mysqli_query($connection, $SQL1);
 
     //other's post's comment delete
     $SQL1 = "DELETE FROM `comment` WHERE `comn_giver_id`='$unique_id_me'";
-    $run1 = mysqli_query($connection, $SQL1);
+    mysqli_query($connection, $SQL1);
+    
+    //like delete
+    $SQL1 = "DELETE FROM `like_post` WHERE `unique_id`='$unique_id_me'";
+    mysqli_query($connection, $SQL1);
+    
+    //dislike delete
+    $SQL1 = "DELETE FROM `dislike_post` WHERE `unique_id`='$unique_id_me'";
+    mysqli_query($connection, $SQL1);
 
+    
+    
 
     //notification table delete
     $SQL4 = "DROP TABLE `$unique_id_me notify`";
@@ -76,6 +88,10 @@ if (isset($_POST['delete'])) {
     //chat friend table delete
     $SQL4 = "DROP TABLE `$unique_id_me chats`";
     mysqli_query($durbeen_chats, $SQL4);
+    
+    //follow table delete
+    $SQL4 = "DROP TABLE `$unique_id_me follow`";
+    mysqli_query($durbeen_chats, $SQL4);
 
 
     //drop self_msg table
@@ -124,7 +140,25 @@ if (isset($_POST['delete'])) {
 
     $SQL4 = "DROP TABLE `$unique_id_me pro_pic`";
     mysqli_query($durbeen_chats, $SQL4);
+    
+    
+    
+    //cov_pic table delete
+    $SQL4 = "SELECT * FROM `$unique_id_me cov_pic`";
+    $run4 = mysqli_query($durbeen_chats, $SQL4);
 
+    if ($run4 == true) {
+        while ($data = mysqli_fetch_assoc($run4)) {
+            $imgNameinDB = $data['cov_pic'];
+            unlink('./pro_pic/cov_pic/'.$imgNameinDB);
+        }
+    }
+
+    $SQL4 = "DROP TABLE `$unique_id_me cov_pic`";
+    mysqli_query($durbeen_chats, $SQL4);
+
+    
+    
 
 
     //account delete

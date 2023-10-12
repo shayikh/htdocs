@@ -30,7 +30,7 @@ if($page_no >= $total_pages){
 $limit = 10;
 $row = ($page_no - 1)*$limit;
 
-$SQL2 = "SELECT * FROM `$unique_id_me cov_pic` WHERE `watch`='1' ORDER BY `id` DESC LIMIT $row,$limit";
+$SQL2 = "SELECT * FROM `$unique_id_me cov_pic` ORDER BY `id` DESC LIMIT $row,$limit";
 
 $run2 = mysqli_query($durbeen_chats, $SQL2);
 
