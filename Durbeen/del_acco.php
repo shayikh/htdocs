@@ -117,9 +117,6 @@ if (isset($_POST['delete'])) {
     $SQL4 = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
     $run4 = mysqli_query($connection, $SQL4);
 
-    if ($imgNameinDB != "cov_pic.jpg") {
-        unlink('./pro_pic/cov_pic/'.$imgNameinDB);
-    }
 
     $SQL9 = "DELETE FROM `about` WHERE `unique_id`='$unique_id_me'";
     mysqli_query($connection, $SQL9);
@@ -133,8 +130,11 @@ if (isset($_POST['delete'])) {
 
     if ($run4 == true) {
         while ($data = mysqli_fetch_assoc($run4)) {
-            $imgNameinDB = $data['pro_pic'];
-            unlink('./pro_pic/'.$imgNameinDB);
+            $pro_pic = $data['pro_pic'];
+            
+            if ($pro_pic != "red_comet.png") {
+                unlink('./pro_pic/'.$pro_pic);
+            }
         }
     }
 
@@ -149,8 +149,11 @@ if (isset($_POST['delete'])) {
 
     if ($run4 == true) {
         while ($data = mysqli_fetch_assoc($run4)) {
-            $imgNameinDB = $data['cov_pic'];
-            unlink('./pro_pic/cov_pic/'.$imgNameinDB);
+            $cov_pic = $data['cov_pic'];
+            
+            if ($cov_pic != "cov_pic.jpg") {
+                unlink('./pro_pic/cov_pic/'.$cov_pic);
+            }
         }
     }
 
@@ -162,10 +165,22 @@ if (isset($_POST['delete'])) {
 
 
     //account delete
-    if ($dataMe['pro_pic'] != "red_comet.png") {
-        $pro_pic_me = $dataMe['pro_pic'];
-        unlink('./pro_pic/'.$pro_pic_me);
+    $pro_pic = $dataMe['pro_pic'];
+    
+    if ($pro_pic != "red_comet.png") {
+        unlink('./pro_pic/'.$pro_pic);
     }
+    
+    
+    
+    $cov_pic = $dataMe['cov_pic'];
+    
+    if ($cov_pic != "cov_pic.jpg") {
+        unlink('./pro_pic/cov_pic/'.$cov_pic);
+    }
+    
+    
+    
 
     $SQL10 = "DELETE FROM `registration` WHERE `unique_id`='$unique_id_me'";
     mysqli_query($connection, $SQL10);
