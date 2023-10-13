@@ -130,7 +130,7 @@ $data1 = mysqli_fetch_assoc($run1);
                         <h5 class="text-red">Durbeen Visited</h5>
                     </td>
                     <td>
-                        <h5><?php echo $dataMe['visit'] ?></h5>
+                        <h5><?php echo $data1['visit'] ?></h5>
                     </td>
                 </tr>
                 <tr>
