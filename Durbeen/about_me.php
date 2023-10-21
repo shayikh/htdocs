@@ -358,7 +358,7 @@ if (isset($_GET['register'])) {
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onmouseover="showMyComment()">
+                <button type="button" class="btn btn-success" onmouseover="showMyComment()" onclick="showMyComment()">
                     More Comments
                 </button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -396,7 +396,7 @@ if (isset($_GET['register'])) {
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onmouseover="showOtherComment()">
+                <button type="button" class="btn btn-success" onmouseover="showOtherComment()" onclick="showOtherComment()">
                     More Comments
                 </button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

@@ -110,7 +110,7 @@ if ($_SESSION['unique_id_me'] != 1) {
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/getSingle.php",
+                url: "./api/singleUser.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -122,18 +122,26 @@ if ($_SESSION['unique_id_me'] != 1) {
                 success: function(data) {
 
                     let json = JSON.parse(data);
+                    
+                    if (json == 0) {
+                        
+                        toastr.error("Email Incorrect");
+                        
+                    } else {
+                        
+                        let singleUser = json.singleUser;
+                        //console.log(json);
 
-                    let singleUser = json.singleUser;
-                    // console.log(singleUser);
+                        unique_id.innerText = singleUser.unique_id;
+                        pro_pic.src = './pro_pic/' + singleUser.pro_pic;
+                        Username.innerText = singleUser.name;
+                        Useremail.innerText = singleUser.email;
+                        Password.innerText = singleUser.password;
 
-                    unique_id.innerText = singleUser.unique_id;
-                    pro_pic.src = './pro_pic/' + singleUser.pro_pic;
-                    Username.innerText = singleUser.name;
-                    Useremail.innerText = singleUser.email;
-                    Password.innerText = singleUser.password;
+                        $("#form")[0].reset();
+                    }
 
 
-                    $("#form")[0].reset();
                 },
                 error: function(err) {
                     console.log(err);

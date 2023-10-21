@@ -314,7 +314,7 @@ if ($countTest == 0) {
 								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
 								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
-										class="btn btn-sm btn-primary float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
+										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
 								
 								<button class="btn btn-sm btn-secondary float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>

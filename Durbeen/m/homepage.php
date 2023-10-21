@@ -134,7 +134,7 @@ if ($number > 0) {
                     })
                 .then(res => {
                     if (res.data == 0) {
-                        toastr.error('You Are at The End');
+                        console.log("You Are at The End");
                         page_no++;
                         showdata();
                     } else {

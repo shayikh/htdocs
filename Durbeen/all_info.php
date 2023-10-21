@@ -22,46 +22,46 @@ if ($_SESSION['unique_id_me'] != 1) {
 
 
     <div class="row">
-        <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
-            <tr>
-                <th>
-                    <h5>unique_id</h5>
-                </th>
-                <th>
-                    <h5>Name</h5>
-                </th>
-                <th>
-                    <h5>Email</h5>
-                </th>
-                <th>
-                    <h5>Password</h5>
-                </th>
-            </tr>
+        <div class="col-md-12">
+            <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
+                <tr>
+                    <th>
+                        <h5>unique_id</h5>
+                    </th>
+                    <th>
+                        <h5>Name</h5>
+                    </th>
+                    <th>
+                        <h5>Email</h5>
+                    </th>
+                    <th>
+                        <h5>Password</h5>
+                    </th>
+                </tr>
 
 
-            <?php while ($data1 = mysqli_fetch_assoc($run1)) { ?>
-            <tr>
-                <td>
-                    <h5><?php echo $data1['unique_id'] ?></h5>
-                </td>
-                <td>
-                    <h5><?php echo $data1['name'] ?></h5>
-                </td>
-                </td>
-                <td>
-                    <h5><?php echo $data1['email'] ?></h5>
-                </td>
-                </td>
-                <td>
-                    <h5><?php echo $data1['password'] ?></h5>
-                </td>
-            </tr>
-            <?php } ?>
+                <?php while ($data1 = mysqli_fetch_assoc($run1)) { ?>
+                <tr>
+                    <td>
+                        <h5><?php echo $data1['unique_id'] ?></h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['name'] ?></h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['email'] ?></h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['password'] ?></h5>
+                    </td>
+                </tr>
+                <?php } ?>
 
 
-        </table>
+            </table>
 
 
+        </div>
     </div>
 </div>
 
