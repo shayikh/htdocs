@@ -221,13 +221,13 @@ if (isset($_GET['register'])) {
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mt-2 text-dark">Profile Picture</label>
-                                <input name="image_khan_bahadur" class="form-control" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                                <input name="image_khan_bahadur" id="pro_img_id" class="form-control" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mt-2 text-dark">Cover Photo</label>
-                                <input name="image_khan_cover" class="form-control" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                                <input name="image_khan_cover" id="cov_img_id" class="form-control" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -435,6 +435,8 @@ if (isset($_GET['register'])) {
     let hidden_pro_pic = document.querySelector("#hidden_pro_pic");
     let hidden_cov_pic = document.querySelector("#hidden_cov_pic");
     let nameModal = document.querySelector("#nameModal");
+    let pro_img_id = document.querySelector("#pro_img_id");
+    let cov_img_id = document.querySelector("#cov_img_id");
     let emailModal = document.querySelector("#emailModal");
     let passwordModal = document.querySelector("#passwordModal");
     let religionModal = document.querySelector("#religionModal");
@@ -491,6 +493,9 @@ if (isset($_GET['register'])) {
                 country.innerText = json.about.country;
                 city.innerText = json.about.city;
                 bio.innerText = json.about.bio;
+                
+                pro_img_id.value = "";
+                cov_img_id.value = "";
 
                 toastr.success('About Updated');
                 updateCloseBtn.click();

@@ -1,12 +1,8 @@
 Page loading gif images
 
-Register page design
-
 col-md-6 ke lg sm diye responsive kora
 
 Scroll up js button dewa
-
-Message alert onno vabe button diye noy
 
 Js diye active status check
 
@@ -18,27 +14,17 @@ Chatting e design error
 
 inline css ke external kora
 
-Show pro pic modal diye kora
-
 Server e koto fast data process kora jay
 
 Image resolution komano
 
-Ks er sokol function custom.js file e rakha
+Js er sokol function custom.js file e rakha
 
 data type
 
-Dom theke data niye about update modal e append kora
+Email update er somoy email check er jonno ekbar db theke data niye dom e rekhe bar bar check kora
 
-Del acco api
-
-Extra ajax ke save kora
-
-Email check er jonno ekbar db theke data niye dom e rekhe bar bar check kora
-
-Register button e click korle email er data ta asbe
-
-Comments show korar moto api theke registration table er sob email er data aabe
+Comments show korar moto api theke registration table er sob email er data asbe
 
 Edit profile btn w click korle email er data asbe
 
@@ -93,8 +79,6 @@ windows.css/js android.css/js
 register o about update e email alert
 
 others comments in my post in about people
-
-Cov pic e delete er so oy pic delete hobe dosi cov_pic.jpg na hoy
 
 
 
