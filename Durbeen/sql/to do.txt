@@ -2,15 +2,7 @@ Page loading gif images
 
 col-md-6 ke lg sm diye responsive kora
 
-Scroll up js button dewa
-
-Js diye active status check
-
 Login register post chat js diye validation
-
-Like(20) dislike(10)
-
-Chatting e design error
 
 inline css ke external kora
 
@@ -26,11 +18,9 @@ Email update er somoy email check er jonno ekbar db theke data niye dom e rekhe 
 
 Comments show korar moto api theke registration table er sob email er data asbe
 
-Edit profile btn w click korle email er data asbe
+Edit profile btn e click korle email er data asbe
 
 About edit btn e dom append fn er modhdhe registered emails er fn o add kore dewa.
-
-About me te question id gulo delete
 
 Login register e icos er cursor pointer
 
@@ -62,54 +52,14 @@ Homepage e echo 0 na diye end dewa ba 1 dewa
 
 Message box ba post box e ekbar post er por image faka kore dey kivabe?
 
-Update profile e propic covpic o faka
-
 Mobile all comments e target blank
 
 Account creation date
 
-Comments scroll
-
 about people e unfollow btn
-
-Comment add delete korle 1 barbe kombe
 
 windows.css/js android.css/js
 
 register o about update e email alert
 
 others comments in my post in about people
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
