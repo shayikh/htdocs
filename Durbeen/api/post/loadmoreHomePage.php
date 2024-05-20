@@ -44,7 +44,7 @@ $runF=mysqli_query($durbeen_chats,$SQLF);
 $countF = mysqli_num_rows($runF);
 
 
-if($countF == 1){
+if($countF >= 1){
     $SQL2 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
     $run2 = mysqli_query($connection,$SQL2);
     $data2 = mysqli_fetch_assoc($run2);

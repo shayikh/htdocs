@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2023 at 07:05 PM
+-- Generation Time: May 20, 2024 at 06:37 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -31,7 +31,8 @@ CREATE TABLE `about` (
   `id` int(255) NOT NULL,
   `unique_id` int(255) NOT NULL,
   `bio` text DEFAULT NULL,
-  `cov_pic` varchar(1000) NOT NULL,
+  `date_birth` varchar(1000) NOT NULL,
+  `gender` varchar(10) NOT NULL,
   `phone_no` varchar(1000) DEFAULT NULL,
   `religion` varchar(1000) DEFAULT NULL,
   `country` varchar(1000) DEFAULT NULL,
@@ -110,10 +111,9 @@ CREATE TABLE `registration` (
   `name` varchar(1000) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(1000) NOT NULL,
-  `date_birth` varchar(1000) NOT NULL,
-  `gender` varchar(1000) NOT NULL,
   `pro_pic` varchar(1000) NOT NULL,
-  `active` int(255) NOT NULL,
+  `cov_pic` varchar(1000) NOT NULL,
+  `active` int(255) NOT NULL DEFAULT 1,
   `visit` int(255) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
