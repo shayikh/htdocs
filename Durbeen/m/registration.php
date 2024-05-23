@@ -81,6 +81,8 @@ if (isset($_POST['signup'])) {
 
         $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_me')";
         mysqli_query($durbeen_chats, $SQL400);
+        $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
+        mysqli_query($durbeen_chats, $SQL400);
 
 
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
