@@ -19,7 +19,7 @@ mysqli_query($connection_message, $SQLcreateMe);
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left:13%;top:142px;z-index:20;font-weight: 600;" href="self_msg.php?type=self_msg" class="btn btn-lg btn-success">Self Message</a>
+<a target="_self" style="position: fixed;left:16%;top: 133px;z-index:20;font-weight: 600;" href="self_msg.php?type=self_msg" class="btn btn-success">Self Message</a>
 
 
 <div class="container" style="margin-top:270px">

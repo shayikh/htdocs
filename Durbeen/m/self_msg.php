@@ -7,7 +7,7 @@ include './header.php';
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left: 5%;top: 99px;z-index:20;font-weight: 600;" href="self_msg.php?type=self_msg" class="btn btn-sm btn-success">Self Message</a>
+<a target="_self" style="position: fixed;left: 4%;top: 99px;z-index:20;font-weight: 600;" href="self_msg.php?type=self_msg" class="btn btn-sm btn-success">Self Message</a>
 
 
 <div class="container" style="margin-top: 150px">

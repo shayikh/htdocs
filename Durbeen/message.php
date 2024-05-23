@@ -156,12 +156,12 @@ if ($countTest == 0) {
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left:13%;top:142px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-lg btn-success"><?php echo $friendName ?></a>
+<a target="_self" style="position: fixed;left:16%;top:133px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success"><?php echo $friendName ?></a>
 
 
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;right:10%;top:142px;z-index:20;font-weight: 600;">
+<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;right:17%;top:133px;z-index:20;font-weight: 600;">
 
-    <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-secondary" type="submit" value="Delete This Conversation">
+    <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-secondary" type="submit" value="Delete Conversation">
 
 </form>
 
