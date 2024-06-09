@@ -146,8 +146,8 @@ if (isset($_POST['signup'])) {
             <div class="col-md-4">
 
             </div>
-            <div class="col-md-8">
-                <div class="division">
+            <div class="col-md-4">
+                <div class="division_register">
                     <form class="margin-padding" method="post" action="" enctype="multipart/form-data">
                         <h2 class="text-dark">Sign Up</h2>
                         <p class="text-white">.</p>
@@ -194,6 +194,9 @@ if (isset($_POST['signup'])) {
                     </form>
                 </div>
             </div>
+            <div class="col-md-4">
+
+</div>
         </div>
     </div>
 
@@ -302,13 +305,13 @@ if (isset($_POST['signup'])) {
             line-height: 1.2;
         }
 
-        .division {
+        .division_register {
             position: relative;
             width: 460px;
             height: 500px;
             background-color: #f7ffff;
-            margin-left: 50px;
-            margin-top: 100px;
+            margin-left: 2%;
+            margin-top: 7%;
             border-radius: 8px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
