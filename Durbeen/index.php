@@ -132,9 +132,7 @@ if (isset($_GET['del'])) {
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div style="margin-top: 250px;text-align: center;">
-                    <h4 style="color: black">Press <img width="50px" src="./img/ctrl.png" alt=""><img width="40px" src="./img/minus.png" alt=""><img width="40px" src="./img/minus.png" alt=""> to get best design if you use 125% display
-                    </h4>
+                <div style="margin-top: 250px;margin-bottom: 30px; text-align: center;">
                     <h5 style="color: black">This Website is Designed and Backend Developed by <a style="color: blue" href="https://www.facebook.com/shayikh.fb" target="_blank">Md Mehrab Alam Shayikh</a> and Design Concept Given by <a style="color: blue" href="https://www.facebook.com/tasan.zaman" target="_blank">Ahsan Zaman</a></h5>
                 </div>
             </div>
