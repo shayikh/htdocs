@@ -424,7 +424,6 @@ if (isset($_GET['register'])) {
     let emailID = document.querySelector("#emailID");
     let pro_pic = document.querySelector("#pro_pic");
     let cov_pic = document.querySelector("#cov_pic");
-    let emailMeId = document.querySelector("#emailMeId");
     let birth_date = document.querySelector("#birth_date");
     let phone = document.querySelector("#phone");
     let religion = document.querySelector("#religion");
@@ -447,7 +446,7 @@ if (isset($_GET['register'])) {
     let bioModal = document.querySelector("#bioModal");
     let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
 
-    let myMail = emailID.value;
+    let myMail = emailModal.value;
 
 
     let myCommentTboody = document.querySelector("#myCommentTboody");
@@ -501,7 +500,7 @@ if (isset($_GET['register'])) {
                 updateCloseBtn.click();
 
 
-                myMail = emailID.value;
+                myMail = json.myData.email;
             },
             error: function(err) {
                 console.log(err);
@@ -513,7 +512,7 @@ if (isset($_GET['register'])) {
     function uniqueEmail() {
         let product = {};
 
-        product.email = emailMeId.value;
+        product.email = emailModal.value;
         product.unique_id_me = unique_id_me.innerText;
 
         axios.post("../api/about_update/unique_email.php",
@@ -526,7 +525,7 @@ if (isset($_GET['register'])) {
                 if (res.data == "0") {
                     toastr.error("This email is used by someone. You can not use this email");
                     alert("This email is used by someone. You can not use this email");
-                    emailMeId.value = myMail;
+                    emailModal.value = myMail;
                 }
             })
             .catch(err => {

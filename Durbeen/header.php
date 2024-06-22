@@ -56,6 +56,7 @@ $pro_pic = $dataMe['pro_pic'];
                         <li><a class="dropdown-item" href="./facelist.php?type=facelist">People Facelist</a></li>
                         <li><a class="dropdown-item" href="./all_msg.php?type=all_msg">All Message</a></li>
                         <li><a class="dropdown-item" href="./self_msg.php?type=self_msg">Self Message</a></li>
+                        <li><a class="dropdown-item" href="./groups.php?type=groups">My Groups</a></li>
                         <li><a class="dropdown-item" style="cursor: pointer" onclick="logout(<?php echo $unique_id_me ?>)">
                                 <h6>Log Out <i class="fas fa-sign-out-alt"></i></h6>
                             </a></li>
@@ -110,6 +111,9 @@ $pro_pic = $dataMe['pro_pic'];
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-sm nav <?php $_GET['type'] == 'self_msg' ? printf("active_2") : "" ?>" href="./self_msg.php?type=self_msg" aria-current="page">Self Message</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-sm nav <?php $_GET['type'] == 'groups' ? printf("active_2") : "" ?>" href="./groups.php?type=groups" aria-current="page">My Groups</a>
                                 </li>
                             </ul>
                         </div>

@@ -109,6 +109,16 @@ if (isset($_POST['signup'])) {
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($durbeen_chats, $SQLcreateMe);
+        
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+            `grp_id` int(255),
+			`grp_name` varchar(1000),
+            `pro_pic` varchar(1000),
+            `admin` tinyint(1) DEFAULT '0',
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($durbeen_chats, $SQLcreateMe);
 
 
         echo "<script>window.location = './about_me.php?type=about_me&register'</script>";

@@ -1,169 +1,32 @@
 <?php
 include './header.php';
 
-$unique_id_fr = $_GET['unique_id_fr'];
+$grp_id = $_GET['grp_id'];
 
-$SQLtest = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-$runtest = mysqli_query($connection, $SQLtest);
-$countTest = mysqli_num_rows($runtest);
+$SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me'";
+$run110 = mysqli_query($connection_message, $SQL110);
+$count110 = mysqli_num_rows($run110);
 
-if ($countTest == 0) {
+if ($count110 == 0) {
     echo "<script>window.location = 'homepage.php?type'</script>";
-} else {
-
-
-    if ($unique_id_fr == $unique_id_me) {
-        echo "<script>window.location = 'self_msg.php?type=self_msg'</script>";
-    } elseif ($unique_id_fr == "") {
-        echo "<script>window.location = 'self_msg.php?type=self_msg'</script>";
-    } else {
-        //seen from notify db
-        $SQL99 = "UPDATE `$unique_id_me notify` SET `seen`='1' WHERE `sender_id`='$unique_id_fr'";
-        mysqli_query($durbeen_chats, $SQL99);
-
-        //delete from notify db
-
-        $SQL1 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
-        $run1 = mysqli_query($durbeen_chats, $SQL1);
-        $count1 = mysqli_num_rows($run1);
-
-        if ($count1 > 50) {
-            $delete = $count1 - 50;
-
-            //50 is the minumum number of messages
-
-            $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `seen`='1' ORDER BY `id` ASC LIMIT $delete";
-            mysqli_query($durbeen_chats, $SQL2);
-        }
-
-
-        //create two table if not exist
-        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_fr` (
-			`id` int(255) unsigned NOT NULL auto_increment,
-			`sender` varchar(255),
-			`message` text,
-			`image` varchar(1000),
-			`time` varchar(1000),
-			`seen` varchar(1000),
-			PRIMARY KEY  (`id`)
-		)";
-        mysqli_query($connection_message, $SQLcreateMe);
-
-        $SQLcreateFr = "CREATE TABLE IF NOT EXISTS `$unique_id_fr to $unique_id_me` (
-			`id` int(255) unsigned NOT NULL auto_increment,
-			`sender` varchar(255),
-			`message` text,
-			`image` varchar(1000),
-			`time` varchar(1000),
-			`seen` varchar(1000),
-			PRIMARY KEY  (`id`)
-		)";
-        mysqli_query($connection_message, $SQLcreateFr);
-        //table creation end
-
-
-        //chat friend start
-        $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-        $run3 = mysqli_query($durbeen_chats, $SQL3);
-        $count3 = mysqli_num_rows($run3);
-
-        if ($count3 == 0) {
-            $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$unique_id_fr')";
-            mysqli_query($durbeen_chats, $SQL16);
-        }
-
-
-        $SQL4 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-        $run4 = mysqli_query($durbeen_chats, $SQL4);
-        $count4 = mysqli_num_rows($run4);
-
-        if ($count4 == 0) {
-            $SQL5 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
-            mysqli_query($durbeen_chats, $SQL5);
-        }
-
-
-        // seen all message
-        $SQL6 = "UPDATE `$unique_id_me to $unique_id_fr` SET `seen`='Seen' WHERE `sender`='fr'";
-        mysqli_query($connection_message, $SQL6);
-        $SQL7 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='me'";
-        mysqli_query($connection_message, $SQL7);
-
-
-        $SQL8 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-        $run8 = mysqli_query($connection, $SQL8);
-        $data8 = mysqli_fetch_assoc($run8);
-
-        $friendName = $data8['name'];
-
-
-        if (isset($_POST['delete_con'])) {
-
-            $SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
-            $run9 = mysqli_query($connection_message, $SQL9);
-
-            if ($run9 == true) {
-                while ($data9 = mysqli_fetch_assoc($run9)) {
-                    $imgNameinDB = $data9['image'];
-                    if ($imgNameinDB != '') {
-                        unlink('./chat_image/' . $imgNameinDB);
-                    }
-                }
-            }
-
-            $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
-            mysqli_query($connection_message, $SQL10);
-
-
-            $SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
-            $run11 = mysqli_query($connection_message, $SQL11);
-
-            if ($run9 == true) {
-                while ($data11 = mysqli_fetch_assoc($run11)) {
-                    $imgNameinDB = $data11['image'];
-                    if ($imgNameinDB != '') {
-                        unlink('./chat_image/' . $imgNameinDB);
-                    }
-                }
-            }
-
-            $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
-            mysqli_query($connection_message, $SQL12);
-
-
-            $SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-            mysqli_query($durbeen_chats, $SQL13);
-
-            $SQL14 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-            mysqli_query($durbeen_chats, $SQL14);
-
-            $SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
-            mysqli_query($durbeen_chats, $SQL15);
-
-            $SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
-            mysqli_query($durbeen_chats, $SQL16);
-
-
-            echo "<script>window.location = 'homepage.php?type'</script>";
-        }
-    }
-
-
 }
 
+
+
+$SQL109 = "SELECT * FROM `groups` WHERE `id`='$grp_id' AND `admin_id`='$unique_id_me'";
+$run109 = mysqli_query($connection, $SQL109);
+$count109 = mysqli_num_rows($run109);
 
 ?>
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left:16%;top:133px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success"><?php echo $friendName ?></a>
+<a target="_self" style="position: fixed;left:16%;top:133px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Refresh</a>
 
+<?php if ($count109 > 0) { ?>
+    <a target="_self" style="position: fixed;right:16%;top:133px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Add or Remove Members</a>
+<?php } ?>
 
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;right:17%;top:133px;z-index:20;font-weight: 600;">
-
-    <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-secondary" type="submit" value="Delete Conversation">
-
-</form>
 
 
 <div class="container" style="margin-top: 270px">
@@ -199,7 +62,6 @@ if ($countTest == 0) {
                 <form action="" method="post" id="formID" enctype="multipart/form-data">
 
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                    <input type="hidden" name="unique_id_fr" value="<?php echo $unique_id_fr ?>">
                     <input type="hidden" name="my_name" id="my_name" value="<?php echo $dataMe['name'] ?>">
 
                     <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5" class="form-control mb-2" type="text"></textarea>
@@ -244,7 +106,7 @@ if ($countTest == 0) {
         msgData.unique_id_me = <?php echo $unique_id_me ?>;
         msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-        axios.post("./api/message/loadmoreMsg.php",
+        axios.post("./api/group/loadmoreGrpMsg.php",
                 msgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -285,7 +147,6 @@ if ($countTest == 0) {
                 let json = JSON.parse(data);
 
                 let unique_id_me = json.unique_id_me;
-                let unique_id_fr = json.unique_id_fr;
                 let newMessage = json.newMessage;
 
                 // console.log(json);
