@@ -184,13 +184,13 @@ $count109 = mysqli_num_rows($run109);
 
     const unsendMessage = (id_msg, grp_id, elm_ppp) => {
 
-        let message = {};
+        let unsendData = {};
 
-        message.id_msg = id_msg;
-        message.grp_id = grp_id;
+        unsendData.id_msg = id_msg;
+        unsendData.grp_id = grp_id;
 
         axios.post("./api/group_msg/unsend.php",
-                message, {
+                unsendData, {
                     headers: {
                         "Content-Type": "application/json"
                     }
