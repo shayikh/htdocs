@@ -9,12 +9,14 @@ $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
 
 $Deleteid = $data['id'];
-$grp_id = $data['grp_id'];
+$unique_id_me = $data['unique_id_me'];
+$unique_id_fr = $data['unique_id_fr'];
 
 
-$SQL1 = "SELECT * FROM `group $grp_id` WHERE `id`='$Deleteid'";
+$SQL1 = "SELECT * FROM `$unique_id_me to $unique_id_fr` WHERE `id`='$Deleteid'";
 $run1 = mysqli_query($connection_message, $SQL1);
 $data1 = mysqli_fetch_assoc($run1);
+
 
 $imgNameinDB = $data1['image'];
 
@@ -22,9 +24,11 @@ if($imgNameinDB!=''){
   unlink('../chat_image/'.$imgNameinDB);
 }
     
-$SQL2 = "DELETE FROM `group $grp_id` WHERE `id`='$Deleteid'";
+$SQL2 = "DELETE FROM `$unique_id_me to $unique_id_fr` WHERE `id`='$Deleteid'";
 mysqli_query($connection_message, $SQL2);
 
+$SQL3 = "DELETE FROM `$unique_id_fr to $unique_id_me` WHERE `id`='$Deleteid'";
+mysqli_query($connection_message, $SQL3);
 
 echo '1';
 

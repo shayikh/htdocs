@@ -1,3 +1,5 @@
+durbeen_chats => durbeen_info
+
 Page loading gif images
 
 col-md-6 ke lg sm diye responsive kora

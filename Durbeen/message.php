@@ -156,13 +156,11 @@ if ($countTest == 0) {
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left:16%;top:133px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success"><?php echo $friendName ?></a>
+<a target="_self" style="position: fixed;right:347px;top:91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
 
 
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;right:17%;top:133px;z-index:20;font-weight: 600;">
-
+<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;">
     <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-secondary" type="submit" value="Delete Conversation">
-
 </form>
 
 
@@ -200,7 +198,7 @@ if ($countTest == 0) {
 
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
                     <input type="hidden" name="unique_id_fr" value="<?php echo $unique_id_fr ?>">
-                    <input type="hidden" name="my_name" id="my_name" value="<?php echo $dataMe['name'] ?>">
+                    <input type="hidden" name="my_name" value="<?php echo $dataMe['name'] ?>">
 
                     <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5" class="form-control mb-2" type="text"></textarea>
 

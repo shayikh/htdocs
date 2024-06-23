@@ -1,16 +1,28 @@
 <?php
 include './header.php';
 
+//create table if not exist
+$SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
+  `id` int(255) unsigned NOT NULL auto_increment,
+  `message` text,
+  `image` varchar(1000),
+  `time` varchar(1000),
+  PRIMARY KEY  (`id`)
+)";
+mysqli_query($connection_message, $SQLcreateMe);
+//table creation end
+
+
 ?>
 
 
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left: 4%;top: 99px;z-index:20;font-weight: 600;" href="self_msg.php?type=self_msg" class="btn btn-sm btn-success">Self Message</a>
+<a target="_self" style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" href="my_notes.php?type=my_notes" class="btn btn-success">Refresh Page</a>
 
 
-<div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top:270px">
 
     <div class="row">
         <div class="col-md-12">
@@ -31,7 +43,7 @@ include './header.php';
 
 <!-- Message Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -69,7 +81,7 @@ include './header.php';
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
             showdata();
         }
     })
@@ -82,7 +94,7 @@ include './header.php';
         selfMsgData.page_no = page_no;
         selfMsgData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/mobile/loadmoreSelfMsg.php",
+        axios.post("./api/self_msg/loadmoreSelfMsg.php",
                 selfMsgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -109,7 +121,7 @@ include './header.php';
         var formdata = new FormData(form);
 
         $.ajax({
-            url: "../api/self_msg/self_msg_add.php",
+            url: "./api/self_msg/self_msg_add.php",
             type: "POST",
             data: formdata,
             contentType: false,
@@ -129,7 +141,6 @@ include './header.php';
                 tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
 
                 messageCloseBtn.click();
-                toastr.success('Message Done');
 
                 image.value = "";
                 message.value = "";
@@ -144,53 +155,45 @@ include './header.php';
 
     const makeTr = (message, unique_id_me) => {
         let tr = `<tr>
-                        <div class="float-end" style="border: none;">
-                            <img class="float-end" title="${message.time}" width="300px" src="../chat_image/${message.image}" alt="">
-
-                            <h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
-                            <br>
-                            <button onclick="deleteSelfMsg(${message.id}, ${unique_id_me}, this)"
-                                    class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </tr>`
+					<div class="float-end" style="width: 590px;border: none;">
+						<img title="${message.time}" width="590px" src="./chat_image/${message.image}" alt="">
+						
+						<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+						
+						<button onclick="deleteSelfMsg(${message.id}, ${unique_id_me}, this)"
+								class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+					</div>
+				</tr>`
         return tr;
     }
 
 
     const deleteSelfMsg = (id_lll, unique_id_me, elm_ppp) => {
-        let confirm = window.confirm("Do You Want to Delete?");
+        let message = {};
 
-        if (confirm) {
+        message.id = id_lll;
+        message.unique_id_me = unique_id_me;
 
-            let message = {};
-
-            message.id = id_lll;
-            message.unique_id_me = unique_id_me;
-
-            axios.post("../api/self_msg/delete_self_msg.php",
-                    message, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        toastr.error('Message Deleted')
+        axios.post("./api/self_msg/delete_self_msg.php",
+                message, {
+                    headers: {
+                        "Content-Type": "application/json"
                     }
-                    // console.log(elm_ppp.parentElement);
-
-                    elm_ppp.parentElement.remove();
-
                 })
-                .catch(err => {
-                    console.log(err);
-                })
-        } else {
-            return;
-        }
+            .then(res => {
+                // console.log(res.data);
 
+                if (res.data == '1') {
+                    toastr.error('Message Deleted')
+                }
+                // console.log(elm_ppp.parentElement);
+
+                elm_ppp.parentElement.remove();
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
 
     }

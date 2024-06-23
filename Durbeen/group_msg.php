@@ -21,10 +21,10 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left:16%;top:133px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Refresh</a>
+<a target="_self" style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Refresh Page</a>
 
 <?php if ($count109 > 0) { ?>
-    <a target="_self" style="position: fixed;right:16%;top:133px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Add or Remove Members</a>
+    <a target="_self" style="position: fixed;right:298px;top:91px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Add or Remove Members</a>
 <?php } ?>
 
 
@@ -62,7 +62,9 @@ $count109 = mysqli_num_rows($run109);
                 <form action="" method="post" id="formID" enctype="multipart/form-data">
 
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                    <input type="hidden" name="my_name" id="my_name" value="<?php echo $dataMe['name'] ?>">
+                    <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
+                    <input type="hidden" name="my_name" value="<?php echo $dataMe['name'] ?>">
+                    <input type="hidden" name="myProPic" value="<?php echo $dataMe['pro_pic'] ?>">
 
                     <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5" class="form-control mb-2" type="text"></textarea>
 
@@ -104,9 +106,9 @@ $count109 = mysqli_num_rows($run109);
 
         msgData.page_no = page_no;
         msgData.unique_id_me = <?php echo $unique_id_me ?>;
-        msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
+        msgData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("./api/group/loadmoreGrpMsg.php",
+        axios.post("./api/group_msg/loadmoreGroupMsg.php",
                 msgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -133,7 +135,7 @@ $count109 = mysqli_num_rows($run109);
         var formdata = new FormData(form);
 
         $.ajax({
-            url: "./api/message/messageAdd.php",
+            url: "./api/group_msg/GroupMsgAdd.php",
             type: "POST",
             data: formdata,
             contentType: false,
@@ -149,10 +151,8 @@ $count109 = mysqli_num_rows($run109);
                 let unique_id_me = json.unique_id_me;
                 let newMessage = json.newMessage;
 
-                // console.log(json);
-                // console.log(unique_id_fr);
 
-                tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+                tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
 
                 messageCloseBtn.click();
 
@@ -167,32 +167,29 @@ $count109 = mysqli_num_rows($run109);
     })
 
 
-    const makeTr = (message, unique_id_me, unique_id_fr) => {
+    const makeTr = (message) => {
         let tr = `<tr>
 							<div class="float-end" style="width: 590px;border: none;">
 								<img title="${message.time}" width="590px" src="./chat_image/${message.image}">
 								
 								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
-								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
-										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-undo-alt"></i></button>
-								
-								<button class="btn btn-sm btn-secondary float-end"><i class='fas fa-eye-slash'></i></button>
+								<button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
+										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
 							</div>
 						</tr>`
         return tr;
     }
 
 
-    const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
+    const unsendMessage = (id_msg, grp_id, elm_ppp) => {
 
         let message = {};
 
-        message.id = id_lll;
-        message.unique_id_me = unique_id_me;
-        message.unique_id_fr = unique_id_fr;
+        message.id_msg = id_msg;
+        message.grp_id = grp_id;
 
-        axios.post("./api/message/unsend.php",
+        axios.post("./api/group_msg/unsend.php",
                 message, {
                     headers: {
                         "Content-Type": "application/json"
@@ -203,8 +200,9 @@ $count109 = mysqli_num_rows($run109);
 
                 if (res.data == '1') {
                     toastr.error('Message Deleted For Everyone')
+                }else{
+                    toastr.error('Message not deleted')
                 }
-                // console.log(elm_ppp.parentElement);
 
                 elm_ppp.parentElement.remove();
 
