@@ -31,6 +31,10 @@ if ($count110 == 0) {
                 $runF154 = mysqli_query($connection_message,$SQLF154);
                 $countF154 = mysqli_num_rows($runF154);
 
+                $SQLF155 = "SELECT * FROM `group $grp_id members` WHERE `admin`='$unique_id_fr'";
+                $runF155 = mysqli_query($connection_message,$SQLF155);
+                $countF155 = mysqli_num_rows($runF155);
+
                 ?>
 
                 <tr>
@@ -51,9 +55,9 @@ if ($count110 == 0) {
                         </button>
                     </td>
                     <td class="text-center">
-                        <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
-                            <img width="70px" src="./css/892177.svg" alt="" style="margin-top: 35px">
-                        </a>
+                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" id="folowBtn" style="margin-top: 50px">
+                            <?php $countF155 == 0 ? printf("Make Admin") : printf("Remove Admin") ?>
+                        </button>
                     </td>
                 </tr>
             <?php } ?>
@@ -62,9 +66,46 @@ if ($count110 == 0) {
     </table>
 
 
-    <script>
-        
-        const addfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
+<script>
+
+    const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
+
+    let addVar = {};
+
+    addVar.unique_id_me = unique_id_me;
+    addVar.unique_id_fr = unique_id_fr;
+    addVar.grp_id = grp_id;
+
+    axios.post("./api/group/make_admin.php",
+            addVar, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == 0) {
+                toastr.error('Removed from Admin');
+                elm.innerText = "Made Admin";
+                elm.classList.add('btn-success');
+                elm.classList.remove('btn-danger');
+            } else {
+                toastr.success('Made Admin');
+                elm.innerText = "Removed from Admin";
+                elm.classList.add('btn-danger');
+                elm.classList.remove('btn-success');
+            }
+
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    
+    const addfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
 
         let addVar = {};
 
@@ -98,13 +139,11 @@ if ($count110 == 0) {
             .catch(err => {
                 console.log(err);
             })
-        }
+    }
 
 
-
-
-
-    </script>
+    
+</script>
 
 
 </div>

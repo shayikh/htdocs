@@ -25,8 +25,8 @@ $countF = mysqli_num_rows($runF);
 
 
 
-$SQL12 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
-$run12 = mysqli_query($connection, $SQL12);
+$SQL12 = "SELECT * FROM `$unique_id_me msg_grp` WHERE `grp_id`='$grp_id'";
+$run12 = mysqli_query($durbeen_chats, $SQL12);
 $data12 = mysqli_fetch_assoc($run12);
 $grp_name = $data12['grp_name'];
 $pro_pic = $data12['pro_pic'];
@@ -43,7 +43,7 @@ if($countF == 0){
   mysqli_query($connection_message,$SQL1);
 
 
-  $SQL1 = "INSERT INTO `$unique_id_fr msg_grp`(`grp_id`) VALUES ('$grp_id')";
+  $SQL1 = "INSERT INTO `$unique_id_fr msg_grp`(`grp_id`, `grp_name`, `pro_pic`) VALUES ('$grp_id','$grp_name','$pro_pic')";
   mysqli_query($durbeen_chats,$SQL1);
 
 

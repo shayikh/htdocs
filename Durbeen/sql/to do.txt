@@ -1,3 +1,9 @@
+
+
+add remove page auto scroll 
+
+make admin button
+
 durbeen_chats => durbeen_info
 
 Page loading gif images

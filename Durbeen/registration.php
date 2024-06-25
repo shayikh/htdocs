@@ -113,8 +113,6 @@ if (isset($_POST['signup'])) {
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`grp_id` int(255),
-            `grp_name` varchar(1000),
-            `pro_pic` varchar(1000),
             `admin` tinyint(1) DEFAULT '0',
 			PRIMARY KEY  (`id`)
 		)";

@@ -32,18 +32,24 @@ $row = ($page_no - 1)*$limit;
 $SQL = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC LIMIT $row,$limit";
 $run = mysqli_query($durbeen_chats,$SQL);
 
-while ($data1=mysqli_fetch_assoc($run)){
+while ($data = mysqli_fetch_assoc($run)){
+$grp_id = $data['grp_id'];
 
+$SQL1 = "SELECT * FROM `groups` ORDER BY `id` DESC LIMIT $row,$limit";
+$run1 = mysqli_query($connection,$SQL1);
+$data1 = mysqli_fetch_assoc($run1)
+
+    
     ?>
 
     <tr>
         <td class="text-center">
-            <a href="./group_msg.php?type&grp_id=<?php echo $data1['grp_id'] ?>">
+            <a href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
                 <img height="135px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">
-            <a class="text-decoration-none" href="./group_msg.php?type&grp_id=<?php echo $data1['grp_id'] ?>">
+            <a class="text-decoration-none" href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
                 <h3 style="margin-top: 35px"><?php echo $data1['grp_name'] ?></h3>
             </a>
         </td>
