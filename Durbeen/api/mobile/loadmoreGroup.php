@@ -45,12 +45,12 @@ $data1 = mysqli_fetch_assoc($run1)
     <tr>
         <td class="text-center">
             <a href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
-                <img height="135px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+                <img style="margin-top: 2px"width="90px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">
             <a class="text-decoration-none" href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
-                <h3 style="margin-top: 35px"><?php echo $data1['grp_name'] ?></h3>
+                <p style="font-weight: 500"><?php echo $data1['grp_name'] ?></p>
             </a>
         </td>
     </tr>
