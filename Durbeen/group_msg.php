@@ -13,8 +13,8 @@ if ($count110 == 0) {
 
 
 
-$SQL109 = "SELECT * FROM `groups` WHERE `id`='$grp_id' AND `admin_id`='$unique_id_me'";
-$run109 = mysqli_query($connection, $SQL109);
+$SQL109 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
+$run109 = mysqli_query($connection_message, $SQL109);
 $count109 = mysqli_num_rows($run109);
 
 ?>

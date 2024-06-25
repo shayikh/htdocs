@@ -31,7 +31,7 @@ if ($count110 == 0) {
                 $runF154 = mysqli_query($connection_message,$SQLF154);
                 $countF154 = mysqli_num_rows($runF154);
 
-                $SQLF155 = "SELECT * FROM `group $grp_id members` WHERE `admin`='$unique_id_fr'";
+                $SQLF155 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_fr' AND `admin`='1'";
                 $runF155 = mysqli_query($connection_message,$SQLF155);
                 $countF155 = mysqli_num_rows($runF155);
 
@@ -50,12 +50,12 @@ if ($count110 == 0) {
                         </a>
                     </td>
                     <td class="text-center">
-                        <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" id="followBtn" style="margin-top: 50px">
+                        <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
                             <?php $countF154 == 0 ? printf("Add") : printf("Remove") ?>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" id="folowBtn" style="margin-top: 50px">
+                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
                             <?php $countF155 == 0 ? printf("Make Admin") : printf("Remove Admin") ?>
                         </button>
                     </td>
@@ -87,12 +87,12 @@ if ($count110 == 0) {
 
             if (res.data == 0) {
                 toastr.error('Removed from Admin');
-                elm.innerText = "Made Admin";
+                elm.innerText = "Make Admin";
                 elm.classList.add('btn-success');
                 elm.classList.remove('btn-danger');
             } else {
                 toastr.success('Made Admin');
-                elm.innerText = "Removed from Admin";
+                elm.innerText = "Remove Admin";
                 elm.classList.add('btn-danger');
                 elm.classList.remove('btn-success');
             }

@@ -15,48 +15,25 @@ $unique_id_fr = $data['unique_id_fr'];
 $grp_id = $data['grp_id'];
 
 
-$SQLF = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_fr'";
+$SQLF = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_fr' AND `admin`='1'";
 $runF = mysqli_query($connection_message,$SQLF);
 $countF = mysqli_num_rows($runF);
 
 
 
 
-
-
-
-$SQL12 = "SELECT * FROM `$unique_id_me msg_grp` WHERE `grp_id`='$grp_id'";
-$run12 = mysqli_query($durbeen_chats, $SQL12);
-$data12 = mysqli_fetch_assoc($run12);
-$grp_name = $data12['grp_name'];
-$pro_pic = $data12['pro_pic'];
-
-
-
-
-
-
-
-
 if($countF == 0){
-  $SQL1 = "INSERT INTO `group $grp_id members`(`memberId`) VALUES ('$unique_id_fr')";
-  mysqli_query($connection_message,$SQL1);
+    $SQL1 = "UPDATE `group $grp_id members` SET `admin`='1' WHERE `memberId`='$unique_id_fr'";
+    mysqli_query($connection_message,$SQL1);
 
 
-  $SQL1 = "INSERT INTO `$unique_id_fr msg_grp`(`grp_id`, `grp_name`, `pro_pic`) VALUES ('$grp_id','$grp_name','$pro_pic')";
-  mysqli_query($durbeen_chats,$SQL1);
-
-
-  echo "1";
+    echo "1";
 }else{
-  $SQL2 = "DELETE FROM `group $grp_id members` WHERE `memberId`='$unique_id_fr'";
-	mysqli_query($connection_message,$SQL2);
-
-  $SQL1 = "DELETE FROM `$unique_id_fr msg_grp` WHERE `grp_id`='$grp_id'";
-  mysqli_query($durbeen_chats,$SQL1);
+    $SQL2 = "UPDATE `group $grp_id members` SET `admin`='0' WHERE `memberId`='$unique_id_fr'";
+    mysqli_query($connection_message,$SQL2);
 
 
-  echo "0";
+    echo "0";
 }
 
 

@@ -113,7 +113,6 @@ if (isset($_POST['signup'])) {
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`grp_id` int(255),
-            `admin` tinyint(1) DEFAULT '0',
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($durbeen_chats, $SQLcreateMe);
