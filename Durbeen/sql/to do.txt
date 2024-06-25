@@ -1,10 +1,19 @@
+Server theke unlink na howa chat image gulo delete kora
 
+Group er member list, add delete,
 
-add remove page auto scroll 
+Group delete kora
 
-make admin button
+Account delete e group delete kora
+
+Durbeen login logo animation
+
+group members page auto scroll 
 
 durbeen_chats => durbeen_info
+
+
+
 
 Page loading gif images
 

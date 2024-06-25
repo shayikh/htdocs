@@ -11,8 +11,22 @@ if ($count110 == 0) {
     echo "<script>window.location = 'homepage.php?type'</script>";
 }
 
+$SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
+$run111 = mysqli_query($connection, $SQL111);
+$data111 = mysqli_fetch_assoc($run111);
+
 ?>
+
+
+
+
+
 <!-- main page -->
+
+<a style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Change Group Info</a>
+
+
+
 
 <div class="container" style="margin-top:180px">
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
@@ -66,7 +80,94 @@ if ($count110 == 0) {
     </table>
 
 
+
+    
+    <!-- Update Group Info Modal -->
+    <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-dark" class="modal-title" id="groupModalLabel">Update Group Info</h5>
+                    <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="formID" enctype="multipart/form-data">
+                        <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Group Name</label>
+                                    <input style="background-color: #F3F3F3;" value="<?php echo $data111['grp_name'] ?>" name="grp_name" class="form-control" id="grp_nameID" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Group Image (A*A size)</label>
+                                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 <script>
+    let form = document.querySelector("#formID");
+    let image = document.querySelector("#imageID");
+    let grp_name = document.querySelector("#grp_nameID");
+    let button = document.querySelector("#buttonID");
+    let postCloseBtn = document.querySelector("#postCloseBtn");
+
+
+    form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+
+            var formdata = new FormData(form);
+
+            $.ajax({
+                url: "./api/group/grpAdd.php",
+                type: "POST",
+                data: formdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    let json = JSON.parse(data);
+
+                    // console.log(json);
+
+
+                    let unique_id_me = json.unique_id_me;
+                    let newGroup = json.newGroup;
+
+                    tbody.innerHTML = makeTr(newGroup, unique_id_me) + tbody.innerHTML;
+
+                    postCloseBtn.click();
+
+                    image.value = "";
+                    grp_name.value = "";
+
+                    toastr.success('Group Created');
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+
+        })
+
 
     const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
 

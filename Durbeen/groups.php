@@ -11,7 +11,7 @@ include './header.php';
     <div class="row">
 
         <div class="col-md-12 mt-2">
-            <a href="./group_msg.php?type" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
+            <a class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
         </div>
 
     </div>
@@ -117,7 +117,7 @@ include './header.php';
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/group/grpAdd.php",
+                url: "./api/group/grpUpdate.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -128,22 +128,9 @@ include './header.php';
                 },
                 success: function(data) {
 
-                    let json = JSON.parse(data);
-
-                    // console.log(json);
-
-
-                    let unique_id_me = json.unique_id_me;
-                    let newGroup = json.newGroup;
-
-                    tbody.innerHTML = makeTr(newGroup, unique_id_me) + tbody.innerHTML;
-
                     postCloseBtn.click();
 
-                    image.value = "";
-                    grp_name.value = "";
-
-                    toastr.success('Group Created');
+                    toastr.success('Group Info Updated');
                 },
                 error: function(err) {
                     console.log(err);
