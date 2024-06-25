@@ -7,7 +7,6 @@ $cov_pic = $_POST['cov_pic'];
 
 
 if ($_FILES['image_khan_bahadur']['name']) {
-
     $imageOldName = $_FILES['image_khan_bahadur']['name'];
     $imageNewName = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
     $image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
@@ -15,8 +14,6 @@ if ($_FILES['image_khan_bahadur']['name']) {
 
     $SQL1 = "INSERT INTO `$unique_id_me pro_pic`(`pro_pic`) VALUES ('$pro_pic')";
     mysqli_query($durbeen_chats, $SQL1);
-
-
 } else {
     $imageNewName = $pro_pic;
 }

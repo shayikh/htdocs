@@ -117,7 +117,7 @@ include './header.php';
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/group/grpUpdate.php",
+                url: "./api/group/grpAdd.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -128,9 +128,22 @@ include './header.php';
                 },
                 success: function(data) {
 
+                    let json = JSON.parse(data);
+
+                    // console.log(json);
+
+
+                    let unique_id_me = json.unique_id_me;
+                    let newGroup = json.newGroup;
+
+                    tbody.innerHTML = makeTr(newGroup, unique_id_me) + tbody.innerHTML;
+
                     postCloseBtn.click();
 
-                    toastr.success('Group Info Updated');
+                    image.value = "";
+                    grp_name.value = "";
+
+                    toastr.success('Group Created');
                 },
                 error: function(err) {
                     console.log(err);

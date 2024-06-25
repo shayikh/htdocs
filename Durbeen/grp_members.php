@@ -92,7 +92,9 @@ $data111 = mysqli_fetch_assoc($run111);
                 </div>
                 <div class="modal-body">
                     <form action="" method="post" id="formID" enctype="multipart/form-data">
-                        <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+
+                        <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
+                        <input type="hidden" name="pro_pic" value="<?php echo $data111['pro_pic'] ?>">
 
                         <div class="row">
                             <div class="col-md-6">
@@ -104,12 +106,12 @@ $data111 = mysqli_fetch_assoc($run111);
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label text-dark">Group Image (A*A size)</label>
-                                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp" required>
+                                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                                 </div>
                             </div>
                         </div>
 
-                        <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                        <input name="saveBtn" id="buttonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
                     </form>
                 </div>
             </div>
@@ -133,7 +135,7 @@ $data111 = mysqli_fetch_assoc($run111);
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/group/grpAdd.php",
+                url: "./api/group/grpUpdate.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -145,21 +147,13 @@ $data111 = mysqli_fetch_assoc($run111);
                 success: function(data) {
 
                     let json = JSON.parse(data);
-
-                    // console.log(json);
-
-
-                    let unique_id_me = json.unique_id_me;
                     let newGroup = json.newGroup;
 
-                    tbody.innerHTML = makeTr(newGroup, unique_id_me) + tbody.innerHTML;
+
 
                     postCloseBtn.click();
-
                     image.value = "";
-                    grp_name.value = "";
-
-                    toastr.success('Group Created');
+                    toastr.success('Group Info Updated');
                 },
                 error: function(err) {
                     console.log(err);
