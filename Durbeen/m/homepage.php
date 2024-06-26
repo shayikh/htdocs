@@ -132,6 +132,7 @@ if ($number > 0) { ?>
                     })
                 .then(res => {
                     if (res.data == 0) {
+                        alert('You Are at The End. Please Refresh');
                         console.log("You Are at The End");
                         page_no++;
                         showdata();
