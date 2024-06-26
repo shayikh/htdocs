@@ -94,7 +94,6 @@ $data111 = mysqli_fetch_assoc($run111);
                     <form action="" method="post" id="formID" enctype="multipart/form-data">
 
                         <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
-                        <input type="hidden" name="pro_pic" value="<?php echo $data111['pro_pic'] ?>">
 
                         <div class="row">
                             <div class="col-md-6">

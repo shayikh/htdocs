@@ -30,6 +30,13 @@ $data111 = mysqli_fetch_assoc($run111);
 
 <div class="container" style="margin-top: 120px">
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+        <thead>
+            <tr class="text-center">
+                <th style="font-weight: 400">Name</th>
+                <th style="font-weight: 400">Member</th>
+                <th style="font-weight: 400">Admin</th>
+            </tr>
+        </thead>
         <tbody id="tbodyID">
 
             <?php
@@ -90,7 +97,6 @@ $data111 = mysqli_fetch_assoc($run111);
                     <form action="" method="post" id="formID" enctype="multipart/form-data">
 
                         <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
-                        <input type="hidden" name="pro_pic" value="<?php echo $data111['pro_pic'] ?>">
 
                         <div class="row">
                             <div class="col-md-6">

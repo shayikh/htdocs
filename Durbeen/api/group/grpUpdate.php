@@ -3,7 +3,17 @@ include '../../connection.php';
 
 
 
-$pro_pic = $_POST['pro_pic'];
+$post = $_POST['grp_name'];
+$post = mysqli_real_escape_string($connection, $post);
+$grp_id = $_POST['grp_id'];
+
+
+
+$SQL3 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
+$run3 = mysqli_query($connection, $SQL3);
+$data3 = mysqli_fetch_assoc($run3);
+$pro_pic = $data3['pro_pic'];
+
 
 if($_FILES['image_khan_bahadur']['name']){
   $imageOldName = $_FILES['image_khan_bahadur']['name'];
@@ -17,9 +27,7 @@ if($_FILES['image_khan_bahadur']['name']){
 }
 
 
-$post = $_POST['grp_name'];
-$post = mysqli_real_escape_string($connection, $post);
-$grp_id = $_POST['grp_id'];
+
 
 
 
