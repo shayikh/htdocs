@@ -28,8 +28,9 @@ $data111 = mysqli_fetch_assoc($run111);
 
 
 
-<div class="container" style="margin-top: 120px">
-    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+<div class="container" style="margin-top: 112px">
+    <h6 class="text-center">Add Or Remove Members & Admins</h6>
+    <table class="table table-bordered mt-3" style="margin-bottom: 150px;border-color: #5d5d5d">
         <thead>
             <tr class="text-center">
                 <th style="font-weight: 400">Name</th>

@@ -5,10 +5,10 @@ include './header.php';
 
 
 <!-- main page -->
+<div class="container" style="margin-top: 112px">
 
-
-<div class="container" style="margin-top: 120px">
-    <table class="table table-bordered mt-4" style="margin-bottom: 210px;border-color: #5d5d5d">
+    <h6 class="text-center">Follow List</h6>
+    <table class="table table-bordered mt-3" style="margin-bottom: 210px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
         </tbody>

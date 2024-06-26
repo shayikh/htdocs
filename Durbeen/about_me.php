@@ -14,8 +14,11 @@ if (isset($_GET['register'])) {
 ?>
 
 
+<a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
+
+
 <!-- main page -->
-<div class="container" style="margin-top:133px">
+<div class="container" style="margin-top: 133px">
     <div class="row">
 
         <div class="col-md-12">
@@ -28,18 +31,16 @@ if (isset($_GET['register'])) {
             </a>
         </div>
 
-        <div class="col-md-12 text-center" style="margin-top: -134px; margin-left: -135px">
+        <div class="col-md-12 text-center" style="margin-top: -146px;">
             <p class="text-white" style="font-size: 39px" id="name"><?php echo $dataMe['name'] ?></p>
         </div>
 
     </div>
 
 
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
-        </div>
-    </div>
+
+    
+
 
 
     <div class="row" style="margin-bottom: 100px">

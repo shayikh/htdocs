@@ -26,7 +26,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             </a>
         </div>
 
-        <div class="col-md-12 text-center" style="margin-top: -134px">
+        <div class="col-md-12 text-center" style="margin-top: -146px;">
             <p class="text-white" style="font-size: 39px"><?php echo $dataMe['name'] ?></p>
         </div>
 

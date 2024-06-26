@@ -1,21 +1,16 @@
 <?php
 include './header.php';
 
-
 ?>
 
 
 <!-- main page -->
-<div class="container" style="margin-top:133px;margin-bottom: 100px">
+<div class="container" style="margin-top: 150px;">
 
-    <div class="row">
+    <a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
 
-        <div class="col-md-12 mt-2">
-            <a class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
-        </div>
-
-    </div>
-    <table class="table table-bordered mt-2" style="margin-bottom: 150px;border-color: #5d5d5d">
+    <h3 class="text-center">My Groups</h3>
+    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
         </tbody>

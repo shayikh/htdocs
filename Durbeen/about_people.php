@@ -35,7 +35,7 @@ $data1 = mysqli_fetch_assoc($run1);
             </a>
         </div>
 
-        <div class="col-md-12 text-center" style="margin-top: -134px; margin-left: -135px">
+        <div class="col-md-12 text-center" style="margin-top: -146px;">
             <p class="text-white" style="font-size: 39px"><?php echo $data1['name'] ?></p>
         </div>
 

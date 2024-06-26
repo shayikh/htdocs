@@ -5,9 +5,9 @@ include './header.php';
 
 
 <!-- main page -->
+<div class="container" style="margin-top: 150px">
 
-
-<div class="container" style="margin-top:180px">
+    <h3 class="text-center">Follow List</h3>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
