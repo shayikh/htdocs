@@ -41,8 +41,11 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
             <?php if ($data3['senderId'] != $unique_id_me) { ?>
 
                 <div class="float-start" style="border: none;">
-                    <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
-                         src="../pro_pic/<?php echo $data3['senderProPic'] ?>" title="<?php echo $data3['senderName'] ?>">
+                    <a target="_blank" href="./about_people.php?type&unique_id_fr=<?php echo $data3['senderId'] ?>">
+                        <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
+                            src="../pro_pic/<?php echo $data3['senderProPic'] ?>">
+                    </a>
+
                     <br><br>
                     <img title="<?php echo $data3['time'] ?>" width="290px"
                          src="../chat_image/<?php echo $data3['image'] ?>">
@@ -62,7 +65,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                         <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px"
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h6>
                     <?php } ?>
-
+                    <br>
                     <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $grp_id ?>, this)"
                             class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
                     </button>
