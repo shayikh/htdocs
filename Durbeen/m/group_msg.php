@@ -21,15 +21,15 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Refresh Page</a>
+<a target="_self" style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Refresh Page</a>
 
 <?php if ($count109 > 0) { ?>
-    <a style="position: fixed;right:298px;top:91px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Add or Remove Members</a>
+    <a style="position: fixed;left: 8px;top:99px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Add Or Remove Members</a>
 <?php } ?>
 
 
 
-<div class="container" style="margin-top: 270px">
+<div class="container" style="margin-top: 150px">
 
     <div class="row">
         <div class="col-md-12">
@@ -53,7 +53,7 @@ $count109 = mysqli_num_rows($run109);
 
 <!-- Message Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -108,7 +108,7 @@ $count109 = mysqli_num_rows($run109);
         msgData.unique_id_me = <?php echo $unique_id_me ?>;
         msgData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group_msg/loadmoreGroupMsg.php",
+        axios.post("../api/mobile/loadmoreGroupMsg.php",
                 msgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -169,11 +169,11 @@ $count109 = mysqli_num_rows($run109);
 
     const makeTr = (message) => {
         let tr = `<tr>
-							<div class="float-end" style="width: 590px;border: none;">
-								<img title="${message.time}" width="590px" src="./chat_image/${message.image}">
+							<div class="float-end" style="border: none;">
+								<img class="float-end" title="${message.time}" width="290px" src="../chat_image/${message.image}">
 								
-								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
-								
+								<h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
+								<br>
 								<button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
 										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
 							</div>

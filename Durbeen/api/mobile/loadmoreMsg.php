@@ -46,10 +46,10 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                 <div class="float-start" style="border: none;">
                     <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
-                         src="../pro_pic/<?php echo $pro_pic_fr ?>" alt="">
+                         src="../pro_pic/<?php echo $pro_pic_fr ?>">
                     <br><br>
                     <img title="<?php echo $data3['time'] ?>" width="290px"
-                         src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+                         src="../chat_image/<?php echo $data3['image'] ?>">
 
                     <?php if ($data3['message'] != "") { ?>
                         <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px;background-color: #265d94"
@@ -64,8 +64,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
             <?php } else { ?>
 
                 <div class="float-end" style="border: none;">
-                    <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px"
-                         src="../chat_image/<?php echo $data3['image'] ?>" alt="">
+                    <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px" src="../chat_image/<?php echo $data3['image'] ?>">
 
                     <?php if ($data3['message'] != "") { ?>
                         <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px"

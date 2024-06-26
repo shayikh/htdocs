@@ -16,6 +16,7 @@ include './header.php';
 
     </div>
     <table class="table table-bordered mt-2" style="margin-bottom: 150px;border-color: #5d5d5d">
+        <h5 class="text-center">My Groups</h5>
         <tbody id="tbodyID">
 
         </tbody>
