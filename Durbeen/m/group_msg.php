@@ -29,7 +29,7 @@ $count109 = mysqli_num_rows($run109);
 
 
 
-<div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top: 130px">
 
     <div class="row">
         <div class="col-md-12">

@@ -10,7 +10,7 @@ include './header.php';
 <a target="_self" style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" href="my_notes.php?type=my_notes" class="btn btn-sm btn-success">Refresh Page</a>
 
 
-<div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top: 110px">
 
     <div class="row">
         <div class="col-md-12">

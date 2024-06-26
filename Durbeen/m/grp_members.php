@@ -23,12 +23,12 @@ $data111 = mysqli_fetch_assoc($run111);
 
 <!-- main page -->
 
-<a style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Change Group Info</a>
+<a style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Change Group Info</a>
 
 
 
 
-<div class="container" style="margin-top:180px">
+<div class="container" style="margin-top: 120px">
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
@@ -52,25 +52,21 @@ $data111 = mysqli_fetch_assoc($run111);
                 ?>
 
                 <tr>
-                    <td class="text-center">
-                        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <img height="135px" src="./pro_pic/<?php echo $data154['pro_pic'] ?>" alt="">
-                        </a>
-                    </td>
-                    <td class="text-center">
+
+                    <td class="text-center" style="max-width: 129px">
                         <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <h3 style="margin-top: 35px"><?php echo $data154['name'] ?></h3>
-                            <h6 class="text-success">Durbeen Visited : <?php echo $data154['visit'] ?></h6>
+                            <p style="font-weight: 500"><?php echo $data154['name'] ?></p>
+                            <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data154['visit'] ?></p>
                         </a>
                     </td>
                     <td class="text-center">
-                        <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
+                        <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 15px">
                             <?php $countF154 == 0 ? printf("Add") : printf("Remove") ?>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
-                            <?php $countF155 == 0 ? printf("Make Admin") : printf("Remove Admin") ?>
+                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 15px">
+                            <?php $countF155 == 0 ? printf("Admin") : printf("Remove") ?>
                         </button>
                     </td>
                 </tr>
@@ -84,7 +80,7 @@ $data111 = mysqli_fetch_assoc($run111);
     
     <!-- Update Group Info Modal -->
     <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="text-dark" class="modal-title" id="groupModalLabel">Update Group Info</h5>
@@ -135,7 +131,7 @@ $data111 = mysqli_fetch_assoc($run111);
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/group/grpUpdate.php",
+                url: "../api/group/grpUpdate.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -171,7 +167,7 @@ $data111 = mysqli_fetch_assoc($run111);
     addVar.unique_id_fr = unique_id_fr;
     addVar.grp_id = grp_id;
 
-    axios.post("./api/group/make_admin.php",
+    axios.post("../api/group/make_admin.php",
             addVar, {
                 headers: {
                     "Content-Type": "application/json"
@@ -182,12 +178,12 @@ $data111 = mysqli_fetch_assoc($run111);
 
             if (res.data == 0) {
                 toastr.error('Removed from Admin');
-                elm.innerText = "Make Admin";
+                elm.innerText = "Admin";
                 elm.classList.add('btn-success');
                 elm.classList.remove('btn-danger');
             } else {
                 toastr.success('Made Admin');
-                elm.innerText = "Remove Admin";
+                elm.innerText = "Remove";
                 elm.classList.add('btn-danger');
                 elm.classList.remove('btn-success');
             }
@@ -208,7 +204,7 @@ $data111 = mysqli_fetch_assoc($run111);
         addVar.unique_id_fr = unique_id_fr;
         addVar.grp_id = grp_id;
 
-        axios.post("./api/group/add.php",
+        axios.post("../api/group/add.php",
                 addVar, {
                     headers: {
                         "Content-Type": "application/json"

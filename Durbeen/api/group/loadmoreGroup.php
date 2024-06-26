@@ -50,7 +50,7 @@ $data1 = mysqli_fetch_assoc($run1)
         </td>
         <td class="text-center">
             <a class="text-decoration-none" href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
-                <h3 style="margin-top: 35px"><?php echo $data1['grp_name'] ?></h3>
+                <h3 style="margin-top: 45px"><?php echo $data1['grp_name'] ?></h3>
             </a>
         </td>
     </tr>

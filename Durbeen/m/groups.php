@@ -10,7 +10,7 @@ include './header.php';
 <a style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
 
 <!-- main page -->
-<div class="container" style="margin-top:133px;margin-bottom: 100px">
+<div class="container" style="margin-top:111px;margin-bottom: 100px">
 
     <div class="row">
 
