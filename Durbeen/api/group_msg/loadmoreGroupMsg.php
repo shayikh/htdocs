@@ -41,10 +41,11 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
             <?php if ($data3['senderId'] != $unique_id_me) { ?>
 
                 <div class="float-start" style="width: 590px;border: none;">
-
-                    <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
-                         src="./pro_pic/<?php echo $data3['senderProPic'] ?>" title="<?php echo $data3['senderName'] ?>">
-
+                    <a target="_blank" href="./people_timeline.php?type&unique_id_fr=<?php echo $data3['senderId'] ?>">
+                        <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
+                            src="./pro_pic/<?php echo $data3['senderProPic'] ?>" title="<?php echo $data3['senderName'] ?>">
+                    </a>
+                    
                     <img title="<?php echo $data3['time'] ?>" width="590px"
                          src="./chat_image/<?php echo $data3['image'] ?>">
 

@@ -82,7 +82,7 @@ include './header.php';
         selfMsgData.page_no = page_no;
         selfMsgData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/mobile/loadmoreSelfMsg.php",
+        axios.post("../api/mobile/loadmoreMyNotes.php",
                 selfMsgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -109,7 +109,7 @@ include './header.php';
         var formdata = new FormData(form);
 
         $.ajax({
-            url: "../api/self_msg/self_msg_add.php",
+            url: "../api/my_notes/my_notes_add.php",
             type: "POST",
             data: formdata,
             contentType: false,
@@ -167,7 +167,7 @@ include './header.php';
             message.id = id_lll;
             message.unique_id_me = unique_id_me;
 
-            axios.post("../api/self_msg/delete_self_msg.php",
+            axios.post("../api/my_notes/delete_my_notes.php",
                     message, {
                         headers: {
                             "Content-Type": "application/json"
