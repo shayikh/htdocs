@@ -21,10 +21,10 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Refresh Page</a>
+<a target="_self" style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Refresh Page</a>
 
 <?php if ($count109 > 0) { ?>
-    <a style="position: fixed;left: 8px;top:99px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Add Or Remove Members</a>
+    <a style="position: fixed;left: 111px;top: 62px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Settings</a>
 <?php } ?>
 
 
