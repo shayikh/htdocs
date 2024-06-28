@@ -127,11 +127,9 @@ include './header.php';
 
                     // console.log(json);
 
-
-                    let unique_id_me = json.unique_id_me;
                     let newGroup = json.newGroup;
 
-                    tbody.innerHTML = makeTr(newGroup, unique_id_me) + tbody.innerHTML;
+                    tbody.innerHTML = makeTr(newGroup) + tbody.innerHTML;
 
                     postCloseBtn.click();
 
@@ -148,15 +146,15 @@ include './header.php';
         })
 
 
-        const makeTr = (newGroup, unique_id_me) => {
+        const makeTr = (newGroup) => {
             let tr = `    <tr>
                             <td class="text-center">
-                                <a href="./group_msg.php?type&grp_id=${newGroup.grp_id}">
+                                <a href="./group_msg.php?type&grp_id=${newGroup.id}">
                                     <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}" alt="">
                                 </a>
                             </td>
                             <td class="text-center">
-                                <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.grp_id}">
+                                <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
                                     <p style="font-weight: 500">${newGroup.grp_name}</p>
                                 </a>
                             </td>

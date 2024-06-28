@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2024 at 01:47 PM
+-- Generation Time: Jun 28, 2024 at 01:59 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -45,19 +45,6 @@ CREATE TABLE `about` (
   `answer_three` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `about`
---
-
-INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
-(1, 1, '', '1995-10-01', 'Male', '8801830872455', '', '', 'Rajshahi Cantt. TSO', '', '', '', '', '', ''),
-(2, 2, '', '0001-11-11', 'Male', '', '', '', '', '', '', '', '', '', ''),
-(3, 3, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(4, 4, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(5, 5, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(6, 6, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(7, 7, '', '0001-11-11', 'Male', '', '', '', '', '', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -96,18 +83,8 @@ CREATE TABLE `dislike_post` (
 CREATE TABLE `groups` (
   `id` int(255) NOT NULL,
   `grp_name` varchar(1000) NOT NULL,
-  `pro_pic` varchar(1000) NOT NULL,
-  `admin_id` int(255) NOT NULL
+  `pro_pic` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `grp_name`, `pro_pic`, `admin_id`) VALUES
-(1, 'Study House Dept of Chemistry 59', '667bd5ff3a8c0_2024-Jun-10-49-03_images (1).jpeg', 1),
-(2, 'Team Noob', '667b0d1d93a22_2024-Jun-20-31-57_images.jpeg', 1),
-(3, 'Valorant Players', '667b0fe387a80_2024-Jun-20-43-47_DRACO-spacecraft_nuclear-powered_1medium-scaled.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -151,19 +128,6 @@ CREATE TABLE `registration` (
   `active` int(255) NOT NULL DEFAULT 1,
   `visit` int(255) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `registration`
---
-
-INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`) VALUES
-(1, 'Md Mehrab Alam  Shayikh', 'mshayikh114@gmail.com', '1', '66741f8fa4d7d_2024-Jun-14-24-47_WhatsApp Image 2024-05-31 at 22.49.38_bdbcb653.jpg', 'cov_pic.jpg', 1, 22),
-(2, 'MD AHSANUZZAMAN', 'ahsan@gmail.com', '1', '66741fa88f943_2024-Jun-14-25-12_R (1).jpeg', 'cov_pic.jpg', 0, 14),
-(3, 'Shakil Hossain', 'shakil@gmail.com', '1', '66741fbbb94d6_2024-Jun-14-25-31_spacecraft-1.jpg', 'cov_pic.jpg', 0, 6),
-(4, 'Tarek Ahmed', 'tarek@gmail.com', '1', '66741fd54126b_2024-Jun-14-25-57_BepiColombo_s_cruise_configuration_pillars.jpg', 'cov_pic.jpg', 0, 2),
-(5, 'Jasim Uddin', 'jasim@gmail.com', '1', '667707a09a3f3_2024-Jun-19-19-28_hr5thcthmw1z4jzqi8ac.webp', 'cov_pic.jpg', 0, 1),
-(6, 'Shamim Reaza', 'shamim@gmail.com', '1', '667707c84b536_2024-Jun-19-20-08_R.jpeg', 'cov_pic.jpg', 0, 1),
-(7, 'Jewel Ahmed', 'jewel@gmail.com', '1', '66770897b812c_2024-Jun-19-23-35_OIP.jpeg', 'cov_pic.jpg', 0, 3);
 
 --
 -- Indexes for dumped tables
@@ -220,7 +184,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -238,7 +202,7 @@ ALTER TABLE `dislike_post`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `like_post`
@@ -250,13 +214,13 @@ ALTER TABLE `like_post`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

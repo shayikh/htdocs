@@ -19,7 +19,7 @@ $unique_id_me = $_POST['unique_id_me'];
 
 
 
-$SQL1 = "INSERT INTO `groups`(`grp_name`, `pro_pic`, `admin_id`) VALUES ('$post','$imageNewName','$unique_id_me')";
+$SQL1 = "INSERT INTO `groups`(`grp_name`, `pro_pic`) VALUES ('$post','$imageNewName')";
 mysqli_query($connection,$SQL1);
 
 
@@ -60,7 +60,7 @@ mysqli_query($connection_message, $SQL400);
 
 
 
-echo json_encode(["unique_id_me"=>$unique_id_me, "newGroup" => $latestData]);
+echo json_encode(["newGroup" => $latestData]);
 
 
 
