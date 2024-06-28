@@ -168,38 +168,38 @@ $data111 = mysqli_fetch_assoc($run111);
 
     const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
 
-    let addVar = {};
+        let addVar = {};
 
-    addVar.unique_id_me = unique_id_me;
-    addVar.unique_id_fr = unique_id_fr;
-    addVar.grp_id = grp_id;
+        addVar.unique_id_me = unique_id_me;
+        addVar.unique_id_fr = unique_id_fr;
+        addVar.grp_id = grp_id;
 
-    axios.post("../api/group/make_admin.php",
-            addVar, {
-                headers: {
-                    "Content-Type": "application/json"
+        axios.post("../api/group/make_admin.php",
+                addVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    toastr.error('Removed from Admin');
+                    elm.innerText = "Admin";
+                    elm.classList.add('btn-success');
+                    elm.classList.remove('btn-danger');
+                } else {
+                    toastr.success('Made Admin');
+                    elm.innerText = "Remove";
+                    elm.classList.add('btn-danger');
+                    elm.classList.remove('btn-success');
                 }
+
+
             })
-        .then(res => {
-            // console.log(res.data);
-
-            if (res.data == 0) {
-                toastr.error('Removed from Admin');
-                elm.innerText = "Admin";
-                elm.classList.add('btn-success');
-                elm.classList.remove('btn-danger');
-            } else {
-                toastr.success('Made Admin');
-                elm.innerText = "Remove";
-                elm.classList.add('btn-danger');
-                elm.classList.remove('btn-success');
-            }
-
-
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     

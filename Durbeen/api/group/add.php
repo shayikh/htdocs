@@ -24,20 +24,6 @@ $countF = mysqli_num_rows($runF);
 
 
 
-
-$SQL12 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
-$run12 = mysqli_query($connection, $SQL12);
-$data12 = mysqli_fetch_assoc($run12);
-$grp_name = $data12['grp_name'];
-$pro_pic = $data12['pro_pic'];
-
-
-
-
-
-
-
-
 if($countF == 0){
   $SQL1 = "INSERT INTO `group $grp_id members`(`memberId`) VALUES ('$unique_id_fr')";
   mysqli_query($connection_message,$SQL1);
