@@ -175,7 +175,7 @@ $count109 = mysqli_num_rows($run109);
 								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
 								<button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
-										class="btn btn-sm btn-danger float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
 							</div>
 						</tr>`
         return tr;

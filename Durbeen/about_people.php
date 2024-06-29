@@ -140,7 +140,7 @@ $data1 = mysqli_fetch_assoc($run1);
                     <td>
                         <h5 class="one d-none">
                             http://durbeen.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h5>
-                        <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
+                        <button id="mybtn" class="btn btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>
             </table>

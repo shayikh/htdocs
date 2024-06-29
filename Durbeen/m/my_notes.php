@@ -150,7 +150,7 @@ include './header.php';
                             <h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>
                             <button onclick="deleteSelfMsg(${message.id}, ${unique_id_me}, this)"
-                                    class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
+                                    class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </tr>`
         return tr;

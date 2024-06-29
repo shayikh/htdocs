@@ -9,7 +9,7 @@ include './header.php';
 
     <a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
 
-    <h3 class="text-center">My Groups</h3>
+    <h4 class="text-center">My Groups</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 

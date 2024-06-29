@@ -46,7 +46,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                 <?php } ?>
                 <br>
                 <button onclick="deleteSelfMsg(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>, this)"
-                        class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i>
+                        class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i>
                 </button>
             </div>
 
