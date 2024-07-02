@@ -68,12 +68,12 @@ $data111 = mysqli_fetch_assoc($run111);
                         </a>
                     </td>
                     <td class="text-center">
-                        <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 15px">
+                        <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 5px">
                             <?php $countF154 == 0 ? printf("Add") : printf("Remove") ?>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 15px">
+                        <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 5px">
                             <?php $countF155 == 0 ? printf("Admin") : printf("Remove") ?>
                         </button>
                     </td>

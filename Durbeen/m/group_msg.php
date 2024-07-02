@@ -13,19 +13,14 @@ if ($count110 == 0) {
 
 
 
-$SQL109 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
-$run109 = mysqli_query($connection_message, $SQL109);
-$count109 = mysqli_num_rows($run109);
-
 ?>
 
 
 <!-- main page -->
 <a target="_self" style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Refresh Page</a>
 
-<?php if ($count109 > 0) { ?>
-    <a style="position: fixed;left: 111px;top: 62px;z-index:20;font-weight: 600;" href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Settings</a>
-<?php } ?>
+<a style="position: fixed;left: 111px;top: 62px;z-index:20;font-weight: 600;" href="grp_settings.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Settings</a>
+
 
 
 

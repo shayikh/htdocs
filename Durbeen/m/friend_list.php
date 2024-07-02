@@ -29,7 +29,8 @@ if ($number > 0) {
 
 <!-- main page -->
 
-<div class="container" style="margin-top: 120px">
+<div class="container" style="margin-top: 112px">
+    <h6 class="text-center">Friend List</h6>
 
     <!-- Chatbar start -->
 

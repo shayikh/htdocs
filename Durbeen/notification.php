@@ -11,7 +11,7 @@ $run1 = mysqli_query($durbeen_chats, $SQL1);
 
 
 <!-- main page -->
-<div class="container" style="margin-top:170px">
+<div class="container" style="margin-top: 150px">
     <p style="font-size: 20px;" class="text-center">Latest Messages From Your Friends</p><br>
     <?php
     while ($data1 = mysqli_fetch_assoc($run1)) {
