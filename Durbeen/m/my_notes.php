@@ -145,9 +145,9 @@ include './header.php';
     const makeTr = (message, unique_id_me) => {
         let tr = `<tr>
                         <div class="float-end" style="border: none;">
-                            <img class="float-end" title="${message.time}" width="300px" src="../chat_image/${message.image}" alt="">
+                            <img class="float-end" width="300px" src="../chat_image/${message.image}" alt="">
 
-                            <h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
+                            <h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>
                             <button onclick="deleteSelfMsg(${message.id}, ${unique_id_me}, this)"
                                     class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>

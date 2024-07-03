@@ -21,7 +21,7 @@ $pro_pic_fr = $datafr['pro_pic'];
 $SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
 $run3 = mysqli_query($connection_message, $SQL3);
 $total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 5) + 1;
+$total_pages = ceil($total_posts / 20) + 1;
 
 if ($page_no >= $total_pages) {
     echo '0';
@@ -29,7 +29,7 @@ if ($page_no >= $total_pages) {
 
 
 
-$limit = 5;
+$limit = 20;
 $row = ($page_no - 1) * $limit;
 
 
@@ -81,7 +81,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                     <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
                             class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i>
                     </button>
-                    <button class="btn btn-sm <?php $data3['seen'] == 'Seen' ? printf("btn-success") : printf("btn-secondary") ?> float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
+                    <button class="btn btn-sm <?php $data3['seen'] == 'Seen' ? printf("btn-dark") : printf("btn-dark") ?> float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 
             <?php } ?>

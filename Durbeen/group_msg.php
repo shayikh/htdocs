@@ -165,9 +165,9 @@ if ($count110 == 0) {
     const makeTr = (message) => {
         let tr = `<tr>
 							<div class="float-end" style="width: 590px;border: none;">
-								<img title="${message.time}" width="590px" src="./chat_image/${message.image}">
+								<img width="590px" src="./chat_image/${message.image}">
 								
-								<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+								<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
 								<button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
 										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>

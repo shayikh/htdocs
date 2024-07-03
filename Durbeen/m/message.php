@@ -310,13 +310,13 @@ if ($countTest == 0) {
     const makeTr = (message, unique_id_me, unique_id_fr) => {
         let tr = `<tr>
 							<div class="float-end" style="border: none;">
-								<img class="float-end" title="${message.time}" width="290px" src="../chat_image/${message.image}">
+								<img class="float-end" width="290px" src="../chat_image/${message.image}">
 								
-								<h6 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
+								<h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
 								<br>
 								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
 										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
-								<button class="btn btn-sm btn-secondary float-end"><i class='fas fa-eye-slash'></i></button>
+								<button class="btn btn-sm btn-dark float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>
 						</tr>`
         return tr;

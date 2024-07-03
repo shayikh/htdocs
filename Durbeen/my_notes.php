@@ -156,9 +156,9 @@ mysqli_query($connection_message, $SQLcreateMe);
     const makeTr = (message, unique_id_me) => {
         let tr = `<tr>
 					<div class="float-end" style="width: 590px;border: none;">
-						<img title="${message.time}" width="590px" src="./chat_image/${message.image}" alt="">
+						<img width="590px" src="./chat_image/${message.image}" alt="">
 						
-						<h5 title="${message.time}" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+						<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 						
 						<button onclick="deleteSelfMsg(${message.id}, ${unique_id_me}, this)"
 								class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
