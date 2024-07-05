@@ -106,7 +106,7 @@ if ($countTest == 0) {
                 while ($data9 = mysqli_fetch_assoc($run9)) {
                     $imgNameinDB = $data9['image'];
                     if ($imgNameinDB != '') {
-                        unlink('./chat_image/' . $imgNameinDB);
+                        unlink('../chat_image/' . $imgNameinDB);
                     }
                 }
             }
@@ -114,18 +114,6 @@ if ($countTest == 0) {
             $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
             mysqli_query($connection_message, $SQL10);
 
-
-            $SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
-            $run11 = mysqli_query($connection_message, $SQL11);
-
-            if ($run9 == true) {
-                while ($data11 = mysqli_fetch_assoc($run11)) {
-                    $imgNameinDB = $data11['image'];
-                    if ($imgNameinDB != '') {
-                        unlink('./chat_image/' . $imgNameinDB);
-                    }
-                }
-            }
 
             $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
             mysqli_query($connection_message, $SQL12);
@@ -156,12 +144,12 @@ if ($countTest == 0) {
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left: 4%;top: 85px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Refresh Page</a>
+<a target="_self" style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Refresh Page</a>
 
 
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;left: 4%;top: 55px;z-index:20;font-weight: 600;">
+<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
 
-    <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-sm btn-secondary" type="submit" value="Delete Conversation">
+    <button style="position: fixed;left: 111px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Conversation?')" name="delete_con" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
 
 </form>
 

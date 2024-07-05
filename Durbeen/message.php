@@ -115,18 +115,6 @@ if ($countTest == 0) {
             mysqli_query($connection_message, $SQL10);
 
 
-            $SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
-            $run11 = mysqli_query($connection_message, $SQL11);
-
-            if ($run9 == true) {
-                while ($data11 = mysqli_fetch_assoc($run11)) {
-                    $imgNameinDB = $data11['image'];
-                    if ($imgNameinDB != '') {
-                        unlink('./chat_image/' . $imgNameinDB);
-                    }
-                }
-            }
-
             $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
             mysqli_query($connection_message, $SQL12);
 

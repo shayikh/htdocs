@@ -80,7 +80,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                             class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
                     </button>
 
-                    <button class="btn btn-sm <?php $data3['seen'] == 'Seen' ? printf("btn-dark") : printf("btn-dark") ?> float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
+                    <button class="btn btn-sm btn-dark float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 
             <?php } ?>

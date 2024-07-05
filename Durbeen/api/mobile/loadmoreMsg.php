@@ -81,7 +81,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                     <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
                             class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i>
                     </button>
-                    <button class="btn btn-sm <?php $data3['seen'] == 'Seen' ? printf("btn-dark") : printf("btn-dark") ?> float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
+                    <button class="btn btn-sm btn-dark float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 
             <?php } ?>
