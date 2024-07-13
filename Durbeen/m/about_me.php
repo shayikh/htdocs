@@ -589,7 +589,7 @@ if (isset($_GET['register'])) {
                             <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
                             <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
                             <td class="text-center" style="min-width: 100px">
-                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-3">Show Post</a>
+                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-3" target="_blank">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
                                 <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
@@ -638,7 +638,7 @@ if (isset($_GET['register'])) {
     const makeOtherCommentTr = (comment) => {
         let tr = `<tr>
                             <td class="text-center">
-                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
+                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
                                     <img class="text-center rounded-circle mt-3" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
@@ -649,7 +649,7 @@ if (isset($_GET['register'])) {
                             <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
                             <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
                             <td class="text-center text-dark" style="min-width: 100px">
-                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-4">Show Post</a>
+                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-4" target="_blank">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
                                 <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>

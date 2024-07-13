@@ -63,7 +63,7 @@ $count109 = mysqli_num_rows($run109);
                 <tr>
 
                     <td class="text-center" style="max-width: 129px">
-                        <a target="_blank" class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                        <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                             <p style="font-weight: 500"><?php echo $dataF154['name'] ?></p>
                             <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $dataF154['visit'] ?></p>
                         </a>

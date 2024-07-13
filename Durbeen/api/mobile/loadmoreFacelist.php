@@ -45,12 +45,12 @@ while ($data1=mysqli_fetch_assoc($run)){
 
     <tr>
         <td class="text-center">
-            <a target="_blank" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                 <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center" style="max-width: 129px">
-            <a target="_blank" class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+            <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                 <p style="font-size: 13px;font-weight: 500"><?php echo $data1['name'] ?></p>
                 <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data1['visit'] ?></p>
             </a>
@@ -60,7 +60,7 @@ while ($data1=mysqli_fetch_assoc($run)){
                 <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
             </button>
             <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
-                <img width="50px" src="../css/892177.svg" alt="" style="margin-top: 15px">
+                <img width="50px" src="../img/892177.svg" alt="" style="margin-top: 15px">
             </a>
         </td>
     </tr>

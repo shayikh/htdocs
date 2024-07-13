@@ -46,12 +46,12 @@ while ($data1=mysqli_fetch_assoc($run)){
 
     <tr>
         <td class="text-center">
-            <a target="_blank" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                 <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">
-            <a target="_blank" class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+            <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                 <h3 style="margin-top: 35px"><?php echo $data1['name'] ?></h3>
                 <h6 class="text-success">Durbeen Visited : <?php echo $data1['visit'] ?></h6>
             </a>
@@ -63,7 +63,7 @@ while ($data1=mysqli_fetch_assoc($run)){
         </td>
         <td class="text-center">
             <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
-                <img width="70px" src="../css/892177.svg" alt="" style="margin-top: 35px">
+                <img width="70px" src="../img/892177.svg" alt="" style="margin-top: 35px">
             </a>
         </td>
     </tr>

@@ -1,10 +1,14 @@
 
 
+
+
+Js er sokol function custom.js file e rakha
+
+windows.css/js android.css/js
+
 Message box fixed position upore niche image text
 
 group members page auto scroll 
-
-Durbeen login logo animation
 
 durbeen_chats => durbeen_info
 
@@ -12,20 +16,14 @@ Page loading gif images
 
 col-md-6 ke lg sm diye responsive kora
 
-Login register post chat js diye validation
-
 inline css ke external kora
 
 azaira code delete kora
 
-Js er sokol function custom.js file e rakha
-
 Login register e icos er cursor pointer
-
-Facelist e message link e img folder e ana
 
 Activity check by others session check
 
 mobile message o self message e time dewa
 
-windows.css/js android.css/js
+

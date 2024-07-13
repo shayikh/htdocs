@@ -205,13 +205,13 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
     const makeCommentTr = (comment) => {
         let tr = `<tr>
                             <td class="text-center">
-                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
+                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
                                     <img class="text-center rounded-circle mt-3" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
 
                             <td class="text-center" style="min-width: 100px">
-                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">${comment.name}</a>
+                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
                             </td>
 
                             <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>

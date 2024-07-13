@@ -110,12 +110,12 @@ if (isset($_POST['delete_grp'])) {
 
                 <tr>
                     <td class="text-center">
-                        <a target="_blank" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                             <img height="135px" src="../pro_pic/<?php echo $data154['pro_pic'] ?>" alt="">
                         </a>
                     </td>
                     <td class="text-center">
-                        <a target="_blank" class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                        <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
                             <h3 style="margin-top: 35px"><?php echo $data154['name'] ?></h3>
                             <h6 class="text-success">Durbeen Visited : <?php echo $data154['visit'] ?></h6>
                         </a>
