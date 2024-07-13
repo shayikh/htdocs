@@ -27,10 +27,10 @@ $run1 = mysqli_query($durbeen_chats, $SQL1);
 
         ?>
 
-    <img class="float-start" style="border-radius: 50%; margin-top: -5px" width="40px" height="40px" src="./pro_pic/<?php echo $pro_pic_fr ?>" alt="">
+    <img class="float-start" style="border-radius: 50%; margin-top: -5px" width="40px" height="40px" src="../pro_pic/<?php echo $pro_pic_fr ?>" alt="">
     <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="text-decoration-none">
         <p style="font-size: 18px;padding: 1px 15px;<?php $data1['seen'] == 0 ? printf("background-color: #377655;padding: 10px 15px;") : "" ?>">
-            <span class="text-white"><?php $data1['seen'] == 1 ? printf("(Seen) ") : printf("(Unseen) ") ?></span><span class="text-white"><?php echo $friend_name ?></span><span class="text-<?php $data2['active'] == 1 ? printf("green") : printf("red") ?>"><?php $data2['active'] == 1 ? printf(" (Active)") : printf(" (Inactive)") ?></span><span class="text-white"> sent you a message</span>
+            <span class="text-white"><?php $data1['seen'] == 1 ? printf("(Seen) ") : printf("(Unseen) ") ?></span><span class="text-white"><?php echo $friend_name ?></span><span class="text-<?php $data2['active'] == 1 ? printf("green") : printf("blue") ?>"><?php $data2['active'] == 1 ? printf(" (Active)") : printf(" (Inactive)") ?></span><span class="text-white"> sent you a message</span>
         </p>
     </a>
     <br>

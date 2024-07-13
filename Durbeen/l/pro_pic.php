@@ -21,6 +21,7 @@ include './header.php';
 
 <script>
     let tbody = document.querySelector("#tbodyID");
+    let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
 
 
     var page_no = 1;
@@ -41,7 +42,7 @@ include './header.php';
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("./api/cov_pic/loadmoreCovPics.php",
+        axios.post("../api/pro_pic/loadmoreProPics.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -61,18 +62,18 @@ include './header.php';
     }
 
 
-    const deleteCovPic = (cov_pic_id, unique_id_me, elm) => {
+    const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
         let confirm = window.confirm("Are You Sure?");
 
         if (confirm) {
 
-            let delCovPic = {};
+            let delProPic = {};
 
-            delCovPic.cov_pic_id = cov_pic_id;
-            delCovPic.unique_id_me = unique_id_me;
+            delProPic.pro_pic_id = pro_pic_id;
+            delProPic.unique_id_me = unique_id_me;
 
-            axios.post("./api/cov_pic/deleteCovPic.php",
-                    delCovPic, {
+            axios.post("../api/pro_pic/deleteProPic.php",
+                    delProPic, {
                         headers: {
                             "Content-Type": "application/json"
                         }
@@ -81,7 +82,7 @@ include './header.php';
                     // console.log(res.data);
 
                     elm.parentElement.parentElement.remove();
-                    toastr.error('Cover Photo Deleted');
+                    toastr.error('Profile Picture Deleted');
 
                 })
                 .catch(err => {
@@ -95,15 +96,15 @@ include './header.php';
     }
 
 
-    const makeCovPic = (cov_pic_id, unique_id_me, elm) => {
+    const makeProPic = (pro_pic_id, unique_id_me, elm) => {
 
-        let delCovPic = {};
+        let delProPic = {};
 
-        delCovPic.cov_pic_id = cov_pic_id;
-        delCovPic.unique_id_me = unique_id_me;
+        delProPic.pro_pic_id = pro_pic_id;
+        delProPic.unique_id_me = unique_id_me;
 
-        axios.post("./api/cov_pic/makeCovPic.php",
-                delCovPic, {
+        axios.post("../api/pro_pic/makeProPic.php",
+                delProPic, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -111,11 +112,13 @@ include './header.php';
             .then(res => {
                 // console.log(res.data);
 
+                timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
+
                 elm.parentElement.parentElement.remove();
 
-                tbody.innerHTML = makeCovPicTr(res.data.newCovPic) + tbody.innerHTML;
+                tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
 
-                toastr.success('Cover Photo Changed');
+                toastr.success('Profile Picture Changed');
 
             })
             .catch(err => {
@@ -125,16 +128,16 @@ include './header.php';
     }
 
 
-    const makeCovPicTr = (newCovPic) => {
+    const makeProPicTr = (newProPic) => {
         let tr = `<tr>
                     <td class="text-center">
-                        <img height="500px" style="max-width: 1000px;" src="./pro_pic/cov_pic/${newCovPic.cov_pic}" alt="">
+                        <img height="500px" src="../pro_pic/${newProPic.pro_pic}" alt="">
                     </td>
                     <td class="text-center">
-                        <button onclick="makeCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Cover Photo</button>
+                        <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
                     </td>
                     <td class="text-center">
-                        <button onclick="deleteCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+                        <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
                     </td>
                 </tr>`
         return tr;

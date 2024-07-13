@@ -15,6 +15,56 @@ $SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
 $run111 = mysqli_query($connection, $SQL111);
 $data111 = mysqli_fetch_assoc($run111);
 
+
+
+
+if (isset($_POST['delete_grp'])) {
+
+    $SQL9 = "SELECT * FROM `group $grp_id`";
+    $run9 = mysqli_query($connection_message, $SQL9);
+
+    while ($data9 = mysqli_fetch_assoc($run9)) {
+        $imgNameinDB = $data9['image'];
+        if ($imgNameinDB != '') {
+            unlink('../chat_image/'.$imgNameinDB);
+        }
+    }
+
+    $SQL10 = "DROP TABLE IF EXISTS `group $grp_id`";
+    mysqli_query($connection_message, $SQL10);
+
+
+
+
+    $SQL11 = "SELECT * FROM `group $grp_id members`";
+    $run11 = mysqli_query($connection_message, $SQL11);
+
+    while ($data11 = mysqli_fetch_assoc($run11)) {
+        $memberId = $data11['memberId'];
+        $SQL8 = "DELETE FROM `$memberId msg_grp` WHERE `grp_id`='$grp_id'";
+        $run8 = mysqli_query($durbeen_chats, $SQL8);
+    }
+
+    $SQL12 = "DROP TABLE IF EXISTS `group $grp_id members`";
+    mysqli_query($connection_message, $SQL12);
+
+
+
+
+    $SQL6 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
+    $run6 = mysqli_query($connection, $SQL6);
+    $data6 = mysqli_fetch_assoc($run6);
+    $pro_pic = $data6['pro_pic'];
+    unlink('../pro_pic/'.$pro_pic);
+
+    $SQL7 = "DELETE FROM `groups` WHERE `id`='$grp_id'";
+    $run7 = mysqli_query($connection, $SQL7);
+
+
+    echo "<script>window.location = 'groups.php?type=groups'</script>";
+}
+
+
 ?>
 
 
@@ -22,8 +72,14 @@ $data111 = mysqli_fetch_assoc($run111);
 
 
 <!-- main page -->
+<a style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
 
-<a style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Change Group Info</a>
+
+<form method="post" action="grp_admins.php?type&grp_id=<?php echo $grp_id ?>">
+    <button style="position: fixed;left: 100px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Group Permanently?')" name="delete_grp" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
+</form>
+
+
 
 
 

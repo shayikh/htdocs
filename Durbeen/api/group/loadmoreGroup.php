@@ -45,7 +45,7 @@ $data1 = mysqli_fetch_assoc($run1)
     <tr>
         <td class="text-center">
             <a href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
-                <img height="135px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+                <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
             </a>
         </td>
         <td class="text-center">

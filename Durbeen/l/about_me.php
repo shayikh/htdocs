@@ -22,12 +22,12 @@ if (isset($_GET['register'])) {
     <div class="row">
 
         <div class="col-md-12">
-            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="./pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
+            <img width="1280px" height="574px" src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
         </div>
 
         <div class="col-md-12 mt-4">
             <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
+                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="pro_pic">
             </a>
         </div>
 
@@ -48,7 +48,7 @@ if (isset($_GET['register'])) {
             <table class="table table-bordered mt-5 pt-5" style="border-color: #5d5d5d">
                 <tr>
                     <td>
-                        <h5 class="text-red">Email</h5>
+                        <h5 class="text-blue">Email</h5>
                     </td>
                     <td>
                         <h5 id="emailID"><?php echo $dataMe['email'] ?></h5>
@@ -56,7 +56,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Date of Birth</h5>
+                        <h5 class="text-blue">Date of Birth</h5>
                     </td>
                     <td>
                         <h5 id="birth_date"><?php echo $dataAbout['date_birth'] ?></h5>
@@ -64,7 +64,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Gender</h5>
+                        <h5 class="text-blue">Gender</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['gender'] ?></h5>
@@ -72,7 +72,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Phone Numbers</h5>
+                        <h5 class="text-blue">Phone Numbers</h5>
                     </td>
                     <td>
                         <h5 id="phone"><?php echo $dataAbout['phone_no'] ?></h5>
@@ -80,7 +80,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Religion</h5>
+                        <h5 class="text-blue">Religion</h5>
                     </td>
                     <td>
                         <h5 id="religion"><?php echo $dataAbout['religion'] ?></h5>
@@ -88,7 +88,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Country</h5>
+                        <h5 class="text-blue">Country</h5>
                     </td>
                     <td>
                         <h5 id="country"><?php echo $dataAbout['country'] ?></h5>
@@ -96,7 +96,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">City</h5>
+                        <h5 class="text-blue">City</h5>
                     </td>
                     <td>
                         <h5 id="city"><?php echo $dataAbout['city'] ?></h5>
@@ -104,7 +104,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Bio</h5>
+                        <h5 class="text-blue">Bio</h5>
                     </td>
                     <td>
                         <h5 id="bio" style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
@@ -112,7 +112,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Durbeen Visited</h5>
+                        <h5 class="text-blue">Durbeen Visited</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataMe['visit'] ?></h5>
@@ -120,7 +120,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Account ID</h5>
+                        <h5 class="text-blue">Account ID</h5>
                     </td>
                     <td>
                         <h5 id="unique_id_me"><?php echo $dataMe['unique_id'] ?></h5>
@@ -128,7 +128,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Account Link</h5>
+                        <h5 class="text-blue">Account Link</h5>
                     </td>
                     <td>
                         <h5 class="one d-none">
@@ -138,7 +138,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Following List</h5>
+                        <h5 class="text-blue">Following List</h5>
                     </td>
                     <td>
                         <a href="./follow_list.php?type" class="btn btn-success">Following List</a>
@@ -146,7 +146,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Old Profile Pictures</h5>
+                        <h5 class="text-blue">Old Profile Pictures</h5>
                     </td>
                     <td>
                         <a href="./pro_pic.php?type" class="btn btn-success">Old Profile Pictures</a>
@@ -154,7 +154,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Old Cover Photos</h5>
+                        <h5 class="text-blue">Old Cover Photos</h5>
                     </td>
                     <td>
                         <a href="./cov_pic.php?type" class="btn btn-success">Old Cover Photos</a>
@@ -162,7 +162,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">My All Comments</h5>
+                        <h5 class="text-blue">My All Comments</h5>
                     </td>
                     <td>
                         <a href="./my_comments.php?type" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</a>
@@ -170,7 +170,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Other's Comments</h5>
+                        <h5 class="text-blue">Other's Comments</h5>
                     </td>
                     <td>
                         <a href="./other_comments.php?type" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</a>
@@ -209,7 +209,7 @@ if (isset($_GET['register'])) {
             <div class="modal-body">
                 <form action="" method="post" id="updateFormID" enctype="multipart/form-data">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                    <input type="hidden" id="hidden_pro_pic" name="pro_pic" value="<?php echo $pro_pic ?>">
+                    <input type="hidden" id="hidden_pro_pic" name="pro_pic" value="<?php echo $pro_pic_me ?>">
                     <input type="hidden" id="hidden_cov_pic" name="cov_pic" value="<?php echo $cov_pic ?>">
 
                     <div class="row">
@@ -463,7 +463,7 @@ if (isset($_GET['register'])) {
         var updateFormData = new FormData(updateForm);
 
         $.ajax({
-            url: "./api/about_update/profileUpdate.php",
+            url: "../api/about_update/profileUpdate.php",
             type: "POST",
             data: updateFormData,
             contentType: false,
@@ -477,9 +477,9 @@ if (isset($_GET['register'])) {
                 let profile_picture = json.myData.pro_pic;
                 let cover_photo = json.myData.cov_pic;
 
-                pro_pic.src = "./pro_pic/" + profile_picture;
-                timeline_pro_pic.src = "./pro_pic/" + profile_picture;
-                cov_pic.src = "./pro_pic/cov_pic/" + cover_photo;
+                pro_pic.src = "../pro_pic/" + profile_picture;
+                timeline_pro_pic.src = "../pro_pic/" + profile_picture;
+                cov_pic.src = "../pro_pic/cov_pic/" + cover_photo;
                 
                 hidden_pro_pic.value = profile_picture;
                 hidden_cov_pic.value = cover_photo;
@@ -516,7 +516,7 @@ if (isset($_GET['register'])) {
         product.email = emailModal.value;
         product.unique_id_me = unique_id_me.innerText;
 
-        axios.post("./api/about_update/unique_email.php",
+        axios.post("../api/about_update/unique_email.php",
                 product, {
                     headers: {
                         "Content-Type": "application/json"
@@ -562,7 +562,7 @@ if (isset($_GET['register'])) {
         postData.page_no = page_no_my_comment;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("./api/comment/loadmoreMyComments.php",
+        axios.post("../api/comment/loadmoreMyComments.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -617,7 +617,7 @@ if (isset($_GET['register'])) {
         postData.page_no = page_no_other_comment;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("./api/comment/loadmoreOtherComments.php",
+        axios.post("../api/comment/loadmoreOtherComments.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -645,7 +645,7 @@ if (isset($_GET['register'])) {
         let tr = `<tr>
                             <td class="text-center">
                                 <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                    <img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+                                    <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
 
@@ -679,7 +679,7 @@ if (isset($_GET['register'])) {
         delComment.comment_id = comment_id;
         delComment.unique_id_me = unique_id_me;
 
-        axios.post("./api/comment/deleteComment.php",
+        axios.post("../api/comment/deleteComment.php",
                 delComment, {
                     headers: {
                         "Content-Type": "application/json"

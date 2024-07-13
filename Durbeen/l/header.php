@@ -6,7 +6,7 @@ if (!$_SESSION['unique_id_me']) {
 }
 
 
-include './connection.php';
+include '../connection.php';
 
 
 $unique_id_me = $_SESSION['unique_id_me'];
@@ -15,7 +15,7 @@ $runMe = mysqli_query($connection, $SQLMe);
 $dataMe = mysqli_fetch_assoc($runMe);
 
 $EmailMe = $dataMe['email'];
-$pro_pic = $dataMe['pro_pic'];
+$pro_pic_me = $dataMe['pro_pic'];
 
 
 
@@ -28,16 +28,16 @@ $pro_pic = $dataMe['pro_pic'];
     <meta charset="UTF-8">
     <title>দূরবীন</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="shortcut icon" href="./img/telescope.png">
-    <link href="./css/alertify.min.css">
-    <link href="./css/all.min.css">
-    <link href="./css/fontawesome.min.css">
-    <link rel="stylesheet" href="./css/toastr.min.css">
-    <script src="./js/jquery-3.5.1.toastr.min.js"></script>
-    <script src="./js/toastr.min.js"></script>
-    <script src="./js/axios.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../img/telescope.png">
+    <link href="../css/alertify.min.css">
+    <link href="../css/all.min.css">
+    <link href="../css/fontawesome.min.css">
+    <link rel="stylesheet" href="../css/toastr.min.css">
+    <script src="../js/jquery-3.5.1.toastr.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -69,14 +69,14 @@ $pro_pic = $dataMe['pro_pic'];
                 <div class="row">
                     <div class="col-lg-12">
                         <a href="./homepage.php?type">
-                            <img title="News Feed" width="90px" height="70px" src="./img/brand_logo.png" alt="Logo">
+                            <img title="News Feed" width="90px" height="70px" src="../img/brand_logo.png" alt="Logo">
                         </a>
 
 
                         <a class="text-decoration-none float-end mt-2" href="./timeline.php?type=timeline">
                             <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
 
-                                <img class="float-end" style="border-radius: 50%" width="50px" height="50px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="" id="timeline_pro_pic">
+                                <img class="float-end" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>" alt="" id="timeline_pro_pic">
                                 <h5 class="float-start" style="margin-top: 11px;margin-left: 15px;padding-right: 10px" id="timeline_name">
                                     <?php echo $dataMe['name'] ?>
                                 </h5>
@@ -147,8 +147,8 @@ $pro_pic = $dataMe['pro_pic'];
                 <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
                     <div class="hover_chatbar">
 
-                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="./pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
-                        <img src="./img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px" alt="">
+                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
+                        <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px" alt="">
                         <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
                             <?php echo $data21['name'] ?>
                         </h5>

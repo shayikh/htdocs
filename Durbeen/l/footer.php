@@ -1,6 +1,6 @@
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="./js/all.min.js"></script>
-<script src="./js/alertify.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/all.min.js"></script>
+<script src="../js/alertify.min.js"></script>
 
 <script>
     let pwd = document.querySelector('.pwd');
@@ -30,7 +30,7 @@
         let width = window.screen.width;
 
         if (width < 500) {
-            window.location = "./m/";
+            window.location = "../m/";
         }
     }
 
@@ -39,7 +39,7 @@
 
         id_data.unique_id_me = unique_id_me;
 
-        axios.post("./api/logout.php",
+        axios.post("../api/logout.php",
                 id_data, {
                     headers: {
                         "Content-Type": "application/json"

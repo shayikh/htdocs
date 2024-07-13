@@ -7,32 +7,34 @@ if ($unique_id_fr == $unique_id_me) {
     echo "<script>window.location = 'about_me.php?type=about_me'</script>";
 }
 
-$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
-$runAbout = mysqli_query($connection, $SQLabout);
-$dataAbout = mysqli_fetch_assoc($runAbout);
+
+$SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
+$runF = mysqli_query($durbeen_chats, $SQLF);
+$countF = mysqli_num_rows($runF);
 
 
 $SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $run1 = mysqli_query($connection, $SQL1);
 $data1 = mysqli_fetch_assoc($run1);
 
+$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
+$runAbout = mysqli_query($connection, $SQLabout);
+$dataAbout = mysqli_fetch_assoc($runAbout);
+
 ?>
 
 
 <!-- main page -->
+<div class="container" style="margin-top:133px; margin-bottom: 100px">
 
-
-<div class="container" style="margin-top:133px;margin-bottom: 100px">
     <div class="row">
 
         <div class="col-md-12">
-            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="./pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
+            <img width="1280px" height="574px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
         </div>
 
         <div class="col-md-12 mt-4">
-            <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>">
-            </a>
+            <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -146px;">
@@ -43,10 +45,13 @@ $data1 = mysqli_fetch_assoc($run1);
 
 
 
-
     <div class="row">
-
         <div class="col-md-12">
+
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
+                <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
+            </button>
+
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-2">Timeline</a>
 
             <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end">Send Message</a>
@@ -62,7 +67,7 @@ $data1 = mysqli_fetch_assoc($run1);
             <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
                 <tr>
                     <td>
-                        <h5 class="text-red">Email</h5>
+                        <h5 class="text-blue">Email</h5>
                     </td>
                     <td>
                         <h5><?php echo $data1['email'] ?></h5>
@@ -70,7 +75,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Date of Birth</h5>
+                        <h5 class="text-blue">Date of Birth</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['date_birth'] ?></h5>
@@ -78,7 +83,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Gender</h5>
+                        <h5 class="text-blue">Gender</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['gender'] ?></h5>
@@ -86,7 +91,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Phone Numbers</h5>
+                        <h5 class="text-blue">Phone Numbers</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['phone_no'] ?></h5>
@@ -94,7 +99,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Religion</h5>
+                        <h5 class="text-blue">Religion</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['religion'] ?></h5>
@@ -102,7 +107,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">Country</h5>
+                        <h5 class="text-blue">Country</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['country'] ?></h5>
@@ -110,7 +115,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="text-red">City</h5>
+                        <h5 class="text-blue">City</h5>
                     </td>
                     <td>
                         <h5><?php echo $dataAbout['city'] ?></h5>
@@ -118,7 +123,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Bio</h5>
+                        <h5 class="text-blue">Bio</h5>
                     </td>
                     <td>
                         <h5 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h5>
@@ -127,7 +132,7 @@ $data1 = mysqli_fetch_assoc($run1);
 
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Durbeen Visited</h5>
+                        <h5 class="text-blue">Durbeen Visited</h5>
                     </td>
                     <td>
                         <h5><?php echo $data1['visit'] ?></h5>
@@ -135,7 +140,7 @@ $data1 = mysqli_fetch_assoc($run1);
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-red">Account Link</h5>
+                        <h5 class="text-blue">Account Link</h5>
                     </td>
                     <td>
                         <h5 class="one d-none">
@@ -163,6 +168,42 @@ $data1 = mysqli_fetch_assoc($run1);
         document.body.removeChild(elem);
         toastr.success("Link Copied to Clipboard");
     })
+
+
+    const followfn = (unique_id_me, unique_id_fr, elm) => {
+
+        let followVar = {};
+
+        followVar.unique_id_me = unique_id_me;
+        followVar.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/facelist/follow.php",
+                followVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    toastr.error('Unfollowed');
+                    elm.innerText = "Follow";
+                    elm.classList.add('btn-success');
+                    elm.classList.remove('btn-danger');
+                } else {
+                    toastr.success('Following');
+                    elm.innerText = "Unfollow";
+                    elm.classList.add('btn-danger');
+                    elm.classList.remove('btn-success');
+                }
+
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
 </script>
 

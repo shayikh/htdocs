@@ -43,12 +43,12 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                 <div class="float-start" style="width: 590px;border: none;">
                     <a target="_blank" href="./people_timeline.php?type&unique_id_fr=<?php echo $data3['senderId'] ?>">
                         <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
-                            src="./pro_pic/<?php echo $data3['senderProPic'] ?>" title="<?php echo $data3['senderName'] ?>">
+                            src="../pro_pic/<?php echo $data3['senderProPic'] ?>" title="<?php echo $data3['senderName'] ?>">
                     </a>
                     
                     <?php if ($data3['image'] != "") { ?>
                         <img title="<?php echo $data3['time'] ?>" width="590px"
-                            src="./chat_image/<?php echo $data3['image'] ?>">
+                            src="../chat_image/<?php echo $data3['image'] ?>">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>
@@ -62,7 +62,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                 <div class="float-end" style="width: 590px;border: none;">
 
                     <?php if ($data3['image'] != "") { ?>
-                        <img width="590px" src="./chat_image/<?php echo $data3['image'] ?>" title="<?php echo $data3['time'] ?>">
+                        <img width="590px" src="../chat_image/<?php echo $data3['image'] ?>" title="<?php echo $data3['time'] ?>">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>

@@ -3,7 +3,7 @@
 }
 
 .timeline_link:hover {
-    color: #61c5ff;
+    color: #47c0e8;
     transition: 0.5s;
 }
 
@@ -137,18 +137,7 @@ a {
     background-color: #47c0e8;
 }
 
-.green {
-    background-color: #00c44b;
-    color: #fff;
-    font-weight: 600;
-    transition: 1s;
-}
 
-.green:hover {
-    background-color: #00983a;
-    color: #fff;
-    font-weight: 600;
-}
 
 .red {
     background-color: #d94141;
@@ -167,8 +156,12 @@ a {
     color: #00c44b;
 }
 
-.text-red {
-    color: #d94141;
+.text-blue {
+    color: #47c0e8;
+}
+
+.text-durbeen {
+    color: #ff2a2a;
 }
 
 .bg-violet {
@@ -356,18 +349,8 @@ section.home {
     background-color: #00983a;
 }
 
-.green {
-    background-color: #00c44b;
-    color: #fff;
-    font-weight: 600;
-    transition: 1s;
-}
 
-.green:hover {
-    background-color: #00983a;
-    color: #fff;
-    font-weight: 600;
-}
+
 
 @font-face {
     src: url("../css/mahfuj.ttf");

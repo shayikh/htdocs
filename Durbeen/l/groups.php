@@ -7,7 +7,7 @@ include './header.php';
 <!-- main page -->
 <div class="container" style="margin-top: 150px;">
 
-    <a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Messenger Group</a>
+    <a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Group</a>
 
     <h4 class="text-center">My Groups</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
@@ -85,7 +85,7 @@ include './header.php';
             postData.page_no = page_no;
             postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("./api/group/loadmoreGroup.php",
+            axios.post("../api/group/loadmoreGroup.php",
                     postData, {
                         headers: {
                             "Content-Type": "application/json"
@@ -112,7 +112,7 @@ include './header.php';
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/group/grpAdd.php",
+                url: "../api/group/grpAdd.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -147,18 +147,18 @@ include './header.php';
 
 
         const makeTr = (newGroup) => {
-            let tr = `    <tr>
-                            <td class="text-center">
-                                <a href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                    <img height="135px" src="./pro_pic/${newGroup.pro_pic}" alt="">
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                    <h3 style="margin-top: 35px">${newGroup.grp_name}</h3>
-                                </a>
-                            </td>
-                        </tr>`
+            let tr = `<tr>
+                        <td class="text-center">
+                            <a href="./group_msg.php?type&grp_id=${newGroup.id}">
+                                <img height="135px" src="./pro_pic/${newGroup.pro_pic}" alt="">
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
+                                <h3 style="margin-top: 45px">${newGroup.grp_name}</h3>
+                            </a>
+                        </td>
+                    </tr>`
             return tr;
         }
     </script>

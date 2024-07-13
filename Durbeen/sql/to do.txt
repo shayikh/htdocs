@@ -1,16 +1,12 @@
 
-Group delete kora
 
-Account delete e group delete kora
-
-Durbeen login logo animation
+Message box fixed position upore niche image text
 
 group members page auto scroll 
 
+Durbeen login logo animation
+
 durbeen_chats => durbeen_info
-
-
-
 
 Page loading gif images
 
@@ -20,60 +16,16 @@ Login register post chat js diye validation
 
 inline css ke external kora
 
-Server e koto fast data process kora jay
-
-Image resolution komano
+azaira code delete kora
 
 Js er sokol function custom.js file e rakha
 
-data type
-
-Email update er somoy email check er jonno ekbar db theke data niye dom e rekhe bar bar check kora
-
-Comments show korar moto api theke registration table er sob email er data asbe
-
-Edit profile btn e click korle email er data asbe
-
-About edit btn e dom append fn er modhdhe registered emails er fn o add kore dewa.
-
 Login register e icos er cursor pointer
-
-Img name space
-
-Image e click korle./chat_image/php block
-
-Find account e incorrect email toastr
 
 Facelist e message link e img folder e ana
 
-Type delete
-
-Image new name e date e space
-
-Message box fixed position upore niche image text
-
-Other pro pics, cov pics
-
 Activity check by others session check
-
-Message forward
 
 mobile message o self message e time dewa
 
-Loadmore e mobile e 60 px na kore less kora
-
-Homepage e echo 0 na diye end dewa ba 1 dewa
-
-Message box ba post box e ekbar post er por image faka kore dey kivabe?
-
-Mobile all comments e target blank
-
-Account creation date
-
-about people e unfollow btn
-
 windows.css/js android.css/js
-
-register o about update e email alert
-
-others comments in my post in about people

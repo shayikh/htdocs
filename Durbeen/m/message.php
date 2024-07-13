@@ -13,9 +13,9 @@ if ($countTest == 0) {
 
 
     if ($unique_id_fr == $unique_id_me) {
-        echo "<script>window.location = 'self_msg.php?type=self_msg'</script>";
+        echo "<script>window.location = 'my_notes.php?type=my_notes'</script>";
     } elseif ($unique_id_fr == "") {
-        echo "<script>window.location = 'self_msg.php?type=self_msg'</script>";
+        echo "<script>window.location = 'my_notes.php?type=my_notes'</script>";
     } else {
         //seen from notify db
         $SQL99 = "UPDATE `$unique_id_me notify` SET `seen`='1' WHERE `sender_id`='$unique_id_fr'";

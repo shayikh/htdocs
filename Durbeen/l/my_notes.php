@@ -1,34 +1,31 @@
 <?php
 include './header.php';
 
-$grp_id = $_GET['grp_id'];
-
-$SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me'";
-$run110 = mysqli_query($connection_message, $SQL110);
-$count110 = mysqli_num_rows($run110);
-
-if ($count110 == 0) {
-    echo "<script>window.location = 'homepage.php?type'</script>";
-}
-
+//create table if not exist
+$SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
+  `id` int(255) unsigned NOT NULL auto_increment,
+  `message` text,
+  `image` varchar(1000),
+  `time` varchar(1000),
+  PRIMARY KEY  (`id`)
+)";
+mysqli_query($connection_message, $SQLcreateMe);
+//table creation end
 
 
 ?>
 
 
+
+
 <!-- main page -->
-<a target="_self" style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Refresh Page</a>
-
-<a style="position: fixed;right:298px;top:91px;z-index:20;font-weight: 600;" href="grp_settings.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-success">Settings</a>
+<a target="_self" style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" href="my_notes.php?type=my_notes" class="btn btn-success">Refresh Page</a>
 
 
-
-
-<div class="container" style="margin-top: 270px">
+<div class="container" style="margin-top:270px">
 
     <div class="row">
         <div class="col-md-12">
-
 
             <table class="table mt-4">
                 <tbody id="tbodyID">
@@ -36,8 +33,6 @@ if ($count110 == 0) {
                     </tr>
                 </tbody>
             </table>
-
-
             <span id="appendID"></span>
         </div>
     </div>
@@ -57,9 +52,6 @@ if ($count110 == 0) {
                 <form action="" method="post" id="formID" enctype="multipart/form-data">
 
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                    <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
-                    <input type="hidden" name="my_name" value="<?php echo $dataMe['name'] ?>">
-                    <input type="hidden" name="myProPic" value="<?php echo $dataMe['pro_pic'] ?>">
 
                     <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5" class="form-control mb-2" type="text"></textarea>
 
@@ -97,14 +89,13 @@ if ($count110 == 0) {
 
     function showdata() {
 
-        let msgData = {};
+        let selfMsgData = {};
 
-        msgData.page_no = page_no;
-        msgData.unique_id_me = <?php echo $unique_id_me ?>;
-        msgData.grp_id = <?php echo $grp_id ?>;
+        selfMsgData.page_no = page_no;
+        selfMsgData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("./api/group_msg/loadmoreGroupMsg.php",
-                msgData, {
+        axios.post("../api/my_notes/loadmoreMyNotes.php",
+                selfMsgData, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -130,7 +121,7 @@ if ($count110 == 0) {
         var formdata = new FormData(form);
 
         $.ajax({
-            url: "./api/group_msg/GroupMsgAdd.php",
+            url: "../api/my_notes/my_notes_add.php",
             type: "POST",
             data: formdata,
             contentType: false,
@@ -162,30 +153,29 @@ if ($count110 == 0) {
     })
 
 
-    const makeTr = (message) => {
+    const makeTr = (message, unique_id_me) => {
         let tr = `<tr>
-							<div class="float-end" style="width: 590px;border: none;">
-								<img width="590px" src="./chat_image/${message.image}">
-								
-								<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
-								
-								<button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
-										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
-							</div>
-						</tr>`
+					<div class="float-end" style="width: 590px;border: none;">
+						<img width="590px" src="../chat_image/${message.image}" alt="">
+						
+						<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
+						
+						<button onclick="deleteSelfMsg(${message.id}, ${unique_id_me}, this)"
+								class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+					</div>
+				</tr>`
         return tr;
     }
 
 
-    const unsendMessage = (id_msg, grp_id, elm_ppp) => {
+    const deleteSelfMsg = (id_lll, unique_id_me, elm_ppp) => {
+        let message = {};
 
-        let unsendData = {};
+        message.id = id_lll;
+        message.unique_id_me = unique_id_me;
 
-        unsendData.id_msg = id_msg;
-        unsendData.grp_id = grp_id;
-
-        axios.post("./api/group_msg/unsend.php",
-                unsendData, {
+        axios.post("../api/my_notes/delete_my_notes.php",
+                message, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -194,10 +184,9 @@ if ($count110 == 0) {
                 // console.log(res.data);
 
                 if (res.data == '1') {
-                    toastr.error('Message Deleted For Everyone')
-                }else{
-                    toastr.error('Message not deleted')
+                    toastr.error('Message Deleted')
                 }
+                // console.log(elm_ppp.parentElement);
 
                 elm_ppp.parentElement.remove();
 
@@ -208,7 +197,6 @@ if ($count110 == 0) {
 
 
     }
-
 
 </script>
 

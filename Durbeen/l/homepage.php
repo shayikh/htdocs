@@ -124,7 +124,7 @@ if ($number > 0) { ?>
             postData.page_no = page_no;
             postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("./api/post/loadmoreHomePage.php",
+            axios.post("../api/post/loadmoreHomePage.php",
                     postData, {
                         headers: {
                             "Content-Type": "application/json"
@@ -153,7 +153,7 @@ if ($number > 0) { ?>
             delComment.comment_id = comment_id;
             delComment.unique_id_me = unique_id_me;
 
-            axios.post("./api/comment/deleteComment.php",
+            axios.post("../api/comment/deleteComment.php",
                     delComment, {
                         headers: {
                             "Content-Type": "application/json"
@@ -188,7 +188,7 @@ if ($number > 0) { ?>
 
             showComment.post_id = post_id;
 
-            axios.post("./api/comment/showComments.php",
+            axios.post("../api/comment/showComments.php",
                     showComment, {
                         headers: {
                             "Content-Type": "application/json"
@@ -217,7 +217,7 @@ if ($number > 0) { ?>
             let tr = `<tr>
                             <td class="text-center">
                                 <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                    <img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+                                    <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
 
@@ -252,7 +252,7 @@ if ($number > 0) { ?>
                 commentp.comn_giver_id = comn_giver_id;
 
 
-                axios.post("./api/comment/comment.php",
+                axios.post("../api/comment/comment.php",
                         commentp, {
                             headers: {
                                 "Content-Type": "application/json"
@@ -285,7 +285,7 @@ if ($number > 0) { ?>
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/post/postAdd.php",
+                url: "../api/post/postAdd.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -328,11 +328,11 @@ if ($number > 0) { ?>
 
                             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                                 <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </a>
                             </p>
-                            <img width="100%" src="./post_image/${post.image}" alt="">
+                            <img width="100%" src="../post_image/${post.image}" alt="">
                             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                 <h6 class="card-title text-white">${post.time}</h6>
                                 <p class="card-text text-white">${post.post}</p>
@@ -364,7 +364,7 @@ if ($number > 0) { ?>
             likep.post_id = post_id;
             likep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/like_post.php",
+            axios.post("../api/post/like_post.php",
                     likep, {
                         headers: {
                             "Content-Type": "application/json"
@@ -394,7 +394,7 @@ if ($number > 0) { ?>
             dislikep.post_id = post_id;
             dislikep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/dislike_post.php",
+            axios.post("../api/post/dislike_post.php",
                     dislikep, {
                         headers: {
                             "Content-Type": "application/json"
@@ -424,7 +424,7 @@ if ($number > 0) { ?>
             sharep.post_id = post_id;
             sharep.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/share.php",
+            axios.post("../api/post/share.php",
                     sharep, {
                         headers: {
                             "Content-Type": "application/json"

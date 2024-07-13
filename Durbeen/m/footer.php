@@ -32,7 +32,7 @@
         let width = window.screen.width;
 
         if (width >= 500) {
-            window.location = "../";
+            window.location = "../l/";
         }
     }
 

@@ -110,7 +110,7 @@ if ($_SESSION['unique_id_me'] != 1) {
             var formdata = new FormData(form);
 
             $.ajax({
-                url: "./api/singleUser.php",
+                url: "../api/singleUser.php",
                 type: "POST",
                 data: formdata,
                 contentType: false,
@@ -133,7 +133,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                         //console.log(json);
 
                         unique_id.innerText = singleUser.unique_id;
-                        pro_pic.src = './pro_pic/' + singleUser.pro_pic;
+                        pro_pic.src = '../pro_pic/' + singleUser.pro_pic;
                         Username.innerText = singleUser.name;
                         Useremail.innerText = singleUser.email;
                         Password.innerText = singleUser.password;

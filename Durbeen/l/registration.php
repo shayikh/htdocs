@@ -5,7 +5,7 @@ if ($_SESSION['unique_id_me']) {
     header('location:./homepage.php?type');
 }
 
-include './connection.php';
+include '../connection.php';
 
 $msg = "";
 
@@ -32,7 +32,7 @@ if (isset($_POST['signup'])) {
             $imageOldName = $_FILES['pro_pic']['name'];
             $imageNewName = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
             $image_tmp = $_FILES['pro_pic']['tmp_name'];
-            move_uploaded_file($image_tmp, './pro_pic/' . $imageNewName);
+            move_uploaded_file($image_tmp, '../pro_pic/' . $imageNewName);
         } else {
             $imageNewName = "red_comet.png";
         }
@@ -134,16 +134,16 @@ if (isset($_POST['signup'])) {
     <meta charset="UTF-8">
     <title>দূরবীন</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="shortcut icon" href="./img/telescope.png" />
-    <link href="./css/alertify.min.css" />
-    <link href="./css/all.min.css" />
-    <link href="./css/fontawesome.min.css" />
-    <link rel="stylesheet" href="css/toastr.min.css">
-    <script src="./js/jquery-3.5.1.toastr.min.js"></script>
-    <script src="./js/toastr.min.js"></script>
-    <script src="./js/axios.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../img/telescope.png" />
+    <link href="../css/alertify.min.css" />
+    <link href="../css/all.min.css" />
+    <link href="../css/fontawesome.min.css" />
+    <link rel="stylesheet" href="../css/toastr.min.css">
+    <script src="../js/jquery-3.5.1.toastr.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -167,7 +167,7 @@ if (isset($_POST['signup'])) {
                                 <input required name=name type="text" class="form-control" placeholder="Full Name">
                             </div>
                             <div class="col-md-12 mt-2">
-                                <input required name="email" type="email" class="form-control" placeholder="Email address">
+                                <input required name="email" oninput="uniqueEmail()" id="emailID" type="email" class="form-control" placeholder="Email address">
                             </div>
 
                             <b>
@@ -176,7 +176,7 @@ if (isset($_POST['signup'])) {
 
                             <div class="col-md-12 mt- pwdbody">
                                 <input required name="password" id="" type="password" class="pwd form-control" placeholder="New password">
-                                <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
+                                <i onclick="showPwd()" class="icon far fa-eye"></i>
                             </div>
                             <div class="col-md-6">
                                 <label class="mt-1 font-small text-dark">Date of birth</label>
@@ -201,9 +201,7 @@ if (isset($_POST['signup'])) {
                     </form>
                 </div>
             </div>
-            <div class="col-md-4">
-
-</div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 
@@ -331,7 +329,7 @@ if (isset($_POST['signup'])) {
         }
 
         body {
-            background: url(./img/background.jpg);
+            background: url(../img/background.jpg);
             background-repeat: no-repeat;
             background-size: 100% 1100px;
         }
@@ -344,6 +342,35 @@ if (isset($_POST['signup'])) {
 
 
 
-    <?php
+<script>
+    let email = document.querySelector("#emailID");
+    function uniqueEmail() {
+        let product = {};
+
+        product.email = email.value;
+
+        axios.post("../api/reg_uniq_email.php",
+                product, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == "0") {
+                    toastr.error("This email is used by someone. You can not use this email");
+                    alert("This email is used by someone. You can not use this email");
+                    email.value = "";
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+</script>
+
+
+
+<?php
 include './footer.php'
 ?>

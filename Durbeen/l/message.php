@@ -13,9 +13,9 @@ if ($countTest == 0) {
 
 
     if ($unique_id_fr == $unique_id_me) {
-        echo "<script>window.location = 'self_msg.php?type=self_msg'</script>";
+        echo "<script>window.location = 'my_notes.php?type=my_notes'</script>";
     } elseif ($unique_id_fr == "") {
-        echo "<script>window.location = 'self_msg.php?type=self_msg'</script>";
+        echo "<script>window.location = 'my_notes.php?type=my_notes'</script>";
     } else {
         //seen from notify db
         $SQL99 = "UPDATE `$unique_id_me notify` SET `seen`='1' WHERE `sender_id`='$unique_id_fr'";
@@ -106,7 +106,7 @@ if ($countTest == 0) {
                 while ($data9 = mysqli_fetch_assoc($run9)) {
                     $imgNameinDB = $data9['image'];
                     if ($imgNameinDB != '') {
-                        unlink('./chat_image/' . $imgNameinDB);
+                        unlink('../chat_image/' . $imgNameinDB);
                     }
                 }
             }
@@ -135,21 +135,25 @@ if ($countTest == 0) {
             echo "<script>window.location = 'homepage.php?type'</script>";
         }
     }
-
-
 }
-
 
 ?>
 
 
+
+
+
 <!-- main page -->
-<a target="_self" style="position: fixed;right:347px;top:91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
+<a target="_self" style="position: fixed;right: 217px;top: 91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
 
 
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;">
-    <input onclick="return confirm('Do You Really Want to Delete Conversation?')" name="delete_con" class="btn btn-secondary" type="submit" value="Delete Conversation">
+<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+    <button style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Conversation?')" name="delete_con" class="btn btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
 </form>
+
+
+
+
 
 
 <div class="container" style="margin-top: 270px">
@@ -230,7 +234,7 @@ if ($countTest == 0) {
         msgData.unique_id_me = <?php echo $unique_id_me ?>;
         msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-        axios.post("./api/message/loadmoreMsg.php",
+        axios.post("../api/message/loadmoreMsg.php",
                 msgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -257,7 +261,7 @@ if ($countTest == 0) {
         var formdata = new FormData(form);
 
         $.ajax({
-            url: "./api/message/messageAdd.php",
+            url: "../api/message/messageAdd.php",
             type: "POST",
             data: formdata,
             contentType: false,
@@ -295,7 +299,7 @@ if ($countTest == 0) {
     const makeTr = (message, unique_id_me, unique_id_fr) => {
         let tr = `<tr>
 							<div class="float-end" style="width: 590px;border: none;">
-								<img width="590px" src="./chat_image/${message.image}">
+								<img width="590px" src="../chat_image/${message.image}">
 								
 								<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
@@ -317,7 +321,7 @@ if ($countTest == 0) {
         message.unique_id_me = unique_id_me;
         message.unique_id_fr = unique_id_fr;
 
-        axios.post("./api/message/unsend.php",
+        axios.post("../api/message/unsend.php",
                 message, {
                     headers: {
                         "Content-Type": "application/json"
@@ -350,7 +354,7 @@ if ($countTest == 0) {
         message.unique_id_me = unique_id_me;
         message.unique_id_fr = unique_id_fr;
 
-        axios.post("./api/message/deleteMsg.php",
+        axios.post("../api/message/deleteMsg.php",
                 message, {
                     headers: {
                         "Content-Type": "application/json"

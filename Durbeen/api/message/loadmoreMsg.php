@@ -47,11 +47,11 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                 <div class="float-start" style="width: 590px;border: none;">
                     <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
-                         src="./pro_pic/<?php echo $pro_pic_fr ?>" alt="">
+                         src="../pro_pic/<?php echo $pro_pic_fr ?>" alt="">
 
                     <?php if ($data3['image'] != "") { ?>
                         <img title="<?php echo $data3['time'] ?>" width="590px"
-                            src="./chat_image/<?php echo $data3['image'] ?>" alt="">
+                            src="../chat_image/<?php echo $data3['image'] ?>" alt="">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>
@@ -68,7 +68,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                 <div class="float-end" style="width: 590px;border: none;">
                     <?php if ($data3['image'] != "") { ?>
-                        <img width="590px" src="./chat_image/<?php echo $data3['image'] ?>" alt="">
+                        <img width="590px" src="../chat_image/<?php echo $data3['image'] ?>" alt="">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>

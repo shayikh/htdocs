@@ -30,13 +30,11 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="row">
 
         <div class="col-md-12">
-            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="./pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
+            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
         </div>
 
         <div class="col-md-12 mt-4">
-            <a class="text-decoration-none" href="./pro_pic.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>">
-                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $data1['pro_pic'] ?>">
-            </a>
+            <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -134px">
@@ -138,7 +136,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-        axios.post("./api/post/loadmorePeopleTimeline.php",
+        axios.post("../api/post/loadmorePeopleTimeline.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -164,7 +162,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         followVar.unique_id_me = unique_id_me;
         followVar.unique_id_fr = unique_id_fr;
 
-        axios.post("./api/facelist/follow.php",
+        axios.post("../api/facelist/follow.php",
                 followVar, {
                     headers: {
                         "Content-Type": "application/json"
@@ -200,7 +198,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         delComment.comment_id = comment_id;
         delComment.unique_id_me = unique_id_me;
 
-        axios.post("./api/comment/deleteComment.php",
+        axios.post("../api/comment/deleteComment.php",
                 delComment, {
                     headers: {
                         "Content-Type": "application/json"
@@ -235,7 +233,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         showComment.post_id = post_id;
 
-        axios.post("./api/comment/showComments.php",
+        axios.post("../api/comment/showComments.php",
                 showComment, {
                     headers: {
                         "Content-Type": "application/json"
@@ -264,7 +262,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         let tr = `<tr>
 						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
@@ -299,7 +297,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             commentp.comn_giver_id = comn_giver_id;
 
 
-            axios.post("./api/comment/comment.php",
+            axios.post("../api/comment/comment.php",
                     commentp, {
                         headers: {
                             "Content-Type": "application/json"
@@ -331,7 +329,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         likep.post_id = post_id;
         likep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/like_post.php",
+        axios.post("../api/post/like_post.php",
                 likep, {
                     headers: {
                         "Content-Type": "application/json"
@@ -361,7 +359,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         dislikep.post_id = post_id;
         dislikep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/dislike_post.php",
+        axios.post("../api/post/dislike_post.php",
                 dislikep, {
                     headers: {
                         "Content-Type": "application/json"
@@ -391,7 +389,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         sharep.post_id = post_id;
         sharep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/share.php",
+        axios.post("../api/post/share.php",
                 sharep, {
                     headers: {
                         "Content-Type": "application/json"

@@ -5,7 +5,7 @@ if ($_SESSION['unique_id_me']) {
     header('location:./homepage.php?type');
 }
 
-include './connection.php';
+include '../connection.php';
 
 $msg = "";
 
@@ -56,16 +56,16 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <title>দূরবীন</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="shortcut icon" href="./img/telescope.png" />
-    <link href="./css/alertify.min.css" />
-    <link href="./css/all.min.css" />
-    <link href="./css/fontawesome.min.css" />
-    <link rel="stylesheet" href="./css/toastr.min.css">
-    <script src="./js/jquery-3.5.1.toastr.min.js"></script>
-    <script src="./js/toastr.min.js"></script>
-    <script src="./js/axios.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../img/telescope.png" />
+    <link href="../css/alertify.min.css" />
+    <link href="../css/all.min.css" />
+    <link href="../css/fontawesome.min.css" />
+    <link rel="stylesheet" href="../css/toastr.min.css">
+    <script src="../js/jquery-3.5.1.toastr.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -73,7 +73,7 @@ if (isset($_POST['login'])) {
 
 
 
-    <?php
+<?php
 if (isset($_GET['mustlog'])) {
     echo "<script>toastr.error('You Must LogIn First')</script>";
 }
@@ -102,7 +102,7 @@ if (isset($_GET['del'])) {
                         </div>
                         <div class="form-group margin-padding-2 pwdbody">
                             <input required name="password" id="" type="password" class="pwd form-control form-control-lg" placeholder="Password">
-                            <i onclick="showPwd()" id="" class="icon far fa-eye"></i>
+                            <i onclick="showPwd()" class="icon far fa-eye"></i>
                         </div>
 
 

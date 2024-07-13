@@ -26,7 +26,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 <!-- main page -->
 <div class="container" style="margin-top: 99px">
-
     <div class="row">
 
         <div class="col-md-12">
@@ -34,9 +33,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         </div>
 
         <div class="col-md-12 text-center mt-4">
-            <a class="text-decoration-none" href="./pro_pic.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>">
-                <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
-            </a>
+            <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -170px">

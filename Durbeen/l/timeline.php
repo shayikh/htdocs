@@ -17,12 +17,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="row">
 
         <div class="col-md-12">
-            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="./pro_pic/cov_pic/<?php echo $dataMe['cov_pic'] ?>">
+            <img title="Cover Photo Size 1280px * 574px" width="1280px" height="574px" src="../pro_pic/cov_pic/<?php echo $dataMe['cov_pic'] ?>">
         </div>
 
         <div class="col-md-12 mt-4">
             <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
             </a>
         </div>
 
@@ -60,7 +60,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                         <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                        <!-- <p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p> -->
                         <input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
                     </form>
                 </div>
@@ -170,7 +169,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("./api/post/loadmoreTimeline.php",
+        axios.post("../api/post/loadmoreTimeline.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -197,7 +196,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         var editformdata = new FormData(editForm);
 
         $.ajax({
-            url: "./api/post/updatePost.php",
+            url: "../api/post/updatePost.php",
             type: "POST",
             data: editformdata,
             contentType: false,
@@ -212,7 +211,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                 let updatedPost = json.updatedPost;
 
-                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.src = "./post_image/" + updatedPost.image;
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.src = "../post_image/" + updatedPost.image;
                 targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerText = updatedPost.time;
                 targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText = updatedPost.post;
 
@@ -247,7 +246,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         delComment.comment_id = comment_id;
         delComment.unique_id_me = unique_id_me;
 
-        axios.post("./api/comment/deleteComment.php",
+        axios.post("../api/comment/deleteComment.php",
                 delComment, {
                     headers: {
                         "Content-Type": "application/json"
@@ -282,7 +281,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
         showComment.post_id = post_id;
 
-        axios.post("./api/comment/showComments.php",
+        axios.post("../api/comment/showComments.php",
                 showComment, {
                     headers: {
                         "Content-Type": "application/json"
@@ -311,7 +310,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         let tr = `<tr>
 						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
@@ -346,7 +345,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             commentp.comn_giver_id = comn_giver_id;
 
 
-            axios.post("./api/comment/comment.php",
+            axios.post("../api/comment/comment.php",
                     commentp, {
                         headers: {
                             "Content-Type": "application/json"
@@ -379,7 +378,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         var formdata = new FormData(form);
 
         $.ajax({
-            url: "./api/post/postAdd.php",
+            url: "../api/post/postAdd.php",
             type: "POST",
             data: formdata,
             contentType: false,
@@ -422,10 +421,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <div class="card" style="width: 100%;border: none">
 
                                 <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </p>
-                                <img width="100%" src="./post_image/${post.image}" alt="">
+                                <img width="100%" src="../post_image/${post.image}" alt="">
                                 <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                     <h6 class="card-title text-white">${post.time}</h6>
                                     <p class="card-text text-white">${post.post}</p>
@@ -464,7 +463,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         likep.post_id = post_id;
         likep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/like_post.php",
+        axios.post("../api/post/like_post.php",
                 likep, {
                     headers: {
                         "Content-Type": "application/json"
@@ -494,7 +493,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         dislikep.post_id = post_id;
         dislikep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/dislike_post.php",
+        axios.post("../api/post/dislike_post.php",
                 dislikep, {
                     headers: {
                         "Content-Type": "application/json"
@@ -527,7 +526,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             delPost.post_id = post_id;
             delPost.unique_id_me = unique_id_me;
 
-            axios.post("./api/post/deletePost.php",
+            axios.post("../api/post/deletePost.php",
                     delPost, {
                         headers: {
                             "Content-Type": "application/json"
@@ -561,7 +560,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         sharep.post_id = post_id;
         sharep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/share.php",
+        axios.post("../api/post/share.php",
                 sharep, {
                     headers: {
                         "Content-Type": "application/json"

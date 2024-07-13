@@ -90,7 +90,7 @@ $count109 = mysqli_num_rows($run109);
             message.grp_id = grp_id;
             message.unique_id_me = unique_id_me;
 
-            axios.post("./api/group/leaveGrp.php",
+            axios.post("../api/group/leaveGrp.php",
                     message, {
                         headers: {
                             "Content-Type": "application/json"

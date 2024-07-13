@@ -61,11 +61,11 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         <div class="card" style="width: 100%;border: none">
                             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                                 <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $data2['pro_pic']?>" alt="">
                                     <b><?php echo $data2['name']?></b>
                                 </a>
                             </p>
-                            <img width="100%" src="./post_image/<?php echo $data1['image']?>" alt="">
+                            <img width="100%" src="../post_image/<?php echo $data1['image']?>" alt="">
                             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                 <h6 class="card-title text-white"><?php echo $data1['time']?></h6>
                                 <p class="card-text text-white"><?php echo $data1['post']?></p>
@@ -143,7 +143,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         delComment.comment_id = comment_id;
         delComment.unique_id_me = unique_id_me;
 
-        axios.post("./api/comment/deleteComment.php",
+        axios.post("../api/comment/deleteComment.php",
                 delComment, {
                     headers: {
                         "Content-Type": "application/json"
@@ -178,7 +178,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
         showComment.post_id = post_id;
 
-        axios.post("./api/comment/showComments.php",
+        axios.post("../api/comment/showComments.php",
                 showComment, {
                     headers: {
                         "Content-Type": "application/json"
@@ -207,7 +207,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         let tr = `<tr>
 						<td class="text-center">
 							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="./pro_pic/${comment.pro_pic}">
+								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
 							</a>
 						</td>
 
@@ -242,7 +242,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             commentp.comn_giver_id = comn_giver_id;
 
 
-            axios.post("./api/comment/comment.php",
+            axios.post("../api/comment/comment.php",
                     commentp, {
                         headers: {
                             "Content-Type": "application/json"
@@ -276,7 +276,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         likep.post_id = post_id;
         likep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/like_post.php",
+        axios.post("../api/post/like_post.php",
                 likep, {
                     headers: {
                         "Content-Type": "application/json"
@@ -306,7 +306,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         dislikep.post_id = post_id;
         dislikep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/dislike_post.php",
+        axios.post("../api/post/dislike_post.php",
                 dislikep, {
                     headers: {
                         "Content-Type": "application/json"
@@ -335,7 +335,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         sharep.post_id = post_id;
         sharep.unique_id_me = unique_id_me;
 
-        axios.post("./api/post/share.php",
+        axios.post("../api/post/share.php",
                 sharep, {
                     headers: {
                         "Content-Type": "application/json"

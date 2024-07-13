@@ -24,7 +24,7 @@ if (isset($_GET['register'])) {
 
         <div class="col-md-12 text-center mt-4">
             <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $pro_pic ?>" id="pro_pic">
+                <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="pro_pic">
             </a>
         </div>
 
@@ -47,7 +47,7 @@ if (isset($_GET['register'])) {
             <table class="table table-bordered mt-3" style="border-color: #5d5d5d">
                 <tr>
                     <td>
-                        <h6 class="text-red">Email</h6>
+                        <h6 class="text-blue">Email</h6>
                     </td>
                     <td>
                         <h6 id="emailID"><?php echo $dataMe['email'] ?></h6>
@@ -55,7 +55,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h6 class="text-red">Date of Birth</h6>
+                        <h6 class="text-blue">Date of Birth</h6>
                     </td>
                     <td>
                         <h6 id="birth_date"><?php echo $dataAbout['date_birth'] ?></h6>
@@ -63,7 +63,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h6 class="text-red">Gender</h6>
+                        <h6 class="text-blue">Gender</h6>
                     </td>
                     <td>
                         <h6><?php echo $dataAbout['gender'] ?></h6>
@@ -71,7 +71,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h6 class="text-red">Phone Numbers</h6>
+                        <h6 class="text-blue">Phone Numbers</h6>
                     </td>
                     <td>
                         <h6 id="phone"><?php echo $dataAbout['phone_no'] ?></h6>
@@ -79,7 +79,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h6 class="text-red">Religion</h6>
+                        <h6 class="text-blue">Religion</h6>
                     </td>
                     <td>
                         <h6 id="religion"><?php echo $dataAbout['religion'] ?></h6>
@@ -87,7 +87,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h6 class="text-red">Country</h6>
+                        <h6 class="text-blue">Country</h6>
                     </td>
                     <td>
                         <h6 id="country"><?php echo $dataAbout['country'] ?></h6>
@@ -95,7 +95,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td>
-                        <h6 class="text-red">City</h6>
+                        <h6 class="text-blue">City</h6>
                     </td>
                     <td>
                         <h6 id="city"><?php echo $dataAbout['city'] ?></h6>
@@ -103,7 +103,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Bio</h6>
+                        <h6 class="text-blue">Bio</h6>
                     </td>
                     <td>
                         <h6 id="bio" style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h6>
@@ -111,7 +111,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Durbeen Visited</h6>
+                        <h6 class="text-blue">Durbeen Visited</h6>
                     </td>
                     <td>
                         <h6><?php echo $dataMe['visit'] ?></h6>
@@ -119,7 +119,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Account ID</h6>
+                        <h6 class="text-blue">Account ID</h6>
                     </td>
                     <td>
                         <h6 id="unique_id_me"><?php echo $dataMe['unique_id'] ?></h6>
@@ -127,7 +127,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Account Link</h6>
+                        <h6 class="text-blue">Account Link</h6>
                     </td>
                     <td>
                         <h6 class="one d-none">
@@ -137,7 +137,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Following List</h6>
+                        <h6 class="text-blue">Following List</h6>
                     </td>
                     <td>
                         <a href="./follow_list.php?type" class="btn btn-sm btn-success">Following List</a>
@@ -145,7 +145,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Old Profile Pictures</h6>
+                        <h6 class="text-blue">Old Profile Pictures</h6>
                     </td>
                     <td>
                         <a href="./pro_pic.php?type" class="btn btn-sm btn-success">Old Profile Pictures</a>
@@ -153,7 +153,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Old Cover Photos</h6>
+                        <h6 class="text-blue">Old Cover Photos</h6>
                     </td>
                     <td>
                         <a href="./cov_pic.php?type" class="btn btn-sm btn-success">Old Cover Photos</a>
@@ -161,7 +161,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">My All Comments</h6>
+                        <h6 class="text-blue">My All Comments</h6>
                     </td>
                     <td>
                         <a href="./my_comments.php?type" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</a>
@@ -169,7 +169,7 @@ if (isset($_GET['register'])) {
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h6 class="text-red">Other's Comments</h6>
+                        <h6 class="text-blue">Other's Comments</h6>
                     </td>
                     <td>
                         <a href="./other_comments.php?type" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</a>
@@ -208,7 +208,7 @@ if (isset($_GET['register'])) {
             <div class="modal-body">
                 <form action="" method="post" id="updateFormID" enctype="multipart/form-data">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                    <input type="hidden" id="hidden_pro_pic" name="pro_pic" value="<?php echo $pro_pic ?>">
+                    <input type="hidden" id="hidden_pro_pic" name="pro_pic" value="<?php echo $pro_pic_me ?>">
                     <input type="hidden" id="hidden_cov_pic" name="cov_pic" value="<?php echo $cov_pic ?>">
 
                     <div class="row">
