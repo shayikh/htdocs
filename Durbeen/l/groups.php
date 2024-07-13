@@ -41,7 +41,7 @@ include './header.php';
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-dark">Group Image (A*A size)</label>
+                                    <label class="form-label text-dark">Group Image</label>
                                     <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp" required>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@ include './header.php';
             let tr = `<tr>
                         <td class="text-center">
                             <a href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                <img height="135px" src="./pro_pic/${newGroup.pro_pic}" alt="">
+                                <img height="135px" src="../pro_pic/${newGroup.pro_pic}" alt="">
                             </a>
                         </td>
                         <td class="text-center">
