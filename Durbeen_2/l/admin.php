@@ -15,6 +15,7 @@ if ($count1 == 0) {
 
 
 
+<a style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-success">New Account Request</a>
 
 
 <div class="container" style="margin-top: 150px">

@@ -5,7 +5,7 @@ include './header.php';
 if ($_SESSION['unique_id_me'] != 1) {
     echo "<script>window.location = './homepage.php?type'</script>";
 } else {
-    $SQL1 = "SELECT * FROM `registration`";
+    $SQL1 = "SELECT * FROM `registration` ORDER BY `id` DESC";
     $run1 = mysqli_query($connection, $SQL1);
 }
 
@@ -26,7 +26,7 @@ if ($_SESSION['unique_id_me'] != 1) {
             <table class="table table-bordered mt-4" style="border-color: #5d5d5d">
                 <tr>
                     <th>
-                        <h5>unique_id</h5>
+                        <h5>Picture</h5>
                     </th>
                     <th>
                         <h5>Name</h5>
@@ -35,7 +35,10 @@ if ($_SESSION['unique_id_me'] != 1) {
                         <h5>Email</h5>
                     </th>
                     <th>
-                        <h5>Password</h5>
+                        <h5>Birth Date</h5>
+                    </th>
+                    <th>
+                        <h5>Gender</h5>
                     </th>
                 </tr>
 
@@ -43,7 +46,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                 <?php while ($data1 = mysqli_fetch_assoc($run1)) { ?>
                 <tr>
                     <td>
-                        <h5><?php echo $data1['unique_id'] ?></h5>
+                        <h5><?php echo $data1['pro_pic'] ?></h5>
                     </td>
                     <td>
                         <h5><?php echo $data1['name'] ?></h5>
@@ -52,7 +55,10 @@ if ($_SESSION['unique_id_me'] != 1) {
                         <h5><?php echo $data1['email'] ?></h5>
                     </td>
                     <td>
-                        <h5><?php echo $data1['password'] ?></h5>
+                        <h5><?php echo $data1['date_birth'] ?></h5>
+                    </td>
+                    <td>
+                        <h5><?php echo $data1['gender'] ?></h5>
                     </td>
                 </tr>
                 <?php } ?>
