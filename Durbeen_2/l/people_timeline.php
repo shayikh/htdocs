@@ -13,7 +13,7 @@ $runF = mysqli_query($durbeen_chats, $SQLF);
 $countF = mysqli_num_rows($runF);
 
 if ($countF == 0) {
-    echo "<script>window.location = 'timeline.php?type=timeline'</script>";
+    echo "<script>window.location = 'facelist.php?type=facelist'</script>";
 }
 
 
@@ -24,6 +24,10 @@ $data1 = mysqli_fetch_assoc($run1);
 $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
 $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
+
+$SQL2 = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
+$run2 = mysqli_query($durbeen_chats,$SQL2);
+$count2 = mysqli_num_rows($run2);
 
 ?>
 
@@ -52,8 +56,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="row">
         <div class="col-md-12">
 
-            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
-                <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
+                <?php $count2 == 0 ? printf("Allow") : printf("Reject") ?>
             </button>
 
             <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-2">Profile</a>
@@ -159,15 +163,15 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             })
     }
 
-    const followfn = (unique_id_me, unique_id_fr, elm) => {
+    const allowfn = (unique_id_me, unique_id_fr, elm) => {
 
-        let followVar = {};
+        let allowVar = {};
 
-        followVar.unique_id_me = unique_id_me;
-        followVar.unique_id_fr = unique_id_fr;
+        allowVar.unique_id_me = unique_id_me;
+        allowVar.unique_id_fr = unique_id_fr;
 
-        axios.post("../api/facelist/follow.php",
-                followVar, {
+        axios.post("../api/facelist/allow.php",
+                allowVar, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -176,13 +180,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 // console.log(res.data);
 
                 if (res.data == 0) {
-                    toastr.error('Unfollowed');
-                    elm.innerText = "Follow";
+                    toastr.error('Rejected to Follow You');
+                    elm.innerText = "Allow";
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
                 } else {
-                    toastr.success('Following');
-                    elm.innerText = "Unfollow";
+                    toastr.success('Allowed to Follow You');
+                    elm.innerText = "Reject";
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }
@@ -193,6 +197,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 console.log(err);
             })
     }
+
 
 
     const deleteComment = (comment_id, unique_id_me, elm) => {

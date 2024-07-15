@@ -54,14 +54,19 @@ while ($data1=mysqli_fetch_assoc($run)){
                 <p style="font-size: 13px;font-weight: 500"><?php echo $data1['name'] ?></p>
                 <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data1['visit'] ?></p>
             </a>
+            <button onclick="follow_req(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm btn-success" style="margin-top: 5px">
+                <i class="fas fa-user-plus"></i>
+            </button>
         </td>
         <td class="text-center">
-            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?>" id="followBtn" style="margin-top: 2px">
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 2px">
                 <?php $countF == 0 ? printf("Allow") : printf("Reject") ?>
             </button>
+            
             <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
                 <img width="50px" src="../img/892177.svg" alt="" style="margin-top: 15px">
             </a>
+            
         </td>
     </tr>
 

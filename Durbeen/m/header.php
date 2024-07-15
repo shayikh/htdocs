@@ -56,7 +56,7 @@ $pro_pic_me = $dataMe['pro_pic'];
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="./about_me.php">About Me</a></li>
                     <li><a class="dropdown-item" href="./facelist.php">People Facelist</a></li>
-                    <li><a class="dropdown-item" href="./friend_list.php">Friend List</a></li>
+                    <li><a class="dropdown-item" href="./chatlist.php">Chat List</a></li>
                     <li><a class="dropdown-item" href="./notification.php">Notifications</a></li>
                     <li><a class="dropdown-item" href="./my_notes.php">My Notes</a></li>
                     <li><a class="dropdown-item" href="./groups.php?type=groups">My Groups</a></li>

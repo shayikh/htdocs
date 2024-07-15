@@ -109,6 +109,7 @@ if ($countTest == 0) {
 <!-- main page -->
 <a target="_self" style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
 
+<a style="position: fixed;right: 297px;top: 91px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Profile</a>
 
 
 

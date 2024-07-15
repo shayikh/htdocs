@@ -13,7 +13,7 @@ $runF = mysqli_query($durbeen_chats, $SQLF);
 $countF = mysqli_num_rows($runF);
 
 if ($countF == 0) {
-    echo "<script>window.location = 'timeline.php?type=timeline'</script>";
+    echo "<script>window.location = 'facelist.php?type=facelist'</script>";
 }
 
 

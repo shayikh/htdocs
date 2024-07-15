@@ -56,6 +56,34 @@ include './header.php';
                 })
         }
 
+        const follow_req = (unique_id_me, unique_id_fr, elm) => {
+
+            let follow_req = {};
+
+            follow_req.unique_id_me = unique_id_me;
+            follow_req.unique_id_fr = unique_id_fr;
+
+            axios.post("../api/facelist/follow_req.php",
+                    follow_req, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                .then(res => {
+                    console.log(res.data);
+
+                    if (res.data == 0) {
+                        toastr.success('Follow Request Sent');
+                        elm.remove();
+                    }
+
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
         const allowfn = (unique_id_me, unique_id_fr, elm) => {
 
             let allowVar = {};
