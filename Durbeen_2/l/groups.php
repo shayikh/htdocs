@@ -1,14 +1,21 @@
 <?php
 include './header.php';
 
+
+$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run1 = mysqli_query($connection, $SQL1);
+$count1 = mysqli_num_rows($run1);
+
+
 ?>
+
+<?php if ($count1 > 0) { ?>
+<a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Group</a>
+<?php } ?>
 
 
 <!-- main page -->
 <div class="container" style="margin-top: 150px;">
-
-    <a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Group</a>
-
     <h4 class="text-center">My Groups</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">

@@ -229,30 +229,7 @@ if (isset($_POST['delete'])) {
     </div>
 
 
-    <?php if ($unique_id_me == 1) { ?>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-bordered mt-5" style="border-color: #5d5d5d">
-                <tr>
-                    <td>
-                        <h6 class="text-blue">All Info</h6>
-                    </td>
-                    <td>
-                        <a href="./all_info.php?type" class="btn btn-sm btn-success">All Info</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h6 class="text-blue">All Info by Email</h6>
-                    </td>
-                    <td>
-                        <a href="./all_info_email.php?type" class="btn btn-sm btn-success">All Info by Email</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <?php } ?>
+
 
 
 </div>

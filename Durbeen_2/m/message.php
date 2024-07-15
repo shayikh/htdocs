@@ -96,44 +96,6 @@ if ($countTest == 0) {
 
         $friendName = $data8['name'];
 
-
-        if (isset($_POST['delete_con'])) {
-
-            $SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
-            $run9 = mysqli_query($connection_message, $SQL9);
-
-            if ($run9 == true) {
-                while ($data9 = mysqli_fetch_assoc($run9)) {
-                    $imgNameinDB = $data9['image'];
-                    if ($imgNameinDB != '') {
-                        unlink('../chat_image/' . $imgNameinDB);
-                    }
-                }
-            }
-
-            $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
-            mysqli_query($connection_message, $SQL10);
-
-
-            $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
-            mysqli_query($connection_message, $SQL12);
-
-
-            $SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-            mysqli_query($durbeen_chats, $SQL13);
-
-            $SQL14 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-            mysqli_query($durbeen_chats, $SQL14);
-
-            $SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
-            mysqli_query($durbeen_chats, $SQL15);
-
-            $SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
-            mysqli_query($durbeen_chats, $SQL16);
-
-
-            echo "<script>window.location = 'homepage.php?type'</script>";
-        }
     }
 
 
@@ -146,12 +108,6 @@ if ($countTest == 0) {
 <!-- main page -->
 <a target="_self" style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Refresh Page</a>
 
-
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-
-    <button style="position: fixed;left: 111px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Conversation?')" name="delete_con" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
-
-</form>
 
 
 <div class="container" style="margin-top: 110px">

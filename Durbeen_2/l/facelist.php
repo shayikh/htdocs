@@ -67,7 +67,7 @@ include './header.php';
                 allowVar, {
                         headers: {
                             "Content-Type": "application/json"
-                        }
+                         }
                     })
                 .then(res => {
                     // console.log(res.data);

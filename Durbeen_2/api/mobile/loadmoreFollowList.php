@@ -12,7 +12,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL1 = "SELECT * FROM `$unique_id_me follow`";
+$SQL1 = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`!='$unique_id_me'";
 $run1 = mysqli_query($durbeen_chats, $SQL1);
 $total_posts = mysqli_num_rows($run1);
 $total_pages = ceil($total_posts / 10) + 1;
