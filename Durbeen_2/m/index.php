@@ -81,6 +81,9 @@ if (isset($_GET['mustlog'])) {
 if (isset($_GET['out'])) {
     echo "<script>toastr.error('You Are Logged Out')</script>";
 }
+if (isset($_GET['wait'])) {
+    echo "<script>toastr.error('Wait until Admin Approval')</script>";
+}
 ?>
 
 
