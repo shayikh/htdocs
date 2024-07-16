@@ -3,21 +3,27 @@ include './header.php';
 
 
 
-?>
+$SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run2 = mysqli_query($connection, $SQL2);
+$count2 = mysqli_num_rows($run2);
 
 
-<!-- message notification -->
-<?php
+// message notification
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
 $runnotify = mysqli_query($durbeen_chats, $SQLnotify);
-
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
+<a style="position: fixed;left: 4px;top: 61px;z-index: 15" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
+<?php } 
 
-<a style="position: fixed;left: 1%;top: 61px;z-index: 15" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
 
+
+if ($count2 > 0) { ?>
+<a style="position: fixed;left: 4px;top: 99px;z-index:15" href="./register_confirm.php?type" class="btn btn-sm btn-danger"><?php echo $count2 ?> New Account Requests</a>
 <?php } ?>
+
+
 
 
 <!-- NEWS FEED -->

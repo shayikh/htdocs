@@ -3,15 +3,14 @@ include './header.php';
 
 
 
-$SQL2 = "SELECT * FROM `account` ORDER BY `id` DESC";
+$SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
 $run2 = mysqli_query($connection, $SQL2);
-$count1 = mysqli_num_rows($run2);
+$count2 = mysqli_num_rows($run2);
 
 
 // message notification
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
 $runnotify = mysqli_query($durbeen_chats, $SQLnotify);
-
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
@@ -20,8 +19,8 @@ if ($number > 0) { ?>
 
 
 
-if ($count1 > 0) { ?>
-<a style="position: fixed;right: 750px;top: 29px;z-index:15" href="./register_confirm.php?type" class="btn btn-sm btn-danger">You Have <?php echo $count1 ?> New Account Requests</a>
+if ($count2 > 0) { ?>
+<a style="position: fixed;right: 750px;top: 29px;z-index:15" href="./register_confirm.php?type" class="btn btn-sm btn-danger"><?php echo $count2 ?> New Account Requests</a>
 <?php } ?>
 
 

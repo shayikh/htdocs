@@ -19,28 +19,28 @@ $run2 = mysqli_query($connection, $SQL2);
 
 
 <!-- main page -->
-<div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top: 112px">
 
-    <h4 class="text-center">Account Requests</h4>
-    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+    <h6 class="text-center">Account Requests</h6>
+    <table class="table table-bordered mt-3" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tr>
             <th class="text-center">
-                <h5>Picture</h5>
+                <h6>Picture</h6>
             </th>
             <th class="text-center">
-                <h5>Name</h5>
+                <h6>Name</h6>
             </th>
             <th class="text-center">
-                <h5>Email</h5>
+                <h6>Email</h6>
             </th>
             <th class="text-center">
-                <h5>Birth Date</h5>
+                <h6>Birth Date</h6>
             </th>
             <th class="text-center">
-                <h5>Gender</h5>
+                <h6>Gender</h6>
             </th>
             <th colspan="2" class="text-center">
-                <h5>Action</h5>
+                <h6>Action</h6>
             </th>
         </tr>
 
@@ -48,25 +48,25 @@ $run2 = mysqli_query($connection, $SQL2);
         <?php while ($data2 = mysqli_fetch_assoc($run2)) { ?>
         <tr>
             <td class="text-center">
-                <img width="550px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>">
+                <img width="250px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>">
             </td>
             <td class="text-center">
-                <h5><?php echo $data2['name'] ?></h5>
+                <h6><?php echo $data2['name'] ?></h6>
             </td>
             <td class="text-center">
-                <h5><?php echo $data2['email'] ?></h5>
+                <h6><?php echo $data2['email'] ?></h6>
             </td>
             <td class="text-center">
-                <h5><?php echo $data2['date_birth'] ?></h5>
+                <h6><?php echo $data2['date_birth'] ?></h6>
             </td>
             <td class="text-center">
-                <h5><?php echo $data2['gender'] ?></h5>
+                <h6><?php echo $data2['gender'] ?></h6>
             </td>
             <td class="text-center">
-                <button onclick="approve(<?php echo $data2['id'] ?>, this)" class="btn btn-success">Approve</button>
+                <button onclick="approve(<?php echo $data2['id'] ?>, this)" class="btn btn-sm btn-success">Approve</button>
             </td>
             <td class="text-center">
-                <button onclick="reject(<?php echo $data2['id'] ?>, this)" class="btn btn-danger">Reject</button>
+                <button onclick="reject(<?php echo $data2['id'] ?>, this)" class="btn btn-sm btn-danger">Reject</button>
             </td>
         </tr>
         <?php } ?>
@@ -120,7 +120,6 @@ $run2 = mysqli_query($connection, $SQL2);
                         }
                     })
                 .then(res => {
-                    console.log(res.data);
                     if (res.data == 0) {
                         toastr.success('Request Rejected');
                         elm.parentElement.parentElement.remove();

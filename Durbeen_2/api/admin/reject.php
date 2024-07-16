@@ -7,7 +7,7 @@ header('Content-Type: application/x-www-form-urlencoded');
 $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
 
-$Deleteid = $data['id'];
+$id = $data['id'];
 
 $SQL1 = "SELECT * FROM `account` WHERE `id`='$id'";
 $run1 = mysqli_query($connection, $SQL1);
@@ -20,7 +20,7 @@ if($pro_pic!=''){
 }
 
 
-$SQL2 = "DELETE FROM `account` WHERE `id`='$Deleteid'";
+$SQL2 = "DELETE FROM `account` WHERE `id`='$id'";
 mysqli_query($connection, $SQL2);
   
   

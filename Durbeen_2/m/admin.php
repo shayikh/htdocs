@@ -14,7 +14,9 @@ if ($count1 == 0) {
 ?>
 
 
-
+<?php if ($count1 > 0) { ?>
+<a style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-sm btn-success">Account Requests</a>
+<?php } ?>
 
 
 <div class="container" style="margin-top: 112px">

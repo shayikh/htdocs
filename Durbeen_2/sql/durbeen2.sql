@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2024 at 05:34 PM
+-- Generation Time: Jul 16, 2024 at 02:42 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `durbeen`
+-- Database: `durbeen2`
 --
 
 -- --------------------------------------------------------
@@ -44,6 +44,33 @@ CREATE TABLE `about` (
   `question_three` text NOT NULL,
   `answer_three` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `id` int(255) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `email` varchar(1000) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `date_birth` varchar(1000) NOT NULL,
+  `gender` varchar(1000) NOT NULL,
+  `pro_pic` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(255) NOT NULL,
+  `unique_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -140,6 +167,18 @@ ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
@@ -184,6 +223,18 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
