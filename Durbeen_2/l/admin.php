@@ -70,7 +70,7 @@ if ($count1 == 0) {
         let addVar = {};
         addVar.unique_id_fr = unique_id_fr;
 
-        axios.post("../api/make_durbeen.admin.php",
+        axios.post("../api/admin/make_durbeen.admin.php",
                 addVar, {
                     headers: {
                         "Content-Type": "application/json"

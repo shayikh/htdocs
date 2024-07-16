@@ -1,6 +1,6 @@
 <?php
 
-include '../connection.php';
+include '../../connection.php';
 
 header('Content-Type: application/x-www-form-urlencoded');
 
