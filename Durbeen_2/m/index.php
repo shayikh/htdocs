@@ -83,6 +83,7 @@ if (isset($_GET['out'])) {
 }
 if (isset($_GET['wait'])) {
     echo "<script>toastr.error('Wait until Admin Approval')</script>";
+    echo "<script>alert('Wait until Admin Approval')</script>";
 }
 ?>
 
