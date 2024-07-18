@@ -154,7 +154,7 @@ $count2 = mysqli_num_rows($run2);
                     </td>
                     <td>
                         <h6 class="one d-none">
-                            http://durbeen.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h6>
+                            http://durbeen2.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h6>
                         <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>

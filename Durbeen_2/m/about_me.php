@@ -131,7 +131,7 @@ if (isset($_GET['register'])) {
                     </td>
                     <td>
                         <h6 class="one d-none">
-                            http://durbeen.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h6>
+                            http://durbeen2.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h6>
                         <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>
