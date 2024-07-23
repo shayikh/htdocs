@@ -31,7 +31,7 @@ if($page_no >= $total_pages){
 $limit = 10;
 $row = ($page_no - 1)*$limit;
 
-$SQL2 = "SELECT * FROM `$unique_id_me pro_pic` WHERE `watch`='1' ORDER BY `id` DESC LIMIT $row,$limit";
+$SQL2 = "SELECT * FROM `$unique_id_me pro_pic` ORDER BY `id` DESC LIMIT $row,$limit";
 
 $run2 = mysqli_query($durbeen_chats, $SQL2);
 
@@ -41,13 +41,13 @@ while ($data2 = mysqli_fetch_assoc($run2)){
 
     <tr>
         <td class="text-center">
-            <img width="130px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>" alt="">
+            <img width="130px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>">
         </td>
         <td class="text-center">
-            <button onclick="makeProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 50px">Make Profile Picture</button>
+            <button onclick="makeProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 20px">Make Profile Picture</button>
         </td>
         <td class="text-center">
-            <button onclick="deleteProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger" style="margin-top: 50px">Delete</button>
+            <button onclick="deleteProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger" style="margin-top: 30px">Delete</button>
         </td>
     </tr>
 

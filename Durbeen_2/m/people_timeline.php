@@ -143,7 +143,7 @@ $count2 = mysqli_num_rows($run2);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-        axios.post("../api/mobile/loadmorePeopleTimeline.php",
+        axios.post("../api/post/loadmorePeopleTimeline_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"

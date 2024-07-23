@@ -26,9 +26,7 @@ if (isset($_GET['register'])) {
         </div>
 
         <div class="col-md-12 mt-4">
-            <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="pro_pic">
-            </a>
+			<img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="pro_pic">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -146px;">

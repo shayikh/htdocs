@@ -1,7 +1,6 @@
 
 
 
-
 Js er sokol function custom.js file e rakha
 
 windows.css/js android.css/js

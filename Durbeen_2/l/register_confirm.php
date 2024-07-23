@@ -80,7 +80,7 @@ $run2 = mysqli_query($connection, $SQL2);
 
 <script>
     const approve = (id, elm) => {
-        let confirm = window.confirm("Do You Want to Accept This Account");
+        let confirm = window.confirm("Do You Want to Accept This Account?");
 
         if (confirm) {
             let approve = {};
@@ -106,7 +106,7 @@ $run2 = mysqli_query($connection, $SQL2);
     }
 
     const reject = (id, elm) => {
-        let confirm = window.confirm("Do You Want to Reject?");
+        let confirm = window.confirm("Do You Want to Reject This Account?");
 
         if (confirm) {
             let reject = {};

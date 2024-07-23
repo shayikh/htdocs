@@ -42,7 +42,7 @@ include './header.php';
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/mobile/loadmoreProPics.php",
+        axios.post("../api/pro_pic/loadmoreProPics_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"

@@ -21,9 +21,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         </div>
 
         <div class="col-md-12 mt-4">
-            <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
-            </a>
+            <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -146px;">
@@ -587,7 +585,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 </script>
 
-<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
     <i class="fas fa-plus"></i>
 </button>
 

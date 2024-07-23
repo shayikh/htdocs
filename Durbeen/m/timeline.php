@@ -21,9 +21,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         </div>
 
         <div class="col-md-12 text-center mt-4">
-            <a class="text-decoration-none" href="">
-                <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
-            </a>
+            <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -170px;">
@@ -167,7 +165,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/mobile/loadmoreTimeline.php",
+        axios.post("../api/post/loadmoreTimeline_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -594,7 +592,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 </script>
 
-<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
     <i class="fas fa-plus"></i>
 </button>
 

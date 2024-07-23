@@ -106,9 +106,9 @@ if ($countTest == 0) {
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Refresh Page</a>
+<a target="_self" style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Refresh</a>
 
-<a style="position: fixed;left: 111px;top: 62px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Profile</a>
+<a style="position: fixed;left: 73px;top: 62px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Profile</a>
 
 
 
@@ -136,7 +136,7 @@ if ($countTest == 0) {
 
 <!-- Message Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -190,7 +190,7 @@ if ($countTest == 0) {
         msgData.unique_id_me = <?php echo $unique_id_me ?>;
         msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
-        axios.post("../api/mobile/loadmoreMsg.php",
+        axios.post("../api/message/loadmoreMsg_m.php",
                 msgData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -355,7 +355,7 @@ if ($countTest == 0) {
 <div style="height: 20px"></div>
 
 
-<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
     <i class="fas fa-plus"></i>
 </button>
 

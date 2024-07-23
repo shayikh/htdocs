@@ -216,7 +216,7 @@ if ($count110 == 0) {
 <div style="height: 20px"></div>
 
 
-<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
     <i class="fas fa-plus"></i>
 </button>
 

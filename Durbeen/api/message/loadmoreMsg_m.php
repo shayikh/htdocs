@@ -45,10 +45,8 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
             <?php if ($data3['sender'] == 'fr') { ?>
 
                 <div class="float-start" style="border: none;">
-                    <a target="_blank" href="./about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                        <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
-                            src="../pro_pic/<?php echo $pro_pic_fr ?>">
-                    </a>        
+                    <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
+                        src="../pro_pic/<?php echo $pro_pic_fr ?>">
                     <br><br>
 
                     <?php if ($data3['image'] != "") { ?>

@@ -72,11 +72,11 @@ if (isset($_POST['delete_grp'])) {
 
 
 <!-- main page -->
-<a style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
+<a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
 
 
 <form method="post" action="grp_admins.php?type&grp_id=<?php echo $grp_id ?>">
-    <button style="position: fixed;left: 100px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Group Permanently?')" name="delete_grp" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
+    <button style="position: fixed;left: 95px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Group Permanently?')" name="delete_grp" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
 </form>
 
 
@@ -164,7 +164,7 @@ if (isset($_POST['delete_grp'])) {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-dark">Group Image (A*A size)</label>
+                                    <label class="form-label text-dark">Group Image</label>
                                     <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                                 </div>
                             </div>

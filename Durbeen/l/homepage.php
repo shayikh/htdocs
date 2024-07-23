@@ -15,7 +15,7 @@ $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
 
-<a style="position: fixed;right:35%;top:26px;z-index:15" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
+<a style="position: fixed;left: 536px;top: 29px;z-index:15;font-weight: 600;" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
 
 <?php } ?>
 
@@ -451,7 +451,7 @@ if ($number > 0) { ?>
     </script>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
         <i class="fas fa-plus"></i>
     </button>
 

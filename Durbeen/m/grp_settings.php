@@ -27,19 +27,15 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
+<a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" style="font-weight: 600;" class="btn btn-sm btn-danger float-end" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave</a>
+
 <?php if ($count109 > 0) { ?>
-<a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success">Admin Page</a>
+<a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 61px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success">Admin</a>
 <?php } ?>
 
 
 
 <div class="container" style="margin-top: 112px">
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-sm btn-danger float-end" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
-        </div>
-    </div>
-
     <h6 class="text-center mt-2"><?php echo $data111['grp_name'] ?></h6>
     <h6 class="text-center">Group Members</h6>
     <table class="table table-bordered mt-2" style="margin-bottom: 150px;border-color: #5d5d5d">
@@ -61,15 +57,19 @@ $count109 = mysqli_num_rows($run109);
                 ?>
 
                 <tr>
-
+                    <td class="text-center">
+                        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                            <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $dataF154['pro_pic'] ?>">
+                        </a>
+                    </td>
                     <td class="text-center" style="max-width: 129px">
                         <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <p style="font-weight: 500"><?php echo $dataF154['name'] ?></p>
+                            <p style="font-size: 13px;font-weight: 500"><?php echo $dataF154['name'] ?></p>
                             <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $dataF154['visit'] ?></p>
                         </a>
                     </td>
                     <td class="text-center">
-                        <h6 style="margin-top: 8px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("") ?></h6>
+                        <h6 style="margin-top: 25px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("") ?></h6>
                     </td>
                 </tr>
             <?php } ?>
@@ -84,7 +84,7 @@ $count109 = mysqli_num_rows($run109);
 
 
     const leaveGrp = (grp_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Leave?");
+        let confirm = window.confirm("Do You Want to Leave From This Group?");
 
         if (confirm) {
 
@@ -103,7 +103,7 @@ $count109 = mysqli_num_rows($run109);
                     // console.log(res.data);
 
                     if (res.data == '1') {
-                        window.location = 'homepage.php?type';
+                        window.location = 'groups.php?type=groups';
                     }
 
                 })

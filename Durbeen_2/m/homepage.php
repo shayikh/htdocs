@@ -18,13 +18,13 @@ $runnotify = mysqli_query($durbeen_chats, $SQLnotify);
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
-<a style="position: fixed;left: 4px;top: 61px;z-index: 15" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
+<a style="position: fixed;left: 3px;top: 61px;z-index: 15;font-weight: 600;" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
 <?php } 
 
 
 
 if ($count2 > 0 && $count3 > 0) { ?>
-<a style="position: fixed;left: 4px;top: 99px;z-index:15" href="./register_confirm.php?type" class="btn btn-sm btn-danger"><?php echo $count3 ?> New Account Requests</a>
+<a style="position: fixed;left: 3px;top: 99px;z-index:15;font-weight: 600;" href="./register_confirm.php?type" class="btn btn-sm btn-danger"><?php echo $count3 ?> New Account Requests</a>
 <?php } ?>
 
 
@@ -134,7 +134,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
             postData.page_no = page_no;
             postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-            axios.post("../api/mobile/loadmoreHomePage.php",
+            axios.post("../api/post/loadmoreHomePage_m.php",
                     postData, {
                         headers: {
                             "Content-Type": "application/json"
@@ -467,7 +467,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
     </script>
 
 
-    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
+    <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
         <i class="fas fa-plus"></i>
     </button>
 

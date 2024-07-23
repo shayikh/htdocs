@@ -58,15 +58,19 @@ $count109 = mysqli_num_rows($run109);
                 ?>
 
                 <tr>
-
-                    <td class="text-center" style="max-width: 129px">
+                    <td class="text-center">
+                        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                            <img height="135px" src="../pro_pic/<?php echo $dataF154['pro_pic'] ?>" alt="">
+                        </a>
+                    </td>
+                    <td class="text-center">
                         <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <h3 style="margin-top: 10px"><?php echo $dataF154['name'] ?></h3>
+                            <h3 style="margin-top: 35px"><?php echo $dataF154['name'] ?></h3>
                             <h6 class="text-success">Durbeen Visited : <?php echo $dataF154['visit'] ?></h6>
                         </a>
                     </td>
                     <td class="text-center">
-                        <h3 style="margin-top: 20px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("") ?></h3>
+                        <h3 style="margin-top: 47px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("") ?></h3>
                     </td>
                 </tr>
             <?php } ?>
@@ -81,7 +85,7 @@ $count109 = mysqli_num_rows($run109);
 
 
     const leaveGrp = (grp_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Leave?");
+        let confirm = window.confirm("Do You Want to Leave From This Group?");
 
         if (confirm) {
 
@@ -100,7 +104,7 @@ $count109 = mysqli_num_rows($run109);
                     // console.log(res.data);
 
                     if (res.data == '1') {
-                        window.location = 'homepage.php?type';
+                        window.location = 'groups.php?type=groups';
                     }
 
                 })

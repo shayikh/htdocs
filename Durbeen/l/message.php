@@ -144,6 +144,8 @@ if ($countTest == 0) {
 
 
 <!-- main page -->
+<a style="position: fixed;right: 340px;top: 91px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Profile</a>
+
 <a target="_self" style="position: fixed;right: 217px;top: 91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
 
 
@@ -383,7 +385,7 @@ if ($countTest == 0) {
 <div style="height: 20px"></div>
 
 
-<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
+<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
     <i class="fas fa-plus"></i>
 </button>
 
