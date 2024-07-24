@@ -23,7 +23,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                 </div>
 
                 <div class="col-md-4 mb-3">
-                    <button onclick="showdata()" type="button" class="btn btn-secondary float-end form-control">
+                    <button onclick="showdata()" type="button" class="btn btn-primary float-end form-control">
                         Find User
                     </button>
                 </div>
