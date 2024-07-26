@@ -65,8 +65,22 @@ if (isset($_POST['login'])) {
     <script src="../js/jquery-3.5.1.toastr.min.js"></script>
     <script src="../js/toastr.min.js"></script>
     <script src="../js/axios.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/windows.css">
+    <style>
+        .pwdbody {
+            position: relative;
+        }
 
+        .icon {
+            position: absolute;
+            top: 18px;
+            right: 30px;
+        }
+        input::placeholder {
+            color: black;
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -106,7 +120,7 @@ if (isset($_GET['del'])) {
                         </div>
 
 
-                        <input name="login" value="Log In" class="form-control button-red" type="submit">
+                        <input name="login" value="Log In" class="form-control button_red" type="submit">
 
                         <div class="text-center">
                             <b>
@@ -120,7 +134,7 @@ if (isset($_GET['del'])) {
 
 
                         <div style="margin-top:35px;text-align: center">
-                            <a style="width: 200px;height: 48px" class="anchor button-3 form-control" href="./registration.php"><b>Create New Account</b></a>
+                            <a style="width: 200px;height: 48px" class="anchor button_index form-control" href="./registration.php"><b>Create New Account</b></a>
                             <a href="./forgotPass.php" class="text-decoration-none text-primary">Forgot Password?</a>
                         </div>
 

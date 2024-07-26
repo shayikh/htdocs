@@ -65,16 +65,29 @@ if (isset($_POST['login'])) {
     <script src="../js/jquery-3.5.1.toastr.min.js"></script>
     <script src="../js/toastr.min.js"></script>
     <script src="../js/axios.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/android.css">
+    <style>
+        .pwdbody {
+            position: relative;
+        }
 
+        .icon {
+            position: absolute;
+            top: 18px;
+            right: 30px;
+        }
+        input::placeholder {
+            color: black;
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
 
 
 
-    <?php
+<?php
 if (isset($_GET['mustlog'])) {
     echo "<script>toastr.error('You Must LogIn First')</script>";
 }
@@ -87,13 +100,13 @@ if (isset($_GET['out'])) {
     <div class="container-fluid" style="margin-top: 10px">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <h1 class="durbeen_mb">দূরবীন</h1>
-                <p class="bondhu_text_mb text-dark">বন্ধু আড্ডা এডভেঞ্চার সব এখানেই . . .</p>
+                <h1 class="durbeen">দূরবীন</h1>
+                <p class="bondhu_text text-dark">বন্ধু আড্ডা এডভেঞ্চার সব এখানেই . . .</p>
             </div>
 
 
             <div class="col-md-6 col-sm-12">
-                <div class="division_mb">
+                <div class="division">
                     <form class="margin-padding" method="post" action="" id="formID">
                         <div class="form-group margin-padding-1">
                             <input required name="email" id="" type="email" class="form-control form-control-lg" placeholder="Email address">
@@ -104,7 +117,7 @@ if (isset($_GET['out'])) {
                         </div>
 
 
-                        <input name="login" value="Log In" class="form-control button-red_mobile" type="submit">
+                        <input name="login" value="Log In" class="form-control button_red" type="submit">
 
                         <div class="text-center">
                             <b>
@@ -114,11 +127,11 @@ if (isset($_GET['out'])) {
 
                         </div>
 
-                        <div class="a_mb mt-3"></div>
+                        <div class="a mt-3"></div>
 
 
                         <div style="margin-top:35px;text-align: center">
-                            <a style="width: 200px;height: 48px" class="anchor button-3 form-control" href="./registration.php"><b>Create New Account</b></a>
+                            <a style="width: 200px;height: 48px" class="anchor button_index form-control" href="./registration.php"><b>Create New Account</b></a>
                             <a href="./forgotPass.php" class="text-decoration-none text-primary">Forgot Password?</a>
                         </div>
 
@@ -140,6 +153,6 @@ if (isset($_GET['out'])) {
 
 
 
-    <?php
+<?php
 include './footer.php'
 ?>

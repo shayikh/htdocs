@@ -37,8 +37,7 @@ $pro_pic_me = $dataMe['pro_pic'];
     <script src="../js/jquery-3.5.1.toastr.min.js"></script>
     <script src="../js/toastr.min.js"></script>
     <script src="../js/axios.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/mobile.css">
+    <link rel="stylesheet" href="../css/android.css">
 
 </head>
 
@@ -75,7 +74,7 @@ $pro_pic_me = $dataMe['pro_pic'];
 
 
                     <a class="text-decoration-none float-end" style="margin-top: 7px" href="./timeline.php?type=timeline">
-                        <div class="t-hover_mb <?php $_GET['type'] == 'timeline' ? printf('t-active_mb') : "" ?>">
+                        <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
 
                             <img class="float-end" style="border-radius: 50%" width="40px" height="40px"
                                  src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="" id="timeline_pro_pic">

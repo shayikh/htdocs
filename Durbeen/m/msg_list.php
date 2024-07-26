@@ -46,17 +46,16 @@ if ($number > 0) {
             $SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
             $run21 = mysqli_query($connection, $SQL21);
             $data21 = mysqli_fetch_assoc($run21);
-
-
+            
             ?>
 
         <li style="margin-bottom: 5px">
             <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
-                <div class="hover_chatbar_mobile">
+                <div class="msg_list_hov">
 
                     <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
                     <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px" alt="">
-                    <h5 class="text-" style="margin-top: -37px;margin-left: 68px">
+                    <h5 style="margin-top: -37px;margin-left: 68px">
                         <?php echo $data21['name'] ?>
                     </h5>
 

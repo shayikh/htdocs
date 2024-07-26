@@ -37,7 +37,7 @@ $pro_pic_me = $dataMe['pro_pic'];
     <script src="../js/jquery-3.5.1.toastr.min.js"></script>
     <script src="../js/toastr.min.js"></script>
     <script src="../js/axios.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/windows.css">
 
 </head>
 
