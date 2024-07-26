@@ -85,6 +85,18 @@ label {
 
 
 
+/* homepage */
+.timeline_link {
+    transition: 0.5s;
+}
+
+.timeline_link:hover {
+    color: #47c0e8;
+    transition: 0.5s;
+}
+/* homepage end */
+
+
 
 
 /* navbar */
