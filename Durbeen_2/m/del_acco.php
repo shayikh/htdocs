@@ -1,17 +1,10 @@
 <?php
 include './header.php';
 
-
-
-
-
-
 ?>
 
 
 <!-- main page -->
-
-
 
 
 <div class="container" style="margin-top: 120px">
