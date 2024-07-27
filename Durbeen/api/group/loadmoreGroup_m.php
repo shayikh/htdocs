@@ -35,7 +35,7 @@ $run = mysqli_query($durbeen_chats,$SQL);
 while ($data = mysqli_fetch_assoc($run)){
 $grp_id = $data['grp_id'];
 
-$SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id' LIMIT $row,$limit";
+$SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
 $run1 = mysqli_query($connection,$SQL1);
 $data1 = mysqli_fetch_assoc($run1)
 

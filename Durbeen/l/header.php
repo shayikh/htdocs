@@ -55,7 +55,6 @@ $pro_pic_me = $dataMe['pro_pic'];
                         <li><a class="dropdown-item" href="./about_me.php?type=about_me">About Me</a></li>
                         <li><a class="dropdown-item" href="./facelist.php?type=facelist">People Facelist</a></li>
                         <li><a class="dropdown-item" href="./notification.php?type=notification">Notifications</a></li>
-                        <li><a class="dropdown-item" href="./my_notes.php?type=my_notes">My Notes</a></li>
                         <li><a class="dropdown-item" href="./groups.php?type=groups">My Groups</a></li>
                         <li><a class="dropdown-item" style="cursor: pointer" onclick="logout(<?php echo $unique_id_me ?>)">
                                 <h6>Log Out <i class="fas fa-sign-out-alt"></i></h6>
@@ -110,9 +109,6 @@ $pro_pic_me = $dataMe['pro_pic'];
                                     <a class="btn btn-sm nav <?php $_GET['type'] == 'notification' ? printf("active_2") : "" ?>" href="./notification.php?type=notification" aria-current="page">Notifications</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn btn-sm nav <?php $_GET['type'] == 'my_notes' ? printf("active_2") : "" ?>" href="./my_notes.php?type=my_notes" aria-current="page">My Notes</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="btn btn-sm nav <?php $_GET['type'] == 'groups' ? printf("active_2") : "" ?>" href="./groups.php?type=groups" aria-current="page">My Groups</a>
                                 </li>
                             </ul>
@@ -129,11 +125,65 @@ $pro_pic_me = $dataMe['pro_pic'];
     <!-- Chatbar start -->
     <div class="main-menu" style="margin-top:133px;padding-top: 8px;z-index: 25">
         <ul style="list-style-type: none">
-            <?php
-        $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
-        $run11 = mysqli_query($durbeen_chats, $SQL11);
+            <li style="margin-bottom: 5px">
+                <a class="text-decoration-none" href="./my_notes.php?type=my_notes">
+                    <div class="hover_chatbar">
 
-        while ($data11 = mysqli_fetch_assoc($run11)) {
+                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>">
+                        <img src="../img/green_dot.png" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px">
+                        <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
+                            <?php echo $dataMe['name'] ?>
+                        </h5>
+
+                    </div>
+                </a>
+            </li>
+
+
+
+
+
+
+            <?php
+            $SQL12 = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC";
+            $run12 = mysqli_query($durbeen_chats, $SQL12);
+
+            while ($data12 = mysqli_fetch_assoc($run12)) {
+
+            $grp_id = $data12['grp_id'];
+
+            $SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
+            $run1 = mysqli_query($connection,$SQL1);
+            $data1 = mysqli_fetch_assoc($run1)
+
+            ?>
+
+            <li style="margin-bottom: 5px">
+                <a class="text-decoration-none" href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
+                    <div class="hover_chatbar">
+
+                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
+                        <img src="../img/green_dot.png" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px">
+                        <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
+                            <?php echo $data1['grp_name'] ?>
+                        </h5>
+
+                    </div>
+                </a>
+            </li>
+
+            <?php } ?>
+
+
+
+
+
+
+            <?php
+            $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
+            $run11 = mysqli_query($durbeen_chats, $SQL11);
+
+            while ($data11 = mysqli_fetch_assoc($run11)) {
 
             $unique_id_fr_chats = $data11['unique_id_fr'];
 
