@@ -57,7 +57,6 @@ $pro_pic_me = $dataMe['pro_pic'];
                     <li><a class="dropdown-item" href="./facelist.php">People Facelist</a></li>
                     <li><a class="dropdown-item" href="./msg_list.php">Message List</a></li>
                     <li><a class="dropdown-item" href="./notification.php">Notifications</a></li>
-                    <li><a class="dropdown-item" href="./my_notes.php">My Notes</a></li>
                     <li><a class="dropdown-item" href="./groups.php?type=groups">My Groups</a></li>
                     <li><a class="dropdown-item" style="cursor: pointer" onclick="logout(<?php echo $unique_id_me ?>)"><h6>Log Out <i class="fas fa-sign-out-alt"></i></h6></a></li>
                 </ul>
