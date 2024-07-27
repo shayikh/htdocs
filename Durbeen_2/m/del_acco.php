@@ -4,18 +4,14 @@ include './header.php';
 
 
 
-$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
-$run1 = mysqli_query($connection, $SQL1);
-$count1 = mysqli_num_rows($run1);
+
 
 ?>
 
 
 <!-- main page -->
 
-<?php if ($count1 > 0) { ?>
-<a style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="admin.php?type" class="btn btn-sm btn-success">Durbeen Admin</a>
-<?php } ?>
+
 
 
 <div class="container" style="margin-top: 120px">

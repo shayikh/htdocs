@@ -7,12 +7,19 @@ $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
 $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
-//alert
-if (isset($_GET['register'])) {
-    echo "<script>toastr.success('Registration Completed')</script>";
-}
+
+$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run1 = mysqli_query($connection, $SQL1);
+$count1 = mysqli_num_rows($run1);
+
 ?>
 
+
+<?php if ($count1 > 0) { ?>
+<a style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="admin.php?type" class="btn btn-sm btn-success">Admin</a>
+
+<a style="position: fixed;left: 69px;top: 62px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-sm btn-success">Requests</a>
+<?php } ?>
 
 <!-- main page -->
 <div class="container" style="margin-top: 99px;margin-bottom: 100px">

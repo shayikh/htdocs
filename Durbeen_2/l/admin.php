@@ -14,10 +14,6 @@ if ($count1 == 0) {
 ?>
 
 
-
-<a style="position: fixed;right:174px;top:91px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-success">Account Request</a>
-
-
 <div class="container" style="margin-top: 150px">
     <h4 class="text-center">Add Or Remove Members & Admins</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
