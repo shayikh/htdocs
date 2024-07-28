@@ -79,7 +79,7 @@ include './header.php';
                         toastr.success('Unfollowed');
                         elm.innerText = 'Follow';
                         elm.classList.add('btn-success');
-                        elm.classList.remove('btn-danger');
+                        elm.classList.remove('btn-primary');
                     }
 
 
