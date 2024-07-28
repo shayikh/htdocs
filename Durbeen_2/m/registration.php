@@ -116,6 +116,7 @@ if (isset($_POST['signup'])) {
             position: absolute;
             top: 13px;
             right: 45px;
+            cursor: pointer;
         }
     </style>
 </head>

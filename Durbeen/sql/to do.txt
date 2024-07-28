@@ -1,14 +1,6 @@
 
-Message box fixed position upore niche image text
+Message box fixed position upore
 
-durbeen_chats => durbeen_info
-
-col-md-6 ke lg sm diye responsive kora
-
-inline css ke external kora
-
-azaira code delete kora
-
-Login register e icos er cursor pointer
+durbeen_chats => connection_info
 
 Activity check by others session check

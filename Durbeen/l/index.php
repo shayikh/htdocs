@@ -75,6 +75,7 @@ if (isset($_POST['login'])) {
             position: absolute;
             top: 18px;
             right: 30px;
+            cursor: pointer;
         }
         input::placeholder {
             color: black;
