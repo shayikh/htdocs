@@ -40,6 +40,10 @@ while ($data1=mysqli_fetch_assoc($run)){
     $runF = mysqli_query($durbeen_chats,$SQLF);
     $countF = mysqli_num_rows($runF);
 
+    $SQLC = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
+    $runC = mysqli_query($durbeen_chats,$SQLC);
+    $countC = mysqli_num_rows($runC);
+
 
     ?>
 
@@ -54,8 +58,8 @@ while ($data1=mysqli_fetch_assoc($run)){
                 <p style="font-size: 13px;font-weight: 500"><?php echo $data1['name'] ?></p>
                 <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data1['visit'] ?></p>
             </a>
-            <button onclick="follow_req(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm btn-success" style="margin-top: 5px">
-                <i class="fas fa-user-plus"></i>
+            <button onclick="follow_req(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countC == 0 ? printf('btn-success') : printf("btn-danger") ?>"" style="margin-top: 5px">
+                <?php $countC == 0 ? printf('Follow') : printf("Unfollow") ?>
             </button>
         </td>
         <td class="text-center">

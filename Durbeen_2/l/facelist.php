@@ -72,9 +72,14 @@ include './header.php';
                 .then(res => {
                     console.log(res.data);
 
-                    if (res.data == 0) {
+                    if (res.data == 1) {
                         toastr.success('Follow Request Sent');
                         elm.remove();
+                    }else{
+                        toastr.success('Unfollowed');
+                        elm.innerText = 'Follow';
+                        elm.classList.add('btn-success');
+                        elm.classList.remove('btn-danger');
                     }
 
 
