@@ -55,15 +55,17 @@ $count2 = mysqli_num_rows($run2);
 
     <div class="row">
         <div class="col-md-12">
+            <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Profile</a>
 
-            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
+            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Send Message</a>
+
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-1">
                 <?php $count2 == 0 ? printf("Allow") : printf("Reject") ?>
             </button>
 
-            <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-2">Profile</a>
-
-            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end">Send Message</a>
-
+            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>)" class="btn btn-danger float-end">
+                Unfollow
+            </button>
         </div>
     </div>
 
@@ -157,6 +159,33 @@ $count2 = mysqli_num_rows($run2);
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
                 }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const unfollowfn = (unique_id_me, unique_id_fr) => {
+
+        let unfollowVar = {};
+
+        unfollowVar.unique_id_me = unique_id_me;
+        unfollowVar.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/facelist/unfollow.php",
+                unfollowVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    window.location = 'facelist.php?type=facelist';
+                }
+
+
             })
             .catch(err => {
                 console.log(err);

@@ -75,22 +75,16 @@ include './header.php';
                         })
                     .then(res => {
                         // console.log(res.data);
-
                         if (res.data == 0) {
                             elm.parentElement.parentElement.remove();
                         }
-
-
                     })
                     .catch(err => {
                         console.log(err);
                     })
-
             } else {
                 return;
             }
-
-
         }
 
     </script>
