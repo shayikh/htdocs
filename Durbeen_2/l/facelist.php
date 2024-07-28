@@ -81,8 +81,6 @@ include './header.php';
                         elm.classList.add('btn-success');
                         elm.classList.remove('btn-danger');
                     }
-
-
                 })
                 .catch(err => {
                     console.log(err);
@@ -116,8 +114,6 @@ include './header.php';
                         elm.classList.add('btn-danger');
                         elm.classList.remove('btn-success');
                     }
-
-
                 })
                 .catch(err => {
                     console.log(err);

@@ -19,41 +19,6 @@ if ($count1 == 0) {
     <table class="table table-bordered mt-3" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
-            <?php
-
-            $SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' ORDER BY `unique_id` DESC";
-            $run = mysqli_query($connection,$SQL);
-
-            while ($data = mysqli_fetch_assoc($run)){
-
-                $unique_id_fr = $data['unique_id'];
-
-                $SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_fr'";
-                $run2 = mysqli_query($connection,$SQL2);
-                $count2 = mysqli_num_rows($run2);
-
-                ?>
-
-                <tr>
-                    <td class="text-center">
-                        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $data['pro_pic'] ?>">
-                        </a>
-                    </td>
-                    <td class="text-center" style="max-width: 129px">
-                        <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <p style="font-weight: 500"><?php echo $data['name'] ?></p>
-                            <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data['visit'] ?></p>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <button onclick="addAdminfn(<?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 5px">
-                            <?php $count2 == 0 ? printf("Admin") : printf("Remove") ?>
-                        </button>
-                    </td>
-                </tr>
-            <?php } ?>
-
         </tbody>
     </table>
 
@@ -61,12 +26,53 @@ if ($count1 == 0) {
 
 
 <script>
+    let tbody = document.querySelector("#tbodyID");
+
+
+    var page_no = 1;
+
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            showdata();
+        }
+    })
+
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/admin/loadmoreAdmin_m.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.error('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
     const addAdminfn = (unique_id_fr, elm) => {
 
         let addVar = {};
         addVar.unique_id_fr = unique_id_fr;
 
-        axios.post("../api/make_durbeen.admin.php",
+        axios.post("../api/admin/make_durbeen_admin.php",
                 addVar, {
                     headers: {
                         "Content-Type": "application/json"

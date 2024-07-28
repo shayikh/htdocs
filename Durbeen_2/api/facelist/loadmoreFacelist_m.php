@@ -24,7 +24,6 @@ if($page_no >= $total_pages){
 
 
 
-
 $limit = 10;
 $row = ($page_no - 1)*$limit;
 
