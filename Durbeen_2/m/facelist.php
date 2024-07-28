@@ -77,7 +77,7 @@ include './header.php';
                         elm.remove();
                     }else{
                         toastr.success('Unfollowed');
-                        elm.innerText = 'Follow';
+                        elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                         elm.classList.add('btn-success');
                         elm.classList.remove('btn-primary');
                     }

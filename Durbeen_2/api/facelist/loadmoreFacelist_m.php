@@ -58,7 +58,7 @@ while ($data1=mysqli_fetch_assoc($run)){
                 <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data1['visit'] ?></p>
             </a>
             <button onclick="follow_req(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countC == 0 ? printf('btn-success') : printf("btn-primary") ?>"" style="margin-top: 5px">
-                <?php $countC == 0 ? printf('Follow') : printf("Unfollow") ?>
+                <?php $countC == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
         </td>
         <td class="text-center">
