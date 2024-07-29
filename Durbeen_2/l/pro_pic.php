@@ -137,7 +137,7 @@ include './header.php';
                         <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
                     </td>
                     <td class="text-center">
-                        <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+                        <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-primary" style="margin-top: 50px"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>`
         return tr;

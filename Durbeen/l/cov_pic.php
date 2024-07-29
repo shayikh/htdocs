@@ -134,7 +134,7 @@ include './header.php';
                         <button onclick="makeCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Cover Photo</button>
                     </td>
                     <td class="text-center">
-                        <button onclick="deleteCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+                        <button onclick="deleteCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-primary" style="margin-top: 50px"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>`
         return tr;

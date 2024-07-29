@@ -43,10 +43,10 @@ while ($data2 = mysqli_fetch_assoc($run2)){
             <img style="max-width: 150px;" src="../pro_pic/cov_pic/<?php echo $data2['cov_pic'] ?>" alt="">
         </td>
         <td class="text-center">
-            <button onclick="makeCovPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 5px">Make Cover Photo</button>
+            <button onclick="makeCovPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 14px">Make Cover Photo</button>
         </td>
         <td class="text-center">
-            <button onclick="deleteCovPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger" style="margin-top: 25px">Delete</button>
+            <button onclick="deleteCovPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 25px"><i class="fas fa-trash-alt"></i></button>
         </td>
     </tr>
 

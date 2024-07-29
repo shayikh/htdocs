@@ -132,10 +132,10 @@ include './header.php';
                         <img style="max-width: 150px;" src="../pro_pic/cov_pic/${newCovPic.cov_pic}" alt="">
                     </td>
                     <td class="text-center">
-                        <button onclick="makeCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 5px">Make Cover Photo</button>
+                        <button onclick="makeCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 14px">Make Cover Photo</button>
                     </td>
                     <td class="text-center">
-                        <button onclick="deleteCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger" style="margin-top: 25px">Delete</button>
+                        <button onclick="deleteCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 25px"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>`
         return tr;

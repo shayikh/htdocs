@@ -4,3 +4,6 @@ Message box fixed position upore
 durbeen_chats => connection_info
 
 Activity check by others session check
+
+big int
+

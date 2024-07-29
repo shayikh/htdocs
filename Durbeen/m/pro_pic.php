@@ -134,10 +134,10 @@ include './header.php';
                             <img width="130px" src="../pro_pic/${newProPic.pro_pic}" alt="">
                         </td>
                         <td class="text-center">
-                            <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Profile Picture</button>
+                            <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 20px">Make Profile Picture</button>
                         </td>
                         <td class="text-center">
-                            <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-danger" style="margin-top: 50px">Delete</button>
+                            <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 30px"><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>`
         return tr;

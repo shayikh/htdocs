@@ -47,7 +47,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
             <button onclick="makeProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 20px">Make Profile Picture</button>
         </td>
         <td class="text-center">
-            <button onclick="deleteProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger" style="margin-top: 30px">Delete</button>
+            <button onclick="deleteProPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 30px"><i class="fas fa-trash-alt"></i></button>
         </td>
     </tr>
 
