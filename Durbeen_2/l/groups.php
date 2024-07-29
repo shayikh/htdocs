@@ -157,7 +157,7 @@ $count1 = mysqli_num_rows($run1);
             let tr = `<tr>
                         <td class="text-center">
                             <a href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                <img height="135px" src="../pro_pic/${newGroup.pro_pic}" alt="">
+                                <img height="135px" src="../pro_pic/${newGroup.pro_pic}">
                             </a>
                         </td>
                         <td class="text-center">

@@ -73,10 +73,10 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <div class="card" style="width: 100%;border: none;">
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
                 <img style="border-radius: 50%" width="70px" height="70px"
-                    src="../pro_pic/<?php echo $datafr['pro_pic']?>" alt="">
+                    src="../pro_pic/<?php echo $datafr['pro_pic']?>">
                 <b><?php echo $datafr['name']?></b>
             </p>
-            <img width="100%" src="../post_image/<?php echo $data1['image']?>" alt="">
+            <img width="100%" src="../post_image/<?php echo $data1['image']?>">
             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                 <h6 class="card-title text-white"><?php echo $data1['time']?></h6>
                 <p class="card-text text-white"><?php echo $data1['post']?></p>

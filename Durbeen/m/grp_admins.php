@@ -42,7 +42,7 @@ if (isset($_POST['delete_grp'])) {
     while ($data11 = mysqli_fetch_assoc($run11)) {
         $memberId = $data11['memberId'];
         $SQL8 = "DELETE FROM `$memberId msg_grp` WHERE `grp_id`='$grp_id'";
-        $run8 = mysqli_query($durbeen_chats, $SQL8);
+        $run8 = mysqli_query($connection_info, $SQL8);
     }
 
     $SQL12 = "DROP TABLE IF EXISTS `group $grp_id members`";

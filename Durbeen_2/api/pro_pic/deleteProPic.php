@@ -13,7 +13,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 $SQL2 = "SELECT * FROM `$unique_id_me pro_pic` WHERE `id`='$Deleteid'";
-$run2 = mysqli_query($durbeen_chats,$SQL2);
+$run2 = mysqli_query($connection_info,$SQL2);
 $data2 = mysqli_fetch_assoc($run2);
 $pro_pic = $data2['pro_pic'];
 
@@ -22,7 +22,7 @@ if ($pro_pic != "red_comet.png") {
 }
 
 $SQL1 = "DELETE FROM `$unique_id_me pro_pic` WHERE `id`='$Deleteid'";
-mysqli_query($durbeen_chats, $SQL1);
+mysqli_query($connection_info, $SQL1);
 
 
 

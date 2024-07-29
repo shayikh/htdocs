@@ -14,7 +14,7 @@ $unique_id_fr = $data['unique_id_fr'];
 
 
 $SQLC = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-$runC = mysqli_query($durbeen_chats,$SQLC);
+$runC = mysqli_query($connection_info,$SQLC);
 $countC = mysqli_num_rows($runC);
 
 if($countC == 0) {
@@ -46,22 +46,22 @@ if($countC == 0) {
 
     //chat friend start
     $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-    $run3 = mysqli_query($durbeen_chats, $SQL3);
+    $run3 = mysqli_query($connection_info, $SQL3);
     $count3 = mysqli_num_rows($run3);
 
     if ($count3 == 0) {
         $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$unique_id_fr')";
-        mysqli_query($durbeen_chats, $SQL16);
+        mysqli_query($connection_info, $SQL16);
     }
 
 
     $SQL4 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-    $run4 = mysqli_query($durbeen_chats, $SQL4);
+    $run4 = mysqli_query($connection_info, $SQL4);
     $count4 = mysqli_num_rows($run4);
 
     if ($count4 == 0) {
         $SQL5 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
-        mysqli_query($durbeen_chats, $SQL5);
+        mysqli_query($connection_info, $SQL5);
     }
 
 
@@ -98,7 +98,7 @@ if($countC == 0) {
     $my_name = $data3['name'];
 
     $SQL3 = "INSERT INTO `$unique_id_fr notify`(`sender`, `sender_id`, `seen`) VALUES ('$my_name','$unique_id_me','0')";
-    mysqli_query($durbeen_chats, $SQL3);
+    mysqli_query($connection_info, $SQL3);
 
 
 
@@ -107,9 +107,9 @@ if($countC == 0) {
 
 }else{
     $SQL1 = "DELETE FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-    mysqli_query($durbeen_chats,$SQL1);
+    mysqli_query($connection_info,$SQL1);
     $SQL1 = "DELETE FROM `$unique_id_fr allow` WHERE `unique_id_fr`='$unique_id_me'";
-    mysqli_query($durbeen_chats,$SQL1);
+    mysqli_query($connection_info,$SQL1);
     
     echo "0";
 }

@@ -22,7 +22,7 @@ $message = $_POST['message'];
 $message = mysqli_real_escape_string($connection_message, $message);
 
 $my_name = $_POST['my_name'];
-$my_name = mysqli_real_escape_string($durbeen_chats, $my_name);
+$my_name = mysqli_real_escape_string($connection_info, $my_name);
 
 $unique_id_me = $_POST['unique_id_me'];
 $grp_id = $_POST['grp_id'];

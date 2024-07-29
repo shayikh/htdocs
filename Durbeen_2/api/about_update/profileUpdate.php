@@ -13,7 +13,7 @@ if ($_FILES['image_khan_bahadur']['name']) {
     move_uploaded_file($image_tmp, '../../pro_pic/' . $imageNewName);
 
     $SQL1 = "INSERT INTO `$unique_id_me pro_pic`(`pro_pic`) VALUES ('$pro_pic')";
-    mysqli_query($durbeen_chats, $SQL1);
+    mysqli_query($connection_info, $SQL1);
 } else {
     $imageNewName = $pro_pic;
 }
@@ -27,7 +27,7 @@ if ($_FILES['image_khan_cover']['name']) {
     move_uploaded_file($image_tmp, '../../pro_pic/cov_pic/' . $imageNewName_cov);
 
     $SQL1 = "INSERT INTO `$unique_id_me cov_pic`(`cov_pic`) VALUES ('$cov_pic')";
-    mysqli_query($durbeen_chats, $SQL1);
+    mysqli_query($connection_info, $SQL1);
     
 } else {
     $imageNewName_cov = $cov_pic;

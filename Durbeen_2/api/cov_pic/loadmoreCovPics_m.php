@@ -14,7 +14,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 $SQL1 = "SELECT * FROM `$unique_id_me cov_pic`";
-$run1 = mysqli_query($durbeen_chats, $SQL1);
+$run1 = mysqli_query($connection_info, $SQL1);
 $total_posts = mysqli_num_rows($run1);
 $total_pages = ceil($total_posts / 10) + 1;
 
@@ -32,7 +32,7 @@ $row = ($page_no - 1)*$limit;
 
 $SQL2 = "SELECT * FROM `$unique_id_me cov_pic` ORDER BY `id` DESC LIMIT $row,$limit";
 
-$run2 = mysqli_query($durbeen_chats, $SQL2);
+$run2 = mysqli_query($connection_info, $SQL2);
 
 while ($data2 = mysqli_fetch_assoc($run2)){
 
@@ -40,7 +40,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
 
     <tr>
         <td class="text-center">
-            <img style="max-width: 150px;" src="../pro_pic/cov_pic/<?php echo $data2['cov_pic'] ?>" alt="">
+            <img style="max-width: 150px;" src="../pro_pic/cov_pic/<?php echo $data2['cov_pic'] ?>">
         </td>
         <td class="text-center">
             <button onclick="makeCovPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 14px">Make Cover Photo</button>

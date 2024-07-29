@@ -9,7 +9,7 @@ if ($unique_id_fr == $unique_id_me) {
 
 
 $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-$runF = mysqli_query($durbeen_chats, $SQLF);
+$runF = mysqli_query($connection_info, $SQLF);
 $countF = mysqli_num_rows($runF);
 
 

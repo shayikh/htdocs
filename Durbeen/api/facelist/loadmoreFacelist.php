@@ -38,7 +38,7 @@ while ($data1=mysqli_fetch_assoc($run)){
 
 
     $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-    $runF = mysqli_query($durbeen_chats,$SQLF);
+    $runF = mysqli_query($connection_info,$SQLF);
     $countF = mysqli_num_rows($runF);
 
 
@@ -47,7 +47,7 @@ while ($data1=mysqli_fetch_assoc($run)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+                <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center">

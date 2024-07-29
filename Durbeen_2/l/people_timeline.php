@@ -9,7 +9,7 @@ if ($unique_id_fr == $unique_id_me) {
 
 
 $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-$runF = mysqli_query($durbeen_chats, $SQLF);
+$runF = mysqli_query($connection_info, $SQLF);
 $countF = mysqli_num_rows($runF);
 
 if ($countF == 0) {
@@ -26,7 +26,7 @@ $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
 $SQL2 = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
-$run2 = mysqli_query($durbeen_chats,$SQL2);
+$run2 = mysqli_query($connection_info,$SQL2);
 $count2 = mysqli_num_rows($run2);
 
 ?>

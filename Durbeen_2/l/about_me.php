@@ -512,7 +512,7 @@ $count1 = mysqli_num_rows($run1);
                 pro_img_id.value = "";
                 cov_img_id.value = "";
 
-                toastr.success('About Updated');
+                toastr.success('Profile Updated');
                 updateCloseBtn.click();
 
 

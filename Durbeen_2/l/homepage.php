@@ -14,7 +14,7 @@ $count3 = mysqli_num_rows($run3);
 
 // message notification
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
-$runnotify = mysqli_query($durbeen_chats, $SQLnotify);
+$runnotify = mysqli_query($connection_info, $SQLnotify);
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
@@ -338,11 +338,11 @@ if ($count2 > 0 && $count3 > 0) { ?>
 
                             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                                 <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>" alt="">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </a>
                             </p>
-                            <img width="100%" src="../post_image/${post.image}" alt="">
+                            <img width="100%" src="../post_image/${post.image}">
                             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                 <h6 class="card-title text-white">${post.time}</h6>
                                 <p class="card-text text-white">${post.post}</p>

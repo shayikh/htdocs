@@ -14,7 +14,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 $SQL3 = "SELECT * FROM `$unique_id_me msg_grp`";
-$run3 = mysqli_query($durbeen_chats, $SQL3);
+$run3 = mysqli_query($connection_info, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 10) + 1;
 
@@ -30,7 +30,7 @@ $limit = 10;
 $row = ($page_no - 1)*$limit;
 
 $SQL = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC LIMIT $row,$limit";
-$run = mysqli_query($durbeen_chats,$SQL);
+$run = mysqli_query($connection_info,$SQL);
 
 while ($data = mysqli_fetch_assoc($run)){
 $grp_id = $data['grp_id'];
@@ -45,7 +45,7 @@ $data1 = mysqli_fetch_assoc($run1)
     <tr>
         <td class="text-center">
             <a href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
-                <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>" alt="">
+                <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center">

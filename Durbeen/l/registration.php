@@ -62,7 +62,7 @@ if (isset($_POST['signup'])) {
 			`seen` int(255),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($durbeen_chats, $SQL5);
+        mysqli_query($connection_info, $SQL5);
 
 
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me chats` (
@@ -70,19 +70,19 @@ if (isset($_POST['signup'])) {
 			`unique_id_fr` int(255),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($durbeen_chats, $SQLcreate);
+        mysqli_query($connection_info, $SQLcreate);
 
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me follow` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`unique_id_fr` int(255),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($durbeen_chats, $SQLcreate);
+        mysqli_query($connection_info, $SQLcreate);
 
         $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_me')";
-        mysqli_query($durbeen_chats, $SQL400);
+        mysqli_query($connection_info, $SQL400);
         $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
-        mysqli_query($durbeen_chats, $SQL400);
+        mysqli_query($connection_info, $SQL400);
 
 
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
@@ -100,21 +100,21 @@ if (isset($_POST['signup'])) {
 			`pro_pic` varchar(1000),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($durbeen_chats, $SQLcreateMe);
+        mysqli_query($connection_info, $SQLcreateMe);
         
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me cov_pic` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`cov_pic` varchar(1000),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($durbeen_chats, $SQLcreateMe);
+        mysqli_query($connection_info, $SQLcreateMe);
 
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
 			`id` int(255) unsigned NOT NULL auto_increment,
 			`grp_id` int(255),
 			PRIMARY KEY  (`id`)
 		)";
-        mysqli_query($durbeen_chats, $SQLcreateMe);
+        mysqli_query($connection_info, $SQLcreateMe);
 
 
         echo "<script>window.location = './about_me.php?type=about_me&register'</script>";

@@ -18,11 +18,11 @@ $dataMe = mysqli_fetch_assoc($runMe);
 $pro_pic = $dataMe['pro_pic'];
 
 $SQL1 = "INSERT INTO `$unique_id_me pro_pic`(`pro_pic`) VALUES ('$pro_pic')";
-mysqli_query($durbeen_chats,$SQL1);
+mysqli_query($connection_info,$SQL1);
 
 
 $SQL2 = "SELECT * FROM `$unique_id_me pro_pic` WHERE `id`='$pro_pic_id'";
-$run2 = mysqli_query($durbeen_chats,$SQL2);
+$run2 = mysqli_query($connection_info,$SQL2);
 $data2 = mysqli_fetch_assoc($run2);
 $new_pro_pic = $data2['pro_pic'];
 
@@ -31,7 +31,7 @@ mysqli_query($connection,$SQL3);
 
 
 $SQL4 = "DELETE FROM `$unique_id_me pro_pic` WHERE `id`='$pro_pic_id'";
-mysqli_query($durbeen_chats, $SQL4);
+mysqli_query($connection_info, $SQL4);
 
 
 
@@ -41,7 +41,7 @@ mysqli_query($durbeen_chats, $SQL4);
 
 
 $SQL3 = "SELECT * FROM `$unique_id_me pro_pic` ORDER BY `id` DESC LIMIT 1";
-$run3 = mysqli_query($durbeen_chats, $SQL3);
+$run3 = mysqli_query($connection_info, $SQL3);
 $latestData = mysqli_fetch_assoc($run3);
 
 echo json_encode(["new_pro_pic"=>$new_pro_pic, "newProPic" => $latestData]);

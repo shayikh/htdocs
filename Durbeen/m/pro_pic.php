@@ -131,7 +131,7 @@ include './header.php';
     const makeProPicTr = (newProPic) => {
         let tr = `<tr>
                         <td class="text-center">
-                            <img width="130px" src="../pro_pic/${newProPic.pro_pic}" alt="">
+                            <img width="130px" src="../pro_pic/${newProPic.pro_pic}">
                         </td>
                         <td class="text-center">
                             <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 20px">Make Profile Picture</button>

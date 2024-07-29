@@ -13,7 +13,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 $SQL1 = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`!='$unique_id_me'";
-$run1 = mysqli_query($durbeen_chats, $SQL1);
+$run1 = mysqli_query($connection_info, $SQL1);
 $total_posts = mysqli_num_rows($run1);
 $total_pages = ceil($total_posts / 10) + 1;
 
@@ -30,7 +30,7 @@ $row = ($page_no - 1)*$limit;
 
 $SQL2 = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`!='$unique_id_me' ORDER BY `id` DESC LIMIT $row,$limit";
 
-$run2 = mysqli_query($durbeen_chats, $SQL2);
+$run2 = mysqli_query($connection_info, $SQL2);
 
 while ($data2 = mysqli_fetch_assoc($run2)){
 
@@ -45,7 +45,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data3['unique_id']?>">
-                <img style="margin-top: 2px" width="90px" title="Click to See <?php echo $data3['name'] ?>'s Timeline" src="../pro_pic/<?php echo $data3['pro_pic'] ?>" alt="">
+                <img style="margin-top: 2px" width="90px" title="Click to See <?php echo $data3['name'] ?>'s Timeline" src="../pro_pic/<?php echo $data3['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center" style="max-width: 129px">

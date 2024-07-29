@@ -495,7 +495,7 @@ if (isset($_GET['register'])) {
                 pro_img_id.value = "";
                 cov_img_id.value = "";
 
-                toastr.success('About Updated');
+                toastr.success('Profile Updated');
                 updateCloseBtn.click();
 
 

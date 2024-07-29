@@ -145,7 +145,7 @@ include './header.php';
     const makeTr = (message, unique_id_me) => {
         let tr = `<tr>
                         <div class="float-end" style="border: none;">
-                            <img class="float-end" width="300px" src="../chat_image/${message.image}" alt="">
+                            <img class="float-end" width="300px" src="../chat_image/${message.image}">
 
                             <h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>

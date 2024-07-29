@@ -30,7 +30,7 @@ $latestData = mysqli_fetch_assoc($run2);
 $grp_id = $latestData['id'];
 
 $SQL1 = "INSERT INTO `$unique_id_me msg_grp`(`grp_id`) VALUES ('$grp_id')";
-mysqli_query($durbeen_chats,$SQL1);
+mysqli_query($connection_info,$SQL1);
 
 
 

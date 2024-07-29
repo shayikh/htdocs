@@ -75,7 +75,7 @@ $pro_pic_me = $dataMe['pro_pic'];
                         <a class="text-decoration-none float-end mt-2" href="./timeline.php?type=timeline">
                             <div class="t-hover <?php $_GET['type'] == 'timeline' ? printf('t-active') : "" ?>">
 
-                                <img class="float-end" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>" alt="" id="timeline_pro_pic">
+                                <img class="float-end" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="timeline_pro_pic">
                                 <h5 class="float-start" style="margin-top: 11px;margin-left: 15px;padding-right: 10px" id="timeline_name">
                                     <?php echo $dataMe['name'] ?>
                                 </h5>
@@ -146,7 +146,7 @@ $pro_pic_me = $dataMe['pro_pic'];
 
             <?php
             $SQL12 = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC";
-            $run12 = mysqli_query($durbeen_chats, $SQL12);
+            $run12 = mysqli_query($connection_info, $SQL12);
 
             while ($data12 = mysqli_fetch_assoc($run12)) {
 
@@ -181,7 +181,7 @@ $pro_pic_me = $dataMe['pro_pic'];
 
             <?php
             $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
-            $run11 = mysqli_query($durbeen_chats, $SQL11);
+            $run11 = mysqli_query($connection_info, $SQL11);
 
             while ($data11 = mysqli_fetch_assoc($run11)) {
 
@@ -197,8 +197,8 @@ $pro_pic_me = $dataMe['pro_pic'];
                 <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
                     <div class="hover_chatbar">
 
-                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>" alt="">
-                        <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px" alt="">
+                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>">
+                        <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px">
                         <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
                             <?php echo $data21['name'] ?>
                         </h5>

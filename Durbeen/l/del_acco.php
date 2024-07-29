@@ -42,12 +42,12 @@ if (isset($_POST['delete'])) {
 
     //notification table delete
     $SQL4 = "DROP TABLE `$unique_id_me notify`";
-    mysqli_query($durbeen_chats, $SQL4);
+    mysqli_query($connection_info, $SQL4);
 
 
     //message tables delete
     $SQL5 = "SELECT * FROM `$unique_id_me chats`";
-    $run5 = mysqli_query($durbeen_chats, $SQL5);
+    $run5 = mysqli_query($connection_info, $SQL5);
 
     while ($data5 = mysqli_fetch_assoc($run5)) {
         $unique_id_fr = $data5['unique_id_fr'];
@@ -87,11 +87,11 @@ if (isset($_POST['delete'])) {
 
     //chat friend table delete
     $SQL4 = "DROP TABLE `$unique_id_me chats`";
-    mysqli_query($durbeen_chats, $SQL4);
+    mysqli_query($connection_info, $SQL4);
     
     //follow table delete
     $SQL4 = "DROP TABLE `$unique_id_me follow`";
-    mysqli_query($durbeen_chats, $SQL4);
+    mysqli_query($connection_info, $SQL4);
 
 
     //drop self_msg table
@@ -113,7 +113,7 @@ if (isset($_POST['delete'])) {
 
     //group membership delete
     $SQL3 = "SELECT * FROM `$unique_id_me msg_grp`";
-    $run3 = mysqli_query($durbeen_chats, $SQL3);
+    $run3 = mysqli_query($connection_info, $SQL3);
 
     while ($data3 = mysqli_fetch_assoc($run3)) {
         $grp_id = $data3['grp_id'];
@@ -123,7 +123,7 @@ if (isset($_POST['delete'])) {
     }
 
     $SQL4 = "DROP TABLE `$unique_id_me msg_grp`";
-    mysqli_query($durbeen_chats, $SQL4);
+    mysqli_query($connection_info, $SQL4);
 
     
 
@@ -143,7 +143,7 @@ if (isset($_POST['delete'])) {
 
     //pro_pic table delete
     $SQL4 = "SELECT * FROM `$unique_id_me pro_pic`";
-    $run4 = mysqli_query($durbeen_chats, $SQL4);
+    $run4 = mysqli_query($connection_info, $SQL4);
 
     if ($run4 == true) {
         while ($data4 = mysqli_fetch_assoc($run4)) {
@@ -156,13 +156,13 @@ if (isset($_POST['delete'])) {
     }
 
     $SQL4 = "DROP TABLE `$unique_id_me pro_pic`";
-    mysqli_query($durbeen_chats, $SQL4);
+    mysqli_query($connection_info, $SQL4);
     
     
     
     //cov_pic table delete
     $SQL4 = "SELECT * FROM `$unique_id_me cov_pic`";
-    $run4 = mysqli_query($durbeen_chats, $SQL4);
+    $run4 = mysqli_query($connection_info, $SQL4);
 
     if ($run4 == true) {
         while ($data4 = mysqli_fetch_assoc($run4)) {
@@ -175,7 +175,7 @@ if (isset($_POST['delete'])) {
     }
 
     $SQL4 = "DROP TABLE `$unique_id_me cov_pic`";
-    mysqli_query($durbeen_chats, $SQL4);
+    mysqli_query($connection_info, $SQL4);
 
     
     

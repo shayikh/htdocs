@@ -128,7 +128,7 @@ include './header.php';
     const makeCovPicTr = (newCovPic) => {
         let tr = `<tr>
                     <td class="text-center">
-                        <img height="500px" style="max-width: 1000px;" src="../pro_pic/cov_pic/${newCovPic.cov_pic}" alt="">
+                        <img height="500px" style="max-width: 1000px;" src="../pro_pic/cov_pic/${newCovPic.cov_pic}">
                     </td>
                     <td class="text-center">
                         <button onclick="makeCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Cover Photo</button>

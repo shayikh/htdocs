@@ -19,12 +19,12 @@ if ($countTest == 0) {
     } else {
         //seen from notify db
         $SQL99 = "UPDATE `$unique_id_me notify` SET `seen`='1' WHERE `sender_id`='$unique_id_fr'";
-        mysqli_query($durbeen_chats, $SQL99);
+        mysqli_query($connection_info, $SQL99);
 
         //delete from notify db
 
         $SQL1 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
-        $run1 = mysqli_query($durbeen_chats, $SQL1);
+        $run1 = mysqli_query($connection_info, $SQL1);
         $count1 = mysqli_num_rows($run1);
 
         if ($count1 > 50) {
@@ -33,7 +33,7 @@ if ($countTest == 0) {
             //50 is the minumum number of messages
 
             $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `seen`='1' ORDER BY `id` ASC LIMIT $delete";
-            mysqli_query($durbeen_chats, $SQL2);
+            mysqli_query($connection_info, $SQL2);
         }
 
 
@@ -64,22 +64,22 @@ if ($countTest == 0) {
 
         //chat friend start
         $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-        $run3 = mysqli_query($durbeen_chats, $SQL3);
+        $run3 = mysqli_query($connection_info, $SQL3);
         $count3 = mysqli_num_rows($run3);
 
         if ($count3 == 0) {
             $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$unique_id_fr')";
-            mysqli_query($durbeen_chats, $SQL16);
+            mysqli_query($connection_info, $SQL16);
         }
 
 
         $SQL4 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-        $run4 = mysqli_query($durbeen_chats, $SQL4);
+        $run4 = mysqli_query($connection_info, $SQL4);
         $count4 = mysqli_num_rows($run4);
 
         if ($count4 == 0) {
             $SQL5 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
-            mysqli_query($durbeen_chats, $SQL5);
+            mysqli_query($connection_info, $SQL5);
         }
 
 
@@ -120,16 +120,16 @@ if ($countTest == 0) {
 
 
             $SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-            mysqli_query($durbeen_chats, $SQL13);
+            mysqli_query($connection_info, $SQL13);
 
             $SQL14 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-            mysqli_query($durbeen_chats, $SQL14);
+            mysqli_query($connection_info, $SQL14);
 
             $SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
-            mysqli_query($durbeen_chats, $SQL15);
+            mysqli_query($connection_info, $SQL15);
 
             $SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
-            mysqli_query($durbeen_chats, $SQL16);
+            mysqli_query($connection_info, $SQL16);
 
 
             echo "<script>window.location = 'homepage.php?type'</script>";

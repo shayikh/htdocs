@@ -61,7 +61,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                     </td>
 
                     <td>
-                        <img height="135px" id="pro_pic" src="" alt="">
+                        <img height="135px" id="pro_pic" src="">
                     </td>
 
                     <td>

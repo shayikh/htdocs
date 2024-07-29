@@ -30,7 +30,7 @@ if($countF == 0){
 
 
   $SQL1 = "INSERT INTO `$unique_id_fr msg_grp`(`grp_id`) VALUES ('$grp_id')";
-  mysqli_query($durbeen_chats,$SQL1);
+  mysqli_query($connection_info,$SQL1);
 
 
   echo "1";
@@ -39,7 +39,7 @@ if($countF == 0){
 	mysqli_query($connection_message,$SQL2);
 
   $SQL1 = "DELETE FROM `$unique_id_fr msg_grp` WHERE `grp_id`='$grp_id'";
-  mysqli_query($durbeen_chats,$SQL1);
+  mysqli_query($connection_info,$SQL1);
 
 
   echo "0";

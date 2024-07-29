@@ -150,7 +150,7 @@ include './header.php';
             let tr = `    <tr>
                             <td class="text-center">
                                 <a href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                    <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}" alt="">
+                                    <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}">
                                 </a>
                             </td>
                             <td class="text-center">
