@@ -279,12 +279,12 @@ if (isset($_POST['delete_grp'])) {
 
                 if (res.data == 0) {
                     toastr.error('Removed');
-                    elm.innerText = "Add";
+                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
                 } else {
                     toastr.success('Added');
-                    elm.innerText = "Remove";
+                    elm.innerHTML = '<i class="fas fa-user-minus"></i>';
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }

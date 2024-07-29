@@ -61,7 +61,7 @@ while ($data154=mysqli_fetch_assoc($run)){
         </td>
         <td class="text-center">
             <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
-                <?php $countF154 == 0 ? printf("Add") : printf("Remove") ?>
+                <?php $countF154 == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-minus"></i>') ?>
             </button>
         </td>
         <td class="text-center">

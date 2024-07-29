@@ -36,43 +36,9 @@ $count109 = mysqli_num_rows($run109);
 
 
 <div class="container" style="margin-top: 112px">
-    <h6 class="text-center mt-2"><?php echo $data111['grp_name'] ?></h6>
-    <h6 class="text-center">Group Members</h6>
+    <h6 class="text-center mt-2">"<?php echo $data111['grp_name'] ?>" Group Members</h6>
     <table class="table table-bordered mt-2" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
-
-            <?php
-
-            $SQL = "SELECT * FROM `group $grp_id members` ORDER BY `id` DESC";
-            $run = mysqli_query($connection_message,$SQL);
-
-            while ($data154=mysqli_fetch_assoc($run)){
-
-                $unique_id_fr = $data154['memberId'];
-
-                $SQLF154 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-                $runF154 = mysqli_query($connection,$SQLF154);
-                $dataF154 = mysqli_fetch_assoc($runF154);
-
-                ?>
-
-                <tr>
-                    <td class="text-center">
-                        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $dataF154['pro_pic'] ?>">
-                        </a>
-                    </td>
-                    <td class="text-center" style="max-width: 129px">
-                        <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                            <p style="font-size: 13px;font-weight: 500"><?php echo $dataF154['name'] ?></p>
-                            <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $dataF154['visit'] ?></p>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <h6 style="margin-top: 25px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("") ?></h6>
-                    </td>
-                </tr>
-            <?php } ?>
 
         </tbody>
     </table>
@@ -81,6 +47,47 @@ $count109 = mysqli_num_rows($run109);
 
 
 <script>
+    let tbody = document.querySelector("#tbodyID");
+
+
+    var page_no = 1;
+
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            showdata();
+        }
+    })
+
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+        postData.grp_id = <?php echo $grp_id ?>;
+
+        axios.post("../api/group/loadmoreGrpSetting_m.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.error('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
 
 
     const leaveGrp = (grp_id, unique_id_me) => {
