@@ -239,7 +239,7 @@ if (isset($_POST['delete_grp'])) {
                     elm.classList.remove('btn-danger');
                 } else {
                     toastr.success('Made Admin');
-                    elm.innerText = "Remove Admin";
+                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }

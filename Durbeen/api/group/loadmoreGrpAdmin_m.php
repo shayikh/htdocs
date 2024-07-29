@@ -49,21 +49,23 @@ while ($data154=mysqli_fetch_assoc($run)){
     ?>
 
     <tr>
-
-        <td class="text-center" style="max-width: 129px">
-            <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <p style="font-weight: 500"><?php echo $data154['name'] ?></p>
-                <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data154['visit'] ?></p>
+        <td class="text-center">
+            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $data154['pro_pic'] ?>">
             </a>
         </td>
-        <td class="text-center">
-            <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF154 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 5px">
+        <td class="text-center" style="max-width: 129px">
+            <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
+                <p style="font-size: 13px;font-weight: 500"><?php echo $data154['name'] ?></p>
+                <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data154['visit'] ?></p>
+            </a>
+            <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF154 == 0 ? printf('btn-success') : printf("btn-danger") ?>" style="margin-top: 5px">
                 <?php $countF154 == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-minus"></i>') ?>
             </button>
         </td>
         <td class="text-center">
-            <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 5px">
-                <?php $countF155 == 0 ? printf("Admin") : printf("Remove") ?>
+            <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 20px">
+                <?php $countF155 == 0 ? printf("Admin") : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
         </td>
     </tr>
