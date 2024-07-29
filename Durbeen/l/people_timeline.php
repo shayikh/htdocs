@@ -47,15 +47,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
     <div class="row">
         <div class="col-md-12">
+            <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Profile</a>
 
-            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-2">
+            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Send Message</a>
+
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end">
                 <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
             </button>
-
-            <a href="./about_people.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-2">Profile</a>
-
-            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end">Send Message</a>
-
         </div>
     </div>
 
