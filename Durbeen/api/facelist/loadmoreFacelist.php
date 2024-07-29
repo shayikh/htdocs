@@ -63,7 +63,7 @@ while ($data1=mysqli_fetch_assoc($run)){
         </td>
         <td class="text-center">
             <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
-                <img width="70px" src="../img/892177.svg" alt="" style="margin-top: 35px">
+                <img width="70px" src="../img/892177.svg" style="margin-top: 35px">
             </a>
         </td>
     </tr>

@@ -73,11 +73,11 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                 <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                     <img style="border-radius: 50%" width="70px" height="70px"
-                        src="./pro_pic/<?php echo $data2['pro_pic']?>" alt="">
+                        src="./pro_pic/<?php echo $data2['pro_pic']?>">
                     <b><?php echo $data2['name']?></b>
                 </a>
             </p>
-            <img width="100%" src="./post_image/<?php echo $data1['image']?>" alt="">
+            <img width="100%" src="./post_image/<?php echo $data1['image']?>">
             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                 <h6 class="card-title text-white"><?php echo $data1['time']?></h6>
                 <p class="card-text text-white"><?php echo $data1['post']?></p>
