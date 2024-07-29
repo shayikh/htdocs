@@ -37,7 +37,7 @@ $count109 = mysqli_num_rows($run109);
 
 <div class="container" style="margin-top: 150px">
 
-    <h3 class="text-center">"<?php echo $data111['grp_name'] ?>" Group Members</h3>
+    <h4 class="text-center">"<?php echo $data111['grp_name'] ?>" Group Members</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
@@ -47,84 +47,84 @@ $count109 = mysqli_num_rows($run109);
 
 
 
-<script>
-    let tbody = document.querySelector("#tbodyID");
+    <script>
+        let tbody = document.querySelector("#tbodyID");
 
 
-    var page_no = 1;
+        var page_no = 1;
 
-    showdata();
+        showdata();
 
-    $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
-        }
-    })
-
-
-    function showdata() {
-
-        let postData = {};
-
-        postData.page_no = page_no;
-        postData.unique_id_me = <?php echo $unique_id_me ?>;
-        postData.grp_id = <?php echo $grp_id ?>;
-
-        axios.post("../api/group/loadmoreGrpSetting.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.error('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+        $(window).scroll(function() {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+                showdata();
+            }
+        })
 
 
-    const leaveGrp = (grp_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Leave From This Group?");
+        function showdata() {
 
-        if (confirm) {
+            let postData = {};
 
-            let message = {};
+            postData.page_no = page_no;
+            postData.unique_id_me = <?php echo $unique_id_me ?>;
+            postData.grp_id = <?php echo $grp_id ?>;
 
-            message.grp_id = grp_id;
-            message.unique_id_me = unique_id_me;
-
-            axios.post("../api/group/leaveGrp.php",
-                    message, {
+            axios.post("../api/group/loadmoreGrpSetting.php",
+                    postData, {
                         headers: {
                             "Content-Type": "application/json"
                         }
                     })
                 .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        window.location = 'groups.php?type=groups';
+                    if (res.data == 0) {
+                        toastr.error('You Are at The End');
+                    } else {
+                        tbody.innerHTML = tbody.innerHTML + res.data;
+                        page_no++;
                     }
-
                 })
                 .catch(err => {
                     console.log(err);
                 })
-        } else {
-            return;
         }
-    }
 
 
-    
-</script>
+        const leaveGrp = (grp_id, unique_id_me) => {
+            let confirm = window.confirm("Do You Want to Leave From This Group?");
+
+            if (confirm) {
+
+                let message = {};
+
+                message.grp_id = grp_id;
+                message.unique_id_me = unique_id_me;
+
+                axios.post("../api/group/leaveGrp.php",
+                        message, {
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        })
+                    .then(res => {
+                        // console.log(res.data);
+
+                        if (res.data == '1') {
+                            window.location = 'groups.php?type=groups';
+                        }
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } else {
+                return;
+            }
+        }
+
+
+        
+    </script>
 
 
 </div>

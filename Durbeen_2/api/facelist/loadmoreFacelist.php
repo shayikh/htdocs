@@ -11,6 +11,8 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
+
+
 $SQL3 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me'";
 $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
@@ -26,6 +28,8 @@ if($page_no >= $total_pages){
 
 $limit = 10;
 $row = ($page_no - 1)*$limit;
+
+
 
 $SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' ORDER BY `unique_id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection,$SQL);

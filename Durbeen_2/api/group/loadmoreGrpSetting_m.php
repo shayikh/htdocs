@@ -13,8 +13,8 @@ $grp_id = $data['grp_id'];
 
 
 
-$SQL3 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me'";
-$run3 = mysqli_query($connection, $SQL3);
+$SQL3 = "SELECT * FROM `group $grp_id members` WHERE `memberId`!='$unique_id_me'";
+$run3 = mysqli_query($connection_message, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 10) + 1;
 
@@ -31,7 +31,7 @@ $row = ($page_no - 1)*$limit;
 
 
 
-$SQL = "SELECT * FROM `group $grp_id members` ORDER BY `id` DESC";
+$SQL = "SELECT * FROM `group $grp_id members` ORDER BY `id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection_message,$SQL);
 
 while ($data154=mysqli_fetch_assoc($run)){

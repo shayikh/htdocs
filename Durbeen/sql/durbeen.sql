@@ -125,8 +125,8 @@ CREATE TABLE `registration` (
   `password` varchar(1000) NOT NULL,
   `pro_pic` varchar(1000) NOT NULL,
   `cov_pic` varchar(1000) NOT NULL,
-  `active` int(255) NOT NULL DEFAULT 1,
-  `visit` int(255) DEFAULT 1
+  `active` int(255) NOT NULL DEFAULT 0,
+  `visit` int(255) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

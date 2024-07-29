@@ -28,7 +28,7 @@ $limit = 10;
 $row = ($page_no - 1)*$limit;
 
 
-$SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' ORDER BY `unique_id` DESC";
+$SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' ORDER BY `unique_id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection,$SQL);
 
 while ($data = mysqli_fetch_assoc($run)){
