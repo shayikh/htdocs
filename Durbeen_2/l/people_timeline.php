@@ -13,7 +13,7 @@ $runF = mysqli_query($connection_info, $SQLF);
 $countF = mysqli_num_rows($runF);
 
 if ($countF == 0) {
-    echo "<script>window.location = 'facelist.php?type=facelist'</script>";
+    echo "<script>window.location = 'facelist.php?type=facelist&nofollow'</script>";
 }
 
 
@@ -60,11 +60,11 @@ $count2 = mysqli_num_rows($run2);
             <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Send Message</a>
 
             <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-1">
-                <?php $count2 == 0 ? printf("Allow") : printf("Reject") ?>
+                <?php $count2 == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
             </button>
 
             <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>)" class="btn btn-primary float-end">
-                <i class="fas fa-user-slash"></i>
+                <i class="fas fa-user-minus"></i>
             </button>
         </div>
     </div>
@@ -185,7 +185,6 @@ $count2 = mysqli_num_rows($run2);
                     window.location = 'facelist.php?type=facelist';
                 }
 
-
             })
             .catch(err => {
                 console.log(err);
@@ -210,12 +209,12 @@ $count2 = mysqli_num_rows($run2);
 
                 if (res.data == 0) {
                     toastr.error('Rejected to Follow You');
-                    elm.innerText = "Allow";
+                    elm.innerHTML = '<i class="fas fa-user-check"></i>';
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
                 } else {
                     toastr.success('Allowed to Follow You');
-                    elm.innerText = "Reject";
+                    elm.innerHTML = '<i class="fas fa-user-times"></i>';
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }

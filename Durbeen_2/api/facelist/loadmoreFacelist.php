@@ -63,11 +63,11 @@ while ($data1=mysqli_fetch_assoc($run)){
             </a>
         </td>
         <td class="text-center">
-            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
-                <?php $countF == 0 ? printf("Allow") : printf("Reject") ?>
-            </button>
             <button onclick="follow_req(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countC == 0 ? printf('btn-success') : printf("btn-primary") ?>" style="margin-top: 50px">
-                <?php $countC == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
+                <?php $countC == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-minus"></i>') ?>
+            </button>
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
+                <?php $countF == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
             </button>
         </td>
         <td class="text-center">

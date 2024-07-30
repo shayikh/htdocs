@@ -63,10 +63,10 @@ $run2 = mysqli_query($connection, $SQL2);
                 <h6><?php echo $data2['gender'] ?></h6>
             </td>
             <td class="text-center">
-                <button onclick="approve(<?php echo $data2['id'] ?>, this)" class="btn btn-sm btn-success">Approve</button>
+                <button onclick="approve(<?php echo $data2['id'] ?>, this)" class="btn btn-sm btn-success"><i class="fas fa-smile"></i></button>
             </td>
             <td class="text-center">
-                <button onclick="reject(<?php echo $data2['id'] ?>, this)" class="btn btn-sm btn-danger">Reject</button>
+                <button onclick="reject(<?php echo $data2['id'] ?>, this)" class="btn btn-sm btn-danger"><i class="fas fa-frown"></i></button>
             </td>
         </tr>
         <?php } ?>
@@ -121,7 +121,7 @@ $run2 = mysqli_query($connection, $SQL2);
                     })
                 .then(res => {
                     if (res.data == 0) {
-                        toastr.success('Request Rejected');
+                        toastr.error('Request Rejected');
                         elm.parentElement.parentElement.remove();
                     } 
                 })

@@ -54,8 +54,8 @@ while ($data = mysqli_fetch_assoc($run)){
             </a>
         </td>
         <td class="text-center">
-            <button onclick="addAdminfn(<?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 5px">
-                <?php $count2 == 0 ? printf("Admin") : printf('<i class="fas fa-user-slash"></i>') ?>
+            <button onclick="addAdminfn(<?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 15px">
+                <?php $count2 == 0 ? printf('<i class="fas fa-user-cog"></i>') : printf('<i class="fas fa-users"></i>') ?>
             </button>
         </td>
     </tr>

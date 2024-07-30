@@ -182,6 +182,8 @@ if (isset($_POST['signup'])) {
 
 
 <script>
+    alert('If You Use a Fake Name and Fake Photo, Your Account Will not be Approved by the Admin');
+    
     let email = document.querySelector("#emailID");
     function uniqueEmail() {
         let product = {};

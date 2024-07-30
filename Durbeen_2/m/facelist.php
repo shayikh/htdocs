@@ -1,6 +1,10 @@
 <?php
 include './header.php';
 
+
+if (isset($_GET['nofollow'])) {
+    echo "<script>toastr.error('He did not Allow to Follow You')</script>";
+}
 ?>
 
 
@@ -107,17 +111,15 @@ include './header.php';
 
                     if (res.data == 0) {
                         toastr.error('Rejected to Follow You');
-                        elm.innerText = "Allow";
+                        elm.innerHTML = '<i class="fas fa-user-check"></i>';
                         elm.classList.add('btn-success');
                         elm.classList.remove('btn-danger');
                     } else {
                         toastr.success('Allowed to Follow You');
-                        elm.innerText = "Reject";
+                        elm.innerHTML = '<i class="fas fa-user-times"></i>';
                         elm.classList.add('btn-danger');
                         elm.classList.remove('btn-success');
                     }
-
-
                 })
                 .catch(err => {
                     console.log(err);
