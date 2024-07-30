@@ -58,7 +58,7 @@ while ($data1=mysqli_fetch_assoc($run)){
         </td>
         <td class="text-center">
             <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-primary") ?>" id="followBtn" style="margin-top: 50px">
-                <?php $countF == 0 ? printf("Follow") : printf('<i class="fas fa-user-slash"></i>') ?>
+                <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
         </td>
         <td class="text-center">

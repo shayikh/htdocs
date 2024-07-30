@@ -76,7 +76,7 @@ include './header.php';
                         toastr.success('Follow Request Sent');
                         elm.remove();
                     }else{
-                        toastr.success('Unfollowed');
+                        toastr.info('Unfollowed');
                         elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                         elm.classList.add('btn-success');
                         elm.classList.remove('btn-primary');
