@@ -59,8 +59,9 @@ while ($data1=mysqli_fetch_assoc($run)){
             <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-primary") ?>" id="followBtn" style="margin-top: 2px">
                 <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
+            <br>
             <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
-                <img width="50px" src="../img/892177.svg" style="margin-top: 15px">
+                <img width="40px" src="../img/892177.svg" style="margin-top: 15px">
             </a>
         </td>
     </tr>
