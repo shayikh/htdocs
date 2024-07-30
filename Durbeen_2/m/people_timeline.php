@@ -250,7 +250,7 @@ $count2 = mysqli_num_rows($run2);
                     elm.parentElement.parentElement.remove();
                     toastr.info('Comment Deleted');
                 } else {
-                    toastr.warning('This is not Your Post');
+                    toastr.warning("You Can not Delete Other's Comment in Other's Post");
                 }
 
             })
