@@ -51,8 +51,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Send Message</a>
 
-            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end">
-                <?php $countF == 0 ? printf("Follow") : printf("Unfollow") ?>
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-primary") ?> float-end">
+                <?php $countF == 0 ? printf("Follow") : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
         </div>
 
@@ -192,8 +192,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     elm.classList.remove('btn-danger');
                 } else {
                     toastr.success('Following');
-                    elm.innerText = "Unfollow";
-                    elm.classList.add('btn-danger');
+                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                    elm.classList.add('btn-primary');
                     elm.classList.remove('btn-success');
                 }
 

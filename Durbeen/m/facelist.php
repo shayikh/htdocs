@@ -76,11 +76,11 @@ include './header.php';
                         toastr.error('Unfollowed');
                         elm.innerText = "Follow";
                         elm.classList.add('btn-success');
-                        elm.classList.remove('btn-danger');
+                        elm.classList.remove('btn-primary');
                     } else {
                         toastr.success('Following');
-                        elm.innerText = "Unfollow";
-                        elm.classList.add('btn-danger');
+                        elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                        elm.classList.add('btn-primary');
                         elm.classList.remove('btn-success');
                     }
 

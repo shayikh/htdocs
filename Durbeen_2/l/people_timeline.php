@@ -63,8 +63,8 @@ $count2 = mysqli_num_rows($run2);
                 <?php $count2 == 0 ? printf("Allow") : printf("Reject") ?>
             </button>
 
-            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>)" class="btn btn-danger float-end">
-                Unfollow
+            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>)" class="btn btn-primary float-end">
+                <i class="fas fa-user-slash"></i>
             </button>
         </div>
     </div>

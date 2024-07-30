@@ -77,6 +77,7 @@ include './header.php';
                         // console.log(res.data);
                         if (res.data == 0) {
                             elm.parentElement.parentElement.remove();
+                            toastr.info('Unfollowed');
                         }
                     })
                     .catch(err => {
