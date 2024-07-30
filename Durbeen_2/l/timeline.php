@@ -419,7 +419,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <div class="card" style="width: 100%;border: none">
 
                                 <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>>
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </p>
                                 <img width="100%" src="../post_image/${post.image}">
