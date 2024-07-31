@@ -241,7 +241,7 @@ if (isset($_POST['signup'])) {
                                 </select>
                             </div>
                             <div class="col-md-12">
-                                <label class="mt-1 font-small text-dark">Profile Picture ( A<span style='font-size:18px;'>&#215;</span>A Size )</label>
+                                <label class="mt-1 font-small text-dark">Profile Picture ( A<span style='font-size:18px;'>&#215;</span>A Size ) (Very Light Weight Photo)</label>
                                 <input required name="pro_pic" class="form-control" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
                             </div>
                             <label class="mt-2 ml-3 ms-2 font-small-2">.</label>
