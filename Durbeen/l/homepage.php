@@ -3,36 +3,26 @@ include './header.php';
 
 
 
-$SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
-$run2 = mysqli_query($connection, $SQL2);
-$count2 = mysqli_num_rows($run2);
-
-$SQL3 = "SELECT * FROM `account`";
-$run3 = mysqli_query($connection, $SQL3);
-$count3 = mysqli_num_rows($run3);
+?>
 
 
-// message notification
+<!-- message notification -->
+<?php
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
 $runnotify = mysqli_query($connection_info, $SQLnotify);
+
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
+
 <a style="position: fixed;left: 536px;top: 29px;z-index:15;font-weight: 600;" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
-<?php } 
 
-
-
-if ($count2 > 0 && $count3 > 0) { ?>
-<a style="position: fixed;left: 750px;top: 29px;z-index:15;font-weight: 600;" href="./register_confirm.php?type" class="btn btn-sm btn-danger"> <?php echo $count3 ?> New Account Requests</a>
 <?php } ?>
-
-
 
 
 <!-- NEWS FEED -->
 
-<div class="container" style="margin-top: 130px">
+<div class="container" style="margin-top:130px">
 
     <div class="row mb-5">
         <div class="col-md-2"></div>
@@ -176,7 +166,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
                         elm.parentElement.parentElement.remove();
                         toastr.info('Comment Deleted');
                     } else {
-                        toastr.info("You Can not Delete Other's Comment in Other's Post");
+                        toastr.warning('This is not Your Post');
                     }
 
                 })

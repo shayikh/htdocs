@@ -1,18 +1,16 @@
 <?php
 include './header.php';
 
-
 ?>
 
 
 <a style="position: fixed;left: 8px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Group</a>
 
-
-
 <!-- main page -->
 <div class="container" style="margin-top: 112px;">
     <h6 class="text-center">My Groups</h6>
     <table class="table table-bordered mt-3" style="margin-bottom: 150px;border-color: #5d5d5d">
+        
         <tbody id="tbodyID">
 
         </tbody>

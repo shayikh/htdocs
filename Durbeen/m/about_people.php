@@ -12,10 +12,6 @@ $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_f
 $runF = mysqli_query($connection_info, $SQLF);
 $countF = mysqli_num_rows($runF);
 
-if ($countF == 0) {
-    echo "<script>window.location = 'facelist.php?type=facelist&nofollow'</script>";
-}
-
 
 $SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $run1 = mysqli_query($connection, $SQL1);
@@ -24,10 +20,6 @@ $data1 = mysqli_fetch_assoc($run1);
 $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
 $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
-
-$SQL2 = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
-$run2 = mysqli_query($connection_info,$SQL2);
-$count2 = mysqli_num_rows($run2);
 
 ?>
 
@@ -54,19 +46,17 @@ $count2 = mysqli_num_rows($run2);
 
 
     <div class="row">
+
         <div class="col-md-12">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end ms-1">Timeline</a>
 
             <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end ms-1">Send Message</a>
 
-            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-1">
-                <?php $count2 == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
-            </button>
-
-            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>)" class="btn btn-sm btn-primary float-end">
-                <i class="fas fa-user-minus"></i>
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-primary") ?> float-end">
+                <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
         </div>
+
     </div>
 
 
@@ -154,7 +144,7 @@ $count2 = mysqli_num_rows($run2);
                     </td>
                     <td>
                         <h6 class="one d-none">
-                            http://durbeen2.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h6>
+                            http://durbeen.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h6>
                         <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>
@@ -179,47 +169,16 @@ $count2 = mysqli_num_rows($run2);
         toastr.success("Link Copied to Clipboard");
     })
 
-
-    const unfollowfn = (unique_id_me, unique_id_fr) => {
-        let confirm = window.confirm("Do You Want to Unfollow?");
-
-        if (confirm) {
-
-            let unfollowVar = {};
-
-            unfollowVar.unique_id_me = unique_id_me;
-            unfollowVar.unique_id_fr = unique_id_fr;
-
-            axios.post("../api/facelist/unfollow.php",
-                    unfollowVar, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-                    if (res.data == 0) {
-                        window.location = 'facelist.php?type=facelist';
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        } else {
-            return;
-        }
-    }
-
     
-    const allowfn = (unique_id_me, unique_id_fr, elm) => {
+    const followfn = (unique_id_me, unique_id_fr, elm) => {
 
-        let allowVar = {};
+        let followVar = {};
 
-        allowVar.unique_id_me = unique_id_me;
-        allowVar.unique_id_fr = unique_id_fr;
+        followVar.unique_id_me = unique_id_me;
+        followVar.unique_id_fr = unique_id_fr;
 
-        axios.post("../api/facelist/allow.php",
-            allowVar, {
+        axios.post("../api/facelist/follow.php",
+                followVar, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -228,14 +187,14 @@ $count2 = mysqli_num_rows($run2);
                 // console.log(res.data);
 
                 if (res.data == 0) {
-                    toastr.error('Rejected to Follow You');
-                    elm.innerHTML = '<i class="fas fa-user-check"></i>';
+                    toastr.info('Unfollowed');
+                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
                 } else {
-                    toastr.success('Allowed to Follow You');
-                    elm.innerHTML = '<i class="fas fa-user-times"></i>';
-                    elm.classList.add('btn-danger');
+                    toastr.success('Following');
+                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                    elm.classList.add('btn-primary');
                     elm.classList.remove('btn-success');
                 }
 

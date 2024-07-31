@@ -12,6 +12,7 @@ $grp_id = $data['grp_id'];
 
 
 
+
 $SQL3 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me'";
 $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
@@ -65,7 +66,7 @@ while ($data154=mysqli_fetch_assoc($run)){
         </td>
         <td class="text-center">
             <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
-                <?php $countF155 == 0 ? printf('<i class="fas fa-user-cog"></i>') : printf('<i class="fas fa-users"></i>') ?>
+                <?php $countF155 == 0 ? printf("Make Admin") : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
         </td>
     </tr>

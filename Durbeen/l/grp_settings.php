@@ -47,84 +47,85 @@ $count109 = mysqli_num_rows($run109);
 
 
 
-    <script>
-        let tbody = document.querySelector("#tbodyID");
+<script>
+    let tbody = document.querySelector("#tbodyID");
 
 
-        var page_no = 1;
+    var page_no = 1;
 
-        showdata();
+    showdata();
 
-        $(window).scroll(function() {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-                showdata();
-            }
-        })
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            showdata();
+        }
+    })
 
 
-        function showdata() {
+    function showdata() {
 
-            let postData = {};
+        let postData = {};
 
-            postData.page_no = page_no;
-            postData.unique_id_me = <?php echo $unique_id_me ?>;
-            postData.grp_id = <?php echo $grp_id ?>;
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+        postData.grp_id = <?php echo $grp_id ?>;
 
-            axios.post("../api/group/loadmoreGrpSetting.php",
-                    postData, {
+        axios.post("../api/group/loadmoreGrpSetting.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.error('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+
+    const leaveGrp = (grp_id, unique_id_me) => {
+        let confirm = window.confirm("Do You Want to Leave From This Group?");
+
+        if (confirm) {
+
+            let message = {};
+
+            message.grp_id = grp_id;
+            message.unique_id_me = unique_id_me;
+
+            axios.post("../api/group/leaveGrp.php",
+                    message, {
                         headers: {
                             "Content-Type": "application/json"
                         }
                     })
                 .then(res => {
-                    if (res.data == 0) {
-                        toastr.error('You Are at The End');
-                    } else {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
+                    // console.log(res.data);
+
+                    if (res.data == '1') {
+                        window.location = 'groups.php?type=groups';
                     }
+
                 })
                 .catch(err => {
                     console.log(err);
                 })
+        } else {
+            return;
         }
+    }
 
 
-        const leaveGrp = (grp_id, unique_id_me) => {
-            let confirm = window.confirm("Do You Want to Leave From This Group?");
-
-            if (confirm) {
-
-                let message = {};
-
-                message.grp_id = grp_id;
-                message.unique_id_me = unique_id_me;
-
-                axios.post("../api/group/leaveGrp.php",
-                        message, {
-                            headers: {
-                                "Content-Type": "application/json"
-                            }
-                        })
-                    .then(res => {
-                        // console.log(res.data);
-
-                        if (res.data == '1') {
-                            window.location = 'groups.php?type=groups';
-                        }
-
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            } else {
-                return;
-            }
-        }
-
-
-        
-    </script>
+    
+</script>
 
 
 </div>

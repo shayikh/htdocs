@@ -12,7 +12,7 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL1 = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`!='$unique_id_me'";
+$SQL1 = "SELECT * FROM `$unique_id_me follow`";
 $run1 = mysqli_query($connection_info, $SQL1);
 $total_posts = mysqli_num_rows($run1);
 $total_pages = ceil($total_posts / 10) + 1;
@@ -55,7 +55,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
             </a>
         </td>
         <td class="text-center">
-            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $fr_id ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 20px"><i class="fas fa-user-minus"></i></button>
+            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $fr_id ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 30px"><i class="fas fa-user-slash"></i></button>
         </td>
     </tr>
 

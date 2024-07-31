@@ -38,11 +38,86 @@ if (isset($_POST['signup'])) {
         }
 
 
-        $SQL2 = "INSERT INTO `account`(`name`, `email`, `password`,`date_birth`, `gender`, `pro_pic`) VALUES ('$name','$email','$password','$date_birth','$gender','$imageNewName')";
+        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`, `cov_pic`) VALUES ('$name','$email','$password','$imageNewName','cov_pic.jpg')";
         mysqli_query($connection, $SQL2);
 
 
-        echo "<script>window.location = './?wait'</script>";
+        $SQL3 = "SELECT * FROM `registration` WHERE `email`='$email'";
+        $run3 = mysqli_query($connection, $SQL3);
+        $data3 = mysqli_fetch_assoc($run3);
+
+        $unique_id_me = $data3['unique_id'];
+
+        $_SESSION['unique_id_me'] = $unique_id_me;
+
+        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`) VALUES ('$unique_id_me','$date_birth','$gender')";
+        mysqli_query($connection, $SQL4);
+
+
+        //create notification table
+        $SQL5 = "CREATE TABLE `$unique_id_me notify` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`sender` varchar(255),
+			`sender_id` int(255),
+			`seen` int(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQL5);
+
+
+        $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me chats` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`unique_id_fr` int(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreate);
+
+        $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me follow` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`unique_id_fr` int(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreate);
+
+        $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_me')";
+        mysqli_query($connection_info, $SQL400);
+        $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
+        mysqli_query($connection_info, $SQL400);
+
+
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`message` text,
+			`image` varchar(1000),
+			`time` varchar(1000),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_message, $SQLcreateMe);
+
+
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me pro_pic` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`pro_pic` varchar(1000),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreateMe);
+        
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me cov_pic` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`cov_pic` varchar(1000),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreateMe);
+
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
+			`id` int(255) unsigned NOT NULL auto_increment,
+			`grp_id` int(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreateMe);
+
+
+        echo "<script>window.location = './about_me.php?type=about_me&register'</script>";
     }
 
 }
@@ -182,8 +257,6 @@ if (isset($_POST['signup'])) {
 
 
 <script>
-    alert('If You Use a Fake Name and Fake Photo, Your Account Will not be Approved by the Admin');
-    
     let email = document.querySelector("#emailID");
     function uniqueEmail() {
         let product = {};

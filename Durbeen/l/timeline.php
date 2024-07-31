@@ -257,7 +257,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     elm.parentElement.parentElement.remove();
                     toastr.info('Comment Deleted');
                 } else {
-                    toastr.warning("You Can not Delete Other's Comment in Other's Post");
+                    toastr.warning('This is not Your Post');
                 }
 
             })
@@ -514,7 +514,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             })
     }
 
-    
     const deletePost = (post_id, unique_id_me, elm) => {
         let confirm = window.confirm("Are You Sure?");
 
