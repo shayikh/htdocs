@@ -3,7 +3,7 @@ include './header.php';
 
 
 if (isset($_GET['nofollow'])) {
-    echo "<script>toastr.error('He did not Allow to Follow You')</script>";
+    echo "<script>toastr.error('He did not Allow You to Follow Him')</script>";
 }
 ?>
 
