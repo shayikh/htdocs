@@ -1,10 +1,10 @@
 <?php
 
-$connection = mysqli_connect("localhost","root","","durbeen2");
+$connection = mysqli_connect("localhost","root","","ahsan");
 
-$connection_message = mysqli_connect("localhost","root","","durbeen_message2");
+$connection_message = mysqli_connect("localhost","root","","ahsan_message");
 
-$connection_info = mysqli_connect("localhost","root","","durbeen_info2");
+$connection_info = mysqli_connect("localhost","root","","ahsan_info");
 
 
 

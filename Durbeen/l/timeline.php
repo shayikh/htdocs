@@ -514,6 +514,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             })
     }
 
+    
     const deletePost = (post_id, unique_id_me, elm) => {
         let confirm = window.confirm("Are You Sure?");
 
