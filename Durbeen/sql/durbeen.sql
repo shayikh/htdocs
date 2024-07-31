@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2024 at 05:34 PM
+-- Generation Time: Jul 17, 2024 at 06:41 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -44,6 +44,47 @@ CREATE TABLE `about` (
   `question_three` text NOT NULL,
   `answer_three` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
+(1, 1, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `id` int(255) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `email` varchar(1000) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `date_birth` varchar(1000) NOT NULL,
+  `gender` varchar(1000) NOT NULL,
+  `pro_pic` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(255) NOT NULL,
+  `unique_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `unique_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -125,9 +166,16 @@ CREATE TABLE `registration` (
   `password` varchar(1000) NOT NULL,
   `pro_pic` varchar(1000) NOT NULL,
   `cov_pic` varchar(1000) NOT NULL,
-  `active` int(255) NOT NULL DEFAULT 0,
-  `visit` int(255) DEFAULT 0
+  `active` int(255) NOT NULL DEFAULT 1,
+  `visit` int(255) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`) VALUES
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', 'shayikhalmahdidurbeen114', 'cv.JPG', 'cov_pic.jpg', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -137,6 +185,18 @@ CREATE TABLE `registration` (
 -- Indexes for table `about`
 --
 ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -184,7 +244,19 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -220,7 +292,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

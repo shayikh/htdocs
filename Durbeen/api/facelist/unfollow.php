@@ -16,6 +16,8 @@ $unique_id_fr = $data['unique_id_fr'];
 
 $SQL1 = "DELETE FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
 mysqli_query($connection_info,$SQL1);
+$SQL1 = "DELETE FROM `$unique_id_fr allow` WHERE `unique_id_fr`='$unique_id_me'";
+mysqli_query($connection_info,$SQL1);
 
 echo "0";
 

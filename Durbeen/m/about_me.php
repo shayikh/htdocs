@@ -7,12 +7,19 @@ $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_me'";
 $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
-//alert
-if (isset($_GET['register'])) {
-    echo "<script>toastr.success('Registration Completed')</script>";
-}
+
+$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run1 = mysqli_query($connection, $SQL1);
+$count1 = mysqli_num_rows($run1);
+
 ?>
 
+
+<?php if ($count1 > 0) { ?>
+<a style="position: fixed;left: 6px;top: 62px;z-index:20;font-weight: 600;" href="admin.php?type" class="btn btn-sm btn-success">Admin</a>
+
+<a style="position: fixed;left: 69px;top: 62px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-sm btn-success">Requests</a>
+<?php } ?>
 
 <!-- main page -->
 <div class="container" style="margin-top: 99px;margin-bottom: 100px">
@@ -129,7 +136,7 @@ if (isset($_GET['register'])) {
                     </td>
                     <td>
                         <h6 class="one d-none">
-                            http://durbeen.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h6>
+                            http://durbeen2.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h6>
                         <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>
@@ -139,6 +146,14 @@ if (isset($_GET['register'])) {
                     </td>
                     <td>
                         <a href="./follow_list.php?type" class="btn btn-sm btn-success">Following List</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h6 class="text-blue">Allow List</h6>
+                    </td>
+                    <td>
+                        <a href="./allow_list.php?type" class="btn btn-sm btn-success">Allow List</a>
                     </td>
                 </tr>
                 <tr>

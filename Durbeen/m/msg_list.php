@@ -35,7 +35,7 @@ if ($number > 0) {
     <!-- Chatbar start -->
 
     <ul style="list-style-type: none">
-    <li style="margin-bottom: 5px">
+        <li style="margin-bottom: 5px">
             <a class="text-decoration-none" href="./my_notes.php">
                 <div class="msg_list_hov">
 
@@ -104,8 +104,8 @@ if ($number > 0) {
             $SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
             $run21 = mysqli_query($connection, $SQL21);
             $data21 = mysqli_fetch_assoc($run21);
-            
             ?>
+
 
         <li style="margin-bottom: 5px">
             <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
