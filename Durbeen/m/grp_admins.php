@@ -138,7 +138,6 @@ if (isset($_POST['delete_grp'])) {
     let grp_name = document.querySelector("#grp_nameID");
     let button = document.querySelector("#buttonID");
     let postCloseBtn = document.querySelector("#postCloseBtn");
-    
     let tbody = document.querySelector("#tbodyID");
 
 
@@ -235,12 +234,12 @@ if (isset($_POST['delete_grp'])) {
 
                 if (res.data == 0) {
                     toastr.error('Removed from Admin');
-                    elm.innerText = "Admin";
+                    elm.innerHTML = '<i class="fas fa-user-cog"></i>';
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
                 } else {
                     toastr.success('Made Admin');
-                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                    elm.innerHTML = '<i class="fas fa-users"></i>';
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }
