@@ -416,6 +416,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let unique_id_me = document.querySelector('#unique_id_me');
 
     let timeline_name = document.querySelector("#timeline_name");
+    let chatbar_name = document.querySelector("#chatbar_name");
     let name = document.querySelector("#name");
     let emailID = document.querySelector("#emailID");
     let pro_pic = document.querySelector("#pro_pic");
@@ -441,6 +442,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let phoneModal = document.querySelector("#phoneModal");
     let bioModal = document.querySelector("#bioModal");
     let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
+    let chatbar_pro_pic = document.querySelector("#chatbar_pro_pic");
 
     let myMail = emailModal.value;
 
@@ -474,12 +476,14 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                 pro_pic.src = "../pro_pic/" + profile_picture;
                 timeline_pro_pic.src = "../pro_pic/" + profile_picture;
+                chatbar_pro_pic.src = "../pro_pic/" + profile_picture;
                 cov_pic.src = "../pro_pic/cov_pic/" + cover_photo;
                 
                 hidden_pro_pic.value = profile_picture;
                 hidden_cov_pic.value = cover_photo;
                 
                 timeline_name.innerText = json.myData.name;
+                chatbar_name.innerText = json.myData.name;
                 name.innerText = json.myData.name;
                 emailID.innerText = json.myData.email;
                 birth_date.innerText = json.about.date_birth;

@@ -129,9 +129,9 @@ $pro_pic_me = $dataMe['pro_pic'];
                 <a class="text-decoration-none" href="./my_notes.php?type=my_notes">
                     <div class="hover_chatbar">
 
-                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>">
+                        <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="chatbar_pro_pic">
                         <img src="../img/green_dot.png" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px">
-                        <h5 class="text-" style="margin-top: -38px;margin-left: 68px">
+                        <h5 class="text-" style="margin-top: -38px;margin-left: 68px" id="chatbar_name">
                             <?php echo $dataMe['name'] ?>
                         </h5>
 
