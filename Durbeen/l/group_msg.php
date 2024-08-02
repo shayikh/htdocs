@@ -11,7 +11,10 @@ if ($count110 == 0) {
     echo "<script>window.location = 'homepage.php?type'</script>";
 }
 
-
+$SQLgrp = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
+$rungrp = mysqli_query($connection, $SQLgrp);
+$datagrp = mysqli_fetch_assoc($rungrp);
+$grpName = $datagrp['grp_name'];
 
 ?>
 
@@ -24,12 +27,11 @@ if ($count110 == 0) {
 
 
 
-<div class="container" style="margin-top: 270px">
+<div class="container" style="margin-top: 150px">
 
     <div class="row">
         <div class="col-md-12">
-
-
+            <h4 class="text-center"><?php echo $grpName ?></h4>
             <table class="table mt-4">
                 <tbody id="tbodyID">
                     <tr>

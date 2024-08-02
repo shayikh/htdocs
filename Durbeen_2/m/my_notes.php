@@ -14,8 +14,8 @@ include './header.php';
 
     <div class="row">
         <div class="col-md-12">
-
-            <table class="table mt-4">
+            <h6 class="text-center">My Notes</h6>
+            <table class="table">
                 <tbody id="tbodyID">
                     <tr>
                     </tr>
@@ -24,7 +24,6 @@ include './header.php';
             <span id="appendID"></span>
         </div>
     </div>
-
 
 </div>
 

@@ -22,11 +22,11 @@ mysqli_query($connection_message, $SQLcreateMe);
 <a target="_self" style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" href="my_notes.php?type=my_notes" class="btn btn-success">Refresh Page</a>
 
 
-<div class="container" style="margin-top:270px">
+<div class="container" style="margin-top: 150px">
 
     <div class="row">
         <div class="col-md-12">
-
+            <h4 class="text-center">My Notes</h4>
             <table class="table mt-4">
                 <tbody id="tbodyID">
                     <tr>

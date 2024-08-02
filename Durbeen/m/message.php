@@ -5,6 +5,8 @@ $unique_id_fr = $_GET['unique_id_fr'];
 
 $SQLtest = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $runtest = mysqli_query($connection, $SQLtest);
+$datatest = mysqli_fetch_assoc($runtest);
+$friendName = $datatest['name'];
 $countTest = mysqli_num_rows($runtest);
 
 if ($countTest == 0) {
@@ -157,9 +159,8 @@ if ($countTest == 0) {
 
     <div class="row">
         <div class="col-md-12">
-
-
-            <table class="table mt-4">
+            <h6 class="text-center"><?php echo $friendName ?></h6>
+            <table class="table">
                 <tbody id="tbodyID">
                     <tr>
                     </tr>
@@ -170,7 +171,6 @@ if ($countTest == 0) {
             <span id="appendID"></span>
         </div>
     </div>
-
 
 </div>
 

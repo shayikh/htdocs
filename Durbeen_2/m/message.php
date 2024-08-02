@@ -5,6 +5,8 @@ $unique_id_fr = $_GET['unique_id_fr'];
 
 $SQLtest = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $runtest = mysqli_query($connection, $SQLtest);
+$datatest = mysqli_fetch_assoc($runtest);
+$friendName = $datatest['name'];
 $countTest = mysqli_num_rows($runtest);
 
 if ($countTest == 0) {
@@ -89,15 +91,7 @@ if ($countTest == 0) {
         $SQL7 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='me'";
         mysqli_query($connection_message, $SQL7);
 
-
-        $SQL8 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-        $run8 = mysqli_query($connection, $SQL8);
-        $data8 = mysqli_fetch_assoc($run8);
-
-        $friendName = $data8['name'];
-
     }
-
 
 }
 
@@ -116,9 +110,8 @@ if ($countTest == 0) {
 
     <div class="row">
         <div class="col-md-12">
-
-
-            <table class="table mt-4">
+            <h6 class="text-center"><?php echo $friendName ?></h6>
+            <table class="table">
                 <tbody id="tbodyID">
                     <tr>
                     </tr>
@@ -129,7 +122,6 @@ if ($countTest == 0) {
             <span id="appendID"></span>
         </div>
     </div>
-
 
 </div>
 
