@@ -41,7 +41,7 @@ if (isset($_POST['signup'])) {
         $SQL2 = "INSERT INTO `account`(`name`, `email`, `password`,`date_birth`, `gender`, `pro_pic`) VALUES ('$name','$email','$password','$date_birth','$gender','$imageNewName')";
         mysqli_query($connection, $SQL2);
 
-
+        
         echo "<script>window.location = './?wait'</script>";
     }
 
