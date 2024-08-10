@@ -41,9 +41,9 @@ if ($countTest == 0) {
 
         //create two table if not exist
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_fr` (
-			`id` int(255) unsigned NOT NULL auto_increment,
+			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`sender` varchar(255),
-			`message` text,
+			`message` longtext,
 			`image` varchar(1000),
 			`time` varchar(1000),
 			`seen` varchar(1000),
@@ -52,9 +52,9 @@ if ($countTest == 0) {
         mysqli_query($connection_message, $SQLcreateMe);
 
         $SQLcreateFr = "CREATE TABLE IF NOT EXISTS `$unique_id_fr to $unique_id_me` (
-			`id` int(255) unsigned NOT NULL auto_increment,
+			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`sender` varchar(255),
-			`message` text,
+			`message` longtext,
 			`image` varchar(1000),
 			`time` varchar(1000),
 			`seen` varchar(1000),

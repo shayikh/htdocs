@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2024 at 05:34 PM
+-- Generation Time: Aug 10, 2024 at 01:57 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about` (
-  `id` int(255) NOT NULL,
-  `unique_id` int(255) NOT NULL,
-  `bio` text DEFAULT NULL,
+  `id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL,
+  `bio` longtext DEFAULT NULL,
   `date_birth` varchar(1000) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `phone_no` varchar(1000) DEFAULT NULL,
@@ -52,14 +52,14 @@ CREATE TABLE `about` (
 --
 
 CREATE TABLE `comment` (
-  `id` int(255) NOT NULL,
-  `post_id` int(255) NOT NULL,
-  `post_giver_id` int(255) NOT NULL,
-  `comn_giver_id` int(255) NOT NULL,
+  `id` bigint(255) NOT NULL,
+  `post_id` bigint(255) NOT NULL,
+  `post_giver_id` bigint(255) NOT NULL,
+  `comn_giver_id` bigint(255) NOT NULL,
   `name` varchar(1000) NOT NULL,
   `pro_pic` varchar(1000) NOT NULL,
   `time` varchar(1000) NOT NULL,
-  `comment` text NOT NULL
+  `comment` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -69,9 +69,9 @@ CREATE TABLE `comment` (
 --
 
 CREATE TABLE `dislike_post` (
-  `id` int(255) NOT NULL,
-  `post_id` int(255) NOT NULL,
-  `unique_id` int(255) NOT NULL
+  `id` bigint(255) NOT NULL,
+  `post_id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -81,7 +81,7 @@ CREATE TABLE `dislike_post` (
 --
 
 CREATE TABLE `groups` (
-  `id` int(255) NOT NULL,
+  `id` bigint(255) NOT NULL,
   `grp_name` varchar(1000) NOT NULL,
   `pro_pic` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -93,9 +93,9 @@ CREATE TABLE `groups` (
 --
 
 CREATE TABLE `like_post` (
-  `id` int(255) NOT NULL,
-  `post_id` int(255) NOT NULL,
-  `unique_id` int(255) NOT NULL
+  `id` bigint(255) NOT NULL,
+  `post_id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,11 +105,11 @@ CREATE TABLE `like_post` (
 --
 
 CREATE TABLE `post` (
-  `id` int(255) NOT NULL,
-  `unique_id` int(255) NOT NULL,
+  `id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL,
   `image` varchar(1000) DEFAULT NULL,
   `time` varchar(1000) NOT NULL,
-  `post` text DEFAULT NULL
+  `post` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -119,14 +119,14 @@ CREATE TABLE `post` (
 --
 
 CREATE TABLE `registration` (
-  `unique_id` int(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL,
   `name` varchar(1000) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(1000) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `pro_pic` varchar(1000) NOT NULL,
   `cov_pic` varchar(1000) NOT NULL,
-  `active` int(255) NOT NULL DEFAULT 1,
-  `visit` int(255) DEFAULT 1
+  `active` tinyint(255) NOT NULL DEFAULT 1,
+  `visit` bigint(255) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -184,43 +184,43 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dislike_post`
 --
 ALTER TABLE `dislike_post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `like_post`
 --
 ALTER TABLE `like_post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `unique_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `unique_id` bigint(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

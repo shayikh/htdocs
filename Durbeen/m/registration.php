@@ -56,25 +56,25 @@ if (isset($_POST['signup'])) {
 
         //create notification table
         $SQL5 = "CREATE TABLE `$unique_id_me notify` (
-			`id` int(255) unsigned NOT NULL auto_increment,
+			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`sender` varchar(255),
-			`sender_id` int(255),
-			`seen` int(255),
+			`sender_id` bigint(255),
+			`seen` tinyint(255),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQL5);
 
 
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me chats` (
-			`id` int(255) unsigned NOT NULL auto_increment,
-			`unique_id_fr` int(255),
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`unique_id_fr` bigint(255),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQLcreate);
 
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me follow` (
-			`id` int(255) unsigned NOT NULL auto_increment,
-			`unique_id_fr` int(255),
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`unique_id_fr` bigint(255),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQLcreate);
@@ -86,8 +86,8 @@ if (isset($_POST['signup'])) {
 
 
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
-			`id` int(255) unsigned NOT NULL auto_increment,
-			`message` text,
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`message` longtext,
 			`image` varchar(1000),
 			`time` varchar(1000),
 			PRIMARY KEY  (`id`)
@@ -96,22 +96,22 @@ if (isset($_POST['signup'])) {
 
 
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me pro_pic` (
-			`id` int(255) unsigned NOT NULL auto_increment,
+			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`pro_pic` varchar(1000),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQLcreateMe);
         
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me cov_pic` (
-			`id` int(255) unsigned NOT NULL auto_increment,
+			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`cov_pic` varchar(1000),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQLcreateMe);
         
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
-			`id` int(255) unsigned NOT NULL auto_increment,
-            `grp_id` int(255),
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+            `grp_id` bigint(255),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQLcreateMe);

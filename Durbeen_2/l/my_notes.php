@@ -1,18 +1,6 @@
 <?php
 include './header.php';
 
-//create table if not exist
-$SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
-  `id` int(255) unsigned NOT NULL auto_increment,
-  `message` text,
-  `image` varchar(1000),
-  `time` varchar(1000),
-  PRIMARY KEY  (`id`)
-)";
-mysqli_query($connection_message, $SQLcreateMe);
-//table creation end
-
-
 ?>
 
 

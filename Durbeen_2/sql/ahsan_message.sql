@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 06:41 PM
+-- Generation Time: Aug 10, 2024 at 01:53 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `1 to 1` (
-  `id` int(255) UNSIGNED NOT NULL,
-  `message` text DEFAULT NULL,
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `message` longtext DEFAULT NULL,
   `image` varchar(1000) DEFAULT NULL,
   `time` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -52,7 +52,7 @@ ALTER TABLE `1 to 1`
 -- AUTO_INCREMENT for table `1 to 1`
 --
 ALTER TABLE `1 to 1`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
