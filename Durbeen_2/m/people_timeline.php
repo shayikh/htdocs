@@ -153,7 +153,7 @@ $count2 = mysqli_num_rows($run2);
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
@@ -423,7 +423,7 @@ $count2 = mysqli_num_rows($run2);
 
 
     const shareMefn = (post_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Share?");
+        let confirm = window.confirm("Share This Post to Your Timeline?");
 
         if (confirm) {
             let sharep = {};

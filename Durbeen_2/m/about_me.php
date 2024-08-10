@@ -582,7 +582,7 @@ $count1 = mysqli_num_rows($run1);
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     let all = res.data;
 
@@ -632,7 +632,7 @@ $count1 = mysqli_num_rows($run1);
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     let all = res.data;
 

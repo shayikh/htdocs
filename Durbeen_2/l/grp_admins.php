@@ -168,7 +168,7 @@ if (isset($_POST['delete_grp'])) {
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;

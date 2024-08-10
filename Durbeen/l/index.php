@@ -90,10 +90,10 @@ if (isset($_POST['login'])) {
 
 <?php
 if (isset($_GET['mustlog'])) {
-    echo "<script>toastr.error('You Must LogIn First')</script>";
+    echo "<script>toastr.info('You Must LogIn First')</script>";
 }
 if (isset($_GET['out'])) {
-    echo "<script>toastr.error('You Are Logged Out')</script>";
+    echo "<script>toastr.info('You Are Logged Out')</script>";
 }
 ?>
 

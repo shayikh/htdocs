@@ -329,7 +329,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
     }
 
     const shareMefn = (post_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Share?");
+        let confirm = window.confirm("Share This Post to Your Timeline?");
 
         if (confirm) {
             let sharep = {};

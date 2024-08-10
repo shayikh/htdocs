@@ -564,7 +564,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     let all = res.data;
 
@@ -614,7 +614,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     let all = res.data;
 

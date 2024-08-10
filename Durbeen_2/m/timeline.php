@@ -173,7 +173,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.error('You Are at The End');
+                    toastr.info('You Are at The End');
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
@@ -552,7 +552,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     const sharefn = (post_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Share?");
+        let confirm = window.confirm("Share This Post to Your Timeline?");
 
         if (confirm) {
 

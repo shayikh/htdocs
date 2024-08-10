@@ -427,7 +427,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
 
 
         const sharefn = (post_id, unique_id_me) => {
-            let confirm = window.confirm("Do You Want to Share?");
+            let confirm = window.confirm("Share This Post to Your Timeline?");
 
             if (confirm) {
                 let sharep = {};
