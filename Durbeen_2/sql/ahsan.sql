@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2024 at 01:55 PM
+-- Generation Time: Aug 10, 2024 at 07:08 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -78,6 +78,13 @@ CREATE TABLE `admin` (
   `id` bigint(255) NOT NULL,
   `unique_id` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `unique_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +175,7 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', 'shayikhalmahdidurbeen114', 'cv.JPG', 'cov_pic.jpg', 0, 0);
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', 'shayikhalmahdidurbeen114', 'cv.JPG', 'cov_pic.jpg', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -249,7 +256,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `comment`
