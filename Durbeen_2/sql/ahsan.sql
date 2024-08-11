@@ -84,7 +84,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `unique_id`) VALUES
-(1, 1);
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
