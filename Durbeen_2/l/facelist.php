@@ -80,10 +80,10 @@ if (isset($_GET['nofollow'])) {
                         toastr.success('Follow Request Sent');
                         elm.remove();
                     }else{
-                        toastr.info('Unfollowed');
+                        toastr.error('Unfollowed');
                         elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                         elm.classList.add('btn-success');
-                        elm.classList.remove('btn-primary');
+                        elm.classList.remove('btn-danger');
                     }
                 })
                 .catch(err => {

@@ -55,7 +55,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
             </a>
         </td>
         <td class="text-center">
-            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $fr_id ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 20px"><i class="fas fa-user-minus"></i></button>
+            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $fr_id ?>, this)" class="btn btn-sm btn-danger" style="margin-top: 20px"><i class="fas fa-user-slash"></i></button>
         </td>
     </tr>
 

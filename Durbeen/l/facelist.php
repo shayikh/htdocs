@@ -73,14 +73,14 @@ include './header.php';
                     // console.log(res.data);
 
                     if (res.data == 0) {
-                        toastr.info('Unfollowed');
+                        toastr.error('Unfollowed');
                         elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                         elm.classList.add('btn-success');
-                        elm.classList.remove('btn-primary');
+                        elm.classList.remove('btn-danger');
                     } else {
                         toastr.success('Following');
                         elm.innerHTML = '<i class="fas fa-user-slash"></i>';
-                        elm.classList.add('btn-primary');
+                        elm.classList.add('btn-danger');
                         elm.classList.remove('btn-success');
                     }
 
