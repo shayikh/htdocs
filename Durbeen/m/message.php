@@ -92,12 +92,6 @@ if ($countTest == 0) {
         mysqli_query($connection_message, $SQL7);
 
 
-        $SQL8 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-        $run8 = mysqli_query($connection, $SQL8);
-        $data8 = mysqli_fetch_assoc($run8);
-
-        $friendName = $data8['name'];
-
 
         if (isset($_POST['delete_con'])) {
 
@@ -115,6 +109,18 @@ if ($countTest == 0) {
 
             $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
             mysqli_query($connection_message, $SQL10);
+
+            $SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
+            $run11 = mysqli_query($connection_message, $SQL11);
+
+            if ($run11 == true) {
+                while ($data11 = mysqli_fetch_assoc($run11)) {
+                    $imgNameinDB = $data11['image'];
+                    if ($imgNameinDB != '') {
+                        unlink('../chat_image/' . $imgNameinDB);
+                    }
+                }
+            }
 
 
             $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";

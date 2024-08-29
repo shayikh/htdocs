@@ -20,7 +20,7 @@ $data1 = mysqli_fetch_assoc($run1);
 $imgNameinDB = $data1['image'];
 
 if($imgNameinDB!=''){
-  unlink('../../chat_image/'.$imgNameinDB);
+  unlink('../../note_image/'.$imgNameinDB);
 }
     
 $SQL6 = "DELETE FROM `$unique_id_me to $unique_id_me` WHERE `id`='$Deleteid'";

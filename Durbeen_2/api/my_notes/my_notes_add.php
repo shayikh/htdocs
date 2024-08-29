@@ -10,7 +10,7 @@ if($_FILES['image_khan_bahadur']['name']){
   $imageOldName = $_FILES['image_khan_bahadur']['name'];
   $imageNewName = uniqid().'_'.date("Y-M-H-i-s").'_'.$imageOldName;
   $image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
-  move_uploaded_file($image_tmp,'../../chat_image/'.$imageNewName);
+  move_uploaded_file($image_tmp,'../../note_image/'.$imageNewName);
 }else{
   $imageNewName = '';
 }

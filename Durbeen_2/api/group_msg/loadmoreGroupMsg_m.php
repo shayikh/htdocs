@@ -50,7 +50,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                     <?php if ($data3['image'] != "") { ?>
                         <img title="<?php echo $data3['time'] ?>" width="290px"
-                            src="../chat_image/<?php echo $data3['image'] ?>">
+                            src="../grp_image/<?php echo $data3['image'] ?>">
                     <?php } ?>
 
 
@@ -64,7 +64,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                 <div class="float-end" style="border: none;">
                     <?php if ($data3['image'] != "") { ?>
-                        <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px" src="../chat_image/<?php echo $data3['image'] ?>">
+                        <img class="float-end" title="<?php echo $data3['time'] ?>" width="290px" src="../grp_image/<?php echo $data3['image'] ?>">
                     <?php } ?>
                     
                     <?php if ($data3['message'] != "") { ?>
