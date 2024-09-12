@@ -91,6 +91,56 @@ if ($countTest == 0) {
         $SQL7 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='me'";
         mysqli_query($connection_message, $SQL7);
 
+        if (isset($_POST['delete_con'])) {
+
+            $SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+            $run9 = mysqli_query($connection_message, $SQL9);
+
+            if ($run9 == true) {
+                while ($data9 = mysqli_fetch_assoc($run9)) {
+                    $imgNameinDB = $data9['image'];
+                    if ($imgNameinDB != '') {
+                        unlink('../chat_image/' . $imgNameinDB);
+                    }
+                }
+            }
+
+            $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
+            mysqli_query($connection_message, $SQL10);
+
+            $SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
+            $run11 = mysqli_query($connection_message, $SQL11);
+
+            if ($run11 == true) {
+                while ($data11 = mysqli_fetch_assoc($run11)) {
+                    $imgNameinDB = $data11['image'];
+                    if ($imgNameinDB != '') {
+                        unlink('../chat_image/' . $imgNameinDB);
+                    }
+                }
+            }
+
+
+            $SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
+            mysqli_query($connection_message, $SQL12);
+
+
+            $SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
+            mysqli_query($connection_info, $SQL13);
+
+            $SQL14 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
+            mysqli_query($connection_info, $SQL14);
+
+            $SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
+            mysqli_query($connection_info, $SQL15);
+
+            $SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
+            mysqli_query($connection_info, $SQL16);
+
+
+            echo "<script>window.location = 'homepage.php?type'</script>";
+        }
+
     }
 }
 
