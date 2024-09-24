@@ -10,16 +10,33 @@ $data = json_decode($jsonData, true);
 $unique_id_me = $data['unique_id_me'];
 $grp_id = $data['grp_id'];
 
+$SQL4 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
+$run4 = mysqli_query($connection_message, $SQL4);
+$count4 = mysqli_num_rows($run4);
+
+$SQL3 = "SELECT * FROM `group $grp_id members` WHERE `admin`='1'";
+$run3 = mysqli_query($connection_message, $SQL3);
+$count3 = mysqli_num_rows($run3);
 
 
-$SQL2 = "DELETE FROM `group $grp_id members` WHERE `memberId`='$unique_id_me'";
-mysqli_query($connection_message,$SQL2);
 
-$SQL1 = "DELETE FROM `$unique_id_me msg_grp` WHERE `grp_id`='$grp_id'";
-mysqli_query($connection_info,$SQL1);
+if($count4 == 1 && $count3 == 1) {
+
+    echo "0";
+
+}else {
+
+    $SQL2 = "DELETE FROM `group $grp_id members` WHERE `memberId`='$unique_id_me'";
+    mysqli_query($connection_message,$SQL2);
+
+    $SQL1 = "DELETE FROM `$unique_id_me msg_grp` WHERE `grp_id`='$grp_id'";
+    mysqli_query($connection_info,$SQL1);
+
+    echo "1";
+
+}
 
 
-echo "1";
 
 
 

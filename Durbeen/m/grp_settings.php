@@ -46,85 +46,88 @@ $count109 = mysqli_num_rows($run109);
 
 
 
-<script>
-    let tbody = document.querySelector("#tbodyID");
+    <script>
+        let tbody = document.querySelector("#tbodyID");
 
 
-    var page_no = 1;
+        var page_no = 1;
 
-    showdata();
+        showdata();
 
-    $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
-        }
-    })
-
-
-    function showdata() {
-
-        let postData = {};
-
-        postData.page_no = page_no;
-        postData.unique_id_me = <?php echo $unique_id_me ?>;
-        postData.grp_id = <?php echo $grp_id ?>;
-
-        axios.post("../api/group/loadmoreGrpSetting_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+        $(window).scroll(function() {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+                showdata();
+            }
+        })
 
 
+        function showdata() {
 
-    const leaveGrp = (grp_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Leave From This Group?");
+            let postData = {};
 
-        if (confirm) {
+            postData.page_no = page_no;
+            postData.unique_id_me = <?php echo $unique_id_me ?>;
+            postData.grp_id = <?php echo $grp_id ?>;
 
-            let message = {};
-
-            message.grp_id = grp_id;
-            message.unique_id_me = unique_id_me;
-
-            axios.post("../api/group/leaveGrp.php",
-                    message, {
+            axios.post("../api/group/loadmoreGrpSetting_m.php",
+                    postData, {
                         headers: {
                             "Content-Type": "application/json"
                         }
                     })
                 .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        window.location = 'groups.php?type=groups';
+                    if (res.data == 0) {
+                        toastr.info('You Are at The End');
+                    } else {
+                        tbody.innerHTML = tbody.innerHTML + res.data;
+                        page_no++;
                     }
-
                 })
                 .catch(err => {
                     console.log(err);
                 })
-        } else {
-            return;
         }
-    }
 
 
-    
-</script>
+
+        const leaveGrp = (grp_id, unique_id_me) => {
+            let confirm = window.confirm("Do You Want to Leave From This Group?");
+
+            if (confirm) {
+
+                let message = {};
+
+                message.grp_id = grp_id;
+                message.unique_id_me = unique_id_me;
+
+                axios.post("../api/group/leaveGrp.php",
+                        message, {
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        })
+                    .then(res => {
+                        // console.log(res.data);
+
+                        if (res.data == '1') {
+                            window.location = 'groups.php?type=groups';
+                        }else if (res.data == '0') {
+                            alert('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                            toastr.error('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                        }
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } else {
+                return;
+            }
+        }
+
+
+        
+    </script>
 
 
 </div>

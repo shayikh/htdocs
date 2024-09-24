@@ -110,7 +110,10 @@ $count109 = mysqli_num_rows($run109);
                         // console.log(res.data);
 
                         if (res.data == '1') {
-                            window.location = 'groups.php?type=groups';
+                        window.location = 'groups.php?type=groups';
+                        }else if (res.data == '0') {
+                            alert('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                            toastr.error('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
                         }
 
                     })
