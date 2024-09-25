@@ -3,7 +3,7 @@ include './header.php';
 
 
 if ($_SESSION['unique_id_me'] != 1) {
-    echo "<script>window.location = 'https://profreehost.com/404/index.php'</script>";
+    echo "<script>window.location = './lost.php'</script>";
 }
 
 
