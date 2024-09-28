@@ -156,9 +156,8 @@ if ($countTest == 0) {
 
 <a style="position: fixed;left: 73px;top: 62px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Profile</a>
 
-<form method="post" action="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-    <button style="position: fixed;left: 134px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Delete This Conversation?')" name="delete_con" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a style="position: fixed;left: 134px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" onclick="deleteConv(<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>)"><i class="fas fa-trash-alt"></i></a>
+
 
 
 <div class="container" style="margin-top: 110px">
@@ -313,6 +312,37 @@ if ($countTest == 0) {
 							</div>
 						</tr>`
         return tr;
+    }
+
+
+    const deleteConv = (unique_id_me, unique_id_fr) => {
+        let confirm = window.confirm("Do You Want to Delete This Conversation?");
+
+        if (confirm) {
+
+            let message = {};
+
+            message.unique_id_me = unique_id_me;
+            message.unique_id_fr = unique_id_fr;
+
+            axios.post("../api/message/deleteConv.php",
+                    message, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                .then(res => {
+                    console.log(res.data);
+
+                    window.location = './homepage.php?type';
+                    
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
+            return;
+        }
     }
 
 
