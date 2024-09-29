@@ -32,21 +32,21 @@ $run = mysqli_query($connection_message, $SQL);
 while ($data3 = mysqli_fetch_assoc($run)) { ?>
     <table class="table mt-4">
         <tbody>
-        <tr>
+            <tr>
 
-            <div class="float-end" style="border: none;">
-                <?php if ($data3['image'] != "") { ?>
-                    <img class="float-end" title="<?php echo $data3['time'] ?>" width="300px" src="../note_image/<?php echo $data3['image'] ?>">
-                <?php } ?>
-                
-                <?php if ($data3['message'] != "") { ?>
-                    <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h6>
-                <?php } ?>
-                <br>
-                <button onclick="deleteSelfMsg(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>
-            </div>
+                <div class="float-end" style="border: none;">
+                    <?php if ($data3['image'] != "") { ?>
+                        <img class="float-end" title="<?php echo $data3['time'] ?>" width="300px" src="../note_image/<?php echo $data3['image'] ?>">
+                    <?php } ?>
+                    
+                    <?php if ($data3['message'] != "") { ?>
+                        <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h6>
+                    <?php } ?>
+                    <br>
+                    <button onclick="deleteSelfMsg(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>
+                </div>
 
-        </tr>
+            </tr>
         </tbody>
     </table>
 

@@ -14,90 +14,92 @@ include './header.php';
         </tbody>
     </table>
 
-
-    <script>
-        let tbody = document.querySelector("#tbodyID");
+</div>
 
 
-        var page_no = 1;
-
-        showdata();
-
-        $(window).scroll(function() {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-                showdata();
-            }
-        })
+<script>
+    let tbody = document.querySelector("#tbodyID");
 
 
-        function showdata() {
+    var page_no = 1;
 
-            let postData = {};
+    showdata();
 
-            postData.page_no = page_no;
-            postData.unique_id_me = <?php echo $unique_id_me ?>;
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
+            showdata();
+        }
+    })
 
-            axios.post("../api/facelist/loadmoreFollowList_m.php",
-                    postData, {
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/facelist/loadmoreFollowList_m.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.info('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+    const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
+        let confirm = window.confirm("Do You Want to Unfollow?");
+
+        if (confirm) {
+
+            let unfollowVar = {};
+
+            unfollowVar.unique_id_me = unique_id_me;
+            unfollowVar.unique_id_fr = unique_id_fr;
+
+            axios.post("../api/facelist/unfollow.php",
+                    unfollowVar, {
                         headers: {
                             "Content-Type": "application/json"
                         }
                     })
                 .then(res => {
+                    // console.log(res.data);
+
                     if (res.data == 0) {
-                        toastr.info('You Are at The End');
-                    } else {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
+                        elm.parentElement.parentElement.remove();
+                        toastr.error('Unfollowed');
                     }
+
+
                 })
                 .catch(err => {
                     console.log(err);
                 })
+
+        } else {
+            return;
         }
 
 
-        const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
-            let confirm = window.confirm("Do You Want to Unfollow?");
+    }
 
-            if (confirm) {
-
-                let unfollowVar = {};
-
-                unfollowVar.unique_id_me = unique_id_me;
-                unfollowVar.unique_id_fr = unique_id_fr;
-
-                axios.post("../api/facelist/unfollow.php",
-                        unfollowVar, {
-                            headers: {
-                                "Content-Type": "application/json"
-                            }
-                        })
-                    .then(res => {
-                        // console.log(res.data);
-
-                        if (res.data == 0) {
-                            elm.parentElement.parentElement.remove();
-                            toastr.error('Unfollowed');
-                        }
+</script>
 
 
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
 
-            } else {
-                return;
-            }
-
-
-        }
-
-    </script>
-
-
-</div>
 
 
 <?php

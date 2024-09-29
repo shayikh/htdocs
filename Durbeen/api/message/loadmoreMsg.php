@@ -67,7 +67,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                 <div class="float-end" style="width: 590px;border: none;">
                     <?php if ($data3['image'] != "") { ?>
-                        <img width="590px" src="../chat_image/<?php echo $data3['image'] ?>">
+                        <img title="<?php echo $data3['time'] ?>" width="590px" src="../chat_image/<?php echo $data3['image'] ?>">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>
@@ -78,7 +78,6 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                     <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
                             class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
                     </button>
-
                     <button class="btn btn-sm btn-dark float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 

@@ -225,6 +225,6 @@ if ($_SESSION['unique_id_me']) {
     </script>
 
 
-    <?php
+<?php
 include './footer.php'
 ?>

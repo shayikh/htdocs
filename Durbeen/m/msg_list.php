@@ -128,22 +128,7 @@ if ($number > 0) {
     <!-- Chatbar end -->
 
 
-
-
-
-
-    <script>
-
-    </script>
-
 </div>
-
-
-
-
-
-
-
 
 
 

@@ -21,9 +21,13 @@ $post = $data1['post'];
 $image = $data1['image'];
 
 
+date_default_timezone_set("Asia/Dhaka");
+$time = "The time in " . date_default_timezone_get() . " is " . date("d-M-Y-D-h:i:s a");
+
+
 if ($image != ""){
     $extension = pathinfo($image, PATHINFO_EXTENSION);
-    $imageNewName = uniqid().'_'.date("Y-M-H-i-s").'.'.$extension;
+    $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
     $oldPath = "../../post_image/".$image;
     $newPath = "../../post_image/".$imageNewName;
 
@@ -34,9 +38,6 @@ if ($image != ""){
 
 
 
-
-date_default_timezone_set("Asia/Dhaka");
-$time = "The time in " . date_default_timezone_get() . " is " . date("d-M-Y-D-H:i:s");
 
 
 

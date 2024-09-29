@@ -58,13 +58,16 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                         <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px;background-color: #265d94"
                             class="response float-start py-2 px-3"><?php echo $data3['message'] ?></h5>
                     <?php } ?>
+
+                    <button onclick="deleteMessage(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>, this)"
+                            class="btn btn-sm btn-dark float-start mb-2" title="Delete For Me"><i class="fas fa-trash-alt"></i></button>
                 </div>
 
             <?php } else { ?>
 
                 <div class="float-end" style="width: 590px;border: none;">
                     <?php if ($data3['image'] != "") { ?>
-                        <img width="590px" src="../chat_image/<?php echo $data3['image'] ?>">
+                        <img title="<?php echo $data3['time'] ?>" width="590px" src="../chat_image/<?php echo $data3['image'] ?>">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>
@@ -72,6 +75,9 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
                     <?php } ?>
 
+                    <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
+                            class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
+                    </button>
                     <button class="btn btn-sm btn-dark float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 

@@ -63,44 +63,45 @@ if (isset($_POST['clear_grp'])) {
 
         </tbody>
     </table>
-
+</div>
 
 
     
-    <!-- Update Group Info Modal -->
-    <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-dark" class="modal-title" id="groupModalLabel">Update Group Info</h5>
-                    <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post" id="formID" enctype="multipart/form-data">
+<!-- Update Group Info Modal -->
+<div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-dark" class="modal-title" id="groupModalLabel">Update Group Info</h5>
+                <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="formID" enctype="multipart/form-data">
 
-                        <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
+                    <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label text-dark">Group Name</label>
-                                    <input style="background-color: #F3F3F3;" value="<?php echo $data111['grp_name'] ?>" name="grp_name" class="form-control" id="grp_nameID" type="text" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label text-dark">Group Image</label>
-                                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Group Name</label>
+                                <input style="background-color: #F3F3F3;" value="<?php echo $data111['grp_name'] ?>" name="grp_name" class="form-control" id="grp_nameID" type="text" required>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Group Image</label>
+                                <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                            </div>
+                        </div>
+                    </div>
 
-                        <input name="saveBtn" id="buttonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
-                    </form>
-                </div>
+                    <input name="saveBtn" id="buttonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                </form>
             </div>
         </div>
     </div>
+</div>
+
 
 
 
@@ -263,9 +264,6 @@ if (isset($_POST['clear_grp'])) {
 
     
 </script>
-
-
-</div>
 
 
 <?php

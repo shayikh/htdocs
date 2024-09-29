@@ -5,10 +5,11 @@ $unique_id_me = $_POST['unique_id_me'];
 $pro_pic = $_POST['pro_pic'];
 $cov_pic = $_POST['cov_pic'];
 
+date_default_timezone_set("Asia/Dhaka");
 
 if ($_FILES['image_khan_bahadur']['name']) {
     $imageOldName = $_FILES['image_khan_bahadur']['name'];
-    $imageNewName = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
+    $imageNewName = uniqid() . '_' . date("d_M_Y_D_h_i_s_a") . '_' . $imageOldName;
     $image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
     move_uploaded_file($image_tmp, '../../pro_pic/' . $imageNewName);
 
@@ -22,7 +23,7 @@ if ($_FILES['image_khan_bahadur']['name']) {
 if ($_FILES['image_khan_cover']['name']) {
 
     $imageOldName = $_FILES['image_khan_cover']['name'];
-    $imageNewName_cov = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
+    $imageNewName_cov = uniqid() . '_' . date("d_M_Y_D_h_i_s_a") . '_' . $imageOldName;
     $image_tmp = $_FILES['image_khan_cover']['tmp_name'];
     move_uploaded_file($image_tmp, '../../pro_pic/cov_pic/' . $imageNewName_cov);
 

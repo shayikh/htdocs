@@ -1,10 +1,6 @@
 <?php
 include './header.php';
 
-
-if (isset($_GET['nofollow'])) {
-    echo "<script>toastr.info('He did not Allow to Follow You')</script>";
-}
 ?>
 
 
@@ -18,116 +14,86 @@ if (isset($_GET['nofollow'])) {
         </tbody>
     </table>
 
-
-    <script>
-        let tbody = document.querySelector("#tbodyID");
-
-
-        var page_no = 1;
-
-        showdata();
-
-        $(window).scroll(function() {
-            if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-                showdata();
-            }
-        })
-
-
-        function showdata() {
-
-            let postData = {};
-
-            postData.page_no = page_no;
-            postData.unique_id_me = <?php echo $unique_id_me ?>;
-
-            axios.post("../api/facelist/loadmoreFacelist.php",
-                    postData, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    if (res.data == 0) {
-                        toastr.info('You Are at The End');
-                    } else {
-                        tbody.innerHTML = tbody.innerHTML + res.data;
-                        page_no++;
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-        const follow_req = (unique_id_me, unique_id_fr, elm) => {
-
-            let follow_req = {};
-
-            follow_req.unique_id_me = unique_id_me;
-            follow_req.unique_id_fr = unique_id_fr;
-
-            axios.post("../api/facelist/follow_req.php",
-                    follow_req, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    console.log(res.data);
-
-                    if (res.data == 1) {
-                        toastr.success('Follow Request Sent');
-                        elm.remove();
-                    }else{
-                        toastr.error('Unfollowed');
-                        elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                        elm.classList.add('btn-success');
-                        elm.classList.remove('btn-danger');
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-        const allowfn = (unique_id_me, unique_id_fr, elm) => {
-
-            let allowVar = {};
-
-            allowVar.unique_id_me = unique_id_me;
-            allowVar.unique_id_fr = unique_id_fr;
-
-            axios.post("../api/facelist/allow.php",
-                    allowVar, {
-                        headers: {
-                            "Content-Type": "application/json"
-                         }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == 0) {
-                        toastr.error('Rejected to Follow You');
-                        elm.innerHTML = '<i class="fas fa-user-check"></i>';
-                        elm.classList.add('btn-success');
-                        elm.classList.remove('btn-danger');
-                    } else {
-                        toastr.success('Allowed to Follow You');
-                        elm.innerHTML = '<i class="fas fa-user-times"></i>';
-                        elm.classList.add('btn-danger');
-                        elm.classList.remove('btn-success');
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-    </script>
-
-
 </div>
+
+
+<script>
+    let tbody = document.querySelector("#tbodyID");
+
+
+    var page_no = 1;
+
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            showdata();
+        }
+    })
+
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/facelist/loadmoreFacelist.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.info('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const followfn = (unique_id_me, unique_id_fr, elm) => {
+
+        let followVar = {};
+
+        followVar.unique_id_me = unique_id_me;
+        followVar.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/facelist/follow.php",
+                followVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    toastr.error('Unfollowed');
+                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
+                    elm.classList.add('btn-success');
+                    elm.classList.remove('btn-danger');
+                } else {
+                    toastr.success('Following');
+                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                    elm.classList.add('btn-danger');
+                    elm.classList.remove('btn-success');
+                }
+
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+</script>
 
 
 <?php

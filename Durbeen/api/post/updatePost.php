@@ -28,7 +28,7 @@ if ($user_id == $unique_id_me) {
         }
 
         $imageOldName = $_FILES['editImage']['name'];
-        $imageNewName = uniqid() . '_' . date("Y-M-H-i-s") . '_' . $imageOldName;
+        $imageNewName = uniqid() . '_' . date("d_M_Y_D_h_i_s_a") . '_' . $imageOldName;
         $image_tmp = $_FILES['editImage']['tmp_name'];
         move_uploaded_file($image_tmp, '../../post_image/' . $imageNewName);
     } else {

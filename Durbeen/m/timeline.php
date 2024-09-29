@@ -41,90 +41,92 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         <div class="col-md-2"></div>
     </div>
 
-
-    <!-- Post Modal -->
-    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
-                    <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post" id="formID" enctype="multipart/form-data">
-                        <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-
-                        <textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID" rows="5" class="form-control mb-2" type="text"></textarea>
-
-                        <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
-
-                        <!-- <p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p> -->
-                        <input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Comment Modal -->
-    <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-striped table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center text-dark" scope="col">Picture</th>
-                                <th class="text-center text-dark" scope="col">Name</th>
-                                <th class="text-center text-dark" scope="col">Time</th>
-                                <th class="text-center text-dark" scope="col">Comment</th>
-                                <th class="text-center text-dark" scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="commentTboody">
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Edit Modal -->
-    <div class="modal fade" id="postEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-dark" class="modal-title" id="exampleModalLabel">Edit Post</h5>
-                    <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post" id="editFormID" enctype="multipart/form-data">
-                        <input type="hidden" name="edit_unique_id_me" value="<?php echo $unique_id_me ?>">
-                        <input type="hidden" name="edit_post_id" id="edit_post_id" value="">
-
-                        <textarea style="background-color: #F3F3F3;color: #000" name="editPost" id="editPostID" rows="5" class="form-control mb-2" type="text"></textarea>
-
-                        <input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
-
-                        <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 </div>
+
+
+<!-- Post Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
+                <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="formID" enctype="multipart/form-data">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+
+                    <textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID" rows="5" class="form-control mb-2" type="text"></textarea>
+
+                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+
+                    <!-- <p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p> -->
+                    <input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Comment Modal -->
+<div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col">Name</th>
+                            <th class="text-center text-dark" scope="col">Time</th>
+                            <th class="text-center text-dark" scope="col">Comment</th>
+                            <th class="text-center text-dark" scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="commentTboody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="postEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-dark" class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="editFormID" enctype="multipart/form-data">
+                    <input type="hidden" name="edit_unique_id_me" value="<?php echo $unique_id_me ?>">
+                    <input type="hidden" name="edit_post_id" id="edit_post_id" value="">
+
+                    <textarea style="background-color: #F3F3F3;color: #000" name="editPost" id="editPostID" rows="5" class="form-control mb-2" type="text"></textarea>
+
+                    <input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+
+                    <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 <script>

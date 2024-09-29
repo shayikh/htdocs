@@ -2,13 +2,12 @@
 include '../../connection.php';
 
 
-
 date_default_timezone_set("Asia/Dhaka");
 $time = date_default_timezone_get().' time: '.date("d-M-Y-D-h:i:s a");
 
 if($_FILES['image_khan_bahadur']['name']){
   $imageOldName = $_FILES['image_khan_bahadur']['name'];
-  $imageNewName = uniqid().'_'.date("Y-M-H-i-s").'_'.$imageOldName;
+  $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'_'.$imageOldName;
   $image_tmp = $_FILES['image_khan_bahadur']['tmp_name'];
   move_uploaded_file($image_tmp,'../../chat_image/'.$imageNewName);
 }else{

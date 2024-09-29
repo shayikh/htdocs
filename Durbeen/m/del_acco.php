@@ -20,11 +20,6 @@ include './header.php';
             <button onclick="deletefn()" class="btn btn-sm red mt-5 form-control">&#9762; DELETE ACCOUNT PERMANENTLY &#9785;</button>
         </div>
     </div>
-
-
-
-
-
 </div>
 
 <script>
