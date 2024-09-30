@@ -50,7 +50,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
-(1, 1, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
+(1, 1, NULL, '1995-10-10', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
