@@ -8,10 +8,22 @@ $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
+
+
+$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run1 = mysqli_query($connection, $SQL1);
+$count1 = mysqli_num_rows($run1);
 ?>
 
 
-<a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
+<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
+
+
+<?php if ($count1 > 0) { ?>
+<a style="position: fixed;right: 282px;top:91px;z-index:20;font-weight: 600;" href="admin.php?type" class="btn btn-success">Durbeen Admin</a>
+
+<a style="position: fixed;right: 426px;top:91px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-success">Account Request</a>
+<?php } ?>
 
 
 <!-- main page -->
@@ -23,7 +35,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         </div>
 
         <div class="col-md-12 mt-4">
-			<img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="pro_pic">
+            <img style="border-radius: 50%;border: 3px solid #fff" width="220px" height="220px" src="../pro_pic/<?php echo $pro_pic_me ?>" id="pro_pic">
         </div>
 
         <div class="col-md-12 text-center" style="margin-top: -146px;">
@@ -127,7 +139,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     </td>
                     <td>
                         <h5 class="one d-none">
-                            http://durbeen.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h5>
+                            http://durbeen2.unaux.com/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h5>
                         <button id="mybtn" class="btn btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>
@@ -137,6 +149,14 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     </td>
                     <td>
                         <a href="./follow_list.php?type" class="btn btn-success">Following List</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Allow List</h5>
+                    </td>
+                    <td>
+                        <a href="./allow_list.php?type" class="btn btn-success">Allow List</a>
                     </td>
                 </tr>
                 <tr>

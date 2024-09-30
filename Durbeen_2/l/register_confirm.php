@@ -72,9 +72,6 @@ $run2 = mysqli_query($connection, $SQL2);
         <?php } ?>
     </table>
 
-
-
-
 </div>
 
 

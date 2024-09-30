@@ -30,7 +30,6 @@ include './header.php';
             toastr.info("We are sorry, There is no way to delete your account");
         }
     }
-    
 </script>
 
 <?php

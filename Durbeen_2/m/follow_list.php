@@ -13,7 +13,7 @@ include './header.php';
 
         </tbody>
     </table>
-
+    
 </div>
 
 
@@ -47,7 +47,7 @@ include './header.php';
                 })
             .then(res => {
                 if (res.data == 0) {
-                    toastr.info('You Are at The End');
+                    toastr.error('You Are at The End');
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
@@ -77,29 +77,20 @@ include './header.php';
                     })
                 .then(res => {
                     // console.log(res.data);
-
                     if (res.data == 0) {
                         elm.parentElement.parentElement.remove();
-                        toastr.error('Unfollowed');
+                        toastr.info('Unfollowed');
                     }
-
-
                 })
                 .catch(err => {
                     console.log(err);
                 })
-
         } else {
             return;
         }
-
-
     }
 
 </script>
-
-
-
 
 
 <?php

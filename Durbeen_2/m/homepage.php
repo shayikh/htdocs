@@ -3,21 +3,31 @@ include './header.php';
 
 
 
-?>
+$SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run2 = mysqli_query($connection, $SQL2);
+$count2 = mysqli_num_rows($run2);
+
+$SQL3 = "SELECT * FROM `account`";
+$run3 = mysqli_query($connection, $SQL3);
+$count3 = mysqli_num_rows($run3);
 
 
-<!-- message notification -->
-<?php
+// message notification
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
 $runnotify = mysqli_query($connection_info, $SQLnotify);
-
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
-
 <a style="position: fixed;left: 3px;top: 61px;z-index: 15;font-weight: 600;" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
+<?php } 
 
+
+
+if ($count2 > 0 && $count3 > 0) { ?>
+<a style="position: fixed;left: 3px;top: 99px;z-index:15;font-weight: 600;" href="./register_confirm.php?type" class="btn btn-sm btn-danger"><?php echo $count3 ?> New Account Requests</a>
 <?php } ?>
+
+
 
 
 <!-- NEWS FEED -->
@@ -37,6 +47,7 @@ if ($number > 0) { ?>
     </div>
 
 </div>
+
 
 <!-- Post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">

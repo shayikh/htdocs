@@ -1,6 +1,10 @@
 <?php
 include './header.php';
 
+
+if (isset($_GET['nofollow'])) {
+    echo "<script>toastr.info('He did not Allow to Follow You')</script>";
+}
 ?>
 
 
@@ -58,35 +62,64 @@ include './header.php';
             })
     }
 
-    const followfn = (unique_id_me, unique_id_fr, elm) => {
+    const follow_req = (unique_id_me, unique_id_fr, elm) => {
 
-        let followVar = {};
+        let follow_req = {};
 
-        followVar.unique_id_me = unique_id_me;
-        followVar.unique_id_fr = unique_id_fr;
+        follow_req.unique_id_me = unique_id_me;
+        follow_req.unique_id_fr = unique_id_fr;
 
-        axios.post("../api/facelist/follow.php",
-                followVar, {
+        axios.post("../api/facelist/follow_req.php",
+                follow_req, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
             .then(res => {
-                // console.log(res.data);
+                console.log(res.data);
 
-                if (res.data == 0) {
+                if (res.data == 1) {
+                    toastr.success('Follow Request Sent');
+                    elm.remove();
+                }else{
                     toastr.error('Unfollowed');
                     elm.innerHTML = '<i class="fas fa-user-plus"></i>';
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const allowfn = (unique_id_me, unique_id_fr, elm) => {
+
+        let allowVar = {};
+
+        allowVar.unique_id_me = unique_id_me;
+        allowVar.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/facelist/allow.php",
+                allowVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                        }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    toastr.error('Rejected to Follow You');
+                    elm.innerHTML = '<i class="fas fa-user-check"></i>';
+                    elm.classList.add('btn-success');
+                    elm.classList.remove('btn-danger');
                 } else {
-                    toastr.success('Following');
-                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                    toastr.success('Allowed to Follow You');
+                    elm.innerHTML = '<i class="fas fa-user-times"></i>';
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }
-
-
             })
             .catch(err => {
                 console.log(err);
@@ -94,6 +127,9 @@ include './header.php';
     }
 
 </script>
+
+
+
 
 
 <?php

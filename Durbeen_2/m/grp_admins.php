@@ -104,7 +104,6 @@ if (isset($_POST['clear_grp'])) {
 
 
 
-
 <script>
     let form = document.querySelector("#formID");
     let image = document.querySelector("#imageID");
@@ -264,6 +263,7 @@ if (isset($_POST['clear_grp'])) {
 
     
 </script>
+
 
 
 <?php

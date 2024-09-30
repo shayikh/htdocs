@@ -37,8 +37,8 @@ $run1 = mysqli_query($connection_info, $SQL1);
 
 
     <?php } ?>
-</div>
 
+</div>
 <?php
 include './footer.php'
 ?>

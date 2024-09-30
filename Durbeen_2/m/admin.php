@@ -21,7 +21,7 @@ if ($count1 == 0) {
 
         </tbody>
     </table>
-
+</div>
 
 
 
@@ -104,7 +104,6 @@ if ($count1 == 0) {
 </script>
 
 
-</div>
 
 
 <?php

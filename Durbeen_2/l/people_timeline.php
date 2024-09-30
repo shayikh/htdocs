@@ -12,6 +12,10 @@ $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_f
 $runF = mysqli_query($connection_info, $SQLF);
 $countF = mysqli_num_rows($runF);
 
+if ($countF == 0) {
+    echo "<script>window.location = 'facelist.php?type=facelist&nofollow'</script>";
+}
+
 
 $SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $run1 = mysqli_query($connection, $SQL1);
@@ -20,6 +24,10 @@ $data1 = mysqli_fetch_assoc($run1);
 $SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
 $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
+
+$SQL2 = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
+$run2 = mysqli_query($connection_info,$SQL2);
+$count2 = mysqli_num_rows($run2);
 
 ?>
 
@@ -51,8 +59,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Send Message</a>
 
-            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end">
-                <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $count2 == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-1">
+                <?php $count2 == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
+            </button>
+
+            <button onclick="unfollowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>)" class="btn btn-danger float-end">
+                <i class="fas fa-user-slash"></i>
             </button>
         </div>
     </div>
@@ -153,15 +165,15 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             })
     }
 
-    const followfn = (unique_id_me, unique_id_fr, elm) => {
+    const unfollowfn = (unique_id_me, unique_id_fr) => {
 
-        let followVar = {};
+        let unfollowVar = {};
 
-        followVar.unique_id_me = unique_id_me;
-        followVar.unique_id_fr = unique_id_fr;
+        unfollowVar.unique_id_me = unique_id_me;
+        unfollowVar.unique_id_fr = unique_id_fr;
 
-        axios.post("../api/facelist/follow.php",
-                followVar, {
+        axios.post("../api/facelist/unfollow.php",
+                unfollowVar, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -170,13 +182,39 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 // console.log(res.data);
 
                 if (res.data == 0) {
-                    toastr.error('Unfollowed');
-                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
+                    window.location = 'facelist.php?type=facelist';
+                }
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const allowfn = (unique_id_me, unique_id_fr, elm) => {
+
+        let allowVar = {};
+
+        allowVar.unique_id_me = unique_id_me;
+        allowVar.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/facelist/allow.php",
+                allowVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    toastr.error('Rejected to Follow You');
+                    elm.innerHTML = '<i class="fas fa-user-check"></i>';
                     elm.classList.add('btn-success');
                     elm.classList.remove('btn-danger');
                 } else {
-                    toastr.success('Following');
-                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+                    toastr.success('Allowed to Follow You');
+                    elm.innerHTML = '<i class="fas fa-user-times"></i>';
                     elm.classList.add('btn-danger');
                     elm.classList.remove('btn-success');
                 }
@@ -187,6 +225,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 console.log(err);
             })
     }
+
 
 
     const deleteComment = (comment_id, unique_id_me, elm) => {
