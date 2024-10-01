@@ -256,7 +256,7 @@ $data111 = mysqli_fetch_assoc($run111);
                     // console.log(res.data);
 
                     if (res.data == '1') {
-                        window.location = './group_msg.php?type&grp_id=<?php echo $grp_id ?>';
+                        window.location = './groups.php?type=groups';
                     }
 
                 })
