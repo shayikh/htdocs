@@ -31,7 +31,8 @@ if (isset($_POST['signup'])) {
         
         if ($_FILES['pro_pic']['name']) {
             $imageOldName = $_FILES['pro_pic']['name'];
-            $imageNewName = uniqid() . '_' . date("d_M_Y_D_h_i_s_a") . '_' . $imageOldName;
+            $extension = pathinfo($imageOldName, PATHINFO_EXTENSION);
+            $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
             $image_tmp = $_FILES['pro_pic']['tmp_name'];
             move_uploaded_file($image_tmp, '../pro_pic/' . $imageNewName);
         } else {
