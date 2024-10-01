@@ -31,7 +31,7 @@ $count109 = mysqli_num_rows($run109);
 <a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 294px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Admin Page</a>
 <?php } ?>
 
-<a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger float-end" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
+<a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
 
 
 
@@ -111,7 +111,7 @@ $count109 = mysqli_num_rows($run109);
                     // console.log(res.data);
 
                     if (res.data == '1') {
-                    window.location = 'groups.php?type=groups';
+                    window.location = './groups.php?type=groups';
                     }else if (res.data == '0') {
                         alert('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
                         toastr.error('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');

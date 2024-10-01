@@ -31,7 +31,7 @@ $count109 = mysqli_num_rows($run109);
 <a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 294px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Admin Page</a>
 <?php } ?>
 
-<a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger float-end" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
+<a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
 
 
 

@@ -16,27 +16,6 @@ $run111 = mysqli_query($connection, $SQL111);
 $data111 = mysqli_fetch_assoc($run111);
 
 
-
-
-if (isset($_POST['clear_grp'])) {
-
-    $SQL9 = "SELECT * FROM `group $grp_id`";
-    $run9 = mysqli_query($connection_message, $SQL9);
-
-    while ($data9 = mysqli_fetch_assoc($run9)) {
-        $imgNameinDB = $data9['image'];
-        if ($imgNameinDB != '') {
-            unlink('../chat_image/'.$imgNameinDB);
-        }
-    }
-
-    $SQL10 = "TRUNCATE TABLE `group 1`";
-    mysqli_query($connection_message, $SQL10);
-
-    echo "<script>window.location = 'groups.php?type=groups'</script>";
-}
-
-
 ?>
 
 
@@ -47,9 +26,8 @@ if (isset($_POST['clear_grp'])) {
 <a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
 
 
-<form method="post" action="grp_admins.php?type&grp_id=<?php echo $grp_id ?>">
-    <button style="position: fixed;left: 95px;top: 62px;z-index:20;font-weight: 600;" onclick="return confirm('Do You Want to Clear This Group Messages?')" name="clear_grp" class="btn btn-sm btn-success" type="submit"><i class="fas fa-trash-alt"></i></button>
-</form>
+<a style="position: fixed;left: 95px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" onclick="cleanGrp(<?php echo $grp_id ?>)"><i class="fas fa-trash-alt"></i></a>
+
 
 
 
@@ -258,6 +236,37 @@ if (isset($_POST['clear_grp'])) {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    const cleanGrp = (grp_id) => {
+        let confirm = window.confirm("Do You Want to Clear This Group Messages?");
+
+        if (confirm) {
+
+            let message = {};
+
+            message.grp_id = grp_id;
+
+            axios.post("../api/group/cleanGrp.php",
+                    message, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                .then(res => {
+                    // console.log(res.data);
+
+                    if (res.data == '1') {
+                        window.location = './group_msg.php?type&grp_id=<?php echo $grp_id ?>';
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
+            return;
+        }
     }
 
 
