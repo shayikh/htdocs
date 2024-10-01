@@ -40,27 +40,28 @@ if ($countTest == 0) {
 
 
         //create two table if not exist
-        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_fr` (
-			`id` bigint(255) unsigned NOT NULL auto_increment,
-			`sender` varchar(255),
-			`message` longtext,
-			`image` varchar(1000),
-			`time` varchar(1000),
-			`seen` varchar(1000),
-			PRIMARY KEY  (`id`)
-		)";
+        if($unique_id_me < $unique_id_fr){
+            $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_fr` (
+                `id` bigint(255) unsigned NOT NULL auto_increment,
+                `sender` bigint(255),
+                `message` longtext,
+                `image` varchar(1000),
+                `time` varchar(1000),
+                `seen` varchar(1000),
+                PRIMARY KEY  (`id`)
+            )";
+        }else{
+            $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_fr to $unique_id_me` (
+                `id` bigint(255) unsigned NOT NULL auto_increment,
+                `sender` bigint(255),
+                `message` longtext,
+                `image` varchar(1000),
+                `time` varchar(1000),
+                `seen` varchar(1000),
+                PRIMARY KEY  (`id`)
+            )";
+        }
         mysqli_query($connection_message, $SQLcreateMe);
-
-        $SQLcreateFr = "CREATE TABLE IF NOT EXISTS `$unique_id_fr to $unique_id_me` (
-			`id` bigint(255) unsigned NOT NULL auto_increment,
-			`sender` varchar(255),
-			`message` longtext,
-			`image` varchar(1000),
-			`time` varchar(1000),
-			`seen` varchar(1000),
-			PRIMARY KEY  (`id`)
-		)";
-        mysqli_query($connection_message, $SQLcreateFr);
         //table creation end
 
 
@@ -86,10 +87,13 @@ if ($countTest == 0) {
 
 
         // seen all message
-        $SQL6 = "UPDATE `$unique_id_me to $unique_id_fr` SET `seen`='Seen' WHERE `sender`='fr'";
+        if($unique_id_me < $unique_id_fr){
+            $SQL6 = "UPDATE `$unique_id_me to $unique_id_fr` SET `seen`='Seen' WHERE `sender`='$unique_id_fr'";
+        }else{
+            $SQL6 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='$unique_id_fr'";
+        }
         mysqli_query($connection_message, $SQL6);
-        $SQL7 = "UPDATE `$unique_id_fr to $unique_id_me` SET `seen`='Seen' WHERE `sender`='me'";
-        mysqli_query($connection_message, $SQL7);
+
 
 
     }
@@ -277,9 +281,11 @@ if ($countTest == 0) {
                         }
                     })
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
 
-                    window.location = './homepage.php?type';
+                    if (res.data == '1') {
+                        window.location = './homepage.php?type';
+                    }
                     
                 })
                 .catch(err => {
@@ -323,37 +329,6 @@ if ($countTest == 0) {
 
     }
 
-
-    const deleteMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
-
-        let message = {};
-
-        message.id = id_lll;
-        message.unique_id_me = unique_id_me;
-        message.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/message/deleteMsg.php",
-                message, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == '1') {
-                    toastr.error('Message Deleted For Me')
-                }
-                // console.log(elm_ppp.parentElement);
-
-                elm_ppp.parentElement.remove();
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
 
 </script>
 

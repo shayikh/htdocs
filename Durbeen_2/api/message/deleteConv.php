@@ -14,8 +14,12 @@ $unique_id_fr = $data['unique_id_fr'];
 
 
 
-    
-$SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+if($unique_id_me < $unique_id_fr){
+    $SQL9 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+}else{
+    $SQL9 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
+}
+
 $run9 = mysqli_query($connection_message, $SQL9);
 
 if ($run9 == true) {
@@ -27,24 +31,15 @@ if ($run9 == true) {
     }
 }
 
-$SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
-mysqli_query($connection_message, $SQL10);
-
-$SQL11 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
-$run11 = mysqli_query($connection_message, $SQL11);
-
-if ($run11 == true) {
-    while ($data11 = mysqli_fetch_assoc($run11)) {
-        $imgNameinDB = $data11['image'];
-        if ($imgNameinDB != '') {
-            unlink('../../chat_image/' . $imgNameinDB);
-        }
-    }
+if($unique_id_me < $unique_id_fr){
+    $SQL10 = "DROP TABLE IF EXISTS `$unique_id_me to $unique_id_fr`";
+}else{
+    $SQL10 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
 }
 
+mysqli_query($connection_message, $SQL10);
 
-$SQL12 = "DROP TABLE IF EXISTS `$unique_id_fr to $unique_id_me`";
-mysqli_query($connection_message, $SQL12);
+
 
 
 $SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
@@ -60,7 +55,7 @@ $SQL16 = "DELETE FROM `$unique_id_fr notify` WHERE `sender_id`='$unique_id_me'";
 mysqli_query($connection_info, $SQL16);
 
 
-
+echo '1';
 
 
 

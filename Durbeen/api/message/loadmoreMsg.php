@@ -17,7 +17,13 @@ $pro_pic_fr = $datafr['pro_pic'];
 
 
 
-$SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+if($unique_id_me < $unique_id_fr){
+    $SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
+}else{
+    $SQL3 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
+}
+
+
 $run3 = mysqli_query($connection_message, $SQL3);
 $total_posts = mysqli_num_rows($run3);
 $total_pages = ceil($total_posts / 20) + 1;
@@ -34,7 +40,13 @@ $limit = 20;
 $row = ($page_no - 1) * $limit;
 
 
-$SQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT $row,$limit";
+
+
+if($unique_id_me < $unique_id_fr){
+    $SQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT $row,$limit";
+}else{
+    $SQL = "SELECT * FROM `$unique_id_fr to $unique_id_me` ORDER BY `id` DESC LIMIT $row,$limit";
+}
 $run = mysqli_query($connection_message, $SQL);
 
 
@@ -43,7 +55,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
     <table class="table mt-4">
         <tbody>
         <tr>
-            <?php if ($data3['sender'] == 'fr') { ?>
+            <?php if ($data3['sender'] == $unique_id_fr) { ?>
 
                 <div class="float-start" style="width: 590px;border: none;">
                     <img class="float-start" style="border-radius: 50%" width="40px" height="40px"
@@ -58,9 +70,6 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                         <h5 title="<?php echo $data3['time'] ?>" style="border-radius: 35px;background-color: #265d94"
                             class="response float-start py-2 px-3"><?php echo $data3['message'] ?></h5>
                     <?php } ?>
-
-                    <button onclick="deleteMessage(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>, this)"
-                            class="btn btn-sm btn-dark float-start mb-2" title="Delete For Me"><i class="fas fa-trash-alt"></i></button>
                 </div>
 
             <?php } else { ?>
