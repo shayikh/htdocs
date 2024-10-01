@@ -330,25 +330,32 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
     }
 
     const shareMefn = (post_id, unique_id_me) => {
-        let sharep = {};
+        let confirm = window.confirm("Share This Post to Your Timeline?");
 
-        sharep.post_id = post_id;
-        sharep.unique_id_me = unique_id_me;
+        if (confirm) {
+            let sharep = {};
 
-        axios.post("../api/post/share.php",
-                sharep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+            sharep.post_id = post_id;
+            sharep.unique_id_me = unique_id_me;
+
+            axios.post("../api/post/share.php",
+                    sharep, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                .then(res => {
+
+                    toastr.success('Post Shared to Your Timeline');
+
                 })
-            .then(res => {
+                .catch(err => {
+                    console.log(err);
+                })
 
-                toastr.success('Post Shared to Your Timeline');
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        } else {
+            return;
+        }
     }
 
 </script>

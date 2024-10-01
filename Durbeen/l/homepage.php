@@ -420,33 +420,41 @@ if ($number > 0) { ?>
 
 
     const sharefn = (post_id, unique_id_me) => {
-        let sharep = {};
+        let confirm = window.confirm("Share This Post to Your Timeline?");
 
-        sharep.post_id = post_id;
-        sharep.unique_id_me = unique_id_me;
+        if (confirm) {
+            let sharep = {};
 
-        axios.post("../api/post/share.php",
-                sharep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+            sharep.post_id = post_id;
+            sharep.unique_id_me = unique_id_me;
+
+            axios.post("../api/post/share.php",
+                    sharep, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                .then(res => {
+
+                    let json = res.data;
+
+                    let unique_id_me = json.unique_id_me;
+                    let newPost = json.newPost;
+
+                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+
+                    toastr.success('Post Shared');
+
+
                 })
-            .then(res => {
+                .catch(err => {
+                    console.log(err);
+                })
 
-                let json = res.data;
+        } else {
+            return;
+        }
 
-                let unique_id_me = json.unique_id_me;
-                let newPost = json.newPost;
-
-                tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
-                toastr.success('Post Shared');
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
     }
 
 </script>
