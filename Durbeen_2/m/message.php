@@ -105,11 +105,12 @@ if ($countTest == 0) {
 
 
 
-
 <!-- main page -->
 <a target="_self" style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Refresh</a>
 
 <a style="position: fixed;left: 73px;top: 62px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-sm btn-success">Profile</a>
+
+<a style="position: fixed;left: 134px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" onclick="deleteConv(<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>)"><i class="fas fa-trash-alt"></i></a>
 
 
 
@@ -259,6 +260,8 @@ if ($countTest == 0) {
 								
 								<h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
 								<br>
+								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
+										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
 								<button class="btn btn-sm btn-dark float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>
 						</tr>`
@@ -338,7 +341,6 @@ if ($countTest == 0) {
 
 
     }
-
 
 
 </script>

@@ -165,13 +165,15 @@ $grpName = $datagrp['grp_name'];
 
     const makeTr = (message) => {
         let tr = `<tr>
-							<div class="float-end" style="border: none;">
-								<img class="float-end" width="290px" src="../grp_image/${message.image}">
-								
-								<h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
-								<br>
-							</div>
-						</tr>`
+                        <div class="float-end" style="border: none;">
+                            <img class="float-end" width="290px" src="../grp_image/${message.image}">
+                            
+                            <h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
+                            <br>
+                            <button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
+                                    class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </tr>`
         return tr;
     }
 

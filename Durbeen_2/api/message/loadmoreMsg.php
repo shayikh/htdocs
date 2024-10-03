@@ -17,7 +17,6 @@ $pro_pic_fr = $datafr['pro_pic'];
 
 
 
-
 if($unique_id_me < $unique_id_fr){
     $SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
 }else{
@@ -51,8 +50,6 @@ if($unique_id_me < $unique_id_fr){
 $run = mysqli_query($connection_message, $SQL);
 
 
-
-
 while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
     <table class="table mt-4">
@@ -79,7 +76,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
 
                 <div class="float-end" style="width: 590px;border: none;">
                     <?php if ($data3['image'] != "") { ?>
-                        <img width="590px" src="../chat_image/<?php echo $data3['image'] ?>">
+                        <img title="<?php echo $data3['time'] ?>" width="590px" src="../chat_image/<?php echo $data3['image'] ?>">
                     <?php } ?>
 
                     <?php if ($data3['message'] != "") { ?>
@@ -87,6 +84,9 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
                     <?php } ?>
 
+                    <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
+                            class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
+                    </button>
                     <button class="btn btn-sm btn-dark float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
                 </div>
 

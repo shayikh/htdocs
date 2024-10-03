@@ -95,7 +95,6 @@ if ($countTest == 0) {
         mysqli_query($connection_message, $SQL6);
 
 
-
     }
 }
 
@@ -106,11 +105,11 @@ if ($countTest == 0) {
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
+<a style="position: fixed;right: 340px;top: 91px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Profile</a>
 
-<a style="position: fixed;right: 297px;top: 91px;z-index:20;font-weight: 600;" href="about_people.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Profile</a>
+<a target="_self" style="position: fixed;right: 217px;top: 91px;z-index:20;font-weight: 600;" href="message.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" class="btn btn-success">Refresh Page</a>
 
-
+<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" onclick="deleteConv(<?php echo $unique_id_me ?>,<?php echo $unique_id_fr ?>)"><i class="fas fa-trash-alt"></i></a>
 
 
 
@@ -256,7 +255,10 @@ if ($countTest == 0) {
 								<img width="590px" src="../chat_image/${message.image}">
 								
 								<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
-													
+								
+								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
+										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+								
 								<button class="btn btn-sm btn-dark float-end"><i class='fas fa-eye-slash'></i></button>
 							</div>
 						</tr>`
@@ -286,7 +288,7 @@ if ($countTest == 0) {
                     if (res.data == '1') {
                         window.location = './homepage.php?type';
                     }
-                    
+
                 })
                 .catch(err => {
                     console.log(err);
