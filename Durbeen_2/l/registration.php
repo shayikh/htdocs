@@ -184,7 +184,7 @@ if (isset($_POST['signup'])) {
 
 
 <script>
-    alert('If You Use a Fake Name and Fake Photo, Your Account Will not be Approved by the Admin. Use Light Weight Photo');
+    //alert('If You Use a Fake Name and Fake Photo, Your Account Will not be Approved by the Admin. Use Light Weight Photo');
     
     let email = document.querySelector("#emailID");
     function uniqueEmail() {
