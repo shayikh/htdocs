@@ -156,7 +156,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                     elm.parentElement.parentElement.remove();
                     toastr.info('Comment Deleted');
                 } else {
-                    toastr.warning('This is not Your Post');
+                    toastr.warning("You Can not Delete Other's Comment");
                 }
 
             })
