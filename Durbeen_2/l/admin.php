@@ -15,7 +15,7 @@ if ($count1 == 0) {
 
 
 <div class="container" style="margin-top: 150px">
-    <h4 class="text-center">Add Or Remove Members & Admins</h4>
+    <h4 class="text-center">Add Or Remove Durbeen Admins</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
