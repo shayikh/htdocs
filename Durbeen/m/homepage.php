@@ -3,14 +3,11 @@ include './header.php';
 
 
 
-?>
 
 
-<!-- message notification -->
-<?php
+// message notification
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
 $runnotify = mysqli_query($connection_info, $SQLnotify);
-
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
@@ -127,7 +124,7 @@ if ($number > 0) { ?>
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/post/loadmoreHomePage.php",
+        axios.post("../api/post/loadmoreHomePage_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"

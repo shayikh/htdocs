@@ -127,7 +127,7 @@ if ($number > 0) { ?>
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/post/loadmoreHomePage.php",
+        axios.post("../api/post/loadmoreHomePage_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
