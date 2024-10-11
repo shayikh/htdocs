@@ -45,6 +45,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
 
+
 <!-- Post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -149,16 +150,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let commentTboody = document.querySelector("#commentTboody");
 
 
-    var stop_page = "";
     var page_no = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            if (stop_page != "stop") {
-                showdata();
-            }
+            showdata();
         }
     })
 
@@ -593,6 +591,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         }
 
     }
+
 
 </script>
 

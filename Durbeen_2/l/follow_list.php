@@ -17,7 +17,6 @@ include './header.php';
 </div>
 
 
-
 <script>
     let tbody = document.querySelector("#tbodyID");
 

@@ -16,6 +16,7 @@ $run111 = mysqli_query($connection, $SQL111);
 $data111 = mysqli_fetch_assoc($run111);
 
 
+
 ?>
 
 
@@ -25,8 +26,8 @@ $data111 = mysqli_fetch_assoc($run111);
 <!-- main page -->
 <a style="position: fixed;right: 217px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
 
-<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" onclick="cleanGrp(<?php echo $grp_id ?>)"><i class="fas fa-trash-alt"></i></a>
 
+<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" onclick="cleanGrp(<?php echo $grp_id ?>)"><i class="fas fa-trash-alt"></i></a>
 
 
 
@@ -78,6 +79,7 @@ $data111 = mysqli_fetch_assoc($run111);
         </div>
     </div>
 </div>
+
 
 
 
@@ -237,6 +239,7 @@ $data111 = mysqli_fetch_assoc($run111);
             })
     }
 
+
     const cleanGrp = (grp_id) => {
         let confirm = window.confirm("Do You Want to Clear This Group Messages?");
 
@@ -268,12 +271,8 @@ $data111 = mysqli_fetch_assoc($run111);
         }
     }
 
-
     
 </script>
-
-
-
 
 
 <?php
