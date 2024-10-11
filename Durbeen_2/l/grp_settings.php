@@ -78,7 +78,7 @@ $count109 = mysqli_num_rows($run109);
                     }
                 })
             .then(res => {
-                if (res.data == 0) {
+                if (res.data == 1) {
                     toastr.info('You Are at The End');
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;

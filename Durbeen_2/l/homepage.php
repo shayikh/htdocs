@@ -3,36 +3,26 @@ include './header.php';
 
 
 
-$SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
-$run2 = mysqli_query($connection, $SQL2);
-$count2 = mysqli_num_rows($run2);
-
-$SQL3 = "SELECT * FROM `account`";
-$run3 = mysqli_query($connection, $SQL3);
-$count3 = mysqli_num_rows($run3);
+?>
 
 
-// message notification
+<!-- message notification -->
+<?php
 $SQLnotify = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='0'";
 $runnotify = mysqli_query($connection_info, $SQLnotify);
+
 $number = mysqli_num_rows($runnotify);
 
 if ($number > 0) { ?>
+
 <a style="position: fixed;left: 536px;top: 29px;z-index:15;font-weight: 600;" href="./notification.php?type=notification" class="btn btn-sm btn-danger">You Have <?php echo $number ?> New Messages</a>
-<?php } 
 
-
-
-if ($count2 > 0 && $count3 > 0) { ?>
-<a style="position: fixed;left: 750px;top: 29px;z-index:15;font-weight: 600;" href="./register_confirm.php?type" class="btn btn-sm btn-danger"> <?php echo $count3 ?> New Account Requests</a>
 <?php } ?>
-
-
 
 
 <!-- NEWS FEED -->
 
-<div class="container" style="margin-top: 130px">
+<div class="container" style="margin-top:130px">
 
     <div class="row mb-5">
         <div class="col-md-2"></div>
@@ -47,8 +37,6 @@ if ($count2 > 0 && $count3 > 0) { ?>
     </div>
 
 </div>
-
-
 
 <!-- Post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
@@ -119,9 +107,11 @@ if ($count2 > 0 && $count3 > 0) { ?>
     let commentTboody = document.querySelector("#commentTboody");
 
 
+    var total_pages = 0;
     var page_no = 1;
 
     showdata();
+    total_pagesfn();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
@@ -145,13 +135,40 @@ if ($count2 > 0 && $count3 > 0) { ?>
                 })
             .then(res => {
                 if (res.data == 0) {
-                    console.log("You Are at The End");
-                    page_no++;
-                    showdata();
+                    
+                    if(page_no <= total_pages){
+                        page_no++;
+                        showdata();
+                    }else{
+                        toastr.info('You Are at The End');
+                    }
+
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
                 }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+    function total_pagesfn() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/post/total_pages.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                total_pages = res.data;
             })
             .catch(err => {
                 console.log(err);
@@ -179,7 +196,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
                     elm.parentElement.parentElement.remove();
                     toastr.info('Comment Deleted');
                 } else {
-                    toastr.info("You Can not Delete Other's Comment");
+                    toastr.warning("You Can not Delete Other's Comment");
                 }
 
             })
@@ -475,6 +492,8 @@ if ($count2 > 0 && $count3 > 0) { ?>
 <button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postModal">
     <i class="fas fa-plus"></i>
 </button>
+
+
 
 
 

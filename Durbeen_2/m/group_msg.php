@@ -111,7 +111,7 @@ $grpName = $datagrp['grp_name'];
                     }
                 })
             .then(res => {
-                if (res.data == 0) {
+                if (res.data == 1) {
                     toastr.info('You are at the End');
                 } else {
                     appendData.innerHTML = appendData.innerHTML + res.data;
