@@ -44,7 +44,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 </div>
 
 
-
 <!-- Post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

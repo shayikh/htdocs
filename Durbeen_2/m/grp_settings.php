@@ -45,7 +45,6 @@ $count109 = mysqli_num_rows($run109);
 </div>
 
 
-
 <script>
     let tbody = document.querySelector("#tbodyID");
 
@@ -89,6 +88,7 @@ $count109 = mysqli_num_rows($run109);
     }
 
 
+
     const leaveGrp = (grp_id, unique_id_me) => {
         let confirm = window.confirm("Do You Want to Leave From This Group?");
 
@@ -123,13 +123,8 @@ $count109 = mysqli_num_rows($run109);
             return;
         }
     }
-
-
     
 </script>
-
-
-
 
 
 <?php
