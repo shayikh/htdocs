@@ -127,19 +127,20 @@ if ($number > 0) { ?>
         postData.page_no = page_no;
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
-        axios.post("../api/post/loadmoreHomePage_m.php",
+        axios.post("../api/post/loadmoreHomePage.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
             .then(res => {
-                if (res.data == 1) {
-                    toastr.info('You Are at The End');
+                if (res.data == 0) {
                     
                     if(page_no <= total_pages){
                         page_no++;
                         showdata();
+                    }else{
+                        toastr.info('You Are at The End');
                     }
 
                 } else {

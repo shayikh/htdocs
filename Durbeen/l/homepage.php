@@ -134,12 +134,13 @@ if ($number > 0) { ?>
                     }
                 })
             .then(res => {
-                if (res.data == 1) {
-                    toastr.info('You Are at The End');
+                if (res.data == 0) {
                     
                     if(page_no <= total_pages){
                         page_no++;
                         showdata();
+                    }else{
+                        toastr.info('You Are at The End');
                     }
 
                 } else {
