@@ -107,9 +107,11 @@ if ($number > 0) { ?>
     let commentTboody = document.querySelector("#commentTboody");
 
 
+    var total_pages = 0;
     var page_no = 1;
 
     showdata();
+    total_pagesfn();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
@@ -132,14 +134,40 @@ if ($number > 0) { ?>
                     }
                 })
             .then(res => {
-                if (res.data == 0) {
-                    console.log("You Are at The End");
-                    page_no++;
-                    showdata();
+                if (res.data == 1) {
+                    toastr.info('You Are at The End');
+                    
+                    if(page_no <= total_pages){
+                        page_no++;
+                        showdata();
+                    }
+
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
                 }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    
+    function total_pagesfn() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/post/total_pages.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                total_pages = res.data;
             })
             .catch(err => {
                 console.log(err);

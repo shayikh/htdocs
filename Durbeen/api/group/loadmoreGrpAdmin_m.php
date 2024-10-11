@@ -15,10 +15,10 @@ $grp_id = $data['grp_id'];
 $SQL3 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me'";
 $run3 = mysqli_query($connection, $SQL3);
 $total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 10) + 1;
+$total_pages = ceil($total_posts / 10);
 
-if($page_no >= $total_pages){
-    echo '0';
+if($page_no > $total_pages){
+    echo 1;
 }
 
 

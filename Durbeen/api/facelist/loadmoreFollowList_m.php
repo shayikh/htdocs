@@ -15,10 +15,10 @@ $unique_id_me = $data['unique_id_me'];
 $SQL1 = "SELECT * FROM `$unique_id_me follow`";
 $run1 = mysqli_query($connection_info, $SQL1);
 $total_posts = mysqli_num_rows($run1);
-$total_pages = ceil($total_posts / 10) + 1;
+$total_pages = ceil($total_posts / 10);
 
-if($page_no >= $total_pages){
-    echo '0';
+if($page_no > $total_pages){
+    echo 1;
 }
 
 

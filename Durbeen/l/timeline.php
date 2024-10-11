@@ -150,16 +150,13 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let commentTboody = document.querySelector("#commentTboody");
 
 
-    var stop_page = "";
     var page_no = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            if (stop_page != "stop") {
-                showdata();
-            }
+            showdata();
         }
     })
 
@@ -178,7 +175,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     }
                 })
             .then(res => {
-                if (res.data == 0) {
+                if (res.data == 1) {
                     toastr.info('You Are at The End');
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
