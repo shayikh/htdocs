@@ -20,6 +20,7 @@ if (isset($_POST['signup'])) {
     $run1 = mysqli_query($connection, $SQL1);
     $count = mysqli_num_rows($run1);
     if ($count > 0) {
+        header('location:./registration.php?message=Another Person Already Used This Email');
         echo "<script>window.location = './registration.php?message=Another Person Already Used This Email'</script>";
     } else {
         $name = $_POST['name'];
@@ -44,7 +45,8 @@ if (isset($_POST['signup'])) {
         mysqli_query($connection, $SQL2);
 
         
-        echo "<script>window.location = './?wait'</script>";
+        header('location:./index.php?wait');
+        echo "<script>window.location = './index.php?wait'</script>";
     }
 
 }

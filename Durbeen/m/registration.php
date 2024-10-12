@@ -20,6 +20,7 @@ if (isset($_POST['signup'])) {
     $run1 = mysqli_query($connection, $SQL1);
     $count = mysqli_num_rows($run1);
     if ($count > 0) {
+        header('location:./registration.php?message=Another Person Already Used This Email');
         echo "<script>window.location = './registration.php?message=Another Person Already Used This Email'</script>";
     } else {
         $name = $_POST['name'];
@@ -119,6 +120,7 @@ if (isset($_POST['signup'])) {
         mysqli_query($connection_info, $SQLcreateMe);
 
 
+        header('location:./about_me.php?type=about_me');
         echo "<script>window.location = './about_me.php?type=about_me'</script>";
     }
 

@@ -33,15 +33,18 @@ if (isset($_POST['login'])) {
         $SQL3 = "UPDATE `registration` SET `active`='1',`visit`='$visit' WHERE `unique_id`='$unique_id_me'";
         mysqli_query($connection, $SQL3);
 
-        header('location:./homepage.php');
+        header('location:./homepage.php?type');
+        echo "<script>window.location = './homepage.php?type'</script>";
     } else {
         $SQL3 = "SELECT * FROM `registration` WHERE `email`='$EmailMe'";
         $run3 = mysqli_query($connection, $SQL3);
         $count = mysqli_num_rows($run3);
         if ($count > 0) {
             header('location:./index.php?message=Incorrect Password');
+            echo "<script>window.location = './index.php?message=Incorrect Password'</script>";
         } else {
             header('location:./index.php?message=Incorrect Email');
+            echo "<script>window.location = './index.php?message=Incorrect Email'</script>";
         }
     }
 }
