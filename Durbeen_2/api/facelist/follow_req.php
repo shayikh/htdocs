@@ -20,27 +20,28 @@ $countC = mysqli_num_rows($runC);
 if($countC == 0) {
 
     //create two table if not exist
-    $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_fr` (
-        `id` int(255) unsigned NOT NULL auto_increment,
-        `sender` varchar(255),
-        `message` text,
-        `image` varchar(1000),
-        `time` varchar(1000),
-        `seen` varchar(1000),
-        PRIMARY KEY  (`id`)
-    )";
+    if($unique_id_me < $unique_id_fr){
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_fr` (
+            `id` bigint(255) unsigned NOT NULL auto_increment,
+            `sender` bigint(255),
+            `message` longtext,
+            `image` varchar(1000),
+            `time` varchar(1000),
+            `seen` varchar(1000),
+            PRIMARY KEY  (`id`)
+        )";
+    }else{
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_fr to $unique_id_me` (
+            `id` bigint(255) unsigned NOT NULL auto_increment,
+            `sender` bigint(255),
+            `message` longtext,
+            `image` varchar(1000),
+            `time` varchar(1000),
+            `seen` varchar(1000),
+            PRIMARY KEY  (`id`)
+        )";
+    }
     mysqli_query($connection_message, $SQLcreateMe);
-
-    $SQLcreateFr = "CREATE TABLE IF NOT EXISTS `$unique_id_fr to $unique_id_me` (
-        `id` int(255) unsigned NOT NULL auto_increment,
-        `sender` varchar(255),
-        `message` text,
-        `image` varchar(1000),
-        `time` varchar(1000),
-        `seen` varchar(1000),
-        PRIMARY KEY  (`id`)
-    )";
-    mysqli_query($connection_message, $SQLcreateFr);
     //table creation end
 
 
@@ -82,11 +83,12 @@ if($countC == 0) {
 
 
 
-    $SQL1 = "INSERT INTO `$unique_id_me to $unique_id_fr`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('me','$message','$imageNewName','$time','Unseen')";
+    if($unique_id_me < $unique_id_fr){
+        $SQL1 = "INSERT INTO `$unique_id_me to $unique_id_fr`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('$unique_id_me','$message','$imageNewName','$time','Unseen')";
+    }else{
+        $SQL1 = "INSERT INTO `$unique_id_fr to $unique_id_me`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('$unique_id_me','$message','$imageNewName','$time','Unseen')";
+    }
     mysqli_query($connection_message, $SQL1);
-
-    $SQL2 = "INSERT INTO `$unique_id_fr to $unique_id_me`(`sender`, `message`, `image`, `time`, `seen`) VALUES ('fr','$message','$imageNewName','$time','Unseen')";
-    mysqli_query($connection_message, $SQL2);
 
 
 
