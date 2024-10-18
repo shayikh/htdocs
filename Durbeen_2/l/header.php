@@ -2,7 +2,8 @@
 session_start();
 
 if (!$_SESSION['unique_id_me']) {
-    header('location:./?mustlog');
+    header('location:./index.php?mustlog');
+    echo "<script>window.location = './index.php?mustlog'</script>";
 }
 
 

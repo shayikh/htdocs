@@ -3,6 +3,7 @@ session_start();
 
 if ($_SESSION['unique_id_me']) {
     header('location:./homepage.php?type');
+    echo "<script>window.location = './homepage.php?type'</script>";
 }
 
 

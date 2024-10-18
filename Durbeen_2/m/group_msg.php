@@ -127,38 +127,42 @@ $grpName = $datagrp['grp_name'];
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        if (image.value == "" && message.value == "") {
+            toastr.error('Message and Image Both Fields are Empty');
+        } else {
+            var formdata = new FormData(form);
 
-        var formdata = new FormData(form);
+            $.ajax({
+                url: "../api/group_msg/GroupMsgAdd.php",
+                type: "POST",
+                data: formdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
 
-        $.ajax({
-            url: "../api/group_msg/GroupMsgAdd.php",
-            type: "POST",
-            data: formdata,
-            contentType: false,
-            cache: false,
-            processData: false,
-            beforeSend: function() {
-                // alert('ok')
-            },
-            success: function(data) {
+                    let json = JSON.parse(data);
 
-                let json = JSON.parse(data);
-
-                let unique_id_me = json.unique_id_me;
-                let newMessage = json.newMessage;
+                    let unique_id_me = json.unique_id_me;
+                    let newMessage = json.newMessage;
 
 
-                tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+                    tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
 
-                messageCloseBtn.click();
+                    messageCloseBtn.click();
+                    toastr.success('Message Sent');
 
-                image.value = "";
-                message.value = "";
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
+                    image.value = "";
+                    message.value = "";
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
 
     })
 

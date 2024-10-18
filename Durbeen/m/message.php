@@ -213,42 +213,45 @@ if ($countTest == 0) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        if (image.value == "" && message.value == "") {
+            toastr.error('Message and Image Both Fields are Empty');
+        } else {
+            var formdata = new FormData(form);
 
-        var formdata = new FormData(form);
+            $.ajax({
+                url: "../api/message/messageAdd.php",
+                type: "POST",
+                data: formdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
 
-        $.ajax({
-            url: "../api/message/messageAdd.php",
-            type: "POST",
-            data: formdata,
-            contentType: false,
-            cache: false,
-            processData: false,
-            beforeSend: function() {
-                // alert('ok')
-            },
-            success: function(data) {
+                    let json = JSON.parse(data);
 
-                let json = JSON.parse(data);
+                    let unique_id_me = json.unique_id_me;
+                    let unique_id_fr = json.unique_id_fr;
+                    let newMessage = json.newMessage;
 
-                let unique_id_me = json.unique_id_me;
-                let unique_id_fr = json.unique_id_fr;
-                let newMessage = json.newMessage;
+                    // console.log(json);
+                    // console.log(unique_id_fr);
 
-                // console.log(json);
-                // console.log(unique_id_fr);
+                    tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
 
-                tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+                    messageCloseBtn.click();
+                    toastr.success('Message Sent');
 
-                messageCloseBtn.click();
-                toastr.success('Message Sent');
-
-                image.value = "";
-                message.value = "";
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
+                    image.value = "";
+                    message.value = "";
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
 
     })
 
