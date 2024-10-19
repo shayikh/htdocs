@@ -15,10 +15,7 @@ $SQLMe = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
 $runMe = mysqli_query($connection,$SQLMe);
 $dataMe = mysqli_fetch_assoc($runMe);
 
-$cov_pic = $dataMe['cov_pic'];
-
-$SQL1 = "INSERT INTO `$unique_id_me cov_pic`(`cov_pic`) VALUES ('$cov_pic')";
-mysqli_query($connection_info,$SQL1);
+$old_cov_pic = $dataMe['cov_pic'];
 
 
 $SQL2 = "SELECT * FROM `$unique_id_me cov_pic` WHERE `id`='$cov_pic_id'";
@@ -30,17 +27,13 @@ $SQL3 = "UPDATE `registration` SET `cov_pic`='$new_cov_pic' WHERE `unique_id`='$
 mysqli_query($connection,$SQL3);
 
 
-$SQL4 = "DELETE FROM `$unique_id_me cov_pic` WHERE `id`='$cov_pic_id'";
-mysqli_query($connection_info, $SQL4);
+$SQL1 = "UPDATE `$unique_id_me cov_pic` SET `cov_pic`='$old_cov_pic' WHERE `id`='$cov_pic_id'";
+mysqli_query($connection_info,$SQL1);
 
 
 
 
-
-
-
-
-$SQL3 = "SELECT * FROM `$unique_id_me cov_pic` ORDER BY `id` DESC LIMIT 1";
+$SQL3 = "SELECT * FROM `$unique_id_me cov_pic` WHERE `id`='$cov_pic_id'";
 $run3 = mysqli_query($connection_info, $SQL3);
 $latestData = mysqli_fetch_assoc($run3);
 
