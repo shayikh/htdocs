@@ -20,7 +20,7 @@ while ($data9 = mysqli_fetch_assoc($run9)) {
     }
 }
 
-$SQL10 = "TRUNCATE TABLE `group 1`";
+$SQL10 = "TRUNCATE TABLE `group $grp_id`";
 mysqli_query($connection_message, $SQL10);
 
 
