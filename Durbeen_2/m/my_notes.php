@@ -9,6 +9,10 @@ include './header.php';
 <!-- main page -->
 <a target="_self" style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" href="my_notes.php?type=my_notes" class="btn btn-sm btn-success">Refresh</a>
 
+<a style="position: fixed;left: 72px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" onclick="cleanNotes(<?php echo $unique_id_me ?>)"><i class="fas fa-trash-alt"></i></a>
+
+
+
 
 <div class="container" style="margin-top: 110px">
 
@@ -156,6 +160,38 @@ include './header.php';
                         </div>
                     </tr>`
         return tr;
+    }
+
+
+    const cleanNotes = (unique_id_me) => {
+        let confirm = window.confirm("Do You Want to Clear Your Notes?");
+
+        if (confirm) {
+
+            let message = {};
+
+            message.unique_id_me = unique_id_me;
+
+            axios.post("../api/my_notes/cleanNotes.php",
+                    message, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                .then(res => {
+                    // console.log(res.data);
+
+                    if (res.data == '1') {
+                        window.location = './my_notes.php?type';
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
+            return;
+        }
     }
 
 

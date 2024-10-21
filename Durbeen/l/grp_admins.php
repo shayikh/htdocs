@@ -27,7 +27,7 @@ $data111 = mysqli_fetch_assoc($run111);
 <a style="position: fixed;right: 217px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
 
 
-<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" onclick="cleanGrp(<?php echo $grp_id ?>)"><i class="fas fa-trash-alt"></i></a>
+<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" onclick="cleanNotes(<?php echo $unique_id_me ?>)"><i class="fas fa-trash-alt"></i></a>
 
 
 
