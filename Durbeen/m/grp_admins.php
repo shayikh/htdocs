@@ -133,38 +133,38 @@ $data111 = mysqli_fetch_assoc($run111);
 
 
     form.addEventListener('submit', (e) => {
-            e.preventDefault();
+        e.preventDefault();
 
 
-            var formdata = new FormData(form);
+        var formdata = new FormData(form);
 
-            $.ajax({
-                url: "../api/group/grpUpdate.php",
-                type: "POST",
-                data: formdata,
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    // alert('ok')
-                },
-                success: function(data) {
+        $.ajax({
+            url: "../api/group/grpUpdate.php",
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
 
-                    let json = JSON.parse(data);
-                    let newGroup = json.newGroup;
+                let json = JSON.parse(data);
+                let newGroup = json.newGroup;
 
 
 
-                    postCloseBtn.click();
-                    image.value = "";
-                    toastr.success('Group Info Updated');
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
+                postCloseBtn.click();
+                image.value = "";
+                toastr.success('Group Info Updated');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
 
-        })
+    })
 
 
     const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
