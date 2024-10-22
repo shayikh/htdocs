@@ -118,17 +118,12 @@ if (isset($_GET['nofollow'])) {
                 // alert('ok')
             },
             success: function(data) {
-                if(data == 1){
-                    toastr.error('Not found');
-                    tbody.innerHTML = "";
-                }else{
-                    // console.log(data);
-                    tbody.innerHTML = data;
+                // console.log(data);
+                tbody.innerHTML = data;
 
-                    postCloseBtn.click();
-                    search.value = "";
-                    toastr.success('Frieds Found');
-                }
+                postCloseBtn.click();
+                search.value = "";
+                toastr.success('Frieds Found');
 
 
             },
