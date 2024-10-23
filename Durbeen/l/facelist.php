@@ -99,6 +99,7 @@ include './header.php';
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        tbody.innerHTML = "";
         headerText.innerText = "Search Results";
 
 
@@ -120,7 +121,6 @@ include './header.php';
 
                 postCloseBtn.click();
                 search.value = "";
-                toastr.success('Frieds Found');
 
 
             },

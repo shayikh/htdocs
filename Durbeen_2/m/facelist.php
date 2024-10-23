@@ -106,6 +106,7 @@ if (isset($_GET['nofollow'])) {
     
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        tbody.innerHTML = "";
         headerText.innerText = "Search Results";
 
 
@@ -127,7 +128,6 @@ if (isset($_GET['nofollow'])) {
 
                 postCloseBtn.click();
                 search.value = "";
-                toastr.success('Frieds Found');
 
 
             },
