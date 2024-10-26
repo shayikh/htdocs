@@ -3,7 +3,7 @@ include '../../connection.php';
 
 
 $unique_id_me = $_POST['unique_id_me'];
-$search = $_POST['search'];
+$search = strtolower($_POST['search']);
 $search = mysqli_real_escape_string($connection, $search);
 
 
@@ -16,7 +16,7 @@ $run1 = mysqli_query($connection, $SQL1);
 
 
 while($data1 = mysqli_fetch_assoc($run1)) {
-    $data = $data1['name'];
+    $data = strtolower($data1['name']);
     $result = strstr($data, $search);
 
     if ($result) {
