@@ -1,22 +1,27 @@
 <?php
 include '../../connection.php';
 
+header('Content-Type: application/x-www-form-urlencoded');
 
-$unique_id_me = $_POST['unique_id_me'];
-$search = $_POST['search'];
+
+$jsonData = file_get_contents('php://input');
+$data = json_decode($jsonData, true);
+
+$unique_id_me = $data['unique_id_me'];
+$search = strtolower($data['search']);
 $search = mysqli_real_escape_string($connection, $search);
 
 
 
 
-$SQL1 = "SELECT * FROM `registration` ORDER BY `unique_id` DESC";
+$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' ORDER BY `unique_id` DESC";
 $run1 = mysqli_query($connection, $SQL1);
 
 
 
 
 while($data1 = mysqli_fetch_assoc($run1)) {
-    $data = $data1['name'];
+    $data = strtolower($data1['name']);
     $result = strstr($data, $search);
 
     if ($result) {

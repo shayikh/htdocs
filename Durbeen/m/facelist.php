@@ -4,7 +4,7 @@ include './header.php';
 ?>
 
 
-<a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Find Friend</a>
+<a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#searchModal">Find Friend</a>
 
 
 
@@ -22,29 +22,23 @@ include './header.php';
 
 
 <!-- Search Modal -->
-<div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="groupModalLabel">Search Friends</h5>
-                <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="text-dark" class="modal-title" id="searchModalLabel">Search Friends</h5>
+                <button id="searchCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post" id="formID" enctype="multipart/form-data">
-
-                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label text-dark">Friend Name</label>
-                                <input style="background-color: #F3F3F3;" name="search" class="form-control" id="searchID" type="text" required>
-                            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label text-dark">Friend Name</label>
+                            <input id="searchID" style="background-color: #F3F3F3;" class="form-control" type="text" required>
                         </div>
                     </div>
-
-                    <input name="saveBtn" id="buttonID" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
-                </form>
+                </div>
+                <input onclick="searchfn(<?php echo $unique_id_me ?>)" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="button" aria-label="Close">
             </div>
         </div>
     </div>
@@ -52,10 +46,8 @@ include './header.php';
 
 
 <script>
-    let form = document.querySelector("#formID");
     let search = document.querySelector("#searchID");
-    let button = document.querySelector("#buttonID");
-    let postCloseBtn = document.querySelector("#postCloseBtn");
+    let searchCloseBtn = document.querySelector("#searchCloseBtn");
     let tbody = document.querySelector("#tbodyID");
     let headerText = document.querySelector("#headerID");
 
@@ -99,39 +91,39 @@ include './header.php';
 
 
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        tbody.innerHTML = "";
-        headerText.innerText = "Search Results";
+    const searchfn = (unique_id_me) => {
+
+        let searchVar = {};
+
+        searchVar.unique_id_me = unique_id_me;
+        searchVar.search = search.value;
+
+        axios.post("../api/facelist/searchFriend_m.php",
+            searchVar, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                headerText.innerText = "Search Results";
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    tbody.innerHTML = "";
+                    toastr.error('Friends Not Found');
+                } else {
+                    tbody.innerHTML = res.data;
+                    searchCloseBtn.click();
+                    search.value = "";
+                    toastr.success('Friends Found');
+                }
 
 
-        var formdata = new FormData(form);
-
-        $.ajax({
-            url: "../api/facelist/searchFriend_m.php",
-            type: "POST",
-            data: formdata,
-            contentType: false,
-            cache: false,
-            processData: false,
-            beforeSend: function() {
-                // alert('ok')
-            },
-            success: function(data) {
-                // console.log(data);
-                tbody.innerHTML = data;
-
-                postCloseBtn.click();
-                search.value = "";
-
-
-            },
-            error: function(err) {
+            })
+            .catch(err => {
                 console.log(err);
-            }
-        });
-
-    })
+            })
+    }
 
 
     const followfn = (unique_id_me, unique_id_fr, elm) => {
