@@ -14,6 +14,10 @@ if ($count1 == 0) {
 ?>
 
 
+<a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#searchModal">Find Friend</a>
+
+
+
 <div class="container" style="margin-top: 112px">
     <h6 class="text-center">Add Or Remove Durbeen Admins</h6>
     <table class="table table-bordered mt-3" style="margin-bottom: 150px;border-color: #5d5d5d">
@@ -24,9 +28,35 @@ if ($count1 == 0) {
 </div>
 
 
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-dark" class="modal-title" id="searchModalLabel">Search Friends</h5>
+                <button id="searchCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label text-dark">Friend Name</label>
+                            <input id="searchID" style="background-color: #F3F3F3;" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <input onclick="searchfn(<?php echo $unique_id_me ?>)" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="button" aria-label="Close">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     let tbody = document.querySelector("#tbodyID");
+    let search = document.querySelector("#searchID");
+    let searchCloseBtn = document.querySelector("#searchCloseBtn");
+    let headerText = document.querySelector("#headerID");
 
 
     var page_no = 1;
@@ -60,6 +90,40 @@ if ($count1 == 0) {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
                 }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+    const searchfn = (unique_id_me) => {
+
+        let searchVar = {};
+
+        searchVar.unique_id_me = unique_id_me;
+        searchVar.search = search.value;
+
+        axios.post("../api/admin/searchFriend_m.php",
+            searchVar, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == 0) {
+                    tbody.innerHTML = "";
+                    toastr.error('Friends Not Found');
+                } else {
+                    tbody.innerHTML = res.data;
+                    searchCloseBtn.click();
+                    search.value = "";
+                    toastr.success('Friends Found');
+                }
+
+
             })
             .catch(err => {
                 console.log(err);

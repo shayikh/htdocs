@@ -31,9 +31,9 @@ $row = ($page_no - 1)*$limit;
 $SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' AND `unique_id`!='1' ORDER BY `unique_id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection,$SQL);
 
-while ($data = mysqli_fetch_assoc($run)){
+while ($data1 = mysqli_fetch_assoc($run)){
 
-    $unique_id_fr = $data['unique_id'];
+    $unique_id_fr = $data1['unique_id'];
 
     $SQL2 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_fr'";
     $run2 = mysqli_query($connection,$SQL2);
@@ -44,13 +44,13 @@ while ($data = mysqli_fetch_assoc($run)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <img height="135px" src="../pro_pic/<?php echo $data['pro_pic'] ?>">
+                <img height="135px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center">
             <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <h3 style="margin-top: 35px"><?php echo $data['name'] ?></h3>
-                <h6 class="text-success">Durbeen Visited : <?php echo $data['visit'] ?></h6>
+                <h3 style="margin-top: 35px"><?php echo $data1['name'] ?></h3>
+                <h6 class="text-success">Durbeen Visited : <?php echo $data1['visit'] ?></h6>
             </a>
         </td>
         <td class="text-center">
