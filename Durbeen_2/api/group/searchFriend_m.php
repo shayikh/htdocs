@@ -9,7 +9,7 @@ $data = json_decode($jsonData, true);
 
 $grp_id = $data['grp_id'];
 $unique_id_me = $data['unique_id_me'];
-$search = strtolower($data['search']);
+$search = strtolower(trim($data['search']));
 $search = mysqli_real_escape_string($connection, $search);
 
 
