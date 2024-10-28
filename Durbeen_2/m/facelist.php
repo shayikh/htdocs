@@ -1,6 +1,10 @@
 <?php
 include './header.php';
 
+if (isset($_GET['nofollow'])) {
+    echo "<script>toastr.info('He did not Allow to Follow You')</script>";
+}
+
 ?>
 
 
