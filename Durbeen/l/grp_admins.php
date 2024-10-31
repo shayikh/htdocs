@@ -120,12 +120,15 @@ $data111 = mysqli_fetch_assoc($run111);
 
 
     var page_no = 1;
+    var ifSearch = 0;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
+            if(ifSearch == 0){
+                showdata();
+            }
         }
     })
 
@@ -184,7 +187,7 @@ $data111 = mysqli_fetch_assoc($run111);
                     search.value = "";
                     toastr.success('Friends Found');
                 }
-
+                ifSearch = 1;
 
             })
             .catch(err => {

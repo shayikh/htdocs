@@ -57,12 +57,15 @@ if (isset($_GET['nofollow'])) {
 
 
     var page_no = 1;
+    var ifSearch = 0;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
+            if(ifSearch == 0){
+                showdata();
+            }
         }
     })
 
@@ -120,7 +123,7 @@ if (isset($_GET['nofollow'])) {
                     search.value = "";
                     toastr.success('Friends Found');
                 }
-
+                ifSearch = 1;
 
             })
             .catch(err => {
