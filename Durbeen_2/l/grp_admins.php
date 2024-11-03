@@ -163,36 +163,40 @@ $data111 = mysqli_fetch_assoc($run111);
 
     const searchfn = (unique_id_me, elm) => {
 
-        let searchVar = {};
+        if(search.value == ""){
+            toastr.error('Search Field is Empty');
+        }else{
+            let searchVar = {};
 
-        searchVar.unique_id_me = unique_id_me;
-        searchVar.search = search.value;
-        searchVar.grp_id = <?php echo $grp_id ?>;
+            searchVar.unique_id_me = unique_id_me;
+            searchVar.search = search.value;
+            searchVar.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group/searchFriend.php",
-            searchVar, {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(res => {
-                // console.log(res.data);
+            axios.post("../api/group/searchFriend.php",
+                searchVar, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => {
+                    // console.log(res.data);
 
-                if (res.data == 0) {
-                    tbody.innerHTML = "";
-                    toastr.error('Friends Not Found');
-                } else {
-                    tbody.innerHTML = res.data;
-                    searchCloseBtn.click();
-                    search.value = "";
-                    toastr.success('Friends Found');
-                }
-                ifSearch = 1;
+                    if (res.data == 0) {
+                        tbody.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        tbody.innerHTML = res.data;
+                        searchCloseBtn.click();
+                        search.value = "";
+                        toastr.success('Friends Found');
+                    }
+                    ifSearch = 1;
 
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
     }
 
 
