@@ -79,7 +79,7 @@ $count1 = mysqli_num_rows($run1);
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
             showdata();
         }
     })

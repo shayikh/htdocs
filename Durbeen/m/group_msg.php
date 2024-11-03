@@ -90,7 +90,7 @@ $grpName = $datagrp['grp_name'];
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
             showdata();
         }
     })
