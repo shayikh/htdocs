@@ -54,13 +54,15 @@ include './header.php';
 
     var page_no = 1;
     var ifSearch = 0;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-            if(ifSearch == 0){
+            if(ifSearch == 0 && returned == 1){
                 showdata();
+                returned = 0;
             }
         }
     })
@@ -85,6 +87,7 @@ include './header.php';
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {
