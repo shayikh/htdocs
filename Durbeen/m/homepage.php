@@ -114,8 +114,8 @@ if ($number > 0) { ?>
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
             if(returned == 1){
-                showdata();
                 returned = 0;
+                showdata();
             }
         }
     })

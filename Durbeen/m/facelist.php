@@ -61,8 +61,8 @@ include './header.php';
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
             if(ifSearch == 0 && returned == 1){
-                showdata();
                 returned = 0;
+                showdata();
             }
         }
     })

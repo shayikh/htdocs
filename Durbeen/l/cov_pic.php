@@ -31,8 +31,8 @@ include './header.php';
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
             if(returned == 1){
-                showdata();
                 returned = 0;
+                showdata();
             }
         }
     })
