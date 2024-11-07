@@ -86,12 +86,16 @@ $grpName = $datagrp['grp_name'];
 
 
     var page_no = 1;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-            showdata();
+            if(returned == 1){
+                showdata();
+                returned = 0;
+            }
         }
     })
 
@@ -116,6 +120,7 @@ $grpName = $datagrp['grp_name'];
                 } else {
                     appendData.innerHTML = appendData.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {

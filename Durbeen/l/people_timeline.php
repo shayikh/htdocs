@@ -116,12 +116,16 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
     var page_no = 1;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
+            if(returned == 1){
+                showdata();
+                returned = 0;
+            }
         }
     })
 
@@ -146,6 +150,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {

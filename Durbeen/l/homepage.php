@@ -109,13 +109,17 @@ if ($number > 0) { ?>
 
     var total_pages = 0;
     var page_no = 1;
+    var returned = 1;
 
     showdata();
     total_pagesfn();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
+            if(returned == 1){
+                showdata();
+                returned = 0;
+            }
         }
     })
 
@@ -138,6 +142,7 @@ if ($number > 0) { ?>
                     
                     if(page_no <= total_pages){
                         page_no++;
+                        returned = 1;
                         showdata();
                     }else{
                         toastr.info('You Are at The End');
@@ -146,6 +151,7 @@ if ($number > 0) { ?>
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {
