@@ -21,6 +21,7 @@ include './header.php';
 
 <script>
     let tbody = document.querySelector("#tbodyID");
+    let targetTr = null;
 
 
     var page_no = 1;
@@ -101,6 +102,8 @@ include './header.php';
 
 
     const makeCovPic = (cov_pic_id, unique_id_me, elm) => {
+        targetTr = elm.parentElement.parentElement;
+        
 
         let delCovPic = {};
 
@@ -116,9 +119,11 @@ include './header.php';
             .then(res => {
                 // console.log(res.data);
 
-                elm.parentElement.parentElement.remove();
+                // elm.parentElement.parentElement.remove();
 
-                tbody.innerHTML = makeCovPicTr(res.data.newCovPic) + tbody.innerHTML;
+                // tbody.innerHTML = makeCovPicTr(res.data.newCovPic) + tbody.innerHTML;
+
+                targetTr.innerHTML = makeCovPicTr(res.data.newCovPic);
 
                 toastr.success('Cover Photo Changed');
 
