@@ -20,15 +20,20 @@ include './header.php';
 <script>
     let tbody = document.querySelector("#tbodyID");
     let timeline_pro_pic = document.querySelector("#timeline_pro_pic");
+    let targetTr = null;
 
 
     var page_no = 1;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
+            if(returned == 1){
+                returned = 0;
+                showdata();
+            }
         }
     })
 
@@ -52,6 +57,7 @@ include './header.php';
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {
@@ -95,6 +101,8 @@ include './header.php';
 
 
     const makeProPic = (pro_pic_id, unique_id_me, elm) => {
+        targetTr = elm.parentElement.parentElement;
+
 
         let delProPic = {};
 
@@ -112,9 +120,11 @@ include './header.php';
 
                 timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
 
-                elm.parentElement.parentElement.remove();
+                // elm.parentElement.parentElement.remove();
 
-                tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
+                // tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
+
+                targetTr.innerHTML = makeProPicTr(res.data.newProPic);
 
                 toastr.success('Profile Picture Changed');
 

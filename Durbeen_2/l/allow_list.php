@@ -21,12 +21,16 @@ include './header.php';
 
 
     var page_no = 1;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            showdata();
+            if(returned == 1){
+                returned = 0;
+                showdata();
+            }
         }
     })
 
@@ -50,6 +54,7 @@ include './header.php';
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {

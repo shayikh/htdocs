@@ -59,7 +59,7 @@ $data111 = mysqli_fetch_assoc($run111);
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="form-label text-dark">Friend Name</label>
-                            <input id="searchID" style="background-color: #F3F3F3;" class="form-control" type="text" required>
+                            <input id="searchID" style="background-color: #F3F3F3;" class="form-control" type="text">
                         </div>
                     </div>
                 </div>
@@ -121,13 +121,15 @@ $data111 = mysqli_fetch_assoc($run111);
 
     var page_no = 1;
     var ifSearch = 0;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-            if(ifSearch == 0){
+            if(ifSearch == 0 && returned == 1){
                 showdata();
+                returned = 0;
             }
         }
     })
@@ -153,6 +155,7 @@ $data111 = mysqli_fetch_assoc($run111);
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {
@@ -197,6 +200,7 @@ $data111 = mysqli_fetch_assoc($run111);
                     console.log(err);
                 })
         }
+        
     }
 
 
