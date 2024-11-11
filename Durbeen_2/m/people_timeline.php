@@ -127,12 +127,16 @@ $count2 = mysqli_num_rows($run2);
 
 
     var page_no = 1;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-            showdata();
+            if(returned == 1){
+                returned = 0;
+                showdata();
+            }
         }
     })
 
@@ -157,6 +161,7 @@ $count2 = mysqli_num_rows($run2);
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {

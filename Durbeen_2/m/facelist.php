@@ -58,12 +58,14 @@ if (isset($_GET['nofollow'])) {
 
     var page_no = 1;
     var ifSearch = 0;
+    var returned = 1;
 
     showdata();
 
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
-            if(ifSearch == 0){
+            if(ifSearch == 0 && returned == 1){
+                returned = 0;
                 showdata();
             }
         }
@@ -89,6 +91,7 @@ if (isset($_GET['nofollow'])) {
                 } else {
                     tbody.innerHTML = tbody.innerHTML + res.data;
                     page_no++;
+                    returned = 1;
                 }
             })
             .catch(err => {
