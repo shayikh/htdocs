@@ -1,12 +1,10 @@
 <?php
 include '../../connection.php';
-
 header('Content-Type: application/x-www-form-urlencoded');
 
-
 $jsonData = file_get_contents('php://input');
-
 $data = json_decode($jsonData, true);
+
 
 $Deleteid = $data['id_msg'];
 $grp_id = $data['grp_id'];
