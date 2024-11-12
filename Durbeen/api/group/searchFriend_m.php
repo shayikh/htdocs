@@ -1,11 +1,11 @@
 <?php
 include '../../connection.php';
-
 header('Content-Type: application/x-www-form-urlencoded');
-
 
 $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
+
+
 
 $grp_id = $data['grp_id'];
 $unique_id_me = $data['unique_id_me'];

@@ -1,7 +1,6 @@
 <?php
 include '../../connection.php';
 
-
 $EmailMe = $_POST['email'];
 
 $SQL1 = "SELECT * FROM `registration` WHERE `email`='$EmailMe'";
