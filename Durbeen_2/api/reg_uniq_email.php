@@ -1,12 +1,12 @@
 <?php
 include '../connection.php';
-
 header('Content-Type: application/x-www-form-urlencoded');
 
-$data = file_get_contents('php://input');
-$decoded_data = json_decode($data, true);
+$jsonData = file_get_contents('php://input');
+$data = json_decode($jsonData, true);
 
-$email = $decoded_data['email'];
+
+$email = $data['email'];
 
 $SQL1 = "SELECT * FROM `registration` WHERE `email`='$email'";
 $run1 = mysqli_query($connection,$SQL1);
