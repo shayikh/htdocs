@@ -42,7 +42,7 @@ if ($_SESSION['unique_id_me']) {
                     <h5>Enter Your Email</h5>
                 </div>
                 <div class="col-lg-12">
-                    <input name="email" class="form-control" type="email" id="email">
+                    <input name="email" class="form-control" type="email" required>
                 </div>
                 <div class="col-lg-12 mt-4">
                     <input name="send" class="btn btn-success form-control" type="submit">
@@ -101,11 +101,6 @@ if ($_SESSION['unique_id_me']) {
 
         formone.addEventListener('submit', (e) => {
             e.preventDefault();
-
-
-            if (email.value == "") {
-                toastr.error('Email Field is Required');
-            }
 
             var formdataone = new FormData(formone);
 
@@ -177,11 +172,11 @@ if ($_SESSION['unique_id_me']) {
             e.preventDefault();
 
             if (answer_one.value == "") {
-                toastr.error('All Fields are Required');
+                toastr.info('All Fields are Required');
             } else if (answer_two.value == "") {
-                toastr.error('All Fields are Required');
+                toastr.info('All Fields are Required');
             } else if (answer_three.value == "") {
-                toastr.error('All Fields are Required');
+                toastr.info('All Fields are Required');
             } else {
 
                 var formdatatwo = new FormData(formtwo);
