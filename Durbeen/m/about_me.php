@@ -382,7 +382,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <th class="text-center text-dark" scope="col">Time</th>
                             <th class="text-center text-dark" scope="col">Comment</th>
                             <th class="text-center text-dark" scope="col">Post</th>
-                            <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody id="otherCommentTboody">
@@ -646,9 +645,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <td class="text-center text-dark" style="min-width: 100px">
                                 <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-4" target="_blank">Show Post</a>
                             </td>
-                            <td class="text-center text-dark">
-                                <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-                            </td>
                         </tr>`
         return tr;
     }
@@ -675,7 +671,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     elm.parentElement.parentElement.remove();
                     toastr.info('Comment Deleted');
                 } else {
-                    toastr.warning('This is not Your Post');
+                    toastr.warning("You Can not Delete Other's Comment");
                 }
 
             })

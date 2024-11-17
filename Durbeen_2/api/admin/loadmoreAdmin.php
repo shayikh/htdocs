@@ -5,27 +5,15 @@ header('Content-Type: application/x-www-form-urlencoded');
 $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
 
+
+
 $page_no = $data['page_no'];
 $unique_id_me = $data['unique_id_me'];
 
 
 
-$SQL3 = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' AND `unique_id`!='1'";
-$run3 = mysqli_query($connection, $SQL3);
-$total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 10);
-
-if($page_no > $total_pages){
-    echo 1;
-}
-
-
-
-
-
 $limit = 10;
 $row = ($page_no - 1)*$limit;
-
 
 $SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' AND `unique_id`!='1' ORDER BY `unique_id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection,$SQL);

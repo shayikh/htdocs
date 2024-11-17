@@ -11,21 +11,6 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-
-
-$SQL3 = "SELECT * FROM `$unique_id_me msg_grp`";
-$run3 = mysqli_query($connection_info, $SQL3);
-$total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 10);
-
-if($page_no > $total_pages){
-    echo 1;
-}
-
-
-
-
-
 $limit = 10;
 $row = ($page_no - 1)*$limit;
 

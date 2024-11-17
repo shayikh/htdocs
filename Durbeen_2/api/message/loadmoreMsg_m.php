@@ -10,6 +10,8 @@ $page_no = $data['page_no'];
 $unique_id_me = $data['unique_id_me'];
 $unique_id_fr = $data['unique_id_fr'];
 
+
+
 $SQLfr = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $runfr = mysqli_query($connection, $SQLfr);
 $datafr = mysqli_fetch_assoc($runfr);
@@ -17,30 +19,8 @@ $pro_pic_fr = $datafr['pro_pic'];
 
 
 
-
-
-if($unique_id_me < $unique_id_fr){
-    $SQL3 = "SELECT * FROM `$unique_id_me to $unique_id_fr`";
-}else{
-    $SQL3 = "SELECT * FROM `$unique_id_fr to $unique_id_me`";
-}
-
-
-$run3 = mysqli_query($connection_message, $SQL3);
-$total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 20);
-
-if($page_no > $total_pages){
-    echo 1;
-}
-
-
-
 $limit = 20;
 $row = ($page_no - 1) * $limit;
-
-
-
 
 if($unique_id_me < $unique_id_fr){
     $SQL = "SELECT * FROM `$unique_id_me to $unique_id_fr` ORDER BY `id` DESC LIMIT $row,$limit";
@@ -48,8 +28,6 @@ if($unique_id_me < $unique_id_fr){
     $SQL = "SELECT * FROM `$unique_id_fr to $unique_id_me` ORDER BY `id` DESC LIMIT $row,$limit";
 }
 $run = mysqli_query($connection_message, $SQL);
-
-
 
 
 while ($data3 = mysqli_fetch_assoc($run)) { ?>

@@ -12,19 +12,6 @@ $grp_id = $data['grp_id'];
 
 
 
-$SQL3 = "SELECT * FROM `group $grp_id`";
-$run3 = mysqli_query($connection_message, $SQL3);
-$total_posts = mysqli_num_rows($run3);
-$total_pages = ceil($total_posts / 20);
-
-if($page_no > $total_pages){
-    echo 1;
-}
-
-
-
-
-
 $limit = 20;
 $row = ($page_no - 1) * $limit;
 

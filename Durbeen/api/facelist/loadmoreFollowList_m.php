@@ -11,25 +11,10 @@ $unique_id_me = $data['unique_id_me'];
 
 
 
-
-$SQL1 = "SELECT * FROM `$unique_id_me follow`";
-$run1 = mysqli_query($connection_info, $SQL1);
-$total_posts = mysqli_num_rows($run1);
-$total_pages = ceil($total_posts / 10);
-
-if($page_no > $total_pages){
-    echo 1;
-}
-
-
-
-
-
 $limit = 10;
 $row = ($page_no - 1)*$limit;
 
 $SQL2 = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`!='$unique_id_me' ORDER BY `id` DESC LIMIT $row,$limit";
-
 $run2 = mysqli_query($connection_info, $SQL2);
 
 while ($data2 = mysqli_fetch_assoc($run2)){
