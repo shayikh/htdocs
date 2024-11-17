@@ -131,15 +131,7 @@ if ($_SESSION['unique_id_me']) {
                         pro_pic.src = '../pro_pic/' + json.pro_pic;
                         $("#pro_pic ").show();
 
-                        if (questions.answer_one == "") {
-                            toastr.error('No Saved Answer');
-                            $("#question").hide();
-                            $("#passdiv ").hide();
-                        } else if (questions.answer_two == "") {
-                            toastr.error('No Saved Answer');
-                            $("#question").hide();
-                            $("#passdiv ").hide();
-                        } else if (questions.answer_three == "") {
+                        if (questions.answer_one == "" || questions.answer_two == "" || questions.answer_three == "") {
                             toastr.error('No Saved Answer');
                             $("#question").hide();
                             $("#passdiv ").hide();
