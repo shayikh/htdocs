@@ -19,7 +19,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="row">
 
         <div class="col-md-12">
-            <img width="1280px" height="574px" src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
+            <img width="1280px" src="../pro_pic/cov_pic/<?php echo $cov_pic ?>" id="cov_pic">
         </div>
 
         <div class="col-md-12 mt-4">
