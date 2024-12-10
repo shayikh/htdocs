@@ -25,7 +25,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
 
     <tr>
         <td class="text-center">
-            <img height="500px" style="max-width: 1000px;" src="../pro_pic/cov_pic/<?php echo $data2['cov_pic'] ?>">
+            <img style="max-width: 1000px;" src="../pro_pic/cov_pic/<?php echo $data2['cov_pic'] ?>">
         </td>
         <td class="text-center">
             <button onclick="makeCovPic(<?php echo $data2['id'] ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Cover Photo</button>
