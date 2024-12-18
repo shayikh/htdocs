@@ -102,8 +102,6 @@ include './header.php';
 
 
     const makeCovPic = (cov_pic_id, unique_id_me, elm) => {
-        targetTr = elm.parentElement.parentElement;
-        
 
         let delCovPic = {};
 
@@ -117,13 +115,9 @@ include './header.php';
                     }
                 })
             .then(res => {
-                // console.log(res.data);
+                // console.log(res.data.newCovPic.cov_pic);
 
-                // elm.parentElement.parentElement.remove();
-
-                // tbody.innerHTML = makeCovPicTr(res.data.newCovPic) + tbody.innerHTML;
-
-                targetTr.innerHTML = makeCovPicTr(res.data.newCovPic);
+                elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/cov_pic/" + res.data.newCovPic.cov_pic;
 
                 toastr.success('Cover Photo Changed');
 
@@ -132,22 +126,6 @@ include './header.php';
                 console.log(err);
             })
 
-    }
-
-
-    const makeCovPicTr = (newCovPic) => {
-        let tr = `<tr>
-                    <td class="text-center">
-                        <img style="width: 1000px;" src="../pro_pic/cov_pic/${newCovPic.cov_pic}">
-                    </td>
-                    <td class="text-center">
-                        <button onclick="makeCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-success" style="margin-top: 50px">Make Cover Photo</button>
-                    </td>
-                    <td class="text-center">
-                        <button onclick="deleteCovPic(${newCovPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-primary" style="margin-top: 50px"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>`
-        return tr;
     }
 
 </script>
