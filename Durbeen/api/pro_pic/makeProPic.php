@@ -35,7 +35,7 @@ $SQL3 = "SELECT * FROM `$unique_id_me pro_pic` WHERE `id`='$pro_pic_id'";
 $run3 = mysqli_query($connection_info, $SQL3);
 $latestData = mysqli_fetch_assoc($run3);
 
-echo json_encode(["new_pro_pic"=>$new_pro_pic, "newProPic" => $latestData]);
+echo json_encode(["new_pro_pic"=>$new_pro_pic, "oldProPic" => $latestData]);
 
 
 

@@ -101,8 +101,6 @@ include './header.php';
 
 
     const makeProPic = (pro_pic_id, unique_id_me, elm) => {
-        targetTr = elm.parentElement.parentElement;
-
 
         let delProPic = {};
 
@@ -120,11 +118,7 @@ include './header.php';
 
                 timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
 
-                // elm.parentElement.parentElement.remove();
-
-                // tbody.innerHTML = makeProPicTr(res.data.newProPic) + tbody.innerHTML;
-
-                targetTr.innerHTML = makeProPicTr(res.data.newProPic);
+                elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/" + res.data.oldProPic.pro_pic;
 
                 toastr.success('Profile Picture Changed');
 
@@ -133,22 +127,6 @@ include './header.php';
                 console.log(err);
             })
 
-    }
-
-
-    const makeProPicTr = (newProPic) => {
-        let tr = `<tr>
-                        <td class="text-center">
-                            <img width="130px" src="../pro_pic/${newProPic.pro_pic}">
-                        </td>
-                        <td class="text-center">
-                            <button onclick="makeProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-success" style="margin-top: 20px">Make Profile Picture</button>
-                        </td>
-                        <td class="text-center">
-                            <button onclick="deleteProPic(${newProPic.id}, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-primary" style="margin-top: 30px"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>`
-        return tr;
     }
 
 </script>

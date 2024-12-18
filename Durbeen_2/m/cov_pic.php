@@ -113,9 +113,9 @@ include './header.php';
                     }
                 })
             .then(res => {
-                // console.log(res.data.newCovPic.cov_pic);
+                // console.log(res.data);
 
-                elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/cov_pic/" + res.data.newCovPic.cov_pic;
+                elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/cov_pic/" + res.data.oldCovPic.cov_pic;
 
                 toastr.success('Cover Photo Changed');
 
