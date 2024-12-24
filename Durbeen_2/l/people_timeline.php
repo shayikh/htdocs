@@ -38,7 +38,7 @@ $count2 = mysqli_num_rows($run2);
     <div class="row">
 
         <div class="col-md-12">
-            <img width="1280px" height="574px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
+            <img width="1294px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
         </div>
 
         <div class="col-md-12 mt-4">
