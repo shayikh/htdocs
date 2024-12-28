@@ -4,6 +4,15 @@ include './header.php';
 
 if ($_SESSION['unique_id_me'] != 1) {
     echo "<script>window.location = './lost.php'</script>";
+} else {
+    $SQL1 = "SELECT * FROM `registration` ORDER BY `unique_id` DESC LIMIT 1";
+    $run1 = mysqli_query($connection, $SQL1);
+    $accounts = mysqli_fetch_assoc($run1);
+
+
+    $SQL2 = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT 1";
+    $run2 = mysqli_query($connection, $SQL2);
+    $posts = mysqli_fetch_assoc($run2);
 }
 
 
@@ -13,8 +22,13 @@ if ($_SESSION['unique_id_me'] != 1) {
 <!-- main page -->
 
 
-<div class="container" style="margin-top: 120px; margin-bottom: 90px">
+<div class="container" style="margin-top: 90px; margin-bottom: 90px">
     <div class="row">
+        <div class="col-md-12">
+            <div style="height: 20px"></div>
+            <p style="font-size: 30px" class="text-blue d-inline">Last Account id is = <?php echo $accounts['unique_id'] ?>, </p>
+            <p style="font-size: 30px" class="text-blue d-inline">Last Post id is = <?php echo $posts['id'] ?></p>
+        </div>
         <div class="col-lg-12">
             <h1 class="display-4">Find User</h1>
             <div class="row">
