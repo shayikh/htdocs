@@ -31,13 +31,11 @@ $pro_pic_me = $dataMe['pro_pic'];
 
 <tr>
     <td class="text-center">
-        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_me ?>" target="_blank">
-            <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>">
-        </a>
+        <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>">
     </td>
 
     <td class="text-center text-dark">
-        <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_me ?>" target="_blank"><?php echo $dataMe['name'] ?></a>
+        <?php echo $dataMe['name'] ?>
     </td>
 
     <td class="text-center text-dark">
