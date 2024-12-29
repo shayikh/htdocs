@@ -81,6 +81,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             <i class="fas fa-share"></i>
         </button>
 
+        <button onclick="showPostLinkForwardfn(<?php echo $Postid ?>)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
         <input type="text" class="float-start" style="margin-top: -15px">

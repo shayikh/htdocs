@@ -125,7 +125,36 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     </div>
 </div>
 
+<!-- Post Link Forward Modal -->
+<div class="modal fade" id="postlinkforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel2">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postlinkforwardTboody">
 
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -242,70 +271,29 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         targetTr = elm.parentElement.parentElement;
     }
 
+    
+    const showPostLinkForwardfn = (post_id) => {
 
-    const deleteComment = (comment_id, unique_id_me, elm) => {
+        let showPostLinkForward = {};
 
-        let delComment = {};
+        showPostLinkForward.unique_id_me = <?php echo $unique_id_me ?>;
+        showPostLinkForward.post_id = post_id;
 
-        delComment.comment_id = comment_id;
-        delComment.unique_id_me = unique_id_me;
+        axios.post("../api/postLinkForward/friendList.php",
+        showPostLinkForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-        axios.post("../api/comment/deleteComment.php",
-                delComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
+            // console.log(res.data);
+            postlinkforwardTboody.innerHTML = res.data;
 
-                if (res.data == 1) {
-                    elm.parentElement.parentElement.remove();
-                    toastr.info('Comment Deleted');
-                } else {
-                    toastr.warning("You Can not Delete Other's Comment");
-                }
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
-
-
-    const clearModal = () => {
-        commentTboody.innerHTML = "";
-    }
-
-
-    const showCommentfn = (post_id) => {
-
-        let showComment = {};
-
-        showComment.post_id = post_id;
-
-        axios.post("../api/comment/showComments.php",
-                showComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-
-                // console.log(res.data);
-
-                let all = res.data;
-
-                all.forEach(comment => {
-                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-                })
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
 
     }
 
@@ -329,49 +317,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             </td>
                         </tr>`
         return tr;
-    }
-
-
-    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
-
-        let comment = elm.nextElementSibling.value;
-
-        if (comment == "") {
-            toastr.error("Comment is Empty");
-        } else {
-
-
-            let commentp = {};
-
-            commentp.comment = comment;
-            commentp.post_id = post_id;
-            commentp.post_giver_id = post_giver_id;
-            commentp.comn_giver_id = comn_giver_id;
-
-
-            axios.post("../api/comment/comment.php",
-                    commentp, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(elm);
-
-                    if (res.data == 1) {
-                        elm.nextElementSibling.value = '';
-                        toastr.success("Comment Done");
-                    }
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        }
-
-
     }
 
 
@@ -430,7 +375,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                                     <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                                         <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-                                            <img style="border-radius: 50%" width="45px" height="45px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                                            <img style="border-radius: 50%" width="45px" height="45px" src="../pro_pic/<?php echo $pro_pic_me?>">
                                             <b><?php echo $dataMe['name'] ?></b>
                                         </a>
                                     </p>
@@ -454,151 +399,16 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                                 <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                                 <i class="fas fa-share"></i>
                                 </a>
+                                <button onclick="showPostLinkForwardfn(${post.id})" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
                                 <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                                 <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                                 <input type="text" class="float-start" style="margin-top: -15px>
-                                <p class="float-end" style="font-size: 16px;margin-top: -15px;color: #fff">0 Comments</p>
+                                <p class="float-end" style="font-size: 16px;margin-top: -15px">0 Comments</p>
                             </div>
                         </div>`
         return tr;
     }
 
-
-    const likefn = (post_id, unique_id_me, elm) => {
-        let likep = {};
-
-        likep.post_id = post_id;
-        likep.unique_id_me = unique_id_me;
-
-        axios.post("../api/post/like_post.php",
-                likep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(elm);
-
-                if (res.data == 1) {
-                    elm.style.color = '#0D6EFD';
-                    elm.nextElementSibling.style.color = '#fff';
-                } else {
-                    elm.style.color = '#fff';
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-
-    const dislikefn = (post_id, unique_id_me, elm) => {
-        let dislikep = {};
-
-        dislikep.post_id = post_id;
-        dislikep.unique_id_me = unique_id_me;
-
-        axios.post("../api/post/dislike_post.php",
-                dislikep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(elm);
-
-                if (res.data == 1) {
-                    elm.style.color = '#0D6EFD';
-                    elm.previousElementSibling.style.color = '#fff';
-                } else {
-                    elm.style.color = '#fff';
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    const deletePost = (post_id, unique_id_me, elm) => {
-        let confirm = window.confirm("Are You Sure?");
-
-        if (confirm) {
-
-            let delPost = {};
-
-            delPost.post_id = post_id;
-            delPost.unique_id_me = unique_id_me;
-
-            axios.post("../api/post/deletePost.php",
-                    delPost, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == 1) {
-                        elm.parentElement.parentElement.remove();
-                        toastr.error('Post Deleted');
-                    } else {
-                        toastr.error('This is not Your Post');
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
-
-    }
-
-
-    const sharefn = (post_id, unique_id_me) => {
-        let confirm = window.confirm("Share This Post to Your Timeline?");
-
-        if (confirm) {
-
-            let sharep = {};
-
-            sharep.post_id = post_id;
-            sharep.unique_id_me = unique_id_me;
-
-            axios.post("../api/post/share.php",
-                    sharep, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-
-                    let json = res.data;
-
-                    let unique_id_me = json.unique_id_me;
-                    let newPost = json.newPost;
-
-                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
-                    toastr.success('Post Shared');
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
-
-    }
 
 </script>
 
