@@ -35,7 +35,7 @@ if ($number > 0) {
     <!-- Chatbar start -->
 
     <ul style="list-style-type: none">
-    <li style="margin-bottom: 5px">
+        <li style="margin-bottom: 5px">
             <a class="text-decoration-none" href="./my_notes.php">
                 <div class="msg_list_hov">
 

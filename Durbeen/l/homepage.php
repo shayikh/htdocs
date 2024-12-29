@@ -94,6 +94,37 @@ if ($number > 0) { ?>
     </div>
 </div>
 
+<!-- Post Link Forward Modal -->
+<div class="modal fade" id="postlinkforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel2">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postlinkforwardTboody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     let tbody = document.querySelector("#tbodyID");
@@ -105,7 +136,7 @@ if ($number > 0) { ?>
     let postCloseBtn = document.querySelector("#postCloseBtn");
 
     let commentTboody = document.querySelector("#commentTboody");
-
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboody");
 
     var total_pages = 0;
     var page_no = 1;
@@ -132,31 +163,31 @@ if ($number > 0) { ?>
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/post/loadmoreHomePage.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    
-                    if(page_no <= total_pages){
-                        page_no++;
-                        returned = 1;
-                        showdata();
-                    }else{
-                        toastr.info('You Are at The End');
-                    }
-
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                
+                if(page_no <= total_pages){
                     page_no++;
                     returned = 1;
+                    showdata();
+                }else{
+                    toastr.info('You Are at The End');
                 }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -168,149 +199,17 @@ if ($number > 0) { ?>
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/post/total_pages.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                total_pages = res.data;
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-
-    const deleteComment = (comment_id, unique_id_me, elm) => {
-
-        let delComment = {};
-
-        delComment.comment_id = comment_id;
-        delComment.unique_id_me = unique_id_me;
-
-        axios.post("../api/comment/deleteComment.php",
-                delComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 1) {
-                    elm.parentElement.parentElement.remove();
-                    toastr.info('Comment Deleted');
-                } else {
-                    toastr.warning("You Can not Delete Other's Comment");
-                }
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
-
-
-    const clearModal = () => {
-        commentTboody.innerHTML = "";
-    }
-
-
-    const showCommentfn = (post_id) => {
-
-        let showComment = {};
-
-        showComment.post_id = post_id;
-
-        axios.post("../api/comment/showComments.php",
-                showComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-
-                // console.log(res.data);
-
-                let all = res.data;
-
-                all.forEach(comment => {
-                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-                })
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
-
-
-    const makeCommentTr = (comment) => {
-        let tr = `<tr>
-                        <td class="text-center">
-                            <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
-                            </a>
-                        </td>
-
-                        <td class="text-center text-dark">
-                            <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
-                        </td>
-
-                        <td class="text-center text-dark">${comment.time}</td>
-                        <td class="text-center text-dark">${comment.comment}</td>
-                        <td class="text-center text-dark">
-                            <i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-                        </td>
-                    </tr>`
-        return tr;
-    }
-
-
-    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
-
-        let comment = elm.nextElementSibling.value;
-
-        if (comment == "") {
-            toastr.error("Comment is Empty");
-        } else {
-
-
-            let commentp = {};
-
-            commentp.comment = comment;
-            commentp.post_id = post_id;
-            commentp.post_giver_id = post_giver_id;
-            commentp.comn_giver_id = comn_giver_id;
-
-
-            axios.post("../api/comment/comment.php",
-                    commentp, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(elm);
-
-                    if (res.data == 1) {
-                        elm.nextElementSibling.value = '';
-                        toastr.success("Comment Done");
-                    }
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        }
-
-
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            total_pages = res.data;
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -360,141 +259,94 @@ if ($number > 0) { ?>
 
     })
 
+    
 
     const makeTr = (post, unique_id_me) => {
         let tr = `<div class="statusp">
-                <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
-                    <div class="card" style="width: 100%;border: none">
+                    <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
+                        <div class="card" style="width: 100%;border: none">
 
-                        <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                            <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
-                                <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
-                                <b><?php echo $dataMe['name'] ?></b>
-                            </a>
-                        </p>
-                        <img width="100%" src="../post_image/${post.image}">
-                        <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
-                            <h6 class="card-title text-white">${post.time}</h6>
-                            <p class="card-text text-white">${post.post}</p>
+                            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+                                <a href="./people_timeline.php?type&amp;unique_id_fr=${unique_id_me}" class="timeline_link">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                                    <b><?php echo $dataMe['name'] ?></b>
+                                </a>
+                            </p>
+                            <img width="100%" src="../post_image/${post.image}">
+                            <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
+                                <h6 class="card-title text-white">${post.time}</h6>
+                                <p class="card-text text-white">${post.post}</p>
+                            </div>
+
                         </div>
 
+                        <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
+                        <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
+                        <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
+                        <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
+                        <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
+
+                        <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+                            <i class="fas fa-share"></i>
+                        </a>
+                        <button onclick="showPostLinkForwardfn(${post.id})" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
+                        <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
+                        <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
+                        <input type="text" class="ms-5 mt-2">
                     </div>
-
-                    <p class="float-start mt-2 me-3" style="color: ; font-size: 18px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)">Like</p>
-                    <p class="float-start mt-2 me-5" style="color: ; font-size: 18px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)">Dislike</p>
-                    <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i>0</p>
-                    <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
-                    <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
-
-                    <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
-                    <i class="fas fa-share"></i>
-                    </a>
-                    <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
-                    <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
-                    <input type="text" class="ms-5 mt-2">
-                </div>
-            </div>`
+                </div>`
         return tr;
     }
 
 
-    const likefn = (post_id, unique_id_me, elm) => {
-        let likep = {};
 
-        likep.post_id = post_id;
-        likep.unique_id_me = unique_id_me;
+    const showPostLinkForwardfn = (post_id) => {
 
-        axios.post("../api/post/like_post.php",
-                likep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(elm);
+        let showPostLinkForward = {};
 
-                if (res.data == 1) {
-                    elm.style.color = '#0D6EFD';
-                    elm.nextElementSibling.style.color = '#fff';
-                } else {
-                    elm.style.color = '#fff';
-                }
+        showPostLinkForward.unique_id_me = <?php echo $unique_id_me ?>;
+        showPostLinkForward.post_id = post_id;
 
+        axios.post("../api/postLinkForward/friendList.php",
+        showPostLinkForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+            // console.log(res.data);
+            postlinkforwardTboody.innerHTML = res.data;
 
-
-    const dislikefn = (post_id, unique_id_me, elm) => {
-        let dislikep = {};
-
-        dislikep.post_id = post_id;
-        dislikep.unique_id_me = unique_id_me;
-
-        axios.post("../api/post/dislike_post.php",
-                dislikep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(elm);
-
-                if (res.data == 1) {
-                    elm.style.color = '#0D6EFD';
-                    elm.previousElementSibling.style.color = '#fff';
-                } else {
-                    elm.style.color = '#fff';
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-
-    const sharefn = (post_id, unique_id_me) => {
-        let confirm = window.confirm("Share This Post to Your Timeline?");
-
-        if (confirm) {
-            let sharep = {};
-
-            sharep.post_id = post_id;
-            sharep.unique_id_me = unique_id_me;
-
-            axios.post("../api/post/share.php",
-                    sharep, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-
-                    let json = res.data;
-
-                    let unique_id_me = json.unique_id_me;
-                    let newPost = json.newPost;
-
-                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
-                    toastr.success('Post Shared');
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
+        })
+        .catch(err => {
+            console.log(err);
+        })
 
     }
+
+
+    const makeCommentTr = (comment) => {
+        let tr = `<tr>
+                        <td class="text-center">
+                            <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
+                                <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
+                            </a>
+                        </td>
+
+                        <td class="text-center text-dark">
+                            <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
+                        </td>
+
+                        <td class="text-center text-dark">${comment.time}</td>
+                        <td class="text-center text-dark">${comment.comment}</td>
+                        <td class="text-center text-dark">
+                            <i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                        </td>
+                    </tr>`
+        return tr;
+    }
+
 
 </script>
 
