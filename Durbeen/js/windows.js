@@ -596,7 +596,7 @@ const cleanNotes = (unique_id_me) => {
 }
 
 
-const deleteSelfMsg = (id_lll, unique_id_me, elm_ppp) => {
+const deleteMyNotes = (id_lll, unique_id_me, elm_ppp) => {
     let message = {};
 
     message.id = id_lll;
@@ -614,7 +614,6 @@ const deleteSelfMsg = (id_lll, unique_id_me, elm_ppp) => {
         if (res.data == '1') {
             toastr.error('Message Deleted')
         }
-        // console.log(elm_ppp.parentElement);
 
         elm_ppp.parentElement.remove();
 
@@ -680,7 +679,6 @@ const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
         if (res.data == '1') {
             toastr.error('Message Deleted For Everyone')
         }
-        // console.log(elm_ppp.parentElement);
 
         elm_ppp.parentElement.remove();
 
