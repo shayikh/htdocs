@@ -180,6 +180,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let postCloseBtn = document.querySelector("#postCloseBtn");
 
     let commentTboody = document.querySelector("#commentTboody");
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboody");
 
 
     var page_no = 1;

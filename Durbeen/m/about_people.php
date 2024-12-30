@@ -169,42 +169,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         toastr.success("Link Copied to Clipboard");
     })
 
-    
-    const followfn = (unique_id_me, unique_id_fr, elm) => {
-
-        let followVar = {};
-
-        followVar.unique_id_me = unique_id_me;
-        followVar.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/facelist/follow.php",
-                followVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 0) {
-                    toastr.error('Unfollowed');
-                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                    elm.classList.add('btn-success');
-                    elm.classList.remove('btn-danger');
-                } else {
-                    toastr.success('Following');
-                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
-                    elm.classList.add('btn-danger');
-                    elm.classList.remove('btn-success');
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
 </script>
 
 <?php

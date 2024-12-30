@@ -134,6 +134,7 @@ if ($number > 0) { ?>
     let postCloseBtn = document.querySelector("#postCloseBtn");
 
     let commentTboody = document.querySelector("#commentTboody");
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboody");
 
 
     var total_pages = 0;
@@ -242,7 +243,7 @@ if ($number > 0) { ?>
         let tr = `<tr>
                         <td class="text-center">
                             <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
-                                <img class="text-center rounded-circle mt-3" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
+                                <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
                             </a>
                         </td>
 

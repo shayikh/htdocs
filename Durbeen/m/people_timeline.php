@@ -145,6 +145,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let tbody = document.querySelector("#tbodyID");
     let postCloseBtn = document.querySelector("#postCloseBtn");
     let commentTboody = document.querySelector("#commentTboody");
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboody");
 
 
     var page_no = 1;
@@ -220,7 +221,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         let tr = `<tr>
                             <td class="text-center">
                                 <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
-                                    <img class="text-center rounded-circle mt-3" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
+                                    <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
 
