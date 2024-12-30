@@ -510,21 +510,21 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         product.unique_id_me = unique_id_me.innerText;
 
         axios.post("../api/about_update/unique_email.php",
-                product, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == "0") {
-                    toastr.error("This email is used by someone. You can not use this email");
-                    alert("This email is used by someone. You can not use this email");
-                    emailModal.value = myMail;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        product, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == "0") {
+                toastr.error("This email is used by someone. You can not use this email");
+                alert("This email is used by someone. You can not use this email");
+                emailModal.value = myMail;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     mybtn.addEventListener('click', function() {
@@ -556,26 +556,26 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/comment/loadmoreMyComments.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    let all = res.data;
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
 
-                    all.forEach(comment => {
-                        myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
-                    })
-                    page_no_my_comment++;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                all.forEach(comment => {
+                    myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
+                })
+                page_no_my_comment++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     const makeMyCommentTr = (comment) => {
@@ -586,7 +586,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                                 <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-sm btn-success mt-3" target="_blank">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
-                                <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                                <i class="fas fa-trash mt-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, ${comment.comn_giver_id}, this)"></i>
                             </td>
                         </tr>`
         return tr;
@@ -606,26 +606,26 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/comment/loadmoreOtherComments.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    let all = res.data;
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
 
-                    all.forEach(comment => {
-                        otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
-                    })
-                    page_no_other_comment++;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                all.forEach(comment => {
+                    otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
+                })
+                page_no_other_comment++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -649,37 +649,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         return tr;
     }
 
-
-
-    const deleteComment = (comment_id, unique_id_me, elm) => {
-
-        let delComment = {};
-
-        delComment.comment_id = comment_id;
-        delComment.unique_id_me = unique_id_me;
-
-        axios.post("../api/comment/deleteComment.php",
-                delComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 1) {
-                    elm.parentElement.parentElement.remove();
-                    toastr.info('Comment Deleted');
-                } else {
-                    toastr.warning("You Can not Delete Other's Comment");
-                }
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
 
 </script>
 

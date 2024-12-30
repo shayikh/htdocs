@@ -23,16 +23,6 @@ include './header.php';
     </div>
 </div>
 
-<script>
-    function deletefn() {
-        let data = confirm('Are You Sure You Want to Delete Your Account?');
-        if(data == true) {
-            alert("We are sorry, There is no way to delete your account");
-            toastr.info("We are sorry, There is no way to delete your account");
-        }
-    }
-    
-</script>
 
 <?php
 include './footer.php'

@@ -45,85 +45,23 @@ include './header.php';
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/cov_pic/loadmoreCovPics_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-
-    const deleteCovPic = (cov_pic_id, unique_id_me, elm) => {
-        let confirm = window.confirm("Are You Sure?");
-
-        if (confirm) {
-
-            let delCovPic = {};
-
-            delCovPic.cov_pic_id = cov_pic_id;
-            delCovPic.unique_id_me = unique_id_me;
-
-            axios.post("../api/cov_pic/deleteCovPic.php",
-                    delCovPic, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    elm.parentElement.parentElement.remove();
-                    toastr.error('Cover Photo Deleted');
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
-
-    }
-
-
-    const makeCovPic = (cov_pic_id, unique_id_me, elm) => {
-
-        let delCovPic = {};
-
-        delCovPic.cov_pic_id = cov_pic_id;
-        delCovPic.unique_id_me = unique_id_me;
-
-        axios.post("../api/cov_pic/makeCovPic.php",
-                delCovPic, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/cov_pic/" + res.data.oldCovPic.cov_pic;
-
-                toastr.success('Cover Photo Changed');
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 </script>

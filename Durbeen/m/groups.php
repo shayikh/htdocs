@@ -151,18 +151,18 @@ include './header.php';
 
 
     const makeTr = (newGroup) => {
-        let tr = `    <tr>
-                        <td class="text-center">
-                            <a href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}">
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                <p style="font-weight: 500">${newGroup.grp_name}</p>
-                            </a>
-                        </td>
-                    </tr>`
+        let tr = `<tr>
+                    <td class="text-center">
+                        <a href="./group_msg.php?type&grp_id=${newGroup.id}">
+                            <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}">
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
+                            <p style="font-weight: 500">${newGroup.grp_name}</p>
+                        </a>
+                    </td>
+                </tr>`
         return tr;
     }
 </script>

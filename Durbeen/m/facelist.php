@@ -76,23 +76,23 @@ include './header.php';
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/facelist/loadmoreFacelist_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -109,68 +109,33 @@ include './header.php';
             searchVar.search = search.value;
 
             axios.post("../api/facelist/searchFriend_m.php",
-                searchVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-                    headerText.innerText = "Search Results";
-                    // console.log(res.data);
-
-                    if (res.data == 0) {
-                        tbody.innerHTML = "";
-                        toastr.error('Friends Not Found');
-                    } else {
-                        tbody.innerHTML = res.data;
-                        searchCloseBtn.click();
-                        search.value = "";
-                        toastr.success('Friends Found');
-                    }
-                    ifSearch = 1;
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-    }
-
-
-    const followfn = (unique_id_me, unique_id_fr, elm) => {
-
-        let followVar = {};
-
-        followVar.unique_id_me = unique_id_me;
-        followVar.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/facelist/follow.php",
-                followVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
+            searchVar, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
             .then(res => {
+                headerText.innerText = "Search Results";
                 // console.log(res.data);
 
                 if (res.data == 0) {
-                    toastr.error('Unfollowed');
-                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                    elm.classList.add('btn-success');
-                    elm.classList.remove('btn-danger');
+                    tbody.innerHTML = "";
+                    toastr.error('Friends Not Found');
                 } else {
-                    toastr.success('Following');
-                    elm.innerHTML = '<i class="fas fa-user-slash"></i>';
-                    elm.classList.add('btn-danger');
-                    elm.classList.remove('btn-success');
+                    tbody.innerHTML = res.data;
+                    searchCloseBtn.click();
+                    search.value = "";
+                    toastr.success('Friends Found');
                 }
-
+                ifSearch = 1;
 
             })
             .catch(err => {
                 console.log(err);
             })
+        }
     }
+
 
 </script>
 

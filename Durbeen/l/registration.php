@@ -269,21 +269,21 @@ if (isset($_POST['signup'])) {
             product.email = email.value;
 
             axios.post("../api/reg_uniq_email.php",
-                    product, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    if (res.data == "0") {
-                        toastr.error("This email is used by someone. You can not use this email");
-                        alert("This email is used by someone. You can not use this email");
-                        email.value = "";
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            product, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                if (res.data == "0") {
+                    toastr.error("This email is used by someone. You can not use this email");
+                    alert("This email is used by someone. You can not use this email");
+                    email.value = "";
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
 
     </script>

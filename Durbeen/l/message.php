@@ -275,70 +275,7 @@ if ($countTest == 0) {
     }
 
 
-    const deleteConv = (unique_id_me, unique_id_fr) => {
-        let confirm = window.confirm("Do You Want to Delete This Conversation?");
 
-        if (confirm) {
-
-            let message = {};
-
-            message.unique_id_me = unique_id_me;
-            message.unique_id_fr = unique_id_fr;
-
-            axios.post("../api/message/deleteConv.php",
-                    message, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        window.location = './homepage.php?type';
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        } else {
-            return;
-        }
-    }
-
-
-    const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
-
-        let message = {};
-
-        message.id = id_lll;
-        message.unique_id_me = unique_id_me;
-        message.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/message/unsend.php",
-                message, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == '1') {
-                    toastr.error('Message Deleted For Everyone')
-                }
-                // console.log(elm_ppp.parentElement);
-
-                elm_ppp.parentElement.remove();
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-
-    }
 
 
 </script>

@@ -46,88 +46,25 @@ include './header.php';
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/pro_pic/loadmoreProPics_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
-
-    const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
-        let confirm = window.confirm("Are You Sure?");
-
-        if (confirm) {
-
-            let delProPic = {};
-
-            delProPic.pro_pic_id = pro_pic_id;
-            delProPic.unique_id_me = unique_id_me;
-
-            axios.post("../api/pro_pic/deleteProPic.php",
-                    delProPic, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    elm.parentElement.parentElement.remove();
-                    toastr.error('Profile Picture Deleted');
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
-
-    }
-
-
-    const makeProPic = (pro_pic_id, unique_id_me, elm) => {
-
-        let delProPic = {};
-
-        delProPic.pro_pic_id = pro_pic_id;
-        delProPic.unique_id_me = unique_id_me;
-
-        axios.post("../api/pro_pic/makeProPic.php",
-                delProPic, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
-
-                elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/" + res.data.oldProPic.pro_pic;
-
-                toastr.success('Profile Picture Changed');
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
 
 </script>
 

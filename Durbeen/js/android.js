@@ -339,6 +339,43 @@ const followfn = (unique_id_me, unique_id_fr, elm) => {
         })
 }
 
+const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
+    let confirm = window.confirm("Do You Want to Unfollow?");
+
+    if (confirm) {
+
+        let unfollowVar = {};
+
+        unfollowVar.unique_id_me = unique_id_me;
+        unfollowVar.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/facelist/unfollow.php",
+        unfollowVar, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == 0) {
+                elm.parentElement.parentElement.remove();
+                toastr.error('Unfollowed');
+            }
+
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+
+}
+
 
 const shareMefn = (post_id, unique_id_me) => {
     let confirm = window.confirm("Share This Post to Your Timeline?");
@@ -405,4 +442,395 @@ const deletePost = (post_id, unique_id_me, elm) => {
         return;
     }
 
+}
+
+
+
+const leaveGrp = (grp_id, unique_id_me) => {
+    let confirm = window.confirm("Do You Want to Leave From This Group?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.grp_id = grp_id;
+        message.unique_id_me = unique_id_me;
+
+        axios.post("../api/group/leaveGrp.php",
+                message, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == '1') {
+                    window.location = './groups.php?type=groups';
+                }else if (res.data == '0') {
+                    alert('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                    toastr.error('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                }
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    } else {
+        return;
+    }
+}
+
+
+const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
+
+    let addVar = {};
+
+    addVar.unique_id_me = unique_id_me;
+    addVar.unique_id_fr = unique_id_fr;
+    addVar.grp_id = grp_id;
+
+    axios.post("../api/group/make_admin.php",
+    addVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        if (res.data == 0) {
+            toastr.error('Removed from Admin');
+            elm.innerHTML = '<i class="fas fa-user-cog"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        } else {
+            toastr.success('Made Admin');
+            elm.innerHTML = '<i class="fas fa-users"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+const addfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
+
+    let addVar = {};
+
+    addVar.unique_id_me = unique_id_me;
+    addVar.unique_id_fr = unique_id_fr;
+    addVar.grp_id = grp_id;
+
+    axios.post("../api/group/add.php",
+    addVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        if (res.data == 0) {
+            toastr.error('Removed');
+            elm.innerHTML = '<i class="fas fa-user-plus"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        } else {
+            toastr.success('Added');
+            elm.innerHTML = '<i class="fas fa-user-minus"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+const cleanGrp = (grp_id) => {
+    let confirm = window.confirm("Do You Want to Clear This Group Messages?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.grp_id = grp_id;
+
+        axios.post("../api/group/cleanGrp.php",
+        message, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                window.location = './groups.php?type=groups';
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+}
+
+
+const deleteCovPic = (cov_pic_id, unique_id_me, elm) => {
+    let confirm = window.confirm("Are You Sure?");
+
+    if (confirm) {
+
+        let delCovPic = {};
+
+        delCovPic.cov_pic_id = cov_pic_id;
+        delCovPic.unique_id_me = unique_id_me;
+
+        axios.post("../api/cov_pic/deleteCovPic.php",
+        delCovPic, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            elm.parentElement.parentElement.remove();
+            toastr.error('Cover Photo Deleted');
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+}
+
+
+const makeCovPic = (cov_pic_id, unique_id_me, elm) => {
+
+    let delCovPic = {};
+
+    delCovPic.cov_pic_id = cov_pic_id;
+    delCovPic.unique_id_me = unique_id_me;
+
+    axios.post("../api/cov_pic/makeCovPic.php",
+    delCovPic, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/cov_pic/" + res.data.oldCovPic.cov_pic;
+
+        toastr.success('Cover Photo Changed');
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+}
+
+
+const cleanNotes = (unique_id_me) => {
+    let confirm = window.confirm("Do You Want to Clear Your Notes?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.unique_id_me = unique_id_me;
+
+        axios.post("../api/my_notes/cleanNotes.php",
+        message, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                window.location = './my_notes.php?type';
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+}
+
+
+const deleteSelfMsg = (id_lll, unique_id_me, elm_ppp) => {
+    let confirm = window.confirm("Do You Want to Delete?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.id = id_lll;
+        message.unique_id_me = unique_id_me;
+
+        axios.post("../api/my_notes/delete_my_notes.php",
+        message, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                toastr.error('Message Deleted')
+            }
+            // console.log(elm_ppp.parentElement);
+
+            elm_ppp.parentElement.remove();
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+
+
+
+}
+
+
+const deleteConv = (unique_id_me, unique_id_fr) => {
+    let confirm = window.confirm("Do You Want to Delete This Conversation?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.unique_id_me = unique_id_me;
+        message.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/message/deleteConv.php",
+        message, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                window.location = './homepage.php?type';
+            }
+            
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+}
+
+
+const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
+    let confirm = window.confirm("Do You Want to Unsend?");
+
+    if (confirm) {
+        let message = {};
+
+        message.id = id_lll;
+        message.unique_id_me = unique_id_me;
+        message.unique_id_fr = unique_id_fr;
+
+        axios.post("../api/message/unsend.php",
+        message, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                toastr.error('Message Deleted For Everyone')
+            }
+            // console.log(elm_ppp.parentElement);
+
+            elm_ppp.parentElement.remove();
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+}
+
+
+
+const unsendGrpMessage = (id_msg, grp_id, elm_ppp) => {
+    let confirm = window.confirm("Do You Want to Unsend?");
+    if (confirm) {
+        let unsendData = {};
+
+        unsendData.id_msg = id_msg;
+        unsendData.grp_id = grp_id;
+
+        axios.post("../api/group_msg/unsend.php",
+        unsendData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                toastr.error('Message Deleted For Everyone')
+            }else{
+                toastr.error('Message not deleted')
+            }
+
+            elm_ppp.parentElement.remove();
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+}
+
+
+function deletefn() {
+    let data = confirm('Are You Sure You Want to Delete Your Account?');
+    if(data == true) {
+        alert("We are sorry, There is no way to delete your account");
+        toastr.info("We are sorry, There is no way to delete your account");
+    }
 }

@@ -153,11 +153,13 @@ $grpName = $datagrp['grp_name'];
 
                     let unique_id_me = json.unique_id_me;
                     let newMessage = json.newMessage;
+                    let grp_id = json.grp_id;
 
 
-                    tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+                    tbody.innerHTML = makeTr(newMessage, unique_id_me, grp_id) + tbody.innerHTML;
 
                     messageCloseBtn.click();
+                    toastr.success('Message Sent');
 
                     image.value = "";
                     message.value = "";
@@ -172,14 +174,14 @@ $grpName = $datagrp['grp_name'];
     })
 
 
-    const makeTr = (message) => {
+    const makeTr = (message, grp_id) => {
         let tr = `<tr>
                         <div class="float-end" style="width: 590px;border: none;">
                             <img width="590px" src="../grp_image/${message.image}">
                             
                             <h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
                             
-                            <button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
+                            <button onclick="unsendGrpMessage(${message.id}, ${grp_id}, this)"
                                     class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </tr>`
@@ -187,37 +189,7 @@ $grpName = $datagrp['grp_name'];
     }
 
 
-    const unsendMessage = (id_msg, grp_id, elm_ppp) => {
 
-        let unsendData = {};
-
-        unsendData.id_msg = id_msg;
-        unsendData.grp_id = grp_id;
-
-        axios.post("../api/group_msg/unsend.php",
-                unsendData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == '1') {
-                    toastr.error('Message Deleted For Everyone')
-                }else{
-                    toastr.error('Message not deleted')
-                }
-
-                elm_ppp.parentElement.remove();
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-
-    }
 
 
 </script>

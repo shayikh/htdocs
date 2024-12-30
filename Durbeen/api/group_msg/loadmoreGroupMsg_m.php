@@ -59,7 +59,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h6>
                     <?php } ?>
                     <br>
-                    <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $grp_id ?>, this)"
+                    <button onclick="unsendGrpMessage(<?php echo $data3['id'] ?>, <?php echo $grp_id ?>, this)"
                             class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
                     </button>
                 </div>

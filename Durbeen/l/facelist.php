@@ -76,23 +76,23 @@ include './header.php';
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/facelist/loadmoreFacelist.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -107,30 +107,30 @@ include './header.php';
             searchVar.search = search.value;
 
             axios.post("../api/facelist/searchFriend.php",
-                searchVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-                    headerText.innerText = "Search Results";
-                    // console.log(res.data);
+            searchVar, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                headerText.innerText = "Search Results";
+                // console.log(res.data);
 
-                    if (res.data == 0) {
-                        tbody.innerHTML = "";
-                        toastr.error('Friends Not Found');
-                    } else {
-                        tbody.innerHTML = res.data;
-                        searchCloseBtn.click();
-                        search.value = "";
-                        toastr.success('Friends Found');
-                    }
-                    ifSearch = 1;
+                if (res.data == 0) {
+                    tbody.innerHTML = "";
+                    toastr.error('Friends Not Found');
+                } else {
+                    tbody.innerHTML = res.data;
+                    searchCloseBtn.click();
+                    search.value = "";
+                    toastr.success('Friends Found');
+                }
+                ifSearch = 1;
 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
         
     }
