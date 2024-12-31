@@ -221,7 +221,7 @@ if (isset($_POST['signup'])) {
                                 <input required name=name type="text" class="form-control" placeholder="Full Name">
                             </div>
                             <div class="col-md-12 mt-2">
-                                <input required name="email" oninput="uniqueEmail()" id="emailID" type="email" class="form-control" placeholder="Email address">
+                                <input required name="email" oninput="uniqueEmailRegister()" id="emailID" type="email" class="form-control" placeholder="Email address">
                             </div>
 
                             <b>
@@ -261,29 +261,6 @@ if (isset($_POST['signup'])) {
 
     <script>
         let email = document.querySelector("#emailID");
-        function uniqueEmail() {
-            let product = {};
-
-            product.email = email.value;
-
-            axios.post("../api/reg_uniq_email.php",
-                    product, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    if (res.data == "0") {
-                        toastr.error("This email is used by someone. You can not use this email");
-                        alert("This email is used by someone. You can not use this email");
-                        email.value = "";
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
     </script>
 
 

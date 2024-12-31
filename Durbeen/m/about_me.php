@@ -228,7 +228,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mt-2 text-dark">Email</label>
-                                <input name="email" oninput="uniqueEmail()" id="emailModal" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
+                                <input name="email" oninput="uniqueEmailProfile()" id="emailModal" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -503,29 +503,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
     })
 
-    function uniqueEmail() {
-        let product = {};
 
-        product.email = emailModal.value;
-        product.unique_id_me = unique_id_me.innerText;
-
-        axios.post("../api/about_update/unique_email.php",
-        product, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => {
-            if (res.data == "0") {
-                toastr.error("This email is used by someone. You can not use this email");
-                alert("This email is used by someone. You can not use this email");
-                emailModal.value = myMail;
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
 
     mybtn.addEventListener('click', function() {
         const elem = document.createElement('input');

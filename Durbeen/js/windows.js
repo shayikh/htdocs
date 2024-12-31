@@ -728,3 +728,53 @@ function deletefn() {
         toastr.info("We are sorry, There is no way to delete your account");
     }
 }
+
+
+function uniqueEmailProfile() {
+    let product = {};
+
+    product.email = emailModal.value;
+    product.unique_id_me = unique_id_me.innerText;
+
+    axios.post("../api/about_update/unique_email.php",
+    product, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        if (res.data == "0") {
+            toastr.error("This email is used by someone. You can not use this email");
+            alert("This email is used by someone. You can not use this email");
+            emailModal.value = myMail;
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+
+function uniqueEmailRegister() {
+    let product = {};
+
+    product.email = email.value;
+
+    axios.post("../api/reg_uniq_email.php",
+    product, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        if (res.data == "0") {
+            toastr.error("This email is used by someone. You can not use this email");
+            alert("This email is used by someone. You can not use this email");
+            email.value = "";
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
