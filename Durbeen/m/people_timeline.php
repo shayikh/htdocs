@@ -114,11 +114,28 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Post Link</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped table-hover table-bordered">
+
+                <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
+
+                    <input type="hidden" name="hidden_post_id" id="hidden_post_id" value="">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="searchBtn" id="searchBtnID" value="SEARCH" class="form-control btn btn-danger" type="submit" aria-label="Close">
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-hover table-bordered mt-2">
                     <thead>
                         <tr>
                             <th class="text-center text-dark" scope="col">Picture</th>
@@ -126,7 +143,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <th class="text-center text-dark" scope="col">Forward</th>
                         </tr>
                     </thead>
-                    <tbody id="postlinkforwardTboody">
+                    <tbody id="postlinkforwardTboodyID">
 
                     </tbody>
                 </table>
@@ -145,8 +162,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let tbody = document.querySelector("#tbodyID");
     let postCloseBtn = document.querySelector("#postCloseBtn");
     let commentTboody = document.querySelector("#commentTboody");
-    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboody");
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
 
+    let forwardForm = document.querySelector("#forwardFormID");
+    let searchValue = document.querySelector("#searchID");
+    let searchButton = document.querySelector("#searchBtnID");
+    let hidden_post_id_number = document.querySelector("#hidden_post_id");
 
     var page_no = 1;
     var returned = 1;
@@ -191,7 +212,51 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             })
     }
 
+
+    forwardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (searchValue.value == "") {
+            toastr.error('Search Field is Empty');
+        } else {
+            var forwardFormdata = new FormData(forwardForm);
+
+            $.ajax({
+                url: "../api/postLinkForward/searchFriend.php",
+                type: "POST",
+                data: forwardFormdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    // let json = JSON.parse(data);
+
+                    // console.log(data);
+
+
+                    if (data == 0) {
+                        postlinkforwardTboody.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        postlinkforwardTboody.innerHTML = data;
+                        searchValue.value = "";
+                        toastr.success('Friends Found');
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    })
+
     const showPostLinkForwardfn = (post_id) => {
+
+        hidden_post_id_number.value = post_id;
 
         let showPostLinkForward = {};
 
