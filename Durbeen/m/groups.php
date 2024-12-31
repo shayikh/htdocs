@@ -23,7 +23,7 @@ include './header.php';
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="groupModalLabel">Create New Messenger Group</h5>
+                <h5 class="modal-title text-dark" id="groupModalLabel">Create New Messenger Group</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -46,7 +46,7 @@ include './header.php';
                         </div>
                     </div>
 
-                    <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>

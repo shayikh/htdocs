@@ -198,7 +198,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="postModalLabel">Update Profile</h5>
+                <h5 class="modal-title text-dark" id="postModalLabel">Update Profile</h5>
                 <button id="updateCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -317,7 +317,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                         <div class="col-md-12">
                             <div class="form-group mt-2">
-                                <input name="updateBtn" value="UPDATE" class="btn btn-success float-end" type="submit" aria-label="Close">
+                                <input name="updateBtn" value="UPDATE" class="btn btn-success float-end" type="submit">
                             </div>
                         </div>
 
@@ -335,7 +335,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">My Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
@@ -371,7 +371,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Others Comments in My Posts</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">

@@ -49,7 +49,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
+                <h5 class="modal-title text-dark" id="postModalLabel">Make Post</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -60,8 +60,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                     <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                    <!-- <p style="font-size: 14px" class="float-start mt-3">Youtube Video Embed Code (width="825" height="470")</p> -->
-                    <input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>
@@ -72,7 +71,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
@@ -106,7 +105,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Edit Post</h5>
                 <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -118,7 +117,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                     <input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                    <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>
@@ -130,7 +129,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel2">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">

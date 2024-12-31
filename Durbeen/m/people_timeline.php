@@ -79,7 +79,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
@@ -114,7 +114,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel2">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">

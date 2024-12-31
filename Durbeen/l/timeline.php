@@ -51,7 +51,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
+                <h5 class="modal-title text-dark" id="postModalLabel">Make Post</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -73,7 +73,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
@@ -107,7 +107,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Edit Post</h5>
                 <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -132,7 +132,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel2">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Post Link</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
@@ -341,8 +341,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 }
             });
         }
-        
-
     })
 
 
