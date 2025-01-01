@@ -160,6 +160,56 @@ if ($countTest == 0) {
 </div>
 
 
+<!-- Post Link Forward Modal -->
+<div class="modal fade" id="messageforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Post Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearMsgForwardModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
+
+                    <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                    <input type="hidden" name="from_unique_id_fr" value="<?php echo $unique_id_fr ?>">
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="searchBtn" id="searchBtnID" value="SEARCH" class="form-control btn btn-danger" type="submit" aria-label="Close">
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-hover table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messageForwardID">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearMsgForwardModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     let tbody = document.querySelector("#tbodyID");
     let appendData = document.querySelector("#appendID");
@@ -169,6 +219,12 @@ if ($countTest == 0) {
     let message = document.querySelector("#messageID");
     let button = document.querySelector("#buttonID");
     let messageCloseBtn = document.querySelector("#messageCloseBtn");
+
+    let messageForwardTbody = document.querySelector("#messageForwardID");
+    let forwardForm = document.querySelector("#forwardFormID");
+    let searchValue = document.querySelector("#searchID");
+    let searchButton = document.querySelector("#searchBtnID");
+    let hidden_message_id_number = document.querySelector("#hidden_message_id");
 
 
     var page_no = 1;
@@ -195,23 +251,95 @@ if ($countTest == 0) {
         msgData.unique_id_fr = <?php echo $unique_id_fr ?>;
 
         axios.post("../api/message/loadmoreMsg_m.php",
-                msgData, {
-                    headers: {
-                        "Content-Type": "application/json"
+        msgData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You are at the End');
+            } else {
+                appendData.innerHTML = appendData.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+
+    
+    forwardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (searchValue.value == "") {
+            toastr.error('Search Field is Empty');
+        } else {
+            var forwardFormdata = new FormData(forwardForm);
+
+            $.ajax({
+                url: "../api/messageForward/searchFriend.php",
+                type: "POST",
+                data: forwardFormdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    // let json = JSON.parse(data);
+
+                    // console.log(data);
+
+
+                    if (data == 0) {
+                        messageForwmessageForwardTbodyard.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        messageForwardTbody.innerHTML = data;
+                        searchValue.value = "";
+                        toastr.success('Friends Found');
                     }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You are at the End');
-                } else {
-                    appendData.innerHTML = appendData.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
+                },
+                error: function(err) {
+                    console.log(err);
                 }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+            });
+        }
+    })
+
+
+    const showMessageForwardfn = (message_id, unique_id_fr) => {
+
+        hidden_message_id.value = message_id;
+
+        let messageForward = {};
+
+        messageForward.unique_id_me = <?php echo $unique_id_me ?>;
+        messageForward.message_id = message_id;
+        messageForward.from_unique_id_fr = unique_id_fr;
+
+        axios.post("../api/messageForward/friendList3.php",
+        messageForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+
+            // console.log(res.data);
+            messageForwardTbody.innerHTML = res.data;
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
     }
 
 
@@ -268,6 +396,7 @@ if ($countTest == 0) {
 								
 								<h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
 								<br>
+                                <button onclick="showMessageForwardfn(${message.id}, ${unique_id_fr})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
 								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
 										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
 								<button class="btn btn-sm btn-dark float-end"><i class='fas fa-eye-slash'></i></button>

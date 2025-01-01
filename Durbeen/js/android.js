@@ -163,6 +163,38 @@ const forwardPostLinkToFriendfn = (unique_id_fr, post_id, unique_id_me, elm) => 
 }
 
 
+const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, elm) => {
+
+    let commentp = {};
+
+    commentp.typical_id = typical_id;
+    commentp.to_id = to_id;
+    commentp.from_id = from_id;
+    commentp.message_id = message_id;
+    commentp.unique_id_me = unique_id_me;
+
+    axios.post("../api/messageForward/forward.php",
+    commentp, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        console.log(res.data);
+
+        if (res.data == 1) {
+            elm.parentElement.parentElement.remove();
+            toastr.success("Post Link Forwarded to Your Friend");
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
 
 const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
 
