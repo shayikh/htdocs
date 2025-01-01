@@ -211,7 +211,7 @@ $grpName = $datagrp['grp_name'];
 
 
                     if (data == 0) {
-                        messageForwmessageForwardTbodyard.innerHTML = "";
+                        messageForwardTbody.innerHTML = "";
                         toastr.error('Friends Not Found');
                     } else {
                         messageForwardTbody.innerHTML = data;
