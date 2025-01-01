@@ -93,7 +93,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="commentTboody">
+                    <tbody id="commentTbody">
 
                     </tbody>
                 </table>
@@ -161,7 +161,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 <script>
     let tbody = document.querySelector("#tbodyID");
     let postCloseBtn = document.querySelector("#postCloseBtn");
-    let commentTboody = document.querySelector("#commentTboody");
+    let commentTbody = document.querySelector("#commentTbody");
     let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
 
     let forwardForm = document.querySelector("#forwardFormID");

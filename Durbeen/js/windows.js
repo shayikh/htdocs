@@ -30,8 +30,12 @@ const deleteComment = (comment_id, unique_id_me, elm) => {
 
 
 const clearModal = () => {
-    commentTboody.innerHTML = "";
+    commentTbody.innerHTML = "";
     postlinkforwardTboody.innerHTML = "";
+}
+
+const clearMsgForwardModal = () => {
+    messageForwardTbody.innerHTML = "";
 }
 
 
@@ -54,7 +58,7 @@ const showCommentfn = (post_id) => {
         let all = res.data;
 
         all.forEach(comment => {
-            commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
+            commentTbody.innerHTML = commentTbody.innerHTML + makeCommentTr(comment);
         })
 
 
@@ -66,41 +70,10 @@ const showCommentfn = (post_id) => {
 }
 
 
-const forwardfn = (unique_id_fr, post_id, unique_id_me, elm) => {
+const forwardPostLinkToMefn = (post_id, unique_id_me, elm) => {
 
     let commentp = {};
 
-    commentp.unique_id_fr = unique_id_fr;
-    commentp.post_id = post_id;
-    commentp.unique_id_me = unique_id_me;
-
-    axios.post("../api/postLinkForward/forwardFr.php",
-    commentp, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
-        // console.log(elm);
-
-        if (res.data == 1) {
-            elm.parentElement.parentElement.remove();
-            toastr.success("Post Link Forwarded");
-        }
-
-
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
-
-
-const forwardMefn = (unique_id_fr, post_id, unique_id_me, elm) => {
-
-    let commentp = {};
-
-    commentp.unique_id_fr = unique_id_fr;
     commentp.post_id = post_id;
     commentp.unique_id_me = unique_id_me;
 
@@ -128,7 +101,7 @@ const forwardMefn = (unique_id_fr, post_id, unique_id_me, elm) => {
 
 
 
-const forwardGrpfn = (grp_id, post_id, unique_id_me, elm) => {
+const forwardPostLinkToGrpfn = (grp_id, post_id, unique_id_me, elm) => {
 
     let commentp = {};
 
@@ -147,7 +120,7 @@ const forwardGrpfn = (grp_id, post_id, unique_id_me, elm) => {
 
         if (res.data == 1) {
             elm.parentElement.parentElement.remove();
-            toastr.success("Post Link Forwarded to Yourself");
+            toastr.success("Post Link Forwarded to the Group");
         }
 
 
@@ -155,9 +128,85 @@ const forwardGrpfn = (grp_id, post_id, unique_id_me, elm) => {
     .catch(err => {
         console.log(err);
     })
-
-
 }
+
+
+
+
+const forwardPostLinkToFriendfn = (unique_id_fr, post_id, unique_id_me, elm) => {
+
+    let commentp = {};
+
+    commentp.unique_id_fr = unique_id_fr;
+    commentp.post_id = post_id;
+    commentp.unique_id_me = unique_id_me;
+
+    axios.post("../api/postLinkForward/forwardFr.php",
+    commentp, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(elm);
+
+        if (res.data == 1) {
+            elm.parentElement.parentElement.remove();
+            toastr.success("Post Link Forwarded to Friend");
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+
+
+
+
+
+
+
+
+const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, elm) => {
+
+    let commentp = {};
+
+    commentp.typical_id = typical_id;
+    commentp.to_id = to_id;
+    commentp.from_id = from_id;
+    commentp.message_id = message_id;
+    commentp.unique_id_me = unique_id_me;
+
+    axios.post("../api/messageForward/forward.php",
+    commentp, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        console.log(res.data);
+
+        if (res.data == 1) {
+            elm.parentElement.parentElement.remove();
+            toastr.success("Post Link Forwarded to Your Friend");
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+
+
+
+
 
 
 
@@ -436,6 +485,147 @@ const deletePost = (post_id, unique_id_me, elm) => {
 }
 
 
+
+const leaveGrp = (grp_id, unique_id_me) => {
+    let confirm = window.confirm("Do You Want to Leave From This Group?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.grp_id = grp_id;
+        message.unique_id_me = unique_id_me;
+
+        axios.post("../api/group/leaveGrp.php",
+                message, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                // console.log(res.data);
+
+                if (res.data == '1') {
+                    window.location = './groups.php?type=groups';
+                }else if (res.data == '0') {
+                    alert('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                    toastr.error('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
+                }
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    } else {
+        return;
+    }
+}
+
+
+const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
+
+    let addVar = {};
+
+    addVar.unique_id_me = unique_id_me;
+    addVar.unique_id_fr = unique_id_fr;
+    addVar.grp_id = grp_id;
+
+    axios.post("../api/group/make_admin.php",
+    addVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        if (res.data == 0) {
+            toastr.error('Removed from Admin');
+            elm.innerHTML = '<i class="fas fa-user-cog"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        } else {
+            toastr.success('Made Admin');
+            elm.innerHTML = '<i class="fas fa-users"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+const addfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
+
+    let addVar = {};
+
+    addVar.unique_id_me = unique_id_me;
+    addVar.unique_id_fr = unique_id_fr;
+    addVar.grp_id = grp_id;
+
+    axios.post("../api/group/add.php",
+    addVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        if (res.data == 0) {
+            toastr.error('Removed');
+            elm.innerHTML = '<i class="fas fa-user-plus"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        } else {
+            toastr.success('Added');
+            elm.innerHTML = '<i class="fas fa-user-minus"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+const cleanGrp = (grp_id) => {
+    let confirm = window.confirm("Do You Want to Clear This Group Messages?");
+
+    if (confirm) {
+
+        let message = {};
+
+        message.grp_id = grp_id;
+
+        axios.post("../api/group/cleanGrp.php",
+        message, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            if (res.data == '1') {
+                window.location = './groups.php?type=groups';
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+}
 
 
 const deleteProPic = (pro_pic_id, unique_id_me, elm) => {

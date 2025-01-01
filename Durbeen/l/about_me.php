@@ -348,7 +348,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="myCommentTboody">
+                    <tbody id="myCommentTbody">
 
                     </tbody>
                 </table>
@@ -385,7 +385,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <th class="text-center text-dark" scope="col">Post</th>
                         </tr>
                     </thead>
-                    <tbody id="otherCommentTboody">
+                    <tbody id="otherCommentTbody">
 
                     </tbody>
                 </table>
@@ -446,8 +446,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let myMail = emailModal.value;
 
 
-    let myCommentTboody = document.querySelector("#myCommentTboody");
-    let otherCommentTboody = document.querySelector("#otherCommentTboody");
+    let myCommentTbody = document.querySelector("#myCommentTbody");
+    let otherCommentTbody = document.querySelector("#otherCommentTbody");
 
 
 
@@ -545,7 +545,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 let all = res.data;
 
                 all.forEach(comment => {
-                    myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
+                    myCommentTbody.innerHTML = myCommentTbody.innerHTML + makeMyCommentTr(comment);
                 })
                 page_no_my_comment++;
             }
@@ -595,7 +595,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 let all = res.data;
 
                 all.forEach(comment => {
-                    otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
+                    otherCommentTbody.innerHTML = otherCommentTbody.innerHTML + makeOtherCommentTr(comment);
                 })
                 page_no_other_comment++;
             }

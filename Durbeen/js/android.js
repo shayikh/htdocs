@@ -30,10 +30,13 @@ const deleteComment = (comment_id, unique_id_me, elm) => {
 
 
 const clearModal = () => {
-    commentTboody.innerHTML = "";
+    commentTbody.innerHTML = "";
     postlinkforwardTboody.innerHTML = "";
 }
 
+const clearMsgForwardModal = () => {
+    messageForwardTbody.innerHTML = "";
+}
 
 const showCommentfn = (post_id) => {
 
@@ -54,7 +57,7 @@ const showCommentfn = (post_id) => {
         let all = res.data;
 
         all.forEach(comment => {
-            commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
+            commentTbody.innerHTML = commentTbody.innerHTML + makeCommentTr(comment);
         })
 
 
@@ -66,37 +69,7 @@ const showCommentfn = (post_id) => {
 }
 
 
-const forwardfn = (unique_id_fr, post_id, unique_id_me, elm) => {
-
-    let commentp = {};
-
-    commentp.unique_id_fr = unique_id_fr;
-    commentp.post_id = post_id;
-    commentp.unique_id_me = unique_id_me;
-
-    axios.post("../api/postLinkForward/forwardFr.php",
-    commentp, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
-        // console.log(elm);
-
-        if (res.data == 1) {
-            elm.parentElement.parentElement.remove();
-            toastr.success("Post Link Forwarded");
-        }
-
-
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
-
-
-const forwardMefn = (unique_id_fr, post_id, unique_id_me, elm) => {
+const forwardPostLinkToMefn = (unique_id_fr, post_id, unique_id_me, elm) => {
 
     let commentp = {};
 
@@ -128,7 +101,7 @@ const forwardMefn = (unique_id_fr, post_id, unique_id_me, elm) => {
 
 
 
-const forwardGrpfn = (grp_id, post_id, unique_id_me, elm) => {
+const forwardPostLinkToGrpfn = (grp_id, post_id, unique_id_me, elm) => {
 
     let commentp = {};
 
@@ -155,8 +128,38 @@ const forwardGrpfn = (grp_id, post_id, unique_id_me, elm) => {
     .catch(err => {
         console.log(err);
     })
+}
 
 
+
+
+const forwardPostLinkToFriendfn = (unique_id_fr, post_id, unique_id_me, elm) => {
+
+    let commentp = {};
+
+    commentp.unique_id_fr = unique_id_fr;
+    commentp.post_id = post_id;
+    commentp.unique_id_me = unique_id_me;
+
+    axios.post("../api/postLinkForward/forwardFr.php",
+    commentp, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(elm);
+
+        if (res.data == 1) {
+            elm.parentElement.parentElement.remove();
+            toastr.success("Post Link Forwarded");
+        }
+
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
 
@@ -585,6 +588,70 @@ const cleanGrp = (grp_id) => {
     } else {
         return;
     }
+}
+
+
+const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
+    let confirm = window.confirm("Are You Sure?");
+
+    if (confirm) {
+
+        let delProPic = {};
+
+        delProPic.pro_pic_id = pro_pic_id;
+        delProPic.unique_id_me = unique_id_me;
+
+        axios.post("../api/pro_pic/deleteProPic.php",
+        delProPic, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
+
+            elm.parentElement.parentElement.remove();
+            toastr.error('Profile Picture Deleted');
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+}
+
+
+const makeProPic = (pro_pic_id, unique_id_me, elm) => {
+
+    let delProPic = {};
+
+    delProPic.pro_pic_id = pro_pic_id;
+    delProPic.unique_id_me = unique_id_me;
+
+    axios.post("../api/pro_pic/makeProPic.php",
+    delProPic, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        timeline_pro_pic.src = "../pro_pic/" + res.data.new_pro_pic;
+
+        elm.parentElement.previousElementSibling.firstElementChild.src = "../pro_pic/" + res.data.oldProPic.pro_pic;
+
+        toastr.success('Profile Picture Changed');
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
 }
 
 

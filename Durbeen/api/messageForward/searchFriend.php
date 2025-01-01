@@ -3,7 +3,8 @@ include '../../connection.php';
 
 $search = $_POST['search'];
 $unique_id_me = $_POST['unique_id_me'];
-$post_id = $_POST['hidden_post_id'];
+$from_unique_id_fr = $_POST['from_unique_id_fr'];
+$message_id = $_POST['hidden_message_id'];
 
 
 
@@ -27,23 +28,23 @@ while($data1 = mysqli_fetch_assoc($run1)) {
 
     if ($result) {
     
-        $unique_id_fr = $data1['unique_id'];
+        $to_unique_id_fr = $data1['unique_id'];
 
         ?>
 
         <tr>
             <td class="text-center">
-                <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" target="_blank">
+                <a href="./people_timeline.php?type&unique_id_fr=<?php echo $to_unique_id_fr ?>" target="_blank">
                     <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
                 </a>
             </td>
 
             <td class="text-center text-dark">
-                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" target="_blank"><?php echo $data1['name'] ?></a>
+                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $to_unique_id_fr ?>" target="_blank"><?php echo $data1['name'] ?></a>
             </td>
 
             <td class="text-center text-dark">
-                <button class="btn btn-sm btn-primary" onclick="forwardPostLinkToFriendfn(<?php echo $unique_id_fr ?>, <?php echo $post_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+                <button class="btn btn-sm btn-primary" onclick="forwardMessageToFriendfn(<?php echo $from_unique_id_fr ?>, <?php echo $to_unique_id_fr ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
             </td>
         </tr>
 

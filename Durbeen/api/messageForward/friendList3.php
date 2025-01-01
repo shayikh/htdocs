@@ -6,7 +6,8 @@ $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
 
 $unique_id_me = $data['unique_id_me'];
-$post_id = $data['post_id'];
+$message_id = $data['message_id'];
+$from_unique_id_fr = $data['from_unique_id_fr'];
 
 
 
@@ -38,7 +39,7 @@ $pro_pic_me = $dataMe['pro_pic'];
     </td>
 
     <td class="text-center text-dark">
-        <button class="btn btn-sm btn-primary" onclick="forwardPostLinkToMefn(<?php echo $post_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(31, <?php echo $from_unique_id_fr ?>, <?php echo $unique_id_me ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
     </td>
 </tr>
 
@@ -74,7 +75,7 @@ while ($data12 = mysqli_fetch_assoc($run12)){
         </td>
 
         <td class="text-center text-dark">
-            <button class="btn btn-sm btn-primary" onclick="forwardPostLinkToGrpfn(<?php echo $grp_id ?>, <?php echo $post_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+            <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(32, <?php echo $from_unique_id_fr ?>, <?php echo $grp_id ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
         </td>
     </tr>
 
@@ -96,10 +97,10 @@ $run = mysqli_query($connection_info,$SQL);
 
 while ($data1=mysqli_fetch_assoc($run)){
 
-    $unique_id_fr = $data1['unique_id_fr'];
+    $to_unique_id_fr = $data1['unique_id_fr'];
 
     
-    $SQLF = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+    $SQLF = "SELECT * FROM `registration` WHERE `unique_id`='$to_unique_id_fr'";
     $runF = mysqli_query($connection, $SQLF);
     $data2 = mysqli_fetch_assoc($runF);
 
@@ -107,17 +108,17 @@ while ($data1=mysqli_fetch_assoc($run)){
 
     <tr>
         <td class="text-center">
-            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" target="_blank">
+            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $to_unique_id_fr ?>" target="_blank">
                 <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>">
             </a>
         </td>
 
         <td class="text-center text-dark">
-            <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>" target="_blank"><?php echo $data2['name'] ?></a>
+            <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $to_unique_id_fr ?>" target="_blank"><?php echo $data2['name'] ?></a>
         </td>
 
         <td class="text-center text-dark">
-            <button class="btn btn-sm btn-primary" onclick="forwardPostLinkToFriendfn(<?php echo $unique_id_fr ?>, <?php echo $post_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+            <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(33, <?php echo $from_unique_id_fr ?>, <?php echo $to_unique_id_fr ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
         </td>
     </tr>
 

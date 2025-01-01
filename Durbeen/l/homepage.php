@@ -80,7 +80,7 @@ if ($number > 0) { ?>
                             <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="commentTboody">
+                    <tbody id="commentTbody">
 
                     </tbody>
                 </table>
@@ -152,9 +152,9 @@ if ($number > 0) { ?>
     let button = document.querySelector("#buttonID");
     let postCloseBtn = document.querySelector("#postCloseBtn");
 
-    let commentTboody = document.querySelector("#commentTboody");
-    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
+    let commentTbody = document.querySelector("#commentTbody");
 
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
     let forwardForm = document.querySelector("#forwardFormID");
     let searchValue = document.querySelector("#searchID");
     let searchButton = document.querySelector("#searchBtnID");

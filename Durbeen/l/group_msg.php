@@ -74,6 +74,56 @@ $grpName = $datagrp['grp_name'];
 </div>
 
 
+<!-- Post Link Forward Modal -->
+<div class="modal fade" id="messageforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Post Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearMsgForwardModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
+
+                    <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                    <input type="hidden" name="from_unique_id_fr" value="<?php echo $grp_id ?>">
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="searchBtn" id="searchBtnID" value="SEARCH" class="form-control btn btn-danger" type="submit" aria-label="Close">
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-hover table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messageForwardID">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearMsgForwardModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     let tbody = document.querySelector("#tbodyID");
     let appendData = document.querySelector("#appendID");
@@ -83,6 +133,12 @@ $grpName = $datagrp['grp_name'];
     let message = document.querySelector("#messageID");
     let button = document.querySelector("#buttonID");
     let messageCloseBtn = document.querySelector("#messageCloseBtn");
+
+    let messageForwardTbody = document.querySelector("#messageForwardID");
+    let forwardForm = document.querySelector("#forwardFormID");
+    let searchValue = document.querySelector("#searchID");
+    let searchButton = document.querySelector("#searchBtnID");
+    let hidden_message_id_number = document.querySelector("#hidden_message_id");
 
 
     var page_no = 1;
@@ -126,6 +182,77 @@ $grpName = $datagrp['grp_name'];
             .catch(err => {
                 console.log(err);
             })
+    }
+
+
+    forwardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (searchValue.value == "") {
+            toastr.error('Search Field is Empty');
+        } else {
+            var forwardFormdata = new FormData(forwardForm);
+
+            $.ajax({
+                url: "../api/messageForward/searchFriend.php",
+                type: "POST",
+                data: forwardFormdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    // let json = JSON.parse(data);
+
+                    // console.log(data);
+
+
+                    if (data == 0) {
+                        messageForwmessageForwardTbodyard.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        messageForwardTbody.innerHTML = data;
+                        searchValue.value = "";
+                        toastr.success('Friends Found');
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    })
+
+
+    const showMessageForwardfn = (message_id, grp_id) => {
+
+        hidden_message_id.value = message_id;
+
+        let messageForward = {};
+
+        messageForward.unique_id_me = <?php echo $unique_id_me ?>;
+        messageForward.message_id = message_id;
+        messageForward.from_grp_id = grp_id;
+
+        axios.post("../api/messageForward/friendList2.php",
+        messageForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+
+            // console.log(res.data);
+            messageForwardTbody.innerHTML = res.data;
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
     }
 
 
@@ -181,6 +308,7 @@ $grpName = $datagrp['grp_name'];
                             
                             <h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
                             
+                            <button onclick="showMessageForwardfn(${message.id}, ${grp_id})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
                             <button onclick="unsendGrpMessage(${message.id}, ${grp_id}, this)"
                                     class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
                         </div>

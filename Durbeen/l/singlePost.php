@@ -115,7 +115,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                             <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="commentTboody">
+                    <tbody id="commentTbody">
 
                     </tbody>
                 </table>
@@ -183,7 +183,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
 
 <script>
-    let commentTboody = document.querySelector("#commentTboody");
+    let commentTbody = document.querySelector("#commentTbody");
     let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
 
     let forwardForm = document.querySelector("#forwardFormID");
