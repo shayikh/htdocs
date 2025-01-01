@@ -44,7 +44,7 @@ while($data1 = mysqli_fetch_assoc($run1)) {
             </td>
 
             <td class="text-center text-dark">
-                <button class="btn btn-sm btn-primary" onclick="forwardMessageToFriendfn(<?php echo $from_unique_id_fr ?>, <?php echo $to_unique_id_fr ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+                <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(33, <?php echo $from_unique_id_fr ?>, <?php echo $to_unique_id_fr ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
             </td>
         </tr>
 

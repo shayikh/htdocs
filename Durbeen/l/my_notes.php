@@ -70,7 +70,7 @@ include './header.php';
 
                     <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
-                    <input type="hidden" name="from_unique_id_fr" value="<?php echo $unique_id_fr ?>">
+                    <input type="hidden" name="from_unique_id_me" value="<?php echo $unique_id_me ?>">
                     
                     <div class="row">
                         <div class="col-lg-6">
@@ -176,7 +176,7 @@ include './header.php';
             var forwardFormdata = new FormData(forwardForm);
 
             $.ajax({
-                url: "../api/messageForward/searchFriend.php",
+                url: "../api/messageForward/searchFriend1.php",
                 type: "POST",
                 data: forwardFormdata,
                 contentType: false,

@@ -194,7 +194,7 @@ $grpName = $datagrp['grp_name'];
             var forwardFormdata = new FormData(forwardForm);
 
             $.ajax({
-                url: "../api/messageForward/searchFriend.php",
+                url: "../api/messageForward/searchFriend2.php",
                 type: "POST",
                 data: forwardFormdata,
                 contentType: false,

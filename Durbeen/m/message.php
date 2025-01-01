@@ -281,7 +281,7 @@ if ($countTest == 0) {
             var forwardFormdata = new FormData(forwardForm);
 
             $.ajax({
-                url: "../api/messageForward/searchFriend.php",
+                url: "../api/messageForward/searchFriend3.php",
                 type: "POST",
                 data: forwardFormdata,
                 contentType: false,

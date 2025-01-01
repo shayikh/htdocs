@@ -88,7 +88,7 @@ $grpName = $datagrp['grp_name'];
 
                     <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
-                    <input type="hidden" name="from_unique_id_fr" value="<?php echo $grp_id ?>">
+                    <input type="hidden" name="from_grp_id" value="<?php echo $grp_id ?>">
                     
                     <div class="row">
                         <div class="col-lg-6">
@@ -194,7 +194,7 @@ $grpName = $datagrp['grp_name'];
             var forwardFormdata = new FormData(forwardForm);
 
             $.ajax({
-                url: "../api/messageForward/searchFriend.php",
+                url: "../api/messageForward/searchFriend2.php",
                 type: "POST",
                 data: forwardFormdata,
                 contentType: false,
