@@ -84,18 +84,46 @@ $grpName = $datagrp['grp_name'];
             </div>
             <div class="modal-body">
 
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_frID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="typical_id" value="2">
+                            <input type="hidden" name="hidden_message_id" id="hidden_message_id_all_frID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                            <input type="hidden" name="from_id" value="<?php echo $grp_id ?>">
+
+
+                            <input name="forwardBtn" value="FORWARD TO ALL FRIENDS" class="form-control btn btn-sm btn-success" type="submit">
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_grpID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="typical_id" value="2">
+                            <input type="hidden" name="hidden_message_id" id="hidden_message_id_all_grpID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                            <input type="hidden" name="from_id" value="<?php echo $grp_id ?>">
+
+
+                            <input name="forwardBtn" value="FORWARD TO ALL GROUPS" class="form-control btn btn-sm btn-success mt-2" type="submit">
+
+                        </form>
+                    </div>
+                </div>
                 <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
 
                     <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
                     <input type="hidden" name="from_grp_id" value="<?php echo $grp_id ?>">
                     
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-lg-6">
                             <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
                         </div>
                         <div class="col-lg-6">
-                            <input name="searchBtn" id="searchBtnID" value="SEARCH" class="form-control btn btn-danger" type="submit" aria-label="Close">
+                            <input name="searchBtn" value="SEARCH" class="form-control btn btn-danger" type="submit">
                         </div>
                     </div>
                 </form>
@@ -137,8 +165,13 @@ $grpName = $datagrp['grp_name'];
     let messageForwardTbody = document.querySelector("#messageForwardID");
     let forwardForm = document.querySelector("#forwardFormID");
     let searchValue = document.querySelector("#searchID");
-    let searchButton = document.querySelector("#searchBtnID");
     let hidden_message_id_number = document.querySelector("#hidden_message_id");
+
+    let hidden_message_id_all_fr = document.querySelector("#hidden_message_id_all_frID");
+    let hidden_message_id_all_grp = document.querySelector("#hidden_message_id_all_grpID");
+    
+    let forwardFormID_all_fr = document.querySelector("#forwardFormID_all_frID");
+    let forwardFormID_all_grp = document.querySelector("#forwardFormID_all_grpID");
 
 
     var page_no = 1;
@@ -185,6 +218,67 @@ $grpName = $datagrp['grp_name'];
     }
 
 
+    
+    forwardFormID_all_fr.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_fr = new FormData(forwardFormID_all_fr);
+
+        $.ajax({
+            url: "../api/messageForward/forwardLoop/forwardAllFr.php",
+            type: "POST",
+            data: forwardFormdata_all_fr,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_fr.classList.add("d-none");
+                toastr.success('Messages Sent yo All Friends');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+    
+    forwardFormID_all_grpID.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_grp = new FormData(forwardFormID_all_grpID);
+
+        $.ajax({
+            url: "../api/messageForward/forwardLoop/forwardAllGrp.php",
+            type: "POST",
+            data: forwardFormdata_all_grp,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_grpID.classList.add("d-none");
+                toastr.success('Messages Sent yo All Groups');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
     forwardForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -229,8 +323,14 @@ $grpName = $datagrp['grp_name'];
 
 
     const showMessageForwardfn = (message_id, grp_id) => {
+        
+        forwardFormID_all_fr.classList.remove("d-none");
+        forwardFormID_all_grpID.classList.remove("d-none");
+        
+        hidden_message_id_all_fr.value = message_id;
+        hidden_message_id_all_grp.value = message_id;
 
-        hidden_message_id.value = message_id;
+        hidden_message_id_number.value = message_id;
 
         let messageForward = {};
 
