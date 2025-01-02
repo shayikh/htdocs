@@ -184,7 +184,7 @@ const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, 
 
         if (res.data == 1) {
             elm.parentElement.parentElement.remove();
-            toastr.success("Post Link Forwarded to Your Friend");
+            toastr.success("Message Forwarded to Your Friend");
         }
 
 
@@ -443,7 +443,7 @@ const shareMefn = (post_id, unique_id_me) => {
 
 
 const deletePost = (post_id, unique_id_me, elm) => {
-    let confirm = window.confirm("Are You Sure?");
+    let confirm = window.confirm("Do You Want to Delete This Post?");
 
     if (confirm) {
 
@@ -624,7 +624,7 @@ const cleanGrp = (grp_id) => {
 
 
 const deleteProPic = (pro_pic_id, unique_id_me, elm) => {
-    let confirm = window.confirm("Are You Sure?");
+    let confirm = window.confirm("Do You Want to Delete?");
 
     if (confirm) {
 
@@ -688,7 +688,7 @@ const makeProPic = (pro_pic_id, unique_id_me, elm) => {
 
 
 const deleteCovPic = (cov_pic_id, unique_id_me, elm) => {
-    let confirm = window.confirm("Are You Sure?");
+    let confirm = window.confirm("Do You Want to Delete?");
 
     if (confirm) {
 
