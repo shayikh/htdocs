@@ -48,7 +48,6 @@ if($typical_id == 1){
 
     if ($image != ""){
         $extension = pathinfo($image, PATHINFO_EXTENSION);
-        $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
 
 
 
@@ -56,30 +55,20 @@ if($typical_id == 1){
         $run = mysqli_query($connection_info,$SQL);
 
         while ($data1 = mysqli_fetch_assoc($run)){
+            $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
+
             $oldPath = "../../../note_image/".$image;
             $newPath = "../../../grp_image/".$imageNewName;
             $copied = copy($oldPath , $newPath);
+
+
+            $grp_id = $data1['grp_id'];
+
+            $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
+            mysqli_query($connection_message, $SQL1);
         }
     }else{
         $imageNewName = "";
-    }
-
-
-
-
-
-
-    $SQL = "SELECT * FROM `$unique_id_me msg_grp`";
-    $run = mysqli_query($connection_info,$SQL);
-
-    while ($data1 = mysqli_fetch_assoc($run)){
-
-        $grp_id = $data1['grp_id'];
-
-        $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
-        mysqli_query($connection_message, $SQL1);
-    
-
     }
 
 
@@ -101,7 +90,7 @@ if($typical_id == 1){
 
     if ($image != ""){
         $extension = pathinfo($image, PATHINFO_EXTENSION);
-        $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
+
 
 
 
@@ -109,32 +98,19 @@ if($typical_id == 1){
         $run = mysqli_query($connection_info,$SQL);
 
         while ($data1 = mysqli_fetch_assoc($run)){
+            $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
+
             $oldPath = "../../../grp_image/".$image;
             $newPath = "../../../grp_image/".$imageNewName;
             $copied = copy($oldPath , $newPath);
+
+            $grp_id = $data1['grp_id'];
+
+            $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
+            mysqli_query($connection_message, $SQL1);
         }
     }else{
         $imageNewName = "";
-    }
-
-
-
-
-
-
-
-
-    $SQL = "SELECT * FROM `$unique_id_me msg_grp`";
-    $run = mysqli_query($connection_info,$SQL);
-
-    while ($data1 = mysqli_fetch_assoc($run)){
-
-        $grp_id = $data1['grp_id'];
-
-        $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
-        mysqli_query($connection_message, $SQL1);
-    
-
     }
 
 
@@ -164,7 +140,6 @@ if($typical_id == 1){
 
     if ($image != ""){
         $extension = pathinfo($image, PATHINFO_EXTENSION);
-        $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
 
 
 
@@ -172,29 +147,19 @@ if($typical_id == 1){
         $run = mysqli_query($connection_info,$SQL);
 
         while ($data1 = mysqli_fetch_assoc($run)){
+            $imageNewName = uniqid().'_'.date("d_M_Y_D_h_i_s_a").'.'.$extension;
+
             $oldPath = "../../../chat_image/".$image;
             $newPath = "../../../grp_image/".$imageNewName;
             $copied = copy($oldPath , $newPath);
+
+            $grp_id = $data1['grp_id'];
+
+            $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
+            mysqli_query($connection_message, $SQL1);
         }
     }else{
         $imageNewName = "";
     }
 
-
-
-
-
-
-    $SQL = "SELECT * FROM `$unique_id_me msg_grp`";
-    $run = mysqli_query($connection_info,$SQL);
-
-    while ($data1 = mysqli_fetch_assoc($run)){
-
-        $grp_id = $data1['grp_id'];
-
-        $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
-        mysqli_query($connection_message, $SQL1);
-    
-
-    }
 }
