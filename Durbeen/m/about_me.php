@@ -172,18 +172,18 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-blue">Liked Posts</h5>
+                        <h6 class="text-blue">Liked Posts</h6>
                     </td>
                     <td>
-                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#likedPostModal" onclick="showLikedPosts();">Liked Posts</button>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#likedPostsModal" onclick="showLikedPosts();">Liked Posts</button>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-blue">Disliked Posts</h5>
+                        <h6 class="text-blue">Disliked Posts</h6>
                     </td>
                     <td>
-                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#disLikedPostModal" onclick="showDisLikedPosts();">Disliked Posts</button>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#disLikedPostsModal" onclick="showDisLikedPosts();">Disliked Posts</button>
                     </td>
                 </tr>
             </table>
@@ -346,12 +346,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
 <!-- My Comment Modal -->
-<div class="modal fade" id="myCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+<div class="modal fade" id="myCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true" modal-dialog modal-dialog-scrollable>
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-dark" id="staticBackdropLabel">Comments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel1">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-hover table-bordered">
@@ -382,12 +382,12 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
 <!-- Other Comment Modal -->
-<div class="modal fade" id="otherCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+<div class="modal fade" id="otherCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-dark" id="staticBackdropLabel">Comments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-hover table-bordered">
@@ -418,6 +418,75 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 </div>
 
 
+<!-- Liked Posts Modal -->
+<div class="modal fade" id="likedPostsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel3" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel3">My Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Image</th>
+                            <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Show</th>
+                            <th class="text-center text-dark" scope="col">Remove Like</th>
+                        </tr>
+                    </thead>
+                    <tbody id="likedPostsTbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-success" onmouseover="showLikedPosts()" onclick="showLikedPosts()">
+                    More Posts
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Disliked Posts Modal -->
+<div class="modal fade" id="disLikedPostsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel4">Others Comments in My Posts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Image</th>
+                            <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Remove Dislike</th>
+                        </tr>
+                    </thead>
+                    <tbody id="disLikedPostsTbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-success" onmouseover="showDisLikedPosts()" onclick="showDisLikedPosts()">
+                    More Posts
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -461,6 +530,8 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
     let myCommentTbody = document.querySelector("#myCommentTbody");
     let otherCommentTbody = document.querySelector("#otherCommentTbody");
+    let likedPostsTbody = document.querySelector("#likedPostsTbody");
+    let disLikedPostsTbody = document.querySelector("#disLikedPostsTbody");
 
 
 
@@ -535,6 +606,68 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
 
+
+
+    var page_no_liked_posts = 1;
+
+    function showLikedPosts() {
+
+        let postData = {};
+
+        postData.page_no = page_no_liked_posts;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/about_update/loadmorelikedPosts_m.php",
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
+
+                likedPostsTbody.innerHTML = likedPostsTbody.innerHTML + all;
+                page_no_liked_posts++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+
+    var page_no_disliked_posts = 1;
+
+    function showDisLikedPosts() {
+
+        let postData = {};
+
+        postData.page_no = page_no_disliked_posts;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/about_update/loadmoreDisLikedPosts_m.php",
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
+
+                disLikedPostsTbody.innerHTML = disLikedPostsTbody.innerHTML + all;
+                page_no_disliked_posts++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
 
 

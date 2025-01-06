@@ -37,6 +37,60 @@ const clearMsgForwardModal = () => {
     messageForwardTbody.innerHTML = "";
 }
 
+const removeLikefn = (like_id, elm) => {
+
+    let removeLike = {};
+
+    removeLike.like_id = like_id;
+
+    axios.post("../api/about_update/removeLike.php",
+        removeLike, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+
+        // console.log(res.data);
+        if(res.data == 1){
+            elm.parentElement.parentElement.remove();
+            toastr.success("Like Removed");
+        }
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+}
+
+const removeDisLikefn = (dislike_id, elm) => {
+
+    let removeDisLike = {};
+
+    removeDisLike.dislike_id = dislike_id;
+
+    axios.post("../api/about_update/removeDisLike.php",
+        removeDisLike, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+
+        // console.log(res.data);
+        if(res.data == 1){
+            elm.parentElement.parentElement.remove();
+            toastr.success("Like Removed");
+        }
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+}
+
 const showCommentfn = (post_id) => {
 
     let showComment = {};
