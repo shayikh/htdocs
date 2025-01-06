@@ -28,7 +28,6 @@ const deleteComment = (comment_id, unique_id_me, elm) => {
 
 }
 
-
 const clearModal = () => {
     commentTbody.innerHTML = "";
     postlinkforwardTboody.innerHTML = "";

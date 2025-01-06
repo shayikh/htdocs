@@ -159,7 +159,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         <h6 class="text-blue">My All Comments</h6>
                     </td>
                     <td>
-                        <a href="./my_comments.php?type" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</a>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</button>
                     </td>
                 </tr>
                 <tr>
@@ -167,7 +167,23 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         <h6 class="text-blue">Other's Comments</h6>
                     </td>
                     <td>
-                        <a href="./other_comments.php?type" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</a>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Liked Posts</h5>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#likedPostModal" onclick="showLikedPosts();">Liked Posts</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Disliked Posts</h5>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#disLikedPostModal" onclick="showDisLikedPosts();">Disliked Posts</button>
                     </td>
                 </tr>
             </table>
