@@ -12,6 +12,11 @@ $SQLA = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr
 $runA = mysqli_query($connection_info, $SQLA);
 $countA = mysqli_num_rows($runA);
 
+$SQL2 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
+$run2 = mysqli_query($connection,$SQL2);
+$data2 = mysqli_fetch_assoc($run2);
+$locking = $data2['locking'];
+
 
 $SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
 $run1 = mysqli_query($connection,$SQL1);
@@ -71,9 +76,11 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
             <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-success float-end ms-1">Send Message</a>
 
+            <?php if($locking == 1) {?>
             <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countA == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-1">
                 <?php $countA == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
             </button>
+            <?php } ?>
 
             <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end">
                 <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
