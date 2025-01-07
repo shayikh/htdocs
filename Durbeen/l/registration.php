@@ -111,9 +111,10 @@ if (isset($_POST['signup'])) {
         )";
         mysqli_query($connection_info, $SQLcreate);
 
-        $SQL400 = "INSERT INTO `1 allow`(`unique_id_fr`) VALUES ('$unique_id_me')";
-        mysqli_query($connection_info, $SQL400);
-
+        if($unique_id_me != 1){
+            $SQL400 = "INSERT INTO `1 allow`(`unique_id_fr`) VALUES ('$unique_id_me')";
+            mysqli_query($connection_info, $SQL400);
+        }
 
 
 
