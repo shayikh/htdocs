@@ -38,6 +38,42 @@ const clearMsgForwardModal = () => {
 }
 
 
+
+const lockingfn = (unique_id_me, elm) => {
+
+    let locking = {};
+
+    locking.unique_id_me = unique_id_me;
+
+    axios.post("../api/about_update/locking.php",
+        locking, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+
+        // console.log(res.data);
+        if(res.data == 11){
+            elm.classList.add("btn-success");
+            elm.classList.remove("btn-danger");
+            elm.innerText = "Unlock Profile";
+            toastr.error("Profile Locked");
+        }else{
+            elm.classList.add("btn-danger");
+            elm.classList.remove("btn-success");
+            elm.innerText = "Lock Profile";
+            toastr.success("Profile Unlocked");
+        }
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+}
+
+
 const removeLikefn = (like_id, elm) => {
 
     let removeLike = {};
@@ -414,42 +450,7 @@ const followfn = (unique_id_me, unique_id_fr, elm) => {
     followVar.unique_id_fr = unique_id_fr;
 
     axios.post("../api/facelist/follow.php",
-            followVar, {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-        .then(res => {
-            // console.log(res.data);
-
-            if (res.data == 0) {
-                toastr.error('Unfollowed');
-                elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                elm.classList.add('btn-success');
-                elm.classList.remove('btn-danger');
-            } else {
-                toastr.success('Following');
-                elm.innerHTML = '<i class="fas fa-user-slash"></i>';
-                elm.classList.add('btn-danger');
-                elm.classList.remove('btn-success');
-            }
-
-
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
-
-const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
-
-    let unfollowVar = {};
-
-    unfollowVar.unique_id_me = unique_id_me;
-    unfollowVar.unique_id_fr = unique_id_fr;
-
-    axios.post("../api/facelist/unfollow.php",
-    unfollowVar, {
+    followVar, {
         headers: {
             "Content-Type": "application/json"
         }
@@ -457,9 +458,21 @@ const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
     .then(res => {
         // console.log(res.data);
 
-        if (res.data == 0) {
-            elm.parentElement.parentElement.remove();
+        if (res.data == 1) {
+            toastr.success('Follow Request Sent');
+            elm.remove();
+        }
+        else if(res.data == 2){
+            toastr.success('Following');
+            elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+        else if(res.data == 3){
             toastr.error('Unfollowed');
+            elm.innerHTML = '<i class="fas fa-user-plus"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
         }
 
 
@@ -468,6 +481,41 @@ const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
         console.log(err);
     })
 }
+
+const allowfn = (unique_id_me, unique_id_fr, elm) => {
+
+    let allowVar = {};
+
+    allowVar.unique_id_me = unique_id_me;
+    allowVar.unique_id_fr = unique_id_fr;
+
+    axios.post("../api/facelist/allow.php",
+    allowVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
+
+        if (res.data == 2) {
+            toastr.error('Rejected to Follow You');
+            elm.innerHTML = '<i class="fas fa-user-check"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        } else {
+            toastr.success('Allowed to Follow You');
+            elm.innerHTML = '<i class="fas fa-user-times"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
 
 
 const shareMefn = (post_id, unique_id_me) => {

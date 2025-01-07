@@ -392,6 +392,7 @@ const sharefn = (post_id, unique_id_me) => {
 }
 
 
+
 const followfn = (unique_id_me, unique_id_fr, elm) => {
 
     let followVar = {};
@@ -400,69 +401,72 @@ const followfn = (unique_id_me, unique_id_fr, elm) => {
     followVar.unique_id_fr = unique_id_fr;
 
     axios.post("../api/facelist/follow.php",
-            followVar, {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-        .then(res => {
-            // console.log(res.data);
+    followVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
 
-            if (res.data == 0) {
-                toastr.error('Unfollowed');
-                elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                elm.classList.add('btn-success');
-                elm.classList.remove('btn-danger');
-            } else {
-                toastr.success('Following');
-                elm.innerHTML = '<i class="fas fa-user-slash"></i>';
-                elm.classList.add('btn-danger');
-                elm.classList.remove('btn-success');
-            }
+        if (res.data == 1) {
+            toastr.success('Follow Request Sent');
+            elm.remove();
+        }
+        else if(res.data == 2){
+            toastr.success('Following');
+            elm.innerHTML = '<i class="fas fa-user-slash"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+        else if(res.data == 3){
+            toastr.error('Unfollowed');
+            elm.innerHTML = '<i class="fas fa-user-plus"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        }
 
 
-        })
-        .catch(err => {
-            console.log(err);
-        })
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
-const unfollowfn = (unique_id_me, unique_id_fr, elm) => {
-    let confirm = window.confirm("Do You Want to Unfollow?");
+const allowfn = (unique_id_me, unique_id_fr, elm) => {
 
-    if (confirm) {
+    let allowVar = {};
 
-        let unfollowVar = {};
+    allowVar.unique_id_me = unique_id_me;
+    allowVar.unique_id_fr = unique_id_fr;
 
-        unfollowVar.unique_id_me = unique_id_me;
-        unfollowVar.unique_id_fr = unique_id_fr;
+    axios.post("../api/facelist/allow.php",
+    allowVar, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        // console.log(res.data);
 
-        axios.post("../api/facelist/unfollow.php",
-        unfollowVar, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => {
-            // console.log(res.data);
-
-            if (res.data == 0) {
-                elm.parentElement.parentElement.remove();
-                toastr.error('Unfollowed');
-            }
-
-
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
-    } else {
-        return;
-    }
-
-
+        if (res.data == 2) {
+            toastr.error('Rejected to Follow You');
+            elm.innerHTML = '<i class="fas fa-user-check"></i>';
+            elm.classList.add('btn-success');
+            elm.classList.remove('btn-danger');
+        } else {
+            toastr.success('Allowed to Follow You');
+            elm.innerHTML = '<i class="fas fa-user-times"></i>';
+            elm.classList.add('btn-danger');
+            elm.classList.remove('btn-success');
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
+
+
 
 
 const shareMefn = (post_id, unique_id_me) => {

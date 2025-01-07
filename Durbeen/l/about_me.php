@@ -133,10 +133,18 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-blue">Following List</h5>
+                        <h5 class="text-blue">Follow List</h5>
                     </td>
                     <td>
-                        <a href="./follow_list.php?type" class="btn btn-success">Following List</a>
+                        <a href="./follow_list.php?type" class="btn btn-success">Follow List</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Allow List</h5>
+                    </td>
+                    <td>
+                        <a href="./allow_list.php?type" class="btn btn-success">Allow List</a>
                     </td>
                 </tr>
                 <tr>
@@ -185,6 +193,14 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     </td>
                     <td>
                         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#disLikedPostsModal" onclick="showDisLikedPosts();">Disliked Posts</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Lock/Unlock Profile</h5>
+                    </td>
+                    <td>
+                        <button class="btn <?php $dataMe['locking'] == 0 ? printf('btn-danger') : 'btn-success' ?>" onclick="lockingfn(<?php echo $unique_id_me ?>, this)"><?php $dataMe['locking'] == 0 ? printf('Lock Profile') : 'Unlock Profile' ?></button>
                     </td>
                 </tr>
             </table>

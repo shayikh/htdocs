@@ -16,6 +16,8 @@ $SQLC = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_f
 $runC = mysqli_query($connection_info,$SQLC);
 $countC = mysqli_num_rows($runC);
 
+
+
 if($countC == 0) {
 
     //create two table if not exist
