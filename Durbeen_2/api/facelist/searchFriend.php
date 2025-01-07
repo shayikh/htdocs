@@ -6,6 +6,7 @@ $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
 
 
+
 $unique_id_me = $data['unique_id_me'];
 $search = strtolower(trim($data['search']));
 $search = mysqli_real_escape_string($connection, $search);

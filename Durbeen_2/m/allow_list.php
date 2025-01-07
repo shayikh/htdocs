@@ -1,6 +1,17 @@
 <?php
 include './header.php';
 
+
+$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
+$run1 = mysqli_query($connection,$SQL1);
+$data1 = mysqli_fetch_assoc($run1);
+$locking = $data1['locking'];
+
+if ($locking == 0) {
+    echo "<script>alert('You Can See Your Allow List When You Profile is Locked')</script>";
+    echo "<script>window.location = 'about_me.php?type=about_me'</script>";
+}
+
 ?>
 
 
@@ -44,60 +55,23 @@ include './header.php';
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/facelist/loadmoreAllowList_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-
-    const rejectfn = (unique_id_me, unique_id_fr, elm) => {
-        let confirm = window.confirm("Do You Want to Reject him from Following You?");
-
-        if (confirm) {
-
-            let rejectVar = {};
-
-            rejectVar.unique_id_me = unique_id_me;
-            rejectVar.unique_id_fr = unique_id_fr;
-
-            axios.post("../api/facelist/reject.php",
-                    rejectVar, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == 0) {
-                        elm.parentElement.parentElement.remove();
-                    }
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
-
-
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 </script>

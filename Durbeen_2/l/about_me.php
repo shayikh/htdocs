@@ -8,22 +8,10 @@ $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
-
-
-$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
-$run1 = mysqli_query($connection, $SQL1);
-$count1 = mysqli_num_rows($run1);
 ?>
 
 
-<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
-
-
-<?php if ($count1 > 0) { ?>
-<a style="position: fixed;right: 282px;top:91px;z-index:20;font-weight: 600;" href="admin.php?type" class="btn btn-success">Durbeen Admin</a>
-
-<a style="position: fixed;right: 426px;top:91px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-success">Account Request</a>
-<?php } ?>
+<a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
 
 
 <!-- main page -->
@@ -139,16 +127,16 @@ $count1 = mysqli_num_rows($run1);
                     </td>
                     <td>
                         <h5 class="one d-none">
-                            http://durbeen2.unaux.com/l/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h5>
+                            http://durbeen.unaux.com/l/people_timeline.php?type&unique_id_fr=<?php echo $dataMe['unique_id'] ?></h5>
                         <button id="mybtn" class="btn btn-success float-start">Copy Account Link</button>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 300px">
-                        <h5 class="text-blue">Following List</h5>
+                        <h5 class="text-blue">Follow List</h5>
                     </td>
                     <td>
-                        <a href="./follow_list.php?type" class="btn btn-success">Following List</a>
+                        <a href="./follow_list.php?type" class="btn btn-success">Follow List</a>
                     </td>
                 </tr>
                 <tr>
@@ -180,7 +168,7 @@ $count1 = mysqli_num_rows($run1);
                         <h5 class="text-blue">My All Comments</h5>
                     </td>
                     <td>
-                        <a href="./my_comments.php?type" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</a>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myCommentModal" onclick="showMyComment()">My Comments</button>
                     </td>
                 </tr>
                 <tr>
@@ -188,7 +176,42 @@ $count1 = mysqli_num_rows($run1);
                         <h5 class="text-blue">Other's Comments</h5>
                     </td>
                     <td>
-                        <a href="./other_comments.php?type" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</a>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#otherCommentModal" onclick="showOtherComment();">Other's Comments</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Liked Posts</h5>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#likedPostsModal" onclick="showLikedPosts();">Liked Posts</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Disliked Posts</h5>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#disLikedPostsModal" onclick="showDisLikedPosts();">Disliked Posts</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h5 class="text-blue">Lock/Unlock Profile</h5>
+                    </td>
+                    <td>
+                        <button class="btn 
+                        <?php if($dataMe['locking'] == 0){
+                            echo 'btn-danger';
+                        }else{
+                            echo 'btn-success';
+                        } ?>" onclick="lockingfn(<?php echo $unique_id_me ?>, this)">
+                            <?php if($dataMe['locking'] == 0){
+                                echo 'Lock Profile';
+                            }else{
+                                echo 'Unlock Profile';
+                            } ?>
+                        </button>
                     </td>
                 </tr>
             </table>
@@ -218,7 +241,7 @@ $count1 = mysqli_num_rows($run1);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="postModalLabel">Update Profile</h5>
+                <h5 class="modal-title text-dark" id="postModalLabel">Update Profile</h5>
                 <button id="updateCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -249,7 +272,7 @@ $count1 = mysqli_num_rows($run1);
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mt-2 text-dark">Email</label>
-                                <input name="email" oninput="uniqueEmail()" id="emailModal" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
+                                <input name="email" oninput="uniqueEmailProfile()" id="emailModal" value="<?php echo $dataMe['email'] ?>" class="form-control" type="email">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -337,7 +360,7 @@ $count1 = mysqli_num_rows($run1);
 
                         <div class="col-md-12">
                             <div class="form-group mt-2">
-                                <input name="updateBtn" value="UPDATE" class="btn btn-success float-end" type="submit" aria-label="Close">
+                                <input name="updateBtn" value="UPDATE" class="btn btn-success float-end" type="submit">
                             </div>
                         </div>
 
@@ -351,12 +374,12 @@ $count1 = mysqli_num_rows($run1);
 
 
 <!-- My Comment Modal -->
-<div class="modal fade" id="myCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+<div class="modal fade" id="myCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true" modal-dialog modal-dialog-scrollable>
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel1">My Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-hover table-bordered">
@@ -368,7 +391,7 @@ $count1 = mysqli_num_rows($run1);
                             <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="myCommentTboody">
+                    <tbody id="myCommentTbody">
 
                     </tbody>
                 </table>
@@ -377,7 +400,7 @@ $count1 = mysqli_num_rows($run1);
                 <button type="button" class="btn btn-success" onmouseover="showMyComment()" onclick="showMyComment()">
                     More Comments
                 </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
                     Close
                 </button>
             </div>
@@ -387,12 +410,12 @@ $count1 = mysqli_num_rows($run1);
 
 
 <!-- Other Comment Modal -->
-<div class="modal fade" id="otherCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+<div class="modal fade" id="otherCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Others Comments in My Posts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-hover table-bordered">
@@ -405,7 +428,7 @@ $count1 = mysqli_num_rows($run1);
                             <th class="text-center text-dark" scope="col">Post</th>
                         </tr>
                     </thead>
-                    <tbody id="otherCommentTboody">
+                    <tbody id="otherCommentTbody">
 
                     </tbody>
                 </table>
@@ -414,13 +437,86 @@ $count1 = mysqli_num_rows($run1);
                 <button type="button" class="btn btn-success" onmouseover="showOtherComment()" onclick="showOtherComment()">
                     More Comments
                 </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
                     Close
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<!-- Liked Posts Modal -->
+<div class="modal fade" id="likedPostsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel3" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel3">My Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Image</th>
+                            <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Show</th>
+                            <th class="text-center text-dark" scope="col">Remove Like</th>
+                        </tr>
+                    </thead>
+                    <tbody id="likedPostsTbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onmouseover="showLikedPosts()" onclick="showLikedPosts()">
+                    More Posts
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Disliked Posts Modal -->
+<div class="modal fade" id="disLikedPostsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel4">Others Comments in My Posts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Image</th>
+                            <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Remove Dislike</th>
+                        </tr>
+                    </thead>
+                    <tbody id="disLikedPostsTbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onmouseover="showDisLikedPosts()" onclick="showDisLikedPosts()">
+                    More Posts
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -466,8 +562,11 @@ $count1 = mysqli_num_rows($run1);
     let myMail = emailModal.value;
 
 
-    let myCommentTboody = document.querySelector("#myCommentTboody");
-    let otherCommentTboody = document.querySelector("#otherCommentTboody");
+    let myCommentTbody = document.querySelector("#myCommentTbody");
+    let otherCommentTbody = document.querySelector("#otherCommentTbody");
+    let likedPostsTbody = document.querySelector("#likedPostsTbody");
+    let disLikedPostsTbody = document.querySelector("#disLikedPostsTbody");
+
 
 
 
@@ -528,29 +627,7 @@ $count1 = mysqli_num_rows($run1);
 
     })
 
-    function uniqueEmail() {
-        let product = {};
 
-        product.email = emailModal.value;
-        product.unique_id_me = unique_id_me.innerText;
-
-        axios.post("../api/about_update/unique_email.php",
-                product, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == "0") {
-                    toastr.error("This email is used by someone. You can not use this email");
-                    alert("This email is used by someone. You can not use this email");
-                    emailModal.value = myMail;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
 
     mybtn.addEventListener('click', function() {
         const elem = document.createElement('input');
@@ -564,11 +641,66 @@ $count1 = mysqli_num_rows($run1);
 
 
 
+    var page_no_liked_posts = 1;
+
+    function showLikedPosts() {
+
+        let postData = {};
+
+        postData.page_no = page_no_liked_posts;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/about_update/loadmorelikedPosts.php",
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
+
+                likedPostsTbody.innerHTML = likedPostsTbody.innerHTML + all;
+                page_no_liked_posts++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
 
+    var page_no_disliked_posts = 1;
 
+    function showDisLikedPosts() {
 
+        let postData = {};
 
+        postData.page_no = page_no_disliked_posts;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/about_update/loadmoreDisLikedPosts.php",
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
+
+                disLikedPostsTbody.innerHTML = disLikedPostsTbody.innerHTML + all;
+                page_no_disliked_posts++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
     var page_no_my_comment = 1;
 
@@ -581,26 +713,26 @@ $count1 = mysqli_num_rows($run1);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/comment/loadmoreMyComments.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    let all = res.data;
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
 
-                    all.forEach(comment => {
-                        myCommentTboody.innerHTML = myCommentTboody.innerHTML + makeMyCommentTr(comment);
-                    })
-                    page_no_my_comment++;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                all.forEach(comment => {
+                    myCommentTbody.innerHTML = myCommentTbody.innerHTML + makeMyCommentTr(comment);
+                })
+                page_no_my_comment++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     const makeMyCommentTr = (comment) => {
@@ -611,16 +743,11 @@ $count1 = mysqli_num_rows($run1);
                                 <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
-                                <i class="fas fa-trash ms-4 mt-3 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
+                                <i class="fas fa-trash ms-4 mt-2 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, ${comment.comn_giver_id}, this)"></i>
                             </td>
                         </tr>`
         return tr;
     }
-
-
-
-
-
 
 
 
@@ -636,26 +763,26 @@ $count1 = mysqli_num_rows($run1);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/comment/loadmoreOtherComments.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    let all = res.data;
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                let all = res.data;
 
-                    all.forEach(comment => {
-                        otherCommentTboody.innerHTML = otherCommentTboody.innerHTML + makeOtherCommentTr(comment);
-                    })
-                    page_no_other_comment++;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                all.forEach(comment => {
+                    otherCommentTbody.innerHTML = otherCommentTbody.innerHTML + makeOtherCommentTr(comment);
+                })
+                page_no_other_comment++;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -663,7 +790,7 @@ $count1 = mysqli_num_rows($run1);
         let tr = `<tr>
                             <td class="text-center">
                                 <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                    <img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
+                                    <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
                                 </a>
                             </td>
 
@@ -679,43 +806,6 @@ $count1 = mysqli_num_rows($run1);
         return tr;
     }
 
-
-
-
-
-
-
-
-
-    const deleteComment = (comment_id, unique_id_me, elm) => {
-
-        let delComment = {};
-
-        delComment.comment_id = comment_id;
-        delComment.unique_id_me = unique_id_me;
-
-        axios.post("../api/comment/deleteComment.php",
-                delComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 1) {
-                    elm.parentElement.parentElement.remove();
-                    toastr.info('Comment Deleted');
-                } else {
-                    toastr.warning("You Can not Delete Other's Comment");
-                }
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
 
 </script>
 

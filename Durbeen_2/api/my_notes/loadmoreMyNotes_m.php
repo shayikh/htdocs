@@ -32,7 +32,8 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                         <h6 title="<?php echo $data3['time'] ?>" style="border-radius: 35px" class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h6>
                     <?php } ?>
                     <br>
-                    <button onclick="deleteSelfMsg(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>
+                    <button onclick="showMessageForwardfn(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                    <button onclick="deleteMyNotes(<?php echo $data3['id'] ?>,<?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>
                 </div>
 
             </tr>

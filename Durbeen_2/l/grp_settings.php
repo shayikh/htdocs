@@ -95,44 +95,6 @@ $count109 = mysqli_num_rows($run109);
     }
 
 
-
-    const leaveGrp = (grp_id, unique_id_me) => {
-        let confirm = window.confirm("Do You Want to Leave From This Group?");
-
-        if (confirm) {
-
-            let message = {};
-
-            message.grp_id = grp_id;
-            message.unique_id_me = unique_id_me;
-
-            axios.post("../api/group/leaveGrp.php",
-                    message, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        window.location = './groups.php?type=groups';
-                    }else if (res.data == '0') {
-                        alert('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
-                        toastr.error('You Are The Only Admin in This Group. If You Leave, The group Will be Adminless. So You Cannot Leave This Group Until You Make One or More Admin');
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        } else {
-            return;
-        }
-    }
-
-
-    
 </script>
 
 

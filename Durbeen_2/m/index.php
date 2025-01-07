@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['unique_id_me']) {
-    header('location:./homepage.php?type');
+    header('location:./homepage.php');
     echo "<script>window.location = './homepage.php?type'</script>";
 }
 
@@ -99,10 +99,6 @@ if (isset($_GET['mustlog'])) {
 if (isset($_GET['out'])) {
     echo "<script>toastr.info('You Are Logged Out')</script>";
 }
-if (isset($_GET['wait'])) {
-    echo "<script>toastr.info('Wait for Admin Approval')</script>";
-    echo "<script>alert('Wait for Admin Approval')</script>";
-}
 ?>
 
 
@@ -140,7 +136,7 @@ if (isset($_GET['wait'])) {
 
 
                         <div style="margin-top:35px;text-align: center">
-                            <a style="width: 200px;height: 48px" class="anchor button_index  form-control" href="./registration.php"><b>Create New Account</b></a>
+                            <a style="width: 200px;height: 48px" class="anchor button_index form-control" href="./registration.php"><b>Create New Account</b></a>
                             <a href="./forgotPass.php" class="text-decoration-none text-primary">Forgot Password?</a>
                         </div>
 

@@ -14,6 +14,7 @@ $count1 = mysqli_num_rows($run1);
 <?php } ?>
 
 
+
 <!-- main page -->
 <div class="container" style="margin-top: 112px;">
     <h6 class="text-center">My Groups</h6>
@@ -31,7 +32,7 @@ $count1 = mysqli_num_rows($run1);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="groupModalLabel">Create New Messenger Group</h5>
+                <h5 class="modal-title text-dark" id="groupModalLabel">Create New Messenger Group</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -54,7 +55,7 @@ $count1 = mysqli_num_rows($run1);
                         </div>
                     </div>
 
-                    <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>
@@ -159,18 +160,18 @@ $count1 = mysqli_num_rows($run1);
 
 
     const makeTr = (newGroup) => {
-        let tr = `    <tr>
-                        <td class="text-center">
-                            <a href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}">
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
-                                <p style="font-weight: 500">${newGroup.grp_name}</p>
-                            </a>
-                        </td>
-                    </tr>`
+        let tr = `<tr>
+                    <td class="text-center">
+                        <a href="./group_msg.php?type&grp_id=${newGroup.id}">
+                            <img style="margin-top: 2px"width="90px" src="../pro_pic/${newGroup.pro_pic}">
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="text-decoration-none" href="./group_msg.php?type&grp_id=${newGroup.id}">
+                            <p style="font-weight: 500">${newGroup.grp_name}</p>
+                        </a>
+                    </td>
+                </tr>`
         return tr;
     }
 </script>

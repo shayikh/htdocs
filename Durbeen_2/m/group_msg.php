@@ -66,8 +66,86 @@ $grpName = $datagrp['grp_name'];
 
                     <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Message Forward Modal -->
+<div class="modal fade" id="messageforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Message</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearMsgForwardModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_frID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="typical_id" value="2">
+                            <input type="hidden" name="hidden_message_id" id="hidden_message_id_all_frID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                            <input type="hidden" name="from_id" value="<?php echo $grp_id ?>">
+
+
+                            <input name="forwardBtn" value="FORWARD TO ALL FRIENDS" class="form-control btn btn-sm btn-success" type="submit">
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_grpID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="typical_id" value="2">
+                            <input type="hidden" name="hidden_message_id" id="hidden_message_id_all_grpID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                            <input type="hidden" name="from_id" value="<?php echo $grp_id ?>">
+
+
+                            <input name="forwardBtn" value="FORWARD TO ALL GROUPS" class="form-control btn btn-sm btn-success mt-2" type="submit">
+
+                        </form>
+                    </div>
+                </div>
+                <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
+
+                    <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                    <input type="hidden" name="from_grp_id" value="<?php echo $grp_id ?>">
+                    
+                    <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="searchBtn" value="SEARCH" class="form-control btn btn-danger" type="submit">
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-hover table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messageForwardID">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearMsgForwardModal()">
+                    Close
+                </button>
             </div>
         </div>
     </div>
@@ -83,6 +161,17 @@ $grpName = $datagrp['grp_name'];
     let message = document.querySelector("#messageID");
     let button = document.querySelector("#buttonID");
     let messageCloseBtn = document.querySelector("#messageCloseBtn");
+
+    let messageForwardTbody = document.querySelector("#messageForwardID");
+    let forwardForm = document.querySelector("#forwardFormID");
+    let searchValue = document.querySelector("#searchID");
+    let hidden_message_id_number = document.querySelector("#hidden_message_id");
+
+    let hidden_message_id_all_fr = document.querySelector("#hidden_message_id_all_frID");
+    let hidden_message_id_all_grp = document.querySelector("#hidden_message_id_all_grpID");
+    
+    let forwardFormID_all_fr = document.querySelector("#forwardFormID_all_frID");
+    let forwardFormID_all_grp = document.querySelector("#forwardFormID_all_grpID");
 
 
     var page_no = 1;
@@ -109,25 +198,163 @@ $grpName = $datagrp['grp_name'];
         msgData.grp_id = <?php echo $grp_id ?>;
 
         axios.post("../api/group_msg/loadmoreGroupMsg_m.php",
-                msgData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You are at the End');
-                } else {
-                    appendData.innerHTML = appendData.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        msgData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You are at the End');
+            } else {
+                appendData.innerHTML = appendData.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
+
+    
+    forwardFormID_all_fr.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_fr = new FormData(forwardFormID_all_fr);
+
+        $.ajax({
+            url: "../api/messageForward/forwardLoop/forwardAllFr.php",
+            type: "POST",
+            data: forwardFormdata_all_fr,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_fr.classList.add("d-none");
+                toastr.success('Messages Sent yo All Friends');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+    
+    forwardFormID_all_grpID.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_grp = new FormData(forwardFormID_all_grpID);
+
+        $.ajax({
+            url: "../api/messageForward/forwardLoop/forwardAllGrp.php",
+            type: "POST",
+            data: forwardFormdata_all_grp,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_grpID.classList.add("d-none");
+                toastr.success('Messages Sent yo All Groups');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    forwardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (searchValue.value == "") {
+            toastr.error('Search Field is Empty');
+        } else {
+            var forwardFormdata = new FormData(forwardForm);
+
+            $.ajax({
+                url: "../api/messageForward/searchFriend2.php",
+                type: "POST",
+                data: forwardFormdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    // let json = JSON.parse(data);
+
+                    // console.log(data);
+
+
+                    if (data == 0) {
+                        messageForwardTbody.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        messageForwardTbody.innerHTML = data;
+                        searchValue.value = "";
+                        toastr.success('Friends Found');
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    })
+
+
+
+    const showMessageForwardfn = (message_id, grp_id) => {
+        
+        forwardFormID_all_fr.classList.remove("d-none");
+        forwardFormID_all_grpID.classList.remove("d-none");
+        
+        hidden_message_id_all_fr.value = message_id;
+        hidden_message_id_all_grp.value = message_id;
+
+        hidden_message_id_number.value = message_id;
+
+        let messageForward = {};
+
+        messageForward.unique_id_me = <?php echo $unique_id_me ?>;
+        messageForward.message_id = message_id;
+        messageForward.from_grp_id = grp_id;
+
+        axios.post("../api/messageForward/friendList2.php",
+        messageForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+
+            // console.log(res.data);
+            messageForwardTbody.innerHTML = res.data;
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    }
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -153,9 +380,10 @@ $grpName = $datagrp['grp_name'];
 
                     let unique_id_me = json.unique_id_me;
                     let newMessage = json.newMessage;
+                    let grp_id = json.grp_id;
 
 
-                    tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+                    tbody.innerHTML = makeTr(newMessage, unique_id_me, grp_id) + tbody.innerHTML;
 
                     messageCloseBtn.click();
                     toastr.success('Message Sent');
@@ -172,14 +400,15 @@ $grpName = $datagrp['grp_name'];
     })
 
 
-    const makeTr = (message) => {
+    const makeTr = (message, grp_id) => {
         let tr = `<tr>
                         <div class="float-end" style="border: none;">
                             <img class="float-end" width="290px" src="../grp_image/${message.image}">
                             
                             <h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>
-                            <button onclick="unsendMessage(${message.id}, <?php echo $grp_id ?>, this)"
+                            <button onclick="showMessageForwardfn(${message.id}, ${grp_id})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                            <button onclick="unsendGrpMessage(${message.id}, ${grp_id}, this)"
                                     class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </tr>`
@@ -187,38 +416,6 @@ $grpName = $datagrp['grp_name'];
     }
 
 
-    const unsendMessage = (id_msg, grp_id, elm_ppp) => {
-        let confirm = window.confirm("Do You Want to Unsend?");
-        if (confirm) {
-            let unsendData = {};
-
-            unsendData.id_msg = id_msg;
-            unsendData.grp_id = grp_id;
-
-            axios.post("../api/group_msg/unsend.php",
-                    unsendData, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        toastr.error('Message Deleted For Everyone')
-                    }else{
-                        toastr.error('Message not deleted')
-                    }
-
-                    elm_ppp.parentElement.remove();
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
-    }
 
 
 </script>

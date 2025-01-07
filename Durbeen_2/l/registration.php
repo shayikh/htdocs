@@ -30,7 +30,7 @@ if (isset($_POST['signup'])) {
         $gender = $_POST['gender'];
 
         date_default_timezone_set("Asia/Dhaka");
-        
+
         if ($_FILES['pro_pic']['name']) {
             $imageOldName = $_FILES['pro_pic']['name'];
             $extension = pathinfo($imageOldName, PATHINFO_EXTENSION);
@@ -42,12 +42,120 @@ if (isset($_POST['signup'])) {
         }
 
 
-        $SQL2 = "INSERT INTO `account`(`name`, `email`, `password`,`date_birth`, `gender`, `pro_pic`) VALUES ('$name','$email','$password','$date_birth','$gender','$imageNewName')";
+        $SQL2 = "INSERT INTO `registration`(`name`, `email`, `password`, `pro_pic`, `cov_pic`) VALUES ('$name','$email','$password','$imageNewName','cov_pic.jpg')";
         mysqli_query($connection, $SQL2);
 
+
+        $SQL3 = "SELECT * FROM `registration` WHERE `email`='$email'";
+        $run3 = mysqli_query($connection, $SQL3);
+        $data3 = mysqli_fetch_assoc($run3);
+
+        $unique_id_me = $data3['unique_id'];
+
+        $_SESSION['unique_id_me'] = $unique_id_me;
+
+        $SQL4 = "INSERT INTO `about`(`unique_id`, `date_birth`, `gender`) VALUES ('$unique_id_me','$date_birth','$gender')";
+        mysqli_query($connection, $SQL4);
+
+
+        //create notification table
+        $SQL5 = "CREATE TABLE `$unique_id_me notify` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`sender` varchar(255),
+			`sender_id` bigint(255),
+			`seen` tinyint(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQL5);
+
+
+        $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me chats` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`unique_id_fr` bigint(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreate);
+
+
+
+
+
+
+
+        $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me follow` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`unique_id_fr` bigint(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreate);
+
+        $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_me')";
+        mysqli_query($connection_info, $SQL400);
+
+        if($unique_id_me != 1){
+            $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
+            mysqli_query($connection_info, $SQL400);
+        }
+
+
+
+
+
+
+
         
-        header('location:./index.php?wait');
-        echo "<script>window.location = './index.php?wait'</script>";
+        $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me allow` (
+            `id` bigint(255) unsigned NOT NULL auto_increment,
+            `unique_id_fr` bigint(255),
+            PRIMARY KEY  (`id`)
+        )";
+        mysqli_query($connection_info, $SQLcreate);
+
+        if($unique_id_me != 1){
+            $SQL400 = "INSERT INTO `1 allow`(`unique_id_fr`) VALUES ('$unique_id_me')";
+            mysqli_query($connection_info, $SQL400);
+        }
+
+
+
+
+        
+
+
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`message` longtext,
+			`image` varchar(1000),
+			`time` varchar(1000),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_message, $SQLcreateMe);
+
+
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me pro_pic` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`pro_pic` varchar(1000),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreateMe);
+        
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me cov_pic` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`cov_pic` varchar(1000),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreateMe);
+
+        $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me msg_grp` (
+			`id` bigint(255) unsigned NOT NULL auto_increment,
+			`grp_id` bigint(255),
+			PRIMARY KEY  (`id`)
+		)";
+        mysqli_query($connection_info, $SQLcreateMe);
+
+
+        header('location:./about_me.php?type=about_me');
+        echo "<script>window.location = './about_me.php?type=about_me'</script>";
     }
 
 }
@@ -146,7 +254,7 @@ if (isset($_POST['signup'])) {
                                 <input required name=name type="text" class="form-control" placeholder="Full Name">
                             </div>
                             <div class="col-md-12 mt-2">
-                                <input required name="email" oninput="uniqueEmail()" id="emailID" type="email" class="form-control" placeholder="Email address">
+                                <input required name="email" oninput="uniqueEmailRegister()" id="emailID" type="email" class="form-control" placeholder="Email address">
                             </div>
 
                             <b>
@@ -187,31 +295,7 @@ if (isset($_POST['signup'])) {
 
 
     <script>
-
         let email = document.querySelector("#emailID");
-        function uniqueEmail() {
-            let product = {};
-
-            product.email = email.value;
-
-            axios.post("../api/reg_uniq_email.php",
-                    product, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    if (res.data == "0") {
-                        toastr.error("This email is used by someone. You can not use this email");
-                        alert("This email is used by someone. You can not use this email");
-                        email.value = "";
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-
     </script>
 
 

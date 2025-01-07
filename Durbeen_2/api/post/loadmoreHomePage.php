@@ -27,7 +27,7 @@ $runF=mysqli_query($connection_info,$SQLF);
 $countF = mysqli_num_rows($runF);
 
 
-if($countF >= 1){
+if($countF == 1){
     $SQL2 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
     $run2 = mysqli_query($connection,$SQL2);
     $data2 = mysqli_fetch_assoc($run2);
@@ -81,9 +81,11 @@ if($countF >= 1){
         <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
         <p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
 
-        <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
+        <button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
             <i class="fas fa-share"></i>
-        </a>
+        </button>
+        
+        <button onclick="showPostLinkForwardfn(<?php echo $Postid ?>)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
         <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
         <input type="text" class="ms-5 mt-2">

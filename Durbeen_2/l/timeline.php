@@ -51,7 +51,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="postModalLabel">Make Post</h5>
+                <h5 class="modal-title text-dark" id="postModalLabel">Make Post</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -73,7 +73,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Comments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
             </div>
             <div class="modal-body">
@@ -87,7 +87,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <th class="text-center text-dark" scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="commentTboody">
+                    <tbody id="commentTbody">
 
                     </tbody>
                 </table>
@@ -107,7 +107,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Edit Post</h5>
                 <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -121,6 +121,78 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                     <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Post Link Forward Modal -->
+<div class="modal fade" id="postlinkforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Post Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_frID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="hidden_post_id" id="hidden_post_id_all_frID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+
+                            <input name="forwardBtn" value="FORWARD TO ALL FRIENDS" class="form-control btn btn-success" type="submit">
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_grpID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="hidden_post_id" id="hidden_post_id_all_grpID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+
+                            <input name="forwardBtn" value="FORWARD TO ALL GROUPS" class="form-control btn btn-success" type="submit">
+
+                        </form>
+                    </div>
+                </div>
+
+                <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
+
+                    <input type="hidden" name="hidden_post_id" id="hidden_post_id" value="">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                    
+                    <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="searchBtn" id="searchBtnID" value="SEARCH" class="form-control btn btn-danger" type="submit" aria-label="Close">
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-hover table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postlinkforwardTboodyID">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                    Close
+                </button>
             </div>
         </div>
     </div>
@@ -147,9 +219,21 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     let button = document.querySelector("#buttonID");
     let postCloseBtn = document.querySelector("#postCloseBtn");
 
-    let commentTboody = document.querySelector("#commentTboody");
+    let commentTbody = document.querySelector("#commentTbody");
+    let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
+
+    let forwardForm = document.querySelector("#forwardFormID");
+    let searchValue = document.querySelector("#searchID");
+    let searchButton = document.querySelector("#searchBtnID");
+    let hidden_post_id_number = document.querySelector("#hidden_post_id");
 
 
+    let hidden_post_id_all_fr = document.querySelector("#hidden_post_id_all_frID");
+    let hidden_post_id_all_grp = document.querySelector("#hidden_post_id_all_grpID");
+    
+    let forwardFormID_all_fr = document.querySelector("#forwardFormID_all_frID");
+    let forwardFormID_all_grp = document.querySelector("#forwardFormID_all_grpID");
+    
     var page_no = 1;
     var returned = 1;
 
@@ -192,6 +276,108 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             })
     }
 
+
+    forwardFormID_all_fr.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_fr = new FormData(forwardFormID_all_fr);
+
+        $.ajax({
+            url: "../api/postLinkForward/forwardLoop/forwardAllFr.php",
+            type: "POST",
+            data: forwardFormdata_all_fr,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_fr.classList.add("d-none");
+                toastr.success('Posts Sent yo All Friends');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    
+    forwardFormID_all_grpID.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_grp = new FormData(forwardFormID_all_grpID);
+
+        $.ajax({
+            url: "../api/postLinkForward/forwardLoop/forwardAllGrp.php",
+            type: "POST",
+            data: forwardFormdata_all_grp,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_grpID.classList.add("d-none");
+                toastr.success('Posts Sent yo All Friends');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    forwardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (searchValue.value == "") {
+            toastr.error('Search Field is Empty');
+        } else {
+            var forwardFormdata = new FormData(forwardForm);
+
+            $.ajax({
+                url: "../api/postLinkForward/searchFriend.php",
+                type: "POST",
+                data: forwardFormdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    // let json = JSON.parse(data);
+
+                    // console.log(data);
+
+
+                    if (data == 0) {
+                        postlinkforwardTboody.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        postlinkforwardTboody.innerHTML = data;
+                        searchValue.value = "";
+                        toastr.success('Friends Found');
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    })
 
     editForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -243,72 +429,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     }
 
 
-    const deleteComment = (comment_id, unique_id_me, elm) => {
-
-        let delComment = {};
-
-        delComment.comment_id = comment_id;
-        delComment.unique_id_me = unique_id_me;
-
-        axios.post("../api/comment/deleteComment.php",
-                delComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 1) {
-                    elm.parentElement.parentElement.remove();
-                    toastr.info('Comment Deleted');
-                } else {
-                    toastr.warning("You Can not Delete Other's Comment");
-                }
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
-
-
-    const clearModal = () => {
-        commentTboody.innerHTML = "";
-    }
-
-
-    const showCommentfn = (post_id) => {
-
-        let showComment = {};
-
-        showComment.post_id = post_id;
-
-        axios.post("../api/comment/showComments.php",
-                showComment, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-
-                // console.log(res.data);
-
-                let all = res.data;
-
-                all.forEach(comment => {
-                    commentTboody.innerHTML = commentTboody.innerHTML + makeCommentTr(comment);
-                })
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }
-
 
     const makeCommentTr = (comment) => {
         let tr = `<tr>
@@ -329,49 +449,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 						</td>
 				</tr>`
         return tr;
-    }
-
-
-    const commentfn = (elm, post_id, post_giver_id, comn_giver_id) => {
-
-        let comment = elm.nextElementSibling.value;
-
-        if (comment == "") {
-            toastr.error("Comment is Empty");
-        } else {
-
-
-            let commentp = {};
-
-            commentp.comment = comment;
-            commentp.post_id = post_id;
-            commentp.post_giver_id = post_giver_id;
-            commentp.comn_giver_id = comn_giver_id;
-
-
-            axios.post("../api/comment/comment.php",
-                    commentp, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(elm);
-
-                    if (res.data == 1) {
-                        elm.nextElementSibling.value = '';
-                        toastr.success("Comment Done");
-                    }
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        }
-
-
     }
 
 
@@ -417,8 +494,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 }
             });
         }
-        
-
     })
 
 
@@ -429,7 +504,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <div class="card" style="width: 100%;border: none">
 
                                 <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
-                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $dataMe['pro_pic'] ?>">
+                                    <img style="border-radius: 50%" width="70px" height="70px" src="../pro_pic/<?php echo $pro_pic_me ?>">
                                     <b><?php echo $dataMe['name'] ?></b>
                                 </p>
                                 <img width="100%" src="../post_image/${post.image}">
@@ -452,9 +527,10 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                             <button onclick="editfn(${post.id}, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
+                            <button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                                 <i class="fas fa-share"></i>
-                            </a>
+                            </button>
+                            <button onclick="showPostLinkForwardfn(${post.id})" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
                             <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                             <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                             <input type="text" class="ms-5 mt-2">
@@ -465,139 +541,36 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     }
 
 
-    const likefn = (post_id, unique_id_me, elm) => {
-        let likep = {};
+    const showPostLinkForwardfn = (post_id) => {
 
-        likep.post_id = post_id;
-        likep.unique_id_me = unique_id_me;
+        forwardFormID_all_fr.classList.remove("d-none");
+        forwardFormID_all_grpID.classList.remove("d-none");
+        
+        hidden_post_id_all_fr.value = post_id;
+        hidden_post_id_all_grp.value = post_id;
+        
+        hidden_post_id_number.value = post_id;
 
-        axios.post("../api/post/like_post.php",
-                likep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(elm);
+        let showPostLinkForward = {};
 
-                if (res.data == 1) {
-                    elm.style.color = '#0D6EFD';
-                    elm.nextElementSibling.style.color = '#fff';
-                } else {
-                    elm.style.color = '#fff';
-                }
+        showPostLinkForward.unique_id_me = <?php echo $unique_id_me ?>;
+        showPostLinkForward.post_id = post_id;
 
+        axios.post("../api/postLinkForward/friendList.php",
+        showPostLinkForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+            // console.log(res.data);
+            postlinkforwardTboody.innerHTML = res.data;
 
-
-    const dislikefn = (post_id, unique_id_me, elm) => {
-        let dislikep = {};
-
-        dislikep.post_id = post_id;
-        dislikep.unique_id_me = unique_id_me;
-
-        axios.post("../api/post/dislike_post.php",
-                dislikep, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(elm);
-
-                if (res.data == 1) {
-                    elm.style.color = '#0D6EFD';
-                    elm.previousElementSibling.style.color = '#fff';
-                } else {
-                    elm.style.color = '#fff';
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    
-    const deletePost = (post_id, unique_id_me, elm) => {
-        let confirm = window.confirm("Are You Sure?");
-
-        if (confirm) {
-
-            let delPost = {};
-
-            delPost.post_id = post_id;
-            delPost.unique_id_me = unique_id_me;
-
-            axios.post("../api/post/deletePost.php",
-                    delPost, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == 1) {
-                        elm.parentElement.parentElement.remove();
-                        toastr.error('Post Deleted');
-                    } else {
-                        toastr.error('This is not Your Post');
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
-
-    }
-
-
-    const sharefn = (post_id, unique_id_me) => {
-        let confirm = window.confirm("Share This Post to Your Timeline?");
-
-        if (confirm) {
-            let sharep = {};
-
-            sharep.post_id = post_id;
-            sharep.unique_id_me = unique_id_me;
-
-            axios.post("../api/post/share.php",
-                    sharep, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-
-                    let json = res.data;
-
-                    let unique_id_me = json.unique_id_me;
-                    let newPost = json.newPost;
-
-                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
-                    toastr.success('Post Shared');
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        } else {
-            return;
-        }
+        })
+        .catch(err => {
+            console.log(err);
+        })
 
     }
 

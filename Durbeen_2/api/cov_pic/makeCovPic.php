@@ -36,7 +36,7 @@ $SQL3 = "SELECT * FROM `$unique_id_me cov_pic` WHERE `id`='$cov_pic_id'";
 $run3 = mysqli_query($connection_info, $SQL3);
 $latestData = mysqli_fetch_assoc($run3);
 
-echo json_encode(["new_cov_pic"=>$new_cov_pic, "newCovPic" => $latestData]);
+echo json_encode(["new_cov_pic"=>$new_cov_pic, "oldCovPic" => $latestData]);
 
 
 

@@ -1,29 +1,22 @@
 <?php
 include './header.php';
 
-
-$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
-$run1 = mysqli_query($connection, $SQL1);
-$count1 = mysqli_num_rows($run1);
-
-
 ?>
-
-<?php if ($count1 > 0) { ?>
-<a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Group</a>
-<?php } ?>
 
 
 <!-- main page -->
 <div class="container" style="margin-top: 150px;">
+
+    <a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#groupModal">Create Group</a>
+
     <h4 class="text-center">My Groups</h4>
     <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
         </tbody>
     </table>
-</div>
 
+</div>
 
 
 <!-- Create Group Modal -->
@@ -31,7 +24,7 @@ $count1 = mysqli_num_rows($run1);
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="groupModalLabel">Create New Messenger Group</h5>
+                <h5 class="modal-title text-dark" id="groupModalLabel">Create New Messenger Group</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -54,7 +47,7 @@ $count1 = mysqli_num_rows($run1);
                         </div>
                     </div>
 
-                    <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="saveBtn" id="buttonID" value="CREATE" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>

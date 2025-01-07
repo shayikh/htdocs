@@ -35,8 +35,8 @@ $run1 = mysqli_query($connection_info, $SQL1);
     </a>
     <br>
 
-    <?php } ?>
 
+    <?php } ?>
 </div>
 
 <?php

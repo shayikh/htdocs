@@ -51,7 +51,7 @@ $data111 = mysqli_fetch_assoc($run111);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="searchModalLabel">Search Friends</h5>
+                <h5 class="modal-title text-dark" id="searchModalLabel">Search Friends</h5>
                 <button id="searchCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -63,7 +63,7 @@ $data111 = mysqli_fetch_assoc($run111);
                         </div>
                     </div>
                 </div>
-                <input onclick="searchfn(<?php echo $unique_id_me ?>)" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="button" aria-label="Close">
+                <input onclick="searchfn(<?php echo $unique_id_me ?>)" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="button">
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@ $data111 = mysqli_fetch_assoc($run111);
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="groupModalLabel">Update Group Info</h5>
+                <h5 class="modal-title text-dark" id="groupModalLabel">Update Group Info</h5>
                 <button id="postCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -98,7 +98,7 @@ $data111 = mysqli_fetch_assoc($run111);
                         </div>
                     </div>
 
-                    <input name="saveBtn" id="buttonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="saveBtn" id="buttonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>
@@ -239,113 +239,6 @@ $data111 = mysqli_fetch_assoc($run111);
 
     })
 
-
-    const adminfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
-
-        let addVar = {};
-
-        addVar.unique_id_me = unique_id_me;
-        addVar.unique_id_fr = unique_id_fr;
-        addVar.grp_id = grp_id;
-
-        axios.post("../api/group/make_admin.php",
-                addVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 0) {
-                    toastr.error('Removed from Admin');
-                    elm.innerHTML = '<i class="fas fa-user-cog"></i>';
-                    elm.classList.add('btn-success');
-                    elm.classList.remove('btn-danger');
-                } else {
-                    toastr.success('Made Admin');
-                    elm.innerHTML = '<i class="fas fa-users"></i>';
-                    elm.classList.add('btn-danger');
-                    elm.classList.remove('btn-success');
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    
-    const addfn = (unique_id_me, unique_id_fr, grp_id, elm) => {
-
-        let addVar = {};
-
-        addVar.unique_id_me = unique_id_me;
-        addVar.unique_id_fr = unique_id_fr;
-        addVar.grp_id = grp_id;
-
-        axios.post("../api/group/add.php",
-                addVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == 0) {
-                    toastr.error('Removed');
-                    elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                    elm.classList.add('btn-success');
-                    elm.classList.remove('btn-danger');
-                } else {
-                    toastr.success('Added');
-                    elm.innerHTML = '<i class="fas fa-user-minus"></i>';
-                    elm.classList.add('btn-danger');
-                    elm.classList.remove('btn-success');
-                }
-
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    const cleanGrp = (grp_id) => {
-        let confirm = window.confirm("Do You Want to Clear This Group Messages?");
-
-        if (confirm) {
-
-            let message = {};
-
-            message.grp_id = grp_id;
-
-            axios.post("../api/group/cleanGrp.php",
-                    message, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        window.location = './groups.php?type';
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        } else {
-            return;
-        }
-    }
-
-
-    
 </script>
 
 

@@ -149,12 +149,92 @@ if ($countTest == 0) {
 
                     <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
-                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit">
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- Message Forward Modal -->
+<div class="modal fade" id="messageforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel2">Forward Message</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearMsgForwardModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_frID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="typical_id" value="3">
+                            <input type="hidden" name="hidden_message_id" id="hidden_message_id_all_frID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                            <input type="hidden" name="from_id" value="<?php echo $unique_id_fr ?>">
+
+
+                            <input name="forwardBtn" value="FORWARD TO ALL FRIENDS" class="form-control btn btn-success" type="submit">
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post" id="forwardFormID_all_grpID" enctype="multipart/form-data">
+
+                            <input type="hidden" name="typical_id" value="3">
+                            <input type="hidden" name="hidden_message_id" id="hidden_message_id_all_grpID" value="">
+                            <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                            <input type="hidden" name="from_id" value="<?php echo $unique_id_fr ?>">
+
+
+                            <input name="forwardBtn" value="FORWARD TO ALL GROUPS" class="form-control btn btn-success" type="submit">
+
+                        </form>
+                    </div>
+                </div>
+
+                <form action="" method="post" id="forwardFormID" enctype="multipart/form-data">
+
+                    <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
+                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
+                    <input type="hidden" name="from_unique_id_fr" value="<?php echo $unique_id_fr ?>">
+                    
+                    <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <input style="background-color: #F3F3F3;color: #000" name="search" id="searchID" class="form-control mb-2" type="text" placeholder="Friend Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="searchBtn" value="SEARCH" class="form-control btn btn-danger" type="submit">
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-hover table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-dark" scope="col">Picture</th>
+                            <th class="text-center text-dark" scope="col" style="min-width: 200px">Name</th>
+                            <th class="text-center text-dark" scope="col">Forward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messageForwardID">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearMsgForwardModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <script>
@@ -166,6 +246,18 @@ if ($countTest == 0) {
     let message = document.querySelector("#messageID");
     let button = document.querySelector("#buttonID");
     let messageCloseBtn = document.querySelector("#messageCloseBtn");
+
+    let messageForwardTbody = document.querySelector("#messageForwardID");
+    let forwardForm = document.querySelector("#forwardFormID");
+    let searchValue = document.querySelector("#searchID");
+    let hidden_message_id_number = document.querySelector("#hidden_message_id");
+
+
+    let hidden_message_id_all_fr = document.querySelector("#hidden_message_id_all_frID");
+    let hidden_message_id_all_grp = document.querySelector("#hidden_message_id_all_grpID");
+    
+    let forwardFormID_all_fr = document.querySelector("#forwardFormID_all_frID");
+    let forwardFormID_all_grp = document.querySelector("#forwardFormID_all_grpID");
 
 
     var page_no = 1;
@@ -209,6 +301,142 @@ if ($countTest == 0) {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+
+    forwardFormID_all_fr.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_fr = new FormData(forwardFormID_all_fr);
+
+        $.ajax({
+            url: "../api/messageForward/forwardLoop/forwardAllFr.php",
+            type: "POST",
+            data: forwardFormdata_all_fr,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_fr.classList.add("d-none");
+                toastr.success('Messages Sent yo All Friends');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    
+    forwardFormID_all_grpID.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var forwardFormdata_all_grp = new FormData(forwardFormID_all_grpID);
+
+        $.ajax({
+            url: "../api/messageForward/forwardLoop/forwardAllGrp.php",
+            type: "POST",
+            data: forwardFormdata_all_grp,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                // console.log(data);
+                forwardFormID_all_grpID.classList.add("d-none");
+                toastr.success('Messages Sent yo All Friends');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    forwardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (searchValue.value == "") {
+            toastr.error('Search Field is Empty');
+        } else {
+            var forwardFormdata = new FormData(forwardForm);
+
+            $.ajax({
+                url: "../api/messageForward/searchFriend3.php",
+                type: "POST",
+                data: forwardFormdata,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    // alert('ok')
+                },
+                success: function(data) {
+
+                    // console.log(data);
+
+
+                    if (data == 0) {
+                        messageForwardTbody.innerHTML = "";
+                        toastr.error('Friends Not Found');
+                    } else {
+                        messageForwardTbody.innerHTML = data;
+                        searchValue.value = "";
+                        toastr.success('Friends Found');
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    })
+
+
+    const showMessageForwardfn = (message_id, unique_id_fr) => {
+        
+        forwardFormID_all_fr.classList.remove("d-none");
+        forwardFormID_all_grpID.classList.remove("d-none");
+        
+        hidden_message_id_all_fr.value = message_id;
+        hidden_message_id_all_grp.value = message_id;
+
+        hidden_message_id_number.value = message_id;
+
+        let messageForward = {};
+
+        messageForward.unique_id_me = <?php echo $unique_id_me ?>;
+        messageForward.message_id = message_id;
+        messageForward.from_unique_id_fr = unique_id_fr;
+
+        axios.post("../api/messageForward/friendList3.php",
+        messageForward, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+
+            // console.log(res.data);
+            messageForwardTbody.innerHTML = res.data;
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
     }
 
 
@@ -265,80 +493,20 @@ if ($countTest == 0) {
 								
 								<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 								
-								<button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
-										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
-								
+                                <button onclick="showMessageForwardfn(${message.id}, ${unique_id_fr})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+																
 								<button class="btn btn-sm btn-dark float-end"><i class='fas fa-eye-slash'></i></button>
+                                
+                                <button onclick="unsendMessage(${message.id}, ${unique_id_me}, ${unique_id_fr}, this)"
+										class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
+
 							</div>
 						</tr>`
         return tr;
     }
 
 
-    const deleteConv = (unique_id_me, unique_id_fr) => {
-        let confirm = window.confirm("Do You Want to Delete This Conversation?");
 
-        if (confirm) {
-
-            let message = {};
-
-            message.unique_id_me = unique_id_me;
-            message.unique_id_fr = unique_id_fr;
-
-            axios.post("../api/message/deleteConv.php",
-                    message, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    // console.log(res.data);
-
-                    if (res.data == '1') {
-                        window.location = './homepage.php?type';
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        } else {
-            return;
-        }
-    }
-
-
-    const unsendMessage = (id_lll, unique_id_me, unique_id_fr, elm_ppp) => {
-
-        let message = {};
-
-        message.id = id_lll;
-        message.unique_id_me = unique_id_me;
-        message.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/message/unsend.php",
-                message, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                // console.log(res.data);
-
-                if (res.data == '1') {
-                    toastr.error('Message Deleted For Everyone')
-                }
-                // console.log(elm_ppp.parentElement);
-
-                elm_ppp.parentElement.remove();
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-
-    }
 
 
 </script>

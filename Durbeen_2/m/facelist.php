@@ -1,10 +1,6 @@
 <?php
 include './header.php';
 
-if (isset($_GET['nofollow'])) {
-    echo "<script>toastr.info('He did not Allow to Follow You')</script>";
-}
-
 ?>
 
 
@@ -30,7 +26,7 @@ if (isset($_GET['nofollow'])) {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="text-dark" class="modal-title" id="searchModalLabel">Search Friends</h5>
+                <h5 class="modal-title text-dark" id="searchModalLabel">Search Friends</h5>
                 <button id="searchCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -38,11 +34,11 @@ if (isset($_GET['nofollow'])) {
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="form-label text-dark">Friend Name</label>
-                            <input id="searchID" style="background-color: #F3F3F3;" class="form-control" type="text" required>
+                            <input id="searchID" style="background-color: #F3F3F3;" class="form-control" type="text">
                         </div>
                     </div>
                 </div>
-                <input onclick="searchfn(<?php echo $unique_id_me ?>)" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="button" aria-label="Close">
+                <input onclick="searchfn(<?php echo $unique_id_me ?>)" value="SEARCH" class="mt-2 float-end btn btn-sm red" type="button">
             </div>
         </div>
     </div>
@@ -80,23 +76,23 @@ if (isset($_GET['nofollow'])) {
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/facelist/loadmoreFacelist_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
@@ -106,100 +102,40 @@ if (isset($_GET['nofollow'])) {
         if(search.value == ""){
             toastr.error('Search Field is Empty');
         }else{
+            
             let searchVar = {};
 
             searchVar.unique_id_me = unique_id_me;
             searchVar.search = search.value;
 
             axios.post("../api/facelist/searchFriend_m.php",
-                searchVar, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(res => {
-                    headerText.innerText = "Search Results";
-                    // console.log(res.data);
+            searchVar, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                headerText.innerText = "Search Results";
+                // console.log(res.data);
 
-                    if (res.data == 0) {
-                        tbody.innerHTML = "";
-                        toastr.error('Friends Not Found');
-                    } else {
-                        tbody.innerHTML = res.data;
-                        searchCloseBtn.click();
-                        search.value = "";
-                        toastr.success('Friends Found');
-                    }
-                    ifSearch = 1;
+                if (res.data == 0) {
+                    tbody.innerHTML = "";
+                    toastr.error('Friends Not Found');
+                } else {
+                    tbody.innerHTML = res.data;
+                    searchCloseBtn.click();
+                    search.value = "";
+                    toastr.success('Friends Found');
+                }
+                ifSearch = 1;
 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
     }
-    const allowfn = (unique_id_me, unique_id_fr, elm) => {
 
-        let allowVar = {};
-
-        allowVar.unique_id_me = unique_id_me;
-        allowVar.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/facelist/allow.php",
-        allowVar, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => {
-            // console.log(res.data);
-
-            if (res.data == 0) {
-                toastr.error('Rejected to Follow You');
-                elm.innerHTML = '<i class="fas fa-user-check"></i>';
-                elm.classList.add('btn-success');
-                elm.classList.remove('btn-danger');
-            } else {
-                toastr.success('Allowed to Follow You');
-                elm.innerHTML = '<i class="fas fa-user-times"></i>';
-                elm.classList.add('btn-danger');
-                elm.classList.remove('btn-success');
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
-    const follow_req = (unique_id_me, unique_id_fr, elm) => {
-
-        let follow_req = {};
-
-        follow_req.unique_id_me = unique_id_me;
-        follow_req.unique_id_fr = unique_id_fr;
-
-        axios.post("../api/facelist/follow_req.php",
-        follow_req, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => {
-            console.log(res.data);
-
-            if (res.data == 1) {
-                toastr.success('Follow Request Sent');
-                elm.remove();
-            }else{
-                toastr.error('Unfollowed');
-                elm.innerHTML = '<i class="fas fa-user-plus"></i>';
-                elm.classList.add('btn-success');
-                elm.classList.remove('btn-danger');
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
 
 </script>
 
