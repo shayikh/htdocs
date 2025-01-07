@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2024 at 01:57 PM
+-- Generation Time: Jan 07, 2025 at 10:30 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -126,7 +126,8 @@ CREATE TABLE `registration` (
   `pro_pic` varchar(1000) NOT NULL,
   `cov_pic` varchar(1000) NOT NULL,
   `active` tinyint(255) NOT NULL DEFAULT 1,
-  `visit` bigint(255) DEFAULT 1
+  `visit` bigint(255) DEFAULT 1,
+  `locking` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
