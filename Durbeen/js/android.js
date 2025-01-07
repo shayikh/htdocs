@@ -37,6 +37,43 @@ const clearMsgForwardModal = () => {
     messageForwardTbody.innerHTML = "";
 }
 
+
+
+const lockingfn = (unique_id_me, elm) => {
+
+    let locking = {};
+
+    locking.unique_id_me = unique_id_me;
+
+    axios.post("../api/about_update/locking.php",
+        locking, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+
+        // console.log(res.data);
+        if(res.data == 11){
+            elm.classList.add("btn-success");
+            elm.classList.remove("btn-danger");
+            elm.innerText = "Unlock Profile";
+            toastr.error("Profile Locked");
+        }else{
+            elm.classList.add("btn-danger");
+            elm.classList.remove("btn-success");
+            elm.innerText = "Lock Profile";
+            toastr.success("Profile Unlocked");
+        }
+
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+}
+
+
 const removeLikefn = (like_id, elm) => {
 
     let removeLike = {};

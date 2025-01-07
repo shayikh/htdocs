@@ -199,7 +199,18 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                         <h6 class="text-blue">Lock/Unlock Profile</h6>
                     </td>
                     <td>
-                    <button class="btn btn-sm btn-<?php $dataMe['locking'] == '0' ? printf("danger") : "success" ?>" onclick="lockingfn(<?php echo $unique_id_me ?>)"><?php $dataMe['locking'] == '0' ? printf("Lock Profile") : "Unlock Profile" ?></button>
+                        <button class="btn btn-sm 
+                        <?php if($dataMe['locking'] == 0){
+                            echo 'btn-danger';
+                        }else{
+                            echo 'btn-success';
+                        } ?>" onclick="lockingfn(<?php echo $unique_id_me ?>, this)">
+                            <?php if($dataMe['locking'] == 0){
+                                echo 'Lock Profile';
+                            }else{
+                                echo 'Unlock Profile';
+                            } ?>
+                        </button>
                     </td>
                 </tr>
             </table>
