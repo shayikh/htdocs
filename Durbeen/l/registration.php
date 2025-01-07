@@ -76,6 +76,12 @@ if (isset($_POST['signup'])) {
 		)";
         mysqli_query($connection_info, $SQLcreate);
 
+
+
+
+
+
+
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me follow` (
 			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`unique_id_fr` bigint(255),
@@ -85,8 +91,34 @@ if (isset($_POST['signup'])) {
 
         $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_me')";
         mysqli_query($connection_info, $SQL400);
-        $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
+
+        if($unique_id_me != 1){
+            $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
+            mysqli_query($connection_info, $SQL400);
+        }
+
+
+
+
+
+
+
+        
+        $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me allow` (
+            `id` bigint(255) unsigned NOT NULL auto_increment,
+            `unique_id_fr` bigint(255),
+            PRIMARY KEY  (`id`)
+        )";
+        mysqli_query($connection_info, $SQLcreate);
+
+        $SQL400 = "INSERT INTO `1 allow`(`unique_id_fr`) VALUES ('$unique_id_me')";
         mysqli_query($connection_info, $SQL400);
+
+
+
+
+
+        
 
 
         $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (

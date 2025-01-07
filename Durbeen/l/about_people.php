@@ -8,7 +8,6 @@ if ($unique_id_fr == $unique_id_me) {
 }
 
 
-
 $SQLA = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
 $runA = mysqli_query($connection_info, $SQLA);
 $countA = mysqli_num_rows($runA);

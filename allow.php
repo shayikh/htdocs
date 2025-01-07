@@ -21,7 +21,16 @@ while ($data1 = mysqli_fetch_assoc($run1)){
     )";
     mysqli_query($connection_info, $SQLcreate);
 
-
-
-
 }
+
+
+
+
+for($i = 1; $i <= 10; $i++){
+    echo 1;
+}
+
+
+
+
+

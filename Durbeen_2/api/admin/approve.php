@@ -70,8 +70,12 @@ mysqli_query($connection_info, $SQLcreate);
 
 $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_me')";
 mysqli_query($connection_info, $SQL400);
-$SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
-mysqli_query($connection_info, $SQL400);
+
+if($unique_id_me != 1){
+    $SQL400 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('1')";
+    mysqli_query($connection_info, $SQL400);
+}
+
 $SQL400 = "INSERT INTO `1 allow`(`unique_id_fr`) VALUES ('$unique_id_me')";
 mysqli_query($connection_info, $SQL400);
 
