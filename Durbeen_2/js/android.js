@@ -159,11 +159,10 @@ const showCommentfn = (post_id) => {
 }
 
 
-const forwardPostLinkToMefn = (unique_id_fr, post_id, unique_id_me, elm) => {
+const forwardPostLinkToMefn = (post_id, unique_id_me, elm) => {
 
     let commentp = {};
 
-    commentp.unique_id_fr = unique_id_fr;
     commentp.post_id = post_id;
     commentp.unique_id_me = unique_id_me;
 
