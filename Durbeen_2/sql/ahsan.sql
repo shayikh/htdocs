@@ -176,7 +176,7 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`, `locking`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', 'shayikhalmahdidurbeen114', 'cv.JPG', 'cov_pic.jpg', 0, 0, 0);
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', 'shayikhalmahdidurbeen114', 'cv.jpg', 'cov_pic.jpg', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
