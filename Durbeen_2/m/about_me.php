@@ -509,6 +509,7 @@ $count1 = mysqli_num_rows($run1);
                         <tr>
                             <th class="text-center text-dark" scope="col">Image</th>
                             <th class="text-center text-dark" scope="col">Post</th>
+                            <th class="text-center text-dark" scope="col">Show</th>
                             <th class="text-center text-dark" scope="col">Remove Dislike</th>
                         </tr>
                     </thead>
