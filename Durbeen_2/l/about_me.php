@@ -8,10 +8,22 @@ $runAbout = mysqli_query($connection, $SQLabout);
 $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
+$SQL1 = "SELECT * FROM `admin` WHERE `unique_id`='$unique_id_me'";
+$run1 = mysqli_query($connection, $SQL1);
+$count1 = mysqli_num_rows($run1);
 ?>
 
 
-<a style="position: fixed;right:174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
+<a style="position: fixed;right: 174px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile</a>
+
+
+<?php if ($count1 > 0) { ?>
+<a style="position: fixed;right: 282px;top:91px;z-index:20;font-weight: 600;" href="admin.php?type" class="btn btn-success">Durbeen Admin</a>
+
+<a style="position: fixed;right: 426px;top:91px;z-index:20;font-weight: 600;" href="register_confirm.php?type" class="btn btn-success">Account Request</a>
+<?php } ?>
+
+
 
 
 <!-- main page -->
