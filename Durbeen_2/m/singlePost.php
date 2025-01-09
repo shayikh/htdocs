@@ -121,7 +121,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
                     Close
                 </button>
             </div>
@@ -194,7 +194,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" onclick="clearModal()">
                     Close
                 </button>
             </div>
