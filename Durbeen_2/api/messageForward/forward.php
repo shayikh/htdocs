@@ -124,6 +124,7 @@ if($typical_id == 33){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -180,6 +181,7 @@ if($typical_id == 33){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -224,6 +226,7 @@ if($typical_id == 33){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -353,6 +356,7 @@ elseif($typical_id == 23){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -404,6 +408,7 @@ elseif($typical_id == 23){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -445,6 +450,7 @@ elseif($typical_id == 23){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -573,6 +579,7 @@ elseif($typical_id == 13){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -624,6 +631,7 @@ elseif($typical_id == 13){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
@@ -665,6 +673,7 @@ elseif($typical_id == 13){
     $data1 = mysqli_fetch_assoc($run1);
 
     $message = $data1['message'];
+    $message = mysqli_real_escape_string($connection_message, $message);
     $image = $data1['image'];
 
 
