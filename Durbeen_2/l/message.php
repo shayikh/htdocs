@@ -324,7 +324,7 @@ if ($countTest == 0) {
 
                 // console.log(data);
                 forwardFormID_all_fr.classList.add("d-none");
-                toastr.success('Messages Sent yo All Friends');
+                toastr.success('Messages Forwarded to All Friends');
             },
             error: function(err) {
                 console.log(err);
@@ -355,7 +355,7 @@ if ($countTest == 0) {
 
                 // console.log(data);
                 forwardFormID_all_grpID.classList.add("d-none");
-                toastr.success('Messages Sent yo All Friends');
+                toastr.success('Messages Forwarded to All Groups');
             },
             error: function(err) {
                 console.log(err);

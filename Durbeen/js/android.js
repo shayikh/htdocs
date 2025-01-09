@@ -209,7 +209,7 @@ const forwardPostLinkToGrpfn = (grp_id, post_id, unique_id_me, elm) => {
 
         if (res.data == 1) {
             elm.parentElement.parentElement.remove();
-            toastr.success("Post Link Forwarded to Yourself");
+            toastr.success("Post Link Forwarded to the Group");
         }
 
 
@@ -241,7 +241,7 @@ const forwardPostLinkToFriendfn = (unique_id_fr, post_id, unique_id_me, elm) => 
 
         if (res.data == 1) {
             elm.parentElement.parentElement.remove();
-            toastr.success("Post Link Forwarded");
+            toastr.success("Post Link Forwarded to Your Friend");
         }
 
 
@@ -250,11 +250,6 @@ const forwardPostLinkToFriendfn = (unique_id_fr, post_id, unique_id_me, elm) => 
         console.log(err);
     })
 }
-
-
-
-
-
 
 
 
@@ -277,7 +272,7 @@ const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, 
         }
     })
     .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
 
         if (res.data == 1) {
             elm.parentElement.parentElement.remove();

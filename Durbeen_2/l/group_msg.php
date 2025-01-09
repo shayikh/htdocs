@@ -240,7 +240,7 @@ $grpName = $datagrp['grp_name'];
 
                 // console.log(data);
                 forwardFormID_all_fr.classList.add("d-none");
-                toastr.success('Messages Sent yo All Friends');
+                toastr.success('Messages Forwarded to All Friends');
             },
             error: function(err) {
                 console.log(err);
@@ -271,7 +271,7 @@ $grpName = $datagrp['grp_name'];
 
                 // console.log(data);
                 forwardFormID_all_grpID.classList.add("d-none");
-                toastr.success('Messages Sent yo All Groups');
+                toastr.success('Messages Forwarded to All Groups');
             },
             error: function(err) {
                 console.log(err);
@@ -378,12 +378,11 @@ $grpName = $datagrp['grp_name'];
 
                     let json = JSON.parse(data);
 
-                    let unique_id_me = json.unique_id_me;
                     let newMessage = json.newMessage;
                     let grp_id = json.grp_id;
 
 
-                    tbody.innerHTML = makeTr(newMessage, unique_id_me, grp_id) + tbody.innerHTML;
+                    tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
 
                     messageCloseBtn.click();
                     toastr.success('Message Sent');

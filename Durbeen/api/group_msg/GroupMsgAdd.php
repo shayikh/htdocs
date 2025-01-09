@@ -44,7 +44,7 @@ $SQL4 = "SELECT * FROM `group $grp_id` ORDER BY `id` DESC LIMIT 1";
 $run4 = mysqli_query($connection_message, $SQL4);
 $latestData = mysqli_fetch_assoc($run4);
 
-echo json_encode(["unique_id_me"=>$unique_id_me, "grp_id"=>$grp_id, "newMessage" => $latestData]);
+echo json_encode(["grp_id"=>$grp_id, "newMessage" => $latestData]);
 
 
 

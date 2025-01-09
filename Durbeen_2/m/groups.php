@@ -14,7 +14,6 @@ $count1 = mysqli_num_rows($run1);
 <?php } ?>
 
 
-
 <!-- main page -->
 <div class="container" style="margin-top: 112px;">
     <h6 class="text-center">My Groups</h6>

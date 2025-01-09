@@ -28,8 +28,6 @@ if ($count2 > 0 && $count3 > 0) { ?>
 <?php } ?>
 
 
-
-
 <!-- NEWS FEED -->
 
 <div class="container" style="margin-top: 99px">
@@ -297,7 +295,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
 
                 // console.log(data);
                 forwardFormID_all_fr.classList.add("d-none");
-                toastr.success('Posts Sent yo All Friends');
+                toastr.success('Post Link Forwarded to All Friends');
             },
             error: function(err) {
                 console.log(err);
@@ -328,7 +326,7 @@ if ($count2 > 0 && $count3 > 0) { ?>
 
                 // console.log(data);
                 forwardFormID_all_grpID.classList.add("d-none");
-                toastr.success('Posts Sent yo All Friends');
+                toastr.success('Post Link Forwarded to All Groups');
             },
             error: function(err) {
                 console.log(err);

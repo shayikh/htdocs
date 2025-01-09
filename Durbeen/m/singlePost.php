@@ -241,7 +241,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
                 // console.log(data);
                 forwardFormID_all_fr.classList.add("d-none");
-                toastr.success('Posts Sent yo All Friends');
+                toastr.success('Post Link Forwarded to All Friends');
             },
             error: function(err) {
                 console.log(err);
@@ -272,7 +272,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
                 // console.log(data);
                 forwardFormID_all_grpID.classList.add("d-none");
-                toastr.success('Posts Sent yo All Friends');
+                toastr.success('Post Link Forwarded to All Groups');
             },
             error: function(err) {
                 console.log(err);

@@ -99,7 +99,7 @@ include './header.php';
 
                     <input type="hidden" name="hidden_message_id" id="hidden_message_id" value="">
                     <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me?>">
-                    <input type="hidden" name="from_id" value="<?php echo $unique_id_me ?>">
+                    <input type="hidden" name="from_unique_id_me" value="<?php echo $unique_id_me ?>">
                     
                     <div class="row mt-3">
                         <div class="col-lg-6">
@@ -222,7 +222,7 @@ include './header.php';
 
                 // console.log(data);
                 forwardFormID_all_fr.classList.add("d-none");
-                toastr.success('Messages Sent yo All Friends');
+                toastr.success('Messages Forwarded to All Friends');
             },
             error: function(err) {
                 console.log(err);
@@ -252,7 +252,7 @@ include './header.php';
 
                 // console.log(data);
                 forwardFormID_all_grpID.classList.add("d-none");
-                toastr.success('Messages Sent yo All Groups');
+                toastr.success('Messages Forwarded to All Groups');
             },
             error: function(err) {
                 console.log(err);
