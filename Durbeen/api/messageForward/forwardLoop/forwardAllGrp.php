@@ -141,10 +141,6 @@ if($typical_id == 1){
 
 
 
-    
-
-    $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
-    mysqli_query($connection_message, $SQL1);
 
 
 }elseif($typical_id == 3){
@@ -204,13 +200,5 @@ if($typical_id == 1){
             mysqli_query($connection_message, $SQL1);
         }
     }
-
-
-
-
-    
-
-    $SQL1 = "INSERT INTO `group $grp_id`(`senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES ('$MyName','$unique_id_me','$MyProPic','$message','$imageNewName','$time')";
-    mysqli_query($connection_message, $SQL1);
 
 }
