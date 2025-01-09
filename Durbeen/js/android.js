@@ -252,6 +252,14 @@ const forwardPostLinkToFriendfn = (unique_id_fr, post_id, unique_id_me, elm) => 
 }
 
 
+
+
+
+
+
+
+
+
 const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, elm) => {
 
     let commentp = {};
