@@ -59,7 +59,7 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h6>
                     <?php } ?>
                     <br>
-                    <button onclick="showMessageForwardfn(<?php echo $data3['id'] ?>, <?php echo $grp_id ?>)" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                    <button onclick="showMessageForwardfn(<?php echo $data3['id'] ?>, <?php echo $grp_id ?>)" class="btn btn-sm btn-dark float-end mb-2" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
                     <button onclick="unsendGrpMessage(<?php echo $data3['id'] ?>, <?php echo $grp_id ?>, this)"
                             class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>
                     </button>
