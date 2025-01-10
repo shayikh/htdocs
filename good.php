@@ -1,4 +1,5 @@
 <?php
+include './Durbeen/connection.php';
 
 $SQL1 = "SELECT * FROM `registration`";
 $run1 = mysqli_query($connection,$SQL1);
@@ -6,42 +7,15 @@ $run1 = mysqli_query($connection,$SQL1);
 
 
 
-for($unique_id = 1; $unique_id <= 16; $unique_id++){
+for($unique_id = 1; $unique_id <= 100; $unique_id++){
 
-    $SQL10 = "TRUNCATE TABLE `$unique_id allow`";
-    mysqli_query($connection_info, $SQL10);
+    $my_name = "Md Mehrab Alam Shayikh";
+    $unique_id_me = 1;
+    $unique_id_fr = 2;
 
-    $SQL10 = "TRUNCATE TABLE `$unique_id follow`";
-    mysqli_query($connection_info, $SQL10);
+    //notification sql
+    
+    $SQL3 = "INSERT INTO `$unique_id_fr notify`(`sender`, `sender_id`, `seen`) VALUES ('$my_name','$unique_id_me','0')";
+    mysqli_query($connection_info, $SQL3);
 }
 
-
-
-
-
-for($unique_id = 1; $unique_id <= 16; $unique_id++){
-
-    $SQL400 = "INSERT INTO `$unique_id follow`(`unique_id_fr`) VALUES ('$unique_id')";
-    mysqli_query($connection_info, $SQL400);
-}
-
-
-
-
-for($unique_id = 2; $unique_id <= 16; $unique_id++){
-
-    $SQL400 = "INSERT INTO `$unique_id follow`(`unique_id_fr`) VALUES ('1')";
-    mysqli_query($connection_info, $SQL400);
-}
-
-
-
-
-
-
-
-for($unique_id = 2; $unique_id <= 16; $unique_id++){
-
-    $SQL400 = "INSERT INTO `1 allow`(`unique_id_fr`) VALUES ('$unique_id')";
-    mysqli_query($connection_info, $SQL400);
-}

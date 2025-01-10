@@ -23,20 +23,7 @@ if ($countTest == 0) {
         $SQL99 = "UPDATE `$unique_id_me notify` SET `seen`='1' WHERE `sender_id`='$unique_id_fr'";
         mysqli_query($connection_info, $SQL99);
 
-        //delete from notify db
 
-        $SQL1 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
-        $run1 = mysqli_query($connection_info, $SQL1);
-        $count1 = mysqli_num_rows($run1);
-
-        if ($count1 > 50) {
-            $delete = $count1 - 50;
-
-            //50 is the minumum number of messages
-
-            $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `seen`='1' ORDER BY `id` ASC LIMIT $delete";
-            mysqli_query($connection_info, $SQL2);
-        }
 
 
         //create two table if not exist

@@ -4,6 +4,22 @@ include './header.php';
 $SQL1 = "SELECT * FROM `$unique_id_me notify` ORDER BY `id` DESC";
 $run1 = mysqli_query($connection_info, $SQL1);
 
+
+//delete from notify db
+
+$SQL3 = "SELECT * FROM `$unique_id_me notify` WHERE `seen`='1'";
+$run3 = mysqli_query($connection_info, $SQL3);
+$count3 = mysqli_num_rows($run3);
+
+if ($count3 > 100) {
+    $delete = $count3 - 100;
+
+    //100 is the minumum number of messages
+
+    $SQL2 = "DELETE FROM `$unique_id_me notify` WHERE `seen`='1' ORDER BY `id` ASC LIMIT $delete";
+    mysqli_query($connection_info, $SQL2);
+}
+
 ?>
 
 
