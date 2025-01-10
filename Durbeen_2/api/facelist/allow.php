@@ -17,6 +17,10 @@ $SQLA = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr
 $runA = mysqli_query($connection_info, $SQLA);
 $countA = mysqli_num_rows($runA);
 
+$SQLfrF = "SELECT * FROM `$unique_id_fr follow` WHERE `unique_id_fr`='$unique_id_me'";
+$runfrF = mysqli_query($connection_info, $SQLfrF);
+$countfrF = mysqli_num_rows($runfrF);
+
 
 
 if($countA == 0){
@@ -26,10 +30,12 @@ if($countA == 0){
   echo "1";
 }else{
   $SQL1 = "DELETE FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
-	mysqli_query($connection_info,$SQL1);
+	mysqli_query($connection_info, $SQL1);
 
-  $SQL2 = "DELETE FROM `$unique_id_fr follow` WHERE `unique_id_fr`='$unique_id_me'";
-  mysqli_query($connection_info,$SQL2);
+  if($countfrF == 1){
+    $SQL2 = "DELETE FROM `$unique_id_fr follow` WHERE `unique_id_fr`='$unique_id_me'";
+    mysqli_query($connection_info, $SQL2);
+  }
 
   echo "2";
 }
