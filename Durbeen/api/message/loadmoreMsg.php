@@ -64,9 +64,9 @@ while ($data3 = mysqli_fetch_assoc($run)) { ?>
                             class="response float-end py-2 px-3 bg-success"><?php echo $data3['message'] ?></h5>
                     <?php } ?>
 
-                    <button onclick="showMessageForwardfn(<?php echo $data3['id'] ?>, <?php echo $unique_id_fr ?>)" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                    <button onclick="showMessageForwardfn(<?php echo $data3['id'] ?>, <?php echo $unique_id_fr ?>)" class="btn btn-sm btn-dark float-end mb-2" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
 
-                    <button class="btn btn-sm btn-dark float-end"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
+                    <button class="btn btn-sm btn-dark float-end mb-2"><?php $data3['seen'] == 'Seen' ? printf("<i class='fas fa-eye'></i>") : printf("<i class='fas fa-eye-slash'></i>") ?></button>
 
                     <button onclick="unsendMessage(<?php echo $data3['id'] ?>, <?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)"
                             class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i>

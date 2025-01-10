@@ -388,7 +388,7 @@ include './header.php';
 
                             <h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>
-                            <button onclick="showMessageForwardfn(${message.id}, ${unique_id_me})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                            <button onclick="showMessageForwardfn(${message.id}, ${unique_id_me})" class="btn btn-sm btn-dark float-end mb-2" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
                             <button onclick="deleteMyNotes(${message.id}, ${unique_id_me}, this)"
                                     class="btn btn-sm btn-dark float-end mb-2"><i class="fas fa-trash-alt"></i></button>
                         </div>

@@ -389,7 +389,7 @@ include './header.php';
 						
 						<h5 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h5>
 						
-                        <button onclick="showMessageForwardfn(${message.id}, ${unique_id_me})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                        <button onclick="showMessageForwardfn(${message.id}, ${unique_id_me})" class="btn btn-sm btn-dark float-end mb-2" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
 						<button onclick="deleteMyNotes(${message.id}, ${unique_id_me}, this)"
 								class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
 					</div>

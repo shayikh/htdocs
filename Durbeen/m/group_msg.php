@@ -406,7 +406,7 @@ $grpName = $datagrp['grp_name'];
                             
                             <h6 style="border-radius: 35px" class="response float-end py-2 px-3 bg-success">${message.message}</h6>
                             <br>
-                            <button onclick="showMessageForwardfn(${message.id}, ${grp_id})" class="btn btn-sm btn-dark float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
+                            <button onclick="showMessageForwardfn(${message.id}, ${grp_id})" class="btn btn-sm btn-dark float-end mb-2" data-bs-toggle="modal" data-bs-target="#messageforwardModal"><i class="fas fa-forward"></i></button>
                             <button onclick="unsendGrpMessage(${message.id}, ${grp_id}, this)"
                                     class="btn btn-sm btn-dark float-end mb-2" title="Unsend"><i class="fas fa-trash-alt"></i></button>
                         </div>
