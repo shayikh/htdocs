@@ -23,7 +23,7 @@ $runfrA = mysqli_query($connection_info, $SQLfrA);
 $countfrA = mysqli_num_rows($runfrA);
 
 $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
-$runF = mysqli_query($connection_info,$SQLF);
+$runF = mysqli_query($connection_info, $SQLF);
 $countF = mysqli_num_rows($runF);
 
 
