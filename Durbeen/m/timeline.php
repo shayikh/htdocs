@@ -544,7 +544,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                                     </p>
                                     <img width="100%" src="../post_image/${post.image}">
                                     <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
-                                        <h6 class="card-title text-white">${post.time}</h6>
+                                        <p class="card-title text-white">${post.time}</p>
                                         <p class="card-text text-white">${post.post}</p>
                                     </div>
 
