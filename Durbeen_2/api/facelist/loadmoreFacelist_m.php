@@ -55,14 +55,14 @@ while ($data1 = mysqli_fetch_assoc($run)){
                 <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data1['visit'] ?></p>
             </a>
             <?php if($locking == 1) {?>
-            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countA == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 2px">
-                <?php $countA == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf('btn-success') : printf("btn-danger") ?>" style="margin-top: 5px">
+                <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
             </button>
             <?php } ?>
         </td>
         <td class="text-center">
-            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf('btn-success') : printf("btn-danger") ?>" style="margin-top: 5px">
-                <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countA == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 2px">
+                <?php $countA == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
             </button>
             <br>
             <a href="message.php?type&unique_id_fr=<?php echo $unique_id_fr?>">
