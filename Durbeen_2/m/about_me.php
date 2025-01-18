@@ -465,7 +465,7 @@ $count1 = mysqli_num_rows($run1);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-dark" id="staticBackdropLabel3">My Comments</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel3">Liked Posts</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -501,7 +501,7 @@ $count1 = mysqli_num_rows($run1);
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-dark" id="staticBackdropLabel4">Others Comments in My Posts</h5>
+                <h5 class="modal-title text-dark" id="staticBackdropLabel4">Disliked Posts</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

@@ -30,10 +30,12 @@ while ($data2 = mysqli_fetch_assoc($run2)){
 
     <tr>
         <td class="text-center">
+            <?php if($data3['image'] != ""){ ?>
             <img width="150px" src="../post_image/<?php echo $data3['image'] ?>">
+            <?php } ?>
         </td>
         <td class="text-center">
-            <h5 class="text-dark" style="margin-top: 35px"><?php echo $data3['post'] ?></h5>
+            <h6 class="text-dark" style="min-width: 300px"><?php echo $data3['post'] ?></h6>
         </td>
         <td class="text-center text-dark">
             <a href="./singlePost.php?type&post_id=<?php echo $post_id ?>" class="btn btn-sm btn-success" target="_blank" style="margin-top: 35px">Show Post</a>
