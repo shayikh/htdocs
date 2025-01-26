@@ -11,6 +11,11 @@ $unique_id_me = $data['unique_id_me'];
 $search = strtolower(trim($data['search']));
 $search = mysqli_real_escape_string($connection, $search);
 
+$SQL2 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
+$run2 = mysqli_query($connection,$SQL2);
+$data2 = mysqli_fetch_assoc($run2);
+$locking = $data2['locking'];
+
 
 
 
@@ -32,6 +37,10 @@ while($data1 = mysqli_fetch_assoc($run1)) {
         $SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
         $runF = mysqli_query($connection_info,$SQLF);
         $countF = mysqli_num_rows($runF);
+    
+        $SQLA = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
+        $runA = mysqli_query($connection_info, $SQLA);
+        $countA = mysqli_num_rows($runA);
 
 
         ?>
@@ -47,6 +56,11 @@ while($data1 = mysqli_fetch_assoc($run1)) {
                     <p style="font-size: 13px;font-weight: 500"><?php echo $data1['name'] ?></p>
                     <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data1['visit'] ?></p>
                 </a>
+                <?php if($locking == 1) {?>
+                <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countA == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 2px">
+                    <?php $countA == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
+                </button>
+                <?php } ?>
             </td>
             <td class="text-center">
                 <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?>" id="followBtn" style="margin-top: 2px">
