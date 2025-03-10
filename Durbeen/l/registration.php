@@ -154,8 +154,8 @@ if (isset($_POST['signup'])) {
         mysqli_query($connection_info, $SQLcreateMe);
 
 
-        header('location:./about_me.php?type=about_me');
-        echo "<script>window.location = './about_me.php?type=about_me'</script>";
+        header('location:./homepage.php?type=no');
+        echo "<script>window.location = './homepage.php?type=no'</script>";
     }
 
 }
