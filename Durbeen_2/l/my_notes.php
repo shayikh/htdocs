@@ -16,10 +16,44 @@ include './header.php';
 
 <div class="container" style="margin-top: 150px">
 
+
+    <div class="row mb-4">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            <h4 class="text-center">My Notes</h4>
+            <!-- Status Bar -->
+            <div class="row justify-content-center">
+                <div class="statusp">
+                    <div class="col-md-12 mt-2 mb-2">
+                        <div class="card" style="width: 100%;border: none;">
+                            <div class="card-body" style="background-color: #262626;border-radius: 0 0 3px 3px;">
+
+                                <form action="" method="post" id="formID" enctype="multipart/form-data">
+                                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+
+                                    <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="4" class="form-control mb-2" placeholder="Type Message"></textarea>
+                                        
+                                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+
+                                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit">
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Status Bar end -->
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+
+
     <div class="row">
         <div class="col-md-12">
-            <h4 class="text-center">My Notes</h4>
-            <table class="table mt-4">
+            <table class="table">
                 <tbody id="tbodyID">
                     <tr>
                     </tr>
@@ -31,29 +65,6 @@ include './header.php';
 
 </div>
 
-
-<!-- Message Modal -->
-<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button id="messageCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post" id="formID" enctype="multipart/form-data">
-
-                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-
-                    <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="5" class="form-control mb-2" type="text"></textarea>
-
-                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
-
-                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- Message Forward Modal -->
@@ -143,7 +154,6 @@ include './header.php';
     let image = document.querySelector("#imageID");
     let message = document.querySelector("#messageID");
     let button = document.querySelector("#buttonID");
-    let messageCloseBtn = document.querySelector("#messageCloseBtn");
 
     let messageForwardTbody = document.querySelector("#messageForwardID");
     let forwardForm = document.querySelector("#forwardFormID");
@@ -367,7 +377,6 @@ include './header.php';
 
                     tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
 
-                    messageCloseBtn.click();
 
                     image.value = "";
                     message.value = "";
@@ -406,9 +415,6 @@ include './header.php';
 <div style="height: 20px"></div>
 
 
-<button style="position: fixed;right:10px;bottom: 10px" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#messageModal">
-    <i class="fas fa-plus"></i>
-</button>
 
 
 <?php
