@@ -130,7 +130,7 @@ $count1 = mysqli_num_rows($run1);
             cache: false,
             processData: false,
             beforeSend: function() {
-                // alert('ok')
+                button.remove();
             },
             success: function(data) {
 

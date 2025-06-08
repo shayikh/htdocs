@@ -123,7 +123,7 @@ include './header.php';
             cache: false,
             processData: false,
             beforeSend: function() {
-                // alert('ok')
+                button.remove();
             },
             success: function(data) {
 

@@ -61,7 +61,7 @@ if($countF == 1){
 <div class="statusp">
     <div class="col-md-12" style="background-color: #18191A;padding: 10px;border-radius: 3px">
         <div class="card" style="width: 100%;border: none">
-            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
+            <p class="text-white pe-3 pb-2" style="background-color: #18191A;border-radius: 3px 3px 0 0; ">
                 <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data2['unique_id']?>" class="timeline_link">
                     <img style="border-radius: 50%" width="70px" height="70px"
                         src="../pro_pic/<?php echo $data2['pro_pic']?>">

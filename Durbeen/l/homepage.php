@@ -33,9 +33,9 @@ if ($number > 0) { ?>
 				<div class="statusp">
 					<div class="col-md-12 mt-2 mb-2">
 						<div class="card" style="width: 100%;border: none;">
-							<p class="text-white" style="background-color: #18191A;border-radius: 3px 3px 0 0">
-								<img class="p-2" style="border-radius: 50%" width="90px" height="90px"
-									src="../pro_pic/<?php echo $dataMe['pro_pic']?>" alt="">
+							<p class="text-white ps-3 pe-3 pb-2" style="background-color: #18191A;border-radius: 3px 3px 0 0">
+								<img style="border-radius: 50%" width="70px" height="70px"
+									src="../pro_pic/<?php echo $dataMe['pro_pic']?>">
 								<b><?php echo $dataMe['name']?></b>
 							</p>
 							<div class="card-body" style="background-color: #262626;border-radius: 0 0 3px 3px;">

@@ -33,13 +33,14 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
     <div class="row mb-5">
         <div class="col-md-2"></div>
+
         <div class="col-md-8">
             <!-- Status Bar -->
 			<div class="row justify-content-center">
 				<div class="statusp">
-					<div class="col-md-12" style="background-color: #18191A;border-radius: 3px">
+					<div class="col-md-12 mb-2 mt-1">
 						<div class="card" style="width: 100%;border: none;">
-                            <p class="text-white p-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
+                            <p class="text-white ps-3 pe-3 pb-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
                                 <img style="border-radius: 50%" width="45px" height="45px"
                                     src="../pro_pic/<?php echo $dataMe['pro_pic']?>">
                                 <b><?php echo $dataMe['name']?></b>
