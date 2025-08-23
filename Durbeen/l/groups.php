@@ -124,7 +124,7 @@ include './header.php';
             cache: false,
             processData: false,
             beforeSend: function() {
-                button.remove();
+                button.classList.add("d-none");
             },
             success: function(data) {
 
@@ -135,6 +135,7 @@ include './header.php';
                 let newGroup = json.newGroup;
 
                 tbody.innerHTML = makeTr(newGroup) + tbody.innerHTML;
+                button.classList.remove("d-none");
 
                 postCloseBtn.click();
 

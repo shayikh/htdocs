@@ -377,6 +377,7 @@ if ($number > 0) { ?>
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        
 
         if (image.value == "" && post.value == "") {
             toastr.error('Post and Image Both Fields are Empty');
@@ -391,7 +392,7 @@ if ($number > 0) { ?>
                 cache: false,
                 processData: false,
                 beforeSend: function() {
-                    // alert('ok')
+                    button.classList.add("d-none");
                 },
                 success: function(data) {
 
@@ -404,6 +405,7 @@ if ($number > 0) { ?>
                     let newPost = json.newPost;
 
                     tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+                    button.classList.remove("d-none");
 
                     image.value = "";
                     post.value = "";
