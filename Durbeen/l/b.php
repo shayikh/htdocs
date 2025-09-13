@@ -37,7 +37,7 @@ if ($_SESSION['unique_id_me'] != 1) {
                 </div>
 
                 <div class="col-md-4 mb-3">
-                    <button onclick="showdata()" type="button" class="btn btn-primary float-end form-control">
+                    <button onclick="showinfo()" type="button" class="btn btn-primary float-end form-control">
                         Find User
                     </button>
                 </div>
@@ -95,6 +95,19 @@ if ($_SESSION['unique_id_me'] != 1) {
         </div>
 
     </div>
+
+
+
+    <!-- main page -->
+
+
+    <h4 class="text-center mt-5">All Groups</h4>
+    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+        <tbody id="tbodyID">
+
+        </tbody>
+    </table>
+
 </div>
 
 
@@ -105,8 +118,9 @@ if ($_SESSION['unique_id_me'] != 1) {
     let pro_pic = document.querySelector('#pro_pic');
     let Useremail = document.querySelector('#emailfind');
     let Password = document.querySelector('#password');
+    let tbody = document.querySelector("#tbodyID");
 
-    function showdata() {
+    function showinfo() {
         if (email.value == "") {
             toastr.error("Email is Required");
         } else {
@@ -141,6 +155,50 @@ if ($_SESSION['unique_id_me'] != 1) {
                     console.log(err);
                 })
         }
+    }
+
+
+
+    var page_no = 1;
+    var returned = 1;
+
+    showdata();
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+            if(returned == 1){
+                returned = 0;
+                showdata();
+            }
+        }
+    })
+
+
+    function showdata() {
+
+        let postData = {};
+
+        postData.page_no = page_no;
+        postData.unique_id_me = <?php echo $unique_id_me ?>;
+
+        axios.post("../api/group/loadmoreAllGroup.php",
+                postData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.info('You Are at The End');
+                } else {
+                    tbody.innerHTML = tbody.innerHTML + res.data;
+                    page_no++;
+                    returned = 1;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
 
