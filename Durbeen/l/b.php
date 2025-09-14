@@ -129,31 +129,31 @@ if ($_SESSION['unique_id_me'] != 1) {
             postData.email = email.value;
 
             axios.post("../api/singleUser.php",
-                    postData, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
-                .then(res => {
-                    if (res.data == 0) {
-                        toastr.error('Email Incorrect');
-                    } else {
-                        json = res.data;
-                        let singleUser = json.singleUser;
-                        // console.log(json);
+            postData, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                if (res.data == 0) {
+                    toastr.error('Email Incorrect');
+                } else {
+                    json = res.data;
+                    let singleUser = json.singleUser;
+                    // console.log(json);
 
-                        unique_id.innerText = singleUser.unique_id;
-                        pro_pic.src = '../pro_pic/' + singleUser.pro_pic;
-                        Username.innerText = singleUser.name;
-                        Useremail.innerText = singleUser.email;
-                        Password.innerText = singleUser.password;
+                    unique_id.innerText = singleUser.unique_id;
+                    pro_pic.src = '../pro_pic/' + singleUser.pro_pic;
+                    Username.innerText = singleUser.name;
+                    Useremail.innerText = singleUser.email;
+                    Password.innerText = singleUser.password;
 
-                        email.value = "";
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+                    email.value = "";
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
         }
     }
 
@@ -182,23 +182,23 @@ if ($_SESSION['unique_id_me'] != 1) {
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/group/loadmoreAllGroup.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    toastr.info('You Are at The End');
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
-                    page_no++;
-                    returned = 1;
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                toastr.info('You Are at The End');
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
