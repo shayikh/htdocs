@@ -7,7 +7,7 @@ $SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me
 $run110 = mysqli_query($connection_message, $SQL110);
 $count110 = mysqli_num_rows($run110);
 
-if ($count110 == 0) {
+if ($count110 == 0 && $unique_id_me != 1) {
     echo "<script>window.location = 'homepage.php?type'</script>";
 }
 
