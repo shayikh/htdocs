@@ -216,11 +216,12 @@ $grpName = $datagrp['grp_name'];
                 })
             .then(res => {
                 if (res.data == 0) {
+                    console.log(res.data);
                     toastr.info('You are at the End');
                 } else {
                     appendData.innerHTML = appendData.innerHTML + res.data;
                     page_no++;
-                    returned = 1;
+                    returned = 1;console.log(res.data);
                 }
             })
             .catch(err => {
