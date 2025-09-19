@@ -202,7 +202,7 @@ if ($number > 0) { ?>
     total_pagesfn();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             if(returned == 1){
                 returned = 0;
                 showdata();
@@ -219,31 +219,31 @@ if ($number > 0) { ?>
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/post/loadmoreHomePage_m.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                if (res.data == 0) {
-                    
-                    if(page_no <= total_pages){
-                        page_no++;
-                        returned = 1;
-                        showdata();
-                    }else{
-                        toastr.info('You Are at The End');
-                    }
-
-                } else {
-                    tbody.innerHTML = tbody.innerHTML + res.data;
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if (res.data == 0) {
+                
+                if(page_no <= total_pages){
                     page_no++;
                     returned = 1;
+                    showdata();
+                }else{
+                    toastr.info('You Are at The End');
                 }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+
+            } else {
+                tbody.innerHTML = tbody.innerHTML + res.data;
+                page_no++;
+                returned = 1;
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     
@@ -255,17 +255,17 @@ if ($number > 0) { ?>
         postData.unique_id_me = <?php echo $unique_id_me ?>;
 
         axios.post("../api/post/total_pages.php",
-                postData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            .then(res => {
-                total_pages = res.data;
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        postData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            total_pages = res.data;
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 
