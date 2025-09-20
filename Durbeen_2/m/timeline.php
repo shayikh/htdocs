@@ -243,7 +243,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 60) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             if(returned == 1){
                 returned = 0;
                 showdata();
@@ -506,7 +506,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 cache: false,
                 processData: false,
                 beforeSend: function() {
-                    // alert('ok')
+                    button.classList.add("d-none");
                 },
                 success: function(data) {
 
@@ -519,6 +519,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     let newPost = json.newPost;
 
                     tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+                    button.classList.remove("d-none");
 
 
                     image.value = "";

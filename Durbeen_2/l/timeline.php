@@ -461,6 +461,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        
 
         if (image.value == "" && post.value == "") {
             toastr.error('Post and Image Both Fields are Empty');
@@ -475,7 +476,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                 cache: false,
                 processData: false,
                 beforeSend: function() {
-                    // alert('ok')
+                    button.classList.add("d-none");
                 },
                 success: function(data) {
 
@@ -488,7 +489,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                     let newPost = json.newPost;
 
                     tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-
+                    button.classList.remove("d-none");
 
                     image.value = "";
                     post.value = "";

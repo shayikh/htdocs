@@ -167,7 +167,7 @@ if ($_SESSION['unique_id_me'] != 1) {
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             if(returned == 1){
                 returned = 0;
                 showdata();
