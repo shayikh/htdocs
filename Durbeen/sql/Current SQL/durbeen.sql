@@ -1,0 +1,259 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 04, 2026 at 11:14 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `durbeen`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about`
+--
+
+CREATE TABLE `about` (
+  `id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL,
+  `bio` longtext DEFAULT NULL,
+  `date_birth` varchar(1000) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `phone_no` varchar(1000) DEFAULT NULL,
+  `religion` varchar(1000) DEFAULT NULL,
+  `country` varchar(1000) DEFAULT NULL,
+  `city` varchar(1000) DEFAULT NULL,
+  `question_one` text NOT NULL,
+  `answer_one` text NOT NULL,
+  `question_two` text NOT NULL,
+  `answer_two` text NOT NULL,
+  `question_three` text NOT NULL,
+  `answer_three` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
+(1, 1, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
+(2, 2, NULL, '0001-01-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` bigint(255) NOT NULL,
+  `post_id` bigint(255) NOT NULL,
+  `post_giver_id` bigint(255) NOT NULL,
+  `comn_giver_id` bigint(255) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `pro_pic` varchar(1000) NOT NULL,
+  `time` varchar(1000) NOT NULL,
+  `comment` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dislike_post`
+--
+
+CREATE TABLE `dislike_post` (
+  `id` bigint(255) NOT NULL,
+  `post_id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` bigint(255) NOT NULL,
+  `grp_name` varchar(1000) NOT NULL,
+  `pro_pic` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `grp_name`, `pro_pic`) VALUES
+(1, 'কিয়ামতের পদধ্বনি', '69831b812f849_04_Feb_2026_Wed_04_12_17_pm_6981f3f859d13_03_Feb_2026_Tue_07_11_20_pm.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `like_post`
+--
+
+CREATE TABLE `like_post` (
+  `id` bigint(255) NOT NULL,
+  `post_id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE `post` (
+  `id` bigint(255) NOT NULL,
+  `unique_id` bigint(255) NOT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `time` varchar(1000) NOT NULL,
+  `post` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `unique_id`, `image`, `time`, `post`) VALUES
+(1, 1, '6981f39c95180_03_Feb_2026_Tue_07_09_48_pm.jpg', 'Asia/Dhaka time: 04-Feb-2026-Wed-04:07:56 pm', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registration`
+--
+
+CREATE TABLE `registration` (
+  `unique_id` bigint(255) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `email` varchar(1000) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `pro_pic` varchar(1000) NOT NULL,
+  `cov_pic` varchar(1000) NOT NULL,
+  `active` tinyint(255) NOT NULL DEFAULT 1,
+  `visit` bigint(255) DEFAULT 1,
+  `locking` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`, `locking`) VALUES
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6981f395c96fa_03_Feb_2026_Tue_07_09_41_pm.jpg', 'cov_pic.jpg', 1, 2, 0),
+(2, 'Ahsan Zaman', 'ahsan@gmail.com', '1', '6981f3cc087e5_03_Feb_2026_Tue_07_10_36_pm.jpg', 'cov_pic.jpg', 0, 1, 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dislike_post`
+--
+ALTER TABLE `dislike_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `like_post`
+--
+ALTER TABLE `like_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `registration`
+--
+ALTER TABLE `registration`
+  ADD PRIMARY KEY (`unique_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `about`
+--
+ALTER TABLE `about`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `dislike_post`
+--
+ALTER TABLE `dislike_post`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `like_post`
+--
+ALTER TABLE `like_post`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `registration`
+--
+ALTER TABLE `registration`
+  MODIFY `unique_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
