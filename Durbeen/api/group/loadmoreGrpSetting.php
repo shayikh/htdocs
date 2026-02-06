@@ -17,33 +17,48 @@ $row = ($page_no - 1)*$limit;
 
 
 
-$SQL = "SELECT * FROM `group $grp_id members` ORDER BY `id` DESC LIMIT $row,$limit";
-$run = mysqli_query($connection_message,$SQL);
+$SQL154 = "SELECT * FROM `group $grp_id members` WHERE `memberId`!='$unique_id_me' ORDER BY `id` DESC LIMIT $row,$limit";
+$run154 = mysqli_query($connection_message,$SQL154);
 
-while ($data154=mysqli_fetch_assoc($run)){
+while ($data154=mysqli_fetch_assoc($run154)){
 
     $unique_id_fr = $data154['memberId'];
 
-    $SQLF154 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
-    $runF154 = mysqli_query($connection,$SQLF154);
-    $dataF154 = mysqli_fetch_assoc($runF154);
+    $SQLF156 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+    $runF156 = mysqli_query($connection,$SQLF156);
+    $dataF156 = mysqli_fetch_assoc($runF156);
+
+
+    $SQLF155 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_fr' AND `admin`='1'";
+    $runF155 = mysqli_query($connection_message,$SQLF155);
+    $countF155 = mysqli_num_rows($runF155);
 
     ?>
 
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <img height="135px" src="../pro_pic/<?php echo $dataF154['pro_pic'] ?>">
+                <img height="135px" src="../pro_pic/<?php echo $dataF156['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center">
             <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <h3 style="margin-top: 35px"><?php echo $dataF154['name'] ?></h3>
-                <h6 class="text-success">Durbeen Visited : <?php echo $dataF154['visit'] ?></h6>
+                <h3 style="margin-top: 35px"><?php echo $dataF156['name'] ?></h3>
+                <h6 class="text-success">Durbeen Visited : <?php echo $dataF156['visit'] ?></h6>
             </a>
         </td>
         <td class="text-center">
-            <h3 style="margin-top: 47px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("") ?></h3>
+            <h3 style="margin-top: 47px"><?php $data154['admin'] == 1 ? printf("Admin") : printf("Member") ?></h3>
+        </td>
+        <td class="text-center">
+            <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-danger" style="margin-top: 50px">
+                <i class="fas fa-user-minus"></i>
+            </button>
+        </td>
+        <td class="text-center">
+            <button onclick="adminfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn <?php $countF155 == 0 ? printf("btn-success") : printf("btn-danger") ?>" style="margin-top: 50px">
+                <?php $countF155 == 0 ? printf('<i class="fas fa-user-cog"></i>') : printf('<i class="fas fa-users"></i>') ?>
+            </button>
         </td>
     </tr>
 <?php } ?>
