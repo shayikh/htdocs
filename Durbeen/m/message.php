@@ -53,22 +53,22 @@ if ($countTest == 0) {
 
 
         //chat friend start
-        $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
+        $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr' AND `chat_type`='3'";
         $run3 = mysqli_query($connection_info, $SQL3);
         $count3 = mysqli_num_rows($run3);
 
         if ($count3 == 0) {
-            $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$unique_id_fr')";
+            $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`,`chat_type`) VALUES ('$unique_id_fr','3')";
             mysqli_query($connection_info, $SQL16);
         }
 
 
-        $SQL4 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
+        $SQL4 = "SELECT * FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
         $run4 = mysqli_query($connection_info, $SQL4);
         $count4 = mysqli_num_rows($run4);
 
         if ($count4 == 0) {
-            $SQL5 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
+            $SQL5 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`,`chat_type`) VALUES ('$unique_id_me','3')";
             mysqli_query($connection_info, $SQL5);
         }
 

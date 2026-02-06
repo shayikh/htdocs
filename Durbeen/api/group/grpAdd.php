@@ -32,6 +32,9 @@ $grp_id = $latestData['id'];
 $SQL1 = "INSERT INTO `$unique_id_me msg_grp`(`grp_id`) VALUES ('$grp_id')";
 mysqli_query($connection_info,$SQL1);
 
+$SQL3 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$grp_id', '2')";
+mysqli_query($connection_info,$SQL3);
+
 
 
 $SQLcreateMe = "CREATE TABLE IF NOT EXISTS `group $grp_id` (

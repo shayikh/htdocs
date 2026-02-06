@@ -24,9 +24,11 @@ if($countF == 0){
   $SQL1 = "INSERT INTO `group $grp_id members`(`memberId`) VALUES ('$unique_id_fr')";
   mysqli_query($connection_message,$SQL1);
 
-
   $SQL1 = "INSERT INTO `$unique_id_fr msg_grp`(`grp_id`) VALUES ('$grp_id')";
   mysqli_query($connection_info,$SQL1);
+
+  $SQL3 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`, `chat_type`) VALUES ('$grp_id', '2')";
+  mysqli_query($connection_info,$SQL3);
 
 
   echo "1";
@@ -36,6 +38,9 @@ if($countF == 0){
 
   $SQL1 = "DELETE FROM `$unique_id_fr msg_grp` WHERE `grp_id`='$grp_id'";
   mysqli_query($connection_info,$SQL1);
+
+  $SQL3 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$grp_id' AND `chat_type`='2'";
+  mysqli_query($connection_info,$SQL3);
 
 
   echo "0";

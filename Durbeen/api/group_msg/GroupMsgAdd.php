@@ -39,6 +39,36 @@ mysqli_query($connection_message, $SQL1);
 
 
 
+$SQL6 = "SELECT * FROM `group $grp_id members`";
+$run6 = mysqli_query($connection_message, $SQL6);
+
+while ($data6 = mysqli_fetch_assoc($run6)) {
+
+  $memberId = $data6['memberId'];
+
+  $SQL5 = "SELECT * FROM `$memberId chats` ORDER BY `id` DESC LIMIT 1";
+  $run5 = mysqli_query($connection_info, $SQL5);
+  $latestChating = mysqli_fetch_assoc($run5);
+
+  if (($latestChating['unique_id_fr'] != $grp_id || $latestChating['chat_type'] != '2')) {
+    $SQL3 = "DELETE FROM `$memberId chats` WHERE `unique_id_fr`='$grp_id' AND `chat_type`='2'";
+    mysqli_query($connection_info, $SQL3);
+
+    
+
+    $SQL2 = "INSERT INTO `$memberId chats`(`unique_id_fr`, `chat_type`) VALUES ('$grp_id','2')";
+    mysqli_query($connection_info, $SQL2);
+  }
+
+}
+
+
+
+
+
+
+
+
 
 $SQL4 = "SELECT * FROM `group $grp_id` ORDER BY `id` DESC LIMIT 1";
 $run4 = mysqli_query($connection_message, $SQL4);

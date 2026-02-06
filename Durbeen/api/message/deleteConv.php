@@ -39,11 +39,11 @@ mysqli_query($connection_message, $SQL10);
 
 
 
-$SQL13 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr'";
-mysqli_query($connection_info, $SQL13);
+$SQL3 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr' AND `chat_type`='3'";
+mysqli_query($connection_info, $SQL3);
 
-$SQL14 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me'";
-mysqli_query($connection_info, $SQL14);
+$SQL4 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
+mysqli_query($connection_info, $SQL4);
 
 $SQL15 = "DELETE FROM `$unique_id_me notify` WHERE `sender_id`='$unique_id_fr'";
 mysqli_query($connection_info, $SQL15);

@@ -32,6 +32,9 @@ if($count4 == 1 && $count3 == 1) {
     $SQL1 = "DELETE FROM `$unique_id_me msg_grp` WHERE `grp_id`='$grp_id'";
     mysqli_query($connection_info,$SQL1);
 
+    $SQL3 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$grp_id' AND `chat_type`='2'";
+    mysqli_query($connection_info,$SQL3);
+
     echo "1";
 
 }

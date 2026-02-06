@@ -220,7 +220,7 @@ $grpName = $datagrp['grp_name'];
                 } else {
                     appendData.innerHTML = appendData.innerHTML + res.data;
                     page_no++;
-                    returned = 1;console.log(res.data);
+                    returned = 1;
                 }
             })
             .catch(err => {

@@ -72,10 +72,13 @@ if (isset($_POST['signup'])) {
         $SQLcreate = "CREATE TABLE IF NOT EXISTS `$unique_id_me chats` (
 			`id` bigint(255) unsigned NOT NULL auto_increment,
 			`unique_id_fr` bigint(255),
+            `chat_type` smallint(9),
 			PRIMARY KEY  (`id`)
 		)";
         mysqli_query($connection_info, $SQLcreate);
 
+        $SQL400 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me', '1')";
+        mysqli_query($connection_info, $SQL400);
 
 
 
