@@ -20,9 +20,9 @@ $row = ($page_no - 1)*$limit;
 $SQL = "SELECT * FROM `registration` WHERE `unique_id`!='$unique_id_me' ORDER BY `unique_id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection,$SQL);
 
-while ($data154=mysqli_fetch_assoc($run)){
+while ($data=mysqli_fetch_assoc($run)){
 
-    $unique_id_fr = $data154['unique_id'];
+    $unique_id_fr = $data['unique_id'];
 
     $SQLF154 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_fr'";
     $runF154 = mysqli_query($connection_message,$SQLF154);
@@ -37,13 +37,13 @@ while ($data154=mysqli_fetch_assoc($run)){
     <tr>
         <td class="text-center">
             <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $data154['pro_pic'] ?>">
+                <img style="margin-top: 2px" width="90px" src="../pro_pic/<?php echo $data['pro_pic'] ?>">
             </a>
         </td>
         <td class="text-center" style="max-width: 129px">
             <a class="text-decoration-none" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr ?>">
-                <p style="font-size: 13px;font-weight: 500"><?php echo $data154['name'] ?></p>
-                <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data154['visit'] ?></p>
+                <p style="font-size: 13px;font-weight: 500"><?php echo $data['name'] ?></p>
+                <p class="text-success" style="font-size: 11px;font-weight: 500">Durbeen Visited : <?php echo $data['visit'] ?></p>
             </a>
             <button onclick="addfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, <?php echo $grp_id ?>, this)" class="btn btn-sm <?php $countF154 == 0 ? printf('btn-success') : printf("btn-danger") ?>" style="margin-top: 5px">
                 <?php $countF154 == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-minus"></i>') ?>
