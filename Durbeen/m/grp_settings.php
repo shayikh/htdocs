@@ -75,7 +75,7 @@ $count109 = mysqli_num_rows($run109);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group/loadmoreGrpSetting_m.php",
+        axios.post("../api/group/settings/loadmoreGrpSetting_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
