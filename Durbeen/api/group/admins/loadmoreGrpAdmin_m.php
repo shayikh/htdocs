@@ -1,5 +1,5 @@
 <?php
-include '../../connection.php';
+include '../../../connection.php';
 header('Content-Type: application/x-www-form-urlencoded');
 
 $jsonData = file_get_contents('php://input');

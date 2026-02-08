@@ -143,7 +143,7 @@ $data111 = mysqli_fetch_assoc($run111);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group/loadmoreGrpAdmin.php",
+        axios.post("../api/group/admins/loadmoreGrpAdmin.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -175,7 +175,7 @@ $data111 = mysqli_fetch_assoc($run111);
             searchVar.search = search.value;
             searchVar.grp_id = <?php echo $grp_id ?>;
 
-            axios.post("../api/group/searchFriend.php",
+            axios.post("../api/group/admins/searchFriend.php",
                 searchVar, {
                     headers: {
                         "Content-Type": "application/json"

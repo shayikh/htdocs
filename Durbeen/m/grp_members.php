@@ -15,11 +15,6 @@ $SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
 $run111 = mysqli_query($connection, $SQL111);
 $data111 = mysqli_fetch_assoc($run111);
 
-
-
-$SQL109 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
-$run109 = mysqli_query($connection_message, $SQL109);
-$count109 = mysqli_num_rows($run109);
 ?>
 
 
@@ -27,26 +22,14 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
-<?php if ($count109 > 0) { ?>
-<a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 294px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Admin Page</a>
-<?php } ?>
-<?php if ($count109 > 0) { ?>
-<a href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 411px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Members</a>
-<?php } ?>
 
-<a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
-
-
-
-<div class="container" style="margin-top: 150px">
-
-    <h4 class="text-center">"<?php echo $data111['grp_name'] ?>" Group Members</h4>
-    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+<div class="container" style="margin-top: 112px">
+    <h6 class="text-center mt-2">"<?php echo $data111['grp_name'] ?>" Group Members</h6>
+    <table class="table table-bordered mt-2" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
         </tbody>
     </table>
-
 </div>
 
 
@@ -60,7 +43,7 @@ $count109 = mysqli_num_rows($run109);
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             if(returned == 1){
                 returned = 0;
                 showdata();
@@ -77,7 +60,7 @@ $count109 = mysqli_num_rows($run109);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group/loadmoreGrpSetting.php",
+        axios.post("../api/group/members/loadmoreGrpMembers_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -97,7 +80,7 @@ $count109 = mysqli_num_rows($run109);
             })
     }
 
-
+    
 </script>
 
 

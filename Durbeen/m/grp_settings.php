@@ -32,6 +32,9 @@ $count109 = mysqli_num_rows($run109);
 <?php if ($count109 > 0) { ?>
 <a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 61px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success">Admin</a>
 <?php } ?>
+<?php if ($count109 > 0) { ?>
+<a href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 123px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success"><i class="fas fa-user-friends"></i></a>
+<?php } ?>
 
 
 

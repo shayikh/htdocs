@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2026 at 11:14 AM
+-- Generation Time: Feb 08, 2026 at 07:31 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.25
 
@@ -51,7 +51,7 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
 (1, 1, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(2, 2, NULL, '0001-01-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
+(2, 2, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `grp_name`, `pro_pic`) VALUES
-(1, 'কিয়ামতের পদধ্বনি', '69831b812f849_04_Feb_2026_Wed_04_12_17_pm_6981f3f859d13_03_Feb_2026_Tue_07_11_20_pm.jpeg');
+(1, 'কিয়ামতের পদধ্বনি', '698560989975b_06_Feb_2026_Fri_09_31_36_am_6981f3f859d13_03_Feb_2026_Tue_07_11_20_pm.jpeg');
 
 -- --------------------------------------------------------
 
@@ -132,7 +132,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `unique_id`, `image`, `time`, `post`) VALUES
-(1, 1, '6981f39c95180_03_Feb_2026_Tue_07_09_48_pm.jpg', 'Asia/Dhaka time: 04-Feb-2026-Wed-04:07:56 pm', '');
+(1, 1, '698564df7c665_06_Feb_2026_Fri_09_49_51_am.jpeg', 'Asia/Dhaka time: 06-Feb-2026-Fri-09:49:51 am', '');
 
 -- --------------------------------------------------------
 
@@ -157,8 +157,8 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`, `locking`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6981f395c96fa_03_Feb_2026_Tue_07_09_41_pm.jpg', 'cov_pic.jpg', 1, 2, 0),
-(2, 'Ahsan Zaman', 'ahsan@gmail.com', '1', '6981f3cc087e5_03_Feb_2026_Tue_07_10_36_pm.jpg', 'cov_pic.jpg', 0, 1, 0);
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 1, 7, 0),
+(2, 'Shakil Hossain', 'shakil@gmail.com', '1', '698560b2f3069_06_Feb_2026_Fri_09_32_02_am.jpg', 'cov_pic.jpg', 0, 2, 0);
 
 --
 -- Indexes for dumped tables
