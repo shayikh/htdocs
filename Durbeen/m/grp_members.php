@@ -3,17 +3,19 @@ include './header.php';
 
 $grp_id = $_GET['grp_id'];
 
-$SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me'";
+$SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
 $run110 = mysqli_query($connection_message, $SQL110);
 $count110 = mysqli_num_rows($run110);
 
 if ($count110 == 0 && $unique_id_me != 1) {
-    echo "<script>window.location = 'homepage.php?type'</script>";
+    echo "<script>window.location = './groups.php?type=groups'</script>";
 }
 
 $SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
 $run111 = mysqli_query($connection, $SQL111);
 $data111 = mysqli_fetch_assoc($run111);
+
+
 
 ?>
 

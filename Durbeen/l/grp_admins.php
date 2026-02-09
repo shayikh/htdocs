@@ -8,7 +8,7 @@ $run110 = mysqli_query($connection_message, $SQL110);
 $count110 = mysqli_num_rows($run110);
 
 if ($count110 == 0 && $unique_id_me != 1) {
-    echo "<script>window.location = 'homepage.php?type'</script>";
+    echo "<script>window.location = './groups.php?type=groups'</script>";
 }
 
 $SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
