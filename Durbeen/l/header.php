@@ -196,12 +196,7 @@ $pro_pic_me = $dataMe['pro_pic'];
 
             elseif ($chat_type == 2){
 
-            $SQL12 = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC";
-            $run12 = mysqli_query($connection_info, $SQL12);
-
-            while ($data12 = mysqli_fetch_assoc($run12)) {
-
-            $grp_id = $data12['grp_id'];
+            $grp_id = $unique_id_fr_chats;
 
             $SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
             $run1 = mysqli_query($connection,$SQL1);
@@ -224,7 +219,6 @@ $pro_pic_me = $dataMe['pro_pic'];
             </li>
 
             <?php 
-            }  
             } 
             } ?>
 
