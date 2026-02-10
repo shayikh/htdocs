@@ -752,7 +752,7 @@ const cleanGrp = (grp_id) => {
             // console.log(res.data);
 
             if (res.data == '1') {
-                window.location = './groups.php?type=groups';
+                toastr.error('Group Messages Cleared');
             }
 
         })
