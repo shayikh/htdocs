@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2026 at 07:31 AM
+-- Generation Time: Feb 11, 2026 at 11:35 AM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.25
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,7 +51,8 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
 (1, 1, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(2, 2, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
+(2, 2, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
+(3, 3, NULL, '0002-02-22', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `grp_name`, `pro_pic`) VALUES
-(1, 'কিয়ামতের পদধ্বনি', '698560989975b_06_Feb_2026_Fri_09_31_36_am_6981f3f859d13_03_Feb_2026_Tue_07_11_20_pm.jpeg');
+(1, 'কিয়ামতের পদধ্বনি', '698560989975b_06_Feb_2026_Fri_09_31_36_am_6981f3f859d13_03_Feb_2026_Tue_07_11_20_pm.jpeg'),
+(2, 'Extraterrestrial Intelligence', '698ad25760e28_10_Feb_2026_Tue_12_38_15_pm_Shayikh.jpeg');
 
 -- --------------------------------------------------------
 
@@ -157,8 +159,9 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`, `locking`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 1, 7, 0),
-(2, 'Shakil Hossain', 'shakil@gmail.com', '1', '698560b2f3069_06_Feb_2026_Fri_09_32_02_am.jpg', 'cov_pic.jpg', 0, 2, 0);
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 0, 12, 0),
+(2, 'Shakil Hossain', 'shakil@gmail.com', '1', '698560b2f3069_06_Feb_2026_Fri_09_32_02_am.jpg', 'cov_pic.jpg', 0, 2, 0),
+(3, 'Ahsan Zaman', 'ahsan@gmail.com', '1', '698ad2893760d_10_Feb_2026_Tue_12_39_05_pm.jpeg', 'cov_pic.jpg', 0, 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -215,7 +218,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -233,7 +236,7 @@ ALTER TABLE `dislike_post`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `like_post`
@@ -251,7 +254,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `unique_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `unique_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

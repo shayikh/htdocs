@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2026 at 07:32 AM
+-- Generation Time: Feb 11, 2026 at 11:35 AM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.25
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,8 @@ CREATE TABLE `1 allow` (
 
 INSERT INTO `1 allow` (`id`, `unique_id_fr`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -49,7 +50,7 @@ INSERT INTO `1 allow` (`id`, `unique_id_fr`) VALUES
 CREATE TABLE `1 chats` (
   `id` bigint(255) UNSIGNED NOT NULL,
   `unique_id_fr` bigint(255) DEFAULT NULL,
-  `chat_type` smallint(9) DEFAULT NULL
+  `chat_type` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,9 +58,11 @@ CREATE TABLE `1 chats` (
 --
 
 INSERT INTO `1 chats` (`id`, `unique_id_fr`, `chat_type`) VALUES
-(8, 2, 3),
-(9, 1, 1),
-(10, 1, 2);
+(17, 1, 2),
+(18, 3, 3),
+(19, 2, 3),
+(22, 2, 2),
+(23, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +92,8 @@ CREATE TABLE `1 follow` (
 
 INSERT INTO `1 follow` (`id`, `unique_id_fr`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -107,7 +111,8 @@ CREATE TABLE `1 msg_grp` (
 --
 
 INSERT INTO `1 msg_grp` (`id`, `grp_id`) VALUES
-(1, 1);
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -169,8 +174,8 @@ CREATE TABLE `2 chats` (
 
 INSERT INTO `2 chats` (`id`, `unique_id_fr`, `chat_type`) VALUES
 (1, 2, 1),
-(7, 1, 3),
-(14, 1, 2);
+(14, 1, 2),
+(15, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -240,7 +245,8 @@ CREATE TABLE `2 notify` (
 INSERT INTO `2 notify` (`id`, `sender`, `sender_id`, `seen`) VALUES
 (1, 'Md Mehrab Alam Shayikh', 1, 1),
 (2, 'Md Mehrab Alam Shayikh', 1, 1),
-(3, 'Md Mehrab Alam Shayikh', 1, 0);
+(3, 'Md Mehrab Alam Shayikh', 1, 0),
+(4, 'Md Mehrab Alam Shayikh', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -249,6 +255,124 @@ INSERT INTO `2 notify` (`id`, `sender`, `sender_id`, `seen`) VALUES
 --
 
 CREATE TABLE `2 pro_pic` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `pro_pic` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 allow`
+--
+
+CREATE TABLE `3 allow` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `unique_id_fr` bigint(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `3 allow`
+--
+
+INSERT INTO `3 allow` (`id`, `unique_id_fr`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 chats`
+--
+
+CREATE TABLE `3 chats` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `unique_id_fr` bigint(255) DEFAULT NULL,
+  `chat_type` smallint(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `3 chats`
+--
+
+INSERT INTO `3 chats` (`id`, `unique_id_fr`, `chat_type`) VALUES
+(1, 3, 1),
+(3, 1, 3),
+(4, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 cov_pic`
+--
+
+CREATE TABLE `3 cov_pic` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `cov_pic` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 follow`
+--
+
+CREATE TABLE `3 follow` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `unique_id_fr` bigint(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `3 follow`
+--
+
+INSERT INTO `3 follow` (`id`, `unique_id_fr`) VALUES
+(1, 3),
+(2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 msg_grp`
+--
+
+CREATE TABLE `3 msg_grp` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `grp_id` bigint(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `3 msg_grp`
+--
+
+INSERT INTO `3 msg_grp` (`id`, `grp_id`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 notify`
+--
+
+CREATE TABLE `3 notify` (
+  `id` bigint(255) UNSIGNED NOT NULL,
+  `sender` varchar(255) DEFAULT NULL,
+  `sender_id` bigint(255) DEFAULT NULL,
+  `seen` tinyint(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `3 notify`
+--
+
+INSERT INTO `3 notify` (`id`, `sender`, `sender_id`, `seen`) VALUES
+(1, 'Md Mehrab Alam Shayikh', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `3 pro_pic`
+--
+
+CREATE TABLE `3 pro_pic` (
   `id` bigint(255) UNSIGNED NOT NULL,
   `pro_pic` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -342,6 +466,48 @@ ALTER TABLE `2 pro_pic`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `3 allow`
+--
+ALTER TABLE `3 allow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `3 chats`
+--
+ALTER TABLE `3 chats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `3 cov_pic`
+--
+ALTER TABLE `3 cov_pic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `3 follow`
+--
+ALTER TABLE `3 follow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `3 msg_grp`
+--
+ALTER TABLE `3 msg_grp`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `3 notify`
+--
+ALTER TABLE `3 notify`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `3 pro_pic`
+--
+ALTER TABLE `3 pro_pic`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -349,13 +515,13 @@ ALTER TABLE `2 pro_pic`
 -- AUTO_INCREMENT for table `1 allow`
 --
 ALTER TABLE `1 allow`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `1 chats`
 --
 ALTER TABLE `1 chats`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `1 cov_pic`
@@ -367,13 +533,13 @@ ALTER TABLE `1 cov_pic`
 -- AUTO_INCREMENT for table `1 follow`
 --
 ALTER TABLE `1 follow`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `1 msg_grp`
 --
 ALTER TABLE `1 msg_grp`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `1 notify`
@@ -397,7 +563,7 @@ ALTER TABLE `2 allow`
 -- AUTO_INCREMENT for table `2 chats`
 --
 ALTER TABLE `2 chats`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `2 cov_pic`
@@ -421,12 +587,54 @@ ALTER TABLE `2 msg_grp`
 -- AUTO_INCREMENT for table `2 notify`
 --
 ALTER TABLE `2 notify`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `2 pro_pic`
 --
 ALTER TABLE `2 pro_pic`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `3 allow`
+--
+ALTER TABLE `3 allow`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `3 chats`
+--
+ALTER TABLE `3 chats`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `3 cov_pic`
+--
+ALTER TABLE `3 cov_pic`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `3 follow`
+--
+ALTER TABLE `3 follow`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `3 msg_grp`
+--
+ALTER TABLE `3 msg_grp`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `3 notify`
+--
+ALTER TABLE `3 notify`
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `3 pro_pic`
+--
+ALTER TABLE `3 pro_pic`
   MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
