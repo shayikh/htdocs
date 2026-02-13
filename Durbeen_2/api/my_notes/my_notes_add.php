@@ -31,6 +31,22 @@ mysqli_query($connection_message, $SQL1);
 
 
 
+$SQL5 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC LIMIT 1";
+$run5 = mysqli_query($connection_info, $SQL5);
+$latestChating = mysqli_fetch_assoc($run5);
+
+if ($latestChating['chat_type'] != '1') {
+  $SQL3 = "DELETE FROM `$unique_id_me chats` WHERE `chat_type`='1'";
+  mysqli_query($connection_info, $SQL3);
+
+  
+
+  $SQL2 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me','1')";
+  mysqli_query($connection_info, $SQL2);
+}
+
+
+
 
 
 $SQL2 = "SELECT * FROM `$unique_id_me to $unique_id_me` ORDER BY `id` DESC LIMIT 1";

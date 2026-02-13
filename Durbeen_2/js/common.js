@@ -752,7 +752,7 @@ const cleanGrp = (grp_id) => {
             // console.log(res.data);
 
             if (res.data == '1') {
-                window.location = './groups.php?type=groups';
+                toastr.error('Group Messages Cleared');
             }
 
         })
@@ -910,7 +910,10 @@ const cleanNotes = (unique_id_me) => {
             // console.log(res.data);
 
             if (res.data == '1') {
-                window.location = './my_notes.php?type';
+                // window.location = './my_notes.php?type';
+                appendData.innerHTML = "";
+                tbodyID.innerHTML = "";
+                toastr.error('Notes Cleared');
             }
 
         })

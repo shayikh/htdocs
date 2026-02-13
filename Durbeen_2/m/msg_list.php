@@ -35,6 +35,52 @@ if ($number > 0) {
     <!-- Chatbar start -->
 
     <ul style="list-style-type: none">
+
+
+
+
+        <?php
+        $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
+        $run11 = mysqli_query($connection_info, $SQL11);
+
+        while ($data11 = mysqli_fetch_assoc($run11)) {
+
+        $unique_id_fr_chats = $data11['unique_id_fr'];
+        $chat_type = $data11['chat_type'];
+        ?>
+
+
+
+
+
+        <?php
+        if($chat_type == 3){
+        
+        $SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
+        $run21 = mysqli_query($connection, $SQL21);
+        $data21 = mysqli_fetch_assoc($run21);
+
+        ?>
+
+        <li style="margin-bottom: 5px">
+            <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
+                <div class="msg_list_hov">
+
+                    <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>">
+                    <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px">
+                    <h5 style="margin-top: -38px;margin-left: 68px">
+                        <?php echo $data21['name'] ?>
+                    </h5>
+
+                </div>
+            </a>
+        </li>
+
+        <?php } 
+        
+        elseif ($chat_type == 1){
+        ?>
+
         <li style="margin-bottom: 5px">
             <a class="text-decoration-none" href="./my_notes.php">
                 <div class="msg_list_hov">
@@ -50,25 +96,17 @@ if ($number > 0) {
         </li>
 
 
+        <?php } 
 
+        elseif ($chat_type == 2){
 
-
-
-
-
-        <?php
-        $SQL12 = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC";
-        $run12 = mysqli_query($connection_info, $SQL12);
-
-        while ($data12 = mysqli_fetch_assoc($run12)) {
-
-        $grp_id = $data12['grp_id'];
+        $grp_id = $unique_id_fr_chats;
 
         $SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
         $run1 = mysqli_query($connection,$SQL1);
         $data1 = mysqli_fetch_assoc($run1)
-        ?>
 
+        ?>
 
         <li style="margin-bottom: 5px">
             <a class="text-decoration-none" href="./group_msg.php?type&grp_id=<?php echo $data1['id'] ?>">
@@ -84,44 +122,10 @@ if ($number > 0) {
             </a>
         </li>
 
-        <?php } ?>
+        <?php 
+        } 
+        } ?>
 
-
-
-
-
-
-
-
-        <?php
-        $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
-        $run11 = mysqli_query($connection_info, $SQL11);
-
-        while ($data11 = mysqli_fetch_assoc($run11)) {
-
-            $unique_id_fr_chats = $data11['unique_id_fr'];
-
-            $SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
-            $run21 = mysqli_query($connection, $SQL21);
-            $data21 = mysqli_fetch_assoc($run21);
-            
-            ?>
-
-        <li style="margin-bottom: 5px">
-            <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
-                <div class="msg_list_hov">
-
-                    <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>">
-                    <img src="../img/<?php $data21['active'] == 1 ? printf("green_dot.png") : printf("red_dot.jpg") ?>" style="border: 1px solid black;border-radius: 50%;margin-top: 37px;margin-left: -31px" width="12px">
-                    <h5 style="margin-top: -37px;margin-left: 68px">
-                        <?php echo $data21['name'] ?>
-                    </h5>
-
-                </div>
-            </a>
-        </li>
-
-        <?php } ?>
 
     </ul>
 

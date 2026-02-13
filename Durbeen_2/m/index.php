@@ -99,10 +99,6 @@ if (isset($_GET['mustlog'])) {
 if (isset($_GET['out'])) {
     echo "<script>toastr.info('You Are Logged Out')</script>";
 }
-if (isset($_GET['wait'])) {
-    echo "<script>toastr.info('Wait for Admin Approval')</script>";
-    echo "<script>alert('Wait for Admin Approval')</script>";
-}
 ?>
 
 

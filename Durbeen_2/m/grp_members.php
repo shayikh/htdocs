@@ -3,12 +3,12 @@ include './header.php';
 
 $grp_id = $_GET['grp_id'];
 
-$SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me'";
+$SQL110 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
 $run110 = mysqli_query($connection_message, $SQL110);
 $count110 = mysqli_num_rows($run110);
 
 if ($count110 == 0 && $unique_id_me != 1) {
-    echo "<script>window.location = 'homepage.php?type'</script>";
+    echo "<script>window.location = './groups.php?type=groups'</script>";
 }
 
 $SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
@@ -17,9 +17,6 @@ $data111 = mysqli_fetch_assoc($run111);
 
 
 
-$SQL109 = "SELECT * FROM `group $grp_id members` WHERE `memberId`='$unique_id_me' AND `admin`='1'";
-$run109 = mysqli_query($connection_message, $SQL109);
-$count109 = mysqli_num_rows($run109);
 ?>
 
 
@@ -27,31 +24,18 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
-<?php if ($count109 > 0) { ?>
-<a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 404px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Admin Page</a>
-<?php } ?>
-<?php if ($count109 > 0) { ?>
-<a href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 521px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Members</a>
-<?php } ?>
 
-<a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>
-
-<a style="position: fixed;right: 294px;top: 91px;z-index:20;font-weight: 600;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#searchModal">Find Friend</a>
+<a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></a>
 
 
-
-
-<div class="container" style="margin-top: 150px">
-
-    <h4 class="text-center">"<?php echo $data111['grp_name'] ?>" Group Members</h4>
-    <table class="table table-bordered mt-4" style="margin-bottom: 150px;border-color: #5d5d5d">
+<div class="container" style="margin-top: 112px">
+    <h6 class="text-center mt-2">"<?php echo $data111['grp_name'] ?>" Group Members</h6>
+    <table class="table table-bordered mt-2" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
         </tbody>
     </table>
-
 </div>
-
 
 <!-- Search Modal -->
 <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
@@ -89,7 +73,7 @@ $count109 = mysqli_num_rows($run109);
     showdata();
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             if(returned == 1){
                 returned = 0;
                 showdata();
@@ -106,7 +90,7 @@ $count109 = mysqli_num_rows($run109);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group/settings/loadmoreGrpSetting.php",
+        axios.post("../api/group/members/loadmoreGrpMembers_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -131,13 +115,14 @@ $count109 = mysqli_num_rows($run109);
         if(search.value == ""){
             toastr.error('Search Field is Empty');
         }else{
+            
             let searchVar = {};
 
             searchVar.unique_id_me = unique_id_me;
             searchVar.search = search.value;
             searchVar.grp_id = <?php echo $grp_id ?>;
 
-            axios.post("../api/group/settings/searchFriend.php",
+            axios.post("../api/group/members/searchFriend_m.php",
                 searchVar, {
                     headers: {
                         "Content-Type": "application/json"
@@ -162,9 +147,9 @@ $count109 = mysqli_num_rows($run109);
                     console.log(err);
                 })
         }
-        
     }
 
+    
 </script>
 
 

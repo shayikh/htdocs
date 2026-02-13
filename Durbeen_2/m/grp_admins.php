@@ -8,7 +8,7 @@ $run110 = mysqli_query($connection_message, $SQL110);
 $count110 = mysqli_num_rows($run110);
 
 if ($count110 == 0 && $unique_id_me != 1) {
-    echo "<script>window.location = 'homepage.php?type'</script>";
+    echo "<script>window.location = './groups.php?type=groups'</script>";
 }
 
 $SQL111 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
@@ -27,17 +27,17 @@ $data111 = mysqli_fetch_assoc($run111);
 <a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#groupModal">Group Info</a>
 
 
-<a style="position: fixed;left: 143px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" onclick="cleanGrp(<?php echo $grp_id ?>)"><i class="fas fa-trash-alt"></i></a>
+<a style="position: fixed;left: 128px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" onclick="cleanGrp(<?php echo $grp_id ?>)"><i class="fas fa-trash-alt"></i></a>
 
 
-<a style="position: fixed;left: 95px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#searchModal">Find</a>
+<a style="position: fixed;left: 94px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></a>
 
 
 
 
 
 <div class="container" style="margin-top: 112px">
-    <h6 class="text-center">Add Or Remove Members & Admins</h6>
+    <h6 class="text-center">Add Or Remove "<?php echo $data111['grp_name'] ?>" Group Members & Admins</h6>
     <table class="table table-bordered mt-3" style="margin-bottom: 150px;border-color: #5d5d5d">
         <tbody id="tbodyID">
 
@@ -143,7 +143,7 @@ $data111 = mysqli_fetch_assoc($run111);
         postData.unique_id_me = <?php echo $unique_id_me ?>;
         postData.grp_id = <?php echo $grp_id ?>;
 
-        axios.post("../api/group/loadmoreGrpAdmin_m.php",
+        axios.post("../api/group/admins/loadmoreGrpAdmin_m.php",
                 postData, {
                     headers: {
                         "Content-Type": "application/json"
@@ -177,7 +177,7 @@ $data111 = mysqli_fetch_assoc($run111);
             searchVar.search = search.value;
             searchVar.grp_id = <?php echo $grp_id ?>;
 
-            axios.post("../api/group/searchFriend_m.php",
+            axios.post("../api/group/admins/searchFriend_m.php",
                 searchVar, {
                     headers: {
                         "Content-Type": "application/json"
