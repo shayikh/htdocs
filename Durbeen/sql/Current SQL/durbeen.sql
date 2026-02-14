@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2026 at 11:35 AM
+-- Generation Time: Feb 14, 2026 at 03:14 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -51,8 +51,8 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`id`, `unique_id`, `bio`, `date_birth`, `gender`, `phone_no`, `religion`, `country`, `city`, `question_one`, `answer_one`, `question_two`, `answer_two`, `question_three`, `answer_three`) VALUES
 (1, 1, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(2, 2, NULL, '0001-11-11', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', ''),
-(3, 3, NULL, '0002-02-22', 'Male', NULL, NULL, NULL, NULL, '', '', '', '', '', '');
+(2, 2, '', '0001-11-11', 'Male', '', '', '', '', '', '', '', '', '', ''),
+(3, 3, '', '0002-02-22', 'Male', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`id`, `grp_name`, `pro_pic`) VALUES
 (1, 'কিয়ামতের পদধ্বনি', '698560989975b_06_Feb_2026_Fri_09_31_36_am_6981f3f859d13_03_Feb_2026_Tue_07_11_20_pm.jpeg'),
-(2, 'Extraterrestrial Intelligence', '698ad25760e28_10_Feb_2026_Tue_12_38_15_pm_Shayikh.jpeg');
+(2, 'Extraterrestrial Intelligence', '699070d917e35_14_Feb_2026_Sat_06_55_53_pm.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `unique_id`, `image`, `time`, `post`) VALUES
-(1, 1, '698564df7c665_06_Feb_2026_Fri_09_49_51_am.jpeg', 'Asia/Dhaka time: 06-Feb-2026-Fri-09:49:51 am', '');
+(1, 1, '699072786f3a1_14_Feb_2026_Sat_07_02_48_pm.jpg', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:02:48 pm', '');
 
 -- --------------------------------------------------------
 
@@ -159,9 +159,9 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`, `locking`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 0, 12, 0),
-(2, 'Shakil Hossain', 'shakil@gmail.com', '1', '698560b2f3069_06_Feb_2026_Fri_09_32_02_am.jpg', 'cov_pic.jpg', 0, 2, 0),
-(3, 'Ahsan Zaman', 'ahsan@gmail.com', '1', '698ad2893760d_10_Feb_2026_Tue_12_39_05_pm.jpeg', 'cov_pic.jpg', 0, 2, 0);
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 1, 15, 1),
+(2, 'Shakil Hossain', 'shakil@gmail.com', '1', '6990722781fca_14_Feb_2026_Sat_07_01_27_pm.jpg', 'cov_pic.jpg', 0, 4, 0),
+(3, 'Ahsan Zaman', 'ahsan@gmail.com', '1', '69907109b558f_14_Feb_2026_Sat_06_56_41_pm.jpg', 'cov_pic.jpg', 0, 3, 1);
 
 --
 -- Indexes for dumped tables

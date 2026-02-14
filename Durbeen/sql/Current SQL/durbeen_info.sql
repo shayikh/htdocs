@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2026 at 11:35 AM
+-- Generation Time: Feb 14, 2026 at 03:15 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -58,11 +58,11 @@ CREATE TABLE `1 chats` (
 --
 
 INSERT INTO `1 chats` (`id`, `unique_id_fr`, `chat_type`) VALUES
-(17, 1, 2),
-(18, 3, 3),
-(19, 2, 3),
-(22, 2, 2),
-(23, 1, 1);
+(37, 1, 2),
+(39, 1, 1),
+(40, 2, 3),
+(41, 2, 2),
+(42, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -92,8 +92,7 @@ CREATE TABLE `1 follow` (
 
 INSERT INTO `1 follow` (`id`, `unique_id_fr`) VALUES
 (1, 1),
-(2, 2),
-(3, 3);
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -174,8 +173,8 @@ CREATE TABLE `2 chats` (
 
 INSERT INTO `2 chats` (`id`, `unique_id_fr`, `chat_type`) VALUES
 (1, 2, 1),
-(14, 1, 2),
-(15, 1, 3);
+(19, 1, 2),
+(20, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -246,7 +245,10 @@ INSERT INTO `2 notify` (`id`, `sender`, `sender_id`, `seen`) VALUES
 (1, 'Md Mehrab Alam Shayikh', 1, 1),
 (2, 'Md Mehrab Alam Shayikh', 1, 1),
 (3, 'Md Mehrab Alam Shayikh', 1, 0),
-(4, 'Md Mehrab Alam Shayikh', 1, 0);
+(4, 'Md Mehrab Alam Shayikh', 1, 0),
+(5, 'Md Mehrab Alam Shayikh', 1, 0),
+(6, 'Md Mehrab Alam Shayikh', 1, 0),
+(7, 'Md Mehrab Alam Shayikh', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -270,13 +272,6 @@ CREATE TABLE `3 allow` (
   `unique_id_fr` bigint(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `3 allow`
---
-
-INSERT INTO `3 allow` (`id`, `unique_id_fr`) VALUES
-(1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -295,8 +290,8 @@ CREATE TABLE `3 chats` (
 
 INSERT INTO `3 chats` (`id`, `unique_id_fr`, `chat_type`) VALUES
 (1, 3, 1),
-(3, 1, 3),
-(4, 1, 2);
+(11, 1, 2),
+(12, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -364,7 +359,21 @@ CREATE TABLE `3 notify` (
 --
 
 INSERT INTO `3 notify` (`id`, `sender`, `sender_id`, `seen`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 1, 1);
+(2, 'Md Mehrab Alam Shayikh', 1, 0),
+(3, 'Md Mehrab Alam Shayikh', 1, 0),
+(4, 'Md Mehrab Alam Shayikh', 1, 0),
+(5, 'Md Mehrab Alam Shayikh', 1, 0),
+(6, 'Md Mehrab Alam Shayikh', 1, 0),
+(7, 'Md Mehrab Alam Shayikh', 1, 0),
+(8, 'Md Mehrab Alam Shayikh', 1, 0),
+(9, 'Md Mehrab Alam Shayikh', 1, 0),
+(10, 'Md Mehrab Alam Shayikh', 1, 0),
+(11, 'Md Mehrab Alam Shayikh', 1, 0),
+(12, 'Md Mehrab Alam Shayikh', 1, 0),
+(13, 'Md Mehrab Alam Shayikh', 1, 0),
+(14, 'Md Mehrab Alam Shayikh', 1, 0),
+(15, 'Md Mehrab Alam Shayikh', 1, 0),
+(16, 'Md Mehrab Alam Shayikh', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -521,7 +530,7 @@ ALTER TABLE `1 allow`
 -- AUTO_INCREMENT for table `1 chats`
 --
 ALTER TABLE `1 chats`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `1 cov_pic`
@@ -563,7 +572,7 @@ ALTER TABLE `2 allow`
 -- AUTO_INCREMENT for table `2 chats`
 --
 ALTER TABLE `2 chats`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `2 cov_pic`
@@ -587,13 +596,13 @@ ALTER TABLE `2 msg_grp`
 -- AUTO_INCREMENT for table `2 notify`
 --
 ALTER TABLE `2 notify`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `2 pro_pic`
 --
 ALTER TABLE `2 pro_pic`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `3 allow`
@@ -605,7 +614,7 @@ ALTER TABLE `3 allow`
 -- AUTO_INCREMENT for table `3 chats`
 --
 ALTER TABLE `3 chats`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `3 cov_pic`
@@ -629,13 +638,13 @@ ALTER TABLE `3 msg_grp`
 -- AUTO_INCREMENT for table `3 notify`
 --
 ALTER TABLE `3 notify`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `3 pro_pic`
 --
 ALTER TABLE `3 pro_pic`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
