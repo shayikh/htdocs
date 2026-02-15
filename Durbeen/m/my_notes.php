@@ -1,6 +1,19 @@
 <?php
 include './header.php';
 
+
+//create my notes table if not exist
+$SQLcreateMe = "CREATE TABLE IF NOT EXISTS `$unique_id_me to $unique_id_me` (
+    `id` bigint(255) unsigned NOT NULL auto_increment,
+    `message` longtext,
+    `image` varchar(1000),
+    `time` varchar(1000),
+    PRIMARY KEY  (`id`)
+)";
+mysqli_query($connection_message, $SQLcreateMe);
+
+
+
 ?>
 
 
