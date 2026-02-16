@@ -63,7 +63,7 @@ if ($number > 0) {
         ?>
 
         <li style="margin-bottom: 5px">
-            <a class="text-decoration-none" href="message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
+            <a class="text-decoration-none" href="./message.php?type&unique_id_fr=<?php echo $data21['unique_id'] ?>">
                 <div class="msg_list_hov">
 
                     <img class="float-start me-3" style="border-radius: 50%" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>">
