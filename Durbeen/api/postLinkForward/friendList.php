@@ -10,12 +10,12 @@ $post_id = $data['post_id'];
 
 
 
+
 $SQLMe = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
 $runMe = mysqli_query($connection, $SQLMe);
 $dataMe = mysqli_fetch_assoc($runMe);
 
 $pro_pic_me = $dataMe['pro_pic'];
-?>
 
 
 
@@ -27,7 +27,8 @@ $pro_pic_me = $dataMe['pro_pic'];
 
 
 
-<?php
+
+
 $SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
 $run11 = mysqli_query($connection_info, $SQL11);
 
@@ -77,7 +78,7 @@ elseif ($chat_type == 1){
     </td>
 
     <td class="text-center text-dark">
-        <?php echo $dataMe['name'] ?>
+        My Notes
     </td>
 
     <td class="text-center text-dark">
@@ -100,11 +101,15 @@ $data1 = mysqli_fetch_assoc($run1)
 
 <tr>
     <td class="text-center">
-        <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
+        <a href="./group_msg.php?type&grp_id=<?php echo $grp_id ?>" target="_blank">
+            <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
+        </a>
     </td>
 
     <td class="text-center">
-        <a style="color: blue" href="./group_msg.php?type&grp_id=<?php echo $grp_id ?>" target="_blank"><?php echo $data1['grp_name'] ?></a>
+        <a style="color: blue" href="./group_msg.php?type&grp_id=<?php echo $grp_id ?>" target="_blank">
+            <?php echo $data1['grp_name'] ?>
+        </a>
     </td>
 
     <td class="text-center">

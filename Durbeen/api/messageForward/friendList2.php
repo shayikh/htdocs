@@ -16,112 +16,103 @@ $runMe = mysqli_query($connection, $SQLMe);
 $dataMe = mysqli_fetch_assoc($runMe);
 
 $pro_pic_me = $dataMe['pro_pic'];
+
+
+
+
+
+
+
+
+
+
+$SQL11 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC";
+$run11 = mysqli_query($connection_info, $SQL11);
+
+while ($data11 = mysqli_fetch_assoc($run11)) {
+
+$unique_id_fr_chats = $data11['unique_id_fr'];
+$chat_type = $data11['chat_type'];
+
+
+
+
+
+
+
+if($chat_type == 3){
+
+$SQL21 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr_chats'";
+$run21 = mysqli_query($connection, $SQL21);
+$data21 = mysqli_fetch_assoc($run21);
+
 ?>
 
+<tr>
+    <td class="text-center">
+        <a href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr_chats ?>" target="_blank">
+            <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data21['pro_pic'] ?>">
+        </a>
+    </td>
 
+    <td class="text-center text-dark">
+        <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $unique_id_fr_chats ?>" target="_blank"><?php echo $data21['name'] ?></a>
+    </td>
 
+    <td class="text-center text-dark">
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(13, <?php echo $from_grp_id ?>, <?php echo $unique_id_fr_chats ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+    </td>
+</tr>
 
+<?php } 
 
-
-
-
-
-
-
-
+elseif ($chat_type == 1){
+?>
 <tr>
     <td class="text-center">
         <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $pro_pic_me ?>">
     </td>
 
     <td class="text-center text-dark">
-        <?php echo $dataMe['name'] ?>
+        My Notes
     </td>
 
     <td class="text-center text-dark">
-        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(21, <?php echo $from_grp_id ?>, <?php echo $unique_id_me ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(11, <?php echo $from_grp_id ?>, <?php echo $unique_id_me ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
     </td>
 </tr>
 
 
+<?php } 
 
+elseif ($chat_type == 2){
 
+$grp_id = $unique_id_fr_chats;
 
+$SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
+$run1 = mysqli_query($connection,$SQL1);
+$data1 = mysqli_fetch_assoc($run1)
 
+?>
 
-
-
-<?php
-$SQL12 = "SELECT * FROM `$unique_id_me msg_grp` ORDER BY `id` DESC";
-$run12 = mysqli_query($connection_info, $SQL12);
-
-while ($data12 = mysqli_fetch_assoc($run12)){
-
-    $grp_id = $data12['grp_id'];
-
-    $SQL1 = "SELECT * FROM `groups` WHERE `id`='$grp_id'";
-    $run1 = mysqli_query($connection,$SQL1);
-    $data1 = mysqli_fetch_assoc($run1)
-
-    ?>
-
-    <tr>
-        <td class="text-center">
+<tr>
+    <td class="text-center">
+        <a href="./group_msg.php?type&grp_id=<?php echo $grp_id ?>" target="_blank">
             <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
-        </td>
+        </a>
+    </td>
 
-        <td class="text-center text-dark">
+    <td class="text-center text-dark">
+        <a style="color: blue" href="./group_msg.php?type&grp_id=<?php echo $grp_id ?>" target="_blank">
             <?php echo $data1['grp_name'] ?>
-        </td>
+        </a>
+    </td>
 
-        <td class="text-center text-dark">
-            <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(22, <?php echo $from_grp_id ?>, <?php echo $grp_id ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
-        </td>
-    </tr>
+    <td class="text-center text-dark">
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(12, <?php echo $from_grp_id ?>, <?php echo $grp_id ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+    </td>
+</tr>
 
-
-
-<?php } ?>
-
-
-
-
-
-
-
-
-
-<?php
-$SQL = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`!=$unique_id_me ORDER BY `id` DESC";
-$run = mysqli_query($connection_info,$SQL);
-
-while ($data1=mysqli_fetch_assoc($run)){
-
-    $to_unique_id_fr = $data1['unique_id_fr'];
-
-    
-    $SQLF = "SELECT * FROM `registration` WHERE `unique_id`='$to_unique_id_fr'";
-    $runF = mysqli_query($connection, $SQLF);
-    $data2 = mysqli_fetch_assoc($runF);
-
-    ?>
-
-    <tr>
-        <td class="text-center">
-            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $to_unique_id_fr ?>" target="_blank">
-                <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/<?php echo $data2['pro_pic'] ?>">
-            </a>
-        </td>
-
-        <td class="text-center text-dark">
-            <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=<?php echo $to_unique_id_fr ?>" target="_blank"><?php echo $data2['name'] ?></a>
-        </td>
-
-        <td class="text-center text-dark">
-            <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(23, <?php echo $from_grp_id ?>, <?php echo $to_unique_id_fr ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
-        </td>
-    </tr>
-
-
-
-<?php } ?>
+<?php 
+} 
+}
