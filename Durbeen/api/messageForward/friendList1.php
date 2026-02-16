@@ -74,7 +74,7 @@ elseif ($chat_type == 1){
     </td>
 
     <td class="text-center text-dark">
-        My Notes
+        <?php echo $dataMe['name'] ?>
     </td>
 
     <td class="text-center text-dark">
