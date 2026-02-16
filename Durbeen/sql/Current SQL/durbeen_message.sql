@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2026 at 03:15 PM
+-- Generation Time: Feb 16, 2026 at 02:03 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- PHP Version: 7.3.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,11 @@ INSERT INTO `1 to 1` (`id`, `message`, `image`, `time`) VALUES
 (2, 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:18:19 pm'),
 (3, 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:20:58 pm'),
 (4, 'y', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:21:47 pm'),
-(5, 't', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:42 pm');
+(5, 't', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:42 pm'),
+(6, '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-10:32:23 am'),
+(7, 'ol\r\n', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-05:47:15 pm'),
+(8, 'ol\r\n', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:47:20 pm'),
+(9, '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:52:50 pm');
 
 -- --------------------------------------------------------
 
@@ -70,7 +74,10 @@ INSERT INTO `1 to 2` (`id`, `sender`, `message`, `image`, `time`, `seen`) VALUES
 (3, 1, '', '698564ee6cabe_06_Feb_2026_Fri_09_50_06_am.jpeg', 'Asia/Dhaka time: 06-Feb-2026-Fri-09:50:06 am', 'Unseen'),
 (5, 1, 'b', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:20:16 pm', 'Unseen'),
 (6, 1, 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:20:54 pm', 'Unseen'),
-(7, 1, 't', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:46 pm', 'Unseen');
+(7, 1, 't', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:46 pm', 'Unseen'),
+(8, 1, '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-10:32:23 am', 'Unseen'),
+(9, 1, 'ol\r\n', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:47:22 pm', 'Unseen'),
+(10, 1, '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:52:51 pm', 'Unseen');
 
 -- --------------------------------------------------------
 
@@ -98,7 +105,11 @@ INSERT INTO `1 to 3` (`id`, `sender`, `message`, `image`, `time`, `seen`) VALUES
 (12, 1, 'Hello, i want to follow you. Please allow me so that i can follow you', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:21:41 pm', 'Unseen'),
 (13, 1, 'Hello, i want to follow you. Please allow me so that i can follow you', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:21:54 pm', 'Unseen'),
 (14, 1, 'h', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:38 pm', 'Unseen'),
-(15, 1, 'Hello, i want to follow you. Please allow me so that i can follow you', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:56 pm', 'Unseen');
+(15, 1, 'Hello, i want to follow you. Please allow me so that i can follow you', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:56 pm', 'Unseen'),
+(16, 1, '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-10:32:25 am', 'Unseen'),
+(17, 1, 'ol\r\n', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:47:22 pm', 'Unseen'),
+(18, 1, '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:52:51 pm', 'Unseen'),
+(19, 1, 'nice', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-05:53:54 pm', 'Unseen');
 
 -- --------------------------------------------------------
 
@@ -149,7 +160,11 @@ CREATE TABLE `group 1` (
 INSERT INTO `group 1` (`id`, `senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES
 (1, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', '', '6985650db1c7c_06_Feb_2026_Fri_09_50_37_am.jpeg', 'Asia/Dhaka time: 06-Feb-2026-Fri-09:50:37 am'),
 (6, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:20:31 pm'),
-(7, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:27:40 pm');
+(7, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:27:40 pm'),
+(8, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-10:32:24 am'),
+(9, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'ol\r\n', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:47:23 pm'),
+(10, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'tg', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-05:52:22 pm'),
+(11, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:52:49 pm');
 
 -- --------------------------------------------------------
 
@@ -195,7 +210,11 @@ CREATE TABLE `group 2` (
 INSERT INTO `group 2` (`id`, `senderName`, `senderId`, `senderProPic`, `message`, `image`, `time`) VALUES
 (1, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'g', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:18:15 pm'),
 (2, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'f', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:20:28 pm'),
-(3, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 't', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:50 pm');
+(3, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 't', '', 'Asia/Dhaka time: 14-Feb-2026-Sat-07:50:50 pm'),
+(4, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-10:32:20 am'),
+(5, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'ol\r\n', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:47:22 pm'),
+(6, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'ppp', '', 'Asia/Dhaka time: 16-Feb-2026-Mon-05:52:02 pm'),
+(7, 'Md Mehrab Alam Shayikh', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', '<a href=\'./singlePost.php?type&post_id=1\'>Click To See Post (1)</a>', '', 'The time in Asia/Dhaka is 16-Feb-2026-Mon-05:52:50 pm');
 
 -- --------------------------------------------------------
 
@@ -282,19 +301,19 @@ ALTER TABLE `group 2 members`
 -- AUTO_INCREMENT for table `1 to 1`
 --
 ALTER TABLE `1 to 1`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `1 to 2`
 --
 ALTER TABLE `1 to 2`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `1 to 3`
 --
 ALTER TABLE `1 to 3`
-  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `2 to 2`
@@ -312,7 +331,7 @@ ALTER TABLE `3 to 3`
 -- AUTO_INCREMENT for table `group 1`
 --
 ALTER TABLE `group 1`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `group 1 members`
@@ -324,7 +343,7 @@ ALTER TABLE `group 1 members`
 -- AUTO_INCREMENT for table `group 2`
 --
 ALTER TABLE `group 2`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `group 2 members`

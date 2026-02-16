@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2026 at 03:14 PM
+-- Generation Time: Feb 16, 2026 at 02:03 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- PHP Version: 7.3.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -159,7 +159,7 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`unique_id`, `name`, `email`, `password`, `pro_pic`, `cov_pic`, `active`, `visit`, `locking`) VALUES
-(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 1, 15, 1),
+(1, 'Md Mehrab Alam Shayikh', 'mshayikh114@gmail.com', '1', '6985608aaa0ef_06_Feb_2026_Fri_09_31_22_am.jpg', 'cov_pic.jpg', 1, 20, 1),
 (2, 'Shakil Hossain', 'shakil@gmail.com', '1', '6990722781fca_14_Feb_2026_Sat_07_01_27_pm.jpg', 'cov_pic.jpg', 0, 4, 0),
 (3, 'Ahsan Zaman', 'ahsan@gmail.com', '1', '69907109b558f_14_Feb_2026_Sat_06_56_41_pm.jpg', 'cov_pic.jpg', 0, 3, 1);
 
