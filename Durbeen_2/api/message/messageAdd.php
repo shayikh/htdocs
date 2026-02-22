@@ -45,25 +45,53 @@ mysqli_query($connection_info, $SQL3);
 
 
 
-$SQL5 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC LIMIT 1";
-$run5 = mysqli_query($connection_info, $SQL5);
-$latestChating = mysqli_fetch_assoc($run5);
+
+
+
+
+
+
+
+
+
+
+$SQL54 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC LIMIT 1";
+$run54 = mysqli_query($connection_info, $SQL54);
+$latestChating = mysqli_fetch_assoc($run54);
 
 if (($latestChating['unique_id_fr'] != $unique_id_fr || $latestChating['chat_type'] != '3')) {
-  $SQL3 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr' AND `chat_type`='3'";
-  mysqli_query($connection_info, $SQL3);
+  $SQL34 = "DELETE FROM `$unique_id_me chats` WHERE `unique_id_fr`='$unique_id_fr' AND `chat_type`='3'";
+  mysqli_query($connection_info, $SQL34);
 
-  $SQL4 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
-  mysqli_query($connection_info, $SQL4);
-
-
-
-  $SQL2 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me','3')";
-  mysqli_query($connection_info, $SQL2);
-
-  $SQL2 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_fr','3')";
-  mysqli_query($connection_info, $SQL2);
+  
+  $SQL28 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_fr','3')";
+  mysqli_query($connection_info, $SQL28);
 }
+
+
+
+
+
+$SQL54 = "SELECT * FROM `$unique_id_fr chats` ORDER BY `id` DESC LIMIT 1";
+$run54 = mysqli_query($connection_info, $SQL54);
+$latestChating = mysqli_fetch_assoc($run54);
+
+if (($latestChating['unique_id_fr'] != $unique_id_me || $latestChating['chat_type'] != '3')) {
+  $SQL44 = "DELETE FROM `$unique_id_fr chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
+  mysqli_query($connection_info, $SQL44);
+
+
+  $SQL24 = "INSERT INTO `$unique_id_fr chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me','3')";
+  mysqli_query($connection_info, $SQL24);
+}
+
+
+
+
+
+
+
+
 
 
 

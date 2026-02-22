@@ -539,11 +539,13 @@ const allowfn = (unique_id_me, unique_id_fr, elm) => {
             elm.innerHTML = '<i class="fas fa-user-check"></i>';
             elm.classList.add('btn-success');
             elm.classList.remove('btn-danger');
-        } else {
+        } else if (res.data == 1) {
             toastr.success('Allowed to Follow You');
             elm.innerHTML = '<i class="fas fa-user-times"></i>';
             elm.classList.add('btn-danger');
             elm.classList.remove('btn-success');
+        }else{
+            toastr.error('This Button Works Only When You Lock Your Account.');
         }
     })
     .catch(err => {
@@ -984,7 +986,7 @@ const deleteConv = (unique_id_me, unique_id_fr) => {
             // console.log(res.data);
 
             if (res.data == '1') {
-                window.location = './homepage.php?type';
+                window.location = './facelist.php?type';
             }
             
         })

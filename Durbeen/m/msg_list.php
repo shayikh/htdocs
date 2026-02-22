@@ -30,7 +30,7 @@ if ($number > 0) {
 <!-- main page -->
 
 <div class="container" style="margin-top: 112px">
-    <h6 class="text-center">Message List</h6>
+    <h6 class="text-center">Chat List</h6>
 
     <!-- Chatbar start -->
 
