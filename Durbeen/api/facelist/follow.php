@@ -150,6 +150,12 @@ else{
     if($countF == 0){
         $SQL188 = "INSERT INTO `$unique_id_me follow`(`unique_id_fr`) VALUES ('$unique_id_fr')";
         mysqli_query($connection_info,$SQL188);
+
+        if($countfrA == 0) {
+            $SQL189 = "INSERT INTO `$unique_id_fr allow`(`unique_id_fr`) VALUES ('$unique_id_me')";
+            mysqli_query($connection_info,$SQL189);
+        }
+        
         echo "2";
     }
     else{
