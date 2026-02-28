@@ -60,7 +60,7 @@ $data21 = mysqli_fetch_assoc($run21);
     </td>
 
     <td class="text-center text-dark">
-        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(13, <?php echo $from_unique_id_fr ?>, <?php echo $unique_id_fr_chats ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(33, <?php echo $from_unique_id_fr ?>, <?php echo $unique_id_fr_chats ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
     </td>
 </tr>
 
@@ -78,7 +78,7 @@ elseif ($chat_type == 1){
     </td>
 
     <td class="text-center text-dark">
-        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(11, <?php echo $from_unique_id_fr ?>, <?php echo $unique_id_me ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(31, <?php echo $from_unique_id_fr ?>, <?php echo $unique_id_me ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
     </td>
 </tr>
 
@@ -109,7 +109,7 @@ $data1 = mysqli_fetch_assoc($run1)
     </td>
 
     <td class="text-center text-dark">
-        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(12, <?php echo $from_unique_id_fr ?>, <?php echo $grp_id ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
+        <button class="btn btn-sm btn-primary" onclick="forwardMessagefn(32, <?php echo $from_unique_id_fr ?>, <?php echo $grp_id ?>, <?php echo $message_id ?>, <?php echo $unique_id_me ?>, this)">Forward</button>
     </td>
 </tr>
 
