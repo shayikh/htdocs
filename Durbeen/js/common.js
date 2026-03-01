@@ -44,31 +44,39 @@ const logout = (unique_id_me) => {
 
 const deleteComment = (comment_id, unique_id_me, elm) => {
 
-    let delComment = {};
+    let confirm = window.confirm("Do You Want to Delete This Comment?");
 
-    delComment.comment_id = comment_id;
-    delComment.unique_id_me = unique_id_me;
+    if (confirm) {
+        let delComment = {};
 
-    axios.post("../api/comment/deleteComment.php",
-    delComment, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
-        // console.log(res.data);
+        delComment.comment_id = comment_id;
+        delComment.unique_id_me = unique_id_me;
 
-        if (res.data == 1) {
-            elm.parentElement.parentElement.remove();
-            toastr.info('Comment Deleted');
-        } else {
-            toastr.warning("You Can not Delete Other's Comment");
-        }
+        axios.post("../api/comment/deleteComment.php",
+        delComment, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
 
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            if (res.data == 1) {
+                elm.parentElement.parentElement.remove();
+                toastr.info('Comment Deleted');
+            } else {
+                toastr.warning("You Can not Delete Other's Comment");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+
+    
 
 }
 
