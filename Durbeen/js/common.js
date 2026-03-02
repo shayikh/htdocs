@@ -330,6 +330,14 @@ const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, 
 
         if (res.data == 1) {
             elm.parentElement.parentElement.remove();
+            toastr.success("Message Forwarded to Yourself");
+        }
+        else if(res.data == 2){
+            elm.parentElement.parentElement.remove();
+            toastr.success("Message Forwarded to the Group");
+        }
+        else if(res.data == 3){
+            elm.parentElement.parentElement.remove();
             toastr.success("Message Forwarded to Your Friend");
         }
 
