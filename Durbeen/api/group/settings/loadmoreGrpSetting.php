@@ -16,7 +16,6 @@ $limit = 10;
 $row = ($page_no - 1)*$limit;
 
 
-
 $SQL = "SELECT * FROM `group $grp_id members` ORDER BY `id` DESC LIMIT $row,$limit";
 $run = mysqli_query($connection_message,$SQL);
 

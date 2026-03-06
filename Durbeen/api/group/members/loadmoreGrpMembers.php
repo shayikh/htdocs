@@ -16,7 +16,6 @@ $limit = 10;
 $row = ($page_no - 1)*$limit;
 
 
-
 $SQL154 = "SELECT * FROM `group $grp_id members` WHERE `memberId`!='$unique_id_me' ORDER BY `id` DESC LIMIT $row,$limit";
 $run154 = mysqli_query($connection_message,$SQL154);
 

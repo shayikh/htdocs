@@ -130,55 +130,76 @@ const lockingfn = (unique_id_me, elm) => {
 
 const removeLikefn = (like_id, elm) => {
 
-    let removeLike = {};
+    let confirm = window.confirm("Do You Want to Remove Like From The Post?");
 
-    removeLike.like_id = like_id;
+    if (confirm) {
+        let removeLike = {};
 
-    axios.post("../api/about_update/removeLike.php",
-        removeLike, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
+        removeLike.like_id = like_id;
 
-        // console.log(res.data);
-        if(res.data == 1){
-            elm.parentElement.parentElement.remove();
-            toastr.success("Like Removed");
-        }
+        axios.post("../api/about_update/removeLike.php",
+            removeLike, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            // console.log(res.data);
+            if(res.data == 1){
+                elm.parentElement.parentElement.remove();
+                toastr.success("Like Removed");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+
 
 }
 
+
+
+
 const removeDisLikefn = (dislike_id, elm) => {
 
-    let removeDisLike = {};
+    let confirm = window.confirm("Do You Want to Remove Dislike From The Post?");
 
-    removeDisLike.dislike_id = dislike_id;
+    if (confirm) {
+        let removeDisLike = {};
 
-    axios.post("../api/about_update/removeDisLike.php",
-        removeDisLike, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
+        removeDisLike.dislike_id = dislike_id;
 
-        // console.log(res.data);
-        if(res.data == 1){
-            elm.parentElement.parentElement.remove();
-            toastr.success("Like Removed");
-        }
+        axios.post("../api/about_update/removeDisLike.php",
+            removeDisLike, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            // console.log(res.data);
+            if(res.data == 1){
+                elm.parentElement.parentElement.remove();
+                toastr.success("Like Removed");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+
 
 }
 
