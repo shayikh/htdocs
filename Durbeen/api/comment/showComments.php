@@ -41,7 +41,7 @@ $data2 = mysqli_fetch_assoc($run2);
     <td class="text-center text-dark"><?php echo $data1['time'] ?></td>
     <td class="text-center text-dark"><?php echo $data1['comment'] ?></td>
     <td class="text-center text-dark">
-        <i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(<?php echo $data1['id'] ?>, <?php echo $unique_id_me ?>, this)"></i>
+        <i class="fas fa-trash" style="cursor: pointer" onclick="deleteComment(<?php echo $data1['id'] ?>, <?php echo $unique_id_me ?>, this)"></i>
     </td>
 </tr>
 

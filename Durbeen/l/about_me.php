@@ -744,7 +744,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                                 <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
                             </td>
                             <td class="text-center text-dark">
-                                <i class="fas fa-trash ms-4 mt-2 me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, ${comment.comn_giver_id}, this)"></i>
+                                <i class="fas fa-trash" style="cursor: pointer" onclick="deleteComment(${comment.id}, ${comment.comn_giver_id}, this)"></i>
                             </td>
                         </tr>`
         return tr;
