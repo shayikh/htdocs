@@ -203,11 +203,13 @@ const removeDisLikefn = (dislike_id, elm) => {
 
 }
 
-const showCommentfn = (post_id) => {
+
+const showCommentfn = (post_id, unique_id_me) => {
 
     let showComment = {};
 
     showComment.post_id = post_id;
+    showComment.unique_id_me = unique_id_me;
 
     axios.post("../api/comment/showComments.php",
     showComment, {
@@ -218,13 +220,7 @@ const showCommentfn = (post_id) => {
     .then(res => {
 
         // console.log(res.data);
-
-        let all = res.data;
-
-        all.forEach(comment => {
-            commentTbody.innerHTML = commentTbody.innerHTML + makeCommentTr(comment);
-        })
-
+        commentTbody.innerHTML = res.data;
 
     })
     .catch(err => {

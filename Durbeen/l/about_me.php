@@ -773,38 +773,15 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
             if (res.data == 0) {
                 toastr.info('You Are at The End');
             } else {
-                let all = res.data;
 
-                all.forEach(comment => {
-                    otherCommentTbody.innerHTML = otherCommentTbody.innerHTML + makeOtherCommentTr(comment);
-                })
+                otherCommentTbody.innerHTML = otherCommentTbody.innerHTML + res.data;
+
                 page_no_other_comment++;
             }
         })
         .catch(err => {
             console.log(err);
         })
-    }
-
-
-    const makeOtherCommentTr = (comment) => {
-        let tr = `<tr>
-                            <td class="text-center">
-                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                    <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
-                                </a>
-                            </td>
-
-                            <td class="text-center" style="min-width: 150px">
-                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
-                            </td>
-                            <td class="text-center text-dark" style="min-width: 180px">${comment.time}</td>
-                            <td class="text-center text-dark" style="min-width: 200px">${comment.comment}</td>
-                            <td class="text-center text-dark" style="min-width: 150px">
-                                <a href="./singlePost.php?type&amp;post_id=${comment.post_id}" class="btn btn-success" target="_blank">Show Post</a>
-                            </td>
-                        </tr>`
-        return tr;
     }
 
 

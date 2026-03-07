@@ -405,28 +405,6 @@ if ($number > 0) { ?>
     }
 
 
-    const makeCommentTr = (comment) => {
-        let tr = `<tr>
-                        <td class="text-center">
-                            <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">
-                                <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
-                            </a>
-                        </td>
-
-                        <td class="text-center" style="min-width: 100px">
-                            <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}">${comment.name}</a>
-                        </td>
-
-                        <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
-                        <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
-                        <td class="text-center text-dark">
-                            <i class="fas fa-trash m8-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-                        </td>
-                    </tr>`
-        return tr;
-    }
-
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -499,7 +477,7 @@ if ($number > 0) { ?>
                             <i class="fas fa-share"></i>
                             </a>
                             <button onclick="showPostLinkForwardfn(${post.id})" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
-                            <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
+                            <button onclick="showCommentfn(${post.id}, ${unique_id_me})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                             <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                             <input type="text" class="mt-1 float-start">
                             <p class="float-end" style="font-size: 16px;margin-top: -15px">0 Comments</p>
