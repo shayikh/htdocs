@@ -18,9 +18,9 @@ if ($_SESSION['unique_id_me'] != 1) {
 
 
 <!-- main page -->
-<a target="_self" style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" href="group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Refresh</a>
+<a target="_self" style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" href="./all_group_msg.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Refresh</a>
 
-<a style="position: fixed;left: 73px;top: 62px;z-index:20;font-weight: 600;" href="grp_settings.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Settings</a>
+<a style="position: fixed;left: 73px;top: 62px;z-index:20;font-weight: 600;" href="./grp_settings.php?type&grp_id=<?php echo $grp_id ?>" class="btn btn-sm btn-success">Settings</a>
 
 
 
