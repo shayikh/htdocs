@@ -27,11 +27,11 @@ $count109 = mysqli_num_rows($run109);
 
 
 <!-- main page -->
-<?php if ($count109 > 0) { ?>
-<a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 404px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Admin Page</a>
+<?php if ($count109 > 0 || $unique_id_me == 1) { ?>
+<a href="./grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 404px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Admin Page</a>
 <?php } ?>
-<?php if ($count109 > 0) { ?>
-<a href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 521px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Members</a>
+<?php if ($count109 > 0 || $unique_id_me == 1) { ?>
+<a href="./grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;right: 521px;top:91px;z-index:20;font-weight: 600;" class="btn btn-success">Members</a>
 <?php } ?>
 
 <a style="position: fixed;right: 174px;top:91px;z-index:20;font-weight: 600;" class="btn btn-danger" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave Group</a>

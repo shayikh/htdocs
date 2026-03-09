@@ -31,11 +31,11 @@ $count109 = mysqli_num_rows($run109);
 
 <a style="position: fixed;left: 5px;top: 62px;z-index:20;font-weight: 600;" style="font-weight: 600;" class="btn btn-sm btn-danger" onclick="leaveGrp(<?php echo $grp_id ?>,<?php echo $unique_id_me ?>)">Leave</a>
 
-<?php if ($count109 > 0) { ?>
-<a href="grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 133px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success"><i class="fas fa-user-cog"></i></a>
+<?php if ($count109 > 0 || $unique_id_me == 1) { ?>
+<a href="./grp_admins.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 133px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success"><i class="fas fa-user-cog"></i></a>
 <?php } ?>
-<?php if ($count109 > 0) { ?>
-<a href="grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 95px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success"><i class="fas fa-user-friends"></i></a>
+<?php if ($count109 > 0 || $unique_id_me == 1) { ?>
+<a href="./grp_members.php?type&grp_id=<?php echo $grp_id ?>" style="position: fixed;left: 95px;top: 62px;z-index:20;font-weight: 600;" class="btn btn-sm btn-success"><i class="fas fa-user-friends"></i></a>
 <?php } ?>
 
 
