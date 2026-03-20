@@ -365,7 +365,7 @@ include './header.php';
                 cache: false,
                 processData: false,
                 beforeSend: function() {
-                    // alert('ok')
+                    button.classList.add("d-none");
                 },
                 success: function(data) {
 
@@ -376,7 +376,9 @@ include './header.php';
 
 
                     tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+                    button.classList.remove("d-none");
 
+                    toastr.success('Message Sent');
 
                     image.value = "";
                     message.value = "";
