@@ -89,22 +89,22 @@ if($typical_id == 33){
 
 
     //chat friend start
-    $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$to_id'";
+    $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$to_id' AND `chat_type`='3'";
     $run3 = mysqli_query($connection_info, $SQL3);
     $count3 = mysqli_num_rows($run3);
 
     if ($count3 == 0) {
-        $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$to_id')";
+        $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$to_id', '3')";
         mysqli_query($connection_info, $SQL16);
     }
 
 
-    $SQL4 = "SELECT * FROM `$to_id chats` WHERE `unique_id_fr`='$unique_id_me'";
+    $SQL4 = "SELECT * FROM `$to_id chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
     $run4 = mysqli_query($connection_info, $SQL4);
     $count4 = mysqli_num_rows($run4);
 
     if ($count4 == 0) {
-        $SQL5 = "INSERT INTO `$to_id chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
+        $SQL5 = "INSERT INTO `$to_id chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me', '3')";
         mysqli_query($connection_info, $SQL5);
     }
 
@@ -166,7 +166,7 @@ if($typical_id == 33){
 
 
 
-    echo "1";
+    echo "3";
 }elseif($typical_id == 32){
 
 
@@ -211,7 +211,7 @@ if($typical_id == 33){
     mysqli_query($connection_message, $SQL1);
 
 
-    echo "1";
+    echo "2";
 
 
 }elseif($typical_id == 31){
@@ -323,22 +323,22 @@ elseif($typical_id == 23){
 
 
     //chat friend start
-    $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$to_id'";
+    $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$to_id' AND `chat_type`='3'";
     $run3 = mysqli_query($connection_info, $SQL3);
     $count3 = mysqli_num_rows($run3);
 
     if ($count3 == 0) {
-        $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$to_id')";
+        $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$to_id', '3')";
         mysqli_query($connection_info, $SQL16);
     }
 
 
-    $SQL4 = "SELECT * FROM `$to_id chats` WHERE `unique_id_fr`='$unique_id_me'";
+    $SQL4 = "SELECT * FROM `$to_id chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
     $run4 = mysqli_query($connection_info, $SQL4);
     $count4 = mysqli_num_rows($run4);
 
     if ($count4 == 0) {
-        $SQL5 = "INSERT INTO `$to_id chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
+        $SQL5 = "INSERT INTO `$to_id chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me', '3')";
         mysqli_query($connection_info, $SQL5);
     }
 
@@ -398,7 +398,7 @@ elseif($typical_id == 23){
 
 
 
-    echo "1";
+    echo "3";
 }elseif($typical_id == 22){
 
 
@@ -438,7 +438,7 @@ elseif($typical_id == 23){
     mysqli_query($connection_message, $SQL1);
 
 
-    echo "1";
+    echo "2";
 
 
 }elseif($typical_id == 21){
@@ -546,22 +546,22 @@ elseif($typical_id == 13){
 
 
     //chat friend start
-    $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$to_id'";
+    $SQL3 = "SELECT * FROM `$unique_id_me chats` WHERE `unique_id_fr`='$to_id' AND `chat_type`='3'";
     $run3 = mysqli_query($connection_info, $SQL3);
     $count3 = mysqli_num_rows($run3);
 
     if ($count3 == 0) {
-        $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`) VALUES ('$to_id')";
+        $SQL16 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$to_id', '3')";
         mysqli_query($connection_info, $SQL16);
     }
 
 
-    $SQL4 = "SELECT * FROM `$to_id chats` WHERE `unique_id_fr`='$unique_id_me'";
+    $SQL4 = "SELECT * FROM `$to_id chats` WHERE `unique_id_fr`='$unique_id_me' AND `chat_type`='3'";
     $run4 = mysqli_query($connection_info, $SQL4);
     $count4 = mysqli_num_rows($run4);
 
     if ($count4 == 0) {
-        $SQL5 = "INSERT INTO `$to_id chats`(`unique_id_fr`) VALUES ('$unique_id_me')";
+        $SQL5 = "INSERT INTO `$to_id chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me', '3')";
         mysqli_query($connection_info, $SQL5);
     }
 
@@ -621,7 +621,7 @@ elseif($typical_id == 13){
 
 
 
-    echo "1";
+    echo "3";
 }elseif($typical_id == 12){
 
 
@@ -661,7 +661,7 @@ elseif($typical_id == 13){
     mysqli_query($connection_message, $SQL1);
 
 
-    echo "1";
+    echo "2";
 
 
 }elseif($typical_id == 11){

@@ -44,31 +44,39 @@ const logout = (unique_id_me) => {
 
 const deleteComment = (comment_id, unique_id_me, elm) => {
 
-    let delComment = {};
+    let confirm = window.confirm("Do You Want to Delete This Comment?");
 
-    delComment.comment_id = comment_id;
-    delComment.unique_id_me = unique_id_me;
+    if (confirm) {
+        let delComment = {};
 
-    axios.post("../api/comment/deleteComment.php",
-    delComment, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
-        // console.log(res.data);
+        delComment.comment_id = comment_id;
+        delComment.unique_id_me = unique_id_me;
 
-        if (res.data == 1) {
-            elm.parentElement.parentElement.remove();
-            toastr.info('Comment Deleted');
-        } else {
-            toastr.warning("You Can not Delete Other's Comment");
-        }
+        axios.post("../api/comment/deleteComment.php",
+        delComment, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            // console.log(res.data);
 
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            if (res.data == 1) {
+                elm.parentElement.parentElement.remove();
+                toastr.info('Comment Deleted');
+            } else {
+                toastr.warning("You Can not Delete Other's Comment");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    } else {
+        return;
+    }
+
+    
 
 }
 
@@ -122,63 +130,86 @@ const lockingfn = (unique_id_me, elm) => {
 
 const removeLikefn = (like_id, elm) => {
 
-    let removeLike = {};
+    let confirm = window.confirm("Do You Want to Remove Like From The Post?");
 
-    removeLike.like_id = like_id;
+    if (confirm) {
+        let removeLike = {};
 
-    axios.post("../api/about_update/removeLike.php",
-        removeLike, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
+        removeLike.like_id = like_id;
 
-        // console.log(res.data);
-        if(res.data == 1){
-            elm.parentElement.parentElement.remove();
-            toastr.success("Like Removed");
-        }
+        axios.post("../api/about_update/removeLike.php",
+            removeLike, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            // console.log(res.data);
+            if(res.data == 1){
+                elm.parentElement.parentElement.remove();
+                toastr.success("Like Removed");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+
 
 }
+
+
+
 
 const removeDisLikefn = (dislike_id, elm) => {
 
-    let removeDisLike = {};
+    let confirm = window.confirm("Do You Want to Remove Dislike From The Post?");
 
-    removeDisLike.dislike_id = dislike_id;
+    if (confirm) {
+        let removeDisLike = {};
 
-    axios.post("../api/about_update/removeDisLike.php",
-        removeDisLike, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => {
+        removeDisLike.dislike_id = dislike_id;
 
-        // console.log(res.data);
-        if(res.data == 1){
-            elm.parentElement.parentElement.remove();
-            toastr.success("Like Removed");
-        }
+        axios.post("../api/about_update/removeDisLike.php",
+            removeDisLike, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
 
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            // console.log(res.data);
+            if(res.data == 1){
+                elm.parentElement.parentElement.remove();
+                toastr.success("Like Removed");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        return;
+    }
+
+
 
 }
 
-const showCommentfn = (post_id) => {
+
+const showCommentfn = (post_id, unique_id_me) => {
 
     let showComment = {};
 
     showComment.post_id = post_id;
+    showComment.unique_id_me = unique_id_me;
 
     axios.post("../api/comment/showComments.php",
     showComment, {
@@ -189,13 +220,7 @@ const showCommentfn = (post_id) => {
     .then(res => {
 
         // console.log(res.data);
-
-        let all = res.data;
-
-        all.forEach(comment => {
-            commentTbody.innerHTML = commentTbody.innerHTML + makeCommentTr(comment);
-        })
-
+        commentTbody.innerHTML = res.data;
 
     })
     .catch(err => {
@@ -321,6 +346,14 @@ const forwardMessagefn = (typical_id, from_id, to_id, message_id, unique_id_me, 
         // console.log(res.data);
 
         if (res.data == 1) {
+            elm.parentElement.parentElement.remove();
+            toastr.success("Message Forwarded to Yourself");
+        }
+        else if(res.data == 2){
+            elm.parentElement.parentElement.remove();
+            toastr.success("Message Forwarded to the Group");
+        }
+        else if(res.data == 3){
             elm.parentElement.parentElement.remove();
             toastr.success("Message Forwarded to Your Friend");
         }

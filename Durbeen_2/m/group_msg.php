@@ -384,7 +384,7 @@ $grpName = $datagrp['grp_name'];
                 cache: false,
                 processData: false,
                 beforeSend: function() {
-                    // alert('ok')
+                    button.classList.add("d-none");
                 },
                 success: function(data) {
 
@@ -395,6 +395,7 @@ $grpName = $datagrp['grp_name'];
 
 
                     tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
+                    button.classList.remove("d-none");
 
                     toastr.success('Message Sent');
 

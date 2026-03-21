@@ -437,27 +437,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
 
 
-    const makeCommentTr = (comment) => {
-        let tr = `<tr>
-						<td class="text-center">
-							<a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-								<img class="text-center rounded-circle" width="70px" height="70px" src="../pro_pic/${comment.pro_pic}">
-							</a>
-						</td>
-
-						<td class="text-center text-dark">
-							<a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
-						</td>
-
-						<td class="text-center text-dark">${comment.time}</td>
-						<td class="text-center text-dark">${comment.comment}</td>
-						<td class="text-center text-dark">
-							<i class="fas fa-trash me-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-						</td>
-				</tr>`
-        return tr;
-    }
-
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -538,7 +517,7 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
                                 <i class="fas fa-share"></i>
                             </button>
                             <button onclick="showPostLinkForwardfn(${post.id})" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
-                            <button onclick="showCommentfn(${post.id})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
+                            <button onclick="showCommentfn(${post.id}, ${unique_id_me})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                             <button onclick="commentfn(this, ${post.id}, ${post.unique_id}, ${unique_id_me})" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                             <input type="text" class="ms-5 mt-2">
 

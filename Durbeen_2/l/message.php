@@ -455,7 +455,7 @@ if ($countTest == 0) {
                 cache: false,
                 processData: false,
                 beforeSend: function() {
-                    // alert('ok')
+                    button.classList.add("d-none");
                 },
                 success: function(data) {
 
@@ -469,6 +469,9 @@ if ($countTest == 0) {
                     // console.log(unique_id_fr);
 
                     tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+                    button.classList.remove("d-none");
+
+                    toastr.success('Message Sent');
 
                     image.value = "";
                     message.value = "";

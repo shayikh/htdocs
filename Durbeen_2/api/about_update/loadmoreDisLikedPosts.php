@@ -41,7 +41,7 @@ while ($data2 = mysqli_fetch_assoc($run2)){
             <a href="./singlePost.php?type&post_id=<?php echo $post_id ?>" class="btn btn-success" target="_blank" style="margin-top: 35px">Show Post</a>
         </td>
         <td class="text-center">
-            <i class="fas fa-trash ms-4 me-4 text-dark" style="cursor: pointer; margin-top: 45px" onclick="removeDisLikefn(<?php echo $like_id ?>, this)"></i>
+            <i class="fas fa-trash text-dark" style="cursor: pointer; margin-top: 45px" onclick="removeDisLikefn(<?php echo $like_id ?>, this)"></i>
         </td>
         
     </tr>

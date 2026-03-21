@@ -84,7 +84,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         </button>
 
                         <button onclick="showPostLinkForwardfn(<?php echo $Postid ?>)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
-                        <button onclick="showCommentfn(<?php echo $Postid ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
+                        <button onclick="showCommentfn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>
                         <button onclick="commentfn(this, <?php echo $Postid ?>, <?php echo $data1['unique_id'] ?>, <?php echo $unique_id_me ?>)" class="btn btn-sm btn-info text-white float-end mb-3"><i class="fas fa-comment"></i></button>
                         <input type="text" class="mt-1 d-inline float-start">
                         <p class="float-end d-inline" style="font-size: 16px;margin-top: -15px"><?php echo $no_comment ?> Comments</p>
@@ -282,28 +282,6 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         });
 
     })
-
-    const makeCommentTr = (comment) => {
-        let tr = `<tr>
-                            <td class="text-center">
-                                <a href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">
-                                    <img class="text-center rounded-circle" width="50px" height="50px" src="../pro_pic/${comment.pro_pic}">
-                                </a>
-                            </td>
-
-                            <td class="text-center" style="min-width: 100px">
-                                <a style="color: blue" href="./people_timeline.php?type&unique_id_fr=${comment.comn_giver_id}" target="_blank">${comment.name}</a>
-                            </td>
-
-                            <td class="text-center text-dark" style="min-width: 130px">${comment.time}</td>
-                            <td class="text-center text-dark" style="min-width: 250px">${comment.comment}</td>
-                            <td class="text-center text-dark">
-                                <i class="fas fa-trash m8-4" style="cursor: pointer" onclick="deleteComment(${comment.id}, <?php echo $unique_id_me ?>, this)"></i>
-                            </td>
-                        </tr>`
-        return tr;
-    }
-
 
 
     forwardForm.addEventListener('submit', (e) => {
