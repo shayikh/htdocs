@@ -947,7 +947,7 @@ const cleanNotes = (unique_id_me) => {
             if (res.data == '1') {
                 // window.location = './my_notes.php?type';
                 appendData.innerHTML = "";
-                tbodyID.innerHTML = "";
+                tbody.innerHTML = "";
                 toastr.error('Notes Cleared');
             }
 
