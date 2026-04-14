@@ -65,9 +65,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                                     <b><?php echo $data2['name']?></b>
                                 </a>
                             </p>
-                            <?php if ($data1['image'] != "") { ?>
-                                <img width="100%" src="../post_image/<?php echo $data1['image']?>">
-                            <?php } ?>
+                            <img width="100%" src="../post_image/<?php echo $data1['image']?>">
                             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                 <p class="card-title text-white"><?php echo $data1['time']?></p>
                                 <p class="card-text text-white"><?php echo $data1['post']?></p>
@@ -78,7 +76,15 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         <p class="float-start me-2" style="color: <?php $countlike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 16px; margin-top: 2px; cursor: pointer" onclick="likefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"><i class="fas fa-thumbs-up me-1"></i>(<?php echo $countlikeall ?>)</p>
                         <p class="float-start me-3" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"><i class="fas fa-thumbs-down me-1"></i>(<?php echo $countdislikeall ?>)</p>
 
+                        
+                        <?php if($unique_id_fr == $unique_id_me) {?>
+                        <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
 
+                        <button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <?php } ?>
+                        
                         <button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="shareMefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
                             <i class="fas fa-share"></i>
                         </button>
@@ -206,6 +212,14 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
 
 <script>
+    let editForm = document.querySelector("#editFormID");
+    let editPost = document.querySelector("#editPostID");
+    let editImage = document.querySelector("#editImageID");
+    let editButton = document.querySelector("#editButtonID");
+    let edit_post_id = document.querySelector("#edit_post_id");
+    let editCloseBtn = document.querySelector("#editCloseBtn");
+    let targetTr = null;
+
     let commentTbody = document.querySelector("#commentTbody");
     let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
 
@@ -324,6 +338,56 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             });
         }
     })
+
+    
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var editformdata = new FormData(editForm);
+
+        $.ajax({
+            url: "../api/post/updatePost.php",
+            type: "POST",
+            data: editformdata,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                let json = JSON.parse(data);
+
+                let updatedPost = json.updatedPost;
+
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.src = "../post_image/" + updatedPost.image;
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerText = updatedPost.time;
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText = updatedPost.post;
+
+                editImage.value = "";
+                editPost.value = "";
+
+                toastr.success('Post Updated');
+
+                editCloseBtn.click();
+                targetTr = null;
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    const editfn = (post_id, elm) => {
+        editPost.value = elm.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText;
+        edit_post_id.value = post_id;
+
+        targetTr = elm.parentElement.parentElement;
+    }
 
     const showPostLinkForwardfn = (post_id) => {
 

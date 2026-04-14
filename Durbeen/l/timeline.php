@@ -127,6 +127,30 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
 
                     <input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
+                    <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="postEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Edit Post</h5>
+                <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="editFormID" enctype="multipart/form-data">
+                    <input type="hidden" name="edit_unique_id_me" value="<?php echo $unique_id_me ?>">
+                    <input type="hidden" name="edit_post_id" id="edit_post_id" value="">
+
+                    <textarea style="background-color: #F3F3F3;color: #000" name="editPost" id="editPostID" rows="5" class="form-control mb-2" type="text"></textarea>
+
+                    <input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+
                     <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
                 </form>
             </div>

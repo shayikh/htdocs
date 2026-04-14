@@ -70,8 +70,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
         <p class="float-start me-3" style="color: <?php $countdislike == 1 ? printf("#0D6EFD") : printf("") ?>; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"><i class="fas fa-thumbs-down me-1"></i>(<?php echo $countdislikeall ?>)</p>
 
 
-        <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)"
-                class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
+        <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
 
         <button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
             <i class="fas fa-edit"></i>

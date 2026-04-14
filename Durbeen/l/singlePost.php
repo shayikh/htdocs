@@ -65,9 +65,7 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                                     <b><?php echo $data2['name']?></b>
                                 </a>
                             </p>
-                            <?php if ($data1['image'] != "") { ?>
-                                <img width="100%" src="../post_image/<?php echo $data1['image']?>">
-                            <?php } ?>
+                            <img width="100%" src="../post_image/<?php echo $data1['image']?>">
                             <div class="card-body" style="background-color: #198754;border-radius: 0 0 3px 3px">
                                 <p class="card-title text-white"><?php echo $data1['time']?></p>
                                 <p class="card-text text-white"><?php echo $data1['post']?></p>
@@ -79,6 +77,15 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
                         <p class="float-start mt-2 me-3" style="font-size: 18px"><i class="fas fa-thumbs-up me-1"></i><?php echo $countlikeall ?></p>
                         <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i><?php echo $countdislikeall ?></p>
                         <p class="float-start mt-2" style="font-size: 18px"><?php echo $no_comment ?> Comments</p>
+]
+
+                        <?php if($unique_id_fr == $unique_id_me) {?>
+                        <button onclick="deletePost(<?php echo $Postid ?>, <?php echo $unique_id_me ?>, this)" class="btn btn-sm btn-danger float-end mb-2"><i class="fas fa-trash-alt"></i></button>
+
+                        <button onclick="editfn(<?php echo $Postid ?>, this)" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postEditModal">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <?php } ?>
 
                         <button class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="shareMefn(<?php echo $Postid ?>, <?php echo $unique_id_me ?>)">
                             <i class="fas fa-share"></i>
@@ -131,6 +138,29 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
     </div>
 </div>
 
+<!-- Edit Modal -->
+<div class="modal fade" id="postEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Edit Post</h5>
+                <button id="editCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="editFormID" enctype="multipart/form-data">
+                    <input type="hidden" name="edit_unique_id_me" value="<?php echo $unique_id_me ?>">
+                    <input type="hidden" name="edit_post_id" id="edit_post_id" value="">
+
+                    <textarea style="background-color: #F3F3F3;color: #000" name="editPost" id="editPostID" rows="5" class="form-control mb-2" type="text"></textarea>
+
+                    <input style="background-color: #F3F3F3;" name="editImage" class="form-control" id="editImageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+
+                    <input name="updateBtn" id="editButtonID" value="UPDATE" class="mt-2 float-end btn btn-sm red" type="submit" aria-label="Close">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Post Link Forward Modal -->
 <div class="modal fade" id="postlinkforwardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true" modal-dialog modal-dialog-scrollable>
@@ -209,6 +239,14 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
 
 
 <script>
+    let editForm = document.querySelector("#editFormID");
+    let editPost = document.querySelector("#editPostID");
+    let editImage = document.querySelector("#editImageID");
+    let editButton = document.querySelector("#editButtonID");
+    let edit_post_id = document.querySelector("#edit_post_id");
+    let editCloseBtn = document.querySelector("#editCloseBtn");
+    let targetTr = null;
+
     let commentTbody = document.querySelector("#commentTbody");
     let postlinkforwardTboody = document.querySelector("#postlinkforwardTboodyID");
 
@@ -327,6 +365,56 @@ $countdislikeall = mysqli_num_rows($rundislikeall);
             });
         }
     })
+
+    
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+
+        var editformdata = new FormData(editForm);
+
+        $.ajax({
+            url: "../api/post/updatePost.php",
+            type: "POST",
+            data: editformdata,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                // alert('ok')
+            },
+            success: function(data) {
+
+                let json = JSON.parse(data);
+
+                let updatedPost = json.updatedPost;
+
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.src = "../post_image/" + updatedPost.image;
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerText = updatedPost.time;
+                targetTr.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText = updatedPost.post;
+
+                editImage.value = "";
+                editPost.value = "";
+
+                toastr.success('Post Updated');
+
+                editCloseBtn.click();
+                targetTr = null;
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    })
+
+
+    const editfn = (post_id, elm) => {
+        editPost.value = elm.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerText;
+        edit_post_id.value = post_id;
+
+        targetTr = elm.parentElement.parentElement;
+    }
     
     const showPostLinkForwardfn = (post_id) => {
 

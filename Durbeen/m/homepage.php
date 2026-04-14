@@ -473,8 +473,11 @@ if ($number > 0) { ?>
                             <p class="float-start me-2" style="color: ; font-size: 16px; margin-top: 2px; cursor: pointer" onclick="likefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-up me-1"></i>(0)</p>
                             <p class="float-start me-3" style="color: ; font-size: 16px; margin-top: 3px; cursor: pointer" onclick="dislikefn(${post.id}, ${unique_id_me}, this)"><i class="fas fa-thumbs-down me-1"></i>(0)</p>
 
+                            <a class="btn btn-sm btn-danger float-end mb-3" href="./singlePost.php?type&post_id=${post.id}">
+                                <i class="fas fa-wrench"></i>
+                            </a>
                             <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
-                            <i class="fas fa-share"></i>
+                                <i class="fas fa-share"></i>
                             </a>
                             <button onclick="showPostLinkForwardfn(${post.id})" class="btn btn-sm btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#postlinkforwardModal"><i class="fas fa-forward"></i></button>
                             <button onclick="showCommentfn(${post.id}, ${unique_id_me})" class="btn btn-sm btn-success float-end mb-3" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas fa-comments"></i></button>

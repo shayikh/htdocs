@@ -448,6 +448,9 @@ if ($number > 0) { ?>
                         <p class="float-start mt-2 me-5" style="font-size: 18px"><i class="fas fa-thumbs-down me-1"></i>0</p>
                         <p class="float-start mt-2" style="font-size: 18px">0 Comments</p>
 
+                        <a class="btn btn-sm btn-danger float-end mb-3" href="./singlePost.php?type&post_id=${post.id}">
+                            <i class="fas fa-wrench"></i>
+                        </a>
                         <a class="btn btn-sm btn-light text-secondary float-end mb-3" onclick="sharefn(${post.id}, ${unique_id_me})">
                             <i class="fas fa-share"></i>
                         </a>
