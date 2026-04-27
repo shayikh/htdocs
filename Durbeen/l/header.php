@@ -17,7 +17,7 @@ $dataMe = mysqli_fetch_assoc($runMe);
 
 $EmailMe = $dataMe['email'];
 $pro_pic_me = $dataMe['pro_pic'];
-
+$my_name = $dataMe['name'];
 
 
 ?>

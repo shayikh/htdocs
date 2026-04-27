@@ -1161,3 +1161,213 @@ function uniqueEmailRegister() {
         console.log(err);
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+let filesArray = [];
+
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const preview = document.getElementById("preview");
+const contentID = document.getElementById("contentID");
+
+
+/* click */
+dropZone.onclick = () => fileInput.click();
+fileInput.onchange = e => addFiles(e.target.files);
+
+/* drag */
+dropZone.addEventListener("dragover", e => {
+    e.preventDefault();
+    dropZone.classList.add("active");
+});
+
+dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("active");
+});
+
+dropZone.addEventListener("drop", e => {
+    e.preventDefault();
+    dropZone.classList.remove("active");
+    addFiles(e.dataTransfer.files);
+});
+
+/* paste */
+document.addEventListener("paste", e => {
+    let items = e.clipboardData.items;
+    let imgs = [];
+
+    for (let i of items) {
+        if (i.type.includes("image")) {
+            imgs.push(i.getAsFile());
+        }
+    }
+
+    addFiles(imgs);
+});
+
+/* handle files */
+function addFiles(files) {
+    for (let f of files) {
+        filesArray.push(f);
+
+        let reader = new FileReader();
+        reader.onload = e => {
+            let div = document.createElement("div");
+            div.className = "img-chip";
+            div.innerHTML = `<img src="${e.target.result}">`;
+            preview.appendChild(div);
+        };
+        reader.readAsDataURL(f);
+    }
+}
+
+
+
+/* postAdd */
+function postAdd(unique_id_me) {
+    let formUpload = new FormData();
+    formUpload.append("contentID", contentID.value);
+    formUpload.append("unique_id_me", unique_id_me);
+
+    filesArray.forEach(f => formUpload.append("images[]", f));
+
+    fetch("../api/post/postAdd.php", {
+        method: "POST",
+        body: formUpload
+    })
+    .then(response => response.json())
+    .then(json => {
+        // console.log(json);
+
+        let unique_id_me = json.unique_id_me;
+        let newPost = json.newPost;
+
+        newPost.forEach(newPost => {
+            tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+        })
+
+        filesArray = [];
+        preview.innerHTML = "";
+        contentID.value = "";
+        toastr.success('Post Created');
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+
+/* messageAdd */
+function messageAdd(unique_id_me, unique_id_fr) {
+    let msgUpload = new FormData();
+    msgUpload.append("contentID", contentID.value);
+    msgUpload.append("unique_id_me", unique_id_me);
+    msgUpload.append("unique_id_fr", unique_id_fr);
+
+    filesArray.forEach(f => msgUpload.append("images[]", f));
+
+    fetch("../api/message/messageAdd.php", {
+        method: "POST",
+        body: msgUpload
+    })
+    .then(response => response.json())
+    .then(json => {
+        // console.log(json);
+
+        let unique_id_me = json.unique_id_me;
+        let unique_id_fr = json.unique_id_fr;
+        let newPost = json.newPost;
+
+        newPost.forEach(newPost => {
+            tbody.innerHTML = makeTr(newPost, unique_id_me, unique_id_fr) + tbody.innerHTML;
+        })
+
+        filesArray = [];
+        preview.innerHTML = "";
+        contentID.value = "";
+        toastr.success('Message Sent');
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+
+
+/* Grp Msg Add */
+function grpMsgAdd(unique_id_me, grp_id) {
+    let msgUpload = new FormData();
+    msgUpload.append("contentID", contentID.value);
+    msgUpload.append("unique_id_me", unique_id_me);
+    msgUpload.append("grp_id", grp_id);
+
+    filesArray.forEach(f => msgUpload.append("images[]", f));
+
+    fetch("../api/group_msg/GroupMsgAdd.php", {
+        method: "POST",
+        body: msgUpload
+    })
+    .then(response => response.json())
+    .then(json => {
+        // console.log(json);
+
+        let unique_id_me = json.unique_id_me;
+        let grp_id = json.grp_id;
+        let newPost = json.newPost;
+
+        newPost.forEach(newPost => {
+            tbody.innerHTML = makeTr(newPost, grp_id) + tbody.innerHTML;
+        })
+
+        filesArray = [];
+        preview.innerHTML = "";
+        contentID.value = "";
+        toastr.success('Message Sent');
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+
+
+function myNotesAdd(unique_id_me) {
+    let msgUpload = new FormData();
+    msgUpload.append("contentID", contentID.value);
+    msgUpload.append("unique_id_me", unique_id_me);
+
+    filesArray.forEach(f => msgUpload.append("images[]", f));
+
+    fetch("../api/my_notes/my_notes_add.php", {
+        method: "POST",
+        body: msgUpload
+    })
+    .then(response => response.json())
+    .then(json => {
+        // console.log(json);
+
+        let unique_id_me = json.unique_id_me;
+        let newPost = json.newPost;
+
+        newPost.forEach(newPost => {
+            tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+        })
+
+        filesArray = [];
+        preview.innerHTML = "";
+        contentID.value = "";
+        toastr.success('Note Saved');
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
