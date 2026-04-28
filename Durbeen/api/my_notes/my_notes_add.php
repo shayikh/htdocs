@@ -5,8 +5,9 @@ header('Content-Type: application/json');
 error_reporting(0); // hide warnings from breaking JSON
 
 $response = [
-  "unique_id_me" => "",
-  "newPost" => []
+    "unique_id_me" => "",
+    "number" => "",
+    "newMessage" => []
 ];
 
 $content = $_POST["contentID"] ?? "";
@@ -66,12 +67,49 @@ if (!empty($_FILES["images"]["name"][0])) {
 
     if ($run4) {
         while ($row = mysqli_fetch_assoc($run4)) {
-            $response["newPost"][] = $row;
+            $response["newMessage"][] = $row;
         }
     }
+
+	$response["number"] = "1";
+    $response["unique_id_me"] = $unique_id_me;
+
+    echo json_encode($response);
+}else{
+    $imageNewName = '';
+
+    $SQL1 = "INSERT INTO `$unique_id_me to $unique_id_me`(`message`, `image`, `time`) VALUES ('$content','$imageNewName','$time')";
+    mysqli_query($connection_message, $SQL1);
+
+
+    $SQL2 = "SELECT * FROM `$unique_id_me to $unique_id_me` ORDER BY `id` DESC LIMIT 1";
+    $run2 = mysqli_query($connection_message, $SQL2);
+    $newMessage = mysqli_fetch_assoc($run2);
+
+    echo json_encode(["unique_id_me"=>$unique_id_me, "newMessage" => $newMessage, "number" => "0"]);
 }
 
-$response["unique_id_me"] = $unique_id_me;
 
-echo json_encode($response);
+
+
+
+$SQL5 = "SELECT * FROM `$unique_id_me chats` ORDER BY `id` DESC LIMIT 1";
+$run5 = mysqli_query($connection_info, $SQL5);
+$latestChating = mysqli_fetch_assoc($run5);
+
+if ($latestChating['chat_type'] != '1') {
+  $SQL3 = "DELETE FROM `$unique_id_me chats` WHERE `chat_type`='1'";
+  mysqli_query($connection_info, $SQL3);
+
+  
+
+  $SQL2 = "INSERT INTO `$unique_id_me chats`(`unique_id_fr`, `chat_type`) VALUES ('$unique_id_me','1')";
+  mysqli_query($connection_info, $SQL2);
+}
+
+
+
+
+
+
 exit;

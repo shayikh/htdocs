@@ -54,9 +54,25 @@ if (isset($_FILES["images"])) {
     while ($singlePost = mysqli_fetch_assoc($run2)) {
         array_push($posts, $singlePost);
     }
-    echo json_encode(["unique_id_me"=>$unique_id_me, "newPost" => $posts]);
+    echo json_encode(["unique_id_me"=>$unique_id_me, "newPost" => $posts, "number" => "1"]);
 
 
 
+}else{
+    $imageNewName = '';
+
+    $stmt = $connection->prepare("INSERT INTO post (unique_id, image, time, post) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $unique_id_me, $imageNewName, $time, $content);
+    $stmt->execute();
+
+    $SQL2 = "SELECT * FROM `post` ORDER BY `id` DESC LIMIT 1";
+    $run2 = mysqli_query($connection, $SQL2);
+    $newPost = mysqli_fetch_assoc($run2);
+
+    echo json_encode([
+        "unique_id_me"=>$unique_id_me, 
+        "newPost" => $newPost,
+        "number" => "0"
+    ]);
 }
 ?>

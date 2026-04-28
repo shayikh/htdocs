@@ -1250,10 +1250,16 @@ function postAdd(unique_id_me) {
 
         let unique_id_me = json.unique_id_me;
         let newPost = json.newPost;
+        let number = json.number;
 
-        newPost.forEach(newPost => {
+        if(number == "1"){
+            newPost.forEach(newPost => {
+                tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+            })
+        }else{
             tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-        })
+        }
+
 
         filesArray = [];
         preview.innerHTML = "";
@@ -1285,11 +1291,17 @@ function messageAdd(unique_id_me, unique_id_fr) {
 
         let unique_id_me = json.unique_id_me;
         let unique_id_fr = json.unique_id_fr;
-        let newPost = json.newPost;
+        let newMessage = json.newMessage;
+        let number = json.number;
 
-        newPost.forEach(newPost => {
-            tbody.innerHTML = makeTr(newPost, unique_id_me, unique_id_fr) + tbody.innerHTML;
-        })
+
+        if(number == "1"){
+            newMessage.forEach(newMessage => {
+                tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+            })
+        }else{
+            tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+        }
 
         filesArray = [];
         preview.innerHTML = "";
@@ -1322,11 +1334,17 @@ function grpMsgAdd(unique_id_me, grp_id) {
 
         let unique_id_me = json.unique_id_me;
         let grp_id = json.grp_id;
-        let newPost = json.newPost;
+        let newMessage = json.newMessage;
+        let number = json.number;
 
-        newPost.forEach(newPost => {
-            tbody.innerHTML = makeTr(newPost, grp_id) + tbody.innerHTML;
-        })
+
+        if(number == "1"){
+            newMessage.forEach(newMessage => {
+                tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
+            })
+        }else{
+            tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
+        }
 
         filesArray = [];
         preview.innerHTML = "";
@@ -1356,11 +1374,17 @@ function myNotesAdd(unique_id_me) {
         // console.log(json);
 
         let unique_id_me = json.unique_id_me;
-        let newPost = json.newPost;
+        let newMessage = json.newMessage;
+        let number = json.number;
 
-        newPost.forEach(newPost => {
-            tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-        })
+
+        if(number == "1"){
+            newMessage.forEach(newMessage => {
+                tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+            })
+        }else{
+            tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+        }
 
         filesArray = [];
         preview.innerHTML = "";
