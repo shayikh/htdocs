@@ -37,30 +37,22 @@ $grpName = $datagrp['grp_name'];
         <div class="col-md-8">
             <h6 class="text-center"><?php echo $grpName ?></h6>
             <!-- Status Bar -->
-            <div class="row justify-content-center">
-                <div class="statusp">
-                    <div class="col-md-12 mt-2 mb-2">
-                        <div class="card" style="width: 100%;border: none;">
-                            <div class="card-body" style="background-color: #262626;border-radius: 0 0 3px 3px;">
+            <div class="card-new" style="margin: 17px;">
 
-                                <form action="" method="post" id="formID" enctype="multipart/form-data">
-                                    
-                                    <input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
-                                    <input type="hidden" name="grp_id" value="<?php echo $grp_id ?>">
-                                    <input type="hidden" name="my_name" value="<?php echo $dataMe['name'] ?>">
-                                    <input type="hidden" name="myProPic" value="<?php echo $dataMe['pro_pic'] ?>">
+                <div class="title text-white">Send Message</div>
 
-                                    <textarea style="background-color: #F3F3F3;color: #000" name="message" id="messageID" rows="4" class="form-control mb-2" placeholder="Type Message"></textarea>
-                                        
-                                    <input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                <textarea id="contentID" placeholder="What's on your mind?"></textarea>
 
-                                    <input name="send" id="buttonID" value="SEND" class="mt-2 float-end btn btn-sm red" type="submit">
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
+                <div class="dropzone" id="dropZone">
+                    Drag & Drop • Paste • Click to Add Images
                 </div>
+
+                <input type="file" id="fileInput" multiple hidden>
+
+                <div id="preview"></div>
+
+                <button class="button-new" onclick="grpMsgAdd(<?php echo $unique_id_me?>, <?php echo $grp_id ?>)">Send Message</button>
+
             </div>
             <!-- Status Bar end -->
         </div>
@@ -368,47 +360,6 @@ $grpName = $datagrp['grp_name'];
 
     }
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        if (image.value == "" && message.value == "") {
-            toastr.error('Message and Image Both Fields are Empty');
-        } else {
-            var formdata = new FormData(form);
-
-            $.ajax({
-                url: "../api/group_msg/GroupMsgAdd.php",
-                type: "POST",
-                data: formdata,
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    button.classList.add("d-none");
-                },
-                success: function(data) {
-
-                    let json = JSON.parse(data);
-
-                    let newMessage = json.newMessage;
-                    let grp_id = json.grp_id;
-
-
-                    tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
-                    button.classList.remove("d-none");
-
-                    toastr.success('Message Sent');
-
-                    image.value = "";
-                    message.value = "";
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-        }
-
-    })
 
 
     const makeTr = (message, grp_id) => {

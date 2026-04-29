@@ -37,30 +37,23 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         <div class="col-md-8">
             <!-- Status Bar -->
 			<div class="row justify-content-center">
-				<div class="statusp">
-					<div class="col-md-12 mb-2 mt-1">
-						<div class="card" style="width: 100%;border: none;">
-                            <p class="text-white ps-3 pe-3 pb-2" style="background-color: #18191A;border-radius: 3px 3px 0 0;">
-                                <img style="border-radius: 50%" width="45px" height="45px"
-                                    src="../pro_pic/<?php echo $dataMe['pro_pic']?>">
-                                <b><?php echo $dataMe['name']?></b>
-                            </p>
-							<div class="card-body" style="background-color: #262626;border-radius: 0 0 3px 3px;">
+                <div class="card-new">
 
-								<form action="" method="post" id="formID" enctype="multipart/form-data">
-									<input type="hidden" name="unique_id_me" value="<?php echo $unique_id_me ?>">
+                    <div class="title text-white">Create Post</div>
 
-									<textarea style="background-color: #F3F3F3;color: #000" name="post" id="postID" rows="5" class="form-control mb-2" placeholder="Type Post"></textarea>
-										
-									<input style="background-color: #F3F3F3;" name="image_khan_bahadur" class="form-control" id="imageID" type="file" accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
+                    <textarea id="contentID" placeholder="What's on your mind?"></textarea>
 
-									<input name="saveBtn" id="buttonID" value="POST" class="mt-2 float-end btn btn-sm red" type="submit">
-								</form>
+                    <div class="dropzone" id="dropZone">
+                        Drag & Drop • Paste • Click to Add Images
+                    </div>
 
-							</div>
-						</div>
-					</div>
-				</div>
+                    <input type="file" id="fileInput" multiple hidden>
+
+                    <div id="preview"></div>
+
+                    <button class="button-new" onclick="postAdd(<?php echo $unique_id_me?>)">Publish Post</button>
+
+                </div>
 			</div>
             <!-- Status Bar end -->
             <div class="row justify-content-center" id="tbodyID">
@@ -466,54 +459,6 @@ $dataAbout = mysqli_fetch_assoc($runAbout);
         })
 
     }
-
-    
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        if (image.value == "" && post.value == "") {
-            toastr.error('Post and Image Both Fields are Empty');
-        } else {
-            var formdata = new FormData(form);
-
-            $.ajax({
-                url: "../api/post/postAdd.php",
-                type: "POST",
-                data: formdata,
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    button.classList.add("d-none");
-                },
-                success: function(data) {
-
-                    let json = JSON.parse(data);
-
-                    // console.log(json);
-
-
-                    let unique_id_me = json.unique_id_me;
-                    let newPost = json.newPost;
-
-                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-                    button.classList.remove("d-none");
-
-
-                    image.value = "";
-                    post.value = "";
-
-                    toastr.success('Post Created');
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-        }
-        
-    })
-
 
 
 

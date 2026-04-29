@@ -23,25 +23,25 @@ include './header.php';
         <div class="col-md-8">
             <h4 class="text-center">My Notes</h4>
             <!-- Status Bar -->
-                <div class="card-new" style="margin-top: 24px;">
+            <div class="card-new" style="margin-top: 24px;">
 
-                    <div class="title text-white">Send Message</div>
+                <div class="title text-white">Send Message</div>
 
-                    <textarea id="contentID" placeholder="What's on your mind?"></textarea>
+                <textarea id="contentID" placeholder="What's on your mind?"></textarea>
 
-                    <div class="dropzone" id="dropZone">
-                        Drag & Drop • Paste • Click to Add Images
-                    </div>
-
-                    <input type="file" id="fileInput" multiple hidden>
-
-                    <div id="preview"></div>
-
-                    <button class="button-new" onclick="myNotesAdd(<?php echo $unique_id_me?>)">Send Message</button>
-
-                    <div class="small">Smooth UI • No layout shift • Modern interactions</div>
-
+                <div class="dropzone" id="dropZone">
+                    Drag & Drop • Paste • Click to Add Images
                 </div>
+
+                <input type="file" id="fileInput" multiple hidden>
+
+                <div id="preview"></div>
+
+                <button class="button-new" onclick="myNotesAdd(<?php echo $unique_id_me?>)">Send Message</button>
+
+                <div class="small">Smooth UI • No layout shift • Modern interactions</div>
+
+            </div>
             <!-- Status Bar end -->
         </div>
         <div class="col-md-2"></div>
