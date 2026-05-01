@@ -37,7 +37,7 @@ if ($number > 0) { ?>
                         Drag & Drop • Paste • Click to Add Images
                     </div>
 
-                    <input type="file" id="fileInput" multiple hidden>
+                    <input type="file" id="fileInput" multiple hidden accept="image/png, image/bmp, image/gif, image/jpg, image/avif, image/jpeg, image/jfif, image/pjpeg, image/pjp, image/apng, image/svg, image/webp">
 
                     <div id="preview"></div>
 
