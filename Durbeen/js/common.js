@@ -1234,164 +1234,186 @@ function addFiles(files) {
 
 /* postAdd */
 function postAdd(unique_id_me) {
-    let formUpload = new FormData();
-    formUpload.append("contentID", contentID.value);
-    formUpload.append("unique_id_me", unique_id_me);
 
-    filesArray.forEach(f => formUpload.append("images[]", f));
+    if (preview.innerHTML == "" && contentID.value == "") {
+        toastr.error('Post and Image Both Fields are Empty');
+    } else {
 
-    fetch("../api/post/postAdd.php", {
-        method: "POST",
-        body: formUpload
-    })
-    .then(response => response.json())
-    .then(json => {
-        // console.log(json);
+        let formUpload = new FormData();
+        formUpload.append("contentID", contentID.value);
+        formUpload.append("unique_id_me", unique_id_me);
 
-        let unique_id_me = json.unique_id_me;
-        let newPost = json.newPost;
-        let number = json.number;
+        filesArray.forEach(f => formUpload.append("images[]", f));
 
-        if(number == "1"){
-            newPost.forEach(newPost => {
+        fetch("../api/post/postAdd.php", {
+            method: "POST",
+            body: formUpload
+        })
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json);
+
+            let unique_id_me = json.unique_id_me;
+            let newPost = json.newPost;
+            let number = json.number;
+
+            if(number == "1"){
+                newPost.forEach(newPost => {
+                    tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
+                })
+            }else{
                 tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-            })
-        }else{
-            tbody.innerHTML = makeTr(newPost, unique_id_me) + tbody.innerHTML;
-        }
+            }
 
 
-        filesArray = [];
-        preview.innerHTML = "";
-        contentID.value = "";
-        toastr.success('Post Created');
-    })
-    .catch(error => {
-        console.error(error);
-    });
+            filesArray = [];
+            preview.innerHTML = "";
+            contentID.value = "";
+            toastr.success('Post Created');
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    }
 }
 
 
 /* messageAdd */
 function messageAdd(unique_id_me, unique_id_fr) {
-    let msgUpload = new FormData();
-    msgUpload.append("contentID", contentID.value);
-    msgUpload.append("unique_id_me", unique_id_me);
-    msgUpload.append("unique_id_fr", unique_id_fr);
+    if (preview.innerHTML == "" && contentID.value == "") {
+        toastr.error('Post and Image Both Fields are Empty');
+    } else {
+            
+        let msgUpload = new FormData();
+        msgUpload.append("contentID", contentID.value);
+        msgUpload.append("unique_id_me", unique_id_me);
+        msgUpload.append("unique_id_fr", unique_id_fr);
 
-    filesArray.forEach(f => msgUpload.append("images[]", f));
+        filesArray.forEach(f => msgUpload.append("images[]", f));
 
-    fetch("../api/message/messageAdd.php", {
-        method: "POST",
-        body: msgUpload
-    })
-    .then(response => response.json())
-    .then(json => {
-        // console.log(json);
+        fetch("../api/message/messageAdd.php", {
+            method: "POST",
+            body: msgUpload
+        })
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json);
 
-        let unique_id_me = json.unique_id_me;
-        let unique_id_fr = json.unique_id_fr;
-        let newMessage = json.newMessage;
-        let number = json.number;
+            let unique_id_me = json.unique_id_me;
+            let unique_id_fr = json.unique_id_fr;
+            let newMessage = json.newMessage;
+            let number = json.number;
 
 
-        if(number == "1"){
-            newMessage.forEach(newMessage => {
+            if(number == "1"){
+                newMessage.forEach(newMessage => {
+                    tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
+                })
+            }else{
                 tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
-            })
-        }else{
-            tbody.innerHTML = makeTr(newMessage, unique_id_me, unique_id_fr) + tbody.innerHTML;
-        }
+            }
 
-        filesArray = [];
-        preview.innerHTML = "";
-        contentID.value = "";
-        toastr.success('Message Sent');
-    })
-    .catch(error => {
-        console.error(error);
-    });
+            filesArray = [];
+            preview.innerHTML = "";
+            contentID.value = "";
+            toastr.success('Message Sent');
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
 }
 
 
 
 /* Grp Msg Add */
 function grpMsgAdd(unique_id_me, grp_id) {
-    let msgUpload = new FormData();
-    msgUpload.append("contentID", contentID.value);
-    msgUpload.append("unique_id_me", unique_id_me);
-    msgUpload.append("grp_id", grp_id);
+    if (preview.innerHTML == "" && contentID.value == "") {
+        toastr.error('Post and Image Both Fields are Empty');
+    } else {
+            
+        let msgUpload = new FormData();
+        msgUpload.append("contentID", contentID.value);
+        msgUpload.append("unique_id_me", unique_id_me);
+        msgUpload.append("grp_id", grp_id);
 
-    filesArray.forEach(f => msgUpload.append("images[]", f));
+        filesArray.forEach(f => msgUpload.append("images[]", f));
 
-    fetch("../api/group_msg/GroupMsgAdd.php", {
-        method: "POST",
-        body: msgUpload
-    })
-    .then(response => response.json())
-    .then(json => {
-        // console.log(json);
+        fetch("../api/group_msg/GroupMsgAdd.php", {
+            method: "POST",
+            body: msgUpload
+        })
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json);
 
-        let unique_id_me = json.unique_id_me;
-        let grp_id = json.grp_id;
-        let newMessage = json.newMessage;
-        let number = json.number;
+            let unique_id_me = json.unique_id_me;
+            let grp_id = json.grp_id;
+            let newMessage = json.newMessage;
+            let number = json.number;
 
 
-        if(number == "1"){
-            newMessage.forEach(newMessage => {
+            if(number == "1"){
+                newMessage.forEach(newMessage => {
+                    tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
+                })
+            }else{
                 tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
-            })
-        }else{
-            tbody.innerHTML = makeTr(newMessage, grp_id) + tbody.innerHTML;
-        }
+            }
 
-        filesArray = [];
-        preview.innerHTML = "";
-        contentID.value = "";
-        toastr.success('Message Sent');
-    })
-    .catch(error => {
-        console.error(error);
-    });
+            filesArray = [];
+            preview.innerHTML = "";
+            contentID.value = "";
+            toastr.success('Message Sent');
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
 }
 
 
 
 function myNotesAdd(unique_id_me) {
-    let msgUpload = new FormData();
-    msgUpload.append("contentID", contentID.value);
-    msgUpload.append("unique_id_me", unique_id_me);
+    if (preview.innerHTML == "" && contentID.value == "") {
+        toastr.error('Post and Image Both Fields are Empty');
+    } else {
+            
+        let msgUpload = new FormData();
+        msgUpload.append("contentID", contentID.value);
+        msgUpload.append("unique_id_me", unique_id_me);
 
-    filesArray.forEach(f => msgUpload.append("images[]", f));
+        filesArray.forEach(f => msgUpload.append("images[]", f));
 
-    fetch("../api/my_notes/my_notes_add.php", {
-        method: "POST",
-        body: msgUpload
-    })
-    .then(response => response.json())
-    .then(json => {
-        // console.log(json);
+        fetch("../api/my_notes/my_notes_add.php", {
+            method: "POST",
+            body: msgUpload
+        })
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json);
 
-        let unique_id_me = json.unique_id_me;
-        let newMessage = json.newMessage;
-        let number = json.number;
+            let unique_id_me = json.unique_id_me;
+            let newMessage = json.newMessage;
+            let number = json.number;
 
 
-        if(number == "1"){
-            newMessage.forEach(newMessage => {
+            if(number == "1"){
+                newMessage.forEach(newMessage => {
+                    tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
+                })
+            }else{
                 tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
-            })
-        }else{
-            tbody.innerHTML = makeTr(newMessage, unique_id_me) + tbody.innerHTML;
-        }
+            }
 
-        filesArray = [];
-        preview.innerHTML = "";
-        contentID.value = "";
-        toastr.success('Note Saved');
-    })
-    .catch(error => {
-        console.error(error);
-    });
+            filesArray = [];
+            preview.innerHTML = "";
+            contentID.value = "";
+            toastr.success('Note Saved');
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
 }
