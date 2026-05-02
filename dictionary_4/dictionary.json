@@ -1,0 +1,129 @@
+{
+    "sex": {
+        "word": "sex",
+        "bangla": "যৌনতা",
+        "phonetics": [
+            {
+                "text": "\/sɛks\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/sex-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=1157656",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A category into which sexually-reproducing organisms are divided on the basis of their reproductive roles in their species.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The effect of the medication is dependent upon age, sex, and other factors."
+                    },
+                    {
+                        "definition": "Another category, especially of humans and especially based on sexuality or gender roles.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The members of such a category, taken collectively.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The distinction and relation between these categories, especially in humans; gender.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(with \"the\") Women; the human female sex and those who belong to it.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Sexual activity, usually sexual intercourse unless preceded by a modifier.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Genitalia: a penis or vagina.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To determine the sex of an animal.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To have sex with.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "gender"
+                ],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-01 18:13:01"
+    },
+    "jihad": {
+        "word": "jihad",
+        "bangla": "জিহাদ",
+        "phonetics": [
+            {
+                "text": "\/dʒəˈhɑːd\/",
+                "audio": ""
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A holy war undertaken by Muslims.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "An aggressive campaign for an idea.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A personal spiritual struggle for self-improvement and\/or against evil.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To participate in a jihad.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-01 18:13:09"
+    }
+}
