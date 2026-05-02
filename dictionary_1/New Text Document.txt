@@ -1,1 +1,1 @@
-no json refresh
+do Cache expiry (auto refresh after X days), Auto-suggestions, Search tracking, only json

@@ -1,6 +1,10 @@
 const search = document.getElementById("search");
 const resultDiv = document.getElementById("result");
 
+let suggestionBox = document.createElement("div");
+suggestionBox.className = "suggestions";
+search.parentNode.appendChild(suggestionBox);
+
 let timeout = null;
 
 search.addEventListener("keyup", function () {
@@ -10,9 +14,22 @@ search.addEventListener("keyup", function () {
 
     if (!word) {
         resultDiv.innerHTML = "";
+        suggestionBox.innerHTML = "";
         return;
     }
 
+    // 🔍 Suggestions
+    fetch("suggest.php?q=" + word)
+        .then(res => res.json())
+        .then(data => {
+            let html = "";
+            data.forEach(w => {
+                html += `<div onclick="selectWord('${w}')">${w}</div>`;
+            });
+            suggestionBox.innerHTML = html;
+        });
+
+    // ⏱ Main search
     timeout = setTimeout(() => {
         fetch("api.php?word=" + word)
             .then(res => res.json())
@@ -30,22 +47,19 @@ search.addEventListener("keyup", function () {
                 `;
 
                 data.meanings.forEach(m => {
-                    html += `<div class="meaning">
-                        <b>${m.partOfSpeech}</b><ul>`;
-
+                    html += `<b>${m.partOfSpeech}</b><ul>`;
                     m.definitions.forEach(d => {
-                        html += `<li>${d.definition}`;
-                        if (d.example) {
-                            html += `<br><i>Example: ${d.example}</i>`;
-                        }
-                        html += `</li>`;
+                        html += `<li>${d.definition}</li>`;
                     });
-
-                    html += `</ul></div>`;
+                    html += `</ul>`;
                 });
 
                 resultDiv.innerHTML = html;
-
             });
-    }, 500);
+    }, 400);
 });
+
+function selectWord(word) {
+    search.value = word;
+    suggestionBox.innerHTML = "";
+}
