@@ -1447,5 +1447,1290 @@
                 "antonyms": []
             }
         ]
+    },
+    "goo": {
+        "word": "goo",
+        "bangla": "goo",
+        "phonetics": [
+            {
+                "text": "\/ɡuː\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/goo-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=50010929",
+                "license": {
+                    "name": "BY-SA 4.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/4.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Any semi-solid or liquid substance; especially one that is sticky, gummy or slippery; frequently of vague or unknown composition, slime or a bodily fluid.",
+                        "synonyms": [
+                            "gloop",
+                            "goop",
+                            "gunk"
+                        ],
+                        "antonyms": [],
+                        "example": "I stepped in some goo and had a terrible time getting the sticky stuff off my shoes."
+                    },
+                    {
+                        "definition": "Excessive, showy sentimentality.",
+                        "synonyms": [
+                            "mawkishness",
+                            "saccharinity",
+                            "sugariness"
+                        ],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "gloop",
+                    "goop",
+                    "gunk",
+                    "mawkishness",
+                    "saccharinity",
+                    "sugariness"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To apply goo to something.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "They gooed their hair with some fragrant styling product."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "wow": {
+        "word": "wow",
+        "bangla": "বাহ",
+        "phonetics": [
+            {
+                "text": "\/waʊ̯\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/wow-1-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=872810",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Anything exceptionally surprising, unbelievable, outstanding, etc.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "He did? That's a wow!"
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To amaze or awe.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "He really wowed the audience."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "An indication of excitement, surprise, astonishment, or pleasure.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "An expression of amazement, awe, or admiration.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Wow! How do they do that?"
+                    },
+                    {
+                        "definition": "Used sarcastically to express disapproval of something.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Wow... I can't believe you would do such a thing."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "g": {
+        "word": "g",
+        "bangla": "g",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A gangster, gangsta.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Abbreviation for Government Spending.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Games (the statistic reporting the number of games that a player has participated in).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Green.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(of a movie) General (suitable for a general audience).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Goals (a sports statistic).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Ground floor (of a building).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A galaxy.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Gravity",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Grand (thousand dollars).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The academic grade that comes next below F.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A photograph or video shared on this service.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A unit of gravitational acceleration.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "(grammar) Noun case used to express some relationship such as possession or origin. It corresponds roughly to the English preposition “of” and the suffix “-'s”.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A unit of mass equal to one-thousandth of a kilogram. Symbol: g",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A leguminous plant grown for its seeds, especially the chickpea.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The seeds of these plants.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Grandmother",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "se": {
+        "word": "se",
+        "bangla": "se",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A type of ancient Chinese plucked zither.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "s": {
+        "word": "s",
+        "bangla": "s",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A weight of 1\/288 of a pound, that is, twenty grains or one third of a dram, about 1.3 grams (symbol: ℈).",
+                        "synonyms": [
+                            "s.ap."
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(by extension) A very small quantity; a particle.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A doubt or uncertainty concerning a matter of fact; intellectual perplexity.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Hesitation to act from the difficulty of determining what is right or expedient; doubt, hesitation or unwillingness due to motives of conscience.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A Hebrew unit of time equal to 1\/1080 hour.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "s.ap."
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Each of the four divisions of a year: spring, summer, autumn (fall) and winter",
+                        "synonyms": [
+                            "yeartide",
+                            "yeartime"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A part of a year when something particular happens",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "mating season"
+                    },
+                    {
+                        "definition": "That which gives relish; seasoning.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The period over which a series of Test matches are played.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A group of episodes of a television or radio program broadcast in regular intervals with a long break between each group, usually with one year between the beginning of each.",
+                        "synonyms": [
+                            "series (British English)"
+                        ],
+                        "antonyms": [],
+                        "example": "The third season of Friends aired from 1996 to 1997."
+                    },
+                    {
+                        "definition": "An extended, undefined period of time.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The full set of downloadable content for a game, which can be purchased with a season pass.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A fixed period of time in a massively multiplayer online game in which new content (themes, rules, modes, etc.) becomes available, sometimes replacing earlier content.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "series (British English)",
+                    "yeartide",
+                    "yeartime"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A coin formerly used in the United Kingdom, Ireland, Malta, Australia, New Zealand and many other Commonwealth countries.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The shilling was worth twelve old pence, or one twentieth of a pound sterling."
+                    },
+                    {
+                        "definition": "The currency of Kenya, Somalia, Tanzania and Uganda.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A currency in the United States, differing in value between states.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(New York and some other states) The Spanish real, formerly having the value of one eighth of a dollar.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "deener",
+                    "Abraham's willing",
+                    "bob",
+                    "gen",
+                    "generalise",
+                    "hog"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "One of the four major compass points, specifically 180°, directed toward the South Pole, and conventionally downwards on a map, abbreviated as S.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The side of a church on the right hand of a person facing the altar.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A quark having a fractional electric charge of -1\/3 and a mass about 80 to 130 MeV. Symbol: s",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "oka": {
+        "word": "oka",
+        "bangla": "ঠিক আছে",
+        "phonetics": [
+            {
+                "text": "\/ˈɒkə\/",
+                "audio": ""
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A former Turkish, Egyptian, Hungarian, and Romanian unit of weight, usually of a little more than a kilogram.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A unit of volume in Egypt (and formerly Turkey) corresponding to about 1.2 litres.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "ok": {
+        "word": "ok",
+        "bangla": "ঠিক আছে",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "All right, permitted.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Do you think it's OK to stay here for the night?"
+                    },
+                    {
+                        "definition": "Satisfactory, reasonably good; not exceptional.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The soup was OK, but the dessert was excellent."
+                    },
+                    {
+                        "definition": "In good health or a good emotional state.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "He's not feeling well now, but he should be OK after some rest."
+                    }
+                ],
+                "synonyms": [
+                    "all right",
+                    "allowed",
+                    "permissible",
+                    "fine",
+                    "well",
+                    "adequate",
+                    "all right",
+                    "not bad",
+                    "satisfactory"
+                ],
+                "antonyms": [
+                    "forbidden",
+                    "ill",
+                    "poorly",
+                    "sick",
+                    "under the weather",
+                    "unwell",
+                    "bad",
+                    "inadequate",
+                    "poor",
+                    "unsatisfactory"
+                ]
+            }
+        ]
+    },
+    "sk": {
+        "word": "sk",
+        "bangla": "sk",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "Skip",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "sky": {
+        "word": "sky",
+        "bangla": "আকাশ",
+        "phonetics": [
+            {
+                "text": "\/skaɪ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/sky-uk.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=9027432",
+                "license": {
+                    "name": "BY 3.0 US",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by\/3.0\/us"
+                }
+            },
+            {
+                "text": "\/skaɪ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/sky-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=1157738",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "The atmosphere above a given point, especially as visible from the ground during the day.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "That year, a meteor fell from the sky."
+                    },
+                    {
+                        "definition": "The part of the sky which can be seen from a specific place or at a specific time; its condition, climate etc.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I lay back under a warm Texas sky."
+                    },
+                    {
+                        "definition": "Heaven.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "This mortal has incurred the wrath of the skies."
+                    },
+                    {
+                        "definition": "(theoretical physics) The set of all lightlike lines (or directions) passing through a given point in space-time.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "In an art gallery, the upper rows of pictures that cannot easily be seen.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A cloud.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "celestial sphere",
+                    "firmament",
+                    "heaven",
+                    "lift"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To hit, kick or throw (a ball) extremely high.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To clear (a hurdle, high jump bar, etc.) by a large margin.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To hang (a picture on exhibition) near the top of a wall, where it cannot be well seen.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To drink something from a container without one's lips touching the container.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A vibrant light blue colour, like that of the sky on a fine day.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "n": {
+        "word": "n",
+        "bangla": "n",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "North",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) noun",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) neuter gender",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Normal",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Neutral",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "No",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Shortening of and, used in set phrases like rock-n-roll.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "p": {
+        "word": "p",
+        "bangla": "পি",
+        "phonetics": [
+            {
+                "text": "\/piː\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/p-2-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=1225642",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Abbreviation of penny; pence.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Proton",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "One of the many pieces of paper bound together within a book or similar document.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "One side of a paper leaf on which one has written or printed.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Any record or writing; a collective memory.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "the page of history"
+                    },
+                    {
+                        "definition": "The type set up for printing a page.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A screenful of text and possibly other content.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A web page.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A block of contiguous memory of a fixed length.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "account",
+                    "record",
+                    "side"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A serving boy – a youth attending a person of high degree, especially at courts, as a position of honor and education.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A youth employed for doing errands, waiting on the door, and similar service in households.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A boy or girl employed to wait upon the members of a legislative body.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(in libraries) The common name given to an employee whose main purpose is to replace materials that have either been checked out or otherwise moved, back to their shelves.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A boy child.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A contrivance, as a band, pin, snap, or the like, to hold the skirt of a woman’s dress from the ground.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A track along which pallets carrying newly molded bricks are conveyed to the hack.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A message sent to someone's pager.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Any one of several species of colorful South American moths of the genus Urania.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "boy",
+                    "page boy"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "preposition",
+                "definitions": [
+                    {
+                        "definition": "For each.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "$2.50 per dozen"
+                    },
+                    {
+                        "definition": "To each, in each (used in expressing ratios of units).",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "100 centimeters per meter"
+                    },
+                    {
+                        "definition": "By the, by means of the, via the, through the.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Introduce the endoscope per nasum."
+                    },
+                    {
+                        "definition": "In accordance with.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I parked my car at the curb per your request."
+                    }
+                ],
+                "synonyms": [
+                    "\/",
+                    "p",
+                    "p.",
+                    "⅌",
+                    "a",
+                    "an"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "preposition",
+                "definitions": [
+                    {
+                        "definition": "After; especially after a significant event that has long-term ramifications.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "Somewhat, fairly, quite; sometimes also (by meiosis) very.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Prettily, in a pretty manner.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To decorate with fringe or embroidered edge",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Needlework purled with gold."
+                    },
+                    {
+                        "definition": "An inverted stitch producing ribbing etc",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Knit one, purl two."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To upset, to spin, capsize, fall heavily, fall headlong.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The huntsman was purled from his horse."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To flow with a murmuring sound in swirls and eddies.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To rise in circles, ripples, or undulations; to curl; to mantle.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "pure": {
+        "word": "pure",
+        "bangla": "বিশুদ্ধ",
+        "phonetics": [
+            {
+                "text": "\/ˈpjɔː\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˈpjɔɹ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/pure-1-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=424767",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "One who, or that which, is pure.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To hit (the ball) completely cleanly and accurately",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Tiger Woods pured his first drive straight down the middle of the fairway."
+                    },
+                    {
+                        "definition": "To cleanse; to refine.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Free of flaws or imperfections; unsullied.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Free of foreign material or pollutants.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Free of immoral behavior or qualities; clean.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Mere; that and that only.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "That idea is pure madness!"
+                    },
+                    {
+                        "definition": "(of a branch of science) Done for its own sake instead of serving another branch of science.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Of a single, simple sound or tone; said of some vowels and the unaspirated consonants.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(of sound) Without harmonics or overtones; not harsh or discordant.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "innocent"
+                ],
+                "antonyms": [
+                    "applied",
+                    "dirty",
+                    "flawed",
+                    "impure",
+                    "contaminated",
+                    "impure",
+                    "corrupt",
+                    "guilty",
+                    "sinful"
+                ]
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "To a great extent or degree; extremely; exceedingly.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "You’re pure busy."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "b": {
+        "word": "b",
+        "bangla": "খ",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Having from birth (or as if from birth) a certain quality or character; innate; inherited.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "beaut": {
+        "word": "beaut",
+        "bangla": "সৌন্দর্য",
+        "phonetics": [
+            {
+                "text": "\/bjuːt\/",
+                "audio": ""
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Something or someone that is physically attractive.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "That new car of yours is a real beaut."
+                    },
+                    {
+                        "definition": "Something that is a remarkable example of its type.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Beautiful, splendid.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "beautiful": {
+        "word": "beautiful",
+        "bangla": "সুন্দর",
+        "phonetics": [
+            {
+                "text": "\/ˈbjuːtɪfəl\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/beautiful-uk.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=9014276",
+                "license": {
+                    "name": "BY 3.0 US",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by\/3.0\/us"
+                }
+            },
+            {
+                "text": "\/ˈbjuːtɪfəl\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/beautiful-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=837183",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Someone who is beautiful. Can be used as a term of address.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Hey, beautiful!"
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Attractive and possessing beauty.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Anyone who has ever met her thought she was absolutely beautiful."
+                    },
+                    {
+                        "definition": "(of the weather) Pleasant; clear.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "It's beautiful outside, let's go for a walk."
+                    },
+                    {
+                        "definition": "Well executed.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The skater performed a beautiful axel."
+                    }
+                ],
+                "synonyms": [
+                    "bloody",
+                    "damned",
+                    "great",
+                    "intensifier",
+                    "just",
+                    "marvellous",
+                    "marvelous",
+                    "nice",
+                    "wonderful",
+                    "clear",
+                    "fine",
+                    "nice",
+                    "pleasant",
+                    "sunny",
+                    "attractive",
+                    "beauteous",
+                    "cute",
+                    "fair",
+                    "fit",
+                    "good-looking",
+                    "gorgeous",
+                    "handsome",
+                    "hot",
+                    "lovely",
+                    "nice-looking",
+                    "pretty",
+                    "shapely",
+                    "sheen",
+                    "excellent",
+                    "exceptional",
+                    "good",
+                    "great",
+                    "marvellous",
+                    "marvelous",
+                    "perfect",
+                    "stylish",
+                    "wonderful"
+                ],
+                "antonyms": [
+                    "bad",
+                    "cloudy",
+                    "dull",
+                    "miserable",
+                    "overcast",
+                    "rainy",
+                    "wet",
+                    "grotesque",
+                    "hideous",
+                    "homely",
+                    "misshapen",
+                    "plain",
+                    "repulsive",
+                    "ugly",
+                    "unbeautiful",
+                    "average",
+                    "bad",
+                    "mediocre",
+                    "poor",
+                    "shoddy",
+                    "substandard",
+                    "terrible",
+                    "weak"
+                ]
+            }
+        ]
     }
 }

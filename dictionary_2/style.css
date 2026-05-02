@@ -2,158 +2,227 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #f5f5f5);
+    background: #f3f5f8;
+    color: #10264a;
 }
 
-/* CENTER WRAPPER (IMPORTANT FOR MOBILE) */
 body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 12px;
+    padding: 28px 18px;
 }
 
-/* MAIN CONTAINER */
 .container {
     width: 100%;
-    max-width: 650px;
-    background: #ffffff;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    max-width: 950px;
 }
 
-/* TITLE */
+/* header */
 h1 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
+    font-size: 46px;
+    font-weight: 700;
+    margin: 0;
+    color: #0f2b55;
+    letter-spacing: -0.5px;
 }
 
-/* SEARCH BOX WRAPPER */
+h1::after {
+    content: "Bangla + English meanings";
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #68768c;
+    margin-top: 8px;
+    letter-spacing: 0;
+}
+
+/* search */
 .search-box {
-    width: 100%;
     position: relative;
+    margin-top: 28px;
+    width: 100%;
 }
 
-/* INPUT (CRITICAL FIX FOR MOBILE) */
 input {
     width: 100%;
-    font-size: 16px;
-    padding: 12px 14px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    height: 82px;
+    border: 1px solid #dde3ea;
+    border-radius: 24px;
+    padding: 0 28px;
+    font-size: 22px;
+    color: #10264a;
+    background: #ffffff;
     outline: none;
-    display: block;
+    transition: 0.18s ease;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+input::placeholder {
+    color: #93a0b1;
 }
 
 input:focus {
-    border-color: #00bcd4;
-    box-shadow: 0 0 6px rgba(0,188,212,0.25);
+    border-color: #b8c7d9;
+    box-shadow: 0 0 0 4px rgba(60, 115, 190, 0.05);
 }
 
-/* RESULT BOX */
-#result {
-    margin-top: 15px;
-    width: 100%;
-    background: #fafafa;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    word-break: break-word;
-}
-
-/* BANGLA TEXT */
-.bangla {
-    font-size: 18px;
-    color: #1b8f3a;
-    font-weight: bold;
-}
-
-/* SUGGESTIONS DROPDOWN */
+/* suggestions */
 .suggestions {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-top: 4px;
-    max-height: 250px;
-    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e6ebf1;
+    border-radius: 18px;
+    overflow: hidden;
     z-index: 999;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.suggestions:empty {
+    display: none;
 }
 
 .suggestions div {
-    padding: 12px;
-    font-size: 15px;
+    padding: 14px 22px;
+    font-size: 16px;
     cursor: pointer;
+    border-bottom: 1px solid #f2f4f7;
+    transition: 0.15s;
 }
 
-.suggestions div:active {
-    background: #e0f7fa;
+.suggestions div:last-child {
+    border-bottom: none;
 }
 
-/* 🔥 REAL MOBILE RESPONSIVENESS */
+.suggestions div:hover {
+    background: #f6f9fc;
+}
+
+/* result card */
+#result {
+    position: relative;
+    margin-top: 28px;
+    background: #ffffff;
+    border: 1px solid #dde3ea;
+    border-radius: 28px;
+    padding: 34px 34px 28px;
+    min-height: 180px;
+    line-height: 1.75;
+    font-size: 17px;
+    color: #22314b;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+}
+
+/* bangla meaning */
+.bangla {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0c9a49;
+    margin: 6px 0 14px;
+}
+
+/* headings inside result */
+#result h2,
+#result h3,
+#result strong {
+    color: #0f2b55;
+}
+
+/* list */
+#result ul {
+    padding-left: 22px;
+}
+
+#result li {
+    margin-bottom: 6px;
+}
+
+/* mobile */
 @media (max-width: 768px) {
-
     body {
-        padding: 8px;
-        align-items: stretch;
-    }
-
-    .container {
-        margin-top: 10px;
-        padding: 15px;
-        border-radius: 10px;
+        padding: 18px 12px;
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 34px;
+    }
+
+    h1::after {
+        font-size: 14px;
     }
 
     input {
-        font-size: 15px;
-        padding: 10px;
+        height: 66px;
+        font-size: 18px;
+        border-radius: 18px;
+        padding: 0 18px;
     }
 
     #result {
-        font-size: 14px;
-        padding: 12px;
+        padding: 22px 20px;
+        border-radius: 20px;
+        font-size: 15px;
     }
 
     .bangla {
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 
-/* VERY SMALL PHONES */
 @media (max-width: 420px) {
-
-    .container {
-        padding: 12px;
-    }
-
     h1 {
-        font-size: 18px;
+        font-size: 28px;
     }
 
     input {
-        font-size: 14px;
+        font-size: 17px;
     }
+}
+.result-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 12px;
+}
 
-    .suggestions div {
-        font-size: 14px;
-        padding: 10px;
-    }
+.source-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #415574;
+    background: #f4f7fb;
+    border: 1px solid #d9e2ee;
+    text-transform: lowercase;
+}
+
+.meaning-block {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid #edf1f6;
+}
+
+.meaning-block h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #2d5fff;
 }
