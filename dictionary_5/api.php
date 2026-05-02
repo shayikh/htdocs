@@ -1,6 +1,6 @@
 <?php
 
-include "connection.php";
+include "./files/connection.php";
 header("Content-Type: application/json");
 
 $word = strtolower(trim($_GET['word'] ?? ''));
@@ -99,7 +99,7 @@ $stmt->execute();
 /* =========================
    SAVE JSON CACHE
 ========================= */
-$file = "dictionary.json";
+$file = "./files/dictionary.json";
 $data = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
 
 $data[$word] = [

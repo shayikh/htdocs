@@ -1,6 +1,6 @@
 <?php
 
-include "connection.php";
+include "./files/connection.php";
 header("Content-Type: application/json");
 
 $q = strtolower(trim($_GET['q'] ?? ''));
