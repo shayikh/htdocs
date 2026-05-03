@@ -2,120 +2,74 @@ const search = document.getElementById("search");
 const resultDiv = document.getElementById("result");
 const suggestionBox = document.getElementById("suggestions");
 
-let searchTimeout = null;
-let suggestTimeout = null;
+let timeout = null;
 
-/* =========================
-   INPUT EVENT
-========================= */
+/* input typing */
 search.addEventListener("input", function () {
+    clearTimeout(timeout);
+
     const word = this.value.trim();
 
-    clearTimeout(searchTimeout);
-    clearTimeout(suggestTimeout);
-
     if (!word) {
-        suggestionBox.innerHTML = "";
         resultDiv.innerHTML = "";
+        suggestionBox.innerHTML = "";
         return;
     }
 
-    /* =========================
-       AUTO SUGGESTIONS
-    ========================= */
-    suggestTimeout = setTimeout(() => {
-        fetch("suggest.php?q=" + encodeURIComponent(word))
-            .then(res => res.json())
-            .then(data => {
+    loadSuggestions(word);
 
-                if (!data.length || search.value.trim() !== word) {
-                    suggestionBox.innerHTML = "";
-                    return;
-                }
+    timeout = setTimeout(() => {
+        searchWord(word);
+    }, 400);
+});
 
-                let html = "";
+/* fetch suggestions */
+function loadSuggestions(word) {
+    fetch("suggest.php?q=" + encodeURIComponent(word))
+        .then(res => res.json())
+        .then(data => {
+            suggestionBox.innerHTML = "";
 
-                data.forEach(w => {
-                    html += `
-                        <div class="suggestion-item" data-word="${w}">
-                            ${w}
-                        </div>
-                    `;
+            if (!Array.isArray(data) || !data.length) return;
+
+            data.forEach(w => {
+                const item = document.createElement("div");
+                item.textContent = w;
+
+                item.addEventListener("mousedown", function (e) {
+                    e.preventDefault();
+                    selectWord(w);
                 });
 
-                suggestionBox.innerHTML = html;
-            })
-            .catch(() => {
-                suggestionBox.innerHTML = "";
+                suggestionBox.appendChild(item);
             });
-    }, 120);
+        })
+        .catch(() => {
+            suggestionBox.innerHTML = "";
+        });
+}
 
-    /* =========================
-       AUTO SEARCH RESULT
-    ========================= */
-    searchTimeout = setTimeout(() => {
-        loadWord(word);
-    }, 250);
-});
-
-/* =========================
-   CLICK SUGGESTION (FIXED)
-========================= */
-suggestionBox.addEventListener("mousedown", function (e) {
-    const item = e.target.closest(".suggestion-item");
-    if (!item) return;
-
-    e.preventDefault();
-
-    const word = item.dataset.word;
-
-    search.value = word;
-
-    suggestionBox.innerHTML = "";
-
-    clearTimeout(searchTimeout);
-    clearTimeout(suggestTimeout);
-
-    loadWord(word);
-});
-
-/* =========================
-   LOAD WORD FROM API
-========================= */
-function loadWord(word) {
-
-    fetch("track.php?word=" + encodeURIComponent(word)).catch(() => {});
-
+/* fetch meaning */
+function searchWord(word) {
     fetch("api.php?word=" + encodeURIComponent(word))
         .then(res => res.json())
         .then(data => {
-
-            if (search.value.trim() !== word) return;
-
             if (data.error) {
-                resultDiv.innerHTML = `<div class="result-card">❌ ${data.error}</div>`;
+                resultDiv.innerHTML = `<p>❌ ${data.error}</p>`;
                 return;
             }
 
-            /* =========================
-               PREMIUM RESULT UI
-            ========================= */
             let html = `
-                <div class="result-card">
+                <div class="result-top">
+                    <span class="source-badge">${data.source}</span>
+                </div>
 
-                    <div class="result-top">
-                        <div class="source-badge">${data.source}</div>
-                    </div>
-
-                    <h2>${data.word}</h2>
-                    <span class="bangla">🇧🇩 ${data.bangla}</span>
-
-                    <div class="result-divider"></div>
+                <h2>${data.word}</h2>
+                <div class="bangla">🇧🇩 ${data.bangla}</div>
             `;
 
             if (Array.isArray(data.meanings)) {
                 data.meanings.forEach(m => {
-
                     html += `
                         <div class="meaning-block">
                             <h4>${m.partOfSpeech}</h4>
@@ -135,20 +89,23 @@ function loadWord(word) {
                 });
             }
 
-            html += `</div>`;
-
             resultDiv.innerHTML = html;
         })
         .catch(() => {
-            resultDiv.innerHTML = `<div class="result-card">❌ Failed to load data</div>`;
+            resultDiv.innerHTML = `<p>❌ Failed to load data.</p>`;
         });
 }
 
-/* =========================
-   CLICK OUTSIDE CLOSE
-========================= */
+/* select suggestion */
+function selectWord(word) {
+    search.value = word;
+    suggestionBox.innerHTML = "";
+    searchWord(word);
+}
+
+/* hide suggestions when clicking outside */
 document.addEventListener("click", function (e) {
-    if (!e.target.closest(".search-box")) {
+    if (!document.querySelector(".search-box").contains(e.target)) {
         suggestionBox.innerHTML = "";
     }
 });
