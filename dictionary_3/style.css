@@ -226,6 +226,3 @@ input:focus {
     text-transform: uppercase;
     color: #2d5fff;
 }
-.suggestions:empty {
-    display: none;
-}

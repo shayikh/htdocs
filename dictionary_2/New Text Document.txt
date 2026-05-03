@@ -1,0 +1,1 @@
+no json refresh, no mysql, yes api call, yes php

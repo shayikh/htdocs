@@ -3032,5 +3032,1524 @@
                 "antonyms": []
             }
         ]
+    },
+    "sq": {
+        "word": "sq",
+        "bangla": "বর্গ",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Shaped like a square (the polygon).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Forming a right angle, especially at right angles with the mast or the keel, and parallel to the horizon; said of the yards of a square-rigged vessel when they are so braced.",
+                        "synonyms": [
+                            "normal",
+                            "orthogonal",
+                            "perpendicular"
+                        ],
+                        "antonyms": [
+                            "crooked"
+                        ],
+                        "example": "a square corner"
+                    },
+                    {
+                        "definition": "Of numbers formed by multiplying two equal numbers.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "9 is a square number."
+                    },
+                    {
+                        "definition": "Used in the names of units of area formed by multiplying a unit of length by itself.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "square metre"
+                    },
+                    {
+                        "definition": "Honest; straightforward.",
+                        "synonyms": [
+                            "above board",
+                            "on the level",
+                            "on the square",
+                            "on the up and up",
+                            "straight"
+                        ],
+                        "antonyms": [],
+                        "example": "square dealing"
+                    },
+                    {
+                        "definition": "Fair.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I'm just looking for a square deal on my car repair."
+                    },
+                    {
+                        "definition": "Even; tied",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The sides were square at the end of the half."
+                    },
+                    {
+                        "definition": "Socially conventional; boring.",
+                        "synonyms": [
+                            "bourgeois"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "In line with the batsman's popping crease.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Correctly aligned with respect to something else.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Hearty; vigorous.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "It may be prison, but at least I'm getting three square meals a day."
+                    },
+                    {
+                        "definition": "Having a shape broad for the height, with angular rather than curving outlines.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "a man of a square frame"
+                    }
+                ],
+                "synonyms": [
+                    "above board",
+                    "on the level",
+                    "on the square",
+                    "on the up and up",
+                    "straight",
+                    "bourgeois",
+                    "normal",
+                    "orthogonal",
+                    "perpendicular"
+                ],
+                "antonyms": [
+                    "crooked"
+                ]
+            }
+        ]
+    },
+    "square": {
+        "word": "square",
+        "bangla": "বর্গক্ষেত্র",
+        "phonetics": [
+            {
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/square-au.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=75900089",
+                "license": {
+                    "name": "BY-SA 4.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/4.0"
+                }
+            },
+            {
+                "text": "\/skwɛə(ɹ)\/",
+                "audio": ""
+            },
+            {
+                "text": "\/skwɛɚ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/square-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=1158020",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A polygon with four sides of equal length and four right angles; an equilateral rectangle; a regular quadrilateral.",
+                        "synonyms": [
+                            "tetragon"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Something characterized by a square, or nearly square, form.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "An L- or T-shaped tool used to place objects or draw lines at right angles.",
+                        "synonyms": [
+                            "carpenter's square",
+                            "framing square",
+                            "steel square"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "An open space or park, often in the center of a town, not necessarily square in shape, often containing trees, seating and other features pleasing to the eye.",
+                        "synonyms": [
+                            "piazza",
+                            "plaza"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The product of a number or quantity multiplied by itself; the second power of a number, value, term or expression.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "64 is the square of 8."
+                    },
+                    {
+                        "definition": "A body of troops drawn up in a square formation.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(1950s slang) A socially conventional or conservative person; a person who has little or no interest in the latest fads or trends: still sometimes used in modern terminology.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Why do you always wear a tie? Don't be such a square!"
+                    },
+                    {
+                        "definition": "The symbol # on a telephone; hash.",
+                        "synonyms": [
+                            "hash",
+                            "pound sign",
+                            "sharp"
+                        ],
+                        "antonyms": [],
+                        "example": "Enter your account number followed by a square."
+                    },
+                    {
+                        "definition": "The central area of a cricket field, with one or more pitches of which only one is used at a time.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "An ideal playing area is roughly circular in shape with a central area, the cricket square, measuring 27.44 metres by 27.44 metres and boundaries 45.75 metres from the sides of the square."
+                    },
+                    {
+                        "definition": "A unit of measurement of area, equal to a 10 foot by 10 foot square, i.e. 100 square feet or roughly 9.3 square metres. Used in real estate for the size of a house or its rooms, though progressively being replaced by square metres in metric countries such as Australia.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(roofing) A unit used in measuring roof area equivalent to 100 square feet (9.29 m2) of roof area.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(academia) A mortarboard",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A square meal.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Even when times were tough, we got three squares a day."
+                    },
+                    {
+                        "definition": "Exact proportion; justness of workmanship and conduct; regularity; rule.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The relation of harmony, or exact agreement; equality; level.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The position of planets distant ninety degrees from each other; a quadrate.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The act of squaring, or quarrelling; a quarrel.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Cigarette.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A vat used for fermentation.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "carpenter's square",
+                    "framing square",
+                    "steel square",
+                    "hash",
+                    "pound sign",
+                    "sharp",
+                    "piazza",
+                    "plaza",
+                    "tetragon"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To adjust so as to align with or place at a right angle to something else; in particular:",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The casting was mounted on a milling machine so that its sides could be squared."
+                    },
+                    {
+                        "definition": "To resolve or reconcile; to suit or fit.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "John can square this question up for us."
+                    },
+                    {
+                        "definition": "To adjust or adapt so as to bring into harmony with something.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I cannot square the results of the experiment with my hypothesis."
+                    },
+                    {
+                        "definition": "Of a value, term or expression, to multiply by itself; to raise to the second power.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To draw, with a pair of compasses and a straightedge only, a square with the same area as.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "square the circle"
+                    },
+                    {
+                        "definition": "To make a short low pass sideways across the pitch",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To take opposing sides; to quarrel.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To accord or agree exactly; to be consistent with; to suit; to fit.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To go to opposite sides; to take an attitude of offense or defense, or of defiance; to quarrel.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To take a boxing attitude; often with up or off.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To form with four sides and four right angles.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To form with right angles and straight lines, or flat surfaces.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "to square mason's work"
+                    },
+                    {
+                        "definition": "To compare with, or reduce to, any given measure or standard.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To hold a quartile position respecting.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Shaped like a square (the polygon).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Forming a right angle, especially at right angles with the mast or the keel, and parallel to the horizon; said of the yards of a square-rigged vessel when they are so braced.",
+                        "synonyms": [
+                            "normal",
+                            "orthogonal",
+                            "perpendicular"
+                        ],
+                        "antonyms": [
+                            "crooked"
+                        ],
+                        "example": "a square corner"
+                    },
+                    {
+                        "definition": "Of numbers formed by multiplying two equal numbers.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "9 is a square number."
+                    },
+                    {
+                        "definition": "Used in the names of units of area formed by multiplying a unit of length by itself.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "square metre"
+                    },
+                    {
+                        "definition": "Honest; straightforward.",
+                        "synonyms": [
+                            "above board",
+                            "on the level",
+                            "on the square",
+                            "on the up and up",
+                            "straight"
+                        ],
+                        "antonyms": [],
+                        "example": "square dealing"
+                    },
+                    {
+                        "definition": "Fair.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I'm just looking for a square deal on my car repair."
+                    },
+                    {
+                        "definition": "Even; tied",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The sides were square at the end of the half."
+                    },
+                    {
+                        "definition": "Socially conventional; boring.",
+                        "synonyms": [
+                            "bourgeois"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "In line with the batsman's popping crease.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Correctly aligned with respect to something else.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Hearty; vigorous.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "It may be prison, but at least I'm getting three square meals a day."
+                    },
+                    {
+                        "definition": "Having a shape broad for the height, with angular rather than curving outlines.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "a man of a square frame"
+                    }
+                ],
+                "synonyms": [
+                    "above board",
+                    "on the level",
+                    "on the square",
+                    "on the up and up",
+                    "straight",
+                    "bourgeois",
+                    "normal",
+                    "orthogonal",
+                    "perpendicular"
+                ],
+                "antonyms": [
+                    "crooked"
+                ]
+            }
+        ]
+    },
+    "pl": {
+        "word": "pl",
+        "bangla": "pl",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "(physical) An area; somewhere within an area.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A location or position in space.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A particular location in a book or document, particularly the current location of a reader.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A passage or extract from a book or document.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A topic.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A frame of mind.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I'm in a strange place at the moment."
+                    },
+                    {
+                        "definition": "A chess position; a square of the chessboard.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(social) A responsibility or position in an organization.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A fortified position: a fortress, citadel, or walled town.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Numerically, the column counting a certain quantity.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "three decimal places;  the hundreds place"
+                    },
+                    {
+                        "definition": "Ordinal relation; position in the order of proceeding.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "That's what I said in the first place!"
+                    },
+                    {
+                        "definition": "Reception; effect; implying the making room for.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "frame of mind",
+                    "mindset",
+                    "mood",
+                    "location",
+                    "position",
+                    "situation",
+                    "spot",
+                    "stead",
+                    "stell",
+                    "courtyard",
+                    "piazza",
+                    "plaza",
+                    "square",
+                    "seat"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "(grammar) The plural number.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) A word in the form in which it potentially refers to something other than one person or thing; and other than two things if the language has a dual form.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": [
+                    "singular"
+                ]
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Consisting of or containing more than one of something.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Pluralistic.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "manifold",
+                    "morefold",
+                    "multiple",
+                    "several"
+                ],
+                "antonyms": [
+                    "singular"
+                ]
+            }
+        ]
+    },
+    "f": {
+        "word": "f",
+        "bangla": "চ",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "Used to profess respect for a deceased person, or for something that has been lost.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Used to express regret or disappointment about an unfortunate event or piece of information.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "(abbreviation) Folio, paper and book size (10\"-12.5\" x 15\"-20\")",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Fuck",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "What the f do you think you're doing?"
+                    }
+                ],
+                "synonyms": [
+                    "F",
+                    "fo"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "That which is feminine.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(possibly obsolete) A woman.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) The feminine gender.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) A word of the feminine gender.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "fas": {
+        "word": "fas",
+        "bangla": "fas",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A syllable used in solfège to represent the fourth note of a major scale.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "fast": {
+        "word": "fast",
+        "bangla": "দ্রুত",
+        "phonetics": [
+            {
+                "text": "\/fɑːst\/",
+                "audio": ""
+            },
+            {
+                "text": "\/fɑːst\/",
+                "audio": ""
+            },
+            {
+                "text": "\/fæst\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/fast-uk.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=9014431",
+                "license": {
+                    "name": "BY 3.0 US",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by\/3.0\/us"
+                }
+            },
+            {
+                "text": "\/fæst\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/fast-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=195880",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A train that calls at only some stations it passes between its origin and destination, typically just the principal stations",
+                        "synonyms": [
+                            "express",
+                            "express train"
+                        ],
+                        "antonyms": [
+                            "local",
+                            "slow train",
+                            "stopper"
+                        ]
+                    }
+                ],
+                "synonyms": [
+                    "express",
+                    "express train"
+                ],
+                "antonyms": [
+                    "local",
+                    "slow train",
+                    "stopper"
+                ]
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Firmly or securely fixed in place; stable.",
+                        "synonyms": [
+                            "firm",
+                            "immobile",
+                            "secure",
+                            "stable",
+                            "stuck",
+                            "tight"
+                        ],
+                        "antonyms": [
+                            "loose"
+                        ],
+                        "example": "That rope is dangerously loose. Make it fast!"
+                    },
+                    {
+                        "definition": "Firm against attack; fortified by nature or art; impregnable; strong.",
+                        "synonyms": [
+                            "fortified",
+                            "impenetrable"
+                        ],
+                        "antonyms": [
+                            "penetrable",
+                            "weak"
+                        ]
+                    },
+                    {
+                        "definition": "(of people) Steadfast, with unwavering feeling. (Now mostly in set phrases like fast friend(s).)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Moving with great speed, or capable of doing so; swift, rapid.",
+                        "synonyms": [
+                            "quick",
+                            "rapid",
+                            "speedy"
+                        ],
+                        "antonyms": [],
+                        "example": "I am going to buy a fast car."
+                    },
+                    {
+                        "definition": "Causing unusual rapidity of play or action.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "a fast billiard table"
+                    },
+                    {
+                        "definition": "(of a piece of hardware) Able to transfer data in a short period of time.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Deep or sound (of sleep); fast asleep (of people).",
+                        "synonyms": [
+                            "deep",
+                            "sound"
+                        ],
+                        "antonyms": [
+                            "light"
+                        ]
+                    },
+                    {
+                        "definition": "(of dyes or colours) Not running or fading when subjected to detrimental conditions such as wetness or intense light; permanent.",
+                        "synonyms": [
+                            "colour-fast"
+                        ],
+                        "antonyms": [],
+                        "example": "All the washing has come out pink. That red tee-shirt was not fast."
+                    },
+                    {
+                        "definition": "Tenacious; retentive.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Having an extravagant lifestyle or immoral habits.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "a fast woman"
+                    },
+                    {
+                        "definition": "Ahead of the correct time or schedule.",
+                        "synonyms": [
+                            "ahead"
+                        ],
+                        "antonyms": [
+                            "behind",
+                            "slow"
+                        ],
+                        "example": "There must be something wrong with the hall clock. It is always fast."
+                    },
+                    {
+                        "definition": "(of photographic film) More sensitive to light than average.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "quick",
+                    "rapid",
+                    "speedy",
+                    "swift",
+                    "easy",
+                    "slutty",
+                    "ahead",
+                    "colour-fast",
+                    "deep",
+                    "sound",
+                    "firm",
+                    "immobile",
+                    "secure",
+                    "stable",
+                    "stuck",
+                    "tight",
+                    "fortified",
+                    "impenetrable",
+                    "quick",
+                    "rapid",
+                    "speedy"
+                ],
+                "antonyms": [
+                    "slow",
+                    "behind",
+                    "slow",
+                    "light",
+                    "loose",
+                    "penetrable",
+                    "weak"
+                ]
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "In a firm or secure manner, securely; in such a way as not to be moved; safe, sound .",
+                        "synonyms": [
+                            "firmly",
+                            "securely",
+                            "tightly"
+                        ],
+                        "antonyms": [
+                            "loosely"
+                        ],
+                        "example": "Hold this rope as fast as you can."
+                    },
+                    {
+                        "definition": "(of sleeping) Deeply or soundly .",
+                        "synonyms": [
+                            "deeply"
+                        ],
+                        "antonyms": [
+                            "lightly"
+                        ],
+                        "example": "He is fast asleep."
+                    },
+                    {
+                        "definition": "Immediately following in place or time; close, very near .",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Fast by the sturdy batsman the ball unheeded sped. \/ That ain't my style, said Casey. Strike one, the umpire said."
+                    },
+                    {
+                        "definition": "Quickly, with great speed; within a short time .",
+                        "synonyms": [
+                            "quickly",
+                            "rapidly",
+                            "speedily",
+                            "swiftly"
+                        ],
+                        "antonyms": [
+                            "slowly"
+                        ],
+                        "example": "Do it as fast as you can."
+                    },
+                    {
+                        "definition": "Ahead of the correct time or schedule.",
+                        "synonyms": [
+                            "ahead"
+                        ],
+                        "antonyms": [
+                            "behind"
+                        ],
+                        "example": "I think my watch is running fast."
+                    }
+                ],
+                "synonyms": [
+                    "ahead",
+                    "deeply",
+                    "firmly",
+                    "securely",
+                    "tightly",
+                    "quickly",
+                    "rapidly",
+                    "speedily",
+                    "swiftly"
+                ],
+                "antonyms": [
+                    "behind",
+                    "lightly",
+                    "loosely",
+                    "slowly"
+                ]
+            },
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "Short for \"stand fast\", a warning not to pass between the arrow and the target",
+                        "synonyms": [],
+                        "antonyms": [
+                            "loose"
+                        ]
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": [
+                    "loose"
+                ]
+            }
+        ]
+    },
+    "we": {
+        "word": "we",
+        "bangla": "আমরা",
+        "phonetics": [
+            {
+                "text": "\/wiː\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/we-uk.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=9028953",
+                "license": {
+                    "name": "BY 3.0 US",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by\/3.0\/us"
+                }
+            },
+            {
+                "text": "\/wi\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/we-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=718821",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "pronoun",
+                "definitions": [
+                    {
+                        "definition": "(personal) The speakers\/writers, or the speaker\/writer and at least one other person (not the person being addressed). (This is the exclusive we.)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(personal) The speaker(s)\/writer(s) and the person(s) being addressed. (This is the inclusive we.)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(personal) The speaker\/writer alone. (This use of we is the editorial we, used by writers and others, including royalty—the royal we—as a less personal substitute for I. The reflexive case of this sense of we is ourself.)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(personal) The plural form of you, including everyone being addressed.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "How are we all tonight?"
+                    },
+                    {
+                        "definition": "(personal, often considered patronising) A second- or third-person pronoun for a person in the speaker's care.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "How are we feeling this morning?"
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "west": {
+        "word": "west",
+        "bangla": "পশ্চিম",
+        "phonetics": [
+            {
+                "text": "\/wɛst\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/west-uk.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=9028959",
+                "license": {
+                    "name": "BY 3.0 US",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by\/3.0\/us"
+                }
+            },
+            {
+                "text": "\/wɛst\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/west-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=424803",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "One of the four principal compass points, specifically 270°, conventionally directed to the left on maps; the direction of the setting sun at an equinox, abbreviated as W.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To move to the west; (of the sun) to set.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Situated or lying in or toward the west; westward.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Of wind: from the west.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Of or pertaining to the west; western.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "From the West; occidental.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(ecclesiastial) Designating, or situated in, that part of a church which is opposite to, and farthest from, the east, or the part containing the chancel and choir.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "Towards the west; westwards.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "western": {
+        "word": "western",
+        "bangla": "পশ্চিমী",
+        "phonetics": [
+            {
+                "text": "\/ˈwɛstən\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˈwɛstɚn\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/western-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=872840",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A film, or some other dramatic work, set in, the historic (c. 1850-1910) American West (west of the Mississippi river) focusing on conflict between whites and Indians, lawmen and outlaws, ranchers and farmers, or industry (railroads, mining) and agriculture.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "horse opera",
+                    "oater"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Of, facing, situated in, or related to the west.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "the western approaches"
+                    },
+                    {
+                        "definition": "(of a wind) Blowing from the west; westerly.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Occidental.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "tur": {
+        "word": "tur",
+        "bangla": "তুর",
+        "phonetics": [
+            {
+                "text": "\/tʊə\/",
+                "audio": ""
+            },
+            {
+                "text": "\/tʊɹ\/",
+                "audio": ""
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A species of wild goat, Capra caucasica, native to the western Caucasus.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "turbo": {
+        "word": "turbo",
+        "bangla": "টার্বো",
+        "phonetics": [
+            {
+                "text": "\/ˈtɜːbəʊ\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˈtɝboʊ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/turbo-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=49896654",
+                "license": {
+                    "name": "BY-SA 4.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/4.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Turbocharger.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Turbojet.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Turbomolecular pump.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Autofire.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To autofire.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "With rapidly-increasing blind levels.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "This is a turbo tournament: the blinds increase every 5 minutes! Level 1 = 150\/300; level 2 = 200\/400; etc."
+                    },
+                    {
+                        "definition": "Causing or relating to increased speed.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "a turbo button on a controller; a PC equipped with a turbo mode"
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "power": {
+        "word": "power",
+        "bangla": "ক্ষমতা",
+        "phonetics": [
+            {
+                "text": "\/ˈpaʊ.ə(ɹ)\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˈpaʊ.ɚ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/power-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=830125",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Ability to do or undergo something.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(social) Ability to coerce, influence or control.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(physical) Effectiveness.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A large amount or number.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Any of the elementary forms or parts of machines: three primary (the lever, inclined plane, and pulley) and three secondary (the wheel-and-axle, wedge, and screw).",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "the mechanical powers"
+                    },
+                    {
+                        "definition": "A measure of the effectiveness that a force producing a physical effect has over time. If linear, the quotient of: (force multiplied by the displacement of or in an object) ÷ time. If rotational, the quotient of: (force multiplied by the angle of displacement) ÷ time.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A product of equal factors (and generalizations of this notion): x^n, read as \"x to the power of n\" or the like, is called a power and denotes the product x \\times x \\times \\cdots \\times x, where x appears n times in the product; x is called the base and n the exponent.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Cardinality.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The probability that a statistical test will reject the null hypothesis when the alternative hypothesis is true.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(in plural) In Christian angelology, an intermediate level of angels, ranked above archangels, but exact position varies by classification scheme.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": [
+                    "impotence",
+                    "weakness"
+                ]
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To provide power for (a mechanical or electronic device).",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "This CD player is powered by batteries."
+                    },
+                    {
+                        "definition": "To hit or kick something forcefully.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To enable or provide the impetus for.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Impressive.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "future": {
+        "word": "future",
+        "bangla": "ভবিষ্যৎ",
+        "phonetics": [
+            {
+                "text": "\/ˈfjuːt͡ʃə\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˈfjuːt͡ʃɚ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/future-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=857070",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "The time ahead; those moments yet to be experienced.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Something that will happen in moments yet to come.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Goodness in what is yet to come. Something to look forward to.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "There is no future in dwelling on the past."
+                    },
+                    {
+                        "definition": "The likely prospects for or fate of someone or something in time to come.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) Verb tense used to talk about events that will happen in the future; future tense.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "An object that retrieves the value of a promise.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A minor-league prospect.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "to-come",
+                    "toward"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Having to do with or occurring in the future.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Future generations will either laugh or cry at our stupidity."
+                    }
+                ],
+                "synonyms": [
+                    "unborn"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Short for futures contract.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
+    },
+    "po": {
+        "word": "po",
+        "bangla": "po",
+        "phonetics": [
+            {
+                "text": "\/pəʊ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/po-au.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=75649061",
+                "license": {
+                    "name": "BY-SA 4.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/4.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A peacock.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ]
     }
 }
