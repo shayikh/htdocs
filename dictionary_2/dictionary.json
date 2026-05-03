@@ -1,0 +1,90 @@
+{
+    "good": {
+        "word": "good",
+        "bangla": "ভাল",
+        "phonetics": [
+            {
+                "text": "\/ɡʊ(d)\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/good-uk.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=9021875",
+                "license": {
+                    "name": "BY 3.0 US",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by\/3.0\/us"
+                }
+            },
+            {
+                "text": "[ɡɪ̈d]",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/good-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=380162"
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "(of people)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(of capabilities)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(properties and qualities)",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(when with and) Very, extremely. See good and.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The soup is good and hot."
+                    },
+                    {
+                        "definition": "Holy (especially when capitalized) .",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Good Friday"
+                    },
+                    {
+                        "definition": "(of quantities)",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "accomplished",
+                    "all right",
+                    "decent",
+                    "not bad",
+                    "satisfactory",
+                    "well"
+                ],
+                "antonyms": [
+                    "bad",
+                    "evil",
+                    "bad",
+                    "poor"
+                ]
+            },
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "That is good; an elliptical exclamation of satisfaction or commendation.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Good! I can leave now."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 16:33:06",
+        "source": "api"
+    }
+}

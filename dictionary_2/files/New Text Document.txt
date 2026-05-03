@@ -1,1 +1,0 @@
-both mysql and json, data comes from musql not from json, admin panel, yes api call, yes php, 

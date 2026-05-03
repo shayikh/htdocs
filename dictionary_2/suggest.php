@@ -1,26 +1,22 @@
 <?php
 
-include "./files/connection.php";
-header("Content-Type: application/json");
+$q = $_GET['q'] ?? '';
+$q = strtolower(trim($q));
 
-$q = strtolower(trim($_GET['q'] ?? ''));
+$file = "dictionary.json";
 
-$stmt = $conn->prepare("
-    SELECT word 
-    FROM dictionary 
-    WHERE word LIKE CONCAT(?, '%') 
-    LIMIT 10
-");
-
-$stmt->bind_param("s", $q);
-$stmt->execute();
-
-$res = $stmt->get_result();
+$data = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
 
 $suggestions = [];
 
-while ($row = $res->fetch_assoc()) {
-    $suggestions[] = $row['word'];
+if ($q !== '') {
+    foreach ($data as $word => $info) {
+        if (strpos($word, $q) === 0) {
+            $suggestions[] = $word;
+        }
+
+        if (count($suggestions) >= 10) break;
+    }
 }
 
-echo json_encode($suggestions);
+echo json_encode($suggestions, JSON_UNESCAPED_UNICODE);

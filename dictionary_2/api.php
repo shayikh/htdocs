@@ -1,59 +1,44 @@
 <?php
 
-include "./files/connection.php";
 header("Content-Type: application/json");
 
-$word = strtolower(trim($_GET['word'] ?? ''));
+$word = $_GET['word'] ?? '';
 
 if (!$word) {
     echo json_encode(["error" => "No word provided"]);
     exit;
 }
 
+$word = strtolower(trim($word));
+
+$file = "dictionary.json";
+$existing = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+
 $expiryDays = 7;
 
 /* =========================
-   TRACK SEARCH (MySQL)
+   1. CHECK CACHE
 ========================= */
-$stmt = $conn->prepare("
-    INSERT INTO search_log (word, count, last_searched)
-    VALUES (?, 1, NOW())
-    ON DUPLICATE KEY UPDATE 
-        count = count + 1,
-        last_searched = NOW()
-");
-$stmt->bind_param("s", $word);
-$stmt->execute();
+if (isset($existing[$word])) {
 
-/* =========================
-   SEARCH ONLY IN MYSQL
-========================= */
-$stmt = $conn->prepare("SELECT * FROM dictionary WHERE word = ?");
-$stmt->bind_param("s", $word);
-$stmt->execute();
-$res = $stmt->get_result();
+    $cached = $existing[$word];
 
-if ($row = $res->fetch_assoc()) {
+    $createdAt = $cached['created_at'] ?? null;
 
-    $created = strtotime($row['created_at']);
-    $now = time();
+    if ($createdAt) {
+        $ageSeconds = time() - strtotime($createdAt);
 
-    if (($now - $created) < ($expiryDays * 86400)) {
-
-        echo json_encode([
-            "word" => $row['word'],
-            "bangla" => $row['bangla'],
-            "phonetics" => json_decode($row['phonetics'], true),
-            "meanings" => json_decode($row['meanings'], true),
-            "source" => "mysql"
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-
-        exit;
+        // 🔄 If NOT expired → return cache
+        if ($ageSeconds < ($expiryDays * 86400)) {
+            $cached['source'] = "json";
+            echo json_encode($cached, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            exit;
+        }
     }
 }
 
 /* =========================
-   FETCH FROM API (fallback)
+   2. FETCH FROM API (EXPIRED OR NEW)
 ========================= */
 
 $dictUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" . urlencode($word);
@@ -65,60 +50,40 @@ if (!$dictResponse || isset($dictData['title'])) {
     exit;
 }
 
-$meanings = $dictData[0]['meanings'] ?? [];
+$englishMeanings = $dictData[0]['meanings'] ?? [];
 $phonetics = $dictData[0]['phonetics'] ?? [];
 
-/* =========================
-   BANGLA TRANSLATION
-========================= */
+/* Bangla translation */
 $translateUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=bn&dt=t&q=" . urlencode($word);
+
 $translateResponse = @file_get_contents($translateUrl);
 $translateData = json_decode($translateResponse, true);
 
-$bangla = $translateData[0][0][0] ?? "";
+$banglaWord = $translateData[0][0][0] ?? "";
 
 /* =========================
-   SAVE MYSQL
+   3. BUILD NEW DATA
 ========================= */
-$stmt = $conn->prepare("
-    INSERT INTO dictionary (word, bangla, phonetics, meanings, created_at)
-    VALUES (?, ?, ?, ?, NOW())
-    ON DUPLICATE KEY UPDATE
-        bangla = VALUES(bangla),
-        phonetics = VALUES(phonetics),
-        meanings = VALUES(meanings),
-        created_at = NOW()
-");
-
-$phoneticsJson = json_encode($phonetics, JSON_UNESCAPED_UNICODE);
-$meaningsJson = json_encode($meanings, JSON_UNESCAPED_UNICODE);
-
-$stmt->bind_param("ssss", $word, $bangla, $phoneticsJson, $meaningsJson);
-$stmt->execute();
-
-/* =========================
-   SAVE JSON CACHE
-========================= */
-$file = "./files/dictionary.json";
-$data = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
-
-$data[$word] = [
+$result = [
     "word" => $word,
-    "bangla" => $bangla,
+    "bangla" => $banglaWord,
     "phonetics" => $phonetics,
-    "meanings" => $meanings,
-    "created_at" => date("Y-m-d H:i:s")
+    "meanings" => $englishMeanings,
+    "created_at" => date("Y-m-d H:i:s"),
+    "source" => "api"
 ];
 
-file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+/* =========================
+   4. SAVE TO JSON (UPDATE CACHE)
+========================= */
+$existing[$word] = $result;
+
+file_put_contents(
+    $file,
+    json_encode($existing, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+);
 
 /* =========================
-   OUTPUT
+   5. RETURN RESULT
 ========================= */
-echo json_encode([
-    "word" => $word,
-    "bangla" => $bangla,
-    "phonetics" => $phonetics,
-    "meanings" => $meanings,
-    "source" => "api"
-], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

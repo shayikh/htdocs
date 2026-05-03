@@ -2,74 +2,120 @@ const search = document.getElementById("search");
 const resultDiv = document.getElementById("result");
 const suggestionBox = document.getElementById("suggestions");
 
-let timeout = null;
+let searchTimeout = null;
+let suggestTimeout = null;
 
-/* input typing */
+/* =========================
+   INPUT EVENT
+========================= */
 search.addEventListener("input", function () {
-    clearTimeout(timeout);
-
     const word = this.value.trim();
 
+    clearTimeout(searchTimeout);
+    clearTimeout(suggestTimeout);
+
     if (!word) {
-        resultDiv.innerHTML = "";
         suggestionBox.innerHTML = "";
+        resultDiv.innerHTML = "";
         return;
     }
 
-    loadSuggestions(word);
+    /* =========================
+       AUTO SUGGESTIONS
+    ========================= */
+    suggestTimeout = setTimeout(() => {
+        fetch("suggest.php?q=" + encodeURIComponent(word))
+            .then(res => res.json())
+            .then(data => {
 
-    timeout = setTimeout(() => {
-        searchWord(word);
-    }, 400);
-});
+                if (!data.length || search.value.trim() !== word) {
+                    suggestionBox.innerHTML = "";
+                    return;
+                }
 
-/* fetch suggestions */
-function loadSuggestions(word) {
-    fetch("suggest.php?q=" + encodeURIComponent(word))
-        .then(res => res.json())
-        .then(data => {
-            suggestionBox.innerHTML = "";
+                let html = "";
 
-            if (!Array.isArray(data) || !data.length) return;
-
-            data.forEach(w => {
-                const item = document.createElement("div");
-                item.textContent = w;
-
-                item.addEventListener("mousedown", function (e) {
-                    e.preventDefault();
-                    selectWord(w);
+                data.forEach(w => {
+                    html += `
+                        <div class="suggestion-item" data-word="${w}">
+                            ${w}
+                        </div>
+                    `;
                 });
 
-                suggestionBox.appendChild(item);
+                suggestionBox.innerHTML = html;
+            })
+            .catch(() => {
+                suggestionBox.innerHTML = "";
             });
-        })
-        .catch(() => {
-            suggestionBox.innerHTML = "";
-        });
-}
+    }, 120);
 
-/* fetch meaning */
-function searchWord(word) {
+    /* =========================
+       AUTO SEARCH RESULT
+    ========================= */
+    searchTimeout = setTimeout(() => {
+        loadWord(word);
+    }, 250);
+});
+
+/* =========================
+   CLICK SUGGESTION (FIXED)
+========================= */
+suggestionBox.addEventListener("mousedown", function (e) {
+    const item = e.target.closest(".suggestion-item");
+    if (!item) return;
+
+    e.preventDefault();
+
+    const word = item.dataset.word;
+
+    search.value = word;
+
+    suggestionBox.innerHTML = "";
+
+    clearTimeout(searchTimeout);
+    clearTimeout(suggestTimeout);
+
+    loadWord(word);
+});
+
+/* =========================
+   LOAD WORD FROM API
+========================= */
+function loadWord(word) {
+
+    fetch("track.php?word=" + encodeURIComponent(word)).catch(() => {});
+
     fetch("api.php?word=" + encodeURIComponent(word))
         .then(res => res.json())
         .then(data => {
+
+            if (search.value.trim() !== word) return;
+
             if (data.error) {
-                resultDiv.innerHTML = `<p>❌ ${data.error}</p>`;
+                resultDiv.innerHTML = `<div class="result-card">❌ ${data.error}</div>`;
                 return;
             }
 
+            /* =========================
+               PREMIUM RESULT UI
+            ========================= */
             let html = `
-                <div class="result-top">
-                    <span class="source-badge">${data.source}</span>
-                </div>
+                <div class="result-card">
 
-                <h2>${data.word}</h2>
-                <div class="bangla">🇧🇩 ${data.bangla}</div>
+                    <div class="result-top">
+                        <div class="source-badge">${data.source}</div>
+                    </div>
+
+                    <h2>${data.word}</h2>
+                    <span class="bangla">🇧🇩 ${data.bangla}</span>
+
+                    <div class="result-divider"></div>
             `;
 
             if (Array.isArray(data.meanings)) {
                 data.meanings.forEach(m => {
+
                     html += `
                         <div class="meaning-block">
                             <h4>${m.partOfSpeech}</h4>
@@ -89,23 +135,20 @@ function searchWord(word) {
                 });
             }
 
+            html += `</div>`;
+
             resultDiv.innerHTML = html;
         })
         .catch(() => {
-            resultDiv.innerHTML = `<p>❌ Failed to load data.</p>`;
+            resultDiv.innerHTML = `<div class="result-card">❌ Failed to load data</div>`;
         });
 }
 
-/* select suggestion */
-function selectWord(word) {
-    search.value = word;
-    suggestionBox.innerHTML = "";
-    searchWord(word);
-}
-
-/* hide suggestions when clicking outside */
+/* =========================
+   CLICK OUTSIDE CLOSE
+========================= */
 document.addEventListener("click", function (e) {
-    if (!document.querySelector(".search-box").contains(e.target)) {
+    if (!e.target.closest(".search-box")) {
         suggestionBox.innerHTML = "";
     }
 });
