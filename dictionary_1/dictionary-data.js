@@ -1,4 +1,4 @@
-{
+window.DICTIONARY = {
     "good": {
         "word": "good",
         "bangla": "ভাল",

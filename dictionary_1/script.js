@@ -16,19 +16,20 @@ let isReady = false;
 resultDiv.innerHTML = `<p>Loading dictionary…</p>`;
 
 /* =========================
-   BACKGROUND LOAD
+   LOAD LOCAL DATA
 ========================= */
-(async function init() {
-    const res = await fetch("./dictionary.json");
-    const data = await res.json();
+(function init() {
+    try {
+        dictionary = window.DICTIONARY || {};
+        words = Object.keys(dictionary).sort();
 
-    dictionary = data || {};
-    words = Object.keys(dictionary).sort();
+        buildPrefixIndex();
 
-    buildPrefixIndex();
-
-    isReady = true;
-    resultDiv.innerHTML = "";
+        isReady = true;
+        resultDiv.innerHTML = "";
+    } catch (err) {
+        resultDiv.innerHTML = `<p>❌ Could not load dictionary</p>`;
+    }
 })();
 
 /* =========================
@@ -80,7 +81,7 @@ search.addEventListener("input", function () {
 
     searchTimeout = setTimeout(() => {
         loadWord(word);
-    }, 60);
+    }, 80);
 });
 
 /* =========================
@@ -177,12 +178,19 @@ function loadWord(word) {
         return;
     }
 
+    renderWord(data);
+}
+
+/* =========================
+   RENDER WORD
+========================= */
+function renderWord(data) {
     let html = `
         <div class="result-top">
             <div class="source-badge">json</div>
         </div>
 
-        <h2>${data.word || word}</h2>
+        <h2>${data.word || ""}</h2>
         <span class="bangla">🇧🇩 ${data.bangla || ""}</span>
     `;
 

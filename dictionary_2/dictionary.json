@@ -1,4 +1,159 @@
 {
+    "g": {
+        "word": "g",
+        "bangla": "g",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A gangster, gangsta.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Abbreviation for Government Spending.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Games (the statistic reporting the number of games that a player has participated in).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Green.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(of a movie) General (suitable for a general audience).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Goals (a sports statistic).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Ground floor (of a building).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A galaxy.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Gravity",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Grand (thousand dollars).",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The academic grade that comes next below F.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A photograph or video shared on this service.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A unit of gravitational acceleration.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "(grammar) Noun case used to express some relationship such as possession or origin. It corresponds roughly to the English preposition “of” and the suffix “-'s”.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A unit of mass equal to one-thousandth of a kilogram. Symbol: g",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A leguminous plant grown for its seeds, especially the chickpea.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The seeds of these plants.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Grandmother",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 17:09:13",
+        "source": "api"
+    },
     "good": {
         "word": "good",
         "bangla": "ভাল",
@@ -84,7 +239,752 @@
                 "antonyms": []
             }
         ],
-        "created_at": "2026-05-03 16:33:06",
+        "created_at": "2026-05-03 17:09:14",
+        "source": "api"
+    },
+    "ok": {
+        "word": "ok",
+        "bangla": "ঠিক আছে",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "All right, permitted.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Do you think it's OK to stay here for the night?"
+                    },
+                    {
+                        "definition": "Satisfactory, reasonably good; not exceptional.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The soup was OK, but the dessert was excellent."
+                    },
+                    {
+                        "definition": "In good health or a good emotional state.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "He's not feeling well now, but he should be OK after some rest."
+                    }
+                ],
+                "synonyms": [
+                    "all right",
+                    "allowed",
+                    "permissible",
+                    "fine",
+                    "well",
+                    "adequate",
+                    "all right",
+                    "not bad",
+                    "satisfactory"
+                ],
+                "antonyms": [
+                    "forbidden",
+                    "ill",
+                    "poorly",
+                    "sick",
+                    "under the weather",
+                    "unwell",
+                    "bad",
+                    "inadequate",
+                    "poor",
+                    "unsatisfactory"
+                ]
+            }
+        ],
+        "created_at": "2026-05-03 17:09:28",
+        "source": "api"
+    },
+    "okay": {
+        "word": "okay",
+        "bangla": "ঠিক আছে",
+        "phonetics": [
+            {
+                "text": "\/ˌəˈkæɪ\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˌəʊˈkeɪ\/",
+                "audio": ""
+            },
+            {
+                "text": "\/ˌoʊˈkeɪ\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/okay-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=454016",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Endorsement; approval.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "We can start as soon as we get the OK."
+                    }
+                ],
+                "synonyms": [
+                    "approval",
+                    "endorsement",
+                    "go-ahead",
+                    "green light",
+                    "thumbs up"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To approve.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "I don't want to OK this amount of money."
+                    },
+                    {
+                        "definition": "To confirm by activating a button marked OK.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "approve",
+                    "greenlight"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "All right, permitted.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Do you think it's OK to stay here for the night?"
+                    },
+                    {
+                        "definition": "Satisfactory, reasonably good; not exceptional.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The soup was OK, but the dessert was excellent."
+                    },
+                    {
+                        "definition": "In good health or a good emotional state.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "He's not feeling well now, but he should be OK after some rest."
+                    }
+                ],
+                "synonyms": [
+                    "all right",
+                    "allowed",
+                    "permissible",
+                    "fine",
+                    "well",
+                    "adequate",
+                    "all right",
+                    "not bad",
+                    "satisfactory"
+                ],
+                "antonyms": [
+                    "forbidden",
+                    "ill",
+                    "poorly",
+                    "sick",
+                    "under the weather",
+                    "unwell",
+                    "bad",
+                    "inadequate",
+                    "poor",
+                    "unsatisfactory"
+                ]
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "Satisfactorily, sufficiently well.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The team did OK in the playoffs."
+                    }
+                ],
+                "synonyms": [
+                    "adequately",
+                    "satisfactorily"
+                ],
+                "antonyms": [
+                    "badly",
+                    "inadequately",
+                    "poorly",
+                    "unsatisfactorily"
+                ]
+            },
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "Used to indicate acknowledgement or acceptance.",
+                        "synonyms": [
+                            "'kay",
+                            "A-OK",
+                            "all right",
+                            "k",
+                            "m'kay",
+                            "okeh",
+                            "okey",
+                            "okey-dokey"
+                        ],
+                        "antonyms": [],
+                        "example": "I promise to give it back. – OK."
+                    },
+                    {
+                        "definition": "Used to introduce a sentence in order to draw attention to the importance of what is being said.",
+                        "synonyms": [
+                            "now",
+                            "now then"
+                        ],
+                        "antonyms": [],
+                        "example": "OK, I'm thinking of a number…"
+                    },
+                    {
+                        "definition": "Used in turn-taking, serving as a request to the speaker to grant the turn to the interrupter.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "You always do this to me! When we were at your mother’s, you said that…  – OK, OK, …"
+                    }
+                ],
+                "synonyms": [
+                    "'kay",
+                    "A-OK",
+                    "all right",
+                    "k",
+                    "m'kay",
+                    "okeh",
+                    "okey",
+                    "okey-dokey",
+                    "now",
+                    "now then"
+                ],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 17:09:30",
+        "source": "api"
+    },
+    "nice": {
+        "word": "nice",
+        "bangla": "চমৎকার",
+        "phonetics": [
+            {
+                "text": "\/naɪs\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/nice-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=1221274",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Niceness.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Pleasant, satisfactory.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Of a person: friendly, attractive.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Respectable; virtuous.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "What is a nice person like you doing in a place like this?"
+                    },
+                    {
+                        "definition": "(with and) Shows that the given adjective is desirable, or acts as a mild intensifier; pleasantly, quite.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The soup is nice and hot."
+                    },
+                    {
+                        "definition": "Silly, ignorant; foolish.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Particular in one's conduct; scrupulous, painstaking; choosy.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Particular as regards rules or qualities; strict.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Showing or requiring great precision or sensitive discernment; subtle.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Easily injured; delicate; dainty.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Doubtful, as to the outcome; risky.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "charming",
+                    "delightful",
+                    "friendly",
+                    "kind",
+                    "lovely",
+                    "pleasant",
+                    "sweet",
+                    "charming",
+                    "delightful",
+                    "lovely",
+                    "pleasant",
+                    "appetising",
+                    "appetizing",
+                    "delicious",
+                    "moreish",
+                    "scrummy",
+                    "scrumptious",
+                    "tasty",
+                    "fine",
+                    "subtle"
+                ],
+                "antonyms": [
+                    "horrible",
+                    "horrid",
+                    "nasty",
+                    "horrible",
+                    "horrid",
+                    "nasty",
+                    "awful",
+                    "disgusting",
+                    "distasteful",
+                    "foul",
+                    "gross",
+                    "horrible",
+                    "horrid",
+                    "nasty",
+                    "nauseating",
+                    "putrid",
+                    "rancid",
+                    "rank",
+                    "sickening",
+                    "unsatisfactory",
+                    "naughty"
+                ]
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "Nicely.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Children, play nice."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "Used to signify a job well done.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Nice! I couldn't have done better."
+                    },
+                    {
+                        "definition": "Used to signify approval.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Is that your new car? Nice!"
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 17:11:14",
+        "source": "api"
+    },
+    "fin": {
+        "word": "fin",
+        "bangla": "পাখনা",
+        "phonetics": [
+            {
+                "text": "\/fɪn\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/fin-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=252393"
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "One of the appendages of a fish, used to propel itself and to manoeuvre\/maneuver.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The fish's fins minimize water flow."
+                    },
+                    {
+                        "definition": "A similar appendage of a cetacean or other marine animal.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "a dolphin's fin"
+                    },
+                    {
+                        "definition": "A thin, rigid component of an aircraft, extending from the fuselage and used to stabilise and steer the aircraft.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The fin stabilises the plane in flight."
+                    },
+                    {
+                        "definition": "A similar structure on the tail of a bomb, used to help keep it on course.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A hairstyle, resembling the fin of a fish, in which the hair is combed and set into a vertical ridge along the top of the head from about the crown to the forehead.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A device worn by divers and swimmers on their feet.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The divers wore fins to swim faster."
+                    },
+                    {
+                        "definition": "An extending part on a surface of a radiator, engine, heatsink, etc., used to facilitate cooling.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A sharp raised edge (generally in concrete) capable of damaging a roof membrane or vapor retarder.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "flipper",
+                    "flipper",
+                    "Mohican",
+                    "vane"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To cut the fins from a fish, shark, etc.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(Of a fish) to swim with the dorsal fin above the surface of the water.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To swim in the manner of a fish.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "A neutrally buoyant diver does not need to fin to maintain depth."
+                    },
+                    {
+                        "definition": "To provide (a motor vehicle etc) with fins.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 17:11:21",
+        "source": "api"
+    },
+    "fine": {
+        "word": "fine",
+        "bangla": "জরিমানা",
+        "phonetics": [
+            {
+                "text": "\/fæːn\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/fine-1-au.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=75899726",
+                "license": {
+                    "name": "BY-SA 4.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/4.0"
+                }
+            },
+            {
+                "text": "\/faɪn\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/fine-1-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=1220942",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Fine champagne; French brandy.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(usually in the plural) Something that is fine; fine particles.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "They filtered silt and fines out of the soil."
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To make finer, purer, or cleaner; to purify or clarify.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "to fine gold"
+                    },
+                    {
+                        "definition": "To become finer, purer, or cleaner.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To make finer, or less coarse, as in bulk, texture, etc.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "to fine the soil"
+                    },
+                    {
+                        "definition": "To change by fine gradations.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "to fine down a ship's lines, i.e. to diminish her lines gradually"
+                    },
+                    {
+                        "definition": "To clarify (wine and beer) by filtration.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To become gradually fine; to diminish; to dwindle (with away, down, or off).",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "clarify",
+                    "purify",
+                    "refine"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "adjective",
+                "definitions": [
+                    {
+                        "definition": "Senses referring to subjective quality.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Senses referring to objective quality.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Behind the batsman and at a small angle to the line between the wickets.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "[...] to nudge it through the covers (or tickle it down to fine leg) for a four [...]"
+                    },
+                    {
+                        "definition": "Subtle; thin; tenuous.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "fine-threaded",
+                    "fine-grained",
+                    "powdered",
+                    "powdery",
+                    "pulverised",
+                    "pulverized",
+                    "small-grained",
+                    "all right",
+                    "hunky-dory",
+                    "kosher",
+                    "o.k.",
+                    "ok",
+                    "okay",
+                    "excellent",
+                    "good"
+                ],
+                "antonyms": [
+                    "coarse",
+                    "coarse"
+                ]
+            },
+            {
+                "partOfSpeech": "adverb",
+                "definitions": [
+                    {
+                        "definition": "Expression of (typically) reluctant agreement.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Well, nicely, in a positive way.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Everything worked out fine."
+                    },
+                    {
+                        "definition": "Finely; elegantly; delicately.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "In a manner so that the driven ball strikes the object ball so far to one side as to be barely deflected, the object ball being driven to one side.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "OK",
+                    "all right",
+                    "alright",
+                    "very well"
+                ],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 17:11:22",
+        "source": "api"
+    },
+    "f": {
+        "word": "f",
+        "bangla": "চ",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "interjection",
+                "definitions": [
+                    {
+                        "definition": "Used to profess respect for a deceased person, or for something that has been lost.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Used to express regret or disappointment about an unfortunate event or piece of information.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "(abbreviation) Folio, paper and book size (10\"-12.5\" x 15\"-20\")",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Fuck",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "What the f do you think you're doing?"
+                    }
+                ],
+                "synonyms": [
+                    "F",
+                    "fo"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "That which is feminine.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(possibly obsolete) A woman.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) The feminine gender.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(grammar) A word of the feminine gender.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-03 17:11:26",
         "source": "api"
     }
 }
