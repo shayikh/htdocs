@@ -1,1 +1,318 @@
-{}
+{
+    "s": {
+        "word": "s",
+        "bangla": "s",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A weight of 1\/288 of a pound, that is, twenty grains or one third of a dram, about 1.3 grams (symbol: ℈).",
+                        "synonyms": [
+                            "s.ap."
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(by extension) A very small quantity; a particle.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A doubt or uncertainty concerning a matter of fact; intellectual perplexity.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Hesitation to act from the difficulty of determining what is right or expedient; doubt, hesitation or unwillingness due to motives of conscience.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A Hebrew unit of time equal to 1\/1080 hour.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "s.ap."
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Each of the four divisions of a year: spring, summer, autumn (fall) and winter",
+                        "synonyms": [
+                            "yeartide",
+                            "yeartime"
+                        ],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A part of a year when something particular happens",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "mating season"
+                    },
+                    {
+                        "definition": "That which gives relish; seasoning.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The period over which a series of Test matches are played.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A group of episodes of a television or radio program broadcast in regular intervals with a long break between each group, usually with one year between the beginning of each.",
+                        "synonyms": [
+                            "series (British English)"
+                        ],
+                        "antonyms": [],
+                        "example": "The third season of Friends aired from 1996 to 1997."
+                    },
+                    {
+                        "definition": "An extended, undefined period of time.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The full set of downloadable content for a game, which can be purchased with a season pass.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A fixed period of time in a massively multiplayer online game in which new content (themes, rules, modes, etc.) becomes available, sometimes replacing earlier content.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "series (British English)",
+                    "yeartide",
+                    "yeartime"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A coin formerly used in the United Kingdom, Ireland, Malta, Australia, New Zealand and many other Commonwealth countries.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "The shilling was worth twelve old pence, or one twentieth of a pound sterling."
+                    },
+                    {
+                        "definition": "The currency of Kenya, Somalia, Tanzania and Uganda.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "A currency in the United States, differing in value between states.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(New York and some other states) The Spanish real, formerly having the value of one eighth of a dollar.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "deener",
+                    "Abraham's willing",
+                    "bob",
+                    "gen",
+                    "generalise",
+                    "hog"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "One of the four major compass points, specifically 180°, directed toward the South Pole, and conventionally downwards on a map, abbreviated as S.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The side of a church on the right hand of a person facing the altar.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A quark having a fractional electric charge of -1\/3 and a mass about 80 to 130 MeV. Symbol: s",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-04 15:44:41"
+    },
+    "sc": {
+        "word": "sc",
+        "bangla": "sc",
+        "phonetics": [],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Capital letters shown in the same form but in small size (typically of the same size as lower-case letters).",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "This is an example of small caps. This is an example of Titlecase Small Caps."
+                    }
+                ],
+                "synonyms": [
+                    "small capitals"
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "Stocks with a relatively small market capitalization.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A book having such covers.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-04 15:44:42"
+    },
+    "science": {
+        "word": "science",
+        "bangla": "বিজ্ঞান",
+        "phonetics": [
+            {
+                "text": "\/ˈsaɪəns\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/science-1-ca.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=189581",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            },
+            {
+                "text": "\/ˈsaɪəns\/",
+                "audio": "https:\/\/api.dictionaryapi.dev\/media\/pronunciations\/en\/science-1-us.mp3",
+                "sourceUrl": "https:\/\/commons.wikimedia.org\/w\/index.php?curid=189574",
+                "license": {
+                    "name": "BY-SA 3.0",
+                    "url": "https:\/\/creativecommons.org\/licenses\/by-sa\/3.0"
+                }
+            }
+        ],
+        "meanings": [
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "A particular discipline or branch of learning, especially one dealing with measurable or systematic principles rather than intuition or natural ability.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "Of course in my opinion Social Studies is more of a science than an art."
+                    },
+                    {
+                        "definition": "Specifically the natural sciences.",
+                        "synonyms": [],
+                        "antonyms": [],
+                        "example": "My favorite subjects at school are science, mathematics, and history."
+                    },
+                    {
+                        "definition": "Knowledge gained through study or practice; mastery of a particular discipline or area.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The fact of knowing something; knowledge or understanding of a truth.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "The collective discipline of study or learning acquired through the scientific method; the sum of knowledge gained from such methods and discipline.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "Knowledge derived from scientific disciplines, scientific method, or any systematic effort.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "(collective) The scientific community.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [
+                    "sci",
+                    "sci."
+                ],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "verb",
+                "definitions": [
+                    {
+                        "definition": "To cause to become versed in science; to make skilled; to instruct.",
+                        "synonyms": [],
+                        "antonyms": []
+                    },
+                    {
+                        "definition": "To use science to solve a problem.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            },
+            {
+                "partOfSpeech": "noun",
+                "definitions": [
+                    {
+                        "definition": "The sport of boxing.",
+                        "synonyms": [],
+                        "antonyms": []
+                    }
+                ],
+                "synonyms": [],
+                "antonyms": []
+            }
+        ],
+        "created_at": "2026-05-04 15:44:45"
+    }
+}
