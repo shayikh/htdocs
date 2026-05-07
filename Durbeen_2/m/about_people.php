@@ -1,0 +1,207 @@
+<?php
+include './header.php';
+
+$unique_id_fr = $_GET['unique_id_fr'];
+
+if ($unique_id_fr == $unique_id_me) {
+    echo "<script>window.location = 'about_me.php?type=about_me'</script>";
+}
+
+
+$SQLA = "SELECT * FROM `$unique_id_me allow` WHERE `unique_id_fr`='$unique_id_fr'";
+$runA = mysqli_query($connection_info, $SQLA);
+$countA = mysqli_num_rows($runA);
+
+$SQL2 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_me'";
+$run2 = mysqli_query($connection,$SQL2);
+$data2 = mysqli_fetch_assoc($run2);
+$locking = $data2['locking'];
+
+
+$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+$run1 = mysqli_query($connection,$SQL1);
+$data1 = mysqli_fetch_assoc($run1);
+$frlocking = $data1['locking'];
+
+$SQLF = "SELECT * FROM `$unique_id_fr allow` WHERE `unique_id_fr`='$unique_id_me'";
+$runF = mysqli_query($connection_info, $SQLF);
+$countF = mysqli_num_rows($runF);
+
+if ($countF == 0 && $frlocking == 1) {
+    echo "<script>window.location = 'facelist.php?type=facelist&nofollow'</script>";
+}
+
+
+
+$SQLF = "SELECT * FROM `$unique_id_me follow` WHERE `unique_id_fr`='$unique_id_fr'";
+$runF = mysqli_query($connection_info, $SQLF);
+$countF = mysqli_num_rows($runF);
+
+
+$SQL1 = "SELECT * FROM `registration` WHERE `unique_id`='$unique_id_fr'";
+$run1 = mysqli_query($connection, $SQL1);
+$data1 = mysqli_fetch_assoc($run1);
+
+$SQLabout = "SELECT * FROM `about` WHERE `unique_id`='$unique_id_fr'";
+$runAbout = mysqli_query($connection, $SQLabout);
+$dataAbout = mysqli_fetch_assoc($runAbout);
+
+?>
+
+
+<!-- main page -->
+<div class="container" style="margin-top: 99px;margin-bottom: 100px">
+    <div class="row">
+
+        <div class="col-md-12">
+            <img width="335px" src="../pro_pic/cov_pic/<?php echo $data1['cov_pic'] ?>">
+        </div>
+
+        <div class="col-md-12 text-center mt-4">
+            <img style="border-radius: 50%;border: 2px solid #fff;margin-top: 17px;margin-bottom: 10px" width="120px" height="120px" src="../pro_pic/<?php echo $data1['pro_pic'] ?>">
+        </div>
+
+        <div class="col-md-12 text-center" style="margin-top: -170px;">
+            <p class="text-white" style="font-size: 25px"><?php echo $data1['name'] ?></p>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <a href="./people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end ms-1">Timeline</a>
+
+            <a href="./message.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?>" class="btn btn-sm btn-success float-end ms-1">Send Message</a>
+            
+            <?php if($locking == 1) {?>
+            <button onclick="allowfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countA == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end ms-1">
+                <?php $countA == 0 ? printf('<i class="fas fa-user-check"></i>') : printf('<i class="fas fa-user-times"></i>') ?>
+            </button>
+            <?php } ?>
+
+            <button onclick="followfn(<?php echo $unique_id_me ?>, <?php echo $unique_id_fr ?>, this)" class="btn btn-sm <?php $countF == 0 ? printf("btn-success") : printf("btn-danger") ?> float-end">
+                <?php $countF == 0 ? printf('<i class="fas fa-user-plus"></i>') : printf('<i class="fas fa-user-slash"></i>') ?>
+            </button>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered mt-2" style="border-color: #5d5d5d">
+                <tr>
+                    <td>
+                        <h6 class="text-blue">Email</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $data1['email'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="text-blue">Date of Birth</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $dataAbout['date_birth'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="text-blue">Gender</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $dataAbout['gender'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="text-blue">Phone Numbers</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $dataAbout['phone_no'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="text-blue">Religion</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $dataAbout['religion'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="text-blue">Country</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $dataAbout['country'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="text-blue">City</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $dataAbout['city'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h6 class="text-blue">Bio</h6>
+                    </td>
+                    <td>
+                        <h6 style="line-height: 200%"><?php echo $dataAbout['bio'] ?></h6>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="width: 300px">
+                        <h6 class="text-blue">Durbeen Visited</h6>
+                    </td>
+                    <td>
+                        <h6><?php echo $data1['visit'] ?></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <h6 class="text-blue">Account Link</h6>
+                    </td>
+                    <td>
+                        <h6 class="one d-none">
+                            http://durbeen.unaux.com/m/people_timeline.php?type&unique_id_fr=<?php echo $data1['unique_id'] ?></h6>
+                        <button id="mybtn" class="btn btn-sm btn-success float-start">Copy Account Link</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    let oneV = document.querySelector(".one").innerText;
+    let mybtn = document.querySelector("#mybtn");
+
+    mybtn.addEventListener('click', function() {
+        const elem = document.createElement('input');
+        elem.setAttribute("value", oneV);
+        document.body.appendChild(elem);
+        elem.select();
+        document.execCommand('copy');
+        document.body.removeChild(elem);
+        toastr.success("Link Copied to Clipboard");
+    })
+
+</script>
+
+<?php
+include './footer.php'
+?>
