@@ -84,8 +84,6 @@ suggestionBox.addEventListener("mousedown", function (e) {
 ========================= */
 function loadWord(word) {
 
-    fetch("track.php?word=" + encodeURIComponent(word)).catch(() => {});
-
     fetch("api.php?word=" + encodeURIComponent(word))
         .then(res => res.json())
         .then(data => {

@@ -14,31 +14,22 @@ $word = strtolower(trim($word));
 $file = "dictionary.json";
 $existing = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
 
-$expiryDays = 7;
-
 /* =========================
-   1. CHECK CACHE
+   1. CHECK CACHE (NO EXPIRY)
 ========================= */
 if (isset($existing[$word])) {
 
-    $cached = $existing[$word];
+    $existing[$word]['source'] = "json";
 
-    $createdAt = $cached['created_at'] ?? null;
-
-    if ($createdAt) {
-        $ageSeconds = time() - strtotime($createdAt);
-
-        // 🔄 If NOT expired → return cache
-        if ($ageSeconds < ($expiryDays * 86400)) {
-            $cached['source'] = "json";
-            echo json_encode($cached, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            exit;
-        }
-    }
+    echo json_encode(
+        $existing[$word],
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+    );
+    exit;
 }
 
 /* =========================
-   2. FETCH FROM API (EXPIRED OR NEW)
+   2. FETCH FROM API
 ========================= */
 
 $dictUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" . urlencode($word);
@@ -62,19 +53,18 @@ $translateData = json_decode($translateResponse, true);
 $banglaWord = $translateData[0][0][0] ?? "";
 
 /* =========================
-   3. BUILD NEW DATA
+   3. BUILD RESULT
 ========================= */
 $result = [
     "word" => $word,
     "bangla" => $banglaWord,
     "phonetics" => $phonetics,
     "meanings" => $englishMeanings,
-    "created_at" => date("Y-m-d H:i:s"),
     "source" => "api"
 ];
 
 /* =========================
-   4. SAVE TO JSON (UPDATE CACHE)
+   4. SAVE TO JSON
 ========================= */
 $existing[$word] = $result;
 
