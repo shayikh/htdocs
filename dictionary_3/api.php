@@ -1,32 +1,53 @@
 <?php
 
 include "./files/connection.php";
-header("Content-Type: application/json");
+
+header("Content-Type: application/json; charset=UTF-8");
+
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+
+function respond($data) {
+    echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
+}
 
 $word = strtolower(trim($_GET['word'] ?? ''));
 
 if (!$word) {
-    echo json_encode(["error" => "No word provided"]);
-    exit;
+    respond(["error" => "No word provided"]);
 }
 
-$expiryDays = 7;
-
 /* =========================
-   TRACK SEARCH (MySQL)
+   SEARCH LOG (FIXED)
 ========================= */
-$stmt = $conn->prepare("
-    INSERT INTO search_log (word, count, last_searched)
-    VALUES (?, 1, NOW())
-    ON DUPLICATE KEY UPDATE 
-        count = count + 1,
-        last_searched = NOW()
-");
+$stmt = $conn->prepare("SELECT count FROM search_log WHERE word = ?");
 $stmt->bind_param("s", $word);
 $stmt->execute();
+$res = $stmt->get_result();
+
+if ($row = $res->fetch_assoc()) {
+
+    $stmt = $conn->prepare("
+        UPDATE search_log 
+        SET count = count + 1, last_searched = NOW() 
+        WHERE word = ?
+    ");
+    $stmt->bind_param("s", $word);
+    $stmt->execute();
+
+} else {
+
+    $stmt = $conn->prepare("
+        INSERT INTO search_log (word, count, last_searched)
+        VALUES (?, 1, NOW())
+    ");
+    $stmt->bind_param("s", $word);
+    $stmt->execute();
+}
 
 /* =========================
-   SEARCH ONLY IN MYSQL
+   MYSQL SEARCH (MAIN)
 ========================= */
 $stmt = $conn->prepare("SELECT * FROM dictionary WHERE word = ?");
 $stmt->bind_param("s", $word);
@@ -35,34 +56,30 @@ $res = $stmt->get_result();
 
 if ($row = $res->fetch_assoc()) {
 
-    $created = strtotime($row['created_at']);
-    $now = time();
-
-    if (($now - $created) < ($expiryDays * 86400)) {
-
-        echo json_encode([
-            "word" => $row['word'],
-            "bangla" => $row['bangla'],
-            "phonetics" => json_decode($row['phonetics'], true),
-            "meanings" => json_decode($row['meanings'], true),
-            "source" => "mysql"
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-
-        exit;
-    }
+    respond([
+        "word" => $row['word'],
+        "bangla" => $row['bangla'],
+        "phonetics" => json_decode($row['phonetics'], true),
+        "meanings" => json_decode($row['meanings'], true),
+        "source" => "mysql"
+    ]);
 }
 
 /* =========================
-   FETCH FROM API (fallback)
+   API FETCH (FALLBACK)
 ========================= */
-
 $dictUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" . urlencode($word);
-$dictResponse = @file_get_contents($dictUrl);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $dictUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$dictResponse = curl_exec($ch);
+curl_close($ch);
+
 $dictData = json_decode($dictResponse, true);
 
-if (!$dictResponse || isset($dictData['title'])) {
-    echo json_encode(["error" => "Word not found"]);
-    exit;
+if (!$dictData || isset($dictData['title'])) {
+    respond(["error" => "Word not found"]);
 }
 
 $meanings = $dictData[0]['meanings'] ?? [];
@@ -72,22 +89,27 @@ $phonetics = $dictData[0]['phonetics'] ?? [];
    BANGLA TRANSLATION
 ========================= */
 $translateUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=bn&dt=t&q=" . urlencode($word);
-$translateResponse = @file_get_contents($translateUrl);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $translateUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$translateResponse = curl_exec($ch);
+curl_close($ch);
+
 $translateData = json_decode($translateResponse, true);
 
 $bangla = $translateData[0][0][0] ?? "";
 
 /* =========================
-   SAVE MYSQL
+   SAVE TO MYSQL
 ========================= */
 $stmt = $conn->prepare("
-    INSERT INTO dictionary (word, bangla, phonetics, meanings, created_at)
-    VALUES (?, ?, ?, ?, NOW())
+    INSERT INTO dictionary (word, bangla, phonetics, meanings)
+    VALUES (?, ?, ?, ?)
     ON DUPLICATE KEY UPDATE
         bangla = VALUES(bangla),
         phonetics = VALUES(phonetics),
-        meanings = VALUES(meanings),
-        created_at = NOW()
+        meanings = VALUES(meanings)
 ");
 
 $phoneticsJson = json_encode($phonetics, JSON_UNESCAPED_UNICODE);
@@ -97,28 +119,42 @@ $stmt->bind_param("ssss", $word, $bangla, $phoneticsJson, $meaningsJson);
 $stmt->execute();
 
 /* =========================
-   SAVE JSON CACHE
+   SMART OVERWRITE dictionary-data.js
 ========================= */
-$file = "./files/dictionary.json";
-$data = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+$file = "./files/dictionary-data.js";
+
+$data = [];
+
+if (file_exists($file)) {
+    $content = file_get_contents($file);
+
+    if (preg_match('/window\.dictionaryData\s*=\s*(\{.*\});/s', $content, $m)) {
+        $decoded = json_decode($m[1], true);
+        if (is_array($decoded)) {
+            $data = $decoded;
+        }
+    }
+}
 
 $data[$word] = [
     "word" => $word,
     "bangla" => $bangla,
     "phonetics" => $phonetics,
-    "meanings" => $meanings,
-    "created_at" => date("Y-m-d H:i:s")
+    "meanings" => $meanings
 ];
 
-file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+file_put_contents(
+    $file,
+    "window.dictionaryData = " . json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . ";"
+);
 
 /* =========================
-   OUTPUT
+   FINAL OUTPUT
 ========================= */
-echo json_encode([
+respond([
     "word" => $word,
     "bangla" => $bangla,
     "phonetics" => $phonetics,
     "meanings" => $meanings,
     "source" => "api"
-], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+]);

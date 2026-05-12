@@ -20,7 +20,7 @@ resultDiv.innerHTML = `<p>Loading dictionary…</p>`;
 ========================= */
 (function init() {
     try {
-        dictionary = window.DICTIONARY || {};
+        dictionary = window.dictionaryData || {};
         words = Object.keys(dictionary).sort();
 
         buildPrefixIndex();

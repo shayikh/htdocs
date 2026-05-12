@@ -1,19 +1,19 @@
-CREATE DATABASE dictionary_app;
+CREATE DATABASE IF NOT EXISTS dictionary_app;
 USE dictionary_app;
 
-CREATE TABLE dictionary (
+-- MAIN DICTIONARY TABLE (PRIMARY SEARCH SOURCE)
+CREATE TABLE IF NOT EXISTS dictionary (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    word VARCHAR(100) UNIQUE,
+    word VARCHAR(100) UNIQUE NOT NULL,
     bangla TEXT,
     phonetics JSON,
-    meanings JSON,
-    created_at DATETIME
+    meanings JSON
 );
 
-CREATE TABLE search_log (
+-- OPTIONAL: SEARCH ANALYTICS (NOT REQUIRED FOR CORE SYSTEM)
+CREATE TABLE IF NOT EXISTS search_log (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    word VARCHAR(100),
+    word VARCHAR(100) UNIQUE,
     count INT DEFAULT 1,
-    last_searched DATETIME,
-    UNIQUE(word)
+    last_searched DATETIME DEFAULT CURRENT_TIMESTAMP
 );

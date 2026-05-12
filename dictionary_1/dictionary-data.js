@@ -1,4 +1,4 @@
-window.DICTIONARY = {
+window.dictionaryData = {
     "good": {
         "word": "good",
         "bangla": "ভাল",

@@ -4,7 +4,7 @@ const suggestionBox = document.getElementById("suggestions");
 
 let timeout = null;
 
-/* input typing */
+/* typing handler */
 search.addEventListener("input", function () {
     clearTimeout(timeout);
 
@@ -23,7 +23,7 @@ search.addEventListener("input", function () {
     }, 400);
 });
 
-/* fetch suggestions */
+/* suggestions (unchanged) */
 function loadSuggestions(word) {
     fetch("suggest.php?q=" + encodeURIComponent(word))
         .then(res => res.json())
@@ -49,11 +49,12 @@ function loadSuggestions(word) {
         });
 }
 
-/* fetch meaning */
+/* MAIN SEARCH (MySQL ONLY via api.php) */
 function searchWord(word) {
     fetch("api.php?word=" + encodeURIComponent(word))
         .then(res => res.json())
         .then(data => {
+
             if (data.error) {
                 resultDiv.innerHTML = `<p>❌ ${data.error}</p>`;
                 return;
@@ -61,7 +62,7 @@ function searchWord(word) {
 
             let html = `
                 <div class="result-top">
-                    <span class="source-badge">${data.source}</span>
+                    <span class="source-badge">${data.source || "mysql"}</span>
                 </div>
 
                 <h2>${data.word}</h2>
@@ -96,14 +97,14 @@ function searchWord(word) {
         });
 }
 
-/* select suggestion */
+/* suggestion click */
 function selectWord(word) {
     search.value = word;
     suggestionBox.innerHTML = "";
     searchWord(word);
 }
 
-/* hide suggestions when clicking outside */
+/* outside click close */
 document.addEventListener("click", function (e) {
     if (!document.querySelector(".search-box").contains(e.target)) {
         suggestionBox.innerHTML = "";
